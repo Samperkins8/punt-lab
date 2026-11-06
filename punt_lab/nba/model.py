@@ -135,6 +135,8 @@ def evaluate(leg: Leg) -> LegResult:
 def pair_link(a: Leg, b: Leg) -> float:
     if a.game != b.game:
         return 0.0
+    if a.stat == "win" or b.stat == "win":
+        return SAME_GAME_OTHER if a.stat != b.stat else 0.0
     if a.stat == "rebounds" and b.stat == "rebounds":
         return SAME_GAME_REBOUNDS
     if a.team == b.team and a.stat == "points" and b.stat == "points":

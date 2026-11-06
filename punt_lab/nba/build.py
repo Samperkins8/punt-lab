@@ -14,7 +14,7 @@ from pathlib import Path
 from statistics import mean
 
 from . import ai, espn, odds, overrides, pick
-from .model import Leg, evaluate, multi_chance
+from .model import Leg, LegResult, evaluate, multi_chance, norm_cdf
 
 log = logging.getLogger("punt_lab.nba")
 ROOT = Path(__file__).resolve().parents[2]
@@ -28,6 +28,8 @@ MIN_STAT_AVG = {"points": 12, "rebounds": 5, "assists": 4, "threes": 1.5}
 ROTATION_MINUTES = 24
 MIN_GAMES = 3
 TARGET_LOW = 0.70   # lowest model chance worth listing as a leg
+WIN_MARGIN = 0.95   # head-to-head prices carry a smaller bookie margin than player props
+WIN_SD = 12.0       # points: spread -> win chance
 STEP_UP_LOW = 0.55  # a player's next line up is kept for the $2+ multis if at least this likely
 VENUE_GAMES = 8     # home/away split is halfway with this many matching games
 PACE_WEIGHT = {"points": 0.5, "assists": 0.5, "threes": 0.5, "rebounds": 0.3}
@@ -90,7 +92,14 @@ def grade_previous(today: date) -> str:
         if ev and ev not in boxes:
             boxes[ev] = espn.box_score(ev)
         actual = None
-        for rows in boxes.get(ev, {}).values():
+        if leg["stat"] == "win":
+            box = boxes.get(ev, {})
+            if len(box) == 2 and leg["team"] in box:
+                scores = {t: sum(r["pts"] or 0 for r in rows) for t, rows in box.items()}
+                mine = scores.pop(leg["team"])
+                actual = 1 if mine > max(scores.values()) else 0
+        else:
+          for rows in boxes.get(ev, {}).values():
             for row in rows:
                 if row["id"] == str(leg.get("athlete_id")) and not row["dnp"]:
                     actual = row[STATS[leg["stat"]]]
@@ -328,6 +337,7 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
                     mk = prices["market"].get((name.lower(), stat))
 
                     best = None
+                    safe = None  # highest line still 80%+ likely and paying $1.15+, for the long multi
                     for line in LINES[stat]:
                         leg = Leg(
                             leg_id=f"{name.lower().replace(' ', '_').replace('.', '')}_{stat}{line}",
@@ -352,11 +362,39 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
                                 leg.extra["step_up"] = True  # longer leg, only used to reach $2+ multis
                                 cands.append((leg, res))
                             break  # higher lines only get less likely
+                        if pick.long_ok(leg, res):
+                            safe = (leg, res)
                         if pick.price_ok(leg, res):
                             best = (leg, res)  # keep the highest line that is still eligible
                     if best:
                         cands.append(best)
+                    if safe and (not best or safe[0].line != best[0].line):
+                        safe[0].extra["long_only"] = True
+                        cands.append(safe)
     return cands
+
+
+def match_winners(games: list[dict]) -> list[tuple[Leg, LegResult]]:
+    """Favourite-to-win legs from the betting spread (free from ESPN)."""
+    out = []
+    for g in games:
+        if g.get("spread") is None or not g.get("favourite"):
+            continue
+        fav = g["favourite"]
+        if fav not in (g["home"], g["away"]):
+            continue
+        name = g["home_name"] if fav == g["home"] else g["away_name"]
+        p = norm_cdf(abs(g["spread"]) / WIN_SD)
+        leg = Leg(leg_id=f"{fav.lower()}_win", player=name, team=fav, game=f"{g['away']} @ {g['home']}",
+                  stat="win", line=1, log=[], prior_mean=0, prior_games=0, market=f"{name} to win",
+                  note=f"{abs(g['spread']):g}-point favourite",
+                  extra={"event_id": g["event_id"], "margin": WIN_MARGIN, "long_only": True,
+                         "spread": abs(g["spread"])})
+        res = LegResult(hit_rate=0.0, context_shift=0.0, matchup=1.0, minutes_factor=1.0, proj_mean=0.0,
+                        proj_sd=0.0, market_mean=None, fair_price=1 / p, model_prob=p, implied=None, edge=None)
+        if leg.odds is None and pick.long_ok(leg, res):
+            out.append((leg, res))
+    return out
 
 
 def trim(cands):
@@ -377,6 +415,9 @@ def trim(cands):
 
 def explain(leg: Leg, res) -> str:
     """One plain sentence or three on why this leg's prediction is what it is."""
+    if leg.stat == "win":
+        return (f"{leg.player} are {leg.extra['spread']:g}-point favourites. The betting line makes that "
+                f"about a {res.model_prob:.0%} chance to win, fair price ${res.fair_price:.2f}.")
     unit = leg.stat
     season = mean(leg.log)
     parts = [f"Predicted {res.proj_mean:.1f} {unit} tonight, needs {int(leg.line)}+."]
@@ -427,7 +468,7 @@ def leg_row(leg: Leg, res) -> dict:
 
 def multi_rows(cands, chosen) -> list[dict]:
     rows = []
-    order = ("4-leg $2+", "3-leg $2+", "Best value", "Safest", "3-leg value", "Long shot $50")
+    order = ("4-leg $2+", "3-leg $2+", "Best value", "Safest", "3-leg value", "Long multi 8+")
     rank = {n: i + 1 for i, n in enumerate(order)}
     for name in order:
         ids = chosen.get(name)
@@ -502,14 +543,17 @@ def main() -> None:
     ai_inj = ai.read_injuries(ai_rows[:120]) if teams_today else {}
 
     found = analyse(slate, upcoming, ov, inj, ai_inj, prices)
-    main_legs = trim([c for c in found if not c[0].extra.get("step_up")])
+    extra_kinds = ("step_up", "long_only")
+    main_legs = trim([c for c in found if not any(c[0].extra.get(k) for k in extra_kinds)])
     keep_players = {c[0].player for c in main_legs}
     step_ups = [c for c in found if c[0].extra.get("step_up") and c[0].player in keep_players]
-    cands = main_legs + step_ups
+    safe_legs = [c for c in found if c[0].extra.get("long_only")] + match_winners(upcoming)
+    cands = main_legs + step_ups + safe_legs
     chosen = pick.choose(cands)
     used = {i for k, v in chosen.items() if not k.startswith("_") for i in v}
-    cands = [c for i, c in enumerate(cands) if i < len(main_legs) or i in used]
-    remap = {old: new for new, old in enumerate(i for i in range(len(main_legs) + len(step_ups)) if i < len(main_legs) or i in used)}
+    kept = [i for i in range(len(cands)) if i < len(main_legs) or i in used]
+    remap = {old: new for new, old in enumerate(kept)}
+    cands = [cands[i] for i in kept]
     chosen = {k: (v if k.startswith("_") else [remap[i] for i in v]) for k, v in chosen.items()}
     legs_out = [leg_row(l, r) for l, r in cands]
     multis_out = multi_rows(cands, chosen)

@@ -11,9 +11,10 @@ MAX_UNPRICED_MODEL = 0.83 # with no price known, a leg this likely would be pric
 BOOKIE_MARGIN = 0.92      # assumed Sportsbet price = this x fair, when no price is known
 POOL = 16                 # legs considered when searching combinations
 MIN_MULTI = 2.00          # the "$2+" multis must be estimated to pay at least this
-LONG_TARGET = 50.0        # long-shot multi: estimated Sportsbet price to reach
-LONG_LEGS = range(8, 13)  # 8 to 12 legs
-LONG_MIN_PRICE = 1.15     # shortest leg allowed in the long shot
+LONG_MIN_LEGS = 8         # long multi: at least this many legs
+LONG_MAX_LEGS = 12        # extra legs past 8 only when each is worth it on its own
+LONG_MIN_PROB = 0.80      # every long-multi leg at least this likely
+LONG_MIN_PRICE = 1.15     # and estimated to pay at least this
 WIDE_POOL = 20            # $2+ multis search the top legs plus up to this many step-up (next line up) legs
 
 
@@ -50,17 +51,19 @@ def _ok_combo(legs: list[Leg]) -> bool:
 
 def _assumed_price(leg: Leg, res: LegResult) -> float:
     price, kind = price_of(leg, res)
+    margin = leg.extra.get("margin", BOOKIE_MARGIN)
     if kind == "odds":
         return price
     if kind == "fair":
-        return price * BOOKIE_MARGIN
-    return BOOKIE_MARGIN / res.model_prob
+        return price * margin
+    return margin / res.model_prob
 
 
 def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
     """Returns {multi name: [indexes into cands]}"""
     every = [i for i, (l, r) in enumerate(cands) if eligible(l, r)]
     every.sort(key=lambda i: -cands[i][1].model_prob)
+    every = [i for i in every if not cands[i][0].extra.get("long_only")]  # safe lines / match winners: long multi only
     idx = [i for i in every if not cands[i][0].extra.get("step_up")]  # step-up legs only feed the $2+ multis
     pool = idx[:POOL]
     out: dict[str, list[int]] = {}
@@ -143,10 +146,12 @@ def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
             out[name] = list(fallback[1])
             out.setdefault("_notes", []).append(f"no {n}-leg combo reaches ${MIN_MULTI:.2f}, showing the longest-priced one")
 
-    # Long shot: 8-12 legs, estimated price $50+, highest chance of landing
-    long_idx = _long_shot(cands, every)
+    # Long multi: 8+ legs, each 80%+ likely and paying $1.15+, best value first
+    long_idx, note = _long_multi(cands)
     if long_idx:
-        out["Long shot $50"] = long_idx
+        out["Long multi 8+"] = long_idx
+    if note:
+        out.setdefault("_notes", []).append(note)
 
     self_check = out.setdefault("_notes", [])
     if not all_worth:
@@ -154,64 +159,28 @@ def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
     return out
 
 
-def _long_shot(cands, every) -> list[int] | None:
-    """Highest-chance 8-12 leg multi whose estimated price reaches LONG_TARGET.
 
-    Too many legs to try every combination, so: rank legs by log(chance) + lam * log(price)
-    for a sweep of lam, take the top n that fit together, keep the best that reaches the
-    target, then try single swaps to improve it."""
-    legs = []
-    for i in every:
-        price, kind = price_of(*cands[i])
-        if (price is not None and price < LONG_MIN_PRICE) or (price is None and cands[i][1].model_prob > 0.86):
-            continue
-        legs.append(i)
-    if len(legs) < min(LONG_LEGS):
-        return None
-    lp = {i: math.log(max(cands[i][1].model_prob, 1e-6)) for i in legs}
-    lq = {i: math.log(_assumed_price(*cands[i])) for i in legs}
+def long_ok(leg: Leg, res: LegResult) -> bool:
+    return (not leg.extra.get("risky") and res.model_prob >= LONG_MIN_PROB
+            and _assumed_price(leg, res) >= LONG_MIN_PRICE)
 
-    def fits(combo):
-        return _ok_combo([cands[i][0] for i in combo])
 
-    def chance(combo):
-        return multi_chance([cands[i][0] for i in combo], [cands[i][1].model_prob for i in combo])
-
-    def price(combo):
-        return math.exp(sum(lq[i] for i in combo))
-
-    best = None
-    for n in LONG_LEGS:
-        for step in range(0, 81):
-            lam = step * 0.05
-            order = sorted(legs, key=lambda i: -(lp[i] + lam * lq[i]))
-            combo = []
-            for i in order:
-                if fits(combo + [i]):
-                    combo.append(i)
-                if len(combo) == n:
-                    break
-            if len(combo) < n or price(combo) < LONG_TARGET:
-                continue
-            c = chance(combo)
-            if best is None or c > best[0]:
-                best = (c, combo)
-    if best is None:
-        return None
-    c, combo = best
-    improved = True
-    while improved:  # swap one leg at a time while it helps
-        improved = False
-        for out_i in list(combo):
-            for in_i in legs:
-                if in_i in combo:
-                    continue
-                trial = [x for x in combo if x != out_i] + [in_i]
-                if price(trial) >= LONG_TARGET and fits(trial):
-                    tc = chance(trial)
-                    if tc > c + 1e-9:
-                        c, combo, improved = tc, trial, True
-                        break
-            if improved:
-                break
-    return sorted(combo, key=lambda i: -cands[i][1].model_prob)
+def _long_multi(cands) -> tuple[list[int] | None, str]:
+    """Every leg 80%+ likely and an estimated $1.15+. Ranked by value (chance x price),
+    take the best 8 that fit together, then keep adding (up to 12) only legs that are
+    worth it on their own (chance x price above 1)."""
+    ok = [i for i, (l, r) in enumerate(cands) if long_ok(l, r)]
+    value = {i: cands[i][1].model_prob * _assumed_price(*cands[i]) for i in ok}
+    ok.sort(key=lambda i: (-value[i], -cands[i][1].model_prob))
+    combo: list[int] = []
+    for i in ok:
+        if len(combo) >= LONG_MAX_LEGS:
+            break
+        if len(combo) >= LONG_MIN_LEGS and value[i] <= 1.0:
+            break
+        if _ok_combo([cands[j][0] for j in combo + [i]]):
+            combo.append(i)
+    if len(combo) < 5:
+        return None, f"only {len(combo)} legs are 80%+ likely at $1.15+, not enough for a long multi"
+    note = "" if len(combo) >= LONG_MIN_LEGS else f"only {len(combo)} legs are 80%+ likely at $1.15+, so the long multi is short"
+    return sorted(combo, key=lambda i: -cands[i][1].model_prob), note

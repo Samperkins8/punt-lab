@@ -120,19 +120,18 @@ def test_surname():
     assert surname("Trey Murphy III") == "Murphy" and surname("Darius Acuff Jr.") == "Acuff"
 
 
-def test_long_shot_reaches_target():
+
+def test_long_multi_legs_are_safe_and_priced():
     from punt_lab.nba import pick
     from punt_lab.nba.model import Leg, evaluate
     cands = []
     for k in range(20):
-        leg = Leg(leg_id=f"p{k}", player=f"Player {k}", team=f"T{k % 10}", game=f"G{k % 5}", stat="points",
-                  line=20, log=[18, 20, 14, 22, 19, 17, 21, 16], prior_mean=18, prior_games=60,
-                  market_line=16.5 + (k % 4), market_p_over=0.62 - 0.02 * (k % 5), market_source="test", extra={})
+        leg = Leg(leg_id=f"p{k}", player=f"Player {k}", team=f"T{k % 10}", game=f"G{k % 10}", stat="points",
+                  line=15, log=[19, 20, 17, 22, 19, 17, 21, 18], prior_mean=19, prior_games=60,
+                  market_line=16.5 + 0.5 * (k % 3), market_p_over=0.5, market_source="test", extra={})
         cands.append((leg, evaluate(leg)))
-    chosen = pick.choose(cands)
-    ids = chosen.get("Long shot $50")
-    assert ids and 8 <= len(ids) <= 12
-    price = 1.0
+    ids, note = pick._long_multi(cands)
+    assert ids and len(ids) >= 5
     for i in ids:
-        price *= pick._assumed_price(*cands[i])
-    assert price >= pick.LONG_TARGET
+        assert cands[i][1].model_prob >= pick.LONG_MIN_PROB
+        assert pick._assumed_price(*cands[i]) >= pick.LONG_MIN_PRICE

@@ -93,7 +93,7 @@
       <option value="Safest">Safest 4-leg</option>
       <option value="Best value">Best value 4-leg</option>
       <option value="3-leg value">Best value 3-leg</option>
-      <option value="Long shot $50">Long shot, 8–12 legs (~$50)</option>
+      <option value="Long multi 8+">Long multi, 8+ legs (each 80%+, $1.15+)</option>
       <option value="all">All multis</option>
     </select>
   </div>
@@ -187,10 +187,11 @@ function legsTable(tbody, legs, compact) {
       continue;
     }
     const hr = tr.insertCell(); hr.className = 'nowrap c-wide';
+    if (l.stat === 'win') { cell(tr, '', 'c-hide'); } else {
     const bar = document.createElement('span'); bar.className = 'bar';
     const fill = document.createElement('i'); fill.style.width = (l.hit_rate * 100) + '%'; bar.append(fill);
     hr.append(bar, document.createTextNode(pct(l.hit_rate) + ' hit rate (' + l.hits + ' of ' + l.games + ' games)'));
-    cell(tr, fmt1(l.proj_mean), 'num muted c-hide');
+    cell(tr, fmt1(l.proj_mean), 'num muted c-hide'); }
     const mu = l.matchup;
     cell(tr, mu == null || Math.abs(mu - 1) < 0.005 ? '' : (mu > 1 ? '+' : '') + Math.round((mu - 1) * 100) + '%', 'num c-hide ' + (mu > 1.005 ? 'good' : mu < 0.995 ? 'bad' : 'muted'));
     cell(tr, l.why || (l.context_label ? l.context_label + '. ' + (l.context_detail || '') : ''), 'muted c-wide c-why');
@@ -204,7 +205,7 @@ function multiCard(m, legsById) {
   const card = document.createElement('div'); card.className = 'card';
   const titles = { '4-leg $2+': ['Best 4-leg multi paying $2+', 'Highest chance all four land, with an estimated Sportsbet price of $2.00 or more.'],
                    '3-leg $2+': ['Best 3-leg multi paying $2+', 'Highest chance all three land, with an estimated Sportsbet price of $2.00 or more.'],
-                   'Long shot $50': ['Long shot multi (~$50)', '8 to 12 legs with the highest chance of landing at an estimated $50 or more. Bookie margin compounds on every leg, so treat it as a small fun bet.'],
+                   'Long multi 8+': ['Long multi, 8+ legs', 'Every leg at least 80% likely and estimated to pay $1.15 or more, including match winners. The best-value 8, plus any extra legs that are worth it on their own.'],
                    'Best value': ['Best value 4-leg multi', 'Higher payout, built from legs whose price beats the model.'],
                    'Safest': ['Safest 4-leg multi', 'Highest combined chance among legs at $1.20 or more.'],
                    '3-leg value': ['Best value 3-leg multi', 'Fewer legs, higher chance; only legs whose price beats the model.'] };
