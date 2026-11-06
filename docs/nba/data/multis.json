@@ -1,49 +1,85 @@
 [
  {
-  "multi": "Best value",
+  "multi": "4-leg $2+",
   "rank": 1,
   "leg_ids": [
    "jaylen_brown_points15",
-   "lauri_markkanen_points15",
-   "tyrese_maxey_points20",
-   "paul_george_rebounds4"
+   "jrue_holiday_points10",
+   "rudy_gobert_rebounds8",
+   "saddiq_bey_points10"
   ],
-  "legs_text": "Jaylen Brown 15+ points; Lauri Markkanen 15+ points; Tyrese Maxey 20+ points; Paul George 4+ rebounds",
-  "est_hit": 0.5388,
-  "break_even": 1.86,
+  "legs_text": "Jaylen Brown 15+ points; Jrue Holiday 10+ points; Rudy Gobert 8+ rebounds; Saddiq Bey 10+ points",
+  "est_hit": 0.5351,
+  "break_even": 1.87,
   "priced_legs": "0 of 4",
   "known_price": null,
-  "fair_multi": 2.58
+  "fair_multi": 2.8,
+  "est_price": 2.0
  },
  {
-  "multi": "Safest",
+  "multi": "3-leg $2+",
   "rank": 2,
   "leg_ids": [
-   "jaylen_brown_points15",
-   "lauri_markkanen_points15",
-   "kyrie_irving_points15",
-   "tyrese_maxey_points20"
+   "paul_george_rebounds4",
+   "ty_jerome_points15",
+   "saddiq_bey_points10"
   ],
-  "legs_text": "Jaylen Brown 15+ points; Lauri Markkanen 15+ points; Kyrie Irving 15+ points; Tyrese Maxey 20+ points",
-  "est_hit": 0.5733,
-  "break_even": 1.74,
-  "priced_legs": "0 of 4",
+  "legs_text": "Paul George 4+ rebounds; Ty Jerome 15+ points; Saddiq Bey 10+ points",
+  "est_hit": 0.5463,
+  "break_even": 1.83,
+  "priced_legs": "0 of 3",
   "known_price": null,
-  "fair_multi": 2.36
+  "fair_multi": 2.39,
+  "est_price": 1.86
  },
  {
-  "multi": "3-leg value",
+  "multi": "Best value",
   "rank": 3,
   "leg_ids": [
    "jaylen_brown_points15",
+   "jrue_holiday_points10",
    "lauri_markkanen_points15",
    "paul_george_rebounds4"
   ],
-  "legs_text": "Jaylen Brown 15+ points; Lauri Markkanen 15+ points; Paul George 4+ rebounds",
-  "est_hit": 0.6439,
+  "legs_text": "Jaylen Brown 15+ points; Jrue Holiday 10+ points; Lauri Markkanen 15+ points; Paul George 4+ rebounds",
+  "est_hit": 0.5649,
+  "break_even": 1.77,
+  "priced_legs": "0 of 4",
+  "known_price": null,
+  "fair_multi": 2.57,
+  "est_price": 1.84
+ },
+ {
+  "multi": "Safest",
+  "rank": 4,
+  "leg_ids": [
+   "jaylen_brown_points15",
+   "jrue_holiday_points10",
+   "lauri_markkanen_points15",
+   "kyrie_irving_points15"
+  ],
+  "legs_text": "Jaylen Brown 15+ points; Jrue Holiday 10+ points; Lauri Markkanen 15+ points; Kyrie Irving 15+ points",
+  "est_hit": 0.5975,
+  "break_even": 1.67,
+  "priced_legs": "0 of 4",
+  "known_price": null,
+  "fair_multi": 2.38,
+  "est_price": 1.71
+ },
+ {
+  "multi": "3-leg value",
+  "rank": 5,
+  "leg_ids": [
+   "jaylen_brown_points15",
+   "jrue_holiday_points10",
+   "paul_george_rebounds4"
+  ],
+  "legs_text": "Jaylen Brown 15+ points; Jrue Holiday 10+ points; Paul George 4+ rebounds",
+  "est_hit": 0.6455,
   "break_even": 1.55,
   "priced_legs": "0 of 3",
   "known_price": null,
-  "fair_multi": 2.03
+  "fair_multi": 2.11,
+  "est_price": 1.64
  }
 ]
