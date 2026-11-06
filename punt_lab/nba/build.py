@@ -249,6 +249,8 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
                                           f"{'up' if shift > 0 else 'down'} {abs(shift):.1f}.")
                                 best_ctx = (shift, label, match, detail)
 
+                    if best_ctx and abs(best_ctx[0]) < 0.3:
+                        best_ctx = None  # too small to matter: don't show it
                     prior_vals = [x[key] for x in prior["games"] if x.get(key) is not None]
                     prior_mean = mean(prior_vals) if prior_vals else season_mean
                     prior_games = len(prior_vals)
