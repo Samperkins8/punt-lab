@@ -345,7 +345,9 @@ def main() -> None:
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
 
     now = datetime.now(espn.MELB)
-    slate = date.fromisoformat(args.date) if args.date else now.date()
+    # Evening runs (after 4pm Melbourne) look ahead to the next morning's games.
+    default_slate = now.date() + timedelta(days=1) if now.hour >= 16 else now.date()
+    slate = date.fromisoformat(args.date) if args.date else default_slate
     graded = grade_previous(slate) if args.mode == "daily" else ""
 
     games = espn.slate_games(slate)
