@@ -245,8 +245,9 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
                                 label = f"{tm_full} {'playing' if playing[tm] else 'out'} tonight"
                                 detail = (f"{surname(name)} averaged {mean(match):.1f} in the {len(match)} games "
                                           f"{'with' if playing[tm] else 'without'} {surname(tm_full)} "
-                                          f"({season_mean:.1f} across all {len(vals)}), so the projection moves "
-                                          f"{'up' if shift > 0 else 'down'} {abs(shift):.1f}.")
+                                          f"({season_mean:.1f} across all {len(vals)}), so he's predicted "
+                                          f"{abs(shift):.1f} {stat if abs(shift) >= 1.05 else stat.rstrip('s')} "
+                                          f"{'more' if shift > 0 else 'fewer'} tonight.")
                                 best_ctx = (shift, label, match, detail)
 
                     if best_ctx and abs(best_ctx[0]) < 0.3:
