@@ -1,0 +1,109 @@
+"""Choosing the three multis from the candidate legs."""
+from __future__ import annotations
+
+from itertools import combinations
+
+from .model import Leg, LegResult, multi_chance
+
+MIN_PRICE = 1.20          # Sam rarely takes a leg shorter than this
+MAX_UNPRICED_MODEL = 0.83 # with no price known, a leg this likely would be priced under $1.20
+BOOKIE_MARGIN = 0.92      # assumed Sportsbet price = this x fair, when no price is known
+POOL = 16                 # legs considered when searching combinations
+
+
+def price_of(leg: Leg, res: LegResult) -> tuple[float | None, str]:
+    if leg.odds:
+        return leg.odds, "odds"
+    if res.fair_price:
+        return res.fair_price, "fair"
+    return None, "none"
+
+
+def eligible(leg: Leg, res: LegResult) -> bool:
+    price, kind = price_of(leg, res)
+    if price is not None:
+        return price >= MIN_PRICE
+    return res.model_prob <= MAX_UNPRICED_MODEL
+
+
+def _ok_combo(legs: list[Leg]) -> bool:
+    players = [l.player for l in legs]
+    if len(set(players)) != len(players):
+        return False
+    for a, b in combinations(legs, 2):
+        if a.game == b.game and a.stat == "rebounds" and b.stat == "rebounds":
+            return False  # two players chasing the same boards
+    return True
+
+
+def _assumed_price(leg: Leg, res: LegResult) -> float:
+    price, kind = price_of(leg, res)
+    if kind == "odds":
+        return price
+    if kind == "fair":
+        return price * BOOKIE_MARGIN
+    return BOOKIE_MARGIN / res.model_prob
+
+
+def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
+    """Returns {multi name: [indexes into cands]}"""
+    idx = [i for i, (l, r) in enumerate(cands) if eligible(l, r)]
+    idx.sort(key=lambda i: -cands[i][1].model_prob)
+    pool = idx[:POOL]
+    out: dict[str, list[int]] = {}
+
+    def chance(combo):
+        return multi_chance([cands[i][0] for i in combo], [cands[i][1].model_prob for i in combo])
+
+    def ev(combo):
+        p = chance(combo)
+        price = 1.0
+        for i in combo:
+            price *= _assumed_price(*cands[i])
+        return p * price, p
+
+    # Safest: highest chance all four land
+    best = None
+    for combo in combinations(pool, 4):
+        if _ok_combo([cands[i][0] for i in combo]):
+            c = chance(combo)
+            if best is None or c > best[0]:
+                best = (c, combo)
+    if best:
+        out["Safest"] = list(best[1])
+
+    # Best value: highest expected return, keeping a sensible chance of landing
+    best = None
+    for combo in combinations(pool, 4):
+        if not _ok_combo([cands[i][0] for i in combo]):
+            continue
+        e, p = ev(combo)
+        if p >= 0.30 and (best is None or e > best[0]):
+            best = (e, combo)
+    if best:
+        out["Best value"] = list(best[1])
+
+    # 3-leg value: every leg must be worth it on its own (model x price > 1)
+    worth = [i for i in pool if price_of(*cands[i])[0] and cands[i][1].model_prob * _assumed_price(*cands[i]) > 1]
+
+    def best_three(search, min_p):
+        best = None
+        for combo in combinations(search, 3):
+            if not _ok_combo([cands[i][0] for i in combo]):
+                continue
+            e, p = ev(combo)
+            if p >= min_p and (best is None or e > best[0]):
+                best = (e, combo)
+        return best
+
+    all_worth = True
+    best = best_three(worth, 0.45) or best_three(worth, 0.0)
+    if best is None:  # not enough worth-it legs that fit together: fill from the pool
+        all_worth = False
+        best = best_three(pool, 0.45) or best_three(pool, 0.0)
+    if best:
+        out["3-leg value"] = list(best[1])
+    self_check = out.setdefault("_notes", [])
+    if not all_worth:
+        self_check.append("3-leg value includes legs without a confirmed worth-it price")
+    return out

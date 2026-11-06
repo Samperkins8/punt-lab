@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Punt Lab</title>
+<style>
+  :root { --bg: #f7f6f3; --panel: #fff; --fg: #1d1c1a; --muted: #6b6862; --line: #e4e1da; --good: #1f7a3d;
+          --serif: "Iowan Old Style", "Palatino Linotype", Georgia, serif; --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #141412; --panel: #1d1d1b; --fg: #ece9e2; --muted: #9c988f; --line: #2f2e2b; --good: #5ec27f; } }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.45 var(--sans); }
+  main { max-width: 720px; margin: 0 auto; padding: 28px 16px; display: grid; gap: 16px; }
+  h1 { font: 400 32px/1.15 var(--serif); margin: 0; }
+  p { margin: 0; color: var(--muted); }
+  a.card { display: grid; gap: 4px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px; color: inherit; text-decoration: none; }
+  a.card strong { font-size: 18px; }
+  .soon { opacity: .55; pointer-events: none; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Punt Lab</h1>
+  <p>Daily player-prop multis built from free data. Analysis, not a guarantee.</p>
+  <a class="card" href="nba/"><strong>NBA</strong><span id="nba-line">Today's multis, every candidate leg and the track record</span></a>
+  <a class="card soon" href="#"><strong>AFL</strong><span>Coming later</span></a>
+</main>
+<script>
+  fetch('nba/data/report.json?t=' + Date.now()).then((r) => r.ok ? r.json() : null).then((rep) => {
+    if (rep && rep.headline) document.getElementById('nba-line').textContent = rep.headline;
+  }).catch(() => {});
+</script>
+</body>
+</html>

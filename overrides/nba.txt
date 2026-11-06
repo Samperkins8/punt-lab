@@ -1,0 +1,7 @@
+# Your overrides. See nba_multi/overrides.py for the format.
+# Examples:
+#   Walker Kessler: skip
+#   Luka Doncic: minutes 30
+#
+#   date: 2026-11-07
+#   Austin Reaves 20+ points: odds 1.57

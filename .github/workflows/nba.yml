@@ -1,0 +1,53 @@
+name: NBA daily multi
+
+on:
+  schedule:
+    # GitHub schedules run in UTC. 20:44 UTC = 7:44am Melbourne in summer time (8:44am in winter).
+    - cron: "44 20 * * *"   # morning build: grade yesterday, analyse today
+    - cron: "38 22 * * *"   # pre-tip re-check (9:38am Melbourne summer time)
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "daily or pretip"
+        default: daily
+      date:
+        description: "slate date YYYY-MM-DD (Melbourne), blank for today"
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: nba
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Run
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          MODE="${{ github.event.inputs.mode }}"
+          if [ -z "$MODE" ]; then
+            if [ "${{ github.event.schedule }}" = "38 22 * * *" ]; then MODE=pretip; else MODE=daily; fi
+          fi
+          ARGS="--mode $MODE"
+          if [ -n "${{ github.event.inputs.date }}" ]; then ARGS="$ARGS --date ${{ github.event.inputs.date }}"; fi
+          python -m punt_lab.nba.build $ARGS
+      - name: Publish
+        run: |
+          git config user.name "punt-lab bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/nba/data
+          git diff --cached --quiet || git commit -m "Update multis $(TZ=Australia/Melbourne date '+%Y-%m-%d %H:%M')"
+          git push
