@@ -9,7 +9,7 @@
    "walker_kessler_points10"
   ],
   "legs_text": "Jaylen Brown 15+ points; Jrue Holiday 10+ points; Paul George 4+ rebounds; Walker Kessler 10+ points",
-  "est_hit": 0.5363,
+  "est_hit": 0.5365,
   "break_even": 1.86,
   "priced_legs": "0 of 4",
   "known_price": null,
@@ -25,7 +25,7 @@
    "jaylen_brown_points20"
   ],
   "legs_text": "Jrue Holiday 10+ points; Lauri Markkanen 15+ points; Jaylen Brown 20+ points",
-  "est_hit": 0.5397,
+  "est_hit": 0.5403,
   "break_even": 1.85,
   "priced_legs": "0 of 3",
   "known_price": null,
@@ -42,7 +42,7 @@
    "jaylen_brown_points20"
   ],
   "legs_text": "Jrue Holiday 10+ points; Lauri Markkanen 15+ points; Walker Kessler 10+ points; Jaylen Brown 20+ points",
-  "est_hit": 0.4407,
+  "est_hit": 0.4412,
   "break_even": 2.27,
   "priced_legs": "0 of 4",
   "known_price": null,
@@ -59,7 +59,7 @@
    "lauri_markkanen_points20"
   ],
   "legs_text": "Jrue Holiday 10+ points; Walker Kessler 10+ points; Jaylen Brown 20+ points; Lauri Markkanen 20+ points",
-  "est_hit": 0.3398,
+  "est_hit": 0.3404,
   "break_even": 2.94,
   "priced_legs": "0 of 4",
   "known_price": null,
@@ -73,15 +73,15 @@
    "jaylen_brown_points15",
    "jrue_holiday_points10",
    "lauri_markkanen_points15",
-   "walker_kessler_points10"
+   "james_harden_points15"
   ],
-  "legs_text": "Jaylen Brown 15+ points; Jrue Holiday 10+ points; Lauri Markkanen 15+ points; Walker Kessler 10+ points",
-  "est_hit": 0.571,
-  "break_even": 1.75,
+  "legs_text": "Jaylen Brown 15+ points; Jrue Holiday 10+ points; Lauri Markkanen 15+ points; James Harden 15+ points",
+  "est_hit": 0.584,
+  "break_even": 1.71,
   "priced_legs": "0 of 4",
   "known_price": null,
-  "fair_multi": 2.73,
-  "est_price": 1.96
+  "fair_multi": 2.37,
+  "est_price": 1.7
  },
  {
   "multi": "Safest",
@@ -93,7 +93,7 @@
    "tyrese_maxey_points20"
   ],
   "legs_text": "Jaylen Brown 15+ points; Jrue Holiday 10+ points; Lauri Markkanen 15+ points; Tyrese Maxey 20+ points",
-  "est_hit": 0.6016,
+  "est_hit": 0.6021,
   "break_even": 1.66,
   "priced_legs": "0 of 4",
   "known_price": null,
@@ -106,15 +106,15 @@
   "leg_ids": [
    "jaylen_brown_points15",
    "jrue_holiday_points10",
-   "walker_kessler_points10"
+   "lauri_markkanen_points15"
   ],
-  "legs_text": "Jaylen Brown 15+ points; Jrue Holiday 10+ points; Walker Kessler 10+ points",
-  "est_hit": 0.6578,
-  "break_even": 1.52,
+  "legs_text": "Jaylen Brown 15+ points; Jrue Holiday 10+ points; Lauri Markkanen 15+ points",
+  "est_hit": 0.6997,
+  "break_even": 1.43,
   "priced_legs": "0 of 3",
   "known_price": null,
-  "fair_multi": 2.2,
-  "est_price": 1.72
+  "fair_multi": 1.88,
+  "est_price": 1.46
  },
  {
   "multi": "Long multi 8+",
@@ -122,19 +122,19 @@
   "leg_ids": [
    "jaylen_brown_points15",
    "james_harden_points15",
+   "jeremiah_fears_points10",
    "paul_george_rebounds4",
    "walker_kessler_points10",
    "bos_win",
    "ty_jerome_points15",
-   "pj_washington_points10",
-   "saddiq_bey_points10"
+   "pj_washington_points10"
   ],
-  "legs_text": "Jaylen Brown 15+ points; James Harden 15+ points; Paul George 4+ rebounds; Walker Kessler 10+ points; Boston Celtics Boston Celtics to win; Ty Jerome 15+ points; P.J. Washington 10+ points; Saddiq Bey 10+ points",
-  "est_hit": 0.2123,
-  "break_even": 4.71,
+  "legs_text": "Jaylen Brown 15+ points; James Harden 15+ points; Jeremiah Fears 10+ points; Paul George 4+ rebounds; Walker Kessler 10+ points; Boston Celtics Boston Celtics to win; Ty Jerome 15+ points; P.J. Washington 10+ points",
+  "est_hit": 0.2188,
+  "break_even": 4.57,
   "priced_legs": "0 of 8",
   "known_price": null,
-  "fair_multi": 9.36,
-  "est_price": 4.96
+  "fair_multi": 8.23,
+  "est_price": 4.36
  }
 ]
