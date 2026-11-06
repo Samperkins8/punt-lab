@@ -23,6 +23,9 @@
   p { margin: 0; }
   .sub { color: var(--muted); font-size: 13px; }
   .take { max-width: 65ch; }
+  .pickbar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 0 0 12px; }
+  .pickbar label { font-weight: 600; }
+  .pickbar select { font: inherit; font-size: 16px; padding: 8px 12px; border-radius: 8px; border: 2px solid var(--accent); background: var(--panel); color: inherit; flex: 1 1 220px; max-width: 360px; }
   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 14px; }
   .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
   .figs { display: flex; flex-wrap: wrap; gap: 18px; }
@@ -81,6 +84,18 @@
   </div></header>
 <main>
 
+  <div class="pickbar">
+    <label for="multi-pick">Show</label>
+    <select id="multi-pick">
+      <option value="$2">$2+ multis (4 and 3 legs)</option>
+      <option value="4-leg $2+">Best 4-leg paying $2+</option>
+      <option value="3-leg $2+">Best 3-leg paying $2+</option>
+      <option value="Safest">Safest 4-leg</option>
+      <option value="Best value">Best value 4-leg</option>
+      <option value="3-leg value">Best value 3-leg</option>
+      <option value="all">All multis</option>
+    </select>
+  </div>
   <section class="grid" id="multis"></section>
 
   <section class="card">
@@ -121,6 +136,7 @@
     <dl>
       <dt>Model</dt><dd>This season's games (the last 5 count 1.5× as much as older ones) blended with last season (last season counts as 8 games' worth, less if he played under 40 games), shifted towards games played in tonight's situation (a teammate in or out), adjusted for the opponent's defence against his position and last season's head-to-head (shrunk by how much of the opponent's roster is still the same, worked out from last season's teams, and by sample size), adjusted for home or away (from his own split, shrunk for small samples) and tonight's expected pace (the game total against the slate average), scaled by expected minutes (cut on the second night of a back-to-back), and blended 60/40 with the US betting market's line where one is available.</dd>
       <dt>Est. chance all land</dt><dd>The legs' chances multiplied, adjusted for same-game links: two rebound legs from one game work against each other, two points legs from one team share the shots, other same-game legs move a little together with pace.</dd>
+      <dt>Est. Sportsbet price</dt><dd>Each leg's fair price less a typical bookie margin, multiplied together. The $2+ multis must reach $2.00 on this estimate; check the real price in the app.</dd>
       <dt>Worth it if it pays at least</dt><dd>1 ÷ the chance all legs land. If Sportsbet's price for the whole multi is at or above it, the model says it's worth taking.</dd>
       <dt>Rules</dt><dd>No leg priced under $1.20 (where no price is known, the line is stepped up until the model is about 83% or lower). Never two rebound legs from the same game. Players listed out or doubtful are left out.</dd>
       <dt>Overrides</dt><dd>Edit overrides/nba.txt in the repo to skip a player, set minutes, mark someone out or enter Sportsbet odds. The next run uses it.</dd>
@@ -185,9 +201,11 @@ function legsTable(tbody, legs, compact) {
 function multiCard(m, legsById) {
   const legs = m.leg_ids.map((id) => legsById.get(id)).filter(Boolean);
   const card = document.createElement('div'); card.className = 'card';
-  const titles = { 'Best value': ['Best value 4-leg multi', 'Higher payout, built from legs whose price beats the model.'],
+  const titles = { '4-leg $2+': ['Best 4-leg multi paying $2+', 'Highest chance all four land, with an estimated Sportsbet price of $2.00 or more.'],
+                   '3-leg $2+': ['Best 3-leg multi paying $2+', 'Highest chance all three land, with an estimated Sportsbet price of $2.00 or more.'],
+                   'Best value': ['Best value 4-leg multi', 'Higher payout, built from legs whose price beats the model.'],
                    'Safest': ['Safest 4-leg multi', 'Highest combined chance among legs at $1.20 or more.'],
-                   '3-leg value': ['Best 3-leg multi', 'Fewer legs, higher chance; only legs whose price beats the model.'] };
+                   '3-leg value': ['Best value 3-leg multi', 'Fewer legs, higher chance; only legs whose price beats the model.'] };
   const [title, sub] = titles[m.multi] || [m.multi, ''];
   const h = document.createElement('h2'); h.textContent = title;
   const p = document.createElement('p'); p.className = 'sub'; p.textContent = sub;
@@ -199,6 +217,7 @@ function multiCard(m, legsById) {
     d.append(b, s); figs.append(d);
   };
   fig(pct(m.est_hit), 'Est. chance all ' + legs.length + ' land');
+  if (m.est_price) fig(price(m.est_price), 'Est. Sportsbet price');
   fig(price(m.break_even), 'Worth it if it pays at least');
   if (m.fair_multi) fig(price(m.fair_multi), 'Est. fair multi price');
   if (m.known_price) fig(price(m.known_price) + ' (' + m.priced_legs + ')', 'Sportsbet prices so far');
@@ -255,7 +274,16 @@ function trackRecord(results, multiResults) {
 
   const byId = new Map(legs.map((l) => [l.leg_id, l]));
   const box = document.getElementById('multis');
-  for (const m of [...multis].sort((a, b) => a.rank - b.rank)) box.append(multiCard(m, byId));
+  const sorted = [...multis].sort((a, b) => a.rank - b.rank);
+  const pickEl = document.getElementById('multi-pick');
+  try { const saved = localStorage.getItem('punt-lab-multi'); if (saved && [...pickEl.options].some((o) => o.value === saved)) pickEl.value = saved; } catch (e) {}
+  const showMultis = () => {
+    const v = pickEl.value;
+    const want = v === 'all' ? sorted : v === '$2' ? sorted.filter((m) => m.multi.endsWith('$2+')) : sorted.filter((m) => m.multi === v);
+    box.replaceChildren(...(want.length ? want : sorted).map((m) => multiCard(m, byId)));
+  };
+  pickEl.addEventListener('change', () => { try { localStorage.setItem('punt-lab-multi', pickEl.value); } catch (e) {} showMultis(); });
+  showMultis();
   legsTable(document.querySelector('#legs tbody'), legs, false);
 
   const st = document.querySelector('#slate tbody');

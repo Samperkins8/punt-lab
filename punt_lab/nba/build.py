@@ -423,8 +423,9 @@ def leg_row(leg: Leg, res) -> dict:
 
 def multi_rows(cands, chosen) -> list[dict]:
     rows = []
-    rank = {"Best value": 1, "Safest": 2, "3-leg value": 3}
-    for name in ("Best value", "Safest", "3-leg value"):
+    order = ("4-leg $2+", "3-leg $2+", "Best value", "Safest", "3-leg value")
+    rank = {n: i + 1 for i, n in enumerate(order)}
+    for name in order:
         ids = chosen.get(name)
         if not ids:
             continue
@@ -443,6 +444,7 @@ def multi_rows(cands, chosen) -> list[dict]:
             "priced_legs": f"{len(known)} of {len(legs)}",
             "known_price": round(price, 2) if known else None,
             "fair_multi": round(_prod(fair), 2) if all(fair) else None,
+            "est_price": round(_prod([pick._assumed_price(*cands[i]) for i in ids]), 2),
         })
     return rows
 
@@ -519,11 +521,11 @@ def main() -> None:
             "fav_win_prob": fav_win, "status": "Analysed" if g in upcoming else "Started",
         })
 
-    top = next((m for m in multis_out if m["multi"] == "3-leg value"), None) or (multis_out[0] if multis_out else None)
+    top = next((m for m in multis_out if m["multi"] == "3-leg $2+"), None) or (multis_out[0] if multis_out else None)
     value_leg = max(cands, key=lambda c: c[1].edge if c[1].edge is not None else -1, default=None)
     headline = ""
     if top:
-        headline = f"{top['multi']}: {top['legs_text']} — about {top['est_hit']:.0%} to land, worth it at ${top['break_even']:.2f}+."
+        headline = f"{top['multi']}: {top['legs_text']} — about {top['est_hit']:.0%} to land, est. price ${top['est_price']:.2f}, worth it at ${top['break_even']:.2f}+."
     if value_leg and value_leg[1].edge and value_leg[1].edge > 0:
         headline += f" Best-priced leg: {value_leg[0].player} {value_leg[0].market} at ${value_leg[0].odds:.2f}."
     if chosen.get("_notes"):

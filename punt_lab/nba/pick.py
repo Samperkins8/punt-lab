@@ -9,6 +9,8 @@ MIN_PRICE = 1.20          # Sam rarely takes a leg shorter than this
 MAX_UNPRICED_MODEL = 0.83 # with no price known, a leg this likely would be priced under $1.20
 BOOKIE_MARGIN = 0.92      # assumed Sportsbet price = this x fair, when no price is known
 POOL = 16                 # legs considered when searching combinations
+MIN_MULTI = 2.00          # the "$2+" multis must be estimated to pay at least this
+WIDE_POOL = 25            # $2+ multis search wider, since longer-priced legs sit lower in the list
 
 
 def price_of(leg: Leg, res: LegResult) -> tuple[float | None, str]:
@@ -109,6 +111,33 @@ def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
         best = best_three(pool, 0.45) or best_three(pool, 0.0)
     if best:
         out["3-leg value"] = list(best[1])
+    # $2+ multis: highest chance all land, with the estimated Sportsbet price at least $2.00
+    wide = idx[:WIDE_POOL]
+
+    def multi_price(combo):
+        price = 1.0
+        for i in combo:
+            price *= _assumed_price(*cands[i])
+        return price
+
+    for n, name in ((4, "4-leg $2+"), (3, "3-leg $2+")):
+        best = fallback = None
+        for combo in combinations(wide, n):
+            if not _ok_combo([cands[i][0] for i in combo]):
+                continue
+            pr = multi_price(combo)
+            if pr >= MIN_MULTI:
+                c = chance(combo)
+                if best is None or c > best[0]:
+                    best = (c, combo)
+            elif fallback is None or pr > fallback[0]:
+                fallback = (pr, combo)
+        if best:
+            out[name] = list(best[1])
+        elif fallback:
+            out[name] = list(fallback[1])
+            out.setdefault("_notes", []).append(f"no {n}-leg combo reaches ${MIN_MULTI:.2f}, showing the longest-priced one")
+
     self_check = out.setdefault("_notes", [])
     if not all_worth:
         self_check.append("3-leg value includes legs without a confirmed worth-it price")
