@@ -28,6 +28,11 @@ MIN_STAT_AVG = {"points": 12, "rebounds": 5, "assists": 4, "threes": 1.5}
 ROTATION_MINUTES = 24
 MIN_GAMES = 3
 TARGET_LOW = 0.70   # lowest model chance worth listing as a leg
+VENUE_GAMES = 8     # home/away split is halfway with this many matching games
+PACE_WEIGHT = {"points": 0.5, "assists": 0.5, "threes": 0.5, "rebounds": 0.3}
+B2B_HOURS = 30      # a game within this many hours of the last one is a back-to-back
+ALL_TEAMS = {"ATL", "BOS", "BKN", "CHA", "CHI", "CLE", "DAL", "DEN", "DET", "GS", "HOU", "IND", "LAC", "LAL",
+             "MEM", "MIA", "MIL", "MIN", "NO", "NY", "OKC", "ORL", "PHI", "PHX", "POR", "SAC", "SA", "TOR", "UTAH", "WSH"}
 MAX_LEGS = 25
 
 
@@ -114,9 +119,11 @@ def grade_previous(today: date) -> str:
 
 # ---------------------------------------------------------------- analysis
 
-def player_logs(team_id: str, team_abbr: str) -> tuple[list[str], dict[str, dict]]:
-    """Returns (event ids in order, {athlete_id: {name, pos, games: {event_id: row}}})"""
-    events = [g["event_id"] for g in espn.team_completed_games(team_id)]
+def player_logs(team_id: str, team_abbr: str) -> tuple[list[str], dict[str, dict], dict[str, dict]]:
+    """Returns (event ids in order, {athlete_id: {name, pos, games: {event_id: row}}}, {event_id: {date, home}})"""
+    sched = espn.team_completed_games(team_id)
+    events = [g["event_id"] for g in sched]
+    meta = {g["event_id"]: g for g in sched}
     players: dict[str, dict] = {}
     for ev in events:
         rows = espn.box_score(ev).get(team_abbr, [])
@@ -124,7 +131,35 @@ def player_logs(team_id: str, team_abbr: str) -> tuple[list[str], dict[str, dict
             p = players.setdefault(row["id"], {"name": row["name"], "pos": row["pos"], "games": {}})
             if not row["dnp"]:
                 p["games"][ev] = row
-    return events, players
+    return events, players, meta
+
+
+def last_team(prior: dict) -> str | None:
+    """Which team a player was on last season (most of it)."""
+    teams = [g.get("team") for g in prior["games"] if g.get("team")]
+    if teams:
+        return max(set(teams), key=teams.count)
+    opps = {g.get("opp") for g in prior["games"] if g.get("opp")}
+    missing = ALL_TEAMS - opps
+    return next(iter(missing)) if len(prior["games"]) >= 40 and len(missing) == 1 else None
+
+
+def roster_overlap(td: dict, abbr: str, prior_year: int) -> float | None:
+    """Share of a team's rotation minutes this season played by players who were on it last season."""
+    total = same = 0.0
+    known = 0
+    for pid, p in td["players"].items():
+        mins = [r["min"] for r in p["games"].values() if r["min"]]
+        if len(mins) < MIN_GAMES or mean(mins) < 15:
+            continue
+        m = sum(mins)
+        team = last_team(espn.last_season_log(pid, prior_year))
+        if team is None:
+            continue
+        known += 1
+        total += m
+        same += m if team == abbr else 0
+    return round(same / total, 2) if known >= 4 and total else None
 
 
 def allowed_by_position(team_abbr: str, events: list[str]) -> dict[tuple[str, str], float]:
@@ -152,8 +187,8 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
         for side in ("home", "away"):
             abbr, tid = g[side], g[f"{side}_id"]
             if abbr and tid and abbr not in team_data:
-                events, players = player_logs(tid, abbr)
-                team_data[abbr] = {"events": events, "players": players}
+                events, players, meta = player_logs(tid, abbr)
+                team_data[abbr] = {"events": events, "players": players, "meta": meta}
                 log.info("%s: %d games, %d players", abbr, len(events), len(players))
 
     allowed = {abbr: allowed_by_position(abbr, d["events"]) for abbr, d in team_data.items()}
@@ -162,6 +197,10 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
         for k, v in a.items():
             league[k].append(v)
     league_avg = {k: mean(v) for k, v in league.items() if v}
+
+    totals = [g["total"] for g in games if g.get("total")]
+    avg_total = mean(totals) if len(totals) >= 4 else 228.0
+    overlap_cache: dict[str, float | None] = {}
 
     def is_out(name: str) -> bool:
         n = name.lower()
@@ -190,6 +229,18 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
             playing = {pid: not is_out(td["players"][pid]["name"]) for pid in rotation}
             # roster continuity of the opponent: share of its rotation minutes by players who were there last season
             opp_td = team_data.get(opp)
+            if opp not in overlap_cache:
+                overlap_cache[opp] = roster_overlap(opp_td, opp, prior_year) if opp_td else None
+            # back-to-back: this team played within the last ~30 hours
+            last_dates = [td["meta"][ev]["date"] for ev in events if td["meta"].get(ev, {}).get("date")]
+            b2b = False
+            if last_dates:
+                try:
+                    last = datetime.fromisoformat(max(last_dates).replace("Z", "+00:00"))
+                    b2b = 0 < (g["start"] - last).total_seconds() / 3600 < B2B_HOURS
+                except ValueError:
+                    pass
+            at_home = side == "home"
             for pid in rotation:
                 p = td["players"][pid]
                 name = p["name"]
@@ -221,6 +272,9 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
                 elif a.get("limited") or a.get("bench"):
                     proj_min *= 0.85
                     note_bits.append("expected to play reduced minutes")
+                if b2b and name.lower() not in ov.minutes:
+                    proj_min *= 0.95 if avg_min[pid] >= 30 else 0.97
+                    note_bits.append("second night of a back-to-back")
                 if spread >= 10:
                     proj_min *= 0.95
                     note_bits.append(f"blowout risk ({g['favourite']} {g['spread']:+.1f})")
@@ -250,6 +304,14 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
                                           f"{'more' if shift > 0 else 'fewer'} tonight.")
                                 best_ctx = (shift, label, match, detail)
 
+                    venue_vals = [p["games"][ev][key] for ev in played_events
+                                  if td["meta"].get(ev, {}).get("home") is at_home and p["games"][ev][key] is not None]
+                    venue_shift = 0.0
+                    if 2 <= len(venue_vals) < len(vals):
+                        venue_shift = (mean(venue_vals) - season_mean) * len(venue_vals) / (len(venue_vals) + VENUE_GAMES)
+                    pace_factor = 1.0
+                    if g.get("total"):
+                        pace_factor = max(0.95, min(1.05, 1 + PACE_WEIGHT[stat] * (g["total"] / avg_total - 1)))
                     if best_ctx and abs(best_ctx[0]) < 0.3:
                         best_ctx = None  # too small to matter: don't show it
                     prior_vals = [x[key] for x in prior["games"] if x.get(key) is not None]
@@ -260,7 +322,7 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
                     opp_factor = None
                     if opp_allowed and league_avg.get((pos, stat)):
                         opp_factor = round(max(0.85, min(1.15, opp_allowed / league_avg[(pos, stat)])), 2)
-                    overlap = ov.overlap.get(name.lower(), 0.5)
+                    overlap = ov.overlap.get(name.lower(), overlap_cache.get(opp) if overlap_cache.get(opp) is not None else 0.5)
                     h2h = [x[key] for x in h2h_games if x.get(key) is not None] or None
                     mk = prices["market"].get((name.lower(), stat))
 
@@ -274,11 +336,13 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
                             context_label=best_ctx[1] if best_ctx else None,
                             context_log=best_ctx[2] if best_ctx else None,
                             h2h_log=h2h, roster_overlap=overlap if h2h else None, opp_factor=opp_factor,
+                            venue_shift=round(venue_shift, 2), pace_factor=round(pace_factor, 3),
                             avg_minutes=round(avg_min[pid], 1), proj_minutes=round(proj_min, 1),
                             market_line=mk[0] if mk else None, market_p_over=mk[1] if mk else None,
                             market_source=mk[2] if mk else None,
                             note="; ".join(note_bits),
                             extra={"event_id": g["event_id"], "athlete_id": pid, "risky": risky,
+                                   "at_home": at_home, "venue_games": len(venue_vals), "b2b": b2b,
                                    "context_detail": best_ctx[3] if best_ctx else None},
                         )
                         res = evaluate(leg)
@@ -318,6 +382,12 @@ def explain(leg: Leg, res) -> str:
     parts.append(base + ".")
     if leg.extra.get("context_detail"):
         parts.append(leg.extra["context_detail"])
+    if abs(leg.venue_shift) >= 0.3:
+        where = "at home" if leg.extra.get("at_home") else "on the road"
+        parts.append(f"Plays better {where}" if leg.venue_shift > 0 else f"Plays a bit worse {where}")
+        parts[-1] += f": {abs(leg.venue_shift):.1f} {unit} {'more' if leg.venue_shift > 0 else 'fewer'} predicted."
+    if abs(leg.pace_factor - 1) >= 0.01:
+        parts.append(f"{'Faster' if leg.pace_factor > 1 else 'Slower'} game expected ({leg.pace_factor - 1:+.0%} for pace).")
     if abs(res.matchup - 1) >= 0.02:
         pct = round((res.matchup - 1) * 100)
         who = leg.game.replace(leg.team, "").replace("@", "").strip()
@@ -332,6 +402,8 @@ def explain(leg: Leg, res) -> str:
 def leg_row(leg: Leg, res) -> dict:
     return {
         "why": explain(leg, res),
+        "venue_shift": leg.venue_shift, "pace_factor": leg.pace_factor, "roster_overlap": leg.roster_overlap,
+        "back_to_back": leg.extra.get("b2b", False),
         "leg_id": leg.leg_id, "player": leg.player, "team": leg.team, "game": leg.game,
         "market": leg.market, "stat": leg.stat, "line": leg.line,
         "hits": sum(1 for x in leg.log if x >= leg.line), "games": len(leg.log),

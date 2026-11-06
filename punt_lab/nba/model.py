@@ -14,6 +14,8 @@ MARKET_WEIGHT = 0.6      # share of the final mean taken from the betting market
 OPP_WEIGHT = 0.5         # this season's defence vs position
 H2H_WEIGHT = 0.5         # last season's head-to-head (also scaled by roster overlap)
 H2H_GAMES = 4            # head-to-head is halfway with this many games
+RECENT_GAMES = 5         # the most recent games...
+RECENT_WEIGHT = 1.5      # ...count this much more than older ones
 
 # Same-game links between legs in a multi
 SAME_GAME_REBOUNDS = -0.15
@@ -53,6 +55,8 @@ class Leg:
     context_log: list[float] | None = None
     h2h_log: list[float] | None = None
     roster_overlap: float | None = None
+    venue_shift: float = 0.0       # home/away adjustment, in the stat's units
+    pace_factor: float = 1.0       # tonight's expected game total vs average
     opp_factor: float | None = None
     avg_minutes: float | None = None
     proj_minutes: float | None = None
@@ -87,9 +91,11 @@ def evaluate(leg: Leg) -> LegResult:
     xs = leg.log
     n = len(xs)
     m = mean(xs)
+    weights = [RECENT_WEIGHT if i >= n - RECENT_GAMES else 1.0 for i in range(n)]
+    m_recent = sum(w * x for w, x in zip(weights, xs)) / sum(weights)
     sd = pstdev(xs) if n > 1 else 0.0
     k = PRIOR_GAMES * min(1.0, leg.prior_games / PRIOR_FULL_SEASON)
-    blended = (n * m + k * leg.prior_mean) / (n + k)
+    blended = (n * m_recent + k * leg.prior_mean) / (n + k)
 
     context_shift = 0.0
     if leg.context_log:
@@ -104,7 +110,7 @@ def evaluate(leg: Leg) -> LegResult:
     matchup = 1 + opp_part + h2h_part
 
     minutes_factor = leg.proj_minutes / leg.avg_minutes if leg.avg_minutes and leg.proj_minutes else 1.0
-    proj_mean = (blended + context_shift) * matchup * minutes_factor
+    proj_mean = (blended + context_shift + leg.venue_shift) * matchup * minutes_factor * leg.pace_factor
 
     typical = SPREAD[leg.stat] * proj_mean
     proj_sd = math.sqrt((n * sd * sd + SPREAD_GAMES * typical * typical) / (n + SPREAD_GAMES))

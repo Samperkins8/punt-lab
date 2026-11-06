@@ -112,7 +112,11 @@ def team_completed_games(team_id: str) -> list[dict]:
         st = (ev.get("seasonType") or {}).get("type") or (ev.get("seasonType") or {}).get("id")
         if st and str(st) not in ("2", "regular"):  # regular season only (skip preseason)
             continue
-        out.append({"event_id": ev["id"], "date": ev.get("date")})
+        home = None
+        for c in comp.get("competitors", []):
+            if str((c.get("team") or {}).get("id")) == str(team_id):
+                home = c.get("homeAway") == "home"
+        out.append({"event_id": ev["id"], "date": ev.get("date"), "home": home})
     out.sort(key=lambda g: g["date"] or "")
     return out
 
@@ -213,6 +217,7 @@ def last_season_log(athlete_id: str, season_end_year: int) -> dict:
                     return stats[i] if i is not None and i < len(stats) else None
                 games.append({
                     "opp": (info.get("opponent") or {}).get("abbreviation"),
+                    "team": (info.get("team") or {}).get("abbreviation"),
                     "pts": _num(s("PTS")), "reb": _num(s("REB")), "ast": _num(s("AST")),
                     "threes": _made(s("3PT")), "min": _minutes(s("MIN")),
                 })
