@@ -93,6 +93,7 @@
       <option value="Safest">Safest 4-leg</option>
       <option value="Best value">Best value 4-leg</option>
       <option value="3-leg value">Best value 3-leg</option>
+      <option value="Long shot $50">Long shot, 8–12 legs (~$50)</option>
       <option value="all">All multis</option>
     </select>
   </div>
@@ -147,7 +148,7 @@
 </main>
 
 <script>
-const pct = (v) => v == null ? '' : Math.round(v * 100) + '%';
+const pct = (v) => v == null ? '' : (v < 0.1 ? (v * 100).toFixed(1) : Math.round(v * 100)) + '%';
 const price = (v) => v == null ? '' : '$' + Number(v).toFixed(2);
 const fmt1 = (v) => v == null ? '' : Number(v).toFixed(1);
 const signedPts = (v) => v == null ? '' : (v > 0 ? '+' : '') + Math.round(v * 100) + ' pts';
@@ -203,6 +204,7 @@ function multiCard(m, legsById) {
   const card = document.createElement('div'); card.className = 'card';
   const titles = { '4-leg $2+': ['Best 4-leg multi paying $2+', 'Highest chance all four land, with an estimated Sportsbet price of $2.00 or more.'],
                    '3-leg $2+': ['Best 3-leg multi paying $2+', 'Highest chance all three land, with an estimated Sportsbet price of $2.00 or more.'],
+                   'Long shot $50': ['Long shot multi (~$50)', '8 to 12 legs with the highest chance of landing at an estimated $50 or more. Bookie margin compounds on every leg, so treat it as a small fun bet.'],
                    'Best value': ['Best value 4-leg multi', 'Higher payout, built from legs whose price beats the model.'],
                    'Safest': ['Safest 4-leg multi', 'Highest combined chance among legs at $1.20 or more.'],
                    '3-leg value': ['Best value 3-leg multi', 'Fewer legs, higher chance; only legs whose price beats the model.'] };
