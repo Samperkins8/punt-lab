@@ -3,18 +3,18 @@
   "game": "WSH @ ATL",
   "tip": "11:00am",
   "favourite": "ATL",
-  "spread": -6.5,
-  "total": 228.5,
-  "fav_win_prob": 0.706,
+  "spread": -8.5,
+  "total": 229.5,
+  "fav_win_prob": 0.761,
   "status": "Analysed"
  },
  {
   "game": "BOS @ CHA",
   "tip": "11:00am",
   "favourite": "BOS",
-  "spread": -8.5,
-  "total": 209.5,
-  "fav_win_prob": 0.761,
+  "spread": -10.5,
+  "total": 208.5,
+  "fav_win_prob": 0.809,
   "status": "Analysed"
  },
  {
@@ -22,7 +22,7 @@
   "tip": "11:30am",
   "favourite": "PHI",
   "spread": -2.5,
-  "total": 228.5,
+  "total": 231.5,
   "fav_win_prob": 0.583,
   "status": "Analysed"
  },
@@ -30,54 +30,54 @@
   "game": "UTAH @ DAL",
   "tip": "12:00pm",
   "favourite": "DAL",
-  "spread": -7.5,
+  "spread": -6.5,
   "total": 225.5,
-  "fav_win_prob": 0.734,
+  "fav_win_prob": 0.706,
   "status": "Analysed"
  },
  {
   "game": "OKC @ MEM",
   "tip": "12:00pm",
   "favourite": "OKC",
-  "spread": -3.5,
-  "total": 225.5,
-  "fav_win_prob": 0.615,
+  "spread": -4.5,
+  "total": 223.5,
+  "fav_win_prob": 0.646,
   "status": "Analysed"
  },
  {
   "game": "TOR @ MIL",
   "tip": "12:00pm",
   "favourite": "TOR",
-  "spread": -6.5,
-  "total": 230.5,
-  "fav_win_prob": 0.706,
+  "spread": -4.5,
+  "total": 229.5,
+  "fav_win_prob": 0.646,
   "status": "Analysed"
  },
  {
   "game": "MIN @ NO",
   "tip": "12:00pm",
   "favourite": "MIN",
-  "spread": -4.5,
-  "total": 231.5,
-  "fav_win_prob": 0.646,
+  "spread": -3.5,
+  "total": 230.5,
+  "fav_win_prob": 0.615,
   "status": "Analysed"
  },
  {
   "game": "POR @ LAL",
   "tip": "2:00pm",
   "favourite": "LAL",
-  "spread": -2.5,
-  "total": 232.5,
-  "fav_win_prob": 0.583,
+  "spread": -3.5,
+  "total": 231.5,
+  "fav_win_prob": 0.615,
   "status": "Analysed"
  },
  {
   "game": "SA @ SAC",
   "tip": "2:00pm",
   "favourite": "SA",
-  "spread": -15.5,
-  "total": 229.5,
-  "fav_win_prob": 0.902,
+  "spread": -17.5,
+  "total": 231.5,
+  "fav_win_prob": 0.928,
   "status": "Analysed"
  }
 ]
