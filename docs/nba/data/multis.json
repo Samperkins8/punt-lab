@@ -3,47 +3,47 @@
   "multi": "Best value",
   "rank": 1,
   "leg_ids": [
-   "domantas_sabonis_rebounds10",
-   "cameron_boozer_points10",
-   "ty_jerome_assists4",
-   "shai_gilgeous-alexander_points25"
+   "jaylen_brown_points15",
+   "lauri_markkanen_points15",
+   "tyrese_maxey_points20",
+   "paul_george_rebounds4"
   ],
-  "legs_text": "Domantas Sabonis 10+ rebounds; Cameron Boozer 10+ points; Ty Jerome 4+ assists; Shai Gilgeous-Alexander 25+ points",
-  "est_hit": 0.458,
-  "break_even": 2.18,
+  "legs_text": "Jaylen Brown 15+ points; Lauri Markkanen 15+ points; Tyrese Maxey 20+ points; Paul George 4+ rebounds",
+  "est_hit": 0.5388,
+  "break_even": 1.86,
   "priced_legs": "0 of 4",
   "known_price": null,
-  "fair_multi": null
+  "fair_multi": 2.58
  },
  {
   "multi": "Safest",
   "rank": 2,
   "leg_ids": [
-   "deni_avdija_points20",
-   "james_harden_threes2",
-   "domantas_sabonis_rebounds10",
-   "luka_doncic_threes3"
+   "jaylen_brown_points15",
+   "lauri_markkanen_points15",
+   "kyrie_irving_points15",
+   "tyrese_maxey_points20"
   ],
-  "legs_text": "Deni Avdija 20+ points; James Harden 2+ threes; Domantas Sabonis 10+ rebounds; Luka Doncic 3+ threes",
-  "est_hit": 0.4731,
-  "break_even": 2.11,
+  "legs_text": "Jaylen Brown 15+ points; Lauri Markkanen 15+ points; Kyrie Irving 15+ points; Tyrese Maxey 20+ points",
+  "est_hit": 0.5733,
+  "break_even": 1.74,
   "priced_legs": "0 of 4",
   "known_price": null,
-  "fair_multi": null
+  "fair_multi": 2.36
  },
  {
   "multi": "3-leg value",
   "rank": 3,
   "leg_ids": [
-   "cameron_boozer_points10",
-   "ty_jerome_assists4",
-   "shai_gilgeous-alexander_points25"
+   "jaylen_brown_points15",
+   "lauri_markkanen_points15",
+   "paul_george_rebounds4"
   ],
-  "legs_text": "Cameron Boozer 10+ points; Ty Jerome 4+ assists; Shai Gilgeous-Alexander 25+ points",
-  "est_hit": 0.5527,
-  "break_even": 1.81,
+  "legs_text": "Jaylen Brown 15+ points; Lauri Markkanen 15+ points; Paul George 4+ rebounds",
+  "est_hit": 0.6439,
+  "break_even": 1.55,
   "priced_legs": "0 of 3",
   "known_price": null,
-  "fair_multi": null
+  "fair_multi": 2.03
  }
 ]
