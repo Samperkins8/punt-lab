@@ -1,1 +1,20 @@
-[]
+[
+ {
+  "game": "ORL @ PHX",
+  "tip": "1:00pm",
+  "favourite": null,
+  "spread": null,
+  "total": null,
+  "fav_win_prob": null,
+  "status": "Started"
+ },
+ {
+  "game": "MIA @ GS",
+  "tip": "2:00pm",
+  "favourite": null,
+  "spread": null,
+  "total": null,
+  "fav_win_prob": null,
+  "status": "Started"
+ }
+]
