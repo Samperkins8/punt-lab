@@ -83,24 +83,23 @@
   "est_price": 1.64
  },
  {
-  "multi": "Long shot $50",
+  "multi": "Long multi 8+",
   "rank": 6,
   "leg_ids": [
-   "james_harden_rebounds4",
-   "lauri_markkanen_points20",
-   "jaylen_brown_points20",
-   "ty_jerome_points20",
-   "kyrie_irving_points20",
-   "keyonte_george_points20",
-   "tyrese_maxey_points25",
-   "jrue_holiday_points15"
+   "jaylen_brown_points15",
+   "jrue_holiday_points10",
+   "tyrese_maxey_points20",
+   "paul_george_rebounds4",
+   "cedric_coward_rebounds6",
+   "ty_jerome_points15",
+   "keyonte_george_points15"
   ],
-  "legs_text": "James Harden 4+ rebounds; Lauri Markkanen 20+ points; Jaylen Brown 20+ points; Ty Jerome 20+ points; Kyrie Irving 20+ points; Keyonte George 20+ points; Tyrese Maxey 25+ points; Jrue Holiday 15+ points",
-  "est_hit": 0.034,
-  "break_even": 29.43,
-  "priced_legs": "0 of 8",
+  "legs_text": "Jaylen Brown 15+ points; Jrue Holiday 10+ points; Tyrese Maxey 20+ points; Paul George 4+ rebounds; Cedric Coward 6+ rebounds; Ty Jerome 15+ points; Keyonte George 15+ points",
+  "est_hit": 0.2977,
+  "break_even": 3.36,
+  "priced_legs": "0 of 7",
   "known_price": null,
-  "fair_multi": null,
-  "est_price": 50.24
+  "fair_multi": 5.62,
+  "est_price": 3.14
  }
 ]
