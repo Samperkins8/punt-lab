@@ -81,5 +81,26 @@
   "known_price": null,
   "fair_multi": 2.11,
   "est_price": 1.64
+ },
+ {
+  "multi": "Long shot $50",
+  "rank": 6,
+  "leg_ids": [
+   "james_harden_rebounds4",
+   "lauri_markkanen_points20",
+   "jaylen_brown_points20",
+   "ty_jerome_points20",
+   "kyrie_irving_points20",
+   "keyonte_george_points20",
+   "tyrese_maxey_points25",
+   "jrue_holiday_points15"
+  ],
+  "legs_text": "James Harden 4+ rebounds; Lauri Markkanen 20+ points; Jaylen Brown 20+ points; Ty Jerome 20+ points; Kyrie Irving 20+ points; Keyonte George 20+ points; Tyrese Maxey 25+ points; Jrue Holiday 15+ points",
+  "est_hit": 0.034,
+  "break_even": 29.43,
+  "priced_legs": "0 of 8",
+  "known_price": null,
+  "fair_multi": null,
+  "est_price": 50.24
  }
 ]
