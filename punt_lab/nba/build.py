@@ -241,9 +241,13 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
                         if 2 <= len(match) < len(vals):
                             shift = (mean(match) - season_mean) * len(match) / (len(match) + 5)
                             if best_ctx is None or abs(shift) > abs(best_ctx[0]):
-                                tm_name = surname(td["players"][tm]["name"])
-                                label = f"With {tm_name} {'playing' if playing[tm] else 'out'}"
-                                best_ctx = (shift, label, match)
+                                tm_full = td["players"][tm]["name"]
+                                label = f"{tm_full} {'playing' if playing[tm] else 'out'} tonight"
+                                detail = (f"{surname(name)} averaged {mean(match):.1f} in the {len(match)} games "
+                                          f"{'with' if playing[tm] else 'without'} {surname(tm_full)} "
+                                          f"({season_mean:.1f} across all {len(vals)}), so the projection moves "
+                                          f"{'up' if shift > 0 else 'down'} {abs(shift):.1f}.")
+                                best_ctx = (shift, label, match, detail)
 
                     prior_vals = [x[key] for x in prior["games"] if x.get(key) is not None]
                     prior_mean = mean(prior_vals) if prior_vals else season_mean
@@ -271,7 +275,8 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
                             market_line=mk[0] if mk else None, market_p_over=mk[1] if mk else None,
                             market_source=mk[2] if mk else None,
                             note="; ".join(note_bits),
-                            extra={"event_id": g["event_id"], "athlete_id": pid, "risky": risky},
+                            extra={"event_id": g["event_id"], "athlete_id": pid, "risky": risky,
+                                   "context_detail": best_ctx[3] if best_ctx else None},
                         )
                         res = evaluate(leg)
                         if res.model_prob < TARGET_LOW:
@@ -306,7 +311,7 @@ def leg_row(leg: Leg, res) -> dict:
         "hits": sum(1 for x in leg.log if x >= leg.line), "games": len(leg.log),
         "log": ", ".join(f"{round(x, 1):g}" for x in leg.log), "odds": leg.odds,
         "prior_mean": round(leg.prior_mean, 1), "prior_games": leg.prior_games,
-        "context_label": leg.context_label, "matchup": round(res.matchup, 3),
+        "context_label": leg.context_label, "context_detail": leg.extra.get("context_detail"), "matchup": round(res.matchup, 3),
         "context_shift": round(res.context_shift, 2), "minutes_factor": round(res.minutes_factor, 3),
         "avg_minutes": leg.avg_minutes, "proj_minutes": leg.proj_minutes,
         "proj_mean": round(res.proj_mean, 1), "model_prob": round(res.model_prob, 4),

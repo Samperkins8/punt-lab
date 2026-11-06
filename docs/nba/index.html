@@ -174,7 +174,7 @@ function legsTable(tbody, legs, compact) {
     cell(tr, fmt1(l.proj_mean), 'num muted c-hide');
     const mu = l.matchup;
     cell(tr, mu == null || Math.abs(mu - 1) < 0.005 ? '' : (mu > 1 ? '+' : '') + Math.round((mu - 1) * 100) + '%', 'num c-hide ' + (mu > 1.005 ? 'good' : mu < 0.995 ? 'bad' : 'muted'));
-    cell(tr, l.context_label ? l.context_label + ' (' + (l.context_shift > 0 ? '+' : '') + fmt1(l.context_shift) + ')' : '', 'muted nowrap c-wide');
+    cell(tr, l.context_label ? l.context_label + '. ' + (l.context_detail || ('Projection ' + (l.context_shift > 0 ? '+' : '') + fmt1(l.context_shift) + '.')) : '', 'muted c-wide');
     cell(tr, l.game, 'muted nowrap c-wide');
     cell(tr, l.note, 'muted c-wide');
   }
