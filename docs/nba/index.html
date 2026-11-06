@@ -90,6 +90,9 @@
       <option value="$2">$2+ multis (4 and 3 legs)</option>
       <option value="4-leg $2+">Best 4-leg paying $2+</option>
       <option value="3-leg $2+">Best 3-leg paying $2+</option>
+      <option value="4-leg $3+">Best 4-leg paying $3+</option>
+      <option value="4-leg $4+">Best 4-leg paying $4+</option>
+      <option value="4leg">4-leg at $2, $3 and $4</option>
       <option value="Safest">Safest 4-leg</option>
       <option value="Best value">Best value 4-leg</option>
       <option value="3-leg value">Best value 3-leg</option>
@@ -204,6 +207,8 @@ function multiCard(m, legsById) {
   const legs = m.leg_ids.map((id) => legsById.get(id)).filter(Boolean);
   const card = document.createElement('div'); card.className = 'card';
   const titles = { '4-leg $2+': ['Best 4-leg multi paying $2+', 'Highest chance all four land, with an estimated Sportsbet price of $2.00 or more.'],
+                   '4-leg $3+': ['Best 4-leg multi paying $3+', 'Highest chance all four land, with an estimated Sportsbet price of $3.00 or more.'],
+                   '4-leg $4+': ['Best 4-leg multi paying $4+', 'Highest chance all four land, with an estimated Sportsbet price of $4.00 or more.'],
                    '3-leg $2+': ['Best 3-leg multi paying $2+', 'Highest chance all three land, with an estimated Sportsbet price of $2.00 or more.'],
                    'Long multi 8+': ['Long multi, 8+ legs', 'Every leg at least 80% likely and estimated to pay $1.15 or more, including match winners. The best-value 8, plus any extra legs that are worth it on their own.'],
                    'Best value': ['Best value 4-leg multi', 'Higher payout, built from legs whose price beats the model.'],
@@ -282,7 +287,7 @@ function trackRecord(results, multiResults) {
   try { const saved = localStorage.getItem('punt-lab-multi'); if (saved && [...pickEl.options].some((o) => o.value === saved)) pickEl.value = saved; } catch (e) {}
   const showMultis = () => {
     const v = pickEl.value;
-    const want = v === 'all' ? sorted : v === '$2' ? sorted.filter((m) => m.multi.endsWith('$2+')) : sorted.filter((m) => m.multi === v);
+    const want = v === 'all' ? sorted : v === '$2' ? sorted.filter((m) => m.multi.endsWith('$2+')) : v === '4leg' ? sorted.filter((m) => /^4-leg \$\d\+$/.test(m.multi)) : sorted.filter((m) => m.multi === v);
     box.replaceChildren(...(want.length ? want : sorted).map((m) => multiCard(m, byId)));
   };
   pickEl.addEventListener('change', () => { try { localStorage.setItem('punt-lab-multi', pickEl.value); } catch (e) {} showMultis(); });

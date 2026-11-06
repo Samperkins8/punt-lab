@@ -46,7 +46,7 @@ def test_build_runs(monkeypatch, tmp_path):
     legs = json.loads((tmp_path / "legs.json").read_text())
     multis = json.loads((tmp_path / "multis.json").read_text())
     assert legs and all(0 < l["model_prob"] < 1 for l in legs)
-    assert {m["multi"] for m in multis} == {"Best value", "Safest", "3-leg value", "4-leg $2+", "3-leg $2+"}
+    assert {m["multi"] for m in multis} == {"Best value", "Safest", "3-leg value", "4-leg $2+", "3-leg $2+", "4-leg $3+", "4-leg $4+"}
     assert not any(l["player"] == "LAL Player2" for l in legs)  # injured player excluded
     assert all(l["model_prob"] <= 0.83 or (l["fair_price"] or l["odds"] or 0) >= 1.2 for l in legs)
 

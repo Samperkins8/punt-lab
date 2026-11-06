@@ -128,23 +128,28 @@ def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
             price *= _assumed_price(*cands[i])
         return price
 
-    for n, name in ((4, "4-leg $2+"), (3, "3-leg $2+")):
-        best = fallback = None
+    targets = {4: [("4-leg $2+", 2.0), ("4-leg $3+", 3.0), ("4-leg $4+", 4.0)], 3: [("3-leg $2+", 2.0)]}
+    for n, wanted in targets.items():
+        best = {name: None for name, _ in wanted}
+        fallback = None
         for combo in combinations(wide, n):
             if not _ok_combo([cands[i][0] for i in combo]):
                 continue
             pr = multi_price(combo)
-            if pr >= MIN_MULTI:
-                c = chance(combo)
-                if best is None or c > best[0]:
-                    best = (c, combo)
-            elif fallback is None or pr > fallback[0]:
+            c = None
+            for name, target in wanted:
+                if pr >= target:
+                    c = chance(combo) if c is None else c
+                    if best[name] is None or c > best[name][0]:
+                        best[name] = (c, combo)
+            if fallback is None or pr > fallback[0]:
                 fallback = (pr, combo)
-        if best:
-            out[name] = list(best[1])
-        elif fallback:
-            out[name] = list(fallback[1])
-            out.setdefault("_notes", []).append(f"no {n}-leg combo reaches ${MIN_MULTI:.2f}, showing the longest-priced one")
+        for name, target in wanted:
+            if best[name]:
+                out[name] = list(best[name][1])
+            elif fallback:
+                out[name] = list(fallback[1])
+                out.setdefault("_notes", []).append(f"no {n}-leg combo reaches ${target:.2f}, so {name} shows the longest-priced one")
 
     # Long multi: 8+ legs, each 80%+ likely and paying $1.15+, best value first
     long_idx, note = _long_multi(cands)

@@ -73,7 +73,7 @@ def test_picker_respects_rules():
         cands.append((l, evaluate(l)))
     chosen = pick.choose(cands)
     names = lambda key: {cands[i][0].player for i in chosen[key]}
-    for key in ("Safest", "Best value", "3-leg value", "4-leg $2+", "3-leg $2+"):
+    for key in ("Safest", "Best value", "3-leg value", "4-leg $2+", "3-leg $2+", "4-leg $3+", "4-leg $4+"):
         assert "F" not in names(key)            # $1.10 is under the $1.20 floor
         assert not {"B", "C"} <= names(key)     # never two rebound legs from one game
     assert len(chosen["3-leg value"]) == 3 and len(chosen["Safest"]) == 4
@@ -111,7 +111,7 @@ def test_questionable_players_stay_off_multis():
         l.extra["risky"] = risky
         cands.append((l, evaluate(l)))
     chosen = pick.choose(cands)
-    for key in ("Safest", "Best value", "3-leg value", "4-leg $2+", "3-leg $2+"):
+    for key in ("Safest", "Best value", "3-leg value", "4-leg $2+", "3-leg $2+", "4-leg $3+", "4-leg $4+"):
         assert "A" not in {cands[i][0].player for i in chosen[key]}
 
 
