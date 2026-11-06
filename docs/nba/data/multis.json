@@ -1,1 +1,49 @@
-[]
+[
+ {
+  "multi": "Best value",
+  "rank": 1,
+  "leg_ids": [
+   "rudy_gobert_rebounds8",
+   "cedric_coward_points10",
+   "derik_queen_points10",
+   "lamelo_ball_points15"
+  ],
+  "legs_text": "Rudy Gobert 8+ rebounds; Cedric Coward 10+ points; Derik Queen 10+ points; LaMelo Ball 15+ points",
+  "est_hit": 0.4673,
+  "break_even": 2.14,
+  "priced_legs": "0 of 4",
+  "known_price": null,
+  "fair_multi": null
+ },
+ {
+  "multi": "Safest",
+  "rank": 2,
+  "leg_ids": [
+   "trae_young_assists6",
+   "joel_embiid_points20",
+   "evan_mobley_points15",
+   "anthony_davis_rebounds8"
+  ],
+  "legs_text": "Trae Young 6+ assists; Joel Embiid 20+ points; Evan Mobley 15+ points; Anthony Davis 8+ rebounds",
+  "est_hit": 0.4793,
+  "break_even": 2.09,
+  "priced_legs": "0 of 4",
+  "known_price": null,
+  "fair_multi": null
+ },
+ {
+  "multi": "3-leg value",
+  "rank": 3,
+  "leg_ids": [
+   "rudy_gobert_rebounds8",
+   "derik_queen_points10",
+   "lamelo_ball_points15"
+  ],
+  "legs_text": "Rudy Gobert 8+ rebounds; Derik Queen 10+ points; LaMelo Ball 15+ points",
+  "est_hit": 0.5681,
+  "break_even": 1.76,
+  "priced_legs": "0 of 3",
+  "known_price": null,
+  "fair_multi": null
+ }
+]
