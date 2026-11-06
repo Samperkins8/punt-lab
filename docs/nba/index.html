@@ -6,13 +6,13 @@
 <title>NBA Daily Multi</title>
 <style>
   :root {
-    --bg: #f7f6f3; --panel: #ffffff; --fg: #1d1c1a; --muted: #6b6862; --line: #e4e1da;
-    --good: #1f7a3d; --bad: #b3261e; --accent: #c4622d; --bar: #e9e6df;
+    --bg: #ffffff; --panel: #ffffff; --fg: #1b1030; --muted: #6a5f7d; --line: #e7e1f0;
+    --good: #1f7a3d; --bad: #b3261e; --accent: #552583; --gold: #fdb927; --bar: #efe9f7; --band: #552583; --band-fg: #ffffff;
     --serif: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
     --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
   @media (prefers-color-scheme: dark) {
-    :root { --bg: #141412; --panel: #1d1d1b; --fg: #ece9e2; --muted: #9c988f; --line: #2f2e2b; --good: #5ec27f; --bad: #f08c84; --bar: #2f2e2b; }
+    :root { --bg: #160d24; --panel: #22163a; --fg: #f4f0fa; --muted: #b5a8cc; --line: #3a2c55; --good: #6fd08f; --bad: #f08c84; --accent: #fdb927; --bar: #3a2c55; --band: #2c1748; --band-fg: #ffffff; }
   }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.45 var(--sans); }
@@ -41,6 +41,18 @@
   dl { display: grid; gap: 4px; font-size: 13px; margin: 10px 0 0; }
   dt { font-weight: 600; } dd { margin: 0 0 6px; color: var(--muted); }
   .empty { color: var(--muted); font-size: 13px; }
+  .band { background: var(--band); color: var(--band-fg); border-bottom: 4px solid var(--gold); }
+  .band-inner { max-width: 1100px; margin: 0 auto; padding: 18px 16px 16px; display: grid; gap: 6px; }
+  .band h1 { color: var(--band-fg); }
+  .band .sub, .band a { color: #e6dcf5; }
+  .band .take { color: var(--band-fg); }
+  .card { border-top: 3px solid var(--accent); }
+  .big, .c-model, td.strong { color: var(--accent); }
+  .pill.good { color: #1b1030; background: var(--gold); border-color: var(--gold); }
+  .bar i { background: var(--gold); }
+  h2 { color: var(--accent); }
+  @media (prefers-color-scheme: dark) { h2 { color: var(--fg); } .card { border-top-color: var(--gold); } }
+
   @media (max-width: 640px) {
     .cards thead { display: none; }
     .cards, .cards tbody { display: block; }
@@ -58,14 +70,14 @@
 </style>
 </head>
 <body>
-<main>
-  <header style="display:grid;gap:6px">
+<header class="band"><div class="band-inner">
     <p class="sub"><a href="../" style="color:inherit">← All sports</a></p>
     <h1>NBA daily multi</h1>
     <p class="sub"><span id="slate-date">—</span> · <span id="next-run">—</span></p>
     <p class="take" id="headline">Loading…</p>
     <p class="sub" id="graded"></p>
-  </header>
+  </div></header>
+<main>
 
   <section class="grid" id="multis"></section>
 
