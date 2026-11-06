@@ -199,7 +199,7 @@ function multiCard(m, legsById) {
   fig(pct(m.est_hit), 'Est. chance all ' + legs.length + ' land');
   fig(price(m.break_even), 'Worth it if it pays at least');
   if (m.fair_multi) fig(price(m.fair_multi), 'Est. fair multi price');
-  fig(m.known_price ? price(m.known_price) + ' (' + m.priced_legs + ')' : m.priced_legs, 'Odds entered');
+  if (m.known_price) fig(price(m.known_price) + ' (' + m.priced_legs + ')', 'Sportsbet prices so far');
   const wrap = document.createElement('div'); wrap.className = 'scroll';
   const table = document.createElement('table'); table.className = 'cards';
   table.innerHTML = '<thead><tr><th>Player</th><th>Leg</th><th class="num">Model</th><th class="num">Odds</th><th class="num">Fair price</th><th>Game</th><th>This season</th></tr></thead><tbody></tbody>';
