@@ -90,3 +90,19 @@ def test_espn_parsers(monkeypatch):
     assert rows[0]["pts"] == 42 and rows[0]["threes"] == 6 and rows[0]["min"] == 36 and not rows[0]["dnp"]
     assert rows[1]["dnp"]
     assert espn.parse_spread("LAL -3.5") == ("LAL", -3.5)
+
+
+def test_questionable_players_stay_off_multis():
+    cands = []
+    for name, game, risky in [("A", "G1", True), ("B", "G2", False), ("C", "G3", False), ("D", "G4", False), ("E", "G5", False)]:
+        l = leg(leg_id=name, player=name, game=game, log=[24, 22, 26, 21, 23, 25, 22, 24])
+        l.extra["risky"] = risky
+        cands.append((l, evaluate(l)))
+    chosen = pick.choose(cands)
+    for key in ("Safest", "Best value", "3-leg value"):
+        assert "A" not in {cands[i][0].player for i in chosen[key]}
+
+
+def test_surname():
+    from punt_lab.nba.build import surname
+    assert surname("Trey Murphy III") == "Murphy" and surname("Darius Acuff Jr.") == "Acuff"

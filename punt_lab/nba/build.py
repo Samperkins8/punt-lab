@@ -31,6 +31,14 @@ TARGET_LOW = 0.70   # lowest model chance worth listing as a leg
 MAX_LEGS = 25
 
 
+SUFFIXES = {"jr", "jr.", "sr", "sr.", "ii", "iii", "iv"}
+
+
+def surname(name: str) -> str:
+    parts = [p for p in name.split() if p.lower() not in SUFFIXES]
+    return parts[-1] if parts else name
+
+
 def bucket(pos: str | None) -> str:
     p = (pos or "").upper()
     if "C" in p:
@@ -99,6 +107,8 @@ def grade_previous(today: date) -> str:
     save_json("results.json", results)
     save_json("multi_results.json", mres)
     graded = [v for v in landed_by_leg.values() if v is not None]
+    if not graded:
+        return ""
     return f"Yesterday: {sum(graded)} of {len(graded)} legs landed; " + ", ".join(summary) + "."
 
 
@@ -192,8 +202,12 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
                 h2h_games = [x for x in prior["games"] if x["opp"] == opp]
                 note_bits = []
                 inj_row = inj.get(name.lower())
+                risky = False
                 if inj_row and inj_row["status"]:
                     note_bits.append(f"{inj_row['status']}: {inj_row['comment'][:80]}".strip())
+                    st_l, cm_l = inj_row["status"].lower(), inj_row["comment"].lower()
+                    risky = ("questionable" in st_l or "day-to-day" in st_l or "questionable" in cm_l
+                             or "game-time" in cm_l) and "probable" not in cm_l
 
                 # minutes tonight
                 proj_min = avg_min[pid]
@@ -227,7 +241,7 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
                         if 2 <= len(match) < len(vals):
                             shift = (mean(match) - season_mean) * len(match) / (len(match) + 5)
                             if best_ctx is None or abs(shift) > abs(best_ctx[0]):
-                                tm_name = td["players"][tm]["name"].split()[-1]
+                                tm_name = surname(td["players"][tm]["name"])
                                 label = f"With {tm_name} {'playing' if playing[tm] else 'out'}"
                                 best_ctx = (shift, label, match)
 
@@ -257,12 +271,12 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
                             market_line=mk[0] if mk else None, market_p_over=mk[1] if mk else None,
                             market_source=mk[2] if mk else None,
                             note="; ".join(note_bits),
-                            extra={"event_id": g["event_id"], "athlete_id": pid},
+                            extra={"event_id": g["event_id"], "athlete_id": pid, "risky": risky},
                         )
                         res = evaluate(leg)
                         if res.model_prob < TARGET_LOW:
                             break  # higher lines only get less likely
-                        if pick.eligible(leg, res):
+                        if pick.price_ok(leg, res):
                             best = (leg, res)  # keep the highest line that is still eligible
                     if best:
                         cands.append(best)
@@ -300,7 +314,7 @@ def leg_row(leg: Leg, res) -> dict:
         "implied": round(res.implied, 4) if res.implied else None,
         "edge": round(res.edge, 4) if res.edge is not None else None,
         "hit_rate": round(res.hit_rate, 4), "market_line": leg.market_line, "market_p_over": leg.market_p_over,
-        "note": leg.note, "event_id": leg.extra.get("event_id"), "athlete_id": leg.extra.get("athlete_id"),
+        "questionable": leg.extra.get("risky", False), "note": leg.note, "event_id": leg.extra.get("event_id"), "athlete_id": leg.extra.get("athlete_id"),
     }
 
 
@@ -411,7 +425,9 @@ def main() -> None:
         headline += f" Best-priced leg: {value_leg[0].player} {value_leg[0].market} at ${value_leg[0].odds:.2f}."
     if chosen.get("_notes"):
         headline += " Note: " + "; ".join(chosen["_notes"]) + "."
-    outs = [f"{n.title()} ({v['status']})" for n, v in inj.items() if v["status"].lower() in ("out", "doubtful")]
+    slate_teams = {g["home_name"] for g in games} | {g["away_name"] for g in games}
+    outs = [f"{n.title()} ({v['status']})" for n, v in inj.items()
+            if v["status"].lower() in ("out", "doubtful") and v.get("team") in slate_teams]
     stamp = now.strftime("%-I:%M%p").lower()
     report = {
         "slate_date": slate.isoformat(), "headline": headline,

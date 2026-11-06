@@ -19,11 +19,17 @@ def price_of(leg: Leg, res: LegResult) -> tuple[float | None, str]:
     return None, "none"
 
 
-def eligible(leg: Leg, res: LegResult) -> bool:
+def price_ok(leg: Leg, res: LegResult) -> bool:
     price, kind = price_of(leg, res)
     if price is not None:
         return price >= MIN_PRICE
     return res.model_prob <= MAX_UNPRICED_MODEL
+
+
+def eligible(leg: Leg, res: LegResult) -> bool:
+    if leg.extra.get("risky"):
+        return False  # questionable / game-time decision: listed, but kept out of multis
+    return price_ok(leg, res)
 
 
 def _ok_combo(legs: list[Leg]) -> bool:
