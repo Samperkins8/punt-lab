@@ -5,32 +5,32 @@
   "leg_ids": [
    "jaylen_brown_points15",
    "jrue_holiday_points10",
-   "rudy_gobert_rebounds8",
-   "saddiq_bey_points10"
+   "paul_george_rebounds4",
+   "ty_jerome_points15"
   ],
-  "legs_text": "Jaylen Brown 15+ points; Jrue Holiday 10+ points; Rudy Gobert 8+ rebounds; Saddiq Bey 10+ points",
-  "est_hit": 0.5351,
-  "break_even": 1.87,
+  "legs_text": "Jaylen Brown 15+ points; Jrue Holiday 10+ points; Paul George 4+ rebounds; Ty Jerome 15+ points",
+  "est_hit": 0.5272,
+  "break_even": 1.9,
   "priced_legs": "0 of 4",
   "known_price": null,
-  "fair_multi": 2.8,
-  "est_price": 2.0
+  "fair_multi": 2.81,
+  "est_price": 2.01
  },
  {
   "multi": "3-leg $2+",
   "rank": 2,
   "leg_ids": [
-   "paul_george_rebounds4",
-   "ty_jerome_points15",
-   "saddiq_bey_points10"
+   "jaylen_brown_points15",
+   "jrue_holiday_points10",
+   "lauri_markkanen_points20"
   ],
-  "legs_text": "Paul George 4+ rebounds; Ty Jerome 15+ points; Saddiq Bey 10+ points",
-  "est_hit": 0.5463,
-  "break_even": 1.83,
+  "legs_text": "Jaylen Brown 15+ points; Jrue Holiday 10+ points; Lauri Markkanen 20+ points",
+  "est_hit": 0.5346,
+  "break_even": 1.87,
   "priced_legs": "0 of 3",
   "known_price": null,
-  "fair_multi": 2.39,
-  "est_price": 1.86
+  "fair_multi": 2.72,
+  "est_price": 2.12
  },
  {
   "multi": "Best value",
