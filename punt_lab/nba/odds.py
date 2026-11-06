@@ -56,6 +56,8 @@ def fetch(games: list[dict]) -> dict:
             log.warning("Odds API event odds failed: %s", e)
             continue
         lines: dict[tuple[str, str], list[tuple[float, float]]] = {}
+        log.info("Odds API %s @ %s books: %s", ev.get("away_team"), ev.get("home_team"),
+                 ", ".join(f'{b.get("key")}({len(b.get("markets", []))})' for b in data.get("bookmakers", [])) or "none")
         for book in data.get("bookmakers", []):
             for mk in book.get("markets", []):
                 stat = MARKET_STAT.get(mk.get("key"))
