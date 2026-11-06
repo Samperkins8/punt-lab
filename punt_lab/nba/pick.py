@@ -10,7 +10,7 @@ MAX_UNPRICED_MODEL = 0.83 # with no price known, a leg this likely would be pric
 BOOKIE_MARGIN = 0.92      # assumed Sportsbet price = this x fair, when no price is known
 POOL = 16                 # legs considered when searching combinations
 MIN_MULTI = 2.00          # the "$2+" multis must be estimated to pay at least this
-WIDE_POOL = 25            # $2+ multis search wider, since longer-priced legs sit lower in the list
+WIDE_POOL = 20            # $2+ multis search the top legs plus up to this many step-up (next line up) legs
 
 
 def price_of(leg: Leg, res: LegResult) -> tuple[float | None, str]:
@@ -55,8 +55,9 @@ def _assumed_price(leg: Leg, res: LegResult) -> float:
 
 def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
     """Returns {multi name: [indexes into cands]}"""
-    idx = [i for i, (l, r) in enumerate(cands) if eligible(l, r)]
-    idx.sort(key=lambda i: -cands[i][1].model_prob)
+    every = [i for i, (l, r) in enumerate(cands) if eligible(l, r)]
+    every.sort(key=lambda i: -cands[i][1].model_prob)
+    idx = [i for i in every if not cands[i][0].extra.get("step_up")]  # step-up legs only feed the $2+ multis
     pool = idx[:POOL]
     out: dict[str, list[int]] = {}
 
@@ -112,7 +113,7 @@ def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
     if best:
         out["3-leg value"] = list(best[1])
     # $2+ multis: highest chance all land, with the estimated Sportsbet price at least $2.00
-    wide = idx[:WIDE_POOL]
+    wide = idx[:WIDE_POOL] + [i for i in every if cands[i][0].extra.get("step_up")][:WIDE_POOL]
 
     def multi_price(combo):
         price = 1.0

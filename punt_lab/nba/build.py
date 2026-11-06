@@ -28,6 +28,7 @@ MIN_STAT_AVG = {"points": 12, "rebounds": 5, "assists": 4, "threes": 1.5}
 ROTATION_MINUTES = 24
 MIN_GAMES = 3
 TARGET_LOW = 0.70   # lowest model chance worth listing as a leg
+STEP_UP_LOW = 0.55  # a player's next line up is kept for the $2+ multis if at least this likely
 VENUE_GAMES = 8     # home/away split is halfway with this many matching games
 PACE_WEIGHT = {"points": 0.5, "assists": 0.5, "threes": 0.5, "rebounds": 0.3}
 B2B_HOURS = 30      # a game within this many hours of the last one is a back-to-back
@@ -347,6 +348,9 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
                         )
                         res = evaluate(leg)
                         if res.model_prob < TARGET_LOW:
+                            if best and not risky and res.model_prob >= STEP_UP_LOW:
+                                leg.extra["step_up"] = True  # longer leg, only used to reach $2+ multis
+                                cands.append((leg, res))
                             break  # higher lines only get less likely
                         if pick.price_ok(leg, res):
                             best = (leg, res)  # keep the highest line that is still eligible
@@ -417,7 +421,7 @@ def leg_row(leg: Leg, res) -> dict:
         "implied": round(res.implied, 4) if res.implied else None,
         "edge": round(res.edge, 4) if res.edge is not None else None,
         "hit_rate": round(res.hit_rate, 4), "market_line": leg.market_line, "market_p_over": leg.market_p_over,
-        "questionable": leg.extra.get("risky", False), "note": leg.note, "event_id": leg.extra.get("event_id"), "athlete_id": leg.extra.get("athlete_id"),
+        "questionable": leg.extra.get("risky", False), "step_up": leg.extra.get("step_up", False), "note": leg.note, "event_id": leg.extra.get("event_id"), "athlete_id": leg.extra.get("athlete_id"),
     }
 
 
@@ -497,8 +501,16 @@ def main() -> None:
                for n, v in inj.items() if v.get("comment")]
     ai_inj = ai.read_injuries(ai_rows[:120]) if teams_today else {}
 
-    cands = trim(analyse(slate, upcoming, ov, inj, ai_inj, prices))
+    found = analyse(slate, upcoming, ov, inj, ai_inj, prices)
+    main_legs = trim([c for c in found if not c[0].extra.get("step_up")])
+    keep_players = {c[0].player for c in main_legs}
+    step_ups = [c for c in found if c[0].extra.get("step_up") and c[0].player in keep_players]
+    cands = main_legs + step_ups
     chosen = pick.choose(cands)
+    used = {i for k, v in chosen.items() if not k.startswith("_") for i in v}
+    cands = [c for i, c in enumerate(cands) if i < len(main_legs) or i in used]
+    remap = {old: new for new, old in enumerate(i for i in range(len(main_legs) + len(step_ups)) if i < len(main_legs) or i in used)}
+    chosen = {k: (v if k.startswith("_") else [remap[i] for i in v]) for k, v in chosen.items()}
     legs_out = [leg_row(l, r) for l, r in cands]
     multis_out = multi_rows(cands, chosen)
 
