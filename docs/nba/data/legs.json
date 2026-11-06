@@ -27,6 +27,7 @@
   "hit_rate": 1.0,
   "market_line": null,
   "market_p_over": null,
+  "questionable": false,
   "note": "",
   "event_id": "401909287",
   "athlete_id": "4277905"
@@ -59,6 +60,7 @@
   "hit_rate": 0.5714,
   "market_line": null,
   "market_p_over": null,
+  "questionable": false,
   "note": "",
   "event_id": "401909289",
   "athlete_id": "3059318"
@@ -91,6 +93,7 @@
   "hit_rate": 0.875,
   "market_line": null,
   "market_p_over": null,
+  "questionable": false,
   "note": "",
   "event_id": "401909289",
   "athlete_id": "4432158"
@@ -123,6 +126,7 @@
   "hit_rate": 0.75,
   "market_line": null,
   "market_p_over": null,
+  "questionable": true,
   "note": "Day-To-Day: Davis is questionable for Friday's game against the Hawks due to a right ankle s",
   "event_id": "401909287",
   "athlete_id": "6583"
@@ -155,6 +159,7 @@
   "hit_rate": 0.8571,
   "market_line": null,
   "market_p_over": null,
+  "questionable": false,
   "note": "",
   "event_id": "401909288",
   "athlete_id": "4251"
@@ -187,6 +192,7 @@
   "hit_rate": 0.875,
   "market_line": null,
   "market_p_over": null,
+  "questionable": false,
   "note": "",
   "event_id": "401909293",
   "athlete_id": "3032976"
@@ -219,6 +225,7 @@
   "hit_rate": 0.8571,
   "market_line": null,
   "market_p_over": null,
+  "questionable": false,
   "note": "",
   "event_id": "401909291",
   "athlete_id": "4903027"
@@ -237,7 +244,7 @@
   "odds": null,
   "prior_mean": 11.7,
   "prior_games": 81,
-  "context_label": "With III playing",
+  "context_label": "With Murphy playing",
   "matchup": 1.114,
   "context_shift": -0.55,
   "minutes_factor": 1.0,
@@ -251,6 +258,7 @@
   "hit_rate": 0.75,
   "market_line": null,
   "market_p_over": null,
+  "questionable": false,
   "note": "",
   "event_id": "401909293",
   "athlete_id": "4869780"
@@ -283,6 +291,7 @@
   "hit_rate": 0.875,
   "market_line": null,
   "market_p_over": null,
+  "questionable": false,
   "note": "blowout risk (SA -15.5)",
   "event_id": "401909295",
   "athlete_id": "5142620"
@@ -315,6 +324,7 @@
   "hit_rate": 0.5714,
   "market_line": null,
   "market_p_over": null,
+  "questionable": false,
   "note": "",
   "event_id": "401909287",
   "athlete_id": "5160992"
@@ -347,6 +357,7 @@
   "hit_rate": 0.5,
   "market_line": null,
   "market_p_over": null,
+  "questionable": false,
   "note": "",
   "event_id": "401909287",
   "athlete_id": "5174563"
@@ -379,6 +390,7 @@
   "hit_rate": 0.7778,
   "market_line": null,
   "market_p_over": null,
+  "questionable": false,
   "note": "",
   "event_id": "401909289",
   "athlete_id": "4431678"
@@ -411,6 +423,7 @@
   "hit_rate": 0.5556,
   "market_line": null,
   "market_p_over": null,
+  "questionable": false,
   "note": "",
   "event_id": "401909293",
   "athlete_id": "4432816"
@@ -443,6 +456,7 @@
   "hit_rate": 0.8571,
   "market_line": null,
   "market_p_over": null,
+  "questionable": false,
   "note": "",
   "event_id": "401909290",
   "athlete_id": "4066336"
@@ -475,6 +489,7 @@
   "hit_rate": 0.875,
   "market_line": null,
   "market_p_over": null,
+  "questionable": false,
   "note": "",
   "event_id": "401909294",
   "athlete_id": "3945274"
@@ -507,6 +522,7 @@
   "hit_rate": 0.75,
   "market_line": null,
   "market_p_over": null,
+  "questionable": false,
   "note": "",
   "event_id": "401909288",
   "athlete_id": "3078576"
@@ -539,6 +555,7 @@
   "hit_rate": 0.5,
   "market_line": null,
   "market_p_over": null,
+  "questionable": false,
   "note": "",
   "event_id": "401909291",
   "athlete_id": "4278073"
@@ -571,6 +588,7 @@
   "hit_rate": 0.875,
   "market_line": null,
   "market_p_over": null,
+  "questionable": false,
   "note": "",
   "event_id": "401909294",
   "athlete_id": "3945274"
@@ -603,6 +621,7 @@
   "hit_rate": 0.875,
   "market_line": null,
   "market_p_over": null,
+  "questionable": false,
   "note": "",
   "event_id": "401909292",
   "athlete_id": "4395625"
@@ -635,6 +654,7 @@
   "hit_rate": 0.75,
   "market_line": null,
   "market_p_over": null,
+  "questionable": false,
   "note": "",
   "event_id": "401909289",
   "athlete_id": "3992"
@@ -667,6 +687,7 @@
   "hit_rate": 0.7143,
   "market_line": null,
   "market_p_over": null,
+  "questionable": false,
   "note": "Day-To-Day: Murphy (knee) is probable for Friday's game against Minnesota.",
   "event_id": "401909293",
   "athlete_id": "4397688"
@@ -699,6 +720,7 @@
   "hit_rate": 0.75,
   "market_line": null,
   "market_p_over": null,
+  "questionable": false,
   "note": "",
   "event_id": "401909292",
   "athlete_id": "4591725"
@@ -731,6 +753,7 @@
   "hit_rate": 0.625,
   "market_line": null,
   "market_p_over": null,
+  "questionable": false,
   "note": "",
   "event_id": "401909288",
   "athlete_id": "3078576"
@@ -763,6 +786,7 @@
   "hit_rate": 0.875,
   "market_line": null,
   "market_p_over": null,
+  "questionable": false,
   "note": "",
   "event_id": "401909291",
   "athlete_id": "5041935"
@@ -795,6 +819,7 @@
   "hit_rate": 0.625,
   "market_line": null,
   "market_p_over": null,
+  "questionable": false,
   "note": "",
   "event_id": "401909289",
   "athlete_id": "3908809"

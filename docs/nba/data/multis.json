@@ -4,13 +4,13 @@
   "rank": 1,
   "leg_ids": [
    "rudy_gobert_rebounds8",
-   "cedric_coward_points10",
    "derik_queen_points10",
-   "lamelo_ball_points15"
+   "lamelo_ball_points15",
+   "shai_gilgeous-alexander_assists4"
   ],
-  "legs_text": "Rudy Gobert 8+ rebounds; Cedric Coward 10+ points; Derik Queen 10+ points; LaMelo Ball 15+ points",
-  "est_hit": 0.4673,
-  "break_even": 2.14,
+  "legs_text": "Rudy Gobert 8+ rebounds; Derik Queen 10+ points; LaMelo Ball 15+ points; Shai Gilgeous-Alexander 4+ assists",
+  "est_hit": 0.4604,
+  "break_even": 2.17,
   "priced_legs": "0 of 4",
   "known_price": null,
   "fair_multi": null
@@ -22,10 +22,10 @@
    "trae_young_assists6",
    "joel_embiid_points20",
    "evan_mobley_points15",
-   "anthony_davis_rebounds8"
+   "tyrese_maxey_threes2"
   ],
-  "legs_text": "Trae Young 6+ assists; Joel Embiid 20+ points; Evan Mobley 15+ points; Anthony Davis 8+ rebounds",
-  "est_hit": 0.4793,
+  "legs_text": "Trae Young 6+ assists; Joel Embiid 20+ points; Evan Mobley 15+ points; Tyrese Maxey 2+ threes",
+  "est_hit": 0.4782,
   "break_even": 2.09,
   "priced_legs": "0 of 4",
   "known_price": null,
