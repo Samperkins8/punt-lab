@@ -67,6 +67,7 @@
     .cards .c-odds, .cards .c-edge, .cards .c-fair { margin-top: 4px; }
     .cards .c-wide { grid-column: 1 / -1; color: var(--muted); font-size: 12px; }
     .cards .c-hide { display: none; }
+    .cards .c-why { color: var(--fg); opacity: .85; margin-top: 2px; }
   }
 </style>
 </head>
@@ -86,7 +87,7 @@
     <h2>Every candidate leg</h2>
     <p class="sub">Model is the chance the leg lands. Edge is model minus the chance the odds imply: positive means the price is generous. Fair price is from the US betting market, before any bookie margin.</p>
     <div class="scroll"><table class="cards" id="legs">
-      <thead><tr><th>Player</th><th>Leg</th><th class="num">Model</th><th class="num">Odds</th><th class="num">Edge</th><th class="num">Fair price</th><th>Hit rate</th><th class="num">Projected</th><th class="num">Matchup</th><th>Situation</th><th>Game</th><th>Watch</th></tr></thead>
+      <thead><tr><th>Player</th><th>Leg</th><th class="num">Model</th><th class="num">Odds</th><th class="num">Edge</th><th class="num">Fair price</th><th>Hit rate</th><th class="num">Projected</th><th class="num">Matchup</th><th>Why</th><th>Game</th><th>Watch</th></tr></thead>
       <tbody></tbody>
     </table></div>
   </section>
@@ -165,6 +166,7 @@ function legsTable(tbody, legs, compact) {
     if (compact) {
       cell(tr, l.game, 'muted nowrap c-wide');
       cell(tr, l.log ? 'This season: ' + l.log : '', 'muted c-wide');
+      cell(tr, l.why || '', 'muted c-wide c-why');
       continue;
     }
     const hr = tr.insertCell(); hr.className = 'nowrap c-wide';
@@ -174,7 +176,7 @@ function legsTable(tbody, legs, compact) {
     cell(tr, fmt1(l.proj_mean), 'num muted c-hide');
     const mu = l.matchup;
     cell(tr, mu == null || Math.abs(mu - 1) < 0.005 ? '' : (mu > 1 ? '+' : '') + Math.round((mu - 1) * 100) + '%', 'num c-hide ' + (mu > 1.005 ? 'good' : mu < 0.995 ? 'bad' : 'muted'));
-    cell(tr, l.context_label ? l.context_label + '. ' + (l.context_detail || ('Projection ' + (l.context_shift > 0 ? '+' : '') + fmt1(l.context_shift) + '.')) : '', 'muted c-wide');
+    cell(tr, l.why || (l.context_label ? l.context_label + '. ' + (l.context_detail || '') : ''), 'muted c-wide c-why');
     cell(tr, l.game, 'muted nowrap c-wide');
     cell(tr, l.note, 'muted c-wide');
   }
@@ -202,7 +204,7 @@ function multiCard(m, legsById) {
   if (m.known_price) fig(price(m.known_price) + ' (' + m.priced_legs + ')', 'Sportsbet prices so far');
   const wrap = document.createElement('div'); wrap.className = 'scroll';
   const table = document.createElement('table'); table.className = 'cards';
-  table.innerHTML = '<thead><tr><th>Player</th><th>Leg</th><th class="num">Model</th><th class="num">Odds</th><th class="num">Fair price</th><th>Game</th><th>This season</th></tr></thead><tbody></tbody>';
+  table.innerHTML = '<thead><tr><th>Player</th><th>Leg</th><th class="num">Model</th><th class="num">Odds</th><th class="num">Fair price</th><th>Game</th><th>This season</th><th>Why</th></tr></thead><tbody></tbody>';
   legsTable(table.tBodies[0], legs, true);
   wrap.append(table);
   card.append(h, p, figs, wrap);

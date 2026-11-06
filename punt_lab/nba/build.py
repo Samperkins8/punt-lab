@@ -307,8 +307,31 @@ def trim(cands):
 
 # ---------------------------------------------------------------- output
 
+def explain(leg: Leg, res) -> str:
+    """One plain sentence or three on why this leg's prediction is what it is."""
+    unit = leg.stat
+    season = mean(leg.log)
+    parts = [f"Predicted {res.proj_mean:.1f} {unit} tonight, needs {int(leg.line)}+."]
+    base = f"This season {season:.1f} a game over {len(leg.log)} games"
+    if leg.prior_games:
+        base += f"; last season {leg.prior_mean:.1f} over {leg.prior_games}"
+    parts.append(base + ".")
+    if leg.extra.get("context_detail"):
+        parts.append(leg.extra["context_detail"])
+    if abs(res.matchup - 1) >= 0.02:
+        pct = round((res.matchup - 1) * 100)
+        who = leg.game.replace(leg.team, "").replace("@", "").strip()
+        parts.append(f"{who} {'gives up more' if pct > 0 else 'gives up less'} to his position than average ({pct:+d}%).")
+    if abs(res.minutes_factor - 1) >= 0.02:
+        parts.append(f"Expected minutes {leg.proj_minutes:g} vs his usual {leg.avg_minutes:g}.")
+    if leg.market_line is not None:
+        parts.append(f"US betting line: {leg.market_line:g}.")
+    return " ".join(parts)
+
+
 def leg_row(leg: Leg, res) -> dict:
     return {
+        "why": explain(leg, res),
         "leg_id": leg.leg_id, "player": leg.player, "team": leg.team, "game": leg.game,
         "market": leg.market, "stat": leg.stat, "line": leg.line,
         "hits": sum(1 for x in leg.log if x >= leg.line), "games": len(leg.log),
