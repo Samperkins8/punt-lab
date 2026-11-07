@@ -312,7 +312,9 @@
   "step_up": false,
   "note": "",
   "event_id": "401909939",
-  "athlete_id": "3064514"
+  "athlete_id": "3064514",
+  "late_checked": "10:39am",
+  "late_was": null
  },
  {
   "why": "Predicted 8.6 rebounds tonight, needs 6+. This season 9.4 a game over 8 games; last season 7.4 over 80. Carter averaged 10.0 in the 5 games with Black (9.4 across all 8), so he's predicted 0.3 rebounds more tonight. GS gives up less to his position than average (-3%).",
@@ -447,7 +449,9 @@
   "step_up": false,
   "note": "second night of a back-to-back",
   "event_id": "401909939",
-  "athlete_id": "4701230"
+  "athlete_id": "4701230",
+  "late_checked": "10:39am",
+  "late_was": null
  },
  {
   "why": "Predicted 14.0 points tonight, needs 10+. This season 18.7 a game over 9 games; last season 11.9 over 70. Faster game expected (+1% for pace). POR gives up less to his position than average (-5%). Expected minutes 30.7 vs his usual 32.3.",
@@ -764,7 +768,9 @@
   "step_up": false,
   "note": "",
   "event_id": "401909939",
-  "athlete_id": "4278104"
+  "athlete_id": "4278104",
+  "late_checked": "10:39am",
+  "late_was": null
  },
  {
   "why": "Predicted 14.3 points tonight, needs 10+. This season 14.6 a game over 8 games; last season 9.8 over 79. Silva averaged 17.6 in the 5 games with Black (14.6 across all 8), so he's predicted 1.5 points more tonight. Plays better on the road: 0.5 points more predicted. Slower game expected (-1% for pace). GS gives up more to his position than average (+4%). Bookies' line: 14.5.",
@@ -1178,7 +1184,9 @@
   "step_up": true,
   "note": "second night of a back-to-back",
   "event_id": "401909939",
-  "athlete_id": "4701230"
+  "athlete_id": "4701230",
+  "late_checked": "10:39am",
+  "late_was": null
  },
  {
   "why": "Predicted 8.6 rebounds tonight, needs 8+. This season 9.0 a game over 7 games; last season 9.9 over 75. BKN gives up less to his position than average (-4%). Expected minutes 31.1 vs his usual 32.7.",
@@ -1223,7 +1231,9 @@
   "step_up": true,
   "note": "second night of a back-to-back",
   "event_id": "401909939",
-  "athlete_id": "4701230"
+  "athlete_id": "4701230",
+  "late_checked": "10:39am",
+  "late_was": null
  },
  {
   "why": "Predicted 22.0 points tonight, needs 20+. This season 21.0 a game over 8 games; last season 21.1 over 79. Plays better on the road: 0.3 points more predicted. ATL gives up more to his position than average (+2%).",
@@ -1268,7 +1278,9 @@
   "step_up": true,
   "note": "",
   "event_id": "401909939",
-  "athlete_id": "3064514"
+  "athlete_id": "3064514",
+  "late_checked": "10:39am",
+  "late_was": null
  },
  {
   "why": "Predicted 7.7 rebounds tonight, needs 8+. This season 7.1 a game over 8 games; last season 6.7 over 79. ATL gives up more to his position than average (+7%).",
@@ -1313,7 +1325,9 @@
   "step_up": true,
   "note": "",
   "event_id": "401909939",
-  "athlete_id": "3064514"
+  "athlete_id": "3064514",
+  "late_checked": "10:39am",
+  "late_was": null
  },
  {
   "why": "Predicted 3.7 threes tonight, needs 3+. This season 3.5 a game over 8 games; last season 3.4 over 52.",
@@ -1358,7 +1372,9 @@
   "step_up": true,
   "note": "",
   "event_id": "401909939",
-  "athlete_id": "4278104"
+  "athlete_id": "4278104",
+  "late_checked": "10:39am",
+  "late_was": null
  },
  {
   "why": "Predicted 5.5 rebounds tonight, needs 6+. This season 5.5 a game over 8 games; last season 5.3 over 68. Plays better on the road: 0.3 rebounds more predicted. Bookies' line: 5.5.",
@@ -2004,5 +2020,52 @@
   "note": "second night of a back-to-back",
   "event_id": "401909944",
   "athlete_id": "4845367"
+ },
+ {
+  "why": "Predicted 14.8 points tonight, needs 10+. This season 13.3 a game over 10 games; last season 18.7 over 76. McCollum averaged 14.4 in the 7 games with Johnson (13.3 across all 10), so he's predicted 0.7 points more tonight. Plays a bit worse at home: 1.2 points fewer predicted. Expected minutes 25.4 vs his usual 26.2.",
+  "venue_shift": -1.18,
+  "pace_factor": 1.006,
+  "roster_overlap": 0.65,
+  "back_to_back": true,
+  "leg_id": "cj_mccollum_points10",
+  "player": "CJ McCollum",
+  "team": "ATL",
+  "game": "BKN @ ATL",
+  "market": "10+ points",
+  "stat": "points",
+  "line": 10,
+  "hits": 8,
+  "games": 10,
+  "log": "19, 13, 17, 20, 13, 5, 14, 13, 15, 4",
+  "odds": null,
+  "prior_mean": 18.7,
+  "prior_games": 76,
+  "context_label": "Jalen Johnson playing tonight",
+  "context_detail": "McCollum averaged 14.4 in the 7 games with Johnson (13.3 across all 10), so he's predicted 0.7 points more tonight.",
+  "matchup": 0.996,
+  "context_shift": 0.66,
+  "minutes_factor": 0.969,
+  "avg_minutes": 26.2,
+  "proj_minutes": 25.4,
+  "proj_mean": 14.8,
+  "model_prob": 0.8152,
+  "raw_prob": 0.8152,
+  "fair_price": null,
+  "implied": null,
+  "edge": null,
+  "hit_rate": 0.8,
+  "market_line": null,
+  "market_p_over": null,
+  "books": null,
+  "best_book": null,
+  "best_price": null,
+  "market_source": null,
+  "questionable": false,
+  "step_up": false,
+  "note": "second night of a back-to-back",
+  "event_id": "401909939",
+  "athlete_id": "2490149",
+  "late_new": true,
+  "late_checked": "10:39am"
  }
 ]
