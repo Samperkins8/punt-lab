@@ -12,50 +12,45 @@ jobs:
           KEY: ${{ secrets.ODDSPAPI_KEY }}
         run: |
           python3 - <<'PY'
-          import json, os, urllib.request, urllib.error
-          from datetime import datetime, timedelta, timezone
+          import json, os, urllib.request, urllib.error, collections
           key = os.environ.get("KEY")
           base = "https://api.oddspapi.io/v4"
           def get(path, **params):
               params["apiKey"] = key
               url = f"{base}{path}?" + "&".join(f"{k}={v}" for k, v in params.items())
               try:
-                  with urllib.request.urlopen(url, timeout=60) as r:
+                  with urllib.request.urlopen(url, timeout=90) as r:
                       return json.load(r)
               except urllib.error.HTTPError as e:
                   print("HTTP", e.code, path, e.read()[:300]); return None
-          sports = get("/sports") or []
-          bb = [s for s in sports if "basket" in json.dumps(s).lower()]
-          print("basketball:", json.dumps(bb)[:300])
-          sid = bb[0].get("sportId")
-          tours = get("/tournaments", sportId=sid) or []
-          nba = [t for t in tours if (t.get("tournamentName") or "").strip().upper() == "NBA"] or [t for t in tours if "nba" in json.dumps(t).lower()]
-          print("nba:", json.dumps(nba[:3])[:500])
-          tid = nba[0]["tournamentId"]
-          now = datetime.now(timezone.utc)
-          fx = get("/fixtures", tournamentId=tid, statusId=0, **{"from": now.strftime("%Y-%m-%dT%H:%M:%SZ"), "to": (now + timedelta(days=2)).strftime("%Y-%m-%dT%H:%M:%SZ")}) or []
-          print("upcoming fixtures:", len(fx), [(f.get("participant2Name"), "@", f.get("participant1Name"), f.get("startTime"), f.get("hasOdds")) for f in fx[:4]])
-          f = next((x for x in fx if x.get("hasOdds")), fx[0])
-          od = get("/odds", fixtureId=f["fixtureId"], oddsFormat="decimal") or {}
-          bo = od.get("bookmakerOdds", {})
-          print("bookmakers with odds:", len(bo), sorted(bo))
-          for b, v in sorted(bo.items()):
-              mk = v.get("markets", {})
-              prop_markets, names, sample = 0, set(), None
-              for mid, m in mk.items():
-                  has = False
-                  for oid, o in (m.get("outcomes") or {}).items():
-                      for pid, pl in (o.get("players") or {}).items():
-                          if pl.get("playerName"):
-                              has = True; names.add(pl["playerName"])
-                              if sample is None: sample = (mid, oid, pid, pl)
-                  prop_markets += has
-              au = any(s in b for s in ("tab", "neds", "pointsbet", "unibet", "sportsbet", "ladbrokes", "betr", "-au"))
-              if au or prop_markets:
-                  print(f"{b:22s} markets {len(mk):4d}  player-prop markets {prop_markets:4d}  players {len(names):3d}  {'AU' if au else ''}")
-                  if sample and au: print("      e.g.", json.dumps(sample)[:400])
-          mkts = get("/markets", sportId=sid)
-          if mkts:
-              props = [m for m in mkts if any(w in json.dumps(m).lower() for w in ("player", "points", "rebounds"))][:12]
-              print("market definitions sample:", json.dumps(props)[:1500])
+          mk = get("/markets") or []
+          bb = {m["marketId"]: m for m in mk if m.get("sportId") == 11}
+          props = [m for m in bb.values() if m.get("playerProp")]
+          names = collections.Counter(m["marketName"] for m in props)
+          print("basketball markets:", len(bb), "player-prop:", len(props))
+          for n, c in names.most_common(40): print(f"  {c:4d}  {n}")
+          ex = [m for m in props if "point" in m["marketName"].lower()][:3]
+          print("examples:", json.dumps(ex)[:1200])
+          od = get("/odds-by-tournaments", tournamentIds=132, bookmaker="neds.com.au", oddsFormat="decimal")
+          fl = od if isinstance(od, list) else (od or {}).get("fixtures") or (od or {}).get("data") or []
+          if isinstance(od, dict) and not fl: print("shape keys:", list(od)[:10])
+          print("fixtures returned:", len(fl))
+          for f in fl[:12]:
+              bo = (f.get("bookmakerOdds") or {}).get("neds.com.au", {})
+              ms = bo.get("markets", {})
+              kinds = collections.Counter()
+              for mid in ms:
+                  d = bb.get(int(mid))
+                  if d and d.get("playerProp"): kinds[d["marketName"]] += 1
+              print(f'  {f.get("startTime")} {f.get("fixtureId")}  markets {len(ms):4d}  props {sum(kinds.values()):4d}  {dict(kinds.most_common(5))}')
+          # one concrete sample: a player points prop with its line and price
+          for f in fl:
+              for mid, m in ((f.get("bookmakerOdds") or {}).get("neds.com.au", {}).get("markets") or {}).items():
+                  d = bb.get(int(mid))
+                  if d and d.get("playerProp") and "point" in d["marketName"].lower():
+                      for oid, o in (m.get("outcomes") or {}).items():
+                          for pid, pl in (o.get("players") or {}).items():
+                              oname = next((x["outcomeName"] for x in d["outcomes"] if x["outcomeId"] == int(oid)), oid)
+                              print("sample:", d["marketName"], "handicap", d.get("handicap"), oname, pl.get("playerName"), pl.get("price"), "mainLine", pl.get("mainLine"))
+                              raise SystemExit
           PY
