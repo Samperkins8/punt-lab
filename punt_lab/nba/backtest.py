@@ -46,9 +46,9 @@ BINS = [0.50, 0.55, 0.60, 0.65, 0.70, 0.75, 0.80, 0.85, 0.90, 0.95, 1.0001]
 
 GRID = {
     "PRIOR_GAMES": [2, 4, 8, 12, 16, 24],
-    "SPREAD_GAMES": [2, 4, 8, 16, 32],
-    "RECENT_GAMES": [3, 5, 8, 10],
-    "RECENT_WEIGHT": [1.0, 1.25, 1.5, 2.0, 3.0],
+    "SPREAD_GAMES": [2, 4, 8, 16, 32, 64, 128],
+    "RECENT_GAMES": [3, 5, 8, 10, 15, 20],
+    "RECENT_WEIGHT": [1.0, 1.25, 1.5, 2.0, 3.0, 4.0, 6.0],
     "OPP_WEIGHT": [0.0, 0.25, 0.5, 0.75, 1.0],
 }
 SPREAD_STEPS = [0.8, 0.9, 1.0, 1.1, 1.2, 1.35]
@@ -222,7 +222,7 @@ def apply_settings(settings: dict) -> None:
         setattr(model, k, dict(v) if isinstance(v, dict) else v)
 
 
-def tune(train: list[dict], rounds: int = 2) -> tuple[dict, float]:
+def tune(train: list[dict], rounds: int = 3) -> tuple[dict, float]:
     """Coordinate search: try each setting's candidate values in turn, keep whatever lowers log loss."""
     best = current_settings()
     apply_settings(best)
