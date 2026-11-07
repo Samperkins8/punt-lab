@@ -28,6 +28,12 @@
   .pickbar select { font: inherit; font-size: 16px; padding: 8px 12px; border-radius: 8px; border: 2px solid var(--accent); background: var(--panel); color: inherit; flex: 1 1 220px; max-width: 360px; }
   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 14px; }
   .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+  .stake { display: grid; gap: 6px; padding: 12px; border: 1px solid var(--line); border-radius: 8px; }
+  .stake label { font-weight: 600; font-size: 14px; }
+  .stake .row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .stake input { font: inherit; font-size: 16px; width: 7.5em; padding: 6px 10px; border-radius: 6px; border: 1px solid var(--line); background: var(--bg); color: inherit; }
+  .stake .verdict { font-weight: 600; }
+  .stake .verdict.good { color: var(--good); } .stake .verdict.bad { color: var(--bad); }
   .figs { display: flex; flex-wrap: wrap; gap: 18px; }
   .fig { display: grid; gap: 2px; }
   .big { font: 400 26px/1.1 var(--serif); font-variant-numeric: tabular-nums; }
@@ -157,6 +163,7 @@
       <dt>Model</dt><dd>This season's games (the last 5 count 1.5× as much as older ones) blended with last season (last season counts as 8 games' worth, less if he played under 40 games), shifted towards games played in tonight's situation (a teammate in or out), adjusted for the opponent's defence against his position and last season's head-to-head (shrunk by how much of the opponent's roster is still the same, worked out from last season's teams, and by sample size), adjusted for home or away (from his own split, shrunk for small samples) and tonight's expected pace (the game total against the slate average), scaled by expected minutes (cut on the second night of a back-to-back), and blended 60/40 with the US betting market's line where one is available.</dd>
       <dt>Est. chance all land</dt><dd>The legs' chances multiplied, adjusted for same-game links: two rebound legs from one game work against each other, two points legs from one team share the shots, other same-game legs move a little together with pace.</dd>
       <dt>Est. Sportsbet price</dt><dd>Each leg's fair price less a typical bookie margin, multiplied together. Every multi must reach $2.00 on this estimate; check the real price in the app.</dd>
+      <dt>Stake</dt><dd>Type the price on offer and the card suggests a share of your betting budget: a quarter of the Kelly amount ((chance × price − 1) ÷ (price − 1)), at most 3%, and nothing when the price is under break-even. Prices you type stay on your phone only.</dd>
       <dt>Profit ($1 each)</dt><dd>What $1 on that multi every day would have made, at the real price when every leg had one, otherwise the estimated price. * means some older days had no price saved and are left out.</dd>
       <dt>Worth it if it pays at least</dt><dd>1 ÷ the chance all legs land. If Sportsbet's price for the whole multi is at or above it, the model says it's worth taking.</dd>
       <dt>Rules</dt><dd>No leg priced under $1.20 (where no price is known, the line is stepped up until the model is about 83% or lower). Never two rebound legs from the same game. Players listed out or doubtful are left out.</dd>
@@ -220,6 +227,59 @@ function legsTable(tbody, legs, compact) {
   }
 }
 
+let ALL_MULTIS = [];
+const KELLY_SHARE = 0.25;  // quarter Kelly: the percentages are estimates, so bet a quarter of the "perfect" amount
+const MAX_STAKE = 0.03;    // never more than 3% of the budget on one multi
+
+function stakeFor(p, price) {
+  if (!p || !price || price <= 1) return null;
+  const f = (p * price - 1) / (price - 1);
+  if (f <= 0) return 0;
+  return Math.min(MAX_STAKE, Math.max(0.0025, Math.round(f * KELLY_SHARE * 400) / 400));  // to the nearest 0.25%
+}
+
+function stakeBox(m) {
+  const box = document.createElement('div'); box.className = 'stake';
+  const id = 'price-' + m.multi.replace(/[^a-z0-9]/gi, '');
+  const lab = document.createElement('label'); lab.htmlFor = id; lab.textContent = 'Price on offer';
+  const row = document.createElement('div'); row.className = 'row';
+  const input = document.createElement('input'); input.id = id; input.type = 'number'; input.inputMode = 'decimal';
+  input.step = '0.01'; input.min = '1.01'; input.placeholder = m.est_price ? m.est_price.toFixed(2) : '2.00';
+  const verdict = document.createElement('span'); verdict.className = 'verdict';
+  const why = document.createElement('p'); why.className = 'sub';
+  row.append('$', input, verdict);
+  const key = 'punt-lab-price-' + (document.getElementById('slate-date')?.textContent || '') + m.multi;
+  const update = () => {
+    const price = parseFloat(input.value);
+    if (!price) {
+      verdict.className = 'verdict'; verdict.textContent = '';
+      why.textContent = `Type the bookie's price to get a stake. Break-even is $${m.break_even.toFixed(2)}.`;
+      return;
+    }
+    const f = stakeFor(m.est_hit, price);
+    const ev = m.est_hit * price - 1;
+    if (!f) {
+      verdict.className = 'verdict bad'; verdict.textContent = 'Skip';
+      why.textContent = `Below the $${m.break_even.toFixed(2)} break-even: about ${Math.round(-ev * 100)}c lost per $1 over time.`;
+    } else {
+      verdict.className = 'verdict good'; verdict.textContent = `Bet ${(f * 100).toFixed(2).replace(/\.?0+$/, '')}% of your budget`;
+      why.textContent = `About ${Math.round(ev * 100)}c profit per $1 over time, if the ${pct(m.est_hit)} chance is right. $100 budget = $${(f * 100).toFixed(2)}.`;
+    }
+    try { localStorage.setItem(key, input.value); } catch (e) {}
+  };
+  try { const saved = localStorage.getItem(key); if (saved) input.value = saved; } catch (e) {}
+  input.addEventListener('input', update);
+  update();
+  box.append(lab, row, why);
+  const shared = ALL_MULTIS.filter((o) => o.multi !== m.multi && o.leg_ids.filter((x) => m.leg_ids.includes(x)).length >= Math.min(2, m.leg_ids.length));
+  if (shared.length) {
+    const warn = document.createElement('p'); warn.className = 'sub';
+    warn.textContent = 'Shares legs with ' + shared.map((o) => o.multi).join(', ') + '. Betting more than one of these is mostly the same bet twice, so split one stake between them.';
+    box.append(warn);
+  }
+  return box;
+}
+
 function multiCard(m, legsById) {
   const legs = m.leg_ids.map((id) => legsById.get(id)).filter(Boolean);
   const card = document.createElement('div'); card.className = 'card';
@@ -230,7 +290,7 @@ function multiCard(m, legsById) {
                    'Long multi 8+': ['Long multi, 8+ legs', 'Every leg at least 80% likely and estimated to pay $1.15 or more, including match winners. The best-value 8, plus any extra legs that are worth it on their own.'],
                    'One per game': ['One leg from each game', 'The most likely leg from every game (up to 8), so one blowout or late scratch can only cost one leg.'],
                    'Mid-range $8+': ['Mid-range multi paying $8+', 'Six legs (seven if six can\'t get there), highest chance all land with an estimated price of $8.00 or more.'],
-                   'Long shot $50': ['Long shot, ~$50', 'The most likely legs, added one at a time until the estimated price passes $50 (max 15 legs). Roughly a 2% shot \u2014 a fun bet, not a value one.'],
+                   'Long shot $50': ['Long shot, ~$50', 'Reaches about $50 in up to 15 legs while giving up as little chance as possible, mixing safe legs with some players\' next line up. Roughly a 2\u20134% shot \u2014 a fun bet, not a value one.'],
                    'Best value': ['Best value 4-leg multi', 'Higher payout, built from legs whose price beats the model.'],
                    'Safest': ['Safest 4-leg multi', 'Highest combined chance among legs at $1.20 or more.'],
                    '3-leg value': ['Best value 3-leg multi', 'Fewer legs, higher chance; only legs whose price beats the model.'] };
@@ -254,7 +314,7 @@ function multiCard(m, legsById) {
   table.innerHTML = '<thead><tr><th>Player</th><th>Leg</th><th class="num">Model</th><th class="num">Odds</th><th class="num">Fair price</th><th>Game</th><th>This season</th><th>Why</th></tr></thead><tbody></tbody>';
   legsTable(table.tBodies[0], legs, true);
   wrap.append(table);
-  card.append(h, p, figs, wrap);
+  card.append(h, p, figs, stakeBox(m), wrap);
   return card;
 }
 
@@ -356,6 +416,7 @@ function honest(bt) {
   const byId = new Map(legs.map((l) => [l.leg_id, l]));
   const box = document.getElementById('multis');
   const sorted = [...multis].sort((a, b) => a.rank - b.rank);
+  ALL_MULTIS = sorted;
   const pickEl = document.getElementById('multi-pick');
   try { const saved = localStorage.getItem('punt-lab-multi'); if (saved && [...pickEl.options].some((o) => o.value === saved)) pickEl.value = saved; } catch (e) {}
   const showMultis = () => {
