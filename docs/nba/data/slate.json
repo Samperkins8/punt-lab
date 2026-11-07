@@ -21,9 +21,9 @@
   "game": "NY @ CLE",
   "tip": "12:00pm",
   "favourite": "NY",
-  "spread": -4.5,
-  "total": 224.5,
-  "fav_win_prob": 0.646,
+  "spread": -5.5,
+  "total": 223.5,
+  "fav_win_prob": 0.677,
   "status": "Analysed"
  },
  {
@@ -31,7 +31,7 @@
   "tip": "12:00pm",
   "favourite": "OKC",
   "spread": -11.5,
-  "total": 219.5,
+  "total": 222.5,
   "fav_win_prob": 0.831,
   "status": "Analysed"
  },
@@ -39,27 +39,27 @@
   "game": "ORL @ GS",
   "tip": "12:30pm",
   "favourite": "GS",
-  "spread": -6.5,
-  "total": 221.5,
-  "fav_win_prob": 0.706,
+  "spread": -7.5,
+  "total": 219.5,
+  "fav_win_prob": 0.734,
   "status": "Analysed"
  },
  {
   "game": "HOU @ PHX",
   "tip": "1:00pm",
   "favourite": "HOU",
-  "spread": -7.5,
-  "total": 221.5,
-  "fav_win_prob": 0.734,
+  "spread": -6.5,
+  "total": 223.5,
+  "fav_win_prob": 0.706,
   "status": "Analysed"
  },
  {
   "game": "SA @ POR",
   "tip": "2:00pm",
   "favourite": "SA",
-  "spread": -6.5,
-  "total": 227.5,
-  "fav_win_prob": 0.706,
+  "spread": -5.5,
+  "total": 229.5,
+  "fav_win_prob": 0.677,
   "status": "Analysed"
  }
 ]
