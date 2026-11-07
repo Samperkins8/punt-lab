@@ -198,7 +198,7 @@ def choose_lines(data: list[dict]) -> None:
         s["lines"] = [ln for ln in LINES[s["stat"]] if KEEP_LOW <= _prob(ln, m, sd) <= KEEP_HIGH]
 
 
-def score(data: list[dict]) -> dict:
+def score(data: list[dict], curves: dict | None = None) -> dict:
     """Log loss and Brier score over every (sample, line), plus calibration bins."""
     ll = br = 0.0
     n = 0
@@ -208,7 +208,10 @@ def score(data: list[dict]) -> dict:
             continue
         m, sd = _mean_sd(s)
         for ln in s["lines"]:
-            p = min(max(_prob(ln, m, sd), 1e-4), 1 - 1e-4)
+            p = _prob(ln, m, sd)
+            if curves:
+                p = model._curve(curves.get(s["stat"]), p)
+            p = min(max(p, 1e-4), 1 - 1e-4)
             y = 1.0 if s["actual"] >= ln else 0.0
             ll -= y * math.log(p) + (1 - y) * math.log(1 - p)
             br += (p - y) ** 2
@@ -259,6 +262,31 @@ def tune(train: list[dict], rounds: int = 3) -> tuple[dict, float]:
         if not improved:
             break
     return best, best_ll
+
+
+# ---------- correction curve ----------
+
+def fit_curves(data: list[dict], min_n: int = 200) -> dict[str, list[list[float]]]:
+    """Per stat: predicted vs actually landed in 5% bins, made monotone. Applied to every leg before
+    the live calibration, so the percentages match what happened across past seasons."""
+    rows = defaultdict(list)
+    for s in data:
+        if not s.get("lines"):
+            continue
+        m, sd = _mean_sd(s)
+        for ln in s["lines"]:
+            rows[s["stat"]].append((_prob(ln, m, sd), 1.0 if s["actual"] >= ln else 0.0))
+    curves = {}
+    for stat, rs in rows.items():
+        pts = []
+        for lo, hi in zip(BINS, BINS[1:]):
+            g = [(p, y) for p, y in rs if lo <= p < hi]
+            if len(g) >= min_n:
+                pts.append([mean(p for p, _ in g), mean(y for _, y in g), len(g)])
+        pts = _pav(pts)
+        if len(pts) >= 3:
+            curves[stat] = [[round(x, 4), round(y, 4)] for x, y, _ in pts]
+    return curves
 
 
 # ---------- same-game links ----------
@@ -385,7 +413,15 @@ def main() -> None:
             final[k] = v["r"]
             log.info("measured %s = %+.3f from %d pairs (was %+.3f)", k, v["r"], v["pairs"], defaults[k])
     apply_settings(final)
-    after = {"train": score(train), "test": score(test)}
+    curves = fit_curves(train)  # fitted on the older season, checked on the newer ones
+    uncorrected = score(test)
+    after = {"train": score(train, curves), "test": score(test, curves)}
+    if after["test"]["log_loss"] >= uncorrected["log_loss"]:
+        log.info("correction curve didn't help on the newer seasons; not used")
+        curves, after = {}, {"train": score(train), "test": uncorrected}
+    else:
+        log.info("correction curve: newer seasons log loss %.4f -> %.4f", uncorrected["log_loss"], after["test"]["log_loss"])
+        curves = fit_curves(train + test)  # then refit on everything for use
     applied = final != defaults
     log.info("newer seasons log loss: hand-set %.4f, in use %.4f, new tune %.4f (%s)", before["test"]["log_loss"],
              prev_test, new_test, "switched to new tune" if better else "kept the settings in use")
@@ -394,18 +430,19 @@ def main() -> None:
         live = json.loads((DATA / "results.json").read_text())
     except (OSError, ValueError):
         live = []
-    curves, live_summary = live_calibration(live)
+    live_curves, live_summary = live_calibration(live)
 
     (model.TUNED_FILE).write_text(json.dumps({
         "updated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-        "settings": final if applied else {}, "calibration": curves}, indent=1))
+        "settings": final if applied else {}, "calibration": live_curves, "backtest_curve": curves}, indent=1))
     OUT.write_text(json.dumps({
         "updated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "seasons": {"tuned_on": f"{cur - 3}-{str(cur - 2)[2:]}", "checked_on": f"{cur - 2}-{str(cur - 1)[2:]} and {cur - 1}-{str(cur)[2:]} so far"},
         "samples": {"train": len(train), "test": len(test)},
         "applied": applied, "defaults": defaults, "tuned": final, "changed_this_week": better, "links": links,
         "before": before, "after": after,
-        "live": {"summary": live_summary, "curves": curves, "min_legs": LIVE_MIN_LEGS},
+        "live": {"summary": live_summary, "curves": live_curves, "min_legs": LIVE_MIN_LEGS},
+        "backtest_curve": curves,
     }, indent=1))
 
 

@@ -33,6 +33,7 @@ TUNABLE = ("SPREAD", "PRIOR_GAMES", "SPREAD_GAMES", "RECENT_GAMES", "RECENT_WEIG
            "B2B_CUT_STAR", "B2B_CUT", "SAME_GAME_REBOUNDS", "SAME_TEAM_POINTS", "SAME_GAME_OTHER")
 TUNED_FILE = Path(__file__).with_name("tuned.json")
 CALIBRATION: dict[str, list[list[float]]] = {}  # stat -> [[model chance, actual landed], ...] from graded live legs
+BACKTEST_CURVE: dict[str, list[list[float]]] = {}  # the same, from the backtest (applied first)
 CALIBRATE = True  # the backtest turns this off to see the raw model
 
 
@@ -40,15 +41,16 @@ DEFAULTS = {k: (dict(globals()[k]) if isinstance(globals()[k], dict) else global
 
 
 def reset_defaults() -> None:
-    global CALIBRATION
+    global CALIBRATION, BACKTEST_CURVE
     g = globals()
     for k, v in DEFAULTS.items():
         g[k] = dict(v) if isinstance(v, dict) else v
     CALIBRATION = {}
+    BACKTEST_CURVE = {}
 
 
 def load_tuned(path: Path = TUNED_FILE) -> dict:
-    global CALIBRATION
+    global CALIBRATION, BACKTEST_CURVE
     try:
         data = json.loads(path.read_text())
     except (OSError, ValueError):
@@ -58,22 +60,33 @@ def load_tuned(path: Path = TUNED_FILE) -> dict:
         if k in TUNABLE:
             g[k] = dict(v) if isinstance(v, dict) else v
     CALIBRATION = data.get("calibration") or {}
+    BACKTEST_CURVE = data.get("backtest_curve") or {}
     return data
 
 
-def calibrate(stat: str, p: float) -> float:
-    """Map a raw model chance through the curve fitted on graded live legs (straight-line between points)."""
-    pts = CALIBRATION.get(stat) if CALIBRATE else None
+def _curve(pts, p: float) -> float:
+    """Straight-line map through [[model chance, actual landed], ...]; outside the points, shift by the end gap."""
     if not pts:
         return p
     if p <= pts[0][0]:
-        return p + (pts[0][1] - pts[0][0])
+        return max(0.005, p + (pts[0][1] - pts[0][0]))
     if p >= pts[-1][0]:
         return min(0.995, p + (pts[-1][1] - pts[-1][0]))
     for (x0, y0), (x1, y1) in zip(pts, pts[1:]):
         if x0 <= p <= x1:
             return y0 + (y1 - y0) * (p - x0) / (x1 - x0) if x1 > x0 else y0
     return p
+
+
+def backtest_correct(stat: str, p: float) -> float:
+    """Correct the bell curve's known lean (from the backtest): stats are lopsided, so lines near
+    or above a player's average land a little less often than a symmetric curve says."""
+    return _curve(BACKTEST_CURVE.get(stat), p) if CALIBRATE else p
+
+
+def calibrate(stat: str, p: float) -> float:
+    """Map a chance through the curve fitted on graded live legs."""
+    return _curve(CALIBRATION.get(stat), p) if CALIBRATE else p
 
 
 
@@ -180,7 +193,7 @@ def evaluate(leg: Leg) -> LegResult:
         fair_price = 1 / market_prob if market_prob > 0 else None
         final_mean = MARKET_WEIGHT * market_mean + (1 - MARKET_WEIGHT) * proj_mean
 
-    raw_prob = 1 - norm_cdf((leg.line - 0.5 - final_mean) / proj_sd)
+    raw_prob = backtest_correct(leg.stat, 1 - norm_cdf((leg.line - 0.5 - final_mean) / proj_sd))
     model_prob = calibrate(leg.stat, raw_prob)
     hit_rate = sum(1 for x in xs if x >= leg.line) / n
     implied = 1 / leg.odds if leg.odds else None
