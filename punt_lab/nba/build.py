@@ -423,7 +423,7 @@ def trim(cands):
 def price_source(prices: dict) -> str | None:
     bits = []
     if oddspapi.enabled():
-        bits.append("OddsPapi (PointsBet, Neds, Unibet, TABtouch)")
+        bits.append("OddsPapi (PointsBet, Neds, Unibet)")
     if prices.get("priced"):
         bits.append(f"The Odds API ({len(prices['priced'])} games"
                     + (f", {prices['credits_left']} credits left" if prices.get("credits_left") is not None else "") + ")")
