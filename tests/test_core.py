@@ -135,3 +135,25 @@ def test_long_multi_legs_are_safe_and_priced():
     for i in ids:
         assert cands[i][1].model_prob >= pick.LONG_MIN_PROB
         assert pick._assumed_price(*cands[i]) >= pick.LONG_MIN_PRICE
+
+
+def test_long_shot_and_mid_range():
+    from punt_lab.nba import pick
+    from punt_lab.nba.model import Leg, evaluate
+    cands = []
+    for k in range(24):
+        l = Leg(leg_id=f"p{k}", player=f"Player {k}", team=f"T{k % 12}", game=f"G{k % 12}", stat="points",
+                line=15 + (k % 4), log=[19, 20, 17, 22, 19, 17, 21, 18], prior_mean=19, prior_games=60, extra={})
+        l.odds = 1.25 + 0.05 * (k % 4)
+        cands.append((l, evaluate(l)))
+    chosen = pick.choose(cands)
+    shot = chosen["Long shot $50"]
+    price = 1.0
+    for i in shot:
+        price *= pick._assumed_price(*cands[i])
+    assert 5 <= len(shot) <= pick.SHOT_MAX_LEGS
+    assert price >= pick.SHOT_TARGET or len(shot) == pick.SHOT_MAX_LEGS
+    probs = [cands[i][1].model_prob for i in shot]
+    assert probs == sorted(probs, reverse=True)           # most likely legs first
+    mid = chosen["Mid-range $8+"]
+    assert len(mid) in pick.MID_LEGS and len({cands[i][0].player for i in mid}) == len(mid)

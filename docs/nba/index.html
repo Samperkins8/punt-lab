@@ -96,7 +96,9 @@
       <option value="Safest">Safest 4-leg</option>
       <option value="Best value">Best value 4-leg</option>
       <option value="3-leg value">Best value 3-leg</option>
+      <option value="Mid-range $8+">Mid-range, 6–7 legs paying $8+</option>
       <option value="Long multi 8+">Long multi, 8+ legs (each 80%+, $1.15+)</option>
+      <option value="Long shot $50">Long shot, up to 15 legs paying ~$50</option>
       <option value="all">All multis</option>
     </select>
   </div>
@@ -211,6 +213,8 @@ function multiCard(m, legsById) {
                    '4-leg $4+': ['Best 4-leg multi paying $4+', 'Highest chance all four land, with an estimated Sportsbet price of $4.00 or more.'],
                    '3-leg $2+': ['Best 3-leg multi paying $2+', 'Highest chance all three land, with an estimated Sportsbet price of $2.00 or more.'],
                    'Long multi 8+': ['Long multi, 8+ legs', 'Every leg at least 80% likely and estimated to pay $1.15 or more, including match winners. The best-value 8, plus any extra legs that are worth it on their own.'],
+                   'Mid-range $8+': ['Mid-range multi paying $8+', 'Six legs (seven if six can\'t get there), highest chance all land with an estimated price of $8.00 or more.'],
+                   'Long shot $50': ['Long shot, ~$50', 'The most likely legs, added one at a time until the estimated price passes $50 (max 15 legs). Roughly a 2% shot \u2014 a fun bet, not a value one.'],
                    'Best value': ['Best value 4-leg multi', 'Higher payout, built from legs whose price beats the model.'],
                    'Safest': ['Safest 4-leg multi', 'Highest combined chance among legs at $1.20 or more.'],
                    '3-leg value': ['Best value 3-leg multi', 'Fewer legs, higher chance; only legs whose price beats the model.'] };

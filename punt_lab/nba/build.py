@@ -468,7 +468,7 @@ def leg_row(leg: Leg, res) -> dict:
 
 def multi_rows(cands, chosen) -> list[dict]:
     rows = []
-    order = ("4-leg $2+", "3-leg $2+", "4-leg $3+", "4-leg $4+", "Best value", "Safest", "3-leg value", "Long multi 8+")
+    order = ("4-leg $2+", "3-leg $2+", "4-leg $3+", "4-leg $4+", "Best value", "Safest", "3-leg value", "Mid-range $8+", "Long multi 8+", "Long shot $50")
     rank = {n: i + 1 for i, n in enumerate(order)}
     for name in order:
         ids = chosen.get(name)

@@ -16,6 +16,11 @@ LONG_MAX_LEGS = 12        # extra legs past 8 only when each is worth it on its 
 LONG_MIN_PROB = 0.80      # every long-multi leg at least this likely
 LONG_MIN_PRICE = 1.15     # and estimated to pay at least this
 WIDE_POOL = 20            # $2+ multis search the top legs plus up to this many step-up (next line up) legs
+MID_TARGET = 8.00         # mid-range multi: estimated price at least this
+MID_LEGS = (6, 7)         # try 6 legs first, 7 only if 6 can't reach the target
+MID_POOL = 22             # legs searched for the mid-range multi (most likely first)
+SHOT_TARGET = 50.00       # long shot: keep adding the most likely legs until the price passes this
+SHOT_MAX_LEGS = 15        # but never more than this many legs
 
 
 def price_of(leg: Leg, res: LegResult) -> tuple[float | None, str]:
@@ -63,6 +68,7 @@ def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
     """Returns {multi name: [indexes into cands]}"""
     every = [i for i, (l, r) in enumerate(cands) if eligible(l, r)]
     every.sort(key=lambda i: -cands[i][1].model_prob)
+    every_any = list(every)  # includes match winners / safe lines, for the long shot
     every = [i for i in every if not cands[i][0].extra.get("long_only")]  # safe lines / match winners: long multi only
     idx = [i for i in every if not cands[i][0].extra.get("step_up")]  # step-up legs only feed the $2+ multis
     pool = idx[:POOL]
@@ -158,6 +164,21 @@ def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
     if note:
         out.setdefault("_notes", []).append(note)
 
+    # Mid-range: 6 (or 7) legs, highest chance with an estimated price of $8+
+    mid_pool = sorted(wide, key=lambda i: -cands[i][1].model_prob)[:MID_POOL]
+    mid, note = _target_multi(cands, mid_pool, MID_LEGS, MID_TARGET, chance, multi_price)
+    if mid:
+        out["Mid-range $8+"] = mid
+    if note:
+        out.setdefault("_notes", []).append(note)
+
+    # Long shot: most likely legs, added one at a time until the price passes $50
+    shot, note = _long_shot(cands, every_any)
+    if shot:
+        out["Long shot $50"] = shot
+    if note:
+        out.setdefault("_notes", []).append(note)
+
     self_check = out.setdefault("_notes", [])
     if not all_worth:
         self_check.append("3-leg value includes legs without a confirmed worth-it price")
@@ -189,3 +210,45 @@ def _long_multi(cands) -> tuple[list[int] | None, str]:
         return None, f"only {len(combo)} legs are 80%+ likely at $1.15+, not enough for a long multi"
     note = "" if len(combo) >= LONG_MIN_LEGS else f"only {len(combo)} legs are 80%+ likely at $1.15+, so the long multi is short"
     return sorted(combo, key=lambda i: -cands[i][1].model_prob), note
+
+
+def _target_multi(cands, pool, sizes, target, chance, multi_price) -> tuple[list[int] | None, str]:
+    """Highest chance combo of the first size in `sizes` that reaches `target`.
+    Falls back to the longest-priced combo of the largest size."""
+    fallback = None
+    for n in sizes:
+        best = None
+        for combo in combinations(pool, n):
+            pr = multi_price(combo)
+            if pr < target:
+                if n == sizes[-1] and (fallback is None or pr > fallback[0]) and _ok_combo([cands[i][0] for i in combo]):
+                    fallback = (pr, combo)
+                continue
+            if not _ok_combo([cands[i][0] for i in combo]):
+                continue
+            c = chance(combo)
+            if best is None or c > best[0]:
+                best = (c, combo)
+        if best:
+            return sorted(best[1], key=lambda i: -cands[i][1].model_prob), ""
+    if fallback:
+        return (sorted(fallback[1], key=lambda i: -cands[i][1].model_prob),
+                f"no {sizes[-1]}-leg combo reaches ${target:.2f}, so the mid-range multi shows the longest-priced one")
+    return None, ""
+
+
+def _long_shot(cands, ordered: list[int]) -> tuple[list[int] | None, str]:
+    """Walk the eligible legs from most to least likely, adding each one that fits,
+    until the estimated price passes SHOT_TARGET (or SHOT_MAX_LEGS is reached)."""
+    combo: list[int] = []
+    price = 1.0
+    for i in ordered:
+        if price >= SHOT_TARGET or len(combo) >= SHOT_MAX_LEGS:
+            break
+        if _ok_combo([cands[j][0] for j in combo + [i]]):
+            combo.append(i)
+            price *= _assumed_price(*cands[i])
+    if len(combo) < 5:
+        return None, ""
+    note = "" if price >= SHOT_TARGET else f"the long shot only reaches about ${price:.0f} with {len(combo)} legs"
+    return combo, note
