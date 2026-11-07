@@ -112,7 +112,7 @@
   </div>
   <section class="grid" id="multis"></section>
 
-  <section class="card" id="value" hidden>
+  <section class="card" id="value" hidden data-retired>
     <h2>Value legs</h2>
     <p class="sub">Legs where the best bookie's price beats the model's chance, best value first. These are worth most as singles or doubles: every extra leg in a multi adds the bookie's margin again. A very big edge (marked "check news") usually means the model is missing something, like a minutes limit or a role change, so check before betting.</p>
     <div class="scroll"><table class="cards" id="value-legs">
@@ -173,14 +173,14 @@
     <dl>
       <dt>Model</dt><dd>This season's games (recent games count extra; the weekly tune sets how much) blended with last season (last season counts as 8 games' worth, less if he played under 40 games), shifted towards games played in tonight's situation (a teammate in or out), adjusted for the opponent's defence against his position and last season's head-to-head (shrunk by how much of the opponent's roster is still the same, worked out from last season's teams, and by sample size), adjusted for home or away (from his own split, shrunk for small samples) and tonight's expected pace (the game total against the slate average), scaled by expected minutes (cut on the second night of a back-to-back), and blended 60/40 with the bookies' over/under line (margin removed) where one is available.</dd>
       <dt>Est. chance all land</dt><dd>The legs' chances multiplied, adjusted for same-game links: two rebound legs from one game work against each other, two points legs from one team share the shots, other same-game legs move a little together with pace.</dd>
-      <dt>Est. Sportsbet price</dt><dd>Each leg's fair price less a typical bookie margin, multiplied together. Every multi must reach $2.00 on this estimate; check the real price in the app.</dd>
+      <dt>Bet on</dt><dd>Each multi is priced as a whole at TAB, Neds and Bet365, and shows the app whose prices for every leg multiply to the most, with the others for comparison. Multis are picked on that price, so a $2+ multi pays $2+ in that app. When no one app prices every leg yet, an estimate is shown instead (fair price less a typical margin); check it in the app.</dd>
       <dt>Late checks</dt><dd>15–75 minutes before each game, its injury news is checked again. The morning's multis stay as they were (you may have bet them), but a leg whose player is ruled out is marked and its multis get a warning with a suggested swap. The game is re-analysed, so teammates who gain from a late out show updated chances (and new legs worth a look are added). Prices are refreshed only when someone's status changed.</dd>
-      <dt>Prices</dt><dd>Each morning every game is priced at PointsBet, Neds and Unibet (from OddsPapi), and the games the multis use most are also priced at Sportsbet, TAB, Ladbrokes and others (from The Odds API, within its free daily credits). "Best price" is the highest any bookie offers. A multi has to be placed with one bookie, so its best price is the bookie whose prices for all the legs multiply to the most.</dd>
+      <dt>Prices</dt><dd>Only TAB, Neds and Bet365. Each morning every game is priced at Neds (from OddsPapi), and the games the multis use most are also priced at TAB and Bet365 (from The Odds API, within its free daily credits).</dd>
       <dt>Stake</dt><dd>Type the price on offer and the card suggests a share of your betting budget: a quarter of the Kelly amount ((chance × price − 1) ÷ (price − 1)), at most 3%, and nothing when the price is under break-even. Prices you type stay on your phone only.</dd>
       <dt>Profit ($1 each)</dt><dd>What $1 on that multi every day would have made, at the real price when every leg had one, otherwise the estimated price. * means some older days had no price saved and are left out.</dd>
-      <dt>Worth it if it pays at least</dt><dd>1 ÷ the chance all legs land. If Sportsbet's price for the whole multi is at or above it, the model says it's worth taking.</dd>
+      <dt>Worth it if it pays at least</dt><dd>1 ÷ the chance all legs land. If the app's price for the whole multi is at or above it, the model says it's worth taking.</dd>
       <dt>Rules</dt><dd>No leg priced under $1.20 (where no price is known, the line is stepped up until the model is about 83% or lower). Never two rebound legs from the same game. Players listed out or doubtful are left out.</dd>
-      <dt>Overrides</dt><dd>Edit overrides/nba.txt in the repo to skip a player, set minutes, mark someone out or enter Sportsbet odds. The next run uses it.</dd>
+      <dt>Overrides</dt><dd>Edit overrides/nba.txt in the repo to skip a player, set minutes, mark someone out or enter odds. The next run uses it.</dd>
       <dt>Caveat</dt><dd>Early-season samples are small and bookies price props well. This is analysis, not a guarantee.</dd>
     </dl>
   </details>
@@ -322,10 +322,10 @@ function valueLegs(legs) {
 function multiCard(m, legsById) {
   const legs = m.leg_ids.map((id) => legsById.get(id)).filter(Boolean);
   const card = document.createElement('div'); card.className = 'card';
-  const titles = { '4-leg $2+': ['Best 4-leg multi paying $2+', 'Highest chance all four land, with an estimated Sportsbet price of $2.00 or more.'],
-                   '4-leg $3+': ['Best 4-leg multi paying $3+', 'Highest chance all four land, with an estimated Sportsbet price of $3.00 or more.'],
-                   '4-leg $4+': ['Best 4-leg multi paying $4+', 'Highest chance all four land, with an estimated Sportsbet price of $4.00 or more.'],
-                   '3-leg $2+': ['Best 3-leg multi paying $2+', 'Highest chance all three land, with an estimated Sportsbet price of $2.00 or more.'],
+  const titles = { '4-leg $2+': ['Best 4-leg multi paying $2+', 'Highest chance all four land, with an estimated price of $2.00 or more.'],
+                   '4-leg $3+': ['Best 4-leg multi paying $3+', 'Highest chance all four land, with an estimated price of $3.00 or more.'],
+                   '4-leg $4+': ['Best 4-leg multi paying $4+', 'Highest chance all four land, with an estimated price of $4.00 or more.'],
+                   '3-leg $2+': ['Best 3-leg multi paying $2+', 'Highest chance all three land, with an estimated price of $2.00 or more.'],
                    'Long multi 8+': ['Long multi, 8+ legs', 'Every leg at least 80% likely and estimated to pay $1.15 or more, including match winners. The best-value 8, plus any extra legs that are worth it on their own.'],
                    'One per game': ['One leg from each game', 'The most likely leg from every game (up to 8), so one blowout or late scratch can only cost one leg.'],
                    'Mid-range $8+': ['Mid-range multi paying $8+', 'Six legs (seven if six can\'t get there), highest chance all land with an estimated price of $8.00 or more.'],
@@ -344,11 +344,14 @@ function multiCard(m, legsById) {
     d.append(b, s); figs.append(d);
   };
   fig(pct(m.est_hit), 'Est. chance all ' + legs.length + ' land');
-  if (m.est_price) fig(price(m.est_price), 'Est. Sportsbet price');
+  if (m.best_book_price) {
+    const others = Object.entries(m.book_prices || {}).filter(([k]) => k !== m.best_book)
+      .map(([k, v]) => book(k) + ' ' + price(v)).join(' · ');
+    fig('Bet on ' + book(m.best_book) + ' ' + price(m.best_book_price), others ? 'Best app for all ' + legs.length + ' legs. ' + others : 'Only app pricing all ' + legs.length + ' legs');
+  } else {
+    fig(price(m.est_price), 'Est. price (no one app prices every leg yet)');
+  }
   fig(price(m.break_even), 'Worth it if it pays at least');
-  if (m.fair_multi) fig(price(m.fair_multi), 'Est. fair multi price');
-  if (m.best_book_price) fig(price(m.best_book_price) + ' ' + book(m.best_book), 'Best bookie for all ' + m.leg_ids.length + ' legs');
-  else if (m.known_price) fig(price(m.known_price) + ' (' + m.priced_legs + ')', 'Bookie prices so far');
   const wrap = document.createElement('div'); wrap.className = 'scroll';
   const table = document.createElement('table'); table.className = 'cards';
   table.innerHTML = '<thead><tr><th>Player</th><th>Leg</th><th class="num">Model</th><th class="num">Odds</th><th class="num">Fair price</th><th>Game</th><th>This season</th><th>Why</th></tr></thead><tbody></tbody>';
@@ -466,7 +469,7 @@ function honest(bt) {
   const box = document.getElementById('multis');
   const sorted = [...multis].sort((a, b) => a.rank - b.rank);
   ALL_MULTIS = sorted;
-  valueLegs(legs);
+  // value legs list replaced by the 'Bet on' app on each multi
   const pickEl = document.getElementById('multi-pick');
   try { const saved = localStorage.getItem('punt-lab-multi'); if (saved && [...pickEl.options].some((o) => o.value === saved)) pickEl.value = saved; } catch (e) {}
   const showMultis = () => {

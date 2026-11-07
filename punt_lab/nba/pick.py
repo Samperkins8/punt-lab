@@ -8,7 +8,7 @@ from .model import Leg, LegResult, multi_chance
 
 MIN_PRICE = 1.20          # Sam rarely takes a leg shorter than this
 MAX_UNPRICED_MODEL = 0.83 # with no price known, a leg this likely would be priced under $1.20
-BOOKIE_MARGIN = 0.92      # assumed Sportsbet price = this x fair, when no price is known
+BOOKIE_MARGIN = 0.92      # assumed app price = this x fair, when no price is known
 POOL = 16                 # legs considered when searching combinations
 MIN_MULTI = 2.00          # the "$2+" multis must be estimated to pay at least this
 LONG_MIN_LEGS = 8         # long multi: at least this many legs
@@ -68,6 +68,30 @@ def _assumed_price(leg: Leg, res: LegResult) -> float:
     return margin / res.model_prob
 
 
+def app_price(legs: list[Leg]) -> tuple[str | None, float | None]:
+    """A multi is placed in one app: the app whose prices for every leg multiply to the most."""
+    books = [l.extra.get("books") or {} for l in legs]
+    if not legs or not all(books):
+        return None, None
+    common = set(books[0]).intersection(*books[1:])
+    if not common:
+        return None, None
+    by_app = {bk: math.prod(b[bk] for b in books) for bk in common}
+    bk = max(by_app, key=by_app.get)
+    return bk, by_app[bk]
+
+
+def combo_price(cands, combo) -> float:
+    """The whole multi's price in the best app when one app has every leg, else the legs' prices multiplied."""
+    _, pr = app_price([cands[i][0] for i in combo])
+    if pr:
+        return pr
+    price = 1.0
+    for i in combo:
+        price *= _assumed_price(*cands[i])
+    return price
+
+
 def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
     """Returns {multi name: [indexes into cands]}"""
     every = [i for i, (l, r) in enumerate(cands) if eligible(l, r)]
@@ -82,20 +106,14 @@ def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
         return multi_chance([cands[i][0] for i in combo], [cands[i][1].model_prob for i in combo])
 
     def multi_price(combo):
-        price = 1.0
-        for i in combo:
-            price *= _assumed_price(*cands[i])
-        return price
+        return combo_price(cands, combo)
 
     def pays(combo):  # Sam doesn't bet multis under $2
         return multi_price(combo) >= MIN_MULTI
 
     def ev(combo):
         p = chance(combo)
-        price = 1.0
-        for i in combo:
-            price *= _assumed_price(*cands[i])
-        return p * price, p
+        return p * multi_price(combo), p
 
     # Safest: highest chance all four land
     best = None
@@ -328,10 +346,7 @@ def _improve(cands, combo: list[int], pool: list[int], target: float, max_legs: 
 
 
 def _price(cands, combo) -> float:
-    price = 1.0
-    for i in combo:
-        price *= _assumed_price(*cands[i])
-    return price
+    return combo_price(cands, combo)
 
 
 def _one_per_game(cands, ordered: list[int], multi_price) -> tuple[list[int] | None, str]:

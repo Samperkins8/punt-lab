@@ -25,7 +25,7 @@ from .model import multi_chance
 log = logging.getLogger("punt_lab.nba.late")
 WINDOW = (timedelta(minutes=15), timedelta(minutes=75))
 MAX_REFRESHES = 2                       # OddsPapi price refreshes per day
-REFRESH_BOOKS = ("neds.com.au", "pointsbet.com.au")
+REFRESH_BOOKS = ("neds.com.au",)
 MAX_NEW_LEGS = 8                        # new legs added per check (value or 80%+)
 BAD = ("out", "doubtful")
 

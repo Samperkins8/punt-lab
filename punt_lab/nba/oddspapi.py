@@ -23,7 +23,7 @@ BASE = "https://api.oddspapi.io/v4"
 NBA = 132
 BASKETBALL = 11
 # OddsPapi slug -> the key used everywhere else (matches The Odds API's keys where they overlap)
-BOOKS = {"pointsbet.com.au": "pointsbetau", "neds.com.au": "neds", "unibet.com.au": "unibet"}  # tabtouch returned no props
+BOOKS = {"neds.com.au": "neds"}  # only Sam's apps; tabtouch returned no props, PointsBet/Unibet dropped
 MARKET_NAMES = {"Over Under Player Points (incl. overtime)": "points",
                 "Over Under Player Rebounds (incl. overtime)": "rebounds",
                 "Over Under Player Assists (incl. overtime)": "assists",

@@ -29,6 +29,18 @@ BOOK_NAMES = {"sportsbet": "Sportsbet", "tab": "TAB", "tabtouch": "TABtouch", "l
               "betright": "BetRight", "playup": "PlayUp", "bet365_au": "Bet365", "dabble_au": "Dabble",
               "picklebet_au": "Picklebet", "betfair_ex_au": "Betfair"}
 CREDITS_PER_STAT = 2  # main line + alternate ladder
+# Only the apps Sam bets with. Set the PUNT_BOOKS variable (comma-separated keys) to change them.
+APPS = tuple(k.strip() for k in os.environ.get("PUNT_BOOKS", "tab,neds,bet365_au").split(",") if k.strip())
+
+
+def allowed(books: dict[str, float] | None) -> dict[str, float]:
+    """Keep only the apps Sam bets with (TABtouch counts as TAB)."""
+    out: dict[str, float] = {}
+    for bk, pr in (books or {}).items():
+        key = "tab" if bk == "tabtouch" else bk
+        if key in APPS:
+            out[key] = max(out.get(key, 0), pr)
+    return out
 
 
 def enabled() -> bool:
@@ -138,7 +150,7 @@ def merge(*sources: dict) -> dict:
     for src in sources:
         for k, books in src.get("books", {}).items():
             slot = out["books"].setdefault(k, {})
-            for bk, pr in books.items():
+            for bk, pr in allowed(books).items():
                 slot[bk] = max(slot.get(bk, 0), pr)
         for k, vals in src.get("market", {}).items():
             out["market"].setdefault(k, []).extend(vals)

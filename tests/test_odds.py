@@ -53,9 +53,9 @@ def test_oddspapi_parse_and_merge():
     assert op["books"][("jamal murray", "points", 20)] == {"neds": 1.5}
     assert op["market"][("jamal murray", "points")][0][0] == 24.5  # line closest to even money
     other = odds.empty()
-    other["books"][("jamal murray", "points", 20)] = {"sportsbet": 1.46}
+    other["books"][("jamal murray", "points", 20)] = {"sportsbet": 1.46, "bet365_au": 1.44, "tabtouch": 1.48}
     merged = odds.finalise(odds.merge(op, other))
-    assert merged["books"][("jamal murray", "points", 20)] == {"neds": 1.5, "sportsbet": 1.46}
+    assert merged["books"][("jamal murray", "points", 20)] == {"neds": 1.5, "bet365_au": 1.44, "tab": 1.48}  # only Sam's apps
     assert merged["market"][("jamal murray", "points")][0] == 24.5
     assert oddspapi.player_key("Jackson Jr., Jaren") == "jaren jackson jr."
 
@@ -81,3 +81,14 @@ def test_h2h_rows(monkeypatch):
     lal = next(r for r in rows if r["team"] == "Los Angeles Lakers")
     assert lal["best_book"] == "neds" and lal["best_back"] == 1.57 and lal["lay"] == 1.62 and lal["game"] == "POR @ LAL"
     assert "betfair_ex_au" not in lal["books"]
+
+
+def test_app_price_picks_one_app_for_whole_multi():
+    from punt_lab.nba import pick
+
+    def leg(name, books):
+        return Leg(leg_id=name, player=name, team="t", game=name, stat="points", line=20, log=[20] * 5,
+                   prior_mean=20, prior_games=50, extra={"books": books})
+    legs = [leg("a", {"tab": 1.30, "neds": 1.25, "bet365_au": 1.28}), leg("b", {"tab": 1.20, "neds": 1.26, "bet365_au": 1.22})]
+    assert pick.app_price(legs) == ("neds", 1.25 * 1.26)
+    assert pick.app_price([leg("a", {"tab": 1.3}), leg("b", {"neds": 1.3})]) == (None, None)

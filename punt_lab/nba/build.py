@@ -349,7 +349,7 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
                             leg_id=f"{name.lower().replace(' ', '_').replace('.', '')}_{stat}{line}",
                             player=name, team=team, game=game_label, stat=stat, line=line, log=vals,
                             prior_mean=prior_mean, prior_games=prior_games,
-                            odds=ov.odds.get((name.lower(), line, stat)) or odds.typical(prices["books"].get((name.lower(), stat, line))),
+                            odds=ov.odds.get((name.lower(), line, stat)) or odds.typical(odds.allowed(prices["books"].get((name.lower(), stat, line)))),
                             context_label=best_ctx[1] if best_ctx else None,
                             context_log=best_ctx[2] if best_ctx else None,
                             h2h_log=h2h, roster_overlap=overlap if h2h else None, opp_factor=opp_factor,
@@ -359,7 +359,7 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
                             market_source=mk[2] if mk else None,
                             note="; ".join(note_bits),
                             extra={"event_id": g["event_id"], "athlete_id": pid, "risky": risky,
-                                   "books": prices["books"].get((name.lower(), stat, line)) or {},
+                                   "books": odds.allowed(prices["books"].get((name.lower(), stat, line))),
                                    "at_home": at_home, "venue_games": len(venue_vals), "b2b": b2b,
                                    "context_detail": best_ctx[3] if best_ctx else None},
                         )
@@ -528,7 +528,7 @@ def multi_rows(cands, chosen) -> list[dict]:
             "priced_legs": f"{len(known)} of {len(legs)}",
             "known_price": round(price, 2) if known else None,
             "fair_multi": round(_prod(fair), 2) if all(fair) else None,
-            "est_price": round(_prod([pick._assumed_price(*cands[i]) for i in ids]), 2),
+            "est_price": round(pick.combo_price(cands, ids), 2),
             **_multi_books(legs),
         })
     return rows
@@ -537,14 +537,15 @@ def multi_rows(cands, chosen) -> list[dict]:
 def _multi_books(legs) -> dict:
     """A multi is placed with one bookie, so price it at each bookie that has every leg."""
     books = [l.extra.get("books") or {} for l in legs]
+    none = {"book_prices": None, "best_book": None, "best_book_price": None}
     if not legs or not all(books):
-        return {"book_prices": None, "best_book": None, "best_book_price": None}
+        return none
     common = set(books[0]).intersection(*books[1:])
     by_book = {bk: round(_prod([b[bk] for b in books]), 2) for bk in common}
     if not by_book:
-        return {"book_prices": None, "best_book": None, "best_book_price": None}
+        return none
     bk = max(by_book, key=by_book.get)
-    return {"book_prices": by_book, "best_book": bk, "best_book_price": by_book[bk]}
+    return {"book_prices": dict(sorted(by_book.items(), key=lambda x: -x[1])), "best_book": bk, "best_book_price": by_book[bk]}
 
 
 def _prod(xs):
@@ -635,12 +636,11 @@ def main() -> None:
         })
 
     top = next((m for m in multis_out if m["multi"] == "3-leg $2+"), None) or (multis_out[0] if multis_out else None)
-    value_leg = max(cands, key=lambda c: c[1].edge if c[1].edge is not None else -1, default=None)
     headline = ""
     if top:
         headline = f"{top['multi']}: {top['legs_text']} — about {top['est_hit']:.0%} to land, est. price ${top['est_price']:.2f}, worth it at ${top['break_even']:.2f}+."
-    if value_leg and value_leg[1].edge and value_leg[1].edge > 0:
-        headline += f" Best-priced leg: {value_leg[0].player} {value_leg[0].market} at ${value_leg[0].odds:.2f}."
+        if top.get("best_book"):
+            headline += f" Bet it on {odds.BOOK_NAMES.get(top['best_book'], top['best_book'])} (${top['best_book_price']:.2f})."
     if chosen.get("_notes"):
         headline += " Note: " + "; ".join(chosen["_notes"]) + "."
     slate_teams = {g["home_name"] for g in games} | {g["away_name"] for g in games}
