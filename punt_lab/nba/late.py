@@ -113,7 +113,7 @@ def run(slate, now: datetime) -> bool:
     ov = overrides.load(ROOT / "overrides" / "nba.txt", slate)
     # Claude reads the fresh notes for these games' players (minutes limits, bench roles), if a key is set
     rows = [{"player": n.title(), "status": v["status"], "comment": v["comment"]}
-            for n, v in inj.items() if v.get("team") in teams and v.get("comment")]
+            for n, v in inj.items() if v.get("team") in teams and v.get("comment") and v.get("status", "").lower() not in ("out",)]
     ai_inj = ai.read_injuries(rows[:60]) if rows else {}
     found = analyse(slate, [g for g in games if g.get("state") in (None, "pre")], ov, inj, ai_inj, prices, only=set(labels))
     fresh_rows = {r["leg_id"]: r for r in (leg_row(l, res) for l, res in found)}

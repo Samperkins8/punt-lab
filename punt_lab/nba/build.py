@@ -593,7 +593,7 @@ def main() -> None:
     # optional AI read of injury notes for players on today's teams
     teams_today = {g["home"] for g in upcoming} | {g["away"] for g in upcoming}
     ai_rows = [{"player": n.title(), "status": v["status"], "comment": v["comment"]}
-               for n, v in inj.items() if v.get("comment")]
+               for n, v in inj.items() if v.get("comment") and v.get("status", "").lower() not in ("out",)]
     ai_inj = ai.read_injuries(ai_rows[:120]) if teams_today else {}
 
     found = analyse(slate, upcoming, ov, inj, ai_inj, prices)
