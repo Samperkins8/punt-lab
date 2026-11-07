@@ -1,7 +1,7 @@
 """End-to-end run of the pipeline with ESPN replaced by fake data."""
 import json
 import random
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from punt_lab.nba import build, espn
 
@@ -55,3 +55,31 @@ def test_build_runs(monkeypatch, tmp_path):
     build.main()
     results = json.loads((tmp_path / "results.json").read_text())
     assert results and results[0]["slate_date"] == "2026-11-07"
+
+
+def test_late_check_marks_outs_and_keeps_morning_multis(monkeypatch, tmp_path):
+    from punt_lab.nba import late
+    fake_world(monkeypatch, tmp_path)
+    monkeypatch.setattr("sys.argv", ["build", "--date", "2026-11-07"])
+    build.main()
+    multis_before = json.loads((tmp_path / "multis.json").read_text())
+    legs = json.loads((tmp_path / "legs.json").read_text())
+    in_multi = next(l for l in legs if any(l["leg_id"] in m["leg_ids"] for m in multis_before) and l["stat"] != "win")
+    # 45 minutes before that leg's game, the player is ruled out
+    games = espn.slate_games(None)
+    game = next(g for g in games if f"{g['away']} @ {g['home']}" == in_multi["game"])
+    now = game["start"] - timedelta(minutes=45)
+    monkeypatch.setattr(espn, "injuries", lambda: {
+        "lal player2": {"status": "Out", "comment": "ankle", "team": "Los Angeles Lakers"},
+        in_multi["player"].lower(): {"status": "Out", "comment": "late scratch", "team": "x"}})
+    assert late.run(build.date(2026, 11, 7), now)
+    legs_after = {l["leg_id"]: l for l in json.loads((tmp_path / "legs.json").read_text())}
+    multis_after = json.loads((tmp_path / "multis.json").read_text())
+    assert legs_after[in_multi["leg_id"]]["late_out"] == "Out"
+    assert [m["leg_ids"] for m in multis_after] == [m["leg_ids"] for m in multis_before]  # morning picks unchanged
+    hit = [m for m in multis_after if in_multi["leg_id"] in m["leg_ids"]]
+    assert hit and all("late_warning" in m and in_multi["player"] in m["late_warning"] for m in hit)
+    report = json.loads((tmp_path / "report.json").read_text())
+    assert in_multi["game"] in report["late_checked"]
+    # checked once only
+    assert not late.run(build.date(2026, 11, 7), now + timedelta(minutes=10))

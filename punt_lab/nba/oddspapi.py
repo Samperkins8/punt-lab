@@ -23,7 +23,7 @@ BASE = "https://api.oddspapi.io/v4"
 NBA = 132
 BASKETBALL = 11
 # OddsPapi slug -> the key used everywhere else (matches The Odds API's keys where they overlap)
-BOOKS = {"pointsbet.com.au": "pointsbetau", "neds.com.au": "neds", "unibet.com.au": "unibet", "tabtouch": "tabtouch"}
+BOOKS = {"pointsbet.com.au": "pointsbetau", "neds.com.au": "neds", "unibet.com.au": "unibet"}  # tabtouch returned no props
 MARKET_NAMES = {"Over Under Player Points (incl. overtime)": "points",
                 "Over Under Player Rebounds (incl. overtime)": "rebounds",
                 "Over Under Player Assists (incl. overtime)": "assists",
@@ -81,7 +81,7 @@ def player_key(name: str) -> str:
     return name.lower()
 
 
-def fetch(starts: list[datetime]) -> dict:
+def fetch(starts: list[datetime], books: tuple[str, ...] | None = None) -> dict:
     """Prices for games starting within an hour of any of `starts` (today's tip-off times)."""
     out = {"market": {}, "books": {}, "requests": 0, "bookies": []}
     if not enabled() or not starts:
@@ -92,6 +92,8 @@ def fetch(starts: list[datetime]) -> dict:
     lo = min(starts).astimezone(timezone.utc) - timedelta(hours=1)
     hi = max(starts).astimezone(timezone.utc) + timedelta(hours=1)
     for slug, key in BOOKS.items():
+        if books and slug not in books:
+            continue
         data = _get("/odds-by-tournaments", tournamentIds=NBA, bookmaker=slug, oddsFormat="decimal")
         out["requests"] += 1
         fixtures = data if isinstance(data, list) else []

@@ -28,6 +28,7 @@
   .pickbar select { font: inherit; font-size: 16px; padding: 8px 12px; border-radius: 8px; border: 2px solid var(--accent); background: var(--panel); color: inherit; flex: 1 1 220px; max-width: 360px; }
   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 14px; }
   .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+  .late-warn { border-left: 4px solid var(--bad); padding: 8px 12px; background: var(--bar); border-radius: 4px; }
   .stake { display: grid; gap: 6px; padding: 12px; border: 1px solid var(--line); border-radius: 8px; }
   .stake label { font-weight: 600; font-size: 14px; }
   .stake .row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
@@ -173,6 +174,7 @@
       <dt>Model</dt><dd>This season's games (recent games count extra; the weekly tune sets how much) blended with last season (last season counts as 8 games' worth, less if he played under 40 games), shifted towards games played in tonight's situation (a teammate in or out), adjusted for the opponent's defence against his position and last season's head-to-head (shrunk by how much of the opponent's roster is still the same, worked out from last season's teams, and by sample size), adjusted for home or away (from his own split, shrunk for small samples) and tonight's expected pace (the game total against the slate average), scaled by expected minutes (cut on the second night of a back-to-back), and blended 60/40 with the bookies' over/under line (margin removed) where one is available.</dd>
       <dt>Est. chance all land</dt><dd>The legs' chances multiplied, adjusted for same-game links: two rebound legs from one game work against each other, two points legs from one team share the shots, other same-game legs move a little together with pace.</dd>
       <dt>Est. Sportsbet price</dt><dd>Each leg's fair price less a typical bookie margin, multiplied together. Every multi must reach $2.00 on this estimate; check the real price in the app.</dd>
+      <dt>Late checks</dt><dd>15–75 minutes before each game, its injury news is checked again. The morning's multis stay as they were (you may have bet them), but a leg whose player is ruled out is marked and its multis get a warning with a suggested swap. The game is re-analysed, so teammates who gain from a late out show updated chances (and new legs worth a look are added). Prices are refreshed only when someone's status changed.</dd>
       <dt>Prices</dt><dd>Each morning every game is priced at PointsBet, Neds, Unibet and TABtouch (from OddsPapi), and the games the multis use most are also priced at Sportsbet, TAB, Ladbrokes and others (from The Odds API, within its free daily credits). "Best price" is the highest any bookie offers. A multi has to be placed with one bookie, so its best price is the bookie whose prices for all the legs multiply to the most.</dd>
       <dt>Stake</dt><dd>Type the price on offer and the card suggests a share of your betting budget: a quarter of the Kelly amount ((chance × price − 1) ÷ (price − 1)), at most 3%, and nothing when the price is under break-even. Prices you type stay on your phone only.</dd>
       <dt>Profit ($1 each)</dt><dd>What $1 on that multi every day would have made, at the real price when every leg had one, otherwise the estimated price. * means some older days had no price saved and are left out.</dd>
@@ -218,8 +220,8 @@ function legsTable(tbody, legs, compact) {
   for (const l of legs) {
     const tr = tbody.insertRow();
     cell(tr, l.player, 'nowrap c-player');
-    cell(tr, l.market, 'nowrap c-leg');
-    cell(tr, pct(l.model_prob), 'num strong c-model', 'Model');
+    cell(tr, l.market + (l.late_out ? ' — ' + l.late_out.toUpperCase() : l.late_new ? ' (new)' : ''), 'nowrap c-leg' + (l.late_out ? ' bad' : ''));
+    cell(tr, pct(l.model_prob) + (l.late_was ? ' (was ' + pct(l.late_was) + ')' : ''), 'num strong c-model', 'Model');
     cell(tr, bestPrice(l), 'num c-odds', 'Best price');
     if (!compact) cell(tr, signedPts(l.edge), 'num c-edge ' + (l.edge == null ? '' : l.edge > 0.05 ? 'good' : l.edge < 0 ? 'bad' : 'muted'), 'Edge');
     cell(tr, price(l.fair_price), 'num muted c-fair', 'Fair price');
@@ -352,7 +354,13 @@ function multiCard(m, legsById) {
   table.innerHTML = '<thead><tr><th>Player</th><th>Leg</th><th class="num">Model</th><th class="num">Odds</th><th class="num">Fair price</th><th>Game</th><th>This season</th><th>Why</th></tr></thead><tbody></tbody>';
   legsTable(table.tBodies[0], legs, true);
   wrap.append(table);
-  card.append(h, p, figs, stakeBox(m), wrap);
+  card.append(h, p, figs);
+  if (m.late_warning) {
+    const w = document.createElement('p'); w.className = 'late-warn';
+    w.textContent = '⚠ Late change: ' + m.late_warning + (m.est_hit_after_void ? ` Chance on the remaining legs: ${pct(m.est_hit_after_void)}.` : '');
+    card.append(w);
+  }
+  card.append(stakeBox(m), wrap);
   return card;
 }
 

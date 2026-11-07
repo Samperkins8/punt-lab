@@ -11,6 +11,7 @@ Runs on GitHub Actions (`.github/workflows/nba.yml`):
 
 - **7:44am Melbourne** (summer time): grades yesterday's legs and multis, analyses every game on today's slate, picks three multis.
 - **9:38am Melbourne**: re-checks injury news before the first tip and swaps out legs if needed.
+- **Every 30 minutes, ~8am–3:30pm**: late check of each game 15–75 minutes before its tip. Marks late outs and warns on affected multis (they're not rebuilt, in case you've bet them), re-analyses the game, and refreshes prices only when someone's status changed (at most twice a day).
 
 You can also run it by hand: Actions → NBA daily multi → Run workflow.
 

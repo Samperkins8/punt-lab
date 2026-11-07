@@ -191,7 +191,10 @@ def allowed_by_position(team_abbr: str, events: list[str]) -> dict[tuple[str, st
     return {k: v / n for k, v in totals.items()} if n else {}
 
 
-def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices: dict) -> list[tuple[Leg, object]]:
+def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices: dict,
+            only: set[str] | None = None) -> list[tuple[Leg, object]]:
+    """Legs for every game in `games` (or just the games labelled in `only`; the rest still
+    count towards league averages for defence and pace)."""
     prior_year = season_end_year(slate) - 1
     team_data = {}
     for g in games:
@@ -225,6 +228,8 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
 
     cands = []
     for g in games:
+        if only is not None and f"{g['away']} @ {g['home']}" not in only:
+            continue
         game_label = f"{g['away']} @ {g['home']}"
         spread = abs(g["spread"]) if g.get("spread") is not None else 0
         for side, opp_side in (("home", "away"), ("away", "home")):
@@ -551,7 +556,7 @@ def _prod(xs):
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--mode", choices=["daily", "pretip"], default="daily")
+    ap.add_argument("--mode", choices=["daily", "pretip", "late"], default="daily")
     ap.add_argument("--date", help="slate date YYYY-MM-DD (Melbourne); default today")
     args = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
@@ -560,6 +565,10 @@ def main() -> None:
     # Evening runs (after 4pm Melbourne) look ahead to the next morning's games.
     default_slate = now.date() + timedelta(days=1) if now.hour >= 16 else now.date()
     slate = date.fromisoformat(args.date) if args.date else default_slate
+    if args.mode == "late":
+        from . import late
+        late.run(slate, now)
+        return
     graded = grade_previous(slate) if args.mode == "daily" else ""
 
     games = espn.slate_games(slate)
@@ -578,11 +587,8 @@ def main() -> None:
     inj = espn.injuries()
     prices = odds.empty()
     if args.mode == "pretip":  # keep the morning's prices
-        for l in load_json("legs.json", []):
-            if l.get("market_line") is not None:
-                prices["market"][(l["player"].lower(), l["stat"])] = (l["market_line"], l.get("market_p_over", 0.5), l.get("market_source") or "AU bookies")
-            if l.get("books"):
-                prices["books"][(l["player"].lower(), l["stat"], int(l["line"]))] = l["books"]
+        from .late import restore_prices
+        prices = restore_prices(load_json("legs.json", []))
 
     # optional AI read of injury notes for players on today's teams
     teams_today = {g["home"] for g in upcoming} | {g["away"] for g in upcoming}
@@ -649,7 +655,13 @@ def main() -> None:
         "sources": {"stats": "ESPN", "odds": price_source(prices),
                     "injury_reading": "Claude" if ai.enabled() else "rules"},
         "updated_at": now.isoformat(),
+        "inj_snapshot": {n: v["status"] for n, v in inj.items() if v.get("team") in slate_teams and v.get("status")},
     }
+    if args.mode == "pretip":  # keep what the late checks have done so far today
+        prev = load_json("report.json", {})
+        for k in ("late_checked", "late_refreshes", "late_log"):
+            if prev.get(k):
+                report[k] = prev[k]
     save_json("legs.json", legs_out)
     save_json("multis.json", multis_out)
     save_json("slate.json", slate_out)
