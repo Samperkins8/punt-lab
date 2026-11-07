@@ -112,7 +112,7 @@ def test_questionable_players_stay_off_multis():
         cands.append((l, evaluate(l)))
     chosen = pick.choose(cands)
     for key in ("Safest", "Best value", "3-leg value", "4-leg $2+", "3-leg $2+", "4-leg $3+", "4-leg $4+"):
-        assert "A" not in {cands[i][0].player for i in chosen[key]}
+        assert "A" not in {cands[i][0].player for i in chosen.get(key, [])}
 
 
 def test_surname():
@@ -157,3 +157,24 @@ def test_long_shot_and_mid_range():
     assert probs == sorted(probs, reverse=True)           # most likely legs first
     mid = chosen["Mid-range $8+"]
     assert len(mid) in pick.MID_LEGS and len({cands[i][0].player for i in mid}) == len(mid)
+
+
+def test_every_multi_pays_two_dollars_and_one_per_game():
+    from punt_lab.nba import pick
+    from punt_lab.nba.model import Leg, evaluate
+    cands = []
+    for k in range(24):
+        l = Leg(leg_id=f"p{k}", player=f"Player {k}", team=f"T{k % 12}", game=f"G{k % 6}", stat="points",
+                line=15 + (k % 4), log=[19, 20, 17, 22, 19, 17, 21, 18], prior_mean=19, prior_games=60, extra={})
+        l.odds = 1.22 + 0.04 * (k % 4)
+        cands.append((l, evaluate(l)))
+    chosen = pick.choose(cands)
+    for name, ids in chosen.items():
+        if name.startswith("_"):
+            continue
+        price = 1.0
+        for i in ids:
+            price *= pick._assumed_price(*cands[i])
+        assert price >= pick.MIN_MULTI, name
+    games = [cands[i][0].game for i in chosen["One per game"]]
+    assert len(games) == len(set(games)) == 6

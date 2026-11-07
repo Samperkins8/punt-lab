@@ -117,7 +117,8 @@ def grade_previous(today: date) -> str:
         outs = [landed_by_leg.get(i) for i in m["leg_ids"]]
         landed = False if False in outs else (None if None in outs else True)
         mres.append({"slate_date": prev, "multi": m["multi"], "legs": m["legs_text"],
-                     "est_hit": m["est_hit"], "landed": landed})
+                     "est_hit": m["est_hit"], "landed": landed,
+                     "price": m.get("known_price") if m.get("priced_legs", "").split(" of ")[0] == str(len(m["leg_ids"])) else m.get("est_price")})
         summary.append(f"{m['multi']} {'landed' if landed else 'void' if landed is None else 'missed'}")
     save_json("results.json", results)
     save_json("multi_results.json", mres)
@@ -468,7 +469,7 @@ def leg_row(leg: Leg, res) -> dict:
 
 def multi_rows(cands, chosen) -> list[dict]:
     rows = []
-    order = ("4-leg $2+", "3-leg $2+", "4-leg $3+", "4-leg $4+", "Best value", "Safest", "3-leg value", "Mid-range $8+", "Long multi 8+", "Long shot $50")
+    order = ("4-leg $2+", "3-leg $2+", "4-leg $3+", "4-leg $4+", "Best value", "Safest", "3-leg value", "One per game", "Mid-range $8+", "Long multi 8+", "Long shot $50")
     rank = {n: i + 1 for i, n in enumerate(order)}
     for name in order:
         ids = chosen.get(name)

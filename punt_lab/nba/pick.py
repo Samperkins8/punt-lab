@@ -21,6 +21,7 @@ MID_LEGS = (6, 7)         # try 6 legs first, 7 only if 6 can't reach the target
 MID_POOL = 22             # legs searched for the mid-range multi (most likely first)
 SHOT_TARGET = 50.00       # long shot: keep adding the most likely legs until the price passes this
 SHOT_MAX_LEGS = 15        # but never more than this many legs
+PER_GAME_MAX = 8          # one-per-game multi: at most this many games
 
 
 def price_of(leg: Leg, res: LegResult) -> tuple[float | None, str]:
@@ -77,6 +78,15 @@ def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
     def chance(combo):
         return multi_chance([cands[i][0] for i in combo], [cands[i][1].model_prob for i in combo])
 
+    def multi_price(combo):
+        price = 1.0
+        for i in combo:
+            price *= _assumed_price(*cands[i])
+        return price
+
+    def pays(combo):  # Sam doesn't bet multis under $2
+        return multi_price(combo) >= MIN_MULTI
+
     def ev(combo):
         p = chance(combo)
         price = 1.0
@@ -87,23 +97,29 @@ def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
     # Safest: highest chance all four land
     best = None
     for combo in combinations(pool, 4):
-        if _ok_combo([cands[i][0] for i in combo]):
+        if _ok_combo([cands[i][0] for i in combo]) and pays(combo):
             c = chance(combo)
             if best is None or c > best[0]:
                 best = (c, combo)
     if best:
         out["Safest"] = list(best[1])
+    else:
+        out.setdefault("_notes", []).append("no safest 4-leg pays $2, so it's left out")
 
     # Best value: highest expected return, keeping a sensible chance of landing
     best = None
     for combo in combinations(pool, 4):
         if not _ok_combo([cands[i][0] for i in combo]):
             continue
+        if not pays(combo):
+            continue
         e, p = ev(combo)
         if p >= 0.30 and (best is None or e > best[0]):
             best = (e, combo)
     if best:
         out["Best value"] = list(best[1])
+    else:
+        out.setdefault("_notes", []).append("no best-value 4-leg pays $2 with a 30%+ chance, so it's left out")
 
     # 3-leg value: every leg must be worth it on its own (model x price > 1)
     worth = [i for i in pool if price_of(*cands[i])[0] and cands[i][1].model_prob * _assumed_price(*cands[i]) > 1]
@@ -111,7 +127,7 @@ def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
     def best_three(search, min_p):
         best = None
         for combo in combinations(search, 3):
-            if not _ok_combo([cands[i][0] for i in combo]):
+            if not _ok_combo([cands[i][0] for i in combo]) or not pays(combo):
                 continue
             e, p = ev(combo)
             if p >= min_p and (best is None or e > best[0]):
@@ -125,14 +141,11 @@ def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
         best = best_three(pool, 0.45) or best_three(pool, 0.0)
     if best:
         out["3-leg value"] = list(best[1])
+    else:
+        all_worth = True
+        out.setdefault("_notes", []).append("no 3-leg value multi pays $2, so it's left out")
     # $2+ multis: highest chance all land, with the estimated Sportsbet price at least $2.00
     wide = idx[:WIDE_POOL] + [i for i in every if cands[i][0].extra.get("step_up")][:WIDE_POOL]
-
-    def multi_price(combo):
-        price = 1.0
-        for i in combo:
-            price *= _assumed_price(*cands[i])
-        return price
 
     targets = {4: [("4-leg $2+", 2.0), ("4-leg $3+", 3.0), ("4-leg $4+", 4.0)], 3: [("3-leg $2+", 2.0)]}
     for n, wanted in targets.items():
@@ -161,6 +174,13 @@ def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
     long_idx, note = _long_multi(cands)
     if long_idx:
         out["Long multi 8+"] = long_idx
+    if note:
+        out.setdefault("_notes", []).append(note)
+
+    # One per game: the most likely leg from each game, so one blowout can only cost one leg
+    per_game, note = _one_per_game(cands, idx, multi_price)
+    if per_game:
+        out["One per game"] = per_game
     if note:
         out.setdefault("_notes", []).append(note)
 
@@ -252,3 +272,20 @@ def _long_shot(cands, ordered: list[int]) -> tuple[list[int] | None, str]:
         return None, ""
     note = "" if price >= SHOT_TARGET else f"the long shot only reaches about ${price:.0f} with {len(combo)} legs"
     return combo, note
+
+
+def _one_per_game(cands, ordered: list[int], multi_price) -> tuple[list[int] | None, str]:
+    """The most likely leg from each game (up to PER_GAME_MAX games, most likely first)."""
+    seen: set[str] = set()
+    combo: list[int] = []
+    for i in ordered:  # already most likely first
+        g = cands[i][0].game
+        if g in seen or len(combo) >= PER_GAME_MAX:
+            continue
+        seen.add(g)
+        combo.append(i)
+    if len(combo) < 3:
+        return None, ""
+    if multi_price(combo) < MIN_MULTI:
+        return None, f"the one-per-game multi only pays about ${multi_price(combo):.2f}, under $2, so it's left out"
+    return combo, ""

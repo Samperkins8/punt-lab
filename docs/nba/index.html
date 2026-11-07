@@ -96,6 +96,7 @@
       <option value="Safest">Safest 4-leg</option>
       <option value="Best value">Best value 4-leg</option>
       <option value="3-leg value">Best value 3-leg</option>
+      <option value="One per game">One leg from each game</option>
       <option value="Mid-range $8+">Mid-range, 6–7 legs paying $8+</option>
       <option value="Long multi 8+">Long multi, 8+ legs (each 80%+, $1.15+)</option>
       <option value="Long shot $50">Long shot, up to 15 legs paying ~$50</option>
@@ -132,7 +133,7 @@
       <tbody></tbody>
     </table></div>
     <div class="scroll"><table id="multi-record">
-      <thead><tr><th>Multi</th><th class="num">Days</th><th class="num">Landed</th><th class="num">Predicted</th><th class="num">Actual</th></tr></thead>
+      <thead><tr><th>Multi</th><th class="num">Days</th><th class="num">Landed</th><th class="num">Predicted</th><th class="num">Actual</th><th class="num">Profit ($1 each)</th></tr></thead>
       <tbody></tbody>
     </table></div>
   </section>
@@ -142,7 +143,8 @@
     <dl>
       <dt>Model</dt><dd>This season's games (the last 5 count 1.5× as much as older ones) blended with last season (last season counts as 8 games' worth, less if he played under 40 games), shifted towards games played in tonight's situation (a teammate in or out), adjusted for the opponent's defence against his position and last season's head-to-head (shrunk by how much of the opponent's roster is still the same, worked out from last season's teams, and by sample size), adjusted for home or away (from his own split, shrunk for small samples) and tonight's expected pace (the game total against the slate average), scaled by expected minutes (cut on the second night of a back-to-back), and blended 60/40 with the US betting market's line where one is available.</dd>
       <dt>Est. chance all land</dt><dd>The legs' chances multiplied, adjusted for same-game links: two rebound legs from one game work against each other, two points legs from one team share the shots, other same-game legs move a little together with pace.</dd>
-      <dt>Est. Sportsbet price</dt><dd>Each leg's fair price less a typical bookie margin, multiplied together. The $2+ multis must reach $2.00 on this estimate; check the real price in the app.</dd>
+      <dt>Est. Sportsbet price</dt><dd>Each leg's fair price less a typical bookie margin, multiplied together. Every multi must reach $2.00 on this estimate; check the real price in the app.</dd>
+      <dt>Profit ($1 each)</dt><dd>What $1 on that multi every day would have made, at the real price when every leg had one, otherwise the estimated price. * means some older days had no price saved and are left out.</dd>
       <dt>Worth it if it pays at least</dt><dd>1 ÷ the chance all legs land. If Sportsbet's price for the whole multi is at or above it, the model says it's worth taking.</dd>
       <dt>Rules</dt><dd>No leg priced under $1.20 (where no price is known, the line is stepped up until the model is about 83% or lower). Never two rebound legs from the same game. Players listed out or doubtful are left out.</dd>
       <dt>Overrides</dt><dd>Edit overrides/nba.txt in the repo to skip a player, set minutes, mark someone out or enter Sportsbet odds. The next run uses it.</dd>
@@ -213,6 +215,7 @@ function multiCard(m, legsById) {
                    '4-leg $4+': ['Best 4-leg multi paying $4+', 'Highest chance all four land, with an estimated Sportsbet price of $4.00 or more.'],
                    '3-leg $2+': ['Best 3-leg multi paying $2+', 'Highest chance all three land, with an estimated Sportsbet price of $2.00 or more.'],
                    'Long multi 8+': ['Long multi, 8+ legs', 'Every leg at least 80% likely and estimated to pay $1.15 or more, including match winners. The best-value 8, plus any extra legs that are worth it on their own.'],
+                   'One per game': ['One leg from each game', 'The most likely leg from every game (up to 8), so one blowout or late scratch can only cost one leg.'],
                    'Mid-range $8+': ['Mid-range multi paying $8+', 'Six legs (seven if six can\'t get there), highest chance all land with an estimated price of $8.00 or more.'],
                    'Long shot $50': ['Long shot, ~$50', 'The most likely legs, added one at a time until the estimated price passes $50 (max 15 legs). Roughly a 2% shot \u2014 a fun bet, not a value one.'],
                    'Best value': ['Best value 4-leg multi', 'Higher payout, built from legs whose price beats the model.'],
@@ -269,6 +272,11 @@ function trackRecord(results, multiResults) {
     cell(tr, multi); cell(tr, g.length, 'num'); cell(tr, landed, 'num');
     cell(tr, pct(g.reduce((a, r) => a + r.est_hit, 0) / g.length), 'num muted');
     cell(tr, pct(landed / g.length), 'num');
+    const priced = g.filter((r) => r.price);
+    if (priced.length) {
+      const profit = priced.reduce((a, r) => a + (r.landed ? r.price - 1 : -1), 0);
+      cell(tr, (profit < 0 ? '−$' : '+$') + Math.abs(profit).toFixed(2) + (priced.length < g.length ? ' *' : ''), 'num ' + (profit >= 0 ? 'good' : 'bad'));
+    } else cell(tr, '–', 'num muted');
   }
 }
 
