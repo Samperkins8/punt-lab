@@ -21,6 +21,8 @@ status and note only (do not guess beyond them):
 - minutes_limit: a number if the note mentions a minutes restriction or limit with a figure, else null
 - limited: true if the note suggests reduced minutes without a figure (e.g. "on a minutes restriction", "easing back")
 - bench: true if the note says he will come off the bench
+Only include players where at least one answer is not the default (out false, minutes_limit null,
+limited false, bench false); leave everyone else out. If nobody qualifies, reply [].
 Reply with only a JSON array: [{"player": "...", "out": bool, "minutes_limit": number|null, "limited": bool, "bench": bool}]
 
 Players:
@@ -41,16 +43,23 @@ def read_injuries(rows: list[dict]) -> dict[str, dict]:
             "x-api-key": os.environ["ANTHROPIC_API_KEY"],
             "anthropic-version": "2023-06-01",
             "content-type": "application/json",
-        }, json={"model": MODEL, "max_tokens": 2000, "messages": [{"role": "user", "content": body}]})
+        }, json={"model": MODEL, "max_tokens": 6000, "messages": [{"role": "user", "content": body}]})
         r.raise_for_status()
-        text = "".join(b.get("text", "") for b in r.json().get("content", []))
+        data = r.json()
+        text = "".join(b.get("text", "") for b in data.get("content", []) if b.get("type") == "text")
         start, end = text.find("["), text.rfind("]")
+        if start < 0 or end < start:
+            log.warning("AI injury read: no JSON list in reply (stop_reason %s): %r", data.get("stop_reason"), text[:300])
+            return {}
         parsed = json.loads(text[start:end + 1])
+    except requests.HTTPError as e:
+        log.warning("AI injury read failed (HTTP %s), using rules only: %s", e.response.status_code, e.response.text[:300])
+        return {}
     except (requests.RequestException, ValueError, KeyError) as e:
         log.warning("AI injury read failed, using rules only: %s", e)
         return {}
     out = {str(p.get("player", "")).lower(): p for p in parsed if isinstance(p, dict)}
-    usage = r.json().get("usage", {})
+    usage = data.get("usage", {})
     log.info("Claude read %d injury notes (%s in / %s out tokens): %d out, %d limited, %d bench", len(rows),
              usage.get("input_tokens"), usage.get("output_tokens"), sum(1 for v in out.values() if v.get("out")),
              sum(1 for v in out.values() if v.get("limited") or v.get("minutes_limit")), sum(1 for v in out.values() if v.get("bench")))
