@@ -49,4 +49,9 @@ def read_injuries(rows: list[dict]) -> dict[str, dict]:
     except (requests.RequestException, ValueError, KeyError) as e:
         log.warning("AI injury read failed, using rules only: %s", e)
         return {}
-    return {str(p.get("player", "")).lower(): p for p in parsed if isinstance(p, dict)}
+    out = {str(p.get("player", "")).lower(): p for p in parsed if isinstance(p, dict)}
+    usage = r.json().get("usage", {})
+    log.info("Claude read %d injury notes (%s in / %s out tokens): %d out, %d limited, %d bench", len(rows),
+             usage.get("input_tokens"), usage.get("output_tokens"), sum(1 for v in out.values() if v.get("out")),
+             sum(1 for v in out.values() if v.get("limited") or v.get("minutes_limit")), sum(1 for v in out.values() if v.get("bench")))
+    return out
