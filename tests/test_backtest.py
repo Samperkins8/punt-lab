@@ -39,6 +39,12 @@ def test_backtest_finds_wider_spread_and_applies_it(monkeypatch, tmp_path):
         assert out["after"]["test"]["log_loss"] < out["before"]["test"]["log_loss"]
         assert tuned["settings"]["SPREAD"]["points"] > saved["SPREAD"]["points"]
         assert list((tmp_path / "cache").glob("gamelogs_*.json.gz"))  # finished seasons cached
+
+        # next week: starts from the tuned settings and must never fall back to the hand-set ones
+        model.load_tuned(tmp_path / "tuned.json")
+        backtest.main()
+        again = json.loads((tmp_path / "tuned.json").read_text())
+        assert again["settings"] and again["settings"]["SPREAD"]["points"] > saved["SPREAD"]["points"]
     finally:
         backtest.apply_settings(saved)
         model.CALIBRATE = True

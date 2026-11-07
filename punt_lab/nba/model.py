@@ -27,6 +27,17 @@ CALIBRATION: dict[str, list[list[float]]] = {}  # stat -> [[model chance, actual
 CALIBRATE = True  # the backtest turns this off to see the raw model
 
 
+DEFAULTS = {k: (dict(globals()[k]) if isinstance(globals()[k], dict) else globals()[k]) for k in TUNABLE}
+
+
+def reset_defaults() -> None:
+    global CALIBRATION
+    g = globals()
+    for k, v in DEFAULTS.items():
+        g[k] = dict(v) if isinstance(v, dict) else v
+    CALIBRATION = {}
+
+
 def load_tuned(path: Path = TUNED_FILE) -> dict:
     global CALIBRATION
     try:

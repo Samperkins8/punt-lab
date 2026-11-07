@@ -309,7 +309,8 @@ def main() -> None:
     today = datetime.now(espn.MELB).date()
     cur = season_end_year(today)
     model.CALIBRATE = False
-    defaults = current_settings()
+    defaults = json.loads(json.dumps(model.DEFAULTS))   # the hand-set values in model.py
+    previous = current_settings()                       # what's in use now (last week's tune, or the defaults)
 
     players = _players()
     log.info("%d players on current rosters", len(players))
@@ -321,18 +322,22 @@ def main() -> None:
         raise SystemExit("not enough backtest data from ESPN; leaving the model unchanged")
 
     apply_settings(defaults)
-    choose_lines(train)
+    choose_lines(train)  # always scored on the lines the hand-set model would consider, so weeks compare fairly
     choose_lines(test)
     before = {"train": score(train), "test": score(test)}
+    apply_settings(previous)
+    prev_test = score(test)["log_loss"]
 
-    tuned, _ = tune(train)
+    tuned, _ = tune(train)  # starts from what's in use now
     apply_settings(tuned)
+    new_test = score(test)["log_loss"]
+    better = prev_test - new_test >= MIN_IMPROVEMENT * prev_test
+    final = tuned if better else previous
+    apply_settings(final)
     after = {"train": score(train), "test": score(test)}
-    gain = before["test"]["log_loss"] - after["test"]["log_loss"]
-    applied = gain >= MIN_IMPROVEMENT * before["test"]["log_loss"]
-    final = tuned if applied else defaults
-    log.info("newer seasons log loss %.4f -> %.4f (%s)", before["test"]["log_loss"], after["test"]["log_loss"],
-             "applied" if applied else "not enough better; keeping defaults")
+    applied = final != defaults
+    log.info("newer seasons log loss: hand-set %.4f, in use %.4f, new tune %.4f (%s)", before["test"]["log_loss"],
+             prev_test, new_test, "switched to new tune" if better else "kept the settings in use")
 
     try:
         live = json.loads((DATA / "results.json").read_text())
@@ -347,7 +352,7 @@ def main() -> None:
         "updated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "seasons": {"tuned_on": f"{cur - 3}-{str(cur - 2)[2:]}", "checked_on": f"{cur - 2}-{str(cur - 1)[2:]} and {cur - 1}-{str(cur)[2:]} so far"},
         "samples": {"train": len(train), "test": len(test)},
-        "applied": applied, "defaults": defaults, "tuned": tuned,
+        "applied": applied, "defaults": defaults, "tuned": final, "changed_this_week": better,
         "before": before, "after": after,
         "live": {"summary": live_summary, "curves": curves, "min_legs": LIVE_MIN_LEGS},
     }, indent=1))
