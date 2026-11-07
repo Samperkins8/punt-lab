@@ -1,0 +1,17 @@
+{
+ "updated": "2026-11-07T07:47:39+00:00",
+ "settings": {
+  "SPREAD": {
+   "points": 0.416,
+   "rebounds": 0.432,
+   "assists": 0.462,
+   "threes": 0.892
+  },
+  "PRIOR_GAMES": 8,
+  "SPREAD_GAMES": 32,
+  "RECENT_GAMES": 10,
+  "RECENT_WEIGHT": 3.0,
+  "OPP_WEIGHT": 0.25
+ },
+ "calibration": {}
+}
