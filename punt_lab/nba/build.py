@@ -13,7 +13,7 @@ from datetime import date, datetime, timedelta
 from pathlib import Path
 from statistics import mean
 
-from . import ai, espn, odds, overrides, pick
+from . import ai, espn, odds, oddspapi, overrides, pick
 from .model import Leg, LegResult, evaluate, multi_chance, norm_cdf
 
 log = logging.getLogger("punt_lab.nba")
@@ -415,6 +415,18 @@ def trim(cands):
 
 # ---------------------------------------------------------------- output
 
+def price_source(prices: dict) -> str | None:
+    bits = []
+    if oddspapi.enabled():
+        bits.append("OddsPapi (PointsBet, Neds, Unibet, TABtouch)")
+    if prices.get("priced"):
+        bits.append(f"The Odds API ({len(prices['priced'])} games"
+                    + (f", {prices['credits_left']} credits left" if prices.get("credits_left") is not None else "") + ")")
+    elif odds.enabled():
+        bits.append("The Odds API")
+    return " + ".join(bits) or None
+
+
 def select(found, upcoming):
     """Trim the candidate legs, pick the multis, and keep only the legs worth listing."""
     extra_kinds = ("step_up", "long_only")
@@ -580,7 +592,7 @@ def main() -> None:
 
     found = analyse(slate, upcoming, ov, inj, ai_inj, prices)
     cands, chosen = select(found, upcoming)
-    if args.mode == "daily" and odds.enabled() and found:
+    if args.mode == "daily" and (odds.enabled() or oddspapi.enabled()) and found:
         # second pass: price the games and stats the multis use first, then the other listed legs
         # (ESPN data is cached, so re-analysing is quick)
         names = {f"{g['away']} @ {g['home']}": (g["home_name"], g["away_name"]) for g in upcoming}
@@ -590,7 +602,7 @@ def main() -> None:
             if l.stat != "win" and l.game in names:
                 st = wanted.setdefault(names[l.game], {})
                 st[l.stat] = st.get(l.stat, 0) + (10 if i in in_multis else 1)
-        prices = odds.fetch(upcoming, wanted)
+        prices = odds.finalise(odds.merge(oddspapi.fetch([g["start"] for g in upcoming]), odds.fetch(upcoming, wanted)))
         if prices["books"] or prices["market"]:
             found = analyse(slate, upcoming, ov, inj, ai_inj, prices)
             cands, chosen = select(found, upcoming)
@@ -634,9 +646,7 @@ def main() -> None:
         "injuries": ", ".join(outs[:12]) + (" and others" if len(outs) > 12 else ""),
         "graded": graded,
         "next_run": f"Re-checked {stamp}: {changes}" if args.mode == "pretip" else f"Built {stamp}; re-checked before the first tip",
-        "sources": {"stats": "ESPN", "odds": (f"AU bookies via The Odds API ({len(prices['priced'])} game-stats priced"
-                                              + (f", {prices['credits_left']} credits left" if prices.get("credits_left") is not None else "") + ")")
-                                             if prices.get("priced") else ("The Odds API" if odds.enabled() else None),
+        "sources": {"stats": "ESPN", "odds": price_source(prices),
                     "injury_reading": "Claude" if ai.enabled() else "rules"},
         "updated_at": now.isoformat(),
     }

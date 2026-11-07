@@ -34,6 +34,7 @@ Lines under a `date:` header apply only to that day. The next run picks them up.
 | Secret | What it adds | Cost |
 |---|---|---|
 | `ODDS_API_KEY` | Australian bookies' prices for each leg (Sportsbet, TAB, Ladbrokes, Neds, PointsBet, Unibet...) and their over/under lines (fair prices), from the-odds-api.com. Only the games and stats today's legs need are priced, within `ODDS_DAILY_CREDITS` (16 a day fits the free 500 a month) | Free plan, 500 credits a month |
+| `ODDSPAPI_KEY` | Every game's player prices at PointsBet, Neds, Unibet and TABtouch, from oddspapi.io: one request per bookie for the whole slate (~120 of the free 250 a month) | Free plan |
 | `ANTHROPIC_API_KEY` | Claude reads vague injury notes (minutes limits, coming off the bench) | Pay-as-you-go, a few cents a month |
 
 Without them everything still runs on free ESPN data and rules.

@@ -128,10 +128,39 @@ def _parse(data: dict, out: dict) -> None:
             for (player, point), s in sides.items():
                 if "over" in s and "under" in s:
                     lines.setdefault((player, stat), []).append((point, no_vig_over_decimal(s["over"], s["under"])))
-    for (player, stat), vals in lines.items():
-        line = median(v[0] for v in vals)
-        at_line = [p for (pt, p) in vals if pt == line] or [0.5]
-        out["market"][(player, stat)] = (line, median(at_line), "AU bookies")
+    for k, vals in lines.items():
+        out["market"].setdefault(k, []).extend(vals)
+
+
+def merge(*sources: dict) -> dict:
+    """Combine price sources: every bookie's price for each leg, and every bookie's main line."""
+    out = empty()
+    for src in sources:
+        for k, books in src.get("books", {}).items():
+            slot = out["books"].setdefault(k, {})
+            for bk, pr in books.items():
+                slot[bk] = max(slot.get(bk, 0), pr)
+        for k, vals in src.get("market", {}).items():
+            out["market"].setdefault(k, []).extend(vals)
+        out["priced"] += src.get("priced", [])
+        if src.get("credits_left") is not None:
+            out["credits_left"] = src["credits_left"]
+    return out
+
+
+def finalise(prices: dict) -> dict:
+    """Turn each player's list of (line, no-margin chance of the over) into one market view:
+    the most common line across bookies and the median chance at it."""
+    final = {}
+    for k, vals in prices["market"].items():
+        if isinstance(vals, tuple):  # already final (restored from the morning run)
+            final[k] = vals
+            continue
+        lines = [v[0] for v in vals]
+        line = max(set(lines), key=lambda x: (lines.count(x), -abs(x - median(lines))))
+        final[k] = (line, median(p for pt, p in vals if pt == line), "AU bookies")
+    prices["market"] = final
+    return prices
 
 
 def best(books: dict[str, float] | None) -> tuple[str | None, float | None]:

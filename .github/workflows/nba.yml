@@ -35,6 +35,7 @@ jobs:
       - name: Run
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+          ODDSPAPI_KEY: ${{ secrets.ODDSPAPI_KEY }}
           ODDS_DAILY_CREDITS: "16"   # free plan is 500 a month; raise this on a paid plan
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
@@ -49,7 +50,7 @@ jobs:
         run: |
           git config user.name "punt-lab bot"
           git config user.email "actions@users.noreply.github.com"
-          git add docs/nba/data
+          git add docs/nba/data punt_lab/nba/cache
           git diff --cached --quiet || git commit -m "Update multis $(TZ=Australia/Melbourne date '+%Y-%m-%d %H:%M')"
           git pull --rebase
           git push
