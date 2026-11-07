@@ -90,21 +90,20 @@
   "multi": "Mid-range $8+",
   "rank": 9,
   "leg_ids": [
-   "dillon_brooks_points10",
    "amen_thompson_points10",
-   "kevin_durant_points15",
-   "anthony_black_points10",
-   "franz_wagner_rebounds4",
+   "jamal_murray_points15",
    "devin_booker_points20",
-   "deni_avdija_points20"
+   "andrew_nembhard_points15",
+   "miles_bridges_rebounds6",
+   "kevin_durant_points20"
   ],
-  "legs_text": "Dillon Brooks 10+ points; Amen Thompson 10+ points; Kevin Durant 15+ points; Anthony Black 10+ points; Franz Wagner 4+ rebounds; Devin Booker 20+ points; Deni Avdija 20+ points",
-  "est_hit": 0.1739,
-  "break_even": 5.75,
-  "priced_legs": "0 of 7",
+  "legs_text": "Amen Thompson 10+ points; Jamal Murray 15+ points; Devin Booker 20+ points; Andrew Nembhard 15+ points; Miles Bridges 6+ rebounds; Kevin Durant 20+ points",
+  "est_hit": 0.1306,
+  "break_even": 7.66,
+  "priced_legs": "0 of 6",
   "known_price": null,
-  "fair_multi": 7.9,
-  "est_price": 4.41
+  "fair_multi": 13.48,
+  "est_price": 8.17
  },
  {
   "multi": "Long multi 8+",
@@ -120,11 +119,32 @@
    "jamal_murray_points15"
   ],
   "legs_text": "Dillon Brooks 10+ points; Miles Bridges 4+ rebounds; De'Aaron Fox 10+ points; Devin Booker 15+ points; Amen Thompson 10+ points; Kevin Durant 15+ points; Franz Wagner 4+ rebounds; Jamal Murray 15+ points",
-  "est_hit": 0.2217,
-  "break_even": 4.51,
+  "est_hit": 0.2214,
+  "break_even": 4.52,
   "priced_legs": "0 of 8",
   "known_price": null,
-  "fair_multi": 6.98,
-  "est_price": 3.58
+  "fair_multi": 6.99,
+  "est_price": 3.59
+ },
+ {
+  "multi": "Long shot $50",
+  "rank": 11,
+  "leg_ids": [
+   "de'aaron_fox_points10",
+   "amen_thompson_points10",
+   "devin_booker_points20",
+   "andrew_nembhard_points15",
+   "miles_bridges_rebounds6",
+   "dillon_brooks_points15",
+   "aaron_gordon_points15",
+   "jamal_murray_rebounds6"
+  ],
+  "legs_text": "De'Aaron Fox 10+ points; Amen Thompson 10+ points; Devin Booker 20+ points; Andrew Nembhard 15+ points; Miles Bridges 6+ rebounds; Dillon Brooks 15+ points; Aaron Gordon 15+ points; Jamal Murray 6+ rebounds",
+  "est_hit": 0.0324,
+  "break_even": 30.86,
+  "priced_legs": "0 of 8",
+  "known_price": null,
+  "fair_multi": 97.64,
+  "est_price": 50.11
  }
 ]
