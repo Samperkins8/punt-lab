@@ -3,7 +3,7 @@
  "headline": "3-leg $2+: Alex Sarr 4+ rebounds; Jabari Smith Jr. 4+ rebounds; Jarace Walker 4+ rebounds — about 50% to land, est. price $2.52, worth it at $2.00+. Best-priced leg: Jarace Walker 4+ rebounds at $1.90. Note: only 6 legs are 80%+ likely at $1.15+, so the long multi is short; 3-leg value includes legs without a confirmed worth-it price.",
  "injuries": "Keshon Gilbert (Out), Asa Newell (Out), Jock Landale (Out), Jalen Johnson (Out), Mouhamed Gueye (Out), Henri Veesaar (Out), Egor Demin (Out), Jaylon Tyson (Out), Sam Merrill (Out), Jarrett Allen (Out), Julian Strawther (Out), Kristaps Porzingis (Out) and others",
  "graded": "",
- "next_run": "Built 8:17am; re-checked before the first tip",
+ "next_run": "Late check 8:40am — DEN @ IND: no new outs; 2 new legs worth a look",
  "sources": {
   "stats": "ESPN",
   "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API (4 games, 356 credits left)",
@@ -61,5 +61,11 @@
   "tristan vukcevic": "Out",
   "justin champagnie": "Out",
   "jamir watkins": "Out"
- }
+ },
+ "late_checked": [
+  "DEN @ IND"
+ ],
+ "late_log": [
+  "8:40am DEN @ IND: no new outs; 2 new legs worth a look"
+ ]
 }
