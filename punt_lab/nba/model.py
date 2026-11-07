@@ -19,9 +19,18 @@ H2H_GAMES = 4            # head-to-head is halfway with this many games
 RECENT_GAMES = 5         # the most recent games...
 RECENT_WEIGHT = 1.5      # ...count this much more than older ones
 
+B2B_CUT_STAR = 0.95      # minutes on the second night of a back-to-back, players averaging 30+
+B2B_CUT = 0.97           # ...and everyone else
+
+# Same-game links between legs in a multi
+SAME_GAME_REBOUNDS = -0.15
+SAME_TEAM_POINTS = -0.05
+SAME_GAME_OTHER = 0.05
+
 # Settings the weekly backtest is allowed to tune (see backtest.py). Values above are the
 # hand-set defaults; tuned.json, when present, replaces them.
-TUNABLE = ("SPREAD", "PRIOR_GAMES", "SPREAD_GAMES", "RECENT_GAMES", "RECENT_WEIGHT", "OPP_WEIGHT")
+TUNABLE = ("SPREAD", "PRIOR_GAMES", "SPREAD_GAMES", "RECENT_GAMES", "RECENT_WEIGHT", "OPP_WEIGHT",
+           "B2B_CUT_STAR", "B2B_CUT", "SAME_GAME_REBOUNDS", "SAME_TEAM_POINTS", "SAME_GAME_OTHER")
 TUNED_FILE = Path(__file__).with_name("tuned.json")
 CALIBRATION: dict[str, list[list[float]]] = {}  # stat -> [[model chance, actual landed], ...] from graded live legs
 CALIBRATE = True  # the backtest turns this off to see the raw model
@@ -67,10 +76,6 @@ def calibrate(stat: str, p: float) -> float:
     return p
 
 
-# Same-game links between legs in a multi
-SAME_GAME_REBOUNDS = -0.15
-SAME_TEAM_POINTS = -0.05
-SAME_GAME_OTHER = 0.05
 
 
 def norm_cdf(z: float) -> float:

@@ -13,7 +13,7 @@ from datetime import date, datetime, timedelta
 from pathlib import Path
 from statistics import mean
 
-from . import ai, espn, odds, oddspapi, overrides, pick
+from . import ai, espn, model, odds, oddspapi, overrides, pick
 from .model import Leg, LegResult, evaluate, multi_chance, norm_cdf
 
 log = logging.getLogger("punt_lab.nba")
@@ -289,7 +289,7 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
                     proj_min *= 0.85
                     note_bits.append("expected to play reduced minutes")
                 if b2b and name.lower() not in ov.minutes:
-                    proj_min *= 0.95 if avg_min[pid] >= 30 else 0.97
+                    proj_min *= model.B2B_CUT_STAR if avg_min[pid] >= 30 else model.B2B_CUT
                     note_bits.append("second night of a back-to-back")
                 if spread >= 10:
                     proj_min *= 0.95

@@ -63,3 +63,16 @@ def test_live_calibration_pulls_overconfident_legs_down():
         assert model.calibrate("rebounds", 0.85) == 0.85
     finally:
         model.CALIBRATION = {}
+
+
+def test_measure_links_finds_rebounders_competing():
+    base = {"stat": "rebounds", "vals": [8, 9, 7, 8, 10, 6, 8, 9], "prior_mean": 8, "prior_games": 60,
+            "venue_shift": 0.0, "opp_factor": None, "lines": [8], "team": "AAA", "opp": "BBB"}
+    data = []
+    for k in range(400):
+        a_big = k % 2 == 0
+        data.append({**base, "pid": "a", "date": f"d{k}", "actual": 11 if a_big else 5})
+        data.append({**base, "pid": "b", "date": f"d{k}", "team": "BBB", "opp": "AAA", "actual": 5 if a_big else 11})
+    links = backtest.measure_links(data)
+    assert links["SAME_GAME_REBOUNDS"]["pairs"] == 400
+    assert links["SAME_GAME_REBOUNDS"]["r"] < -0.2

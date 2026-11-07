@@ -405,6 +405,9 @@ const SETTING_NAMES = {
   PRIOR_GAMES: 'Last season counts as this many games', SPREAD_GAMES: 'Weight on typical spread (games)',
   RECENT_GAMES: 'Recent games given extra weight', RECENT_WEIGHT: 'Extra weight on those games',
   OPP_WEIGHT: 'Strength of the opponent defence adjustment',
+  B2B_CUT_STAR: 'Minutes on a back-to-back (30+ min players)', B2B_CUT: 'Minutes on a back-to-back (others)',
+  SAME_GAME_REBOUNDS: 'Link: two rebound legs, same game', SAME_TEAM_POINTS: 'Link: two scorers, same team',
+  SAME_GAME_OTHER: 'Link: other legs, same game',
 };
 
 function honest(bt) {
@@ -413,16 +416,16 @@ function honest(bt) {
   const before = bt.before.test, after = bt.after.test;
   text('honest-sub', `Each week the model replays ${before.n.toLocaleString('en-AU')} past legs (tuned on ${bt.seasons.tuned_on}, checked on ${bt.seasons.checked_on}) using only what was known before tip-off. Updated ${new Date(bt.updated).toLocaleDateString('en-AU', { day: 'numeric', month: 'short' })}.`);
   const svg = document.getElementById('honest-chart');
-  const X = (p) => 40 + (p - 0.5) * 2 * 260, Y = (p) => 210 - (p - 0.4) / 0.6 * 190;
+  const X = (p) => 40 + (p - 0.35) / 0.65 * 260, Y = (p) => 210 - (p - 0.2) / 0.8 * 190;
   let h = '';
-  for (const t of [0.5, 0.6, 0.7, 0.8, 0.9, 1.0]) h += `<line x1="${X(t)}" y1="20" x2="${X(t)}" y2="210" stroke="var(--line)"/><text x="${X(t)}" y="226" font-size="10" text-anchor="middle" fill="var(--muted)">${t * 100}%</text>`;
-  for (const t of [0.4, 0.6, 0.8, 1.0]) h += `<line x1="40" y1="${Y(t)}" x2="300" y2="${Y(t)}" stroke="var(--line)"/><text x="34" y="${Y(t) + 3}" font-size="10" text-anchor="end" fill="var(--muted)">${t * 100}%</text>`;
-  h += `<line x1="${X(0.5)}" y1="${Y(0.5)}" x2="${X(1)}" y2="${Y(1)}" stroke="var(--fg)" stroke-dasharray="4 4" opacity="0.6"/>`;
+  for (const t of [0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]) h += `<line x1="${X(t)}" y1="20" x2="${X(t)}" y2="210" stroke="var(--line)"/><text x="${X(t)}" y="226" font-size="10" text-anchor="middle" fill="var(--muted)">${t * 100}%</text>`;
+  for (const t of [0.2, 0.4, 0.6, 0.8, 1.0]) h += `<line x1="40" y1="${Y(t)}" x2="300" y2="${Y(t)}" stroke="var(--line)"/><text x="34" y="${Y(t) + 3}" font-size="10" text-anchor="end" fill="var(--muted)">${t * 100}%</text>`;
+  h += `<line x1="${X(0.35)}" y1="${Y(0.35)}" x2="${X(1)}" y2="${Y(1)}" stroke="var(--fg)" stroke-dasharray="4 4" opacity="0.6"/>`;
   h += `<text x="170" y="244" font-size="10" text-anchor="middle" fill="var(--muted)">Model said</text><text x="10" y="115" font-size="10" text-anchor="middle" fill="var(--muted)" transform="rotate(-90 10 115)">Actually landed</text>`;
   for (const [series, color] of [[before.bins, 'var(--muted)'], [after.bins, 'var(--accent)']]) {
     const pts = series.filter((b) => b.n >= 30);
-    h += `<polyline fill="none" stroke="${color}" stroke-width="2" points="${pts.map((b) => X(b.predicted) + ',' + Y(Math.max(0.4, b.actual))).join(' ')}"/>`;
-    for (const b of pts) h += `<circle cx="${X(b.predicted)}" cy="${Y(Math.max(0.4, b.actual))}" r="3" fill="${color}"><title>${pct(b.predicted)} predicted, ${pct(b.actual)} landed (${b.n} legs)</title></circle>`;
+    h += `<polyline fill="none" stroke="${color}" stroke-width="2" points="${pts.map((b) => X(b.predicted) + ',' + Y(Math.max(0.2, b.actual))).join(' ')}"/>`;
+    for (const b of pts) h += `<circle cx="${X(b.predicted)}" cy="${Y(Math.max(0.2, b.actual))}" r="3" fill="${color}"><title>${pct(b.predicted)} predicted, ${pct(b.actual)} landed (${b.n} legs)</title></circle>`;
   }
   svg.innerHTML = h;
   const near = (bins, p) => bins.reduce((a, b) => (Math.abs(b.predicted - p) < Math.abs(a.predicted - p) ? b : a), bins[0]);

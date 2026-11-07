@@ -37,12 +37,13 @@ HERE = Path(__file__).resolve().parent
 CACHE = HERE / "cache"
 OUT = DATA / "backtest.json"
 
-KEEP_LOW, KEEP_HIGH = 0.50, 0.97     # lines scored: those the default model rates in this range (the ones that become legs)
+KEEP_LOW, KEEP_HIGH = 0.35, 0.97     # lines scored: those the default model rates in this range (legs, plus the higher
+                                     # "next line up" legs the long shot and mid-range use)
 MIN_IMPROVEMENT = 0.002              # tuned settings must cut the newer seasons' log loss by at least 0.2%
 LIVE_MIN_LEGS = 150                  # graded live legs needed before a stat gets a calibration curve
 MIN_SAMPLES = 2000                   # per side (tuning / checking), or the run stops without changing anything
 LIVE_SHRINK = 150                    # curve is pulled halfway to "no change" at this many legs
-BINS = [0.50, 0.55, 0.60, 0.65, 0.70, 0.75, 0.80, 0.85, 0.90, 0.95, 1.0001]
+BINS = [0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.65, 0.70, 0.75, 0.80, 0.85, 0.90, 0.95, 1.0001]
 
 GRID = {
     "PRIOR_GAMES": [2, 4, 8, 12, 16, 24],
@@ -50,7 +51,11 @@ GRID = {
     "RECENT_GAMES": [3, 5, 8, 10, 15, 20],
     "RECENT_WEIGHT": [1.0, 1.25, 1.5, 2.0, 3.0, 4.0, 6.0],
     "OPP_WEIGHT": [0.0, 0.25, 0.5, 0.75, 1.0],
+    "B2B_CUT_STAR": [0.86, 0.90, 0.93, 0.95, 0.97, 1.0],
+    "B2B_CUT": [0.90, 0.94, 0.97, 1.0],
 }
+LINK_MIN_PAIRS = 1500                # pairs of legs needed before a same-game link is measured rather than assumed
+LINKS = ("SAME_GAME_REBOUNDS", "SAME_TEAM_POINTS", "SAME_GAME_OTHER")
 SPREAD_STEPS = [0.8, 0.9, 1.0, 1.1, 1.2, 1.35]
 
 
@@ -147,9 +152,11 @@ def samples(year: int, logs: dict[str, dict], prior_logs: dict[str, dict]) -> li
         pos = bucket(p["pos"])
         for i in range(MIN_GAMES, len(games)):
             before, g = games[:i], games[i]
-            if mean(x["min"] for x in before) < ROTATION_MINUTES:
+            avg_min = mean(x["min"] for x in before)
+            if avg_min < ROTATION_MINUTES:
                 continue
             d = g["date"][:10]
+            b2b = (date.fromisoformat(d) - date.fromisoformat(before[-1]["date"][:10])).days == 1
             for stat, key in STATS.items():
                 vals = [x[key] for x in before if x.get(key) is not None]
                 if len(vals) < MIN_GAMES or mean(vals) < MIN_STAT_AVG[stat] or g.get(key) is None:
@@ -163,6 +170,7 @@ def samples(year: int, logs: dict[str, dict], prior_logs: dict[str, dict]) -> li
                     "season": year, "stat": stat, "vals": vals, "actual": g[key],
                     "prior_mean": mean(prior_vals) if prior_vals else mean(vals), "prior_games": len(prior_vals),
                     "venue_shift": round(venue_shift, 2), "opp_factor": defence.factor(g.get("opp"), pos, stat, d),
+                    "pid": pid, "date": d, "team": g.get("team"), "opp": g.get("opp"), "b2b": b2b, "avg_min": avg_min,
                 })
     return out
 
@@ -172,7 +180,9 @@ def samples(year: int, logs: dict[str, dict], prior_logs: dict[str, dict]) -> li
 def _mean_sd(s: dict) -> tuple[float, float]:
     leg = Leg(leg_id="bt", player="bt", team="", game="", stat=s["stat"], line=LINES[s["stat"]][0], log=s["vals"],
               prior_mean=s["prior_mean"], prior_games=s["prior_games"], venue_shift=s["venue_shift"],
-              opp_factor=s["opp_factor"])
+              opp_factor=s["opp_factor"], avg_minutes=s.get("avg_min"),
+              proj_minutes=(s["avg_min"] * (model.B2B_CUT_STAR if s["avg_min"] >= 30 else model.B2B_CUT)
+                            if s.get("b2b") and s.get("avg_min") else s.get("avg_min")))
     r = evaluate(leg)
     return r.proj_mean, r.proj_sd
 
@@ -249,6 +259,41 @@ def tune(train: list[dict], rounds: int = 3) -> tuple[dict, float]:
         if not improved:
             break
     return best, best_ll
+
+
+# ---------- same-game links ----------
+
+def measure_links(data: list[dict]) -> dict[str, dict]:
+    """How much two legs in the same game land or miss together, beyond what their chances say.
+    For each pair of different players in one game (each at the line nearest 75%), the average of
+    (landed - chance) / sd multiplied together estimates the correlation the multi maths uses."""
+    games = defaultdict(list)
+    for s in data:
+        if not s.get("lines") or not s.get("team") or not s.get("opp"):
+            continue
+        m, sd = _mean_sd(s)
+        ln, p = min(((ln, _prob(ln, m, sd)) for ln in s["lines"]), key=lambda x: abs(x[1] - 0.75))
+        p = min(max(p, 0.02), 0.98)
+        z = ((1.0 if s["actual"] >= ln else 0.0) - p) / math.sqrt(p * (1 - p))
+        games[(s["date"], tuple(sorted((s["team"], s["opp"]))))].append((s["pid"], s["team"], s["stat"], z))
+    sums = defaultdict(float)
+    counts = defaultdict(int)
+    for rows in games.values():
+        for i in range(len(rows)):
+            for j in range(i + 1, len(rows)):
+                a, b = rows[i], rows[j]
+                if a[0] == b[0]:
+                    continue  # same player: multis never use two of his legs
+                if a[2] == "rebounds" and b[2] == "rebounds":
+                    k = "SAME_GAME_REBOUNDS"
+                elif a[1] == b[1] and a[2] == "points" and b[2] == "points":
+                    k = "SAME_TEAM_POINTS"
+                else:
+                    k = "SAME_GAME_OTHER"
+                sums[k] += a[3] * b[3]
+                counts[k] += 1
+    return {k: {"pairs": counts[k], "r": round(max(-0.3, min(0.3, sums[k] / counts[k])), 3) if counts[k] else None}
+            for k in LINKS}
 
 
 # ---------- live calibration ----------
@@ -334,6 +379,12 @@ def main() -> None:
     better = prev_test - new_test >= MIN_IMPROVEMENT * prev_test
     final = tuned if better else previous
     apply_settings(final)
+    links = measure_links(train + test)
+    for k, v in links.items():
+        if v["r"] is not None and v["pairs"] >= LINK_MIN_PAIRS:
+            final[k] = v["r"]
+            log.info("measured %s = %+.3f from %d pairs (was %+.3f)", k, v["r"], v["pairs"], defaults[k])
+    apply_settings(final)
     after = {"train": score(train), "test": score(test)}
     applied = final != defaults
     log.info("newer seasons log loss: hand-set %.4f, in use %.4f, new tune %.4f (%s)", before["test"]["log_loss"],
@@ -352,7 +403,7 @@ def main() -> None:
         "updated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "seasons": {"tuned_on": f"{cur - 3}-{str(cur - 2)[2:]}", "checked_on": f"{cur - 2}-{str(cur - 1)[2:]} and {cur - 1}-{str(cur)[2:]} so far"},
         "samples": {"train": len(train), "test": len(test)},
-        "applied": applied, "defaults": defaults, "tuned": final, "changed_this_week": better,
+        "applied": applied, "defaults": defaults, "tuned": final, "changed_this_week": better, "links": links,
         "before": before, "after": after,
         "live": {"summary": live_summary, "curves": curves, "min_legs": LIVE_MIN_LEGS},
     }, indent=1))
