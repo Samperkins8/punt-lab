@@ -113,7 +113,7 @@
 
   <section class="card" id="value" hidden>
     <h2>Value legs</h2>
-    <p class="sub">Legs where the best bookie's price beats the model's chance, best value first. These are worth most as singles or doubles: every extra leg in a multi adds the bookie's margin again.</p>
+    <p class="sub">Legs where the best bookie's price beats the model's chance, best value first. These are worth most as singles or doubles: every extra leg in a multi adds the bookie's margin again. A very big edge (marked "check news") usually means the model is missing something, like a minutes limit or a role change, so check before betting.</p>
     <div class="scroll"><table class="cards" id="value-legs">
       <thead><tr><th>Player</th><th>Leg</th><th class="num">Model</th><th class="num">Best price</th><th class="num">Value</th><th class="num">Single stake</th><th>Game</th></tr></thead>
       <tbody></tbody>
@@ -310,7 +310,7 @@ function valueLegs(legs) {
     cell(tr, l.player, 'nowrap c-player'); cell(tr, l.market, 'nowrap c-leg');
     cell(tr, pct(l.model_prob), 'num strong', 'Model');
     cell(tr, bestPrice(l), 'num nowrap', 'Best price');
-    cell(tr, '+' + Math.round(ev * 100) + 'c per $1', 'num good nowrap', 'Value');
+    cell(tr, '+' + Math.round(ev * 100) + 'c per $1' + (ev > 0.15 ? ' · check news' : ''), 'num nowrap ' + (ev > 0.15 ? '' : 'good'), 'Value');
     const f = stakeFor(l.model_prob, l.best_price);
     cell(tr, f ? (f * 100).toFixed(2).replace(/\.?0+$/, '') + '%' : '', 'num', 'Single stake');
     cell(tr, l.game, 'muted nowrap c-wide');

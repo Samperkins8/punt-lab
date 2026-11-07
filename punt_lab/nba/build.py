@@ -415,6 +415,23 @@ def trim(cands):
 
 # ---------------------------------------------------------------- output
 
+def select(found, upcoming):
+    """Trim the candidate legs, pick the multis, and keep only the legs worth listing."""
+    extra_kinds = ("step_up", "long_only")
+    main_legs = trim([c for c in found if not any(c[0].extra.get(k) for k in extra_kinds)])
+    keep_players = {c[0].player for c in main_legs}
+    step_ups = [c for c in found if c[0].extra.get("step_up") and c[0].player in keep_players]
+    safe_legs = [c for c in found if c[0].extra.get("long_only")] + match_winners(upcoming)
+    cands = main_legs + step_ups + safe_legs
+    chosen = pick.choose(cands)
+    used = {i for k, v in chosen.items() if not k.startswith("_") for i in v}
+    kept = [i for i in range(len(cands)) if i < len(main_legs) or i in used]
+    remap = {old: new for new, old in enumerate(kept)}
+    cands = [cands[i] for i in kept]
+    chosen = {k: (v if k.startswith("_") else [remap[i] for i in v]) for k, v in chosen.items()}
+    return cands, chosen
+
+
 def explain(leg: Leg, res) -> str:
     """One plain sentence or three on why this leg's prediction is what it is."""
     if leg.stat == "win":
@@ -562,29 +579,21 @@ def main() -> None:
     ai_inj = ai.read_injuries(ai_rows[:120]) if teams_today else {}
 
     found = analyse(slate, upcoming, ov, inj, ai_inj, prices)
+    cands, chosen = select(found, upcoming)
     if args.mode == "daily" and odds.enabled() and found:
-        # second pass: price only the games and stats today's legs need (ESPN data is cached, so this is quick)
+        # second pass: price the games and stats the multis use first, then the other listed legs
+        # (ESPN data is cached, so re-analysing is quick)
         names = {f"{g['away']} @ {g['home']}": (g["home_name"], g["away_name"]) for g in upcoming}
+        in_multis = {i for k, v in chosen.items() if not k.startswith("_") for i in v}
         wanted: dict = {}
-        for l, _ in found:
+        for i, (l, _) in enumerate(cands):
             if l.stat != "win" and l.game in names:
                 st = wanted.setdefault(names[l.game], {})
-                st[l.stat] = st.get(l.stat, 0) + 1
+                st[l.stat] = st.get(l.stat, 0) + (10 if i in in_multis else 1)
         prices = odds.fetch(upcoming, wanted)
         if prices["books"] or prices["market"]:
             found = analyse(slate, upcoming, ov, inj, ai_inj, prices)
-    extra_kinds = ("step_up", "long_only")
-    main_legs = trim([c for c in found if not any(c[0].extra.get(k) for k in extra_kinds)])
-    keep_players = {c[0].player for c in main_legs}
-    step_ups = [c for c in found if c[0].extra.get("step_up") and c[0].player in keep_players]
-    safe_legs = [c for c in found if c[0].extra.get("long_only")] + match_winners(upcoming)
-    cands = main_legs + step_ups + safe_legs
-    chosen = pick.choose(cands)
-    used = {i for k, v in chosen.items() if not k.startswith("_") for i in v}
-    kept = [i for i in range(len(cands)) if i < len(main_legs) or i in used]
-    remap = {old: new for new, old in enumerate(kept)}
-    cands = [cands[i] for i in kept]
-    chosen = {k: (v if k.startswith("_") else [remap[i] for i in v]) for k, v in chosen.items()}
+            cands, chosen = select(found, upcoming)
     legs_out = [leg_row(l, r) for l, r in cands]
     multis_out = multi_rows(cands, chosen)
 

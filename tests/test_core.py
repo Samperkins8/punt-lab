@@ -203,3 +203,20 @@ def test_long_shot_uses_higher_lines_to_reach_fifty():
     assert pick._price(cands, sorted(range(len(cands)), key=lambda i: -cands[i][1].model_prob)[:15]) < 50
     mid = chosen["Mid-range $8+"]
     assert pick._price(cands, mid) >= 8
+
+
+def test_mid_range_is_close_to_the_best_possible():
+    from itertools import combinations
+    from punt_lab.nba import pick
+    from punt_lab.nba.model import multi_chance
+    cands = []
+    for k in range(14):
+        cands.append(_fake(f"P{k}", f"G{k % 7}", 0.84 - 0.003 * k, 1.22))           # safe legs
+        cands.append(_fake(f"P{k}", f"G{k % 7}", 0.45 - 0.003 * k, 2.10, step=True))  # long next lines
+    mid = pick.choose(cands)["Mid-range $8+"]
+    got = multi_chance([cands[i][0] for i in mid], [cands[i][1].model_prob for i in mid])
+    best = 0.0
+    for combo in combinations(range(len(cands)), 6):
+        if pick._ok_combo([cands[i][0] for i in combo]) and pick._price(cands, combo) >= 8:
+            best = max(best, multi_chance([cands[i][0] for i in combo], [cands[i][1].model_prob for i in combo]))
+    assert got >= 0.9 * best

@@ -189,7 +189,10 @@ def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
         out.setdefault("_notes", []).append(note)
 
     # Mid-range: 6 (or 7) legs, highest chance with an estimated price of $8+
-    mid_pool = sorted(_value_pool(cands, every_any), key=lambda i: _chance_cost(*cands[i]))[:MID_POOL]
+    vp = _value_pool(cands, every_any)
+    by_value = sorted(vp, key=lambda i: _chance_cost(*cands[i]))
+    by_chance = sorted(vp, key=lambda i: -cands[i][1].model_prob)
+    mid_pool = list(dict.fromkeys(by_chance[:MID_POOL // 2] + by_value))[:MID_POOL]  # half safest, half best value
     mid, note = _target_multi(cands, mid_pool, MID_LEGS, MID_TARGET, chance, multi_price)
     if mid:
         out["Mid-range $8+"] = mid
