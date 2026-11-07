@@ -22,6 +22,8 @@ MID_POOL = 22             # legs searched for the mid-range multi (most likely f
 SHOT_TARGET = 50.00       # long shot: keep adding the most likely legs until the price passes this
 SHOT_MAX_LEGS = 15        # but never more than this many legs
 SHOT_MIN_PRICE = 20.00    # if the slate can't get the long shot this far, leave it out
+SHOT_MIN_PROB = 0.40      # no long-shot / mid-range leg less likely than this
+WIDE_STEP_MIN = 0.55      # step-up legs used by the $2+ multis must be at least this likely
 PER_GAME_MAX = 8          # one-per-game multi: at most this many games
 
 
@@ -146,7 +148,8 @@ def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
         all_worth = True
         out.setdefault("_notes", []).append("no 3-leg value multi pays $2, so it's left out")
     # $2+ multis: highest chance all land, with the estimated Sportsbet price at least $2.00
-    wide = idx[:WIDE_POOL] + [i for i in every if cands[i][0].extra.get("step_up")][:WIDE_POOL]
+    wide = idx[:WIDE_POOL] + [i for i in every if cands[i][0].extra.get("step_up")
+                              and cands[i][1].model_prob >= WIDE_STEP_MIN][:WIDE_POOL]
 
     targets = {4: [("4-leg $2+", 2.0), ("4-leg $3+", 3.0), ("4-leg $4+", 4.0)], 3: [("3-leg $2+", 2.0)]}
     for n, wanted in targets.items():
@@ -186,7 +189,7 @@ def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
         out.setdefault("_notes", []).append(note)
 
     # Mid-range: 6 (or 7) legs, highest chance with an estimated price of $8+
-    mid_pool = sorted(wide, key=lambda i: -cands[i][1].model_prob)[:MID_POOL]
+    mid_pool = sorted(_value_pool(cands, every_any), key=lambda i: _chance_cost(*cands[i]))[:MID_POOL]
     mid, note = _target_multi(cands, mid_pool, MID_LEGS, MID_TARGET, chance, multi_price)
     if mid:
         out["Mid-range $8+"] = mid
@@ -258,21 +261,74 @@ def _target_multi(cands, pool, sizes, target, chance, multi_price) -> tuple[list
     return None, f"not enough legs that fit together for a {sizes[0]}-leg mid-range multi"
 
 
+def _chance_cost(leg: Leg, res: LegResult) -> float:
+    """Chance given up per unit of (log) price gained. Lower is better: the cheapest way to add price."""
+    price = _assumed_price(leg, res)
+    if price <= 1.01 or res.model_prob <= 0:
+        return math.inf
+    return -math.log(res.model_prob) / math.log(price)
+
+
+def _value_pool(cands, ordered: list[int]) -> list[int]:
+    return [i for i in ordered if cands[i][1].model_prob >= SHOT_MIN_PROB and _chance_cost(*cands[i]) < math.inf]
+
+
 def _long_shot(cands, ordered: list[int]) -> tuple[list[int] | None, str]:
-    """Walk the eligible legs from most to least likely, adding each one that fits,
-    until the estimated price passes SHOT_TARGET (or SHOT_MAX_LEGS is reached)."""
+    """Reach SHOT_TARGET in at most SHOT_MAX_LEGS legs while giving up as little chance as possible.
+    Take legs (one per player) in order of chance given up per unit of price, until the price passes
+    the target; then swap each leg for a more likely unused one wherever the price still clears it."""
+    pool = sorted(_value_pool(cands, ordered), key=lambda i: _chance_cost(*cands[i]))
     combo: list[int] = []
-    price = 1.0
-    for i in ordered:
-        if price >= SHOT_TARGET or len(combo) >= SHOT_MAX_LEGS:
+    for i in pool:
+        if _price(cands, combo) >= SHOT_TARGET or len(combo) >= SHOT_MAX_LEGS:
             break
         if _ok_combo([cands[j][0] for j in combo + [i]]):
             combo.append(i)
-            price *= _assumed_price(*cands[i])
+    if _price(cands, combo) >= SHOT_TARGET:
+        combo = _improve(cands, combo, pool, SHOT_TARGET, SHOT_MAX_LEGS)
+    price = _price(cands, combo)
     if len(combo) < 5 or price < SHOT_MIN_PRICE:
         return None, f"not enough legs on the slate for a long shot (only about ${price:.0f})"
     note = "" if price >= SHOT_TARGET else f"the long shot only reaches about ${price:.0f} with {len(combo)} legs"
-    return combo, note
+    return sorted(combo, key=lambda i: -cands[i][1].model_prob), note
+
+
+def _improve(cands, combo: list[int], pool: list[int], target: float, max_legs: int) -> list[int]:
+    """Local search: swap one leg for a more likely one, or one leg for two, whenever the price
+    still clears the target and the chance all land goes up."""
+    def chance(c):
+        p = 1.0
+        for i in c:
+            p *= cands[i][1].model_prob
+        return p
+
+    def ok(c):
+        return len(c) <= max_legs and _ok_combo([cands[j][0] for j in c]) and _price(cands, c) >= target
+
+    best = chance(combo)
+    improved = True
+    while improved:
+        improved = False
+        unused = [i for i in pool if i not in combo]
+        for pos in range(len(combo)):
+            rest = combo[:pos] + combo[pos + 1:]
+            options = [[a] for a in unused] + [[a, b] for k, a in enumerate(unused) for b in unused[k + 1:]]
+            for add in options:
+                trial = rest + add
+                c = chance(trial)
+                if c > best * 1.0001 and ok(trial):
+                    combo, best, improved = trial, c, True
+                    break
+            if improved:
+                break
+    return combo
+
+
+def _price(cands, combo) -> float:
+    price = 1.0
+    for i in combo:
+        price *= _assumed_price(*cands[i])
+    return price
 
 
 def _one_per_game(cands, ordered: list[int], multi_price) -> tuple[list[int] | None, str]:

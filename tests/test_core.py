@@ -178,3 +178,28 @@ def test_every_multi_pays_two_dollars_and_one_per_game():
         assert price >= pick.MIN_MULTI, name
     games = [cands[i][0].game for i in chosen["One per game"]]
     assert len(games) == len(set(games)) == 6
+
+
+def _fake(name, game, prob, price, step=False):
+    from punt_lab.nba.model import Leg, LegResult
+    l = Leg(leg_id=f"{name}{'s' if step else ''}", player=name, team=game, game=game, stat="points", line=20 if step else 15,
+            log=[18] * 8, prior_mean=18, prior_games=60, odds=price, extra={"step_up": step})
+    return l, LegResult(prob, 0, 1, 1, 18, 4, None, None, prob, 1 / price, prob - 1 / price)
+
+
+def test_long_shot_uses_higher_lines_to_reach_fifty():
+    from punt_lab.nba import pick
+    from punt_lab.nba.model import multi_chance
+    cands = []
+    for k in range(20):
+        cands.append(_fake(f"P{k}", f"G{k % 8}", 0.83 - 0.002 * k, 1.20))           # likely, short-priced
+        cands.append(_fake(f"P{k}", f"G{k % 8}", 0.62 - 0.004 * k, 1.70, step=True))  # next line up
+    chosen = pick.choose(cands)
+    shot = chosen["Long shot $50"]
+    price = pick._price(cands, shot)
+    assert price >= 50 and len(shot) <= pick.SHOT_MAX_LEGS
+    assert len({cands[i][0].player for i in shot}) == len(shot)
+    # beats simply stacking the most likely legs (which can't even reach $50 in 15 legs here)
+    assert pick._price(cands, sorted(range(len(cands)), key=lambda i: -cands[i][1].model_prob)[:15]) < 50
+    mid = chosen["Mid-range $8+"]
+    assert pick._price(cands, mid) >= 8

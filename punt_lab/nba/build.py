@@ -30,7 +30,7 @@ MIN_GAMES = 3
 TARGET_LOW = 0.70   # lowest model chance worth listing as a leg
 WIN_MARGIN = 0.95   # head-to-head prices carry a smaller bookie margin than player props
 WIN_SD = 12.0       # points: spread -> win chance
-STEP_UP_LOW = 0.55  # a player's next line up is kept for the $2+ multis if at least this likely
+STEP_UP_LOW = 0.40  # a player's next line up is kept if at least this likely ($2+ multis only use those 55%+; see pick.py)
 VENUE_GAMES = 8     # home/away split is halfway with this many matching games
 PACE_WEIGHT = {"points": 0.5, "assists": 0.5, "threes": 0.5, "rebounds": 0.3}
 B2B_HOURS = 30      # a game within this many hours of the last one is a back-to-back
@@ -360,7 +360,7 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
                         res = evaluate(leg)
                         if res.model_prob < TARGET_LOW:
                             if best and not risky and res.model_prob >= STEP_UP_LOW:
-                                leg.extra["step_up"] = True  # longer leg, only used to reach $2+ multis
+                                leg.extra["step_up"] = True  # longer leg, only used to reach a target price
                                 cands.append((leg, res))
                             break  # higher lines only get less likely
                         if pick.long_ok(leg, res):
