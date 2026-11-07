@@ -300,7 +300,11 @@ function trackRecord(results, multiResults) {
   const showMultis = () => {
     const v = pickEl.value;
     const want = v === 'all' ? sorted : v === '$2' ? sorted.filter((m) => m.multi.endsWith('$2+')) : v === '4leg' ? sorted.filter((m) => /^4-leg \$\d\+$/.test(m.multi)) : sorted.filter((m) => m.multi === v);
-    box.replaceChildren(...(want.length ? want : sorted).map((m) => multiCard(m, byId)));
+    if (want.length) { box.replaceChildren(...want.map((m) => multiCard(m, byId))); return; }
+    const msg = document.createElement('p'); msg.className = 'empty';
+    const why = (report.headline || '').match(/Note: (.*)/);
+    msg.textContent = 'No "' + pickEl.selectedOptions[0].text + '" today' + (why ? ' (' + why[1] + ')' : '') + '. It appears after the next run if the slate allows.';
+    box.replaceChildren(msg);
   };
   pickEl.addEventListener('change', () => { try { localStorage.setItem('punt-lab-multi', pickEl.value); } catch (e) {} showMultis(); });
   showMultis();
