@@ -58,3 +58,26 @@ def test_oddspapi_parse_and_merge():
     assert merged["books"][("jamal murray", "points", 20)] == {"neds": 1.5, "sportsbet": 1.46}
     assert merged["market"][("jamal murray", "points")][0] == 24.5
     assert oddspapi.player_key("Jackson Jr., Jaren") == "jaren jackson jr."
+
+
+def test_h2h_rows(monkeypatch):
+    from datetime import datetime
+    from punt_lab.nba import espn
+
+    class R:
+        headers = {"x-requests-remaining": "300"}
+        def json(self):
+            return [{"home_team": "Los Angeles Lakers", "away_team": "Portland Trail Blazers", "bookmakers": [
+                {"key": "sportsbet", "markets": [{"key": "h2h", "outcomes": [{"name": "Los Angeles Lakers", "price": 1.55},
+                                                                             {"name": "Portland Trail Blazers", "price": 2.50}]}]},
+                {"key": "neds", "markets": [{"key": "h2h", "outcomes": [{"name": "Los Angeles Lakers", "price": 1.57}]}]},
+                {"key": "betfair_ex_au", "markets": [{"key": "h2h", "outcomes": [{"name": "Los Angeles Lakers", "price": 1.60}]},
+                                                     {"key": "h2h_lay", "outcomes": [{"name": "Los Angeles Lakers", "price": 1.62},
+                                                                                     {"name": "Portland Trail Blazers", "price": 2.66}]}]}]}]
+    monkeypatch.setenv("ODDS_API_KEY", "x")
+    monkeypatch.setattr(odds.requests, "get", lambda *a, **k: R())
+    start = datetime(2026, 11, 8, 11, 0, tzinfo=espn.MELB)
+    rows = odds.fetch_h2h([{"home_name": "Los Angeles Lakers", "away_name": "Portland Trail Blazers", "home": "LAL", "away": "POR", "start": start}])
+    lal = next(r for r in rows if r["team"] == "Los Angeles Lakers")
+    assert lal["best_book"] == "neds" and lal["best_back"] == 1.57 and lal["lay"] == 1.62 and lal["game"] == "POR @ LAL"
+    assert "betfair_ex_au" not in lal["books"]

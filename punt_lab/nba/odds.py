@@ -173,3 +173,47 @@ def best(books: dict[str, float] | None) -> tuple[str | None, float | None]:
 def typical(books: dict[str, float] | None) -> float | None:
     """The median bookie's price: what a leg pays without shopping around."""
     return round(median(books.values()), 2) if books else None
+
+
+def fetch_h2h(games: list[dict]) -> list[dict]:
+    """Head-to-head prices for today's games at every Australian bookie, plus Betfair's lay price,
+    for the promo page (best game to use a bonus bet on). One request for the whole slate,
+    costing 2 credits (2 markets x 1 region)."""
+    if not enabled() or not games:
+        return []
+    starts = [g["start"] for g in games]
+    fmt = "%Y-%m-%dT%H:%M:%SZ"
+    from datetime import timedelta, timezone
+    lo = (min(starts) - timedelta(hours=1)).astimezone(timezone.utc).strftime(fmt)
+    hi = (max(starts) + timedelta(hours=1)).astimezone(timezone.utc).strftime(fmt)
+    try:
+        r = requests.get(f"{BASE}/odds", timeout=30, params={
+            "apiKey": os.environ["ODDS_API_KEY"], "regions": "au", "markets": "h2h,h2h_lay",
+            "oddsFormat": "decimal", "commenceTimeFrom": lo, "commenceTimeTo": hi})
+        data = r.json()
+        log.info("Odds API head-to-head: %d games; credits left %s", len(data) if isinstance(data, list) else 0,
+                 r.headers.get("x-requests-remaining"))
+    except (requests.RequestException, ValueError) as e:
+        log.warning("Odds API head-to-head failed: %s", e)
+        return []
+    abbr = {(g["home_name"], g["away_name"]): (f"{g['away']} @ {g['home']}", g["start"]) for g in games}
+    rows = []
+    for ev in data if isinstance(data, list) else []:
+        label, start = abbr.get((ev.get("home_team"), ev.get("away_team")), (f"{ev.get('away_team')} @ {ev.get('home_team')}", None))
+        back: dict[str, dict[str, float]] = {}
+        lay: dict[str, float] = {}
+        for book in ev.get("bookmakers", []):
+            for mk in book.get("markets", []):
+                for oc in mk.get("outcomes", []):
+                    team, price = oc.get("name"), oc.get("price")
+                    if not team or not price or price <= 1:
+                        continue
+                    if mk.get("key") == "h2h_lay":
+                        lay[team] = float(price)
+                    elif mk.get("key") == "h2h" and not book.get("key", "").startswith("betfair"):
+                        back.setdefault(team, {})[book["key"]] = float(price)
+        for team, books in back.items():
+            bk = max(books, key=books.get)
+            rows.append({"game": label, "tip": start.strftime("%-I:%M%p").lower() if start else None, "team": team,
+                         "books": books, "best_book": bk, "best_back": books[bk], "lay": lay.get(team)})
+    return rows

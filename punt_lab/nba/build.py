@@ -662,6 +662,8 @@ def main() -> None:
         for k in ("late_checked", "late_refreshes", "late_log"):
             if prev.get(k):
                 report[k] = prev[k]
+    if args.mode == "daily":
+        save_json("h2h.json", odds.fetch_h2h(upcoming))  # for the promo page; 2 credits
     save_json("legs.json", legs_out)
     save_json("multis.json", multis_out)
     save_json("slate.json", slate_out)
