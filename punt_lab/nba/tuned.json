@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-07T07:54:29+00:00",
+ "updated": "2026-11-07T09:58:04+00:00",
  "settings": {
   "SPREAD": {
    "points": 0.416,
@@ -11,7 +11,12 @@
   "SPREAD_GAMES": 32,
   "RECENT_GAMES": 10,
   "RECENT_WEIGHT": 3.0,
-  "OPP_WEIGHT": 0.25
+  "OPP_WEIGHT": 0.25,
+  "B2B_CUT_STAR": 0.95,
+  "B2B_CUT": 0.97,
+  "SAME_GAME_REBOUNDS": 0.053,
+  "SAME_TEAM_POINTS": 0.028,
+  "SAME_GAME_OTHER": 0.048
  },
  "calibration": {}
 }
