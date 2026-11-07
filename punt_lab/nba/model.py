@@ -1,8 +1,10 @@
 """The leg and multi model. Mirrors the NBA Daily Multi dashboard exactly."""
 from __future__ import annotations
 
+import json
 import math
 from dataclasses import dataclass, field
+from pathlib import Path
 from statistics import mean, pstdev
 
 SPREAD = {"points": 0.28, "rebounds": 0.32, "assists": 0.38, "threes": 0.55}
@@ -16,6 +18,43 @@ H2H_WEIGHT = 0.5         # last season's head-to-head (also scaled by roster ove
 H2H_GAMES = 4            # head-to-head is halfway with this many games
 RECENT_GAMES = 5         # the most recent games...
 RECENT_WEIGHT = 1.5      # ...count this much more than older ones
+
+# Settings the weekly backtest is allowed to tune (see backtest.py). Values above are the
+# hand-set defaults; tuned.json, when present, replaces them.
+TUNABLE = ("SPREAD", "PRIOR_GAMES", "SPREAD_GAMES", "RECENT_GAMES", "RECENT_WEIGHT", "OPP_WEIGHT")
+TUNED_FILE = Path(__file__).with_name("tuned.json")
+CALIBRATION: dict[str, list[list[float]]] = {}  # stat -> [[model chance, actual landed], ...] from graded live legs
+CALIBRATE = True  # the backtest turns this off to see the raw model
+
+
+def load_tuned(path: Path = TUNED_FILE) -> dict:
+    global CALIBRATION
+    try:
+        data = json.loads(path.read_text())
+    except (OSError, ValueError):
+        return {}
+    g = globals()
+    for k, v in (data.get("settings") or {}).items():
+        if k in TUNABLE:
+            g[k] = dict(v) if isinstance(v, dict) else v
+    CALIBRATION = data.get("calibration") or {}
+    return data
+
+
+def calibrate(stat: str, p: float) -> float:
+    """Map a raw model chance through the curve fitted on graded live legs (straight-line between points)."""
+    pts = CALIBRATION.get(stat) if CALIBRATE else None
+    if not pts:
+        return p
+    if p <= pts[0][0]:
+        return p + (pts[0][1] - pts[0][0])
+    if p >= pts[-1][0]:
+        return min(0.995, p + (pts[-1][1] - pts[-1][0]))
+    for (x0, y0), (x1, y1) in zip(pts, pts[1:]):
+        if x0 <= p <= x1:
+            return y0 + (y1 - y0) * (p - x0) / (x1 - x0) if x1 > x0 else y0
+    return p
+
 
 # Same-game links between legs in a multi
 SAME_GAME_REBOUNDS = -0.15
@@ -85,13 +124,14 @@ class LegResult:
     model_prob: float
     implied: float | None
     edge: float | None
+    raw_prob: float | None = None  # model chance before the live calibration curve
 
 
 def evaluate(leg: Leg) -> LegResult:
     xs = leg.log
     n = len(xs)
     m = mean(xs)
-    weights = [RECENT_WEIGHT if i >= n - RECENT_GAMES else 1.0 for i in range(n)]
+    weights = [RECENT_WEIGHT if i >= n - int(RECENT_GAMES) else 1.0 for i in range(n)]
     m_recent = sum(w * x for w, x in zip(weights, xs)) / sum(weights)
     sd = pstdev(xs) if n > 1 else 0.0
     k = PRIOR_GAMES * min(1.0, leg.prior_games / PRIOR_FULL_SEASON)
@@ -124,12 +164,13 @@ def evaluate(leg: Leg) -> LegResult:
         fair_price = 1 / market_prob if market_prob > 0 else None
         final_mean = MARKET_WEIGHT * market_mean + (1 - MARKET_WEIGHT) * proj_mean
 
-    model_prob = 1 - norm_cdf((leg.line - 0.5 - final_mean) / proj_sd)
+    raw_prob = 1 - norm_cdf((leg.line - 0.5 - final_mean) / proj_sd)
+    model_prob = calibrate(leg.stat, raw_prob)
     hit_rate = sum(1 for x in xs if x >= leg.line) / n
     implied = 1 / leg.odds if leg.odds else None
     edge = model_prob - implied if implied is not None else None
     return LegResult(hit_rate, context_shift, matchup, minutes_factor, final_mean, proj_sd,
-                     market_mean, fair_price, model_prob, implied, edge)
+                     market_mean, fair_price, model_prob, implied, edge, raw_prob)
 
 
 def pair_link(a: Leg, b: Leg) -> float:
@@ -164,3 +205,6 @@ def american_to_prob(odds: float) -> float:
 def no_vig_over(over_american: float, under_american: float) -> float:
     o, u = american_to_prob(over_american), american_to_prob(under_american)
     return o / (o + u)
+
+
+load_tuned()

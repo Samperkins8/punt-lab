@@ -43,6 +43,16 @@ Without them everything still runs on free ESPN data and rules.
 See "How the multis are picked" at the bottom of the NBA page, or `punt_lab/nba/model.py`.
 All settings are named constants at the top of that file; tune them once the track record has a few weeks of results.
 
+### Weekly tune
+
+Every Monday at about 12:15pm Melbourne (`.github/workflows/tune.yml`, or run it by hand under Actions → NBA weekly tune):
+
+- **Backtest**: replays the last two seasons and this one so far through the model, using only what was known before each game, and scores every leg against what happened.
+- **Tune**: adjusts the model settings on the older season and keeps them only if they also predict better on the newer seasons. Saved to `punt_lab/nba/tuned.json`, which the daily run loads.
+- **Live correction**: once a stat has 150+ graded daily legs, a calibration curve nudges its percentages towards what actually landed.
+
+Results are on the NBA page under "How honest are the percentages?". Finished seasons' ESPN game logs are cached in `punt_lab/nba/cache` so later runs are quick.
+
 ### Tests
 
 ```

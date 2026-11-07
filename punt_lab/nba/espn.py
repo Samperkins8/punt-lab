@@ -197,6 +197,19 @@ def injuries() -> dict[str, dict]:
 STAT_LABEL = {"points": "PTS", "rebounds": "REB", "assists": "AST", "threes": "3PT", "minutes": "MIN"}
 
 
+def team_roster(team_id: str) -> list[dict]:
+    """[{id, name, pos}] for a team's current roster."""
+    data = get(f"{SITE}/teams/{team_id}/roster")
+    out = []
+    for a in data.get("athletes", []):
+        items = a.get("items") if isinstance(a, dict) and "items" in a else [a]
+        for x in items:
+            if x.get("id"):
+                out.append({"id": str(x["id"]), "name": x.get("displayName"),
+                            "pos": (x.get("position") or {}).get("abbreviation")})
+    return out
+
+
 def last_season_log(athlete_id: str, season_end_year: int) -> dict:
     """{'games': [{opp, pts, reb, ast, threes, min}], 'gp': int}"""
     data = get(f"{WEB}/athletes/{athlete_id}/gamelog", {"season": season_end_year})
@@ -220,5 +233,6 @@ def last_season_log(athlete_id: str, season_end_year: int) -> dict:
                     "team": (info.get("team") or {}).get("abbreviation"),
                     "pts": _num(s("PTS")), "reb": _num(s("REB")), "ast": _num(s("AST")),
                     "threes": _made(s("3PT")), "min": _minutes(s("MIN")),
+                    "date": info.get("gameDate"), "home": None if not info.get("atVs") else info.get("atVs") != "@",
                 })
     return {"games": games, "gp": len(games)}

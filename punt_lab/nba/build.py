@@ -107,7 +107,7 @@ def grade_previous(today: date) -> str:
         landed_by_leg[leg["leg_id"]] = landed
         results.append({
             "slate_date": prev, "leg_id": leg["leg_id"], "player": leg["player"], "game": leg["game"],
-            "market": leg["market"], "line": leg["line"], "model_prob": leg["model_prob"],
+            "market": leg["market"], "line": leg["line"], "model_prob": leg["model_prob"], "raw_prob": leg.get("raw_prob"),
             "odds": leg.get("odds"), "fair_price": leg.get("fair_price"), "actual": actual, "landed": landed,
             "in_multis": ", ".join(m["multi"] for m in multis if leg["leg_id"] in m["leg_ids"]),
         })
@@ -459,6 +459,7 @@ def leg_row(leg: Leg, res) -> dict:
         "context_shift": round(res.context_shift, 2), "minutes_factor": round(res.minutes_factor, 3),
         "avg_minutes": leg.avg_minutes, "proj_minutes": leg.proj_minutes,
         "proj_mean": round(res.proj_mean, 1), "model_prob": round(res.model_prob, 4),
+        "raw_prob": round(res.raw_prob, 4) if res.raw_prob is not None else None,
         "fair_price": round(res.fair_price, 2) if res.fair_price else None,
         "implied": round(res.implied, 4) if res.implied else None,
         "edge": round(res.edge, 4) if res.edge is not None else None,
