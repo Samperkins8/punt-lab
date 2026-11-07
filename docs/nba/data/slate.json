@@ -2,74 +2,74 @@
  {
   "game": "WSH @ ATL",
   "tip": "11:00am",
-  "favourite": "ATL",
-  "spread": -8.5,
-  "total": 227.5,
-  "fav_win_prob": 0.761,
-  "status": "Analysed"
+  "favourite": null,
+  "spread": null,
+  "total": null,
+  "fav_win_prob": null,
+  "status": "Started"
  },
  {
   "game": "BOS @ CHA",
   "tip": "11:00am",
-  "favourite": "BOS",
-  "spread": -10.5,
-  "total": 207.5,
-  "fav_win_prob": 0.809,
-  "status": "Analysed"
+  "favourite": null,
+  "spread": null,
+  "total": null,
+  "fav_win_prob": null,
+  "status": "Started"
  },
  {
   "game": "PHI @ CLE",
   "tip": "11:30am",
-  "favourite": "PHI",
-  "spread": -2.5,
-  "total": 231.5,
-  "fav_win_prob": 0.583,
-  "status": "Analysed"
+  "favourite": null,
+  "spread": null,
+  "total": null,
+  "fav_win_prob": null,
+  "status": "Started"
  },
  {
   "game": "UTAH @ DAL",
   "tip": "12:00pm",
-  "favourite": "DAL",
-  "spread": -6.5,
-  "total": 225.5,
-  "fav_win_prob": 0.706,
-  "status": "Analysed"
+  "favourite": null,
+  "spread": null,
+  "total": null,
+  "fav_win_prob": null,
+  "status": "Started"
  },
  {
   "game": "OKC @ MEM",
   "tip": "12:00pm",
-  "favourite": "OKC",
-  "spread": -4.5,
-  "total": 223.5,
-  "fav_win_prob": 0.646,
-  "status": "Analysed"
+  "favourite": null,
+  "spread": null,
+  "total": null,
+  "fav_win_prob": null,
+  "status": "Started"
  },
  {
   "game": "TOR @ MIL",
   "tip": "12:00pm",
-  "favourite": "TOR",
-  "spread": -4.5,
-  "total": 229.5,
-  "fav_win_prob": 0.646,
-  "status": "Analysed"
+  "favourite": null,
+  "spread": null,
+  "total": null,
+  "fav_win_prob": null,
+  "status": "Started"
  },
  {
   "game": "MIN @ NO",
   "tip": "12:00pm",
-  "favourite": "MIN",
-  "spread": -3.5,
-  "total": 230.5,
-  "fav_win_prob": 0.615,
-  "status": "Analysed"
+  "favourite": null,
+  "spread": null,
+  "total": null,
+  "fav_win_prob": null,
+  "status": "Started"
  },
  {
   "game": "POR @ LAL",
   "tip": "2:00pm",
-  "favourite": "LAL",
-  "spread": -3.5,
-  "total": 231.5,
-  "fav_win_prob": 0.615,
-  "status": "Analysed"
+  "favourite": null,
+  "spread": null,
+  "total": null,
+  "fav_win_prob": null,
+  "status": "Started"
  },
  {
   "game": "SA @ SAC",
