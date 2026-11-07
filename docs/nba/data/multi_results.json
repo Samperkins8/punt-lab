@@ -1,1 +1,66 @@
-[]
+[
+ {
+  "slate_date": "2026-11-07",
+  "multi": "4-leg $2+",
+  "legs": "Jaylen Brown 15+ points; Jrue Holiday 10+ points; Paul George 4+ rebounds; Walker Kessler 10+ points",
+  "est_hit": 0.5365,
+  "landed": true,
+  "price": 2.02
+ },
+ {
+  "slate_date": "2026-11-07",
+  "multi": "3-leg $2+",
+  "legs": "Jrue Holiday 10+ points; Lauri Markkanen 15+ points; Jaylen Brown 20+ points",
+  "est_hit": 0.5403,
+  "landed": true,
+  "price": 2.24
+ },
+ {
+  "slate_date": "2026-11-07",
+  "multi": "4-leg $3+",
+  "legs": "Jrue Holiday 10+ points; Lauri Markkanen 15+ points; Walker Kessler 10+ points; Jaylen Brown 20+ points",
+  "est_hit": 0.4412,
+  "landed": true,
+  "price": 3.01
+ },
+ {
+  "slate_date": "2026-11-07",
+  "multi": "4-leg $4+",
+  "legs": "Jrue Holiday 10+ points; Walker Kessler 10+ points; Jaylen Brown 20+ points; Lauri Markkanen 20+ points",
+  "est_hit": 0.3404,
+  "landed": true,
+  "price": 4.23
+ },
+ {
+  "slate_date": "2026-11-07",
+  "multi": "Best value",
+  "legs": "Jaylen Brown 15+ points; Jrue Holiday 10+ points; Lauri Markkanen 15+ points; James Harden 15+ points",
+  "est_hit": 0.584,
+  "landed": true,
+  "price": 1.7
+ },
+ {
+  "slate_date": "2026-11-07",
+  "multi": "Safest",
+  "legs": "Jaylen Brown 15+ points; Jrue Holiday 10+ points; Lauri Markkanen 15+ points; Tyrese Maxey 20+ points",
+  "est_hit": 0.6021,
+  "landed": false,
+  "price": 1.62
+ },
+ {
+  "slate_date": "2026-11-07",
+  "multi": "3-leg value",
+  "legs": "Jaylen Brown 15+ points; Jrue Holiday 10+ points; Lauri Markkanen 15+ points",
+  "est_hit": 0.6997,
+  "landed": true,
+  "price": 1.46
+ },
+ {
+  "slate_date": "2026-11-07",
+  "multi": "Long multi 8+",
+  "legs": "Jaylen Brown 15+ points; James Harden 15+ points; Jeremiah Fears 10+ points; Paul George 4+ rebounds; Walker Kessler 10+ points; Boston Celtics Boston Celtics to win; Ty Jerome 15+ points; P.J. Washington 10+ points",
+  "est_hit": 0.2188,
+  "landed": true,
+  "price": 4.36
+ }
+]

@@ -3,138 +3,128 @@
   "multi": "4-leg $2+",
   "rank": 1,
   "leg_ids": [
-   "jaylen_brown_points15",
-   "jrue_holiday_points10",
-   "paul_george_rebounds4",
-   "walker_kessler_points10"
+   "andrew_nembhard_points10",
+   "miles_bridges_rebounds4",
+   "amen_thompson_points10",
+   "devin_booker_points20"
   ],
-  "legs_text": "Jaylen Brown 15+ points; Jrue Holiday 10+ points; Paul George 4+ rebounds; Walker Kessler 10+ points",
-  "est_hit": 0.5365,
-  "break_even": 1.86,
+  "legs_text": "Andrew Nembhard 10+ points; Miles Bridges 4+ rebounds; Amen Thompson 10+ points; Devin Booker 20+ points",
+  "est_hit": 0.4291,
+  "break_even": 2.33,
   "priced_legs": "0 of 4",
   "known_price": null,
-  "fair_multi": 2.82,
-  "est_price": 2.02
+  "fair_multi": 3.12,
+  "est_price": 2.24
  },
  {
   "multi": "3-leg $2+",
   "rank": 2,
   "leg_ids": [
-   "jrue_holiday_points10",
-   "lauri_markkanen_points15",
-   "jaylen_brown_points20"
+   "andrew_nembhard_points10",
+   "dillon_brooks_points10",
+   "jamal_murray_points20"
   ],
-  "legs_text": "Jrue Holiday 10+ points; Lauri Markkanen 15+ points; Jaylen Brown 20+ points",
-  "est_hit": 0.5403,
-  "break_even": 1.85,
+  "legs_text": "Andrew Nembhard 10+ points; Dillon Brooks 10+ points; Jamal Murray 20+ points",
+  "est_hit": 0.4821,
+  "break_even": 2.07,
   "priced_legs": "0 of 3",
   "known_price": null,
-  "fair_multi": 2.88,
-  "est_price": 2.24
+  "fair_multi": 2.6,
+  "est_price": 2.02
  },
  {
   "multi": "4-leg $3+",
   "rank": 3,
   "leg_ids": [
-   "jrue_holiday_points10",
-   "lauri_markkanen_points15",
-   "walker_kessler_points10",
-   "jaylen_brown_points20"
+   "miles_bridges_rebounds4",
+   "amen_thompson_points10",
+   "devin_booker_points20",
+   "jamal_murray_points20"
   ],
-  "legs_text": "Jrue Holiday 10+ points; Lauri Markkanen 15+ points; Walker Kessler 10+ points; Jaylen Brown 20+ points",
-  "est_hit": 0.4412,
-  "break_even": 2.27,
+  "legs_text": "Miles Bridges 4+ rebounds; Amen Thompson 10+ points; Devin Booker 20+ points; Jamal Murray 20+ points",
+  "est_hit": 0.3306,
+  "break_even": 3.02,
   "priced_legs": "0 of 4",
   "known_price": null,
-  "fair_multi": 4.2,
-  "est_price": 3.01
+  "fair_multi": 4.26,
+  "est_price": 3.05
  },
  {
   "multi": "4-leg $4+",
   "rank": 4,
   "leg_ids": [
-   "jrue_holiday_points10",
-   "walker_kessler_points10",
-   "jaylen_brown_points20",
-   "lauri_markkanen_points20"
+   "miles_bridges_rebounds4",
+   "fred_vanvleet_assists4",
+   "dillon_brooks_points15",
+   "amen_thompson_points15"
   ],
-  "legs_text": "Jrue Holiday 10+ points; Walker Kessler 10+ points; Jaylen Brown 20+ points; Lauri Markkanen 20+ points",
-  "est_hit": 0.3404,
-  "break_even": 2.94,
+  "legs_text": "Miles Bridges 4+ rebounds; Fred VanVleet 4+ assists; Dillon Brooks 15+ points; Amen Thompson 15+ points",
+  "est_hit": 0.2852,
+  "break_even": 3.51,
   "priced_legs": "0 of 4",
   "known_price": null,
-  "fair_multi": 5.9,
-  "est_price": 4.23
+  "fair_multi": null,
+  "est_price": 4.0
  },
  {
-  "multi": "Best value",
-  "rank": 5,
+  "multi": "One per game",
+  "rank": 8,
   "leg_ids": [
-   "jaylen_brown_points15",
-   "jrue_holiday_points10",
-   "lauri_markkanen_points15",
-   "james_harden_points15"
+   "andrew_nembhard_points10",
+   "miles_bridges_points10",
+   "deni_avdija_points15",
+   "og_anunoby_rebounds4",
+   "wendell_carter_jr_rebounds6",
+   "kyshawn_george_points10",
+   "nickeil_alexander-walker_points15"
   ],
-  "legs_text": "Jaylen Brown 15+ points; Jrue Holiday 10+ points; Lauri Markkanen 15+ points; James Harden 15+ points",
-  "est_hit": 0.584,
-  "break_even": 1.71,
-  "priced_legs": "0 of 4",
+  "legs_text": "Andrew Nembhard 10+ points; Miles Bridges 10+ points; Deni Avdija 15+ points; OG Anunoby 4+ rebounds; Wendell Carter Jr. 6+ rebounds; Kyshawn George 10+ points; Nickeil Alexander-Walker 15+ points",
+  "est_hit": 0.2671,
+  "break_even": 3.74,
+  "priced_legs": "0 of 7",
   "known_price": null,
-  "fair_multi": 2.37,
-  "est_price": 1.7
+  "fair_multi": null,
+  "est_price": 2.38
  },
  {
-  "multi": "Safest",
-  "rank": 6,
+  "multi": "Mid-range $8+",
+  "rank": 9,
   "leg_ids": [
-   "jaylen_brown_points15",
-   "jrue_holiday_points10",
-   "lauri_markkanen_points15",
-   "tyrese_maxey_points20"
+   "dillon_brooks_points10",
+   "amen_thompson_points10",
+   "kevin_durant_points15",
+   "anthony_black_points10",
+   "franz_wagner_rebounds4",
+   "devin_booker_points20",
+   "deni_avdija_points20"
   ],
-  "legs_text": "Jaylen Brown 15+ points; Jrue Holiday 10+ points; Lauri Markkanen 15+ points; Tyrese Maxey 20+ points",
-  "est_hit": 0.6021,
-  "break_even": 1.66,
-  "priced_legs": "0 of 4",
+  "legs_text": "Dillon Brooks 10+ points; Amen Thompson 10+ points; Kevin Durant 15+ points; Anthony Black 10+ points; Franz Wagner 4+ rebounds; Devin Booker 20+ points; Deni Avdija 20+ points",
+  "est_hit": 0.1739,
+  "break_even": 5.75,
+  "priced_legs": "0 of 7",
   "known_price": null,
-  "fair_multi": 2.26,
-  "est_price": 1.62
- },
- {
-  "multi": "3-leg value",
-  "rank": 7,
-  "leg_ids": [
-   "jaylen_brown_points15",
-   "jrue_holiday_points10",
-   "lauri_markkanen_points15"
-  ],
-  "legs_text": "Jaylen Brown 15+ points; Jrue Holiday 10+ points; Lauri Markkanen 15+ points",
-  "est_hit": 0.6997,
-  "break_even": 1.43,
-  "priced_legs": "0 of 3",
-  "known_price": null,
-  "fair_multi": 1.88,
-  "est_price": 1.46
+  "fair_multi": 7.9,
+  "est_price": 4.41
  },
  {
   "multi": "Long multi 8+",
-  "rank": 8,
+  "rank": 10,
   "leg_ids": [
-   "jaylen_brown_points15",
-   "james_harden_points15",
-   "jeremiah_fears_points10",
-   "paul_george_rebounds4",
-   "walker_kessler_points10",
-   "bos_win",
-   "ty_jerome_points15",
-   "pj_washington_points10"
+   "dillon_brooks_points10",
+   "miles_bridges_rebounds4",
+   "de'aaron_fox_points10",
+   "devin_booker_points15",
+   "amen_thompson_points10",
+   "kevin_durant_points15",
+   "franz_wagner_rebounds4",
+   "jamal_murray_points15"
   ],
-  "legs_text": "Jaylen Brown 15+ points; James Harden 15+ points; Jeremiah Fears 10+ points; Paul George 4+ rebounds; Walker Kessler 10+ points; Boston Celtics Boston Celtics to win; Ty Jerome 15+ points; P.J. Washington 10+ points",
-  "est_hit": 0.2188,
-  "break_even": 4.57,
+  "legs_text": "Dillon Brooks 10+ points; Miles Bridges 4+ rebounds; De'Aaron Fox 10+ points; Devin Booker 15+ points; Amen Thompson 10+ points; Kevin Durant 15+ points; Franz Wagner 4+ rebounds; Jamal Murray 15+ points",
+  "est_hit": 0.2217,
+  "break_even": 4.51,
   "priced_legs": "0 of 8",
   "known_price": null,
-  "fair_multi": 8.23,
-  "est_price": 4.36
+  "fair_multi": 6.98,
+  "est_price": 3.58
  }
 ]

@@ -1,83 +1,65 @@
 [
  {
-  "game": "WSH @ ATL",
-  "tip": "11:00am",
-  "favourite": "ATL",
-  "spread": -8.5,
-  "total": 227.5,
-  "fav_win_prob": 0.761,
+  "game": "DEN @ IND",
+  "tip": "9:00am",
+  "favourite": "DEN",
+  "spread": -7.5,
+  "total": 229.5,
+  "fav_win_prob": 0.734,
   "status": "Analysed"
  },
  {
-  "game": "BOS @ CHA",
-  "tip": "11:00am",
-  "favourite": "BOS",
-  "spread": -10.5,
-  "total": 207.5,
-  "fav_win_prob": 0.809,
-  "status": "Analysed"
- },
- {
-  "game": "PHI @ CLE",
+  "game": "BKN @ ATL",
   "tip": "11:30am",
-  "favourite": "PHI",
-  "spread": -2.5,
-  "total": 231.5,
-  "fav_win_prob": 0.583,
-  "status": "Analysed"
- },
- {
-  "game": "UTAH @ DAL",
-  "tip": "12:00pm",
-  "favourite": "DAL",
+  "favourite": "ATL",
   "spread": -6.5,
-  "total": 225.5,
+  "total": 226.5,
   "fav_win_prob": 0.706,
   "status": "Analysed"
  },
  {
-  "game": "OKC @ MEM",
+  "game": "NY @ CLE",
+  "tip": "12:00pm",
+  "favourite": "NY",
+  "spread": -4.5,
+  "total": 224.5,
+  "fav_win_prob": 0.646,
+  "status": "Analysed"
+ },
+ {
+  "game": "WSH @ OKC",
   "tip": "12:00pm",
   "favourite": "OKC",
-  "spread": -4.5,
-  "total": 223.5,
-  "fav_win_prob": 0.646,
+  "spread": -11.5,
+  "total": 219.5,
+  "fav_win_prob": 0.831,
   "status": "Analysed"
  },
  {
-  "game": "TOR @ MIL",
-  "tip": "12:00pm",
-  "favourite": "TOR",
-  "spread": -4.5,
-  "total": 229.5,
-  "fav_win_prob": 0.646,
+  "game": "ORL @ GS",
+  "tip": "12:30pm",
+  "favourite": "GS",
+  "spread": -6.5,
+  "total": 221.5,
+  "fav_win_prob": 0.706,
   "status": "Analysed"
  },
  {
-  "game": "MIN @ NO",
-  "tip": "12:00pm",
-  "favourite": "MIN",
-  "spread": -3.5,
-  "total": 230.5,
-  "fav_win_prob": 0.615,
+  "game": "HOU @ PHX",
+  "tip": "1:00pm",
+  "favourite": "HOU",
+  "spread": -7.5,
+  "total": 221.5,
+  "fav_win_prob": 0.734,
   "status": "Analysed"
  },
  {
-  "game": "POR @ LAL",
-  "tip": "2:00pm",
-  "favourite": "LAL",
-  "spread": -3.5,
-  "total": 231.5,
-  "fav_win_prob": 0.615,
-  "status": "Analysed"
- },
- {
-  "game": "SA @ SAC",
+  "game": "SA @ POR",
   "tip": "2:00pm",
   "favourite": "SA",
-  "spread": -17.5,
-  "total": 231.5,
-  "fav_win_prob": 0.928,
+  "spread": -6.5,
+  "total": 227.5,
+  "fav_win_prob": 0.706,
   "status": "Analysed"
  }
 ]
