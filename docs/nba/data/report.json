@@ -1,15 +1,15 @@
 {
  "slate_date": "2026-11-08",
- "headline": "3-leg $2+: Jabari Smith Jr. 4+ rebounds; Aaron Gordon 4+ rebounds; Jamal Murray 3+ threes — about 42% to land, est. price $2.00, worth it at $2.37+. Best-priced leg: Aaron Gordon 15+ points at $2.33. Note: no safest 4-leg pays $2, so it's left out; no best-value 4-leg pays $2 with a 30%+ chance, so it's left out; no 3-leg value multi pays $2, so it's left out.",
+ "headline": "3-leg $2+: Aaron Nesmith 10+ points; Jarace Walker 4+ rebounds; Jamal Murray 25+ points — about 41% to land, est. price $2.02, worth it at $2.46+. Best-priced leg: Aaron Gordon 15+ points at $2.33. Note: no safest 4-leg pays $2, so it's left out; no best-value 4-leg pays $2 with a 30%+ chance, so it's left out; no 3-leg value multi pays $2, so it's left out.",
  "injuries": "Jalen Johnson (Out), Keshon Gilbert (Out), Asa Newell (Out), Jock Landale (Out), Mouhamed Gueye (Out), Henri Veesaar (Out), Egor Demin (Out), Tyler Bilodeau (Out), Sam Merrill (Out), Jarrett Allen (Out), Jaylon Tyson (Out), Julian Strawther (Out) and others",
  "graded": "",
- "next_run": "Re-checked 8:43pm: 5 multi(s) changed: 4-leg $2+, 4-leg $4+, One per game, Mid-range $8+, Long shot $50",
+ "next_run": "Re-checked 8:45pm: 5 multi(s) changed: 3-leg $2+, 4-leg $3+, 4-leg $4+, One per game, Mid-range $8+",
  "sources": {
   "stats": "ESPN",
   "odds": "OddsPapi (PointsBet, Neds, Unibet, TABtouch) + The Odds API",
   "injury_reading": "Claude"
  },
- "updated_at": "2026-11-07T20:43:42.426652+11:00",
+ "updated_at": "2026-11-07T20:45:39.400226+11:00",
  "inj_snapshot": {
   "jalen johnson": "Out",
   "keshon gilbert": "Out",
