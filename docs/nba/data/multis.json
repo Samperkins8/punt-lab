@@ -3,18 +3,18 @@
   "multi": "4-leg $2+",
   "rank": 1,
   "leg_ids": [
-   "alex_sarr_rebounds4",
-   "jabari_smith_jr_rebounds4",
+   "stephen_curry_assists4",
+   "pascal_siakam_points15",
    "aaron_gordon_rebounds4",
-   "stephon_castle_rebounds4"
+   "aj_dybantsa_rebounds4"
   ],
-  "legs_text": "Alex Sarr 4+ rebounds; Jabari Smith Jr. 4+ rebounds; Aaron Gordon 4+ rebounds; Stephon Castle 4+ rebounds",
-  "est_hit": 0.4084,
-  "break_even": 2.45,
+  "legs_text": "Stephen Curry 4+ assists; Pascal Siakam 15+ points; Aaron Gordon 4+ rebounds; AJ Dybantsa 4+ rebounds",
+  "est_hit": 0.4108,
+  "break_even": 2.43,
   "priced_legs": "2 of 4",
-  "known_price": 1.59,
+  "known_price": 1.55,
   "fair_multi": null,
-  "est_price": 2.02,
+  "est_price": 2.0,
   "book_prices": null,
   "best_book": null,
   "best_book_price": null
@@ -23,39 +23,37 @@
   "multi": "3-leg $2+",
   "rank": 2,
   "leg_ids": [
+   "jabari_smith_jr_rebounds4",
    "aaron_gordon_rebounds4",
-   "kevin_durant_rebounds4",
-   "stephon_castle_rebounds4"
+   "jamal_murray_threes3"
   ],
-  "legs_text": "Aaron Gordon 4+ rebounds; Kevin Durant 4+ rebounds; Stephon Castle 4+ rebounds",
-  "est_hit": 0.4776,
-  "break_even": 2.09,
-  "priced_legs": "3 of 3",
-  "known_price": 2.03,
-  "fair_multi": 2.09,
-  "est_price": 2.03,
-  "book_prices": {
-   "neds": 2.03
-  },
-  "best_book": "neds",
-  "best_book_price": 2.03
+  "legs_text": "Jabari Smith Jr. 4+ rebounds; Aaron Gordon 4+ rebounds; Jamal Murray 3+ threes",
+  "est_hit": 0.4217,
+  "break_even": 2.37,
+  "priced_legs": "1 of 3",
+  "known_price": 1.24,
+  "fair_multi": null,
+  "est_price": 2.0,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null
  },
  {
   "multi": "4-leg $3+",
   "rank": 3,
   "leg_ids": [
-   "jarace_walker_rebounds4",
-   "aj_dybantsa_rebounds4",
-   "aaron_gordon_points10",
-   "onyeka_okongwu_rebounds8"
+   "stephen_curry_assists4",
+   "aaron_gordon_rebounds4",
+   "jamal_murray_threes3",
+   "pascal_siakam_points20"
   ],
-  "legs_text": "Jarace Walker 4+ rebounds; AJ Dybantsa 4+ rebounds; Aaron Gordon 10+ points; Onyeka Okongwu 8+ rebounds",
-  "est_hit": 0.2966,
-  "break_even": 3.37,
-  "priced_legs": "3 of 4",
-  "known_price": 2.63,
+  "legs_text": "Stephen Curry 4+ assists; Aaron Gordon 4+ rebounds; Jamal Murray 3+ threes; Pascal Siakam 20+ points",
+  "est_hit": 0.2721,
+  "break_even": 3.67,
+  "priced_legs": "1 of 4",
+  "known_price": 1.24,
   "fair_multi": null,
-  "est_price": 3.02,
+  "est_price": 3.0,
   "book_prices": null,
   "best_book": null,
   "best_book_price": null
@@ -65,103 +63,40 @@
   "rank": 4,
   "leg_ids": [
    "aaron_gordon_rebounds4",
-   "kevin_durant_rebounds4",
+   "aj_dybantsa_rebounds4",
    "onyeka_okongwu_rebounds8",
-   "alex_sarr_rebounds6"
+   "franz_wagner_rebounds6"
   ],
-  "legs_text": "Aaron Gordon 4+ rebounds; Kevin Durant 4+ rebounds; Onyeka Okongwu 8+ rebounds; Alex Sarr 6+ rebounds",
-  "est_hit": 0.2091,
+  "legs_text": "Aaron Gordon 4+ rebounds; AJ Dybantsa 4+ rebounds; Onyeka Okongwu 8+ rebounds; Franz Wagner 6+ rebounds",
+  "est_hit": 0.209,
   "break_even": 4.78,
   "priced_legs": "3 of 4",
-  "known_price": 2.57,
+  "known_price": 2.51,
   "fair_multi": null,
-  "est_price": 4.18,
+  "est_price": 4.11,
   "book_prices": null,
   "best_book": null,
   "best_book_price": null
- },
- {
-  "multi": "Best value",
-  "rank": 5,
-  "leg_ids": [
-   "aj_dybantsa_rebounds4",
-   "kevin_durant_rebounds4",
-   "stephon_castle_rebounds4",
-   "aaron_gordon_points10"
-  ],
-  "legs_text": "AJ Dybantsa 4+ rebounds; Kevin Durant 4+ rebounds; Stephon Castle 4+ rebounds; Aaron Gordon 10+ points",
-  "est_hit": 0.3664,
-  "break_even": 2.73,
-  "priced_legs": "4 of 4",
-  "known_price": 2.66,
-  "fair_multi": 2.93,
-  "est_price": 2.66,
-  "book_prices": {
-   "neds": 2.7
-  },
-  "best_book": "neds",
-  "best_book_price": 2.7
- },
- {
-  "multi": "Safest",
-  "rank": 6,
-  "leg_ids": [
-   "alex_sarr_rebounds4",
-   "jabari_smith_jr_rebounds4",
-   "aaron_gordon_rebounds4",
-   "stephon_castle_rebounds4"
-  ],
-  "legs_text": "Alex Sarr 4+ rebounds; Jabari Smith Jr. 4+ rebounds; Aaron Gordon 4+ rebounds; Stephon Castle 4+ rebounds",
-  "est_hit": 0.4084,
-  "break_even": 2.45,
-  "priced_legs": "2 of 4",
-  "known_price": 1.59,
-  "fair_multi": null,
-  "est_price": 2.02,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null
- },
- {
-  "multi": "3-leg value",
-  "rank": 7,
-  "leg_ids": [
-   "kevin_durant_rebounds4",
-   "stephon_castle_rebounds4",
-   "aaron_gordon_points10"
-  ],
-  "legs_text": "Kevin Durant 4+ rebounds; Stephon Castle 4+ rebounds; Aaron Gordon 10+ points",
-  "est_hit": 0.468,
-  "break_even": 2.14,
-  "priced_legs": "3 of 3",
-  "known_price": 2.13,
-  "fair_multi": 2.3,
-  "est_price": 2.13,
-  "book_prices": {
-   "neds": 2.16
-  },
-  "best_book": "neds",
-  "best_book_price": 2.16
  },
  {
   "multi": "One per game",
   "rank": 8,
   "leg_ids": [
    "alex_sarr_rebounds4",
-   "jarace_walker_rebounds4",
-   "jabari_smith_jr_rebounds4",
-   "evan_mobley_rebounds6",
-   "onyeka_okongwu_rebounds6",
-   "stephon_castle_rebounds4",
-   "desmond_bane_points15"
+   "kevin_durant_points15",
+   "jalen_brunson_assists4",
+   "jamal_murray_rebounds4",
+   "franz_wagner_rebounds4",
+   "dylan_harper_points10",
+   "onyeka_okongwu_rebounds6"
   ],
-  "legs_text": "Alex Sarr 4+ rebounds; Jarace Walker 4+ rebounds; Jabari Smith Jr. 4+ rebounds; Evan Mobley 6+ rebounds; Onyeka Okongwu 6+ rebounds; Stephon Castle 4+ rebounds; Desmond Bane 15+ points",
-  "est_hit": 0.1877,
-  "break_even": 5.33,
-  "priced_legs": "4 of 7",
-  "known_price": 2.34,
+  "legs_text": "Alex Sarr 4+ rebounds; Kevin Durant 15+ points; Jalen Brunson 4+ assists; Jamal Murray 4+ rebounds; Franz Wagner 4+ rebounds; Dylan Harper 10+ points; Onyeka Okongwu 6+ rebounds",
+  "est_hit": 0.2364,
+  "break_even": 4.23,
+  "priced_legs": "1 of 7",
+  "known_price": 1.2,
   "fair_multi": null,
-  "est_price": 3.41,
+  "est_price": 2.4,
   "book_prices": null,
   "best_book": null,
   "best_book_price": null
@@ -170,20 +105,20 @@
   "multi": "Mid-range $8+",
   "rank": 9,
   "leg_ids": [
-   "jarace_walker_rebounds4",
-   "kevin_durant_rebounds4",
-   "stephon_castle_rebounds4",
-   "aaron_nesmith_points10",
-   "onyeka_okongwu_points10",
-   "aaron_gordon_points15"
+   "alex_sarr_rebounds4",
+   "kevin_durant_points15",
+   "jamal_murray_rebounds4",
+   "pascal_siakam_points15",
+   "aaron_gordon_points15",
+   "onyeka_okongwu_points15"
   ],
-  "legs_text": "Jarace Walker 4+ rebounds; Kevin Durant 4+ rebounds; Stephon Castle 4+ rebounds; Aaron Nesmith 10+ points; Onyeka Okongwu 10+ points; Aaron Gordon 15+ points",
-  "est_hit": 0.1455,
-  "break_even": 6.87,
-  "priced_legs": "5 of 6",
-  "known_price": 7.11,
+  "legs_text": "Alex Sarr 4+ rebounds; Kevin Durant 15+ points; Jamal Murray 4+ rebounds; Pascal Siakam 15+ points; Aaron Gordon 15+ points; Onyeka Okongwu 15+ points",
+  "est_hit": 0.1111,
+  "break_even": 9.0,
+  "priced_legs": "2 of 6",
+  "known_price": 5.36,
   "fair_multi": null,
-  "est_price": 8.15,
+  "est_price": 8.42,
   "book_prices": null,
   "best_book": null,
   "best_book_price": null
@@ -218,24 +153,22 @@
   "multi": "Long shot $50",
   "rank": 11,
   "leg_ids": [
-   "aj_dybantsa_rebounds4",
-   "julius_randle_points20",
-   "devin_booker_points25",
+   "jabari_smith_jr_points10",
    "aaron_gordon_points15",
-   "fred_vanvleet_assists6",
-   "onyeka_okongwu_points15"
+   "franz_wagner_points20",
+   "aj_dybantsa_rebounds6",
+   "onyeka_okongwu_points15",
+   "toumani_camara_points15"
   ],
-  "legs_text": "AJ Dybantsa 4+ rebounds; Julius Randle 20+ points; Devin Booker 25+ points; Aaron Gordon 15+ points; Fred VanVleet 6+ assists; Onyeka Okongwu 15+ points",
-  "est_hit": 0.028,
-  "break_even": 35.76,
-  "priced_legs": "6 of 6",
-  "known_price": 51.47,
-  "fair_multi": 73.29,
-  "est_price": 51.47,
-  "book_prices": {
-   "neds": 46.12
-  },
-  "best_book": "neds",
-  "best_book_price": 46.12
+  "legs_text": "Jabari Smith Jr. 10+ points; Aaron Gordon 15+ points; Franz Wagner 20+ points; AJ Dybantsa 6+ rebounds; Onyeka Okongwu 15+ points; Toumani Camara 15+ points",
+  "est_hit": 0.0175,
+  "break_even": 57.18,
+  "priced_legs": "2 of 6",
+  "known_price": 5.36,
+  "fair_multi": null,
+  "est_price": 50.14,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null
  }
 ]
