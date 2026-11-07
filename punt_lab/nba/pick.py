@@ -21,6 +21,7 @@ MID_LEGS = (6, 7)         # try 6 legs first, 7 only if 6 can't reach the target
 MID_POOL = 22             # legs searched for the mid-range multi (most likely first)
 SHOT_TARGET = 50.00       # long shot: keep adding the most likely legs until the price passes this
 SHOT_MAX_LEGS = 15        # but never more than this many legs
+SHOT_MIN_PRICE = 20.00    # if the slate can't get the long shot this far, leave it out
 PER_GAME_MAX = 8          # one-per-game multi: at most this many games
 
 
@@ -254,7 +255,7 @@ def _target_multi(cands, pool, sizes, target, chance, multi_price) -> tuple[list
     if fallback:
         return (sorted(fallback[1], key=lambda i: -cands[i][1].model_prob),
                 f"no {sizes[-1]}-leg combo reaches ${target:.2f}, so the mid-range multi shows the longest-priced one")
-    return None, ""
+    return None, f"not enough legs that fit together for a {sizes[0]}-leg mid-range multi"
 
 
 def _long_shot(cands, ordered: list[int]) -> tuple[list[int] | None, str]:
@@ -268,8 +269,8 @@ def _long_shot(cands, ordered: list[int]) -> tuple[list[int] | None, str]:
         if _ok_combo([cands[j][0] for j in combo + [i]]):
             combo.append(i)
             price *= _assumed_price(*cands[i])
-    if len(combo) < 5:
-        return None, ""
+    if len(combo) < 5 or price < SHOT_MIN_PRICE:
+        return None, f"not enough legs on the slate for a long shot (only about ${price:.0f})"
     note = "" if price >= SHOT_TARGET else f"the long shot only reaches about ${price:.0f} with {len(combo)} legs"
     return combo, note
 
@@ -285,7 +286,7 @@ def _one_per_game(cands, ordered: list[int], multi_price) -> tuple[list[int] | N
         seen.add(g)
         combo.append(i)
     if len(combo) < 3:
-        return None, ""
+        return None, f"only {len(combo)} game{'s' if len(combo) != 1 else ''} with legs left, not enough for one per game"
     if multi_price(combo) < MIN_MULTI:
         return None, f"the one-per-game multi only pays about ${multi_price(combo):.2f}, under $2, so it's left out"
     return combo, ""

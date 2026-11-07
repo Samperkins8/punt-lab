@@ -3,119 +3,138 @@
   "multi": "4-leg $2+",
   "rank": 1,
   "leg_ids": [
-   "domantas_sabonis_rebounds10",
-   "victor_wembanyama_points20",
-   "zach_lavine_threes2",
-   "darius_acuff_jr_points20"
+   "jaylen_brown_points15",
+   "jrue_holiday_points10",
+   "paul_george_rebounds4",
+   "walker_kessler_points10"
   ],
-  "legs_text": "Domantas Sabonis 10+ rebounds; Victor Wembanyama 20+ points; Zach LaVine 2+ threes; Darius Acuff Jr. 20+ points",
-  "est_hit": 0.4008,
-  "break_even": 2.5,
+  "legs_text": "Jaylen Brown 15+ points; Jrue Holiday 10+ points; Paul George 4+ rebounds; Walker Kessler 10+ points",
+  "est_hit": 0.5365,
+  "break_even": 1.86,
   "priced_legs": "0 of 4",
   "known_price": null,
-  "fair_multi": null,
+  "fair_multi": 2.82,
   "est_price": 2.02
  },
  {
   "multi": "3-leg $2+",
   "rank": 2,
   "leg_ids": [
-   "domantas_sabonis_points10",
-   "victor_wembanyama_rebounds8",
-   "darius_acuff_jr_threes3"
+   "jrue_holiday_points10",
+   "lauri_markkanen_points15",
+   "jaylen_brown_points20"
   ],
-  "legs_text": "Domantas Sabonis 10+ points; Victor Wembanyama 8+ rebounds; Darius Acuff Jr. 3+ threes",
-  "est_hit": 0.4176,
-  "break_even": 2.39,
+  "legs_text": "Jrue Holiday 10+ points; Lauri Markkanen 15+ points; Jaylen Brown 20+ points",
+  "est_hit": 0.5403,
+  "break_even": 1.85,
   "priced_legs": "0 of 3",
   "known_price": null,
-  "fair_multi": null,
-  "est_price": 2.02
+  "fair_multi": 2.88,
+  "est_price": 2.24
  },
  {
   "multi": "4-leg $3+",
   "rank": 3,
   "leg_ids": [
-   "domantas_sabonis_points10",
-   "julian_champagnie_threes2",
-   "victor_wembanyama_rebounds10",
-   "darius_acuff_jr_threes3"
+   "jrue_holiday_points10",
+   "lauri_markkanen_points15",
+   "walker_kessler_points10",
+   "jaylen_brown_points20"
   ],
-  "legs_text": "Domantas Sabonis 10+ points; Julian Champagnie 2+ threes; Victor Wembanyama 10+ rebounds; Darius Acuff Jr. 3+ threes",
-  "est_hit": 0.2765,
-  "break_even": 3.62,
+  "legs_text": "Jrue Holiday 10+ points; Lauri Markkanen 15+ points; Walker Kessler 10+ points; Jaylen Brown 20+ points",
+  "est_hit": 0.4412,
+  "break_even": 2.27,
   "priced_legs": "0 of 4",
   "known_price": null,
-  "fair_multi": null,
-  "est_price": 3.03
+  "fair_multi": 4.2,
+  "est_price": 3.01
  },
  {
   "multi": "4-leg $4+",
   "rank": 4,
   "leg_ids": [
-   "domantas_sabonis_points10",
-   "victor_wembanyama_rebounds10",
-   "darius_acuff_jr_threes3",
-   "julian_champagnie_threes3"
+   "jrue_holiday_points10",
+   "walker_kessler_points10",
+   "jaylen_brown_points20",
+   "lauri_markkanen_points20"
   ],
-  "legs_text": "Domantas Sabonis 10+ points; Victor Wembanyama 10+ rebounds; Darius Acuff Jr. 3+ threes; Julian Champagnie 3+ threes",
-  "est_hit": 0.2108,
-  "break_even": 4.74,
+  "legs_text": "Jrue Holiday 10+ points; Walker Kessler 10+ points; Jaylen Brown 20+ points; Lauri Markkanen 20+ points",
+  "est_hit": 0.3404,
+  "break_even": 2.94,
   "priced_legs": "0 of 4",
   "known_price": null,
-  "fair_multi": null,
-  "est_price": 4.1
+  "fair_multi": 5.9,
+  "est_price": 4.23
  },
  {
   "multi": "Best value",
   "rank": 5,
   "leg_ids": [
-   "domantas_sabonis_rebounds10",
-   "zach_lavine_threes2",
-   "darius_acuff_jr_points20",
-   "julian_champagnie_threes2"
+   "jaylen_brown_points15",
+   "jrue_holiday_points10",
+   "lauri_markkanen_points15",
+   "james_harden_points15"
   ],
-  "legs_text": "Domantas Sabonis 10+ rebounds; Zach LaVine 2+ threes; Darius Acuff Jr. 20+ points; Julian Champagnie 2+ threes",
-  "est_hit": 0.383,
-  "break_even": 2.61,
+  "legs_text": "Jaylen Brown 15+ points; Jrue Holiday 10+ points; Lauri Markkanen 15+ points; James Harden 15+ points",
+  "est_hit": 0.584,
+  "break_even": 1.71,
   "priced_legs": "0 of 4",
   "known_price": null,
-  "fair_multi": null,
-  "est_price": 2.13
+  "fair_multi": 2.37,
+  "est_price": 1.7
  },
  {
   "multi": "Safest",
   "rank": 6,
   "leg_ids": [
-   "domantas_sabonis_rebounds10",
-   "victor_wembanyama_points20",
-   "zach_lavine_threes2",
-   "darius_acuff_jr_points20"
+   "jaylen_brown_points15",
+   "jrue_holiday_points10",
+   "lauri_markkanen_points15",
+   "tyrese_maxey_points20"
   ],
-  "legs_text": "Domantas Sabonis 10+ rebounds; Victor Wembanyama 20+ points; Zach LaVine 2+ threes; Darius Acuff Jr. 20+ points",
-  "est_hit": 0.4008,
-  "break_even": 2.5,
+  "legs_text": "Jaylen Brown 15+ points; Jrue Holiday 10+ points; Lauri Markkanen 15+ points; Tyrese Maxey 20+ points",
+  "est_hit": 0.6021,
+  "break_even": 1.66,
   "priced_legs": "0 of 4",
   "known_price": null,
-  "fair_multi": null,
-  "est_price": 2.02
+  "fair_multi": 2.26,
+  "est_price": 1.62
  },
  {
-  "multi": "Long shot $50",
-  "rank": 11,
+  "multi": "3-leg value",
+  "rank": 7,
   "leg_ids": [
-   "zach_lavine_points15",
-   "domantas_sabonis_points10",
-   "victor_wembanyama_rebounds8",
-   "darius_acuff_jr_threes2",
-   "julian_champagnie_threes2"
+   "jaylen_brown_points15",
+   "jrue_holiday_points10",
+   "lauri_markkanen_points15"
   ],
-  "legs_text": "Zach LaVine 15+ points; Domantas Sabonis 10+ points; Victor Wembanyama 8+ rebounds; Darius Acuff Jr. 2+ threes; Julian Champagnie 2+ threes",
-  "est_hit": 0.3496,
-  "break_even": 2.86,
-  "priced_legs": "0 of 5",
+  "legs_text": "Jaylen Brown 15+ points; Jrue Holiday 10+ points; Lauri Markkanen 15+ points",
+  "est_hit": 0.6997,
+  "break_even": 1.43,
+  "priced_legs": "0 of 3",
   "known_price": null,
-  "fair_multi": null,
-  "est_price": 2.14
+  "fair_multi": 1.88,
+  "est_price": 1.46
+ },
+ {
+  "multi": "Long multi 8+",
+  "rank": 8,
+  "leg_ids": [
+   "jaylen_brown_points15",
+   "james_harden_points15",
+   "jeremiah_fears_points10",
+   "paul_george_rebounds4",
+   "walker_kessler_points10",
+   "bos_win",
+   "ty_jerome_points15",
+   "pj_washington_points10"
+  ],
+  "legs_text": "Jaylen Brown 15+ points; James Harden 15+ points; Jeremiah Fears 10+ points; Paul George 4+ rebounds; Walker Kessler 10+ points; Boston Celtics Boston Celtics to win; Ty Jerome 15+ points; P.J. Washington 10+ points",
+  "est_hit": 0.2188,
+  "break_even": 4.57,
+  "priced_legs": "0 of 8",
+  "known_price": null,
+  "fair_multi": 8.23,
+  "est_price": 4.36
  }
 ]

@@ -1,13 +1,13 @@
 {
  "slate_date": "2026-11-07",
- "headline": "3-leg $2+: Domantas Sabonis 10+ points; Victor Wembanyama 8+ rebounds; Darius Acuff Jr. 3+ threes — about 42% to land, est. price $2.02, worth it at $2.39+. Note: no 3-leg value multi pays $2, so it's left out; only 0 legs are 80%+ likely at $1.15+, not enough for a long multi; the long shot only reaches about $2 with 5 legs.",
- "injuries": "Jalen Johnson (Out), Keshon Gilbert (Out), Asa Newell (Out), Jock Landale (Out), Mouhamed Gueye (Out), Henri Veesaar (Out), Devin Carter (Out), Dennis Schroder (Out), Moussa Diabate (Out), Kon Knueppel (Out), Grant Williams (Out), Sam Merrill (Out) and others",
+ "headline": "3-leg $2+: Jrue Holiday 10+ points; Lauri Markkanen 15+ points; Jaylen Brown 20+ points — about 54% to land, est. price $2.24, worth it at $1.85+. Note: 3-leg value includes legs without a confirmed worth-it price.",
+ "injuries": "Jalen Johnson (Out), Keshon Gilbert (Out), Asa Newell (Out), Jock Landale (Out), Mouhamed Gueye (Out), Henri Veesaar (Out), Devin Carter (Out), Dennis Schroder (Out), Moussa Diabate (Out), Kon Knueppel (Out), Grant Williams (Out), Jaylon Tyson (Out) and others",
  "graded": "",
- "next_run": "Built 2:17pm; re-checked before the first tip",
+ "next_run": "Re-checked 10:14am: 3 multi(s) changed: Best value, 3-leg value, Long multi 8+",
  "sources": {
   "stats": "ESPN",
   "odds": "The Odds API",
   "injury_reading": "rules"
  },
- "updated_at": "2026-11-07T14:17:40.408799+11:00"
+ "updated_at": "2026-11-07T10:14:36.748911+11:00"
 }
