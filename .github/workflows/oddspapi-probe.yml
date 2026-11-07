@@ -13,52 +13,49 @@ jobs:
         run: |
           python3 - <<'PY'
           import json, os, urllib.request, urllib.error
+          from datetime import datetime, timedelta, timezone
           key = os.environ.get("KEY")
-          print("key present:", bool(key))
           base = "https://api.oddspapi.io/v4"
-          def get(path):
-              url = f"{base}{path}{'&' if '?' in path else '?'}apiKey={key}"
+          def get(path, **params):
+              params["apiKey"] = key
+              url = f"{base}{path}?" + "&".join(f"{k}={v}" for k, v in params.items())
               try:
-                  with urllib.request.urlopen(url, timeout=30) as r:
-                      hdr = {k: v for k, v in r.headers.items() if 'limit' in k.lower() or 'remain' in k.lower()}
-                      return json.load(r), hdr
+                  with urllib.request.urlopen(url, timeout=60) as r:
+                      return json.load(r)
               except urllib.error.HTTPError as e:
-                  print("HTTP", e.code, path, e.read()[:300])
-                  return None, {}
-          def shape(x, depth=0, maxd=4):
-              if depth > maxd: return "..."
-              if isinstance(x, dict):
-                  return {k: shape(v, depth + 1, maxd) for k, v in list(x.items())[:6]}
-              if isinstance(x, list):
-                  return [shape(x[0], depth + 1, maxd)] if x else []
-              return x
-          tours, h = get("/sports/11/tournaments")
-          print("headers:", h)
-          tl = tours if isinstance(tours, list) else (tours or {}).get("data") or (tours or {}).get("response") or []
-          nba = [t for t in tl if isinstance(t, dict) and "nba" in json.dumps(t).lower()][:5]
-          print("NBA-looking tournaments:", json.dumps(nba)[:800])
-          if not nba:
-              print("tournaments shape:", json.dumps(shape(tours))[:1500]); raise SystemExit
-          tid = next((t.get("tournamentId") or t.get("id") for t in nba if (t.get("tournamentName") or t.get("name") or "").strip().upper() == "NBA"), nba[0].get("tournamentId") or nba[0].get("id"))
-          fx, h = get(f"/tournaments/{tid}/fixtures")
-          fl = fx if isinstance(fx, list) else (fx or {}).get("data") or (fx or {}).get("response") or []
-          print("fixtures:", len(fl), "first:", json.dumps(fl[:1])[:600])
-          if not fl: print("fixtures shape:", json.dumps(shape(fx))[:1500]); raise SystemExit
-          fid = fl[0].get("fixtureId") or fl[0].get("id")
-          od, h = get(f"/fixtures/{fid}/odds")
-          print("odds headers:", h)
-          resp = (od or {}).get("response", od) if isinstance(od, dict) else od
-          bo = (resp or {}).get("bookmakerOdds", {}) if isinstance(resp, dict) else {}
-          print("bookmakers:", len(bo), sorted(bo)[:80])
-          au = [b for b in bo if any(s in b.lower() for s in ("tab", "neds", "pointsbet", "unibet", "sportsbet", "ladbrokes", "betr", "au"))]
-          print("AU-ish:", au)
-          for b in au[:6]:
-              mk = bo[b].get("markets", {})
-              print(f"--- {b}: {len(mk)} markets")
-              for mid, m in list(mk.items())[:3]:
-                  print("   market", mid, json.dumps(shape(m, 0, 5))[:700])
-              players = [mid for mid, m in mk.items() if any((o.get("players") or {}) and any(k != "0" for k in (o.get("players") or {})) for o in (m.get("outcomes") or {}).values())]
-              print("   markets with named players:", len(players))
-          if not au:
-              print("odds shape:", json.dumps(shape(od, 0, 6))[:2500])
+                  print("HTTP", e.code, path, e.read()[:300]); return None
+          sports = get("/sports") or []
+          bb = [s for s in sports if "basket" in json.dumps(s).lower()]
+          print("basketball:", json.dumps(bb)[:300])
+          sid = bb[0].get("sportId")
+          tours = get("/tournaments", sportId=sid) or []
+          nba = [t for t in tours if (t.get("tournamentName") or "").strip().upper() == "NBA"] or [t for t in tours if "nba" in json.dumps(t).lower()]
+          print("nba:", json.dumps(nba[:3])[:500])
+          tid = nba[0]["tournamentId"]
+          now = datetime.now(timezone.utc)
+          fx = get("/fixtures", tournamentId=tid, statusId=0, **{"from": now.strftime("%Y-%m-%dT%H:%M:%SZ"), "to": (now + timedelta(days=2)).strftime("%Y-%m-%dT%H:%M:%SZ")}) or []
+          print("upcoming fixtures:", len(fx), [(f.get("participant2Name"), "@", f.get("participant1Name"), f.get("startTime"), f.get("hasOdds")) for f in fx[:4]])
+          f = next((x for x in fx if x.get("hasOdds")), fx[0])
+          od = get("/odds", fixtureId=f["fixtureId"], oddsFormat="decimal") or {}
+          bo = od.get("bookmakerOdds", {})
+          print("bookmakers with odds:", len(bo), sorted(bo))
+          for b, v in sorted(bo.items()):
+              mk = v.get("markets", {})
+              prop_markets, names, sample = 0, set(), None
+              for mid, m in mk.items():
+                  has = False
+                  for oid, o in (m.get("outcomes") or {}).items():
+                      for pid, pl in (o.get("players") or {}).items():
+                          if pl.get("playerName"):
+                              has = True; names.add(pl["playerName"])
+                              if sample is None: sample = (mid, oid, pid, pl)
+                  prop_markets += has
+              au = any(s in b for s in ("tab", "neds", "pointsbet", "unibet", "sportsbet", "ladbrokes", "betr", "-au"))
+              if au or prop_markets:
+                  print(f"{b:22s} markets {len(mk):4d}  player-prop markets {prop_markets:4d}  players {len(names):3d}  {'AU' if au else ''}")
+                  if sample and au: print("      e.g.", json.dumps(sample)[:400])
+          mkts = get("/markets", sportId=sid)
+          if mkts:
+              props = [m for m in mkts if any(w in json.dumps(m).lower() for w in ("player", "points", "rebounds"))][:12]
+              print("market definitions sample:", json.dumps(props)[:1500])
           PY
