@@ -33,7 +33,7 @@ Lines under a `date:` header apply only to that day. The next run picks them up.
 
 | Secret | What it adds | Cost |
 |---|---|---|
-| `ODDS_API_KEY` | US market lines (fair prices) and Sportsbet prices where available, from the-odds-api.com | Free plan, limited monthly credits |
+| `ODDS_API_KEY` | Australian bookies' prices for each leg (Sportsbet, TAB, Ladbrokes, Neds, PointsBet, Unibet...) and their over/under lines (fair prices), from the-odds-api.com. Only the games and stats today's legs need are priced, within `ODDS_DAILY_CREDITS` (16 a day fits the free 500 a month) | Free plan, 500 credits a month |
 | `ANTHROPIC_API_KEY` | Claude reads vague injury notes (minutes limits, coming off the bench) | Pay-as-you-go, a few cents a month |
 
 Without them everything still runs on free ESPN data and rules.

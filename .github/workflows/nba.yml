@@ -35,8 +35,7 @@ jobs:
       - name: Run
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
-          ODDS_REGIONS: us
-          ODDS_MAX_EVENTS: "8"
+          ODDS_DAILY_CREDITS: "16"   # free plan is 500 a month; raise this on a paid plan
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           MODE="${{ github.event.inputs.mode }}"

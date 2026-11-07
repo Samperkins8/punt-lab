@@ -111,9 +111,19 @@
   </div>
   <section class="grid" id="multis"></section>
 
+  <section class="card" id="value" hidden>
+    <h2>Value legs</h2>
+    <p class="sub">Legs where the best bookie's price beats the model's chance, best value first. These are worth most as singles or doubles: every extra leg in a multi adds the bookie's margin again.</p>
+    <div class="scroll"><table class="cards" id="value-legs">
+      <thead><tr><th>Player</th><th>Leg</th><th class="num">Model</th><th class="num">Best price</th><th class="num">Value</th><th class="num">Single stake</th><th>Game</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+    <p class="sub" id="value-none" hidden>No leg is priced above its fair value today. Skipping is the winning move on days like this.</p>
+  </section>
+
   <section class="card">
     <h2>Every candidate leg</h2>
-    <p class="sub">Model is the chance the leg lands. Edge is model minus the chance the odds imply: positive means the price is generous. Fair price is from the US betting market, before any bookie margin.</p>
+    <p class="sub">Model is the chance the leg lands. Edge is model minus the chance the odds imply: positive means the price is generous. Fair price is from Australian bookies' over/under lines with their margin taken out. Best price is the most any bookie pays.</p>
     <div class="scroll"><table class="cards" id="legs">
       <thead><tr><th>Player</th><th>Leg</th><th class="num">Model</th><th class="num">Odds</th><th class="num">Edge</th><th class="num">Fair price</th><th>Hit rate</th><th class="num">Projected</th><th class="num">Matchup</th><th>Why</th><th>Game</th><th>Watch</th></tr></thead>
       <tbody></tbody>
@@ -160,9 +170,10 @@
   <details>
     <summary>How the multis are picked</summary>
     <dl>
-      <dt>Model</dt><dd>This season's games (the last 5 count 1.5× as much as older ones) blended with last season (last season counts as 8 games' worth, less if he played under 40 games), shifted towards games played in tonight's situation (a teammate in or out), adjusted for the opponent's defence against his position and last season's head-to-head (shrunk by how much of the opponent's roster is still the same, worked out from last season's teams, and by sample size), adjusted for home or away (from his own split, shrunk for small samples) and tonight's expected pace (the game total against the slate average), scaled by expected minutes (cut on the second night of a back-to-back), and blended 60/40 with the US betting market's line where one is available.</dd>
+      <dt>Model</dt><dd>This season's games (recent games count extra; the weekly tune sets how much) blended with last season (last season counts as 8 games' worth, less if he played under 40 games), shifted towards games played in tonight's situation (a teammate in or out), adjusted for the opponent's defence against his position and last season's head-to-head (shrunk by how much of the opponent's roster is still the same, worked out from last season's teams, and by sample size), adjusted for home or away (from his own split, shrunk for small samples) and tonight's expected pace (the game total against the slate average), scaled by expected minutes (cut on the second night of a back-to-back), and blended 60/40 with the bookies' over/under line (margin removed) where one is available.</dd>
       <dt>Est. chance all land</dt><dd>The legs' chances multiplied, adjusted for same-game links: two rebound legs from one game work against each other, two points legs from one team share the shots, other same-game legs move a little together with pace.</dd>
       <dt>Est. Sportsbet price</dt><dd>Each leg's fair price less a typical bookie margin, multiplied together. Every multi must reach $2.00 on this estimate; check the real price in the app.</dd>
+      <dt>Prices</dt><dd>Each morning the games and stats that today's legs need are priced at Australian bookies (Sportsbet, TAB, Ladbrokes, Neds, PointsBet, Unibet and others), busiest games first, within the free plan's daily credits. "Best price" is the highest any bookie offers. A multi has to be placed with one bookie, so its best price is the bookie whose prices for all the legs multiply to the most.</dd>
       <dt>Stake</dt><dd>Type the price on offer and the card suggests a share of your betting budget: a quarter of the Kelly amount ((chance × price − 1) ÷ (price − 1)), at most 3%, and nothing when the price is under break-even. Prices you type stay on your phone only.</dd>
       <dt>Profit ($1 each)</dt><dd>What $1 on that multi every day would have made, at the real price when every leg had one, otherwise the estimated price. * means some older days had no price saved and are left out.</dd>
       <dt>Worth it if it pays at least</dt><dd>1 ÷ the chance all legs land. If Sportsbet's price for the whole multi is at or above it, the model says it's worth taking.</dd>
@@ -177,6 +188,11 @@
 <script>
 const pct = (v) => v == null ? '' : (v < 0.1 ? (v * 100).toFixed(1) : Math.round(v * 100)) + '%';
 const price = (v) => v == null ? '' : '$' + Number(v).toFixed(2);
+const BOOKS = { sportsbet: 'Sportsbet', tab: 'TAB', tabtouch: 'TABtouch', ladbrokes_au: 'Ladbrokes', neds: 'Neds',
+  pointsbetau: 'PointsBet', unibet: 'Unibet', betr_au: 'Betr', betright: 'BetRight', playup: 'PlayUp', bet365_au: 'Bet365',
+  dabble_au: 'Dabble', picklebet_au: 'Picklebet', betfair_ex_au: 'Betfair' };
+const book = (k) => BOOKS[k] || k || '';
+const bestPrice = (l) => l.best_price ? price(l.best_price) + ' ' + book(l.best_book) : price(l.odds);
 const fmt1 = (v) => v == null ? '' : Number(v).toFixed(1);
 const signedPts = (v) => v == null ? '' : (v > 0 ? '+' : '') + Math.round(v * 100) + ' pts';
 const text = (id, v) => { document.getElementById(id).textContent = v ?? ''; };
@@ -204,7 +220,7 @@ function legsTable(tbody, legs, compact) {
     cell(tr, l.player, 'nowrap c-player');
     cell(tr, l.market, 'nowrap c-leg');
     cell(tr, pct(l.model_prob), 'num strong c-model', 'Model');
-    cell(tr, price(l.odds), 'num c-odds', 'Odds');
+    cell(tr, bestPrice(l), 'num c-odds', 'Best price');
     if (!compact) cell(tr, signedPts(l.edge), 'num c-edge ' + (l.edge == null ? '' : l.edge > 0.05 ? 'good' : l.edge < 0 ? 'bad' : 'muted'), 'Edge');
     cell(tr, price(l.fair_price), 'num muted c-fair', 'Fair price');
     if (compact) {
@@ -244,7 +260,7 @@ function stakeBox(m) {
   const lab = document.createElement('label'); lab.htmlFor = id; lab.textContent = 'Price on offer';
   const row = document.createElement('div'); row.className = 'row';
   const input = document.createElement('input'); input.id = id; input.type = 'number'; input.inputMode = 'decimal';
-  input.step = '0.01'; input.min = '1.01'; input.placeholder = m.est_price ? m.est_price.toFixed(2) : '2.00';
+  input.step = '0.01'; input.min = '1.01'; input.placeholder = (m.best_book_price || m.est_price || 2).toFixed(2);
   const verdict = document.createElement('span'); verdict.className = 'verdict';
   const why = document.createElement('p'); why.className = 'sub';
   row.append('$', input, verdict);
@@ -280,6 +296,27 @@ function stakeBox(m) {
   return box;
 }
 
+function valueLegs(legs) {
+  const rows = legs.filter((l) => l.best_price && l.stat !== 'win')
+    .map((l) => ({ l, ev: l.model_prob * l.best_price - 1 }))
+    .filter((x) => x.ev >= 0.03).sort((a, b) => b.ev - a.ev).slice(0, 10);
+  const anyPriced = legs.some((l) => l.best_price);
+  document.getElementById('value').hidden = !anyPriced;
+  document.getElementById('value-none').hidden = rows.length > 0;
+  const tb = document.querySelector('#value-legs tbody'); tb.replaceChildren();
+  document.getElementById('value-legs').hidden = !rows.length;
+  for (const { l, ev } of rows) {
+    const tr = tb.insertRow();
+    cell(tr, l.player, 'nowrap c-player'); cell(tr, l.market, 'nowrap c-leg');
+    cell(tr, pct(l.model_prob), 'num strong', 'Model');
+    cell(tr, bestPrice(l), 'num nowrap', 'Best price');
+    cell(tr, '+' + Math.round(ev * 100) + 'c per $1', 'num good nowrap', 'Value');
+    const f = stakeFor(l.model_prob, l.best_price);
+    cell(tr, f ? (f * 100).toFixed(2).replace(/\.?0+$/, '') + '%' : '', 'num', 'Single stake');
+    cell(tr, l.game, 'muted nowrap c-wide');
+  }
+}
+
 function multiCard(m, legsById) {
   const legs = m.leg_ids.map((id) => legsById.get(id)).filter(Boolean);
   const card = document.createElement('div'); card.className = 'card';
@@ -308,7 +345,8 @@ function multiCard(m, legsById) {
   if (m.est_price) fig(price(m.est_price), 'Est. Sportsbet price');
   fig(price(m.break_even), 'Worth it if it pays at least');
   if (m.fair_multi) fig(price(m.fair_multi), 'Est. fair multi price');
-  if (m.known_price) fig(price(m.known_price) + ' (' + m.priced_legs + ')', 'Sportsbet prices so far');
+  if (m.best_book_price) fig(price(m.best_book_price) + ' ' + book(m.best_book), 'Best bookie for all ' + m.leg_ids.length + ' legs');
+  else if (m.known_price) fig(price(m.known_price) + ' (' + m.priced_legs + ')', 'Bookie prices so far');
   const wrap = document.createElement('div'); wrap.className = 'scroll';
   const table = document.createElement('table'); table.className = 'cards';
   table.innerHTML = '<thead><tr><th>Player</th><th>Leg</th><th class="num">Model</th><th class="num">Odds</th><th class="num">Fair price</th><th>Game</th><th>This season</th><th>Why</th></tr></thead><tbody></tbody>';
@@ -417,6 +455,7 @@ function honest(bt) {
   const box = document.getElementById('multis');
   const sorted = [...multis].sort((a, b) => a.rank - b.rank);
   ALL_MULTIS = sorted;
+  valueLegs(legs);
   const pickEl = document.getElementById('multi-pick');
   try { const saved = localStorage.getItem('punt-lab-multi'); if (saved && [...pickEl.options].some((o) => o.value === saved)) pickEl.value = saved; } catch (e) {}
   const showMultis = () => {

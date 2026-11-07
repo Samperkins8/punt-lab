@@ -107,7 +107,7 @@ def grade_previous(today: date) -> str:
         landed_by_leg[leg["leg_id"]] = landed
         results.append({
             "slate_date": prev, "leg_id": leg["leg_id"], "player": leg["player"], "game": leg["game"],
-            "market": leg["market"], "line": leg["line"], "model_prob": leg["model_prob"], "raw_prob": leg.get("raw_prob"),
+            "market": leg["market"], "line": leg["line"], "model_prob": leg["model_prob"], "raw_prob": leg.get("raw_prob"), "best_price": leg.get("best_price"),
             "odds": leg.get("odds"), "fair_price": leg.get("fair_price"), "actual": actual, "landed": landed,
             "in_multis": ", ".join(m["multi"] for m in multis if leg["leg_id"] in m["leg_ids"]),
         })
@@ -118,7 +118,7 @@ def grade_previous(today: date) -> str:
         landed = False if False in outs else (None if None in outs else True)
         mres.append({"slate_date": prev, "multi": m["multi"], "legs": m["legs_text"],
                      "est_hit": m["est_hit"], "landed": landed,
-                     "price": m.get("known_price") if m.get("priced_legs", "").split(" of ")[0] == str(len(m["leg_ids"])) else m.get("est_price")})
+                     "price": m.get("best_book_price") or m.get("known_price") if m.get("priced_legs", "").split(" of ")[0] == str(len(m["leg_ids"])) else m.get("est_price")})
         summary.append(f"{m['multi']} {'landed' if landed else 'void' if landed is None else 'missed'}")
     save_json("results.json", results)
     save_json("multi_results.json", mres)
@@ -344,7 +344,7 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
                             leg_id=f"{name.lower().replace(' ', '_').replace('.', '')}_{stat}{line}",
                             player=name, team=team, game=game_label, stat=stat, line=line, log=vals,
                             prior_mean=prior_mean, prior_games=prior_games,
-                            odds=ov.odds.get((name.lower(), line, stat)) or prices["sportsbet"].get((name.lower(), stat, line)),
+                            odds=ov.odds.get((name.lower(), line, stat)) or odds.typical(prices["books"].get((name.lower(), stat, line))),
                             context_label=best_ctx[1] if best_ctx else None,
                             context_log=best_ctx[2] if best_ctx else None,
                             h2h_log=h2h, roster_overlap=overlap if h2h else None, opp_factor=opp_factor,
@@ -354,6 +354,7 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
                             market_source=mk[2] if mk else None,
                             note="; ".join(note_bits),
                             extra={"event_id": g["event_id"], "athlete_id": pid, "risky": risky,
+                                   "books": prices["books"].get((name.lower(), stat, line)) or {},
                                    "at_home": at_home, "venue_games": len(venue_vals), "b2b": b2b,
                                    "context_detail": best_ctx[3] if best_ctx else None},
                         )
@@ -441,7 +442,7 @@ def explain(leg: Leg, res) -> str:
     if abs(res.minutes_factor - 1) >= 0.02:
         parts.append(f"Expected minutes {leg.proj_minutes:g} vs his usual {leg.avg_minutes:g}.")
     if leg.market_line is not None:
-        parts.append(f"US betting line: {leg.market_line:g}.")
+        parts.append(f"Bookies' line: {leg.market_line:g}.")
     return " ".join(parts)
 
 
@@ -464,6 +465,8 @@ def leg_row(leg: Leg, res) -> dict:
         "implied": round(res.implied, 4) if res.implied else None,
         "edge": round(res.edge, 4) if res.edge is not None else None,
         "hit_rate": round(res.hit_rate, 4), "market_line": leg.market_line, "market_p_over": leg.market_p_over,
+        "books": leg.extra.get("books") or None, "best_book": odds.best(leg.extra.get("books"))[0],
+        "best_price": odds.best(leg.extra.get("books"))[1], "market_source": leg.market_source,
         "questionable": leg.extra.get("risky", False), "step_up": leg.extra.get("step_up", False), "note": leg.note, "event_id": leg.extra.get("event_id"), "athlete_id": leg.extra.get("athlete_id"),
     }
 
@@ -492,8 +495,22 @@ def multi_rows(cands, chosen) -> list[dict]:
             "known_price": round(price, 2) if known else None,
             "fair_multi": round(_prod(fair), 2) if all(fair) else None,
             "est_price": round(_prod([pick._assumed_price(*cands[i]) for i in ids]), 2),
+            **_multi_books(legs),
         })
     return rows
+
+
+def _multi_books(legs) -> dict:
+    """A multi is placed with one bookie, so price it at each bookie that has every leg."""
+    books = [l.extra.get("books") or {} for l in legs]
+    if not legs or not all(books):
+        return {"book_prices": None, "best_book": None, "best_book_price": None}
+    common = set(books[0]).intersection(*books[1:])
+    by_book = {bk: round(_prod([b[bk] for b in books]), 2) for bk in common}
+    if not by_book:
+        return {"book_prices": None, "best_book": None, "best_book_price": None}
+    bk = max(by_book, key=by_book.get)
+    return {"book_prices": by_book, "best_book": bk, "best_book_price": by_book[bk]}
 
 
 def _prod(xs):
@@ -530,13 +547,13 @@ def main() -> None:
 
     ov = overrides.load(ROOT / "overrides" / "nba.txt", slate)
     inj = espn.injuries()
-    prices = odds.fetch(upcoming) if args.mode == "daily" else {"market": {}, "sportsbet": {}}
+    prices = odds.empty()
     if args.mode == "pretip":  # keep the morning's prices
         for l in load_json("legs.json", []):
             if l.get("market_line") is not None:
-                prices["market"][(l["player"].lower(), l["stat"])] = (l["market_line"], l.get("market_p_over", 0.5), "The Odds API")
-            if l.get("odds"):
-                prices["sportsbet"][(l["player"].lower(), l["stat"], int(l["line"]))] = l["odds"]
+                prices["market"][(l["player"].lower(), l["stat"])] = (l["market_line"], l.get("market_p_over", 0.5), l.get("market_source") or "AU bookies")
+            if l.get("books"):
+                prices["books"][(l["player"].lower(), l["stat"], int(l["line"]))] = l["books"]
 
     # optional AI read of injury notes for players on today's teams
     teams_today = {g["home"] for g in upcoming} | {g["away"] for g in upcoming}
@@ -545,6 +562,17 @@ def main() -> None:
     ai_inj = ai.read_injuries(ai_rows[:120]) if teams_today else {}
 
     found = analyse(slate, upcoming, ov, inj, ai_inj, prices)
+    if args.mode == "daily" and odds.enabled() and found:
+        # second pass: price only the games and stats today's legs need (ESPN data is cached, so this is quick)
+        names = {f"{g['away']} @ {g['home']}": (g["home_name"], g["away_name"]) for g in upcoming}
+        wanted: dict = {}
+        for l, _ in found:
+            if l.stat != "win" and l.game in names:
+                st = wanted.setdefault(names[l.game], {})
+                st[l.stat] = st.get(l.stat, 0) + 1
+        prices = odds.fetch(upcoming, wanted)
+        if prices["books"] or prices["market"]:
+            found = analyse(slate, upcoming, ov, inj, ai_inj, prices)
     extra_kinds = ("step_up", "long_only")
     main_legs = trim([c for c in found if not any(c[0].extra.get(k) for k in extra_kinds)])
     keep_players = {c[0].player for c in main_legs}
@@ -597,7 +625,9 @@ def main() -> None:
         "injuries": ", ".join(outs[:12]) + (" and others" if len(outs) > 12 else ""),
         "graded": graded,
         "next_run": f"Re-checked {stamp}: {changes}" if args.mode == "pretip" else f"Built {stamp}; re-checked before the first tip",
-        "sources": {"stats": "ESPN", "odds": "The Odds API" if odds.enabled() else None,
+        "sources": {"stats": "ESPN", "odds": (f"AU bookies via The Odds API ({len(prices['priced'])} game-stats priced"
+                                              + (f", {prices['credits_left']} credits left" if prices.get("credits_left") is not None else "") + ")")
+                                             if prices.get("priced") else ("The Odds API" if odds.enabled() else None),
                     "injury_reading": "Claude" if ai.enabled() else "rules"},
         "updated_at": now.isoformat(),
     }
