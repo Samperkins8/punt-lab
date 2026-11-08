@@ -3,7 +3,7 @@
  "headline": "3-leg $2+: Anthony Black 10+ points; Tristan da Silva 10+ points; Stephen Curry 25+ points — about 42% to land, est. price $2.02, worth it at $2.37+. Note: no 3-leg value multi pays $2, so it's left out; only 6 legs are 80%+ likely at $1.15+, so the long multi is short.",
  "injuries": "Keshon Gilbert (Out), Asa Newell (Out), Jock Landale (Out), Mouhamed Gueye (Out), Henri Veesaar (Out), Egor Demin (Out), Jaylon Tyson (Out), Sam Merrill (Out), Jarrett Allen (Out), Julian Strawther (Out), Kristaps Porzingis (Out), Moses Moody (Out) and others",
  "graded": "",
- "next_run": "Late check 12:05pm — ORL @ GS, HOU @ PHX: no new outs; 1 new leg worth a look",
+ "next_run": "Late check 1:08pm — SA @ POR: no new outs",
  "sources": {
   "stats": "ESPN",
   "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API",
@@ -65,11 +65,13 @@
   "BKN @ ATL",
   "DEN @ IND",
   "HOU @ PHX",
-  "ORL @ GS"
+  "ORL @ GS",
+  "SA @ POR"
  ],
  "late_log": [
   "8:40am DEN @ IND: no new outs; 2 new legs worth a look",
   "10:39am BKN @ ATL: no new outs; 1 new leg worth a look",
-  "12:05pm ORL @ GS, HOU @ PHX: no new outs; 1 new leg worth a look"
+  "12:05pm ORL @ GS, HOU @ PHX: no new outs; 1 new leg worth a look",
+  "1:08pm SA @ POR: no new outs"
  ]
 }
