@@ -62,5 +62,85 @@
   "est_hit": 0.2188,
   "landed": true,
   "price": 4.36
+ },
+ {
+  "slate_date": "2026-11-08",
+  "multi": "4-leg $2+",
+  "legs": "Anthony Black 10+ points; Wendell Carter Jr. 6+ rebounds; OG Anunoby 4+ rebounds; Tristan da Silva 10+ points",
+  "est_hit": 0.4052,
+  "landed": true,
+  "price": 2.0
+ },
+ {
+  "slate_date": "2026-11-08",
+  "multi": "3-leg $2+",
+  "legs": "Anthony Black 10+ points; Tristan da Silva 10+ points; Stephen Curry 25+ points",
+  "est_hit": 0.4213,
+  "landed": true,
+  "price": 2.02
+ },
+ {
+  "slate_date": "2026-11-08",
+  "multi": "4-leg $3+",
+  "legs": "Anthony Black 10+ points; Tristan da Silva 10+ points; Stephen Curry 25+ points; Wendell Carter Jr. 8+ rebounds",
+  "est_hit": 0.2776,
+  "landed": true,
+  "price": 3.02
+ },
+ {
+  "slate_date": "2026-11-08",
+  "multi": "4-leg $4+",
+  "legs": "OG Anunoby 4+ rebounds; Julius Randle 20+ points; Michael Porter Jr. 3+ threes; Jalen Johnson 8+ rebounds",
+  "est_hit": 0.2004,
+  "landed": false,
+  "price": 4.09
+ },
+ {
+  "slate_date": "2026-11-08",
+  "multi": "Best value",
+  "legs": "Stephen Curry 4+ assists; Franz Wagner 4+ rebounds; OG Anunoby 4+ rebounds; Tristan da Silva 10+ points",
+  "est_hit": 0.4041,
+  "landed": true,
+  "price": 2.02
+ },
+ {
+  "slate_date": "2026-11-08",
+  "multi": "Safest",
+  "legs": "Anthony Black 10+ points; Wendell Carter Jr. 6+ rebounds; OG Anunoby 4+ rebounds; Tristan da Silva 10+ points",
+  "est_hit": 0.4052,
+  "landed": true,
+  "price": 2.0
+ },
+ {
+  "slate_date": "2026-11-08",
+  "multi": "One per game",
+  "legs": "Alperen Sengun 15+ points; Jalen Brunson 4+ assists; Alex Sarr 4+ rebounds; Anthony Black 10+ points; Julius Randle 15+ points; Dylan Harper 10+ points",
+  "est_hit": 0.2822,
+  "landed": true,
+  "price": 2.15
+ },
+ {
+  "slate_date": "2026-11-08",
+  "multi": "Mid-range $8+",
+  "legs": "Stephen Curry 4+ assists; Wendell Carter Jr. 6+ rebounds; Dylan Harper 10+ points; Toumani Camara 10+ points; Franz Wagner 20+ points; Shai Gilgeous-Alexander 6+ assists",
+  "est_hit": 0.0816,
+  "landed": false,
+  "price": 8.02
+ },
+ {
+  "slate_date": "2026-11-08",
+  "multi": "Long multi 8+",
+  "legs": "Dillon Brooks 10+ points; De'Aaron Fox 10+ points; Amen Thompson 10+ points; Brandin Podziemski 10+ points; Stephon Castle 4+ assists; Kyshawn George 10+ points",
+  "est_hit": 0.3355,
+  "landed": false,
+  "price": 2.56
+ },
+ {
+  "slate_date": "2026-11-08",
+  "multi": "Long shot $50",
+  "legs": "Stephen Curry 6+ assists; Jabari Smith Jr. 15+ points; Julius Randle 8+ rebounds; OG Anunoby 6+ rebounds; De'Aaron Fox 6+ assists; Jalen Johnson 20+ points",
+  "est_hit": 0.0125,
+  "landed": false,
+  "price": 50.01
  }
 ]

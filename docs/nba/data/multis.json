@@ -3,161 +3,197 @@
   "multi": "4-leg $2+",
   "rank": 1,
   "leg_ids": [
-   "anthony_black_points10",
-   "wendell_carter_jr_rebounds6",
-   "og_anunoby_rebounds4",
-   "tristan_da_silva_points10"
+   "jaden_mcdaniels_rebounds4",
+   "dejounte_murray_assists4",
+   "jonathan_kuminga_points10",
+   "jeremiah_fears_points10"
   ],
-  "legs_text": "Anthony Black 10+ points; Wendell Carter Jr. 6+ rebounds; OG Anunoby 4+ rebounds; Tristan da Silva 10+ points",
-  "est_hit": 0.4052,
-  "break_even": 2.47,
-  "priced_legs": "2 of 4",
-  "known_price": 1.54,
-  "fair_multi": null,
-  "est_price": 2.0,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null
+  "legs_text": "Jaden McDaniels 4+ rebounds; Dejounte Murray 4+ assists; Jonathan Kuminga 10+ points; Jeremiah Fears 10+ points",
+  "est_hit": 0.3924,
+  "break_even": 2.55,
+  "priced_legs": "4 of 4",
+  "known_price": 2.27,
+  "fair_multi": 2.33,
+  "est_price": 2.22,
+  "book_prices": {
+   "neds": 2.22
+  },
+  "best_book": "neds",
+  "best_book_price": 2.22
  },
  {
   "multi": "3-leg $2+",
   "rank": 2,
   "leg_ids": [
-   "anthony_black_points10",
-   "tristan_da_silva_points10",
-   "stephen_curry_points25"
+   "jaden_mcdaniels_rebounds4",
+   "dejounte_murray_assists4",
+   "saddiq_bey_points10"
   ],
-  "legs_text": "Anthony Black 10+ points; Tristan da Silva 10+ points; Stephen Curry 25+ points",
-  "est_hit": 0.4213,
-  "break_even": 2.37,
-  "priced_legs": "1 of 3",
-  "known_price": 1.24,
-  "fair_multi": null,
-  "est_price": 2.02,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null
+  "legs_text": "Jaden McDaniels 4+ rebounds; Dejounte Murray 4+ assists; Saddiq Bey 10+ points",
+  "est_hit": 0.4823,
+  "break_even": 2.07,
+  "priced_legs": "3 of 3",
+  "known_price": 2.06,
+  "fair_multi": 2.29,
+  "est_price": 2.01,
+  "book_prices": {
+   "neds": 2.01
+  },
+  "best_book": "neds",
+  "best_book_price": 2.01
  },
  {
   "multi": "4-leg $3+",
   "rank": 3,
   "leg_ids": [
-   "anthony_black_points10",
-   "tristan_da_silva_points10",
-   "stephen_curry_points25",
-   "wendell_carter_jr_rebounds8"
+   "dejounte_murray_assists4",
+   "rui_hachimura_rebounds4",
+   "saddiq_bey_points10",
+   "domantas_sabonis_rebounds12"
   ],
-  "legs_text": "Anthony Black 10+ points; Tristan da Silva 10+ points; Stephen Curry 25+ points; Wendell Carter Jr. 8+ rebounds",
-  "est_hit": 0.2776,
-  "break_even": 3.6,
-  "priced_legs": "1 of 4",
-  "known_price": 1.24,
-  "fair_multi": null,
-  "est_price": 3.02,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null
+  "legs_text": "Dejounte Murray 4+ assists; Rui Hachimura 4+ rebounds; Saddiq Bey 10+ points; Domantas Sabonis 12+ rebounds",
+  "est_hit": 0.2824,
+  "break_even": 3.54,
+  "priced_legs": "4 of 4",
+  "known_price": 3.13,
+  "fair_multi": 3.94,
+  "est_price": 3.05,
+  "book_prices": {
+   "neds": 3.05
+  },
+  "best_book": "neds",
+  "best_book_price": 3.05
  },
  {
   "multi": "4-leg $4+",
   "rank": 4,
   "leg_ids": [
-   "og_anunoby_rebounds4",
-   "julius_randle_points20",
-   "michael_porter_jr_threes3",
-   "jalen_johnson_rebounds8"
+   "jaden_mcdaniels_rebounds4",
+   "cade_cunningham_rebounds4",
+   "davion_mitchell_points10",
+   "domantas_sabonis_rebounds12"
   ],
-  "legs_text": "OG Anunoby 4+ rebounds; Julius Randle 20+ points; Michael Porter Jr. 3+ threes; Jalen Johnson 8+ rebounds",
-  "est_hit": 0.2004,
-  "break_even": 4.99,
-  "priced_legs": "1 of 4",
-  "known_price": 1.24,
-  "fair_multi": null,
-  "est_price": 4.09,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null
+  "legs_text": "Jaden McDaniels 4+ rebounds; Cade Cunningham 4+ rebounds; Davion Mitchell 10+ points; Domantas Sabonis 12+ rebounds",
+  "est_hit": 0.2775,
+  "break_even": 3.6,
+  "priced_legs": "4 of 4",
+  "known_price": 3.18,
+  "fair_multi": 3.36,
+  "est_price": 3.42,
+  "book_prices": {
+   "tab": 3.42,
+   "neds": 2.96
+  },
+  "best_book": "tab",
+  "best_book_price": 3.42
  },
  {
   "multi": "Best value",
   "rank": 5,
   "leg_ids": [
-   "stephen_curry_assists4",
-   "franz_wagner_rebounds4",
-   "og_anunoby_rebounds4",
-   "tristan_da_silva_points10"
+   "jaden_mcdaniels_rebounds4",
+   "dejounte_murray_assists4",
+   "rui_hachimura_rebounds4",
+   "saddiq_bey_points10"
   ],
-  "legs_text": "Stephen Curry 4+ assists; Franz Wagner 4+ rebounds; OG Anunoby 4+ rebounds; Tristan da Silva 10+ points",
-  "est_hit": 0.4041,
-  "break_even": 2.47,
-  "priced_legs": "2 of 4",
-  "known_price": 1.54,
-  "fair_multi": null,
-  "est_price": 2.02,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null
+  "legs_text": "Jaden McDaniels 4+ rebounds; Dejounte Murray 4+ assists; Rui Hachimura 4+ rebounds; Saddiq Bey 10+ points",
+  "est_hit": 0.3812,
+  "break_even": 2.62,
+  "priced_legs": "4 of 4",
+  "known_price": 2.57,
+  "fair_multi": 2.87,
+  "est_price": 2.51,
+  "book_prices": {
+   "neds": 2.51
+  },
+  "best_book": "neds",
+  "best_book_price": 2.51
  },
  {
   "multi": "Safest",
   "rank": 6,
   "leg_ids": [
-   "anthony_black_points10",
-   "wendell_carter_jr_rebounds6",
-   "og_anunoby_rebounds4",
-   "tristan_da_silva_points10"
+   "jaden_mcdaniels_rebounds4",
+   "dejounte_murray_assists4",
+   "jonathan_kuminga_points10",
+   "jeremiah_fears_points10"
   ],
-  "legs_text": "Anthony Black 10+ points; Wendell Carter Jr. 6+ rebounds; OG Anunoby 4+ rebounds; Tristan da Silva 10+ points",
-  "est_hit": 0.4052,
-  "break_even": 2.47,
-  "priced_legs": "2 of 4",
-  "known_price": 1.54,
-  "fair_multi": null,
-  "est_price": 2.0,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null
+  "legs_text": "Jaden McDaniels 4+ rebounds; Dejounte Murray 4+ assists; Jonathan Kuminga 10+ points; Jeremiah Fears 10+ points",
+  "est_hit": 0.3924,
+  "break_even": 2.55,
+  "priced_legs": "4 of 4",
+  "known_price": 2.27,
+  "fair_multi": 2.33,
+  "est_price": 2.22,
+  "book_prices": {
+   "neds": 2.22
+  },
+  "best_book": "neds",
+  "best_book_price": 2.22
+ },
+ {
+  "multi": "3-leg value",
+  "rank": 7,
+  "leg_ids": [
+   "dejounte_murray_assists4",
+   "rui_hachimura_rebounds4",
+   "saddiq_bey_points10"
+  ],
+  "legs_text": "Dejounte Murray 4+ assists; Rui Hachimura 4+ rebounds; Saddiq Bey 10+ points",
+  "est_hit": 0.4758,
+  "break_even": 2.1,
+  "priced_legs": "3 of 3",
+  "known_price": 2.06,
+  "fair_multi": 2.35,
+  "est_price": 2.06,
+  "book_prices": {
+   "neds": 2.06
+  },
+  "best_book": "neds",
+  "best_book_price": 2.06
  },
  {
   "multi": "One per game",
   "rank": 8,
   "leg_ids": [
-   "alperen_sengun_points15",
-   "jalen_brunson_assists4",
-   "alex_sarr_rebounds4",
-   "anthony_black_points10",
-   "julius_randle_points15",
-   "dylan_harper_points10"
+   "jaden_mcdaniels_rebounds4",
+   "dejounte_murray_assists4",
+   "domantas_sabonis_points10",
+   "cade_cunningham_rebounds4",
+   "jaime_jaquez_jr_points10",
+   "pj_washington_points10"
   ],
-  "legs_text": "Alperen Sengun 15+ points; Jalen Brunson 4+ assists; Alex Sarr 4+ rebounds; Anthony Black 10+ points; Julius Randle 15+ points; Dylan Harper 10+ points",
-  "est_hit": 0.2822,
-  "break_even": 3.54,
-  "priced_legs": "0 of 6",
-  "known_price": null,
-  "fair_multi": null,
-  "est_price": 2.15,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null
+  "legs_text": "Jaden McDaniels 4+ rebounds; Dejounte Murray 4+ assists; Domantas Sabonis 10+ points; Cade Cunningham 4+ rebounds; Jaime Jaquez Jr. 10+ points; P.J. Washington 10+ points",
+  "est_hit": 0.2133,
+  "break_even": 4.69,
+  "priced_legs": "6 of 6",
+  "known_price": 3.75,
+  "fair_multi": 4.72,
+  "est_price": 3.78,
+  "book_prices": {
+   "neds": 3.78
+  },
+  "best_book": "neds",
+  "best_book_price": 3.78
  },
  {
   "multi": "Mid-range $8+",
   "rank": 9,
   "leg_ids": [
-   "stephen_curry_assists4",
-   "wendell_carter_jr_rebounds6",
-   "dylan_harper_points10",
-   "toumani_camara_points10",
-   "franz_wagner_points20",
-   "shai_gilgeous-alexander_assists6"
+   "mia_win",
+   "jaden_mcdaniels_rebounds4",
+   "precious_achiuwa_rebounds4",
+   "saddiq_bey_points10",
+   "davion_mitchell_points10",
+   "jaime_jaquez_jr_rebounds6"
   ],
-  "legs_text": "Stephen Curry 4+ assists; Wendell Carter Jr. 6+ rebounds; Dylan Harper 10+ points; Toumani Camara 10+ points; Franz Wagner 20+ points; Shai Gilgeous-Alexander 6+ assists",
-  "est_hit": 0.0816,
-  "break_even": 12.25,
-  "priced_legs": "0 of 6",
-  "known_price": null,
-  "fair_multi": null,
-  "est_price": 8.02,
+  "legs_text": "Miami Heat Miami Heat to win; Jaden McDaniels 4+ rebounds; Precious Achiuwa 4+ rebounds; Saddiq Bey 10+ points; Davion Mitchell 10+ points; Jaime Jaquez Jr. 6+ rebounds",
+  "est_hit": 0.1186,
+  "break_even": 8.43,
+  "priced_legs": "5 of 6",
+  "known_price": 6.84,
+  "fair_multi": 10.61,
+  "est_price": 8.03,
   "book_prices": null,
   "best_book": null,
   "best_book_price": null
@@ -166,44 +202,47 @@
   "multi": "Long multi 8+",
   "rank": 10,
   "leg_ids": [
-   "dillon_brooks_points10",
-   "de'aaron_fox_points10",
-   "amen_thompson_points10",
-   "brandin_podziemski_points10",
-   "stephon_castle_assists4",
-   "kyshawn_george_points10"
+   "trey_murphy_iii_points10",
+   "duncan_robinson_points10",
+   "darryn_peterson_points10",
+   "ace_bailey_points10",
+   "mia_win",
+   "jaden_mcdaniels_rebounds4"
   ],
-  "legs_text": "Dillon Brooks 10+ points; De'Aaron Fox 10+ points; Amen Thompson 10+ points; Brandin Podziemski 10+ points; Stephon Castle 4+ assists; Kyshawn George 10+ points",
-  "est_hit": 0.3355,
-  "break_even": 2.98,
-  "priced_legs": "6 of 6",
-  "known_price": 2.59,
-  "fair_multi": 3.72,
-  "est_price": 2.56,
-  "book_prices": {
-   "neds": 2.56
-  },
-  "best_book": "neds",
-  "best_book_price": 2.56
+  "legs_text": "Trey Murphy III 10+ points; Duncan Robinson 10+ points; Darryn Peterson 10+ points; Ace Bailey 10+ points; Miami Heat Miami Heat to win; Jaden McDaniels 4+ rebounds",
+  "est_hit": 0.3176,
+  "break_even": 3.15,
+  "priced_legs": "5 of 6",
+  "known_price": 2.34,
+  "fair_multi": 2.9,
+  "est_price": 2.75,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null
  },
  {
   "multi": "Long shot $50",
   "rank": 11,
   "leg_ids": [
-   "stephen_curry_assists6",
-   "jabari_smith_jr_points15",
-   "julius_randle_rebounds8",
-   "og_anunoby_rebounds6",
-   "de'aaron_fox_assists6",
-   "jalen_johnson_points20"
+   "mia_win",
+   "jaden_mcdaniels_rebounds4",
+   "rui_hachimura_rebounds4",
+   "cade_cunningham_rebounds4",
+   "saddiq_bey_points10",
+   "walker_kessler_points10",
+   "davion_mitchell_points10",
+   "jaime_jaquez_jr_rebounds4",
+   "zion_williamson_points20",
+   "bam_adebayo_points20",
+   "dejounte_murray_assists6"
   ],
-  "legs_text": "Stephen Curry 6+ assists; Jabari Smith Jr. 15+ points; Julius Randle 8+ rebounds; OG Anunoby 6+ rebounds; De'Aaron Fox 6+ assists; Jalen Johnson 20+ points",
-  "est_hit": 0.0125,
-  "break_even": 79.82,
-  "priced_legs": "0 of 6",
-  "known_price": null,
-  "fair_multi": null,
-  "est_price": 50.01,
+  "legs_text": "Miami Heat Miami Heat to win; Jaden McDaniels 4+ rebounds; Rui Hachimura 4+ rebounds; Cade Cunningham 4+ rebounds; Saddiq Bey 10+ points; Walker Kessler 10+ points; Davion Mitchell 10+ points; Jaime Jaquez Jr. 4+ rebounds; Zion Williamson 20+ points; Bam Adebayo 20+ points; Dejounte Murray 6+ assists",
+  "est_hit": 0.0176,
+  "break_even": 56.94,
+  "priced_legs": "10 of 11",
+  "known_price": 42.75,
+  "fair_multi": 73.98,
+  "est_price": 50.19,
   "book_prices": null,
   "best_book": null,
   "best_book_price": null
