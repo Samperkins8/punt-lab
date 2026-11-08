@@ -3,7 +3,7 @@
  "headline": "3-leg $2+: Jaden McDaniels 4+ rebounds; Dejounte Murray 4+ assists; Saddiq Bey 10+ points — about 48% to land, est. price $2.01, worth it at $2.07+. Bet it on Neds ($2.01). Note: no 4-leg combo reaches $4.00, so 4-leg $4+ shows the longest-priced one; only 6 legs are 80%+ likely at $1.15+, so the long multi is short; 3-leg value includes legs without a confirmed worth-it price.",
  "injuries": "Mikel Brown Jr. (Out), Egor Demin (Out), Norman Powell (Out), Zach Collins (Out), Sergio De Larrea (Out), Tarik Biberovic (Out), Dereck Lively Ii (Out), Jalen Duren (Out), Isaiah Joe (Out), Brandon Ingram (Out), Isaiah Jackson (Out), Yanic Konan Niederhauser (Out) and others",
  "graded": "Yesterday: 37 of 45 legs landed; 4-leg $2+ landed, 3-leg $2+ landed, 4-leg $3+ landed, 4-leg $4+ missed, Best value landed, Safest landed, One per game landed, Mid-range $8+ missed, Long multi 8+ missed, Long shot $50 missed.",
- "next_run": "Built 8:18am; re-checked before the first tip",
+ "next_run": "Late check 9:41am — LAL @ DET: no new outs; 1 new leg worth a look",
  "sources": {
   "stats": "ESPN",
   "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API (4 games, 342 credits left)",
@@ -41,5 +41,11 @@
   "lauri markkanen": "Day-To-Day",
   "jusuf nurkic": "Out",
   "jaren jackson jr.": "Out"
- }
+ },
+ "late_checked": [
+  "LAL @ DET"
+ ],
+ "late_log": [
+  "9:41am LAL @ DET: no new outs; 1 new leg worth a look"
+ ]
 }
