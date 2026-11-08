@@ -1,15 +1,15 @@
 {
  "slate_date": "2026-11-09",
- "headline": "3-leg $2+: Jaden McDaniels 4+ rebounds; Dejounte Murray 4+ assists; Saddiq Bey 10+ points — about 48% to land, est. price $2.01, worth it at $2.07+. Bet it on Neds ($2.01). Note: no 4-leg combo reaches $4.00, so 4-leg $4+ shows the longest-priced one; only 6 legs are 80%+ likely at $1.15+, so the long multi is short; 3-leg value includes legs without a confirmed worth-it price.",
+ "headline": "3-leg $2+: Jaden McDaniels 4+ rebounds; Cade Cunningham 4+ rebounds; Precious Achiuwa 4+ rebounds — about 46% to land, est. price $2.10, worth it at $2.15+. Bet it on TAB ($2.10). Note: no 3-leg value multi pays $2, so it's left out; only 5 legs are 80%+ likely at $1.15+, so the long multi is short.",
  "injuries": "Mikel Brown Jr. (Out), Egor Demin (Out), Norman Powell (Out), Zach Collins (Out), Sergio De Larrea (Out), Tarik Biberovic (Out), Dereck Lively Ii (Out), Jalen Duren (Out), Isaiah Joe (Out), Brandon Ingram (Out), Isaiah Jackson (Out), Yanic Konan Niederhauser (Out) and others",
- "graded": "Yesterday: 37 of 45 legs landed; 4-leg $2+ landed, 3-leg $2+ landed, 4-leg $3+ landed, 4-leg $4+ missed, Best value landed, Safest landed, One per game landed, Mid-range $8+ missed, Long multi 8+ missed, Long shot $50 missed.",
- "next_run": "Late check 9:41am — LAL @ DET: no new outs; 1 new leg worth a look",
+ "graded": "",
+ "next_run": "Re-checked 10:10am: 10 multi(s) changed: 4-leg $2+, 3-leg $2+, 4-leg $3+, 4-leg $4+, Best value, Safest, One per game, Mid-range $8+, Long multi 8+, Long shot $50",
  "sources": {
   "stats": "ESPN",
-  "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API (4 games, 342 credits left)",
+  "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API",
   "injury_reading": "Claude"
  },
- "updated_at": "2026-11-09T08:18:35.881834+11:00",
+ "updated_at": "2026-11-09T10:10:48.577527+11:00",
  "inj_snapshot": {
   "mitchell robinson": "Day-To-Day",
   "grant nelson": "Day-To-Day",
@@ -35,6 +35,7 @@
   "adem bona": "Out",
   "dominick barlow": "Out",
   "ariel hukporti": "Out",
+  "domantas sabonis": "Day-To-Day",
   "maxime raynaud": "Out",
   "ben simmons": "Out",
   "keyonte george": "Day-To-Day",

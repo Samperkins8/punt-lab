@@ -12,18 +12,18 @@
   "game": "LAL @ DET",
   "tip": "10:00am",
   "favourite": "DET",
-  "spread": -7.5,
-  "total": 217.5,
-  "fav_win_prob": 0.734,
+  "spread": -8.5,
+  "total": 216.5,
+  "fav_win_prob": 0.761,
   "status": "Analysed"
  },
  {
   "game": "UTAH @ MIN",
   "tip": "11:00am",
   "favourite": "MIN",
-  "spread": -12.5,
-  "total": 221.5,
-  "fav_win_prob": 0.851,
+  "spread": -11.5,
+  "total": 222.5,
+  "fav_win_prob": 0.831,
   "status": "Analysed"
  },
  {
@@ -31,7 +31,7 @@
   "tip": "11:30am",
   "favourite": "DAL",
   "spread": -7.5,
-  "total": 222.5,
+  "total": 223.5,
   "fav_win_prob": 0.734,
   "status": "Analysed"
  },
@@ -39,9 +39,9 @@
   "game": "BOS @ MIL",
   "tip": "12:00pm",
   "favourite": "BOS",
-  "spread": -12.5,
+  "spread": -13.5,
   "total": 221.5,
-  "fav_win_prob": 0.851,
+  "fav_win_prob": 0.87,
   "status": "Analysed"
  },
  {
@@ -57,9 +57,9 @@
   "game": "MIA @ SAC",
   "tip": "1:00pm",
   "favourite": "MIA",
-  "spread": -10.5,
-  "total": 237.5,
-  "fav_win_prob": 0.809,
+  "spread": -11.5,
+  "total": 236.5,
+  "fav_win_prob": 0.831,
   "status": "Analysed"
  }
 ]
