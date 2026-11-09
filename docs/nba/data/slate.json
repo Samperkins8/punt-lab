@@ -1,65 +1,74 @@
 [
  {
-  "game": "PHI @ CHI",
-  "tip": "7:30am",
-  "favourite": null,
-  "spread": null,
-  "total": null,
-  "fav_win_prob": null,
-  "status": "Started"
- },
- {
-  "game": "LAL @ DET",
-  "tip": "10:00am",
-  "favourite": "DET",
-  "spread": -8.5,
-  "total": 216.5,
-  "fav_win_prob": 0.761,
-  "status": "Analysed"
- },
- {
-  "game": "UTAH @ MIN",
+  "game": "LAL @ ATL",
   "tip": "11:00am",
-  "favourite": "MIN",
-  "spread": -11.5,
-  "total": 222.5,
-  "fav_win_prob": 0.831,
-  "status": "Analysed"
- },
- {
-  "game": "BKN @ DAL",
-  "tip": "11:30am",
-  "favourite": "DAL",
-  "spread": -7.5,
-  "total": 223.5,
-  "fav_win_prob": 0.734,
-  "status": "Analysed"
- },
- {
-  "game": "BOS @ MIL",
-  "tip": "12:00pm",
-  "favourite": "BOS",
-  "spread": -13.5,
-  "total": 221.5,
-  "fav_win_prob": 0.87,
-  "status": "Analysed"
- },
- {
-  "game": "NO @ LAC",
-  "tip": "1:00pm",
-  "favourite": "NO",
+  "favourite": "ATL",
   "spread": -1.5,
-  "total": 226.5,
+  "total": 236.5,
   "fav_win_prob": 0.55,
   "status": "Analysed"
  },
  {
-  "game": "MIA @ SAC",
+  "game": "CLE @ CHA",
+  "tip": "11:00am",
+  "favourite": "CLE",
+  "spread": -8.5,
+  "total": 215.5,
+  "fav_win_prob": 0.761,
+  "status": "Analysed"
+ },
+ {
+  "game": "WSH @ DET",
+  "tip": "11:00am",
+  "favourite": "DET",
+  "spread": -10.5,
+  "total": 219.5,
+  "fav_win_prob": 0.809,
+  "status": "Analysed"
+ },
+ {
+  "game": "MEM @ TOR",
+  "tip": "11:30am",
+  "favourite": "TOR",
+  "spread": -2.5,
+  "total": 228.5,
+  "fav_win_prob": 0.583,
+  "status": "Analysed"
+ },
+ {
+  "game": "IND @ DAL",
+  "tip": "12:00pm",
+  "favourite": "DAL",
+  "spread": -4.5,
+  "total": 226.5,
+  "fav_win_prob": 0.646,
+  "status": "Analysed"
+ },
+ {
+  "game": "DEN @ HOU",
+  "tip": "12:30pm",
+  "favourite": "HOU",
+  "spread": -4.5,
+  "total": 223.5,
+  "fav_win_prob": 0.646,
+  "status": "Analysed"
+ },
+ {
+  "game": "SA @ PHX",
   "tip": "1:00pm",
-  "favourite": "MIA",
-  "spread": -11.5,
-  "total": 236.5,
-  "fav_win_prob": 0.831,
+  "favourite": "SA",
+  "spread": -8.5,
+  "total": 226.5,
+  "fav_win_prob": 0.761,
+  "status": "Analysed"
+ },
+ {
+  "game": "NO @ GS",
+  "tip": "2:00pm",
+  "favourite": "GS",
+  "spread": -9.5,
+  "total": 231.5,
+  "fav_win_prob": 0.786,
   "status": "Analysed"
  }
 ]

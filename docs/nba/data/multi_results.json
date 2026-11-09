@@ -142,5 +142,85 @@
   "est_hit": 0.0125,
   "landed": false,
   "price": 50.01
+ },
+ {
+  "slate_date": "2026-11-09",
+  "multi": "4-leg $2+",
+  "legs": "Cade Cunningham 6+ assists; Jaden McDaniels 4+ rebounds; Jonathan Kuminga 10+ points; LaMelo Ball 2+ threes",
+  "est_hit": 0.4126,
+  "landed": false,
+  "price": 2.04
+ },
+ {
+  "slate_date": "2026-11-09",
+  "multi": "3-leg $2+",
+  "legs": "Jaden McDaniels 4+ rebounds; Cade Cunningham 4+ rebounds; Precious Achiuwa 4+ rebounds",
+  "est_hit": 0.4645,
+  "landed": true,
+  "price": 2.1
+ },
+ {
+  "slate_date": "2026-11-09",
+  "multi": "4-leg $3+",
+  "legs": "Jaden McDaniels 4+ rebounds; Dejounte Murray 4+ assists; Jonathan Kuminga 10+ points; Giannis Antetokounmpo 25+ points",
+  "est_hit": 0.2857,
+  "landed": false,
+  "price": 3.01
+ },
+ {
+  "slate_date": "2026-11-09",
+  "multi": "4-leg $4+",
+  "legs": "Jaden McDaniels 4+ rebounds; Cade Cunningham 4+ rebounds; Michael Porter Jr. 3+ threes; Cooper Flagg 20+ points",
+  "est_hit": 0.2105,
+  "landed": true,
+  "price": 4.01
+ },
+ {
+  "slate_date": "2026-11-09",
+  "multi": "Best value",
+  "legs": "Jaden McDaniels 4+ rebounds; Dejounte Murray 4+ assists; Jonathan Kuminga 10+ points; Rui Hachimura 4+ rebounds",
+  "est_hit": 0.3908,
+  "landed": false,
+  "price": 2.27
+ },
+ {
+  "slate_date": "2026-11-09",
+  "multi": "Safest",
+  "legs": "Cade Cunningham 6+ assists; Jaden McDaniels 4+ rebounds; Jonathan Kuminga 10+ points; LaMelo Ball 2+ threes",
+  "est_hit": 0.4126,
+  "landed": false,
+  "price": 2.04
+ },
+ {
+  "slate_date": "2026-11-09",
+  "multi": "One per game",
+  "legs": "Cade Cunningham 6+ assists; Rudy Gobert 6+ rebounds; Bam Adebayo 6+ rebounds; Dejounte Murray 4+ assists; Michael Porter Jr. 2+ threes; Jaime Jaquez Jr. 10+ points",
+  "est_hit": 0.2422,
+  "landed": false,
+  "price": 2.72
+ },
+ {
+  "slate_date": "2026-11-09",
+  "multi": "Mid-range $8+",
+  "legs": "Jaden McDaniels 4+ rebounds; Dejounte Murray 4+ assists; Jonathan Kuminga 10+ points; LaMelo Ball 2+ threes; Bam Adebayo 20+ points; Precious Achiuwa 6+ rebounds",
+  "est_hit": 0.0991,
+  "landed": false,
+  "price": 8.16
+ },
+ {
+  "slate_date": "2026-11-09",
+  "multi": "Long multi 8+",
+  "legs": "Trey Murphy III 10+ points; Duncan Robinson 10+ points; Darryn Peterson 10+ points; Ace Bailey 10+ points; Jaden McDaniels 4+ rebounds",
+  "est_hit": 0.3926,
+  "landed": false,
+  "price": 2.29
+ },
+ {
+  "slate_date": "2026-11-09",
+  "multi": "Long shot $50",
+  "legs": "Jaden McDaniels 4+ rebounds; Precious Achiuwa 4+ rebounds; Cade Cunningham 8+ assists; Bam Adebayo 20+ points; Saddiq Bey 15+ points; Naji Marshall 15+ points; Jaime Jaquez Jr. 6+ rebounds",
+  "est_hit": 0.0164,
+  "landed": false,
+  "price": 50.34
  }
 ]
