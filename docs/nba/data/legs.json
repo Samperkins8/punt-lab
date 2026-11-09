@@ -44,7 +44,9 @@
   "step_up": false,
   "note": "",
   "event_id": "401909952",
-  "athlete_id": "2490149"
+  "athlete_id": "2490149",
+  "late_checked": "10:43am",
+  "late_was": null
  },
  {
   "why": "Predicted 16.4 points tonight, needs 10+. This season 16.8 a game over 8 games; last season 20.1 over 58. Bookies' line: 14.5.",
@@ -228,7 +230,9 @@
   "step_up": false,
   "note": "",
   "event_id": "401909952",
-  "athlete_id": "4431680"
+  "athlete_id": "4431680",
+  "late_checked": "10:43am",
+  "late_was": null
  },
  {
   "why": "Predicted 15.5 points tonight, needs 10+. This season 18.5 a game over 10 games; last season 14.8 over 48. George averaged 17.2 in the 8 games with Davis (18.5 across all 10), so he's predicted 0.8 points fewer tonight. Plays better on the road: 0.6 points more predicted. Slower game expected (-1% for pace). DET gives up less to his position than average (-6%).",
@@ -273,7 +277,9 @@
   "step_up": false,
   "note": "",
   "event_id": "401909954",
-  "athlete_id": "5174563"
+  "athlete_id": "5174563",
+  "late_checked": "10:43am",
+  "late_was": null
  },
  {
   "why": "Predicted 22.3 points tonight, needs 15+. This season 22.9 a game over 9 games; last season 23.1 over 67. Slower game expected (-1% for pace). WSH gives up more to his position than average (+3%). Expected minutes 32.3 vs his usual 34.",
@@ -318,7 +324,9 @@
   "step_up": false,
   "note": "second night of a back-to-back",
   "event_id": "401909954",
-  "athlete_id": "4432166"
+  "athlete_id": "4432166",
+  "late_checked": "10:43am",
+  "late_was": null
  },
  {
   "why": "Predicted 4.2 threes tonight, needs 2+. This season 4.8 a game over 8 games; last season 4.4 over 45. Faster game expected (+1% for pace). NO gives up less to his position than average (-9%). Expected minutes 28.3 vs his usual 29.8.",
@@ -408,7 +416,9 @@
   "step_up": false,
   "note": "",
   "event_id": "401909952",
-  "athlete_id": "4869342"
+  "athlete_id": "4869342",
+  "late_checked": "10:43am",
+  "late_was": null
  },
  {
   "why": "Predicted 9.0 rebounds tonight, needs 6+. This season 8.8 a game over 8 games; last season 9.9 over 75. Faster game expected (+1% for pace). LAL gives up less to his position than average (-3%).",
@@ -453,7 +463,9 @@
   "step_up": false,
   "note": "",
   "event_id": "401909952",
-  "athlete_id": "4701230"
+  "athlete_id": "4701230",
+  "late_checked": "10:43am",
+  "late_was": null
  },
  {
   "why": "Predicted 15.2 points tonight, needs 10+. This season 15.6 a game over 9 games. Boozer averaged 14.1 in the 8 games with Jerome (15.6 across all 9), so he's predicted 0.9 points fewer tonight. Plays better on the road: 0.7 points more predicted.",
@@ -498,7 +510,9 @@
   "step_up": false,
   "note": "",
   "event_id": "401909955",
-  "athlete_id": "5041935"
+  "athlete_id": "5041935",
+  "late_checked": "10:43am",
+  "late_was": null
  },
  {
   "why": "Predicted 15.1 points tonight, needs 10+. This season 13.8 a game over 10 games; last season 17.9 over 76. Plays a bit worse on the road: 0.4 points fewer predicted. PHX gives up more to his position than average (+6%). Bookies' line: 14.5.",
@@ -635,7 +649,9 @@
   "step_up": false,
   "note": "second night of a back-to-back",
   "event_id": "401909954",
-  "athlete_id": "4278562"
+  "athlete_id": "4278562",
+  "late_checked": "10:43am",
+  "late_was": null
  },
  {
   "why": "Predicted 23.0 points tonight, needs 15+. This season 26.6 a game over 8 games; last season 19.7 over 15. Plays a bit worse on the road: 1.9 points fewer predicted.",
@@ -680,7 +696,9 @@
   "step_up": false,
   "note": "",
   "event_id": "401909955",
-  "athlete_id": "4065733"
+  "athlete_id": "4065733",
+  "late_checked": "10:43am",
+  "late_was": null
  },
  {
   "why": "Predicted 8.6 rebounds tonight, needs 6+. This season 8.8 a game over 8 games; last season 8.7 over 74. DEN gives up less to his position than average (-4%).",
@@ -817,7 +835,9 @@
   "step_up": false,
   "note": "",
   "event_id": "401909954",
-  "athlete_id": "5174563"
+  "athlete_id": "5174563",
+  "late_checked": "10:43am",
+  "late_was": null
  },
  {
   "why": "Predicted 21.9 points tonight, needs 15+. This season 22.9 a game over 8 games; last season 27.3 over 66. Jokic averaged 21.6 in the 7 games with DeRozan (22.9 across all 8), so he's predicted 0.8 points fewer tonight. Plays a bit worse on the road: 1.7 points fewer predicted. HOU gives up less to his position than average (-3%).",
@@ -954,7 +974,9 @@
   "step_up": false,
   "note": "",
   "event_id": "401909953",
-  "athlete_id": "3135045"
+  "athlete_id": "3135045",
+  "late_checked": "10:43am",
+  "late_was": null
  },
  {
   "why": "Predicted 8.6 assists tonight, needs 6+. This season 9.1 a game over 8 games; last season 10.6 over 66. Jokic averaged 8.4 in the 5 games with Johnson (9.1 across all 8), so he's predicted 0.4 assists fewer tonight. HOU gives up less to his position than average (-7%).",
@@ -1044,7 +1066,9 @@
   "step_up": false,
   "note": "second night of a back-to-back",
   "event_id": "401909954",
-  "athlete_id": "4684742"
+  "athlete_id": "4684742",
+  "late_checked": "10:43am",
+  "late_was": null
  },
  {
   "why": "Predicted 5.5 assists tonight, needs 4+. This season 5.2 a game over 8 games; last season 5.7 over 15. TOR gives up more to his position than average (+3%). Bookies' line: 5.5.",
@@ -1092,7 +1116,9 @@
   "step_up": false,
   "note": "",
   "event_id": "401909955",
-  "athlete_id": "4065733"
+  "athlete_id": "4065733",
+  "late_checked": "10:43am",
+  "late_was": null
  },
  {
   "why": "Predicted 22.7 points tonight, needs 15+. This season 24.2 a game over 8 games; last season 24.8 over 77. Murray averaged 22.0 in the 5 games with Johnson (24.2 across all 8), so he's predicted 1.1 points fewer tonight. Plays a bit worse on the road: 1.1 points fewer predicted.",
@@ -1182,7 +1208,9 @@
   "step_up": true,
   "note": "",
   "event_id": "401909952",
-  "athlete_id": "4431680"
+  "athlete_id": "4431680",
+  "late_checked": "10:43am",
+  "late_was": null
  },
  {
   "why": "Predicted 8.6 assists tonight, needs 8+. This season 9.1 a game over 8 games; last season 10.6 over 66. Jokic averaged 8.4 in the 5 games with Johnson (9.1 across all 8), so he's predicted 0.4 assists fewer tonight. HOU gives up less to his position than average (-7%).",
@@ -1505,7 +1533,9 @@
   "step_up": false,
   "note": "second night of a back-to-back",
   "event_id": "401909954",
-  "athlete_id": "3157465"
+  "athlete_id": "3157465",
+  "late_checked": "10:43am",
+  "late_was": null
  },
  {
   "why": "Predicted 16.8 points tonight, needs 10+. This season 17.8 a game over 8 games; last season 16.9 over 57. Nembhard averaged 18.8 in the 5 games without Haliburton (17.8 across all 8), so he's predicted 0.5 points more tonight. Plays better on the road: 0.4 points more predicted. Bookies' line: 15.5.",
@@ -1649,5 +1679,52 @@
   "note": "second night of a back-to-back; blowout risk (GS -11.5)",
   "event_id": "401909959",
   "athlete_id": "4397136"
+ },
+ {
+  "why": "Predicted 14.7 points tonight, needs 10+. This season 13.8 a game over 8 games; last season 13.6 over 62. Coward averaged 14.3 in the 7 games with Jerome (13.8 across all 8), so he's predicted 0.3 points more tonight. Plays better on the road: 0.8 points more predicted.",
+  "venue_shift": 0.8,
+  "pace_factor": 1.001,
+  "roster_overlap": 1.0,
+  "back_to_back": false,
+  "leg_id": "cedric_coward_points10",
+  "player": "Cedric Coward",
+  "team": "MEM",
+  "game": "MEM @ TOR",
+  "market": "10+ points",
+  "stat": "points",
+  "line": 10,
+  "hits": 7,
+  "games": 8,
+  "log": "7, 17, 16, 17, 10, 10, 23, 10",
+  "odds": null,
+  "prior_mean": 13.6,
+  "prior_games": 62,
+  "context_label": "Ty Jerome playing tonight",
+  "context_detail": "Coward averaged 14.3 in the 7 games with Jerome (13.8 across all 8), so he's predicted 0.3 points more tonight.",
+  "matchup": 0.991,
+  "context_shift": 0.31,
+  "minutes_factor": 1.0,
+  "avg_minutes": 28.5,
+  "proj_minutes": 28.5,
+  "proj_mean": 14.7,
+  "model_prob": 0.8091,
+  "raw_prob": 0.8091,
+  "fair_price": null,
+  "implied": null,
+  "edge": null,
+  "hit_rate": 0.875,
+  "market_line": null,
+  "market_p_over": null,
+  "books": null,
+  "best_book": null,
+  "best_price": null,
+  "market_source": null,
+  "questionable": false,
+  "step_up": false,
+  "note": "",
+  "event_id": "401909955",
+  "athlete_id": "4903027",
+  "late_new": true,
+  "late_checked": "10:43am"
  }
 ]
