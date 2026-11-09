@@ -9,8 +9,8 @@
    "de'aaron_fox_points10"
   ],
   "legs_text": "CJ McCollum 10+ points; Dillon Brooks 10+ points; Miles Bridges 10+ points; De'Aaron Fox 10+ points",
-  "est_hit": 0.4822,
-  "break_even": 2.07,
+  "est_hit": 0.4817,
+  "break_even": 2.08,
   "priced_legs": "4 of 4",
   "known_price": 2.37,
   "fair_multi": null,
@@ -27,20 +27,18 @@
   "leg_ids": [
    "cj_mccollum_points10",
    "dillon_brooks_points10",
-   "stephon_castle_rebounds4"
+   "stephen_curry_threes3"
   ],
-  "legs_text": "CJ McCollum 10+ points; Dillon Brooks 10+ points; Stephon Castle 4+ rebounds",
-  "est_hit": 0.5461,
-  "break_even": 1.83,
-  "priced_legs": "3 of 3",
-  "known_price": 2.03,
+  "legs_text": "CJ McCollum 10+ points; Dillon Brooks 10+ points; Stephen Curry 3+ threes",
+  "est_hit": 0.4767,
+  "break_even": 2.1,
+  "priced_legs": "2 of 3",
+  "known_price": 1.62,
   "fair_multi": null,
-  "est_price": 2.03,
-  "book_prices": {
-   "neds": 2.03
-  },
-  "best_book": "neds",
-  "best_book_price": 2.03
+  "est_price": 2.18,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null
  },
  {
   "multi": "4-leg $3+",
@@ -52,7 +50,7 @@
    "dillon_brooks_points15"
   ],
   "legs_text": "CJ McCollum 10+ points; Miles Bridges 10+ points; De'Aaron Fox 10+ points; Dillon Brooks 15+ points",
-  "est_hit": 0.3549,
+  "est_hit": 0.3551,
   "break_even": 2.82,
   "priced_legs": "4 of 4",
   "known_price": 3.62,
@@ -69,22 +67,20 @@
   "rank": 4,
   "leg_ids": [
    "cj_mccollum_points10",
-   "stephon_castle_rebounds4",
-   "cedric_coward_points10",
+   "de'aaron_fox_points10",
+   "stephen_curry_threes3",
    "dillon_brooks_points15"
   ],
-  "legs_text": "CJ McCollum 10+ points; Stephon Castle 4+ rebounds; Cedric Coward 10+ points; Dillon Brooks 15+ points",
-  "est_hit": 0.3026,
-  "break_even": 3.3,
-  "priced_legs": "4 of 4",
-  "known_price": 4.01,
+  "legs_text": "CJ McCollum 10+ points; De'Aaron Fox 10+ points; Stephen Curry 3+ threes; Dillon Brooks 15+ points",
+  "est_hit": 0.2878,
+  "break_even": 3.47,
+  "priced_legs": "3 of 4",
+  "known_price": 3.01,
   "fair_multi": null,
-  "est_price": 4.01,
-  "book_prices": {
-   "neds": 4.01
-  },
-  "best_book": "neds",
-  "best_book_price": 4.01
+  "est_price": 4.06,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null
  },
  {
   "multi": "Best value",
@@ -96,8 +92,8 @@
    "de'aaron_fox_points10"
   ],
   "legs_text": "CJ McCollum 10+ points; Dillon Brooks 10+ points; Miles Bridges 10+ points; De'Aaron Fox 10+ points",
-  "est_hit": 0.4822,
-  "break_even": 2.07,
+  "est_hit": 0.4817,
+  "break_even": 2.08,
   "priced_legs": "4 of 4",
   "known_price": 2.37,
   "fair_multi": null,
@@ -118,8 +114,8 @@
    "de'aaron_fox_points10"
   ],
   "legs_text": "CJ McCollum 10+ points; Dillon Brooks 10+ points; Miles Bridges 10+ points; De'Aaron Fox 10+ points",
-  "est_hit": 0.4822,
-  "break_even": 2.07,
+  "est_hit": 0.4817,
+  "break_even": 2.08,
   "priced_legs": "4 of 4",
   "known_price": 2.37,
   "fair_multi": null,
@@ -131,45 +127,25 @@
   "best_book_price": 2.37
  },
  {
-  "multi": "3-leg value",
-  "rank": 7,
-  "leg_ids": [
-   "cj_mccollum_points10",
-   "dillon_brooks_points10",
-   "stephon_castle_rebounds4"
-  ],
-  "legs_text": "CJ McCollum 10+ points; Dillon Brooks 10+ points; Stephon Castle 4+ rebounds",
-  "est_hit": 0.5461,
-  "break_even": 1.83,
-  "priced_legs": "3 of 3",
-  "known_price": 2.03,
-  "fair_multi": null,
-  "est_price": 2.03,
-  "book_prices": {
-   "neds": 2.03
-  },
-  "best_book": "neds",
-  "best_book_price": 2.03
- },
- {
   "multi": "One per game",
   "rank": 8,
   "leg_ids": [
    "cj_mccollum_points10",
    "dillon_brooks_points10",
-   "draymond_green_rebounds4",
-   "ty_jerome_assists4",
-   "jabari_smith_jr_threes2",
-   "aj_dybantsa_rebounds4",
-   "pj_washington_points10"
+   "pascal_siakam_points15",
+   "kyshawn_george_points10",
+   "stephen_curry_threes2",
+   "cameron_boozer_points10",
+   "amen_thompson_points10",
+   "grayson_allen_points10"
   ],
-  "legs_text": "CJ McCollum 10+ points; Dillon Brooks 10+ points; Draymond Green 4+ rebounds; Ty Jerome 4+ assists; Jabari Smith Jr. 2+ threes; AJ Dybantsa 4+ rebounds; P.J. Washington 10+ points",
-  "est_hit": 0.1953,
-  "break_even": 5.12,
-  "priced_legs": "5 of 7",
-  "known_price": 2.92,
+  "legs_text": "CJ McCollum 10+ points; Dillon Brooks 10+ points; Pascal Siakam 15+ points; Kyshawn George 10+ points; Stephen Curry 2+ threes; Cameron Boozer 10+ points; Amen Thompson 10+ points; Grayson Allen 10+ points",
+  "est_hit": 0.2015,
+  "break_even": 4.96,
+  "priced_legs": "2 of 8",
+  "known_price": 1.62,
   "fair_multi": null,
-  "est_price": 4.25,
+  "est_price": 3.4,
   "book_prices": null,
   "best_book": null,
   "best_book_price": null
@@ -179,41 +155,39 @@
   "rank": 9,
   "leg_ids": [
    "cj_mccollum_points10",
+   "miles_bridges_points10",
+   "dyson_daniels_rebounds4",
    "de'aaron_fox_points10",
-   "jalen_green_points10",
-   "stephon_castle_rebounds4",
    "dillon_brooks_points15",
-   "miles_bridges_points15"
+   "onyeka_okongwu_points15"
   ],
-  "legs_text": "CJ McCollum 10+ points; De'Aaron Fox 10+ points; Jalen Green 10+ points; Stephon Castle 4+ rebounds; Dillon Brooks 15+ points; Miles Bridges 15+ points",
-  "est_hit": 0.1693,
-  "break_even": 5.91,
-  "priced_legs": "6 of 6",
-  "known_price": 8.36,
+  "legs_text": "CJ McCollum 10+ points; Miles Bridges 10+ points; Dyson Daniels 4+ rebounds; De'Aaron Fox 10+ points; Dillon Brooks 15+ points; Onyeka Okongwu 15+ points",
+  "est_hit": 0.1387,
+  "break_even": 7.21,
+  "priced_legs": "4 of 6",
+  "known_price": 3.62,
   "fair_multi": null,
-  "est_price": 8.36,
-  "book_prices": {
-   "neds": 8.36
-  },
-  "best_book": "neds",
-  "best_book_price": 8.36
+  "est_price": 8.63,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null
  },
  {
   "multi": "Long multi 8+",
   "rank": 10,
   "leg_ids": [
    "andrew_nembhard_points10",
-   "saddiq_bey_points10",
    "brandin_podziemski_points10",
+   "saddiq_bey_points10",
    "cj_mccollum_points10",
    "duncan_robinson_points10",
    "dillon_brooks_points10",
    "miles_bridges_points10",
    "de'aaron_fox_points10"
   ],
-  "legs_text": "Andrew Nembhard 10+ points; Saddiq Bey 10+ points; Brandin Podziemski 10+ points; CJ McCollum 10+ points; Duncan Robinson 10+ points; Dillon Brooks 10+ points; Miles Bridges 10+ points; De'Aaron Fox 10+ points",
-  "est_hit": 0.2455,
-  "break_even": 4.07,
+  "legs_text": "Andrew Nembhard 10+ points; Brandin Podziemski 10+ points; Saddiq Bey 10+ points; CJ McCollum 10+ points; Duncan Robinson 10+ points; Dillon Brooks 10+ points; Miles Bridges 10+ points; De'Aaron Fox 10+ points",
+  "est_hit": 0.2448,
+  "break_even": 4.09,
   "priced_legs": "8 of 8",
   "known_price": 4.41,
   "fair_multi": null,
@@ -229,24 +203,22 @@
   "rank": 11,
   "leg_ids": [
    "cj_mccollum_points10",
-   "draymond_green_rebounds4",
+   "nikola_jokic_assists8",
    "dillon_brooks_points15",
    "miles_bridges_points15",
    "de'aaron_fox_points15",
-   "aaron_wiggins_threes3",
-   "fred_vanvleet_assists6"
+   "jalen_green_points15",
+   "onyeka_okongwu_points15"
   ],
-  "legs_text": "CJ McCollum 10+ points; Draymond Green 4+ rebounds; Dillon Brooks 15+ points; Miles Bridges 15+ points; De'Aaron Fox 15+ points; Aaron Wiggins 3+ threes; Fred VanVleet 6+ assists",
-  "est_hit": 0.0314,
-  "break_even": 31.87,
-  "priced_legs": "7 of 7",
-  "known_price": 50.33,
+  "legs_text": "CJ McCollum 10+ points; Nikola Jokic 8+ assists; Dillon Brooks 15+ points; Miles Bridges 15+ points; De'Aaron Fox 15+ points; Jalen Green 15+ points; Onyeka Okongwu 15+ points",
+  "est_hit": 0.0267,
+  "break_even": 37.51,
+  "priced_legs": "4 of 7",
+  "known_price": 8.68,
   "fair_multi": null,
-  "est_price": 50.33,
-  "book_prices": {
-   "neds": 50.33
-  },
-  "best_book": "neds",
-  "best_book_price": 50.33
+  "est_price": 50.04,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null
  }
 ]

@@ -3,35 +3,35 @@
   "game": "LAL @ ATL",
   "tip": "11:00am",
   "favourite": "ATL",
-  "spread": -1.5,
-  "total": 236.5,
-  "fav_win_prob": 0.55,
+  "spread": -2.5,
+  "total": 233.5,
+  "fav_win_prob": 0.583,
   "status": "Analysed"
  },
  {
   "game": "CLE @ CHA",
   "tip": "11:00am",
   "favourite": "CLE",
-  "spread": -8.5,
+  "spread": -9.5,
   "total": 215.5,
-  "fav_win_prob": 0.761,
+  "fav_win_prob": 0.786,
   "status": "Analysed"
  },
  {
   "game": "WSH @ DET",
   "tip": "11:00am",
   "favourite": "DET",
-  "spread": -10.5,
-  "total": 219.5,
-  "fav_win_prob": 0.809,
+  "spread": -9.5,
+  "total": 218.5,
+  "fav_win_prob": 0.786,
   "status": "Analysed"
  },
  {
   "game": "MEM @ TOR",
   "tip": "11:30am",
-  "favourite": "TOR",
+  "favourite": "MEM",
   "spread": -2.5,
-  "total": 228.5,
+  "total": 225.5,
   "fav_win_prob": 0.583,
   "status": "Analysed"
  },
@@ -66,9 +66,9 @@
   "game": "NO @ GS",
   "tip": "2:00pm",
   "favourite": "GS",
-  "spread": -9.5,
-  "total": 231.5,
-  "fav_win_prob": 0.786,
+  "spread": -11.5,
+  "total": 229.5,
+  "fav_win_prob": 0.831,
   "status": "Analysed"
  }
 ]
