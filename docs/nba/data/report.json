@@ -3,7 +3,7 @@
  "headline": "3-leg $2+: Jaden McDaniels 4+ rebounds; Cade Cunningham 4+ rebounds; Precious Achiuwa 4+ rebounds — about 46% to land, est. price $2.10, worth it at $2.15+. Bet it on TAB ($2.10). Note: no 3-leg value multi pays $2, so it's left out; only 5 legs are 80%+ likely at $1.15+, so the long multi is short.",
  "injuries": "Mikel Brown Jr. (Out), Egor Demin (Out), Norman Powell (Out), Zach Collins (Out), Sergio De Larrea (Out), Tarik Biberovic (Out), Dereck Lively Ii (Out), Jalen Duren (Out), Isaiah Joe (Out), Brandon Ingram (Out), Isaiah Jackson (Out), Yanic Konan Niederhauser (Out) and others",
  "graded": "",
- "next_run": "Late check 10:40am — UTAH @ MIN, BKN @ DAL: no new outs",
+ "next_run": "Late check 12:08pm — NO @ LAC, MIA @ SAC: no new outs",
  "sources": {
   "stats": "ESPN",
   "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API",
@@ -46,10 +46,13 @@
  "late_checked": [
   "BKN @ DAL",
   "LAL @ DET",
+  "MIA @ SAC",
+  "NO @ LAC",
   "UTAH @ MIN"
  ],
  "late_log": [
   "9:41am LAL @ DET: no new outs; 1 new leg worth a look",
-  "10:40am UTAH @ MIN, BKN @ DAL: no new outs"
+  "10:40am UTAH @ MIN, BKN @ DAL: no new outs",
+  "12:08pm NO @ LAC, MIA @ SAC: no new outs"
  ]
 }
