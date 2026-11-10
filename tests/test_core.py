@@ -258,3 +258,21 @@ def test_one_game_slate_still_gets_multis():
     assert len(chosen["4-leg $2+"]) == 4
     pick.choose([_fake(f"S{k}", f"G{k}", 0.80, 1.30) for k in range(8)])  # back to the normal limits
     assert pick._caps == (pick.GAME_MAX_SHORT, pick.GAME_MAX_LONG)
+
+
+def test_two_leg_multi_and_verdicts():
+    from punt_lab.nba import build
+    cands = [_fake(f"P{k}", f"G{k}", 0.62, 1.55) for k in range(4)] + [_fake(f"Q{k}", f"H{k}", 0.84, 1.22) for k in range(6)]
+    chosen = pick.choose(cands)
+    two = chosen["2-leg $2+"]
+    assert len(two) == 2 and pick.combo_price(cands, two) >= 2.0
+    # value needs the app price to beat break-even by 5%; 3% short is a skip; no app price is "check"
+    base = {"est_hit": 0.5, "break_even": 2.0, "multi": "2-leg $2+", "best_book": "neds", "legs_text": "A; B", "est_price": 2.1}
+    rate = lambda price: build.verdict({**base, "best_book_price": price})["verdict"]
+    assert (rate(2.20), rate(2.02), rate(1.90), rate(None)) == ("value", "marginal", "skip", "check")
+    good = {**base, "best_book_price": 2.2, **build.verdict({**base, "best_book_price": 2.2})}
+    bad = {**base, "multi": "4-leg $2+", "best_book_price": 1.8, **build.verdict({**base, "best_book_price": 1.8})}
+    assert build.headline_for([bad, good]).startswith("Value today: 2-leg $2+ on Neds $2.20 (needs $2.00)")
+    assert build.headline_for([bad]).startswith("Skip today")
+    unpriced = {**base, "best_book_price": None, **build.verdict({**base, "best_book_price": None})}
+    assert "No app prices every leg yet" in build.headline_for([unpriced])

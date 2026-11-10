@@ -60,6 +60,8 @@
   .card { border-top: 3px solid var(--accent); }
   .big, .c-model, td.strong { color: var(--accent); }
   .pill.good { color: #ffffff; background: var(--good); border-color: var(--good); }
+  .pill.bad { color: #ffffff; background: var(--bad); border-color: var(--bad); }
+  .rating { margin: 10px 0 0; }
   .bar i { background: var(--good); }
   h2 { color: var(--accent); }
   @media (prefers-color-scheme: dark) { h2 { color: var(--fg); } .card { border-top-color: var(--gold); } }
@@ -94,9 +96,11 @@
   <div class="pickbar">
     <label for="multi-pick">Show</label>
     <select id="multi-pick">
-      <option value="$2">$2+ multis (4 and 3 legs)</option>
+      <option value="$2">$2+ multis (4, 3 and 2 legs)</option>
       <option value="4-leg $2+">Best 4-leg paying $2+</option>
       <option value="3-leg $2+">Best 3-leg paying $2+</option>
+      <option value="2-leg $2+">Best 2-leg paying $2+</option>
+      <option value="value">Only multis rated value today</option>
       <option value="4-leg $3+">Best 4-leg paying $3+</option>
       <option value="4-leg $4+">Best 4-leg paying $4+</option>
       <option value="4leg">4-leg at $2, $3 and $4</option>
@@ -143,10 +147,18 @@
 
   <section class="card">
     <h2>Track record</h2>
-    <p class="sub">Each morning the previous day's legs and multis are graded against the box scores. If the model is right, "actually landed" should sit close to "predicted".</p>
+    <p class="sub">Each morning the previous day's legs and multis are graded against the box scores. If the model is right, "actually landed" should sit close to "predicted". The leg-type table shows where it's over- or under-confident, and the rating table shows whether multis rated value have done better than those rated skip (ratings are recorded from 11 Nov).</p>
     <p class="empty" id="track-empty">No results yet. Grading starts after the first slate is played.</p>
     <div class="scroll"><table id="calibration">
       <thead><tr><th>Model chance</th><th class="num">Legs</th><th class="num">Predicted</th><th class="num">Actually landed</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+    <div class="scroll"><table id="stat-record">
+      <thead><tr><th>Leg type</th><th class="num">Legs</th><th class="num">Predicted</th><th class="num">Actually landed</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+    <div class="scroll"><table id="rating-record">
+      <thead><tr><th>Multis rated</th><th class="num">Multis</th><th class="num">Landed</th><th class="num">Predicted</th><th class="num">Actual</th><th class="num">Profit ($1 each)</th></tr></thead>
       <tbody></tbody>
     </table></div>
     <div class="scroll"><table id="multi-record">
@@ -178,6 +190,7 @@
       <dt>Prices</dt><dd>Only TAB, Neds and Bet365. Each morning every game is priced at Neds (from OddsPapi), and the games the multis use most are also priced at TAB and Bet365 (from The Odds API, within its free daily credits).</dd>
       <dt>Stake</dt><dd>Type the price on offer and the card suggests a share of your betting budget: a quarter of the Kelly amount ((chance × price − 1) ÷ (price − 1)), at most 3%, and nothing when the price is under break-even. Prices you type stay on your phone only.</dd>
       <dt>Profit ($1 each)</dt><dd>What $1 on that multi every day would have made, at the real price when every leg had one, otherwise the estimated price. * means some older days had no price saved and are left out.</dd>
+      <dt>Value, marginal, skip</dt><dd>Each multi is rated from the price one app pays for all its legs against the price it needs. Value: the price beats break-even by 5% or more. Skip: it falls 3% or more short. Marginal: in between, too close to call given the chances are estimates. The headline lists the value multis, or says to skip the day when there are none.</dd>
       <dt>Worth it if it pays at least</dt><dd>1 ÷ the chance all legs land. If the app's price for the whole multi is at or above it, the model says it's worth taking.</dd>
       <dt>Rules</dt><dd>No leg priced under $1.20 (where no price is known, the line is stepped up until the model is about 83% or lower). Never two rebound legs from the same game. At most two legs from one game in a 3- or 4-leg multi and three in a bigger one, so one bad game can't sink it (and apps price same-game legs lower than the legs multiplied). Never a team to win with a leg from the team it's playing. Players listed out or doubtful are left out.</dd>
       <dt>Overrides</dt><dd>Edit overrides/nba.txt in the repo to skip a player, set minutes, mark someone out or enter odds. The next run uses it.</dd>
@@ -319,6 +332,22 @@ function valueLegs(legs) {
   }
 }
 
+function verdictLine(m) {
+  if (!m.verdict) return null;
+  const el = document.createElement('p'); el.className = 'rating';
+  const pill = document.createElement('span');
+  const cents = m.value == null ? '' : Math.abs(Math.round(m.value * 100)) + 'c per $1';
+  const pays = m.best_book_price ? `${book(m.best_book)} pays ${price(m.best_book_price)}, it needs ${price(m.break_even)}` : '';
+  let label, cls, msg;
+  if (m.verdict === 'value') { label = 'Value'; cls = 'pill good'; msg = `${pays}: about ${cents} in your favour if the chance is right.`; }
+  else if (m.verdict === 'marginal') { label = 'Marginal'; cls = 'pill'; msg = `${pays}: too close to call either way.`; }
+  else if (m.verdict === 'skip') { label = 'Skip'; cls = 'pill bad'; msg = `${pays}: about ${cents} against you over time.`; }
+  else { label = 'Check price'; cls = 'pill'; msg = `No one app prices every leg yet. Worth it only at ${price(m.break_even)} or better.`; }
+  pill.className = cls; pill.textContent = label;
+  el.append(pill, ' ' + msg);
+  return el;
+}
+
 function multiCard(m, legsById) {
   const legs = m.leg_ids.map((id) => legsById.get(id)).filter(Boolean);
   const card = document.createElement('div'); card.className = 'card';
@@ -326,6 +355,7 @@ function multiCard(m, legsById) {
                    '4-leg $3+': ['Best 4-leg multi paying $3+', 'Highest chance all four land, with an estimated price of $3.00 or more.'],
                    '4-leg $4+': ['Best 4-leg multi paying $4+', 'Highest chance all four land, with an estimated price of $4.00 or more.'],
                    '3-leg $2+': ['Best 3-leg multi paying $2+', 'Highest chance all three land, with an estimated price of $2.00 or more.'],
+                   '2-leg $2+': ['Best 2-leg multi paying $2+', 'Highest chance both land, with an estimated price of $2.00 or more. Fewer legs means the bookie\'s margin is taken fewer times.'],
                    'Long multi 8+': ['Long multi, 8+ legs', 'Every leg at least 80% likely and estimated to pay $1.15 or more, including match winners. The best-value 8, plus any extra legs that are worth it on their own.'],
                    'One per game': ['One leg from each game', 'The most likely leg from every game (up to 8), so one blowout or late scratch can only cost one leg.'],
                    'Mid-range $8+': ['Mid-range multi paying $8+', 'Six legs (seven if six can\'t get there), highest chance all land with an estimated price of $8.00 or more.'],
@@ -358,6 +388,8 @@ function multiCard(m, legsById) {
   legsTable(table.tBodies[0], legs, true);
   wrap.append(table);
   card.append(h, p, figs);
+  const v = verdictLine(m);
+  if (v) card.append(v);
   if (m.late_warning) {
     const w = document.createElement('p'); w.className = 'late-warn';
     w.textContent = '⚠ Late change: ' + m.late_warning + (m.est_hit_after_void ? ` Chance on the remaining legs: ${pct(m.est_hit_after_void)}.` : '');
@@ -382,16 +414,25 @@ function trackRecord(results, multiResults) {
     cell(tr, g.length, 'num'); cell(tr, pct(pred), 'num muted');
     cell(tr, pct(act), 'num ' + (act >= pred - 0.05 ? 'good' : 'bad'));
   }
-  const mb = document.querySelector('#multi-record tbody'); mb.replaceChildren();
-  const byMulti = new Map();
-  for (const r of multiResults.filter((r) => r.landed === true || r.landed === false)) {
-    if (!byMulti.has(r.multi)) byMulti.set(r.multi, []);
-    byMulti.get(r.multi).push(r);
+  // by leg type: where the model is over- or under-confident
+  const sb = document.querySelector('#stat-record tbody'); sb.replaceChildren();
+  const statOf = (r) => r.stat || ['points', 'rebounds', 'assists', 'threes'].find((k) => (r.market || '').includes(k)) || 'win';
+  const statNames = { points: 'Points', rebounds: 'Rebounds', assists: 'Assists', threes: 'Threes', win: 'Team to win' };
+  for (const k of Object.keys(statNames)) {
+    const g = graded.filter((r) => statOf(r) === k);
+    if (!g.length) continue;
+    const pred = g.reduce((a, r) => a + r.model_prob, 0) / g.length;
+    const act = g.filter((r) => r.landed).length / g.length;
+    const tr = sb.insertRow();
+    cell(tr, statNames[k]); cell(tr, g.length, 'num'); cell(tr, pct(pred), 'num muted');
+    cell(tr, pct(act) + (g.length < 30 ? ' (few legs)' : ''), 'num ' + (g.length < 30 ? 'muted' : act >= pred - 0.05 ? 'good' : 'bad'));
   }
-  for (const [multi, g] of byMulti) {
-    const tr = mb.insertRow();
+  document.getElementById('stat-record').hidden = !sb.rows.length;
+  const done = multiResults.filter((r) => r.landed === true || r.landed === false);
+  const recordRow = (tb, label, g) => {
+    const tr = tb.insertRow();
     const landed = g.filter((r) => r.landed).length;
-    cell(tr, multi); cell(tr, g.length, 'num'); cell(tr, landed, 'num');
+    cell(tr, label, 'nowrap'); cell(tr, g.length, 'num'); cell(tr, landed, 'num');
     cell(tr, pct(g.reduce((a, r) => a + r.est_hit, 0) / g.length), 'num muted');
     cell(tr, pct(landed / g.length), 'num');
     const priced = g.filter((r) => r.price);
@@ -399,7 +440,21 @@ function trackRecord(results, multiResults) {
       const profit = priced.reduce((a, r) => a + (r.landed ? r.price - 1 : -1), 0);
       cell(tr, (profit < 0 ? '−$' : '+$') + Math.abs(profit).toFixed(2) + (priced.length < g.length ? ' *' : ''), 'num ' + (profit >= 0 ? 'good' : 'bad'));
     } else cell(tr, '–', 'num muted');
+  };
+  // by rating: do the multis rated value actually do better than the ones rated skip?
+  const rb = document.querySelector('#rating-record tbody'); rb.replaceChildren();
+  for (const [k, label] of [['value', 'Value'], ['marginal', 'Marginal'], ['skip', 'Skip'], ['check', 'No app price']]) {
+    const g = done.filter((r) => r.verdict === k);
+    if (g.length) recordRow(rb, label, g);
   }
+  document.getElementById('rating-record').hidden = !rb.rows.length;
+  const mb = document.querySelector('#multi-record tbody'); mb.replaceChildren();
+  const byMulti = new Map();
+  for (const r of done) {
+    if (!byMulti.has(r.multi)) byMulti.set(r.multi, []);
+    byMulti.get(r.multi).push(r);
+  }
+  for (const [multi, g] of byMulti) recordRow(mb, multi, g);
 }
 
 const SETTING_NAMES = {
@@ -474,11 +529,12 @@ function honest(bt) {
   try { const saved = localStorage.getItem('punt-lab-multi'); if (saved && [...pickEl.options].some((o) => o.value === saved)) pickEl.value = saved; } catch (e) {}
   const showMultis = () => {
     const v = pickEl.value;
-    const want = v === 'all' ? sorted : v === '$2' ? sorted.filter((m) => m.multi.endsWith('$2+')) : v === '4leg' ? sorted.filter((m) => /^4-leg \$\d\+$/.test(m.multi)) : sorted.filter((m) => m.multi === v);
+    const want = v === 'all' ? sorted : v === 'value' ? sorted.filter((m) => m.verdict === 'value') : v === '$2' ? sorted.filter((m) => m.multi.endsWith('$2+')) : v === '4leg' ? sorted.filter((m) => /^4-leg \$\d\+$/.test(m.multi)) : sorted.filter((m) => m.multi === v);
     if (want.length) { box.replaceChildren(...want.map((m) => multiCard(m, byId))); return; }
     const msg = document.createElement('p'); msg.className = 'empty';
     const why = (report.headline || '').match(/Note: (.*)/);
-    msg.textContent = 'No "' + pickEl.selectedOptions[0].text + '" today' + (why ? ' (' + why[1] + ')' : '') + '. It appears after the next run if the slate allows.';
+    msg.textContent = v === 'value' ? 'No multi is rated value today: none beats its break-even price by 5% in one app. Skipping is the right call on days like this.'
+      : 'No "' + pickEl.selectedOptions[0].text + '" today' + (why ? ' (' + why[1] + ')' : '') + '. It appears after the next run if the slate allows.';
     box.replaceChildren(msg);
   };
   pickEl.addEventListener('change', () => { try { localStorage.setItem('punt-lab-multi', pickEl.value); } catch (e) {} showMultis(); });

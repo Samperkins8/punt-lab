@@ -46,6 +46,8 @@ UNDERDOG_CUT_BIG = 0.93   # underdog, line of BLOWOUT_SPREAD or more
 ALL_TEAMS = {"ATL", "BOS", "BKN", "CHA", "CHI", "CLE", "DAL", "DEN", "DET", "GS", "HOU", "IND", "LAC", "LAL",
              "MEM", "MIA", "MIL", "MIN", "NO", "NY", "OKC", "ORL", "PHI", "PHX", "POR", "SAC", "SA", "TOR", "UTAH", "WSH"}
 MAX_LEGS = 25
+VALUE_MARGIN = 0.05   # a multi is "value" when its app price beats break-even by this much: the chances are estimates
+SKIP_MARGIN = -0.03   # ...and a "skip" when it falls this far short; in between is marginal
 
 
 SUFFIXES = {"jr", "jr.", "sr", "sr.", "ii", "iii", "iv"}
@@ -116,7 +118,7 @@ def grade_previous(today: date) -> str:
         landed_by_leg[leg["leg_id"]] = landed
         results.append({
             "slate_date": prev, "leg_id": leg["leg_id"], "player": leg["player"], "game": leg["game"],
-            "market": leg["market"], "line": leg["line"], "model_prob": leg["model_prob"], "raw_prob": leg.get("raw_prob"), "best_price": leg.get("best_price"),
+            "market": leg["market"], "stat": leg.get("stat"), "line": leg["line"], "model_prob": leg["model_prob"], "raw_prob": leg.get("raw_prob"), "best_price": leg.get("best_price"),
             "odds": leg.get("odds"), "fair_price": leg.get("fair_price"), "actual": actual, "landed": landed,
             "in_multis": ", ".join(m["multi"] for m in multis if leg["leg_id"] in m["leg_ids"]),
         })
@@ -126,7 +128,7 @@ def grade_previous(today: date) -> str:
         outs = [landed_by_leg.get(i) for i in m["leg_ids"]]
         landed = False if False in outs else (None if None in outs else True)
         mres.append({"slate_date": prev, "multi": m["multi"], "legs": m["legs_text"],
-                     "est_hit": m["est_hit"], "landed": landed,
+                     "est_hit": m["est_hit"], "landed": landed, "verdict": m.get("verdict"),
                      "price": m.get("best_book_price") or m.get("known_price") if m.get("priced_legs", "").split(" of ")[0] == str(len(m["leg_ids"])) else m.get("est_price")})
         summary.append(f"{m['multi']} {'landed' if landed else 'void' if landed is None else 'missed'}")
     save_json("results.json", results)
@@ -537,7 +539,7 @@ def leg_row(leg: Leg, res) -> dict:
 
 def multi_rows(cands, chosen) -> list[dict]:
     rows = []
-    order = ("4-leg $2+", "3-leg $2+", "4-leg $3+", "4-leg $4+", "Best value", "Safest", "3-leg value", "One per game", "Mid-range $8+", "Long multi 8+", "Long shot $50")
+    order = ("4-leg $2+", "3-leg $2+", "2-leg $2+", "4-leg $3+", "4-leg $4+", "Best value", "Safest", "3-leg value", "One per game", "Mid-range $8+", "Long multi 8+", "Long shot $50")
     rank = {n: i + 1 for i, n in enumerate(order)}
     for name in order:
         ids = chosen.get(name)
@@ -561,7 +563,35 @@ def multi_rows(cands, chosen) -> list[dict]:
             "est_price": round(pick.combo_price(cands, ids), 2),
             **_multi_books(legs),
         })
+        rows[-1].update(verdict(rows[-1]))
     return rows
+
+
+def verdict(m: dict) -> dict:
+    """Value / marginal / skip from the price one app pays for the whole multi against its break-even.
+    With no app price there's nothing to judge yet: the card shows the price it needs."""
+    price, p = m.get("best_book_price"), m.get("est_hit")
+    if not price or not p:
+        return {"verdict": "check", "value": None}
+    value = round(p * price - 1, 4)
+    return {"verdict": "value" if value >= VALUE_MARGIN else "skip" if value < SKIP_MARGIN else "marginal", "value": value}
+
+
+def headline_for(multis: list[dict]) -> str:
+    def where(m):
+        return f"{m['multi']} on {odds.BOOK_NAMES.get(m['best_book'], m['best_book'])} ${m['best_book_price']:.2f} (needs ${m['break_even']:.2f})"
+    priced = [m for m in multis if m.get("verdict") in ("value", "marginal", "skip")]
+    good = sorted((m for m in priced if m["verdict"] == "value"), key=lambda m: -m["est_hit"])
+    if good:
+        return "Value today: " + "; ".join(where(m) for m in good[:3]) + "."
+    if priced:
+        closest = max(priced, key=lambda m: m["value"])
+        return ("Skip today: no multi beats its break-even price by 5%. Closest: " + where(closest) + ".")
+    top = next((m for m in multis if m["multi"] == "3-leg $2+"), None) or (multis[0] if multis else None)
+    if not top:
+        return ""
+    return (f"{top['multi']}: {top['legs_text']} — about {top['est_hit']:.0%} to land, est. price ${top['est_price']:.2f}. "
+            f"No app prices every leg yet: worth it at ${top['break_even']:.2f}+.")
 
 
 def _multi_books(legs) -> dict:
@@ -665,12 +695,7 @@ def main() -> None:
             "fav_win_prob": fav_win, "status": "Analysed" if g in upcoming else "Started",
         })
 
-    top = next((m for m in multis_out if m["multi"] == "3-leg $2+"), None) or (multis_out[0] if multis_out else None)
-    headline = ""
-    if top:
-        headline = f"{top['multi']}: {top['legs_text']} — about {top['est_hit']:.0%} to land, est. price ${top['est_price']:.2f}, worth it at ${top['break_even']:.2f}+."
-        if top.get("best_book"):
-            headline += f" Bet it on {odds.BOOK_NAMES.get(top['best_book'], top['best_book'])} (${top['best_book_price']:.2f})."
+    headline = headline_for(multis_out)
     if chosen.get("_notes"):
         headline += " Note: " + "; ".join(chosen["_notes"]) + "."
     slate_teams = {g["home_name"] for g in games} | {g["away_name"] for g in games}

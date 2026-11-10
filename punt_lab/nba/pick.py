@@ -190,7 +190,9 @@ def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
     wide = idx[:WIDE_POOL] + [i for i in every if cands[i][0].extra.get("step_up")
                               and cands[i][1].model_prob >= WIDE_STEP_MIN][:WIDE_POOL]
 
-    targets = {4: [("4-leg $2+", 2.0), ("4-leg $3+", 3.0), ("4-leg $4+", 4.0)], 3: [("3-leg $2+", 2.0)]}
+    # fewer legs give the bookie's margin fewer chances to compound, so a 2-leg is offered too
+    targets = {4: [("4-leg $2+", 2.0), ("4-leg $3+", 3.0), ("4-leg $4+", 4.0)], 3: [("3-leg $2+", 2.0)],
+               2: [("2-leg $2+", 2.0)]}
     for n, wanted in targets.items():
         best = {name: None for name, _ in wanted}
         fallback = None
@@ -209,6 +211,8 @@ def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
         for name, target in wanted:
             if best[name]:
                 out[name] = list(best[name][1])
+            elif n == 2:
+                out.setdefault("_notes", []).append("no 2-leg combo pays $2, so it's left out")
             elif fallback:
                 out[name] = list(fallback[1])
                 out.setdefault("_notes", []).append(f"no {n}-leg combo reaches ${target:.2f}, so {name} shows the longest-priced one")
