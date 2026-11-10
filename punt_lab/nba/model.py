@@ -26,6 +26,7 @@ B2B_CUT = 0.97           # ...and everyone else
 SAME_GAME_REBOUNDS = -0.15
 SAME_TEAM_POINTS = -0.05
 SAME_GAME_OTHER = 0.05
+WIN_VS_OPPONENT = -0.20  # a team to win + a scoring leg from the team it's playing pull against each other
 
 # Settings the weekly backtest is allowed to tune (see backtest.py). Values above are the
 # hand-set defaults; tuned.json, when present, replaces them.
@@ -125,6 +126,7 @@ class Leg:
     roster_overlap: float | None = None
     venue_shift: float = 0.0       # home/away adjustment, in the stat's units
     pace_factor: float = 1.0       # tonight's expected game total vs average
+    side_factor: float = 1.0       # this team's share of tonight's total (underdogs score less)
     opp_factor: float | None = None
     avg_minutes: float | None = None
     proj_minutes: float | None = None
@@ -179,7 +181,8 @@ def evaluate(leg: Leg) -> LegResult:
     matchup = 1 + opp_part + h2h_part
 
     minutes_factor = leg.proj_minutes / leg.avg_minutes if leg.avg_minutes and leg.proj_minutes else 1.0
-    proj_mean = (blended + context_shift + leg.venue_shift) * matchup * minutes_factor * leg.pace_factor
+    proj_mean = ((blended + context_shift + leg.venue_shift) * matchup * minutes_factor
+                 * leg.pace_factor * leg.side_factor)
 
     typical = SPREAD[leg.stat] * proj_mean
     proj_sd = math.sqrt((n * sd * sd + SPREAD_GAMES * typical * typical) / (n + SPREAD_GAMES))
@@ -206,7 +209,9 @@ def pair_link(a: Leg, b: Leg) -> float:
     if a.game != b.game:
         return 0.0
     if a.stat == "win" or b.stat == "win":
-        return SAME_GAME_OTHER if a.stat != b.stat else 0.0
+        if a.stat == b.stat:
+            return 0.0
+        return SAME_GAME_OTHER if a.team == b.team else WIN_VS_OPPONENT
     if a.stat == "rebounds" and b.stat == "rebounds":
         return SAME_GAME_REBOUNDS
     if a.team == b.team and a.stat == "points" and b.stat == "points":

@@ -25,6 +25,10 @@ SHOT_MIN_PRICE = 20.00    # if the slate can't get the long shot this far, leave
 SHOT_MIN_PROB = 0.40      # no long-shot / mid-range leg less likely than this
 WIDE_STEP_MIN = 0.55      # step-up legs used by the $2+ multis must be at least this likely
 PER_GAME_MAX = 8          # one-per-game multi: at most this many games
+GAME_MAX_SHORT = 2        # 3- and 4-leg multis: at most this many legs from one game, so one bad game can't sink it
+GAME_MAX_LONG = 3         # bigger multis: at most this many
+SHORT_LEGS = 4
+_caps = (GAME_MAX_SHORT, GAME_MAX_LONG)  # (short, long) for tonight; choose() loosens them on a tiny slate
 
 
 def price_of(leg: Leg, res: LegResult) -> tuple[float | None, str]:
@@ -48,13 +52,25 @@ def eligible(leg: Leg, res: LegResult) -> bool:
     return price_ok(leg, res)
 
 
-def _ok_combo(legs: list[Leg]) -> bool:
+def _ok_combo(legs: list[Leg], long: bool = False) -> bool:
+    """The most legs allowed from one game follows the multi's size. Builders that add legs one
+    at a time towards a bigger multi pass long=True."""
     players = [l.player for l in legs]
     if len(set(players)) != len(players):
         return False
+    game_max = _caps[1] if long or len(legs) > SHORT_LEGS else _caps[0]
+    per_game: dict[str, int] = {}
+    for l in legs:
+        per_game[l.game] = per_game.get(l.game, 0) + 1
+        if per_game[l.game] > game_max:
+            return False
     for a, b in combinations(legs, 2):
-        if a.game == b.game and a.stat == "rebounds" and b.stat == "rebounds":
+        if a.game != b.game:
+            continue
+        if a.stat == "rebounds" and b.stat == "rebounds":
             return False  # two players chasing the same boards
+        if (a.stat == "win") != (b.stat == "win") and a.team != b.team:
+            return False  # a team to win against a leg from the team it's playing: they pull against each other
     return True
 
 
@@ -94,6 +110,11 @@ def combo_price(cands, combo) -> float:
 
 def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
     """Returns {multi name: [indexes into cands]}"""
+    global _caps
+    n_games = len({l.game for l, _ in cands}) or 1
+    # with one game on, everything is same-game; with two, a long multi needs four from each
+    _caps = (GAME_MAX_SHORT if n_games >= 2 else SHORT_LEGS,
+             max(GAME_MAX_LONG, -(-LONG_MIN_LEGS // n_games)))
     every = [i for i, (l, r) in enumerate(cands) if eligible(l, r)]
     every.sort(key=lambda i: -cands[i][1].model_prob)
     every_any = list(every)  # includes match winners / safe lines, for the long shot
@@ -249,7 +270,7 @@ def _long_multi(cands) -> tuple[list[int] | None, str]:
             break
         if len(combo) >= LONG_MIN_LEGS and value[i] <= 1.0:
             break
-        if _ok_combo([cands[j][0] for j in combo + [i]]):
+        if _ok_combo([cands[j][0] for j in combo + [i]], long=True):
             combo.append(i)
     if len(combo) < 5:
         return None, f"only {len(combo)} legs are 80%+ likely at $1.15+, not enough for a long multi"
@@ -303,7 +324,7 @@ def _long_shot(cands, ordered: list[int]) -> tuple[list[int] | None, str]:
     for i in pool:
         if _price(cands, combo) >= SHOT_TARGET or len(combo) >= SHOT_MAX_LEGS:
             break
-        if _ok_combo([cands[j][0] for j in combo + [i]]):
+        if _ok_combo([cands[j][0] for j in combo + [i]], long=True):
             combo.append(i)
     if _price(cands, combo) >= SHOT_TARGET:
         combo = _improve(cands, combo, pool, SHOT_TARGET, SHOT_MAX_LEGS)
@@ -324,7 +345,8 @@ def _improve(cands, combo: list[int], pool: list[int], target: float, max_legs: 
         return p
 
     def ok(c):
-        return len(c) <= max_legs and _ok_combo([cands[j][0] for j in c]) and _price(cands, c) >= target
+        return (len(c) <= max_legs and _ok_combo([cands[j][0] for j in c], long=True)
+                and _price(cands, c) >= target)
 
     best = chance(combo)
     improved = True

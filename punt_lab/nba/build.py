@@ -34,6 +34,15 @@ STEP_UP_LOW = 0.40  # a player's next line up is kept if at least this likely ($
 VENUE_GAMES = 8     # home/away split is halfway with this many matching games
 PACE_WEIGHT = {"points": 0.5, "assists": 0.5, "threes": 0.5, "rebounds": 0.3}
 B2B_HOURS = 30      # a game within this many hours of the last one is a back-to-back
+# A team's share of tonight's total: a 226-point game with an 8.5 line is about 117.5 v 108.5, so the
+# underdog's scorers get about 4% less and the favourite's 4% more. Rebounds don't follow the score.
+SIDE_WEIGHT = {"points": 1.0, "threes": 1.0, "assists": 0.5, "rebounds": 0.0}
+SIDE_CAP = 0.06
+BLOWOUT_SPREAD = 10   # both teams' starters lose minutes from here...
+BLOWOUT_CUT = 0.95
+UNDERDOG_SPREAD = 7   # ...and the underdog's starters from here: they sit first when a game gets away
+UNDERDOG_CUT = 0.96
+UNDERDOG_CUT_BIG = 0.93   # underdog, line of BLOWOUT_SPREAD or more
 ALL_TEAMS = {"ATL", "BOS", "BKN", "CHA", "CHI", "CLE", "DAL", "DEN", "DET", "GS", "HOU", "IND", "LAC", "LAL",
              "MEM", "MIA", "MIL", "MIN", "NO", "NY", "OKC", "ORL", "PHI", "PHX", "POR", "SAC", "SA", "TOR", "UTAH", "WSH"}
 MAX_LEGS = 25
@@ -232,6 +241,7 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
             continue
         game_label = f"{g['away']} @ {g['home']}"
         spread = abs(g["spread"]) if g.get("spread") is not None else 0
+        fav = g.get("favourite") if g.get("favourite") in (g["home"], g["away"]) else None
         for side, opp_side in (("home", "away"), ("away", "home")):
             team, opp = g[side], g[opp_side]
             td = team_data.get(team)
@@ -291,9 +301,18 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
                 if b2b and name.lower() not in ov.minutes:
                     proj_min *= model.B2B_CUT_STAR if avg_min[pid] >= 30 else model.B2B_CUT
                     note_bits.append("second night of a back-to-back")
-                if spread >= 10:
-                    proj_min *= 0.95
-                    note_bits.append(f"blowout risk ({g['favourite']} {g['spread']:+.1f})")
+                underdog = fav is not None and team != fav
+                cut = 1.0
+                if underdog and spread >= BLOWOUT_SPREAD:
+                    cut = UNDERDOG_CUT_BIG
+                elif underdog and spread >= UNDERDOG_SPREAD:
+                    cut = UNDERDOG_CUT
+                elif spread >= BLOWOUT_SPREAD:
+                    cut = BLOWOUT_CUT
+                if cut < 1:
+                    proj_min *= cut
+                    note_bits.append(f"blowout risk ({g['favourite']} {-spread:g}"
+                                     f"{', he is on the underdog' if underdog else ''})")
 
                 # situation: the teammate whose status tonight moves this player most
                 for stat, key in STATS.items():
@@ -328,6 +347,10 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
                     pace_factor = 1.0
                     if g.get("total"):
                         pace_factor = max(0.95, min(1.05, 1 + PACE_WEIGHT[stat] * (g["total"] / avg_total - 1)))
+                    side_factor = 1.0
+                    if fav is not None and spread and g.get("total"):
+                        share = spread / g["total"] * (-1 if underdog else 1)
+                        side_factor = 1 + max(-SIDE_CAP, min(SIDE_CAP, SIDE_WEIGHT[stat] * share))
                     if best_ctx and abs(best_ctx[0]) < 0.3:
                         best_ctx = None  # too small to matter: don't show it
                     prior_vals = [x[key] for x in prior["games"] if x.get(key) is not None]
@@ -354,6 +377,7 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
                             context_log=best_ctx[2] if best_ctx else None,
                             h2h_log=h2h, roster_overlap=overlap if h2h else None, opp_factor=opp_factor,
                             venue_shift=round(venue_shift, 2), pace_factor=round(pace_factor, 3),
+                            side_factor=round(side_factor, 3),
                             avg_minutes=round(avg_min[pid], 1), proj_minutes=round(proj_min, 1),
                             market_line=mk[0] if mk else None, market_p_over=mk[1] if mk else None,
                             market_source=mk[2] if mk else None,
@@ -361,6 +385,7 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
                             extra={"event_id": g["event_id"], "athlete_id": pid, "risky": risky,
                                    "books": odds.allowed(prices["books"].get((name.lower(), stat, line))),
                                    "at_home": at_home, "venue_games": len(venue_vals), "b2b": b2b,
+                                   "underdog": underdog, "spread": spread,
                                    "context_detail": best_ctx[3] if best_ctx else None},
                         )
                         res = evaluate(leg)
@@ -469,6 +494,10 @@ def explain(leg: Leg, res) -> str:
         parts[-1] += f": {abs(leg.venue_shift):.1f} {unit} {'more' if leg.venue_shift > 0 else 'fewer'} predicted."
     if abs(leg.pace_factor - 1) >= 0.01:
         parts.append(f"{'Faster' if leg.pace_factor > 1 else 'Slower'} game expected ({leg.pace_factor - 1:+.0%} for pace).")
+    if abs(leg.side_factor - 1) >= 0.01:
+        parts.append(f"His team are {leg.extra.get('spread', 0):g}-point "
+                     f"{'underdogs' if leg.side_factor < 1 else 'favourites'}, so they're expected to score "
+                     f"{'less' if leg.side_factor < 1 else 'more'} ({leg.side_factor - 1:+.0%}).")
     if abs(res.matchup - 1) >= 0.02:
         pct = round((res.matchup - 1) * 100)
         who = leg.game.replace(leg.team, "").replace("@", "").strip()
@@ -483,7 +512,8 @@ def explain(leg: Leg, res) -> str:
 def leg_row(leg: Leg, res) -> dict:
     return {
         "why": explain(leg, res),
-        "venue_shift": leg.venue_shift, "pace_factor": leg.pace_factor, "roster_overlap": leg.roster_overlap,
+        "venue_shift": leg.venue_shift, "pace_factor": leg.pace_factor, "side_factor": leg.side_factor,
+        "underdog": leg.extra.get("underdog", False), "roster_overlap": leg.roster_overlap,
         "back_to_back": leg.extra.get("b2b", False),
         "leg_id": leg.leg_id, "player": leg.player, "team": leg.team, "game": leg.game,
         "market": leg.market, "stat": leg.stat, "line": leg.line,

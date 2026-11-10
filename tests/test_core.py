@@ -220,3 +220,41 @@ def test_mid_range_is_close_to_the_best_possible():
         if pick._ok_combo([cands[i][0] for i in combo]) and pick._price(cands, combo) >= 8:
             best = max(best, multi_chance([cands[i][0] for i in combo], [cands[i][1].model_prob for i in combo]))
     assert got >= 0.9 * best
+
+
+def test_multis_spread_across_games_and_avoid_conflicting_legs():
+    from collections import Counter
+    from punt_lab.nba.model import LegResult, pair_link
+    # one game with lots of attractive legs: the short multis may take two of them at most
+    cands = [_fake(f"S{k}", "SA @ PHX", 0.84 - 0.01 * k, 1.30) for k in range(6)]
+    cands += [_fake(f"O{k}", f"G{k}", 0.80, 1.25) for k in range(6)]
+    chosen = pick.choose(cands)
+    for name, ids in chosen.items():
+        if name.startswith("_"):
+            continue
+        worst = max(Counter(cands[i][0].game for i in ids).values())
+        assert worst <= (pick.GAME_MAX_SHORT if len(ids) <= pick.SHORT_LEGS else pick.GAME_MAX_LONG), name
+
+    # a team to win never sits with a leg from the team it's playing
+    win = Leg(leg_id="sa_win", player="San Antonio Spurs", team="SA", game="SA @ PHX", stat="win", line=1,
+              log=[], prior_mean=0, prior_games=0, market="San Antonio Spurs to win")
+    suns = leg(leg_id="b", player="Brooks", team="PHX", game="SA @ PHX")
+    spur = leg(leg_id="f", player="Fox", team="SA", game="SA @ PHX")
+    away = leg(leg_id="n", player="Nembhard", team="IND", game="IND @ DAL")
+    assert not pick._ok_combo([win, suns])
+    assert pick._ok_combo([win, spur]) and pick._ok_combo([win, away])
+    assert pair_link(win, suns) < 0 < pair_link(win, spur)
+    assert multi_chance([win, suns], [0.76, 0.6]) < 0.76 * 0.6
+
+
+def test_underdog_share_lowers_the_prediction():
+    base, dog = evaluate(leg()), evaluate(leg(side_factor=0.96))
+    assert dog.proj_mean < base.proj_mean and dog.model_prob < base.model_prob
+
+
+def test_one_game_slate_still_gets_multis():
+    cands = [_fake(f"S{k}", "SA @ PHX", 0.80, 1.30) for k in range(8)]
+    chosen = pick.choose(cands)
+    assert len(chosen["4-leg $2+"]) == 4
+    pick.choose([_fake(f"S{k}", f"G{k}", 0.80, 1.30) for k in range(8)])  # back to the normal limits
+    assert pick._caps == (pick.GAME_MAX_SHORT, pick.GAME_MAX_LONG)
