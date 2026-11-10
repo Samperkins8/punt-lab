@@ -76,3 +76,48 @@ def test_measure_links_finds_rebounders_competing():
     links = backtest.measure_links(data)
     assert links["SAME_GAME_REBOUNDS"]["pairs"] == 400
     assert links["SAME_GAME_REBOUNDS"]["r"] < -0.2
+
+
+def test_line_settings_are_fitted_from_past_results():
+    """Players score less against stronger opponents than usual; the fit should find that and keep it."""
+    saved = backtest.current_settings()
+    model.CALIBRATE = False
+    try:
+        def make(seed, n):
+            rng = random.Random(seed)
+            out = []
+            for _ in range(n):
+                mu = 16 + rng.random() * 10
+                shift = rng.gauss(0, 6)
+                true = mu * (1 + 2.0 * shift / model.LEAGUE_TOTAL)
+                vals = [max(0, round(rng.gauss(mu, mu * 0.3))) for _ in range(12)]
+                out.append({"season": 1, "stat": "points", "vals": vals, "actual": max(0, round(rng.gauss(true, mu * 0.3))),
+                            "prior_mean": mu, "prior_games": 60, "venue_shift": 0.0, "opp_factor": None, "pid": "p",
+                            "date": "2026-01-01", "team": "A", "opp": "B", "b2b": False, "avg_min": 32,
+                            "expected": shift, "shift": shift})
+            backtest.choose_lines(out)
+            return out
+        train, test = make(1, 5000), make(2, 5000)
+        assert backtest.has_lines(train)
+        settings, report = backtest.tune_lines(train, test, backtest.current_settings())
+        assert report["chosen"] != "none" and report["log_loss"][report["chosen"]] < report["log_loss"]["none"]
+        assert report["fitted"]["SIDE_WEIGHT"]["points"] >= 1.0
+        assert backtest.current_settings() == saved          # tune_lines leaves the settings as it found them
+        assert not backtest.has_lines([{**s, "shift": None} for s in train])
+    finally:
+        backtest.apply_settings(saved)
+        model.CALIBRATE = True
+
+
+def test_team_ratings_stand_in_for_the_line():
+    games = lambda team, opp, margin: [{"team": team, "opp": opp, "date": f"2026-01-{d:02d}T00:00Z", "margin": margin, "min": 30} for d in range(1, 11)]
+    logs = {"a": {"games": games("GOOD", "BAD", 12)}, "b": {"games": games("BAD", "GOOD", -12)}}
+    r = backtest.TeamRatings(logs)
+    expected, shift = r.line("BAD", "GOOD", "2026-02-01", home=False)
+    assert expected < -10 and shift < -5          # big underdogs, against a much better side than average
+    assert r.line("BAD", "GOOD", "2026-01-02", home=True) == (None, None)   # too early in the season to say
+    assert model.side_factor("points", shift) < 1 == model.side_factor("rebounds", shift)
+    assert model.blowout_cut(expected) == model.UNDERDOG_CUT_BIG and model.blowout_cut(3) == 1.0
+    assert model.blowout_cut(12) == model.BLOWOUT_CUT and model.blowout_cut(-8) == model.UNDERDOG_CUT
+    assert espn._margin({"homeTeamScore": "118", "awayTeamScore": "104"}, home=False) == -14
+    assert espn._margin({"score": "W 121-110", "gameResult": "W"}, home=None) == 11 and espn._margin({}, True) is None

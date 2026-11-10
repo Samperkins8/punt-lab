@@ -15,6 +15,10 @@
 The backtest can't replay the betting-market blend, teammate in/out shifts, pace,
 injury minutes or head-to-head, because there's no free history of those. It tunes
 the core of the model; the live calibration corrects whatever is left.
+
+There's no free history of betting lines either, so each past game's line is stood in
+for by the two teams' results up to that day (average winning margin, plus home court).
+That is what the line adjustment and the blowout minutes cuts are fitted on.
 """
 from __future__ import annotations
 
@@ -45,6 +49,12 @@ MIN_SAMPLES = 2000                   # per side (tuning / checking), or the run 
 LIVE_SHRINK = 150                    # curve is pulled halfway to "no change" at this many legs
 BINS = [0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.65, 0.70, 0.75, 0.80, 0.85, 0.90, 0.95, 1.0001]
 
+MARGIN_MIN_SHARE = 0.5               # share of samples that need a known line stand-in before its settings are tuned
+SIDE_GRID = [0.0, 0.25, 0.5, 0.75, 1.0, 1.5, 2.0]
+CUT_GRID = [0.90, 0.93, 0.95, 0.97, 0.98, 1.0]
+LINE_SETTINGS = ("SIDE_WEIGHT", "BLOWOUT_CUT", "UNDERDOG_CUT", "UNDERDOG_CUT_BIG")
+CACHE_VERSION = 2                    # v2 adds each game's final margin
+
 GRID = {
     "PRIOR_GAMES": [2, 4, 8, 12, 16, 24],
     "SPREAD_GAMES": [2, 4, 8, 16, 32, 64, 128],
@@ -71,7 +81,7 @@ def _players() -> dict[str, dict]:
 
 def season_logs(year: int, players: dict[str, dict], current: int) -> dict[str, dict]:
     """{athlete_id: {name, pos, games: [...]}} for one season. Finished seasons are cached."""
-    path = CACHE / f"gamelogs_{year}.json.gz"
+    path = CACHE / f"gamelogs_v{CACHE_VERSION}_{year}.json.gz"
     cached = {}
     if year < current and path.exists():
         cached = json.loads(gzip.decompress(path.read_bytes()))
@@ -142,9 +152,43 @@ class OppDefence:
         return round(max(0.85, min(1.15, team / lg)), 2)
 
 
+class TeamRatings:
+    """Each team's results before a date: the stand-in for the betting line (no free history of lines)."""
+
+    def __init__(self, logs: dict[str, dict]):
+        games = {}                       # (team, date) -> margin; every player in the game reports the same one
+        for p in logs.values():
+            for g in p["games"]:
+                if g.get("team") and g.get("date") and g.get("margin") is not None:
+                    games[(g["team"], g["date"][:10])] = g["margin"]
+        by_team = defaultdict(list)
+        for (team, d), m in games.items():
+            by_team[team].append((d, m))
+        self.series = {}
+        for team, rows in by_team.items():
+            rows.sort()
+            self.series[team] = ([d for d, _ in rows], [m for _, m in rows])
+
+    def before(self, team: str | None, d: str) -> float | None:
+        if team not in self.series:
+            return None
+        dates, margins = self.series[team]
+        n = bisect.bisect_left(dates, d)
+        return model.rating(margins[:n]) if n >= MIN_GAMES else None
+
+    def line(self, team: str | None, opp: str | None, d: str, home: bool | None) -> tuple[float | None, float | None]:
+        """(expected margin tonight, how much tougher or easier that is than the team's usual), both in points."""
+        mine, theirs = self.before(team, d), self.before(opp, d)
+        if mine is None or theirs is None:
+            return None, None
+        edge = 0.0 if home is None else (model.HOME_EDGE if home else -model.HOME_EDGE)
+        return round(mine - theirs + edge, 1), round(-theirs, 1)
+
+
 def samples(year: int, logs: dict[str, dict], prior_logs: dict[str, dict]) -> list[dict]:
     """One sample per player-game-stat, using only games before it."""
     defence = OppDefence(logs)
+    ratings = TeamRatings(logs)
     out = []
     for pid, p in logs.items():
         games = _played(p["games"])
@@ -157,6 +201,7 @@ def samples(year: int, logs: dict[str, dict], prior_logs: dict[str, dict]) -> li
                 continue
             d = g["date"][:10]
             b2b = (date.fromisoformat(d) - date.fromisoformat(before[-1]["date"][:10])).days == 1
+            expected, shift = ratings.line(g.get("team"), g.get("opp"), d, g.get("home"))
             for stat, key in STATS.items():
                 vals = [x[key] for x in before if x.get(key) is not None]
                 if len(vals) < MIN_GAMES or mean(vals) < MIN_STAT_AVG[stat] or g.get(key) is None:
@@ -171,6 +216,7 @@ def samples(year: int, logs: dict[str, dict], prior_logs: dict[str, dict]) -> li
                     "prior_mean": mean(prior_vals) if prior_vals else mean(vals), "prior_games": len(prior_vals),
                     "venue_shift": round(venue_shift, 2), "opp_factor": defence.factor(g.get("opp"), pos, stat, d),
                     "pid": pid, "date": d, "team": g.get("team"), "opp": g.get("opp"), "b2b": b2b, "avg_min": avg_min,
+                    "expected": expected, "shift": shift,
                 })
     return out
 
@@ -178,11 +224,15 @@ def samples(year: int, logs: dict[str, dict], prior_logs: dict[str, dict]) -> li
 # ---------- scoring ----------
 
 def _mean_sd(s: dict) -> tuple[float, float]:
+    minutes = s.get("avg_min")
+    if minutes:
+        if s.get("b2b"):
+            minutes *= model.B2B_CUT_STAR if s["avg_min"] >= 30 else model.B2B_CUT
+        minutes *= model.blowout_cut(s.get("expected"))
     leg = Leg(leg_id="bt", player="bt", team="", game="", stat=s["stat"], line=LINES[s["stat"]][0], log=s["vals"],
               prior_mean=s["prior_mean"], prior_games=s["prior_games"], venue_shift=s["venue_shift"],
-              opp_factor=s["opp_factor"], avg_minutes=s.get("avg_min"),
-              proj_minutes=(s["avg_min"] * (model.B2B_CUT_STAR if s["avg_min"] >= 30 else model.B2B_CUT)
-                            if s.get("b2b") and s.get("avg_min") else s.get("avg_min")))
+              opp_factor=s["opp_factor"], avg_minutes=s.get("avg_min"), proj_minutes=minutes,
+              side_factor=model.side_factor(s["stat"], s["shift"]) if s.get("shift") is not None else 1.0)
     r = evaluate(leg)
     return r.proj_mean, r.proj_sd
 
@@ -210,7 +260,7 @@ def score(data: list[dict], curves: dict | None = None) -> dict:
         for ln in s["lines"]:
             p = _prob(ln, m, sd)
             if curves:
-                p = model._curve(curves.get(s["stat"]), p)
+                p = model._curve(model.curve_for(curves, s["stat"], ln), p)
             p = min(max(p, 1e-4), 1 - 1e-4)
             y = 1.0 if s["actual"] >= ln else 0.0
             ll -= y * math.log(p) + (1 - y) * math.log(1 - p)
@@ -235,6 +285,11 @@ def apply_settings(settings: dict) -> None:
         setattr(model, k, dict(v) if isinstance(v, dict) else v)
 
 
+def has_lines(data: list[dict]) -> bool:
+    """Enough past games have a line stand-in (needs final scores from ESPN) to fit the line settings."""
+    return bool(data) and sum(1 for s in data if s.get("shift") is not None) >= MARGIN_MIN_SHARE * len(data)
+
+
 def tune(train: list[dict], rounds: int = 3) -> tuple[dict, float]:
     """Coordinate search: try each setting's candidate values in turn, keep whatever lowers log loss."""
     best = current_settings()
@@ -248,7 +303,7 @@ def tune(train: list[dict], rounds: int = 3) -> tuple[dict, float]:
             for v in values:
                 trial = json.loads(json.dumps(best))
                 if stat:
-                    trial["SPREAD"][stat] = v
+                    trial[name][stat] = v
                 else:
                     trial[name] = v
                 if trial == best:
@@ -264,18 +319,64 @@ def tune(train: list[dict], rounds: int = 3) -> tuple[dict, float]:
     return best, best_ll
 
 
+def tune_lines(train: list[dict], test: list[dict], base: dict) -> tuple[dict, dict]:
+    """Fit the line settings (how much tonight's line moves a prediction, and the blowout minutes cuts)
+    on the older season, then keep whichever of three does best on the newer seasons: the fitted
+    values, the ones in use, or no adjustment at all. Returns (settings, a report for the site)."""
+    in_use = {k: json.loads(json.dumps(base[k])) for k in LINE_SETTINGS}
+    neutral = {"SIDE_WEIGHT": {stat: 0.0 for stat in base["SIDE_WEIGHT"]},
+               "BLOWOUT_CUT": 1.0, "UNDERDOG_CUT": 1.0, "UNDERDOG_CUT_BIG": 1.0}
+
+    def loss(data, lines):
+        apply_settings({**base, **lines})
+        return score(data)["log_loss"]
+
+    fitted = json.loads(json.dumps(in_use))
+    best_ll = loss(train, fitted)
+    for _ in range(2):
+        improved = False
+        steps = [("SIDE_WEIGHT", stat, SIDE_GRID) for stat in fitted["SIDE_WEIGHT"]]
+        steps += [(k, None, CUT_GRID) for k in LINE_SETTINGS if k != "SIDE_WEIGHT"]
+        for name, stat, values in steps:
+            for v in values:
+                trial = json.loads(json.dumps(fitted))
+                if stat:
+                    trial[name][stat] = v
+                else:
+                    trial[name] = v
+                if trial == fitted:
+                    continue
+                ll = loss(train, trial)
+                if ll < best_ll - 1e-6:
+                    fitted, best_ll, improved = trial, ll, True
+        if not improved:
+            break
+    options = {"fitted": fitted, "in use": in_use, "none": neutral}
+    scores = {k: loss(test, v) for k, v in options.items()}
+    pick_ = min(scores, key=scores.get)
+    log.info("line settings: newer seasons log loss fitted %.5f, in use %.5f, none %.5f -> %s",
+             scores["fitted"], scores["in use"], scores["none"], pick_)
+    apply_settings(base)
+    return options[pick_], {"chosen": pick_, "log_loss": {k: round(v, 5) for k, v in scores.items()}, "fitted": fitted}
+
+
 # ---------- correction curve ----------
 
-def fit_curves(data: list[dict], min_n: int = 200) -> dict[str, list[list[float]]]:
+def fit_curves(data: list[dict], min_n: int = 200, by_line: bool = False) -> dict[str, list[list[float]]]:
     """Per stat: predicted vs actually landed in 5% bins, made monotone. Applied to every leg before
-    the live calibration, so the percentages match what happened across past seasons."""
+    the live calibration, so the percentages match what happened across past seasons.
+    With by_line, a line with enough history ("points:10") also gets a curve of its own: low lines
+    miss more than the bell curve says (a 16-a-game scorer has more single-figure nights than it allows)."""
     rows = defaultdict(list)
     for s in data:
         if not s.get("lines"):
             continue
         m, sd = _mean_sd(s)
         for ln in s["lines"]:
-            rows[s["stat"]].append((_prob(ln, m, sd), 1.0 if s["actual"] >= ln else 0.0))
+            row = (_prob(ln, m, sd), 1.0 if s["actual"] >= ln else 0.0)
+            rows[s["stat"]].append(row)
+            if by_line:
+                rows[f"{s['stat']}:{int(ln)}"].append(row)
     curves = {}
     for stat, rs in rows.items():
         pts = []
@@ -390,7 +491,8 @@ def main() -> None:
     logs = {y: season_logs(y, players, cur) for y in (cur - 3, cur - 2, cur - 1, cur)}
     train = samples(cur - 2, logs[cur - 2], logs[cur - 3])
     test = samples(cur - 1, logs[cur - 1], logs[cur - 2]) + samples(cur, logs[cur], logs[cur - 1])
-    log.info("samples: train %d, test %d", len(train), len(test))
+    log.info("samples: train %d, test %d; with a final score: train %d, test %d", len(train), len(test),
+             sum(1 for s in train if s.get("shift") is not None), sum(1 for s in test if s.get("shift") is not None))
     if len(train) < MIN_SAMPLES or len(test) < MIN_SAMPLES:
         raise SystemExit("not enough backtest data from ESPN; leaving the model unchanged")
 
@@ -407,21 +509,35 @@ def main() -> None:
     better = prev_test - new_test >= MIN_IMPROVEMENT * prev_test
     final = tuned if better else previous
     apply_settings(final)
+    line_report = {"chosen": "not fitted", "reason": "ESPN gave no final scores for past games"}
+    if has_lines(train) and has_lines(test):
+        line_settings, line_report = tune_lines(train, test, final)
+        final = {**final, **line_settings}
+        apply_settings(final)
+    else:
+        log.info("line settings not fitted: only %d of %d past games have a final score",
+                 sum(1 for s in train if s.get("shift") is not None), len(train))
     links = measure_links(train + test)
     for k, v in links.items():
         if v["r"] is not None and v["pairs"] >= LINK_MIN_PAIRS:
             final[k] = v["r"]
             log.info("measured %s = %+.3f from %d pairs (was %+.3f)", k, v["r"], v["pairs"], defaults[k])
     apply_settings(final)
-    curves = fit_curves(train)  # fitted on the older season, checked on the newer ones
+    # correction curves: fitted on the older season, checked on the newer ones. Per-line curves are
+    # used only if they beat the per-stat ones there.
     uncorrected = score(test)
+    options = {False: fit_curves(train), True: fit_curves(train, by_line=True)}
+    scores = {k: score(test, c)["log_loss"] for k, c in options.items()}
+    by_line = scores[True] < scores[False]
+    curves = options[by_line]
     after = {"train": score(train, curves), "test": score(test, curves)}
     if after["test"]["log_loss"] >= uncorrected["log_loss"]:
         log.info("correction curve didn't help on the newer seasons; not used")
         curves, after = {}, {"train": score(train), "test": uncorrected}
     else:
-        log.info("correction curve: newer seasons log loss %.4f -> %.4f", uncorrected["log_loss"], after["test"]["log_loss"])
-        curves = fit_curves(train + test)  # then refit on everything for use
+        log.info("correction curve (%s): newer seasons log loss %.4f -> %.4f (per stat %.4f, per line %.4f)",
+                 "per line" if by_line else "per stat", uncorrected["log_loss"], after["test"]["log_loss"], scores[False], scores[True])
+        curves = fit_curves(train + test, by_line=by_line)  # then refit on everything for use
     applied = final != defaults
     log.info("newer seasons log loss: hand-set %.4f, in use %.4f, new tune %.4f (%s)", before["test"]["log_loss"],
              prev_test, new_test, "switched to new tune" if better else "kept the settings in use")
@@ -440,6 +556,8 @@ def main() -> None:
         "seasons": {"tuned_on": f"{cur - 3}-{str(cur - 2)[2:]}", "checked_on": f"{cur - 2}-{str(cur - 1)[2:]} and {cur - 1}-{str(cur)[2:]} so far"},
         "samples": {"train": len(train), "test": len(test)},
         "applied": applied, "defaults": defaults, "tuned": final, "changed_this_week": better, "links": links,
+        "lines": {**line_report, "fitted_on_scores": has_lines(train), "train_share": round(sum(1 for s in train if s.get("shift") is not None) / len(train), 3),
+                  "curves_by_line": sorted(k for k in curves if ":" in k)},
         "before": before, "after": after,
         "live": {"summary": live_summary, "curves": live_curves, "min_legs": LIVE_MIN_LEGS},
         "backtest_curve": curves,

@@ -7,6 +7,7 @@ caller logs what it skipped.
 from __future__ import annotations
 
 import logging
+import re
 import time
 from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
@@ -210,8 +211,21 @@ def team_roster(team_id: str) -> list[dict]:
     return out
 
 
+def _margin(info: dict, home: bool | None) -> float | None:
+    """His team's winning margin in a game (negative for a loss), from whichever score fields ESPN gives."""
+    hs, as_ = _num(info.get("homeTeamScore")), _num(info.get("awayTeamScore"))
+    if hs is not None and as_ is not None and home is not None and (hs or as_):
+        return hs - as_ if home else as_ - hs
+    nums = re.findall(r"\d+", str(info.get("score") or ""))
+    result = str(info.get("gameResult") or "").upper()[:1]
+    if len(nums) >= 2 and result in ("W", "L"):
+        gap = abs(float(nums[0]) - float(nums[1]))
+        return gap if result == "W" else -gap
+    return None
+
+
 def last_season_log(athlete_id: str, season_end_year: int) -> dict:
-    """{'games': [{opp, pts, reb, ast, threes, min}], 'gp': int}"""
+    """{'games': [{opp, team, pts, reb, ast, threes, min, date, home, margin}], 'gp': int}"""
     data = get(f"{WEB}/athletes/{athlete_id}/gamelog", {"season": season_end_year})
     labels = [str(x).upper() for x in data.get("labels") or []]
     idx = {lab: i for i, lab in enumerate(labels)}
@@ -228,11 +242,13 @@ def last_season_log(athlete_id: str, season_end_year: int) -> dict:
                 def s(label):
                     i = idx.get(label)
                     return stats[i] if i is not None and i < len(stats) else None
+                home = None if not info.get("atVs") else info.get("atVs") != "@"
                 games.append({
+                    "margin": _margin(info, home),
                     "opp": (info.get("opponent") or {}).get("abbreviation"),
                     "team": (info.get("team") or {}).get("abbreviation"),
                     "pts": _num(s("PTS")), "reb": _num(s("REB")), "ast": _num(s("AST")),
                     "threes": _made(s("3PT")), "min": _minutes(s("MIN")),
-                    "date": info.get("gameDate"), "home": None if not info.get("atVs") else info.get("atVs") != "@",
+                    "date": info.get("gameDate"), "home": home,
                 })
     return {"games": games, "gp": len(games)}

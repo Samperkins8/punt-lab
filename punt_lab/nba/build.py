@@ -34,15 +34,6 @@ STEP_UP_LOW = 0.40  # a player's next line up is kept if at least this likely ($
 VENUE_GAMES = 8     # home/away split is halfway with this many matching games
 PACE_WEIGHT = {"points": 0.5, "assists": 0.5, "threes": 0.5, "rebounds": 0.3}
 B2B_HOURS = 30      # a game within this many hours of the last one is a back-to-back
-# A team's share of tonight's total: a 226-point game with an 8.5 line is about 117.5 v 108.5, so the
-# underdog's scorers get about 4% less and the favourite's 4% more. Rebounds don't follow the score.
-SIDE_WEIGHT = {"points": 1.0, "threes": 1.0, "assists": 0.5, "rebounds": 0.0}
-SIDE_CAP = 0.06
-BLOWOUT_SPREAD = 10   # both teams' starters lose minutes from here...
-BLOWOUT_CUT = 0.95
-UNDERDOG_SPREAD = 7   # ...and the underdog's starters from here: they sit first when a game gets away
-UNDERDOG_CUT = 0.96
-UNDERDOG_CUT_BIG = 0.93   # underdog, line of BLOWOUT_SPREAD or more
 ALL_TEAMS = {"ATL", "BOS", "BKN", "CHA", "CHI", "CLE", "DAL", "DEN", "DET", "GS", "HOU", "IND", "LAC", "LAL",
              "MEM", "MIA", "MIL", "MIN", "NO", "NY", "OKC", "ORL", "PHI", "PHX", "POR", "SAC", "SA", "TOR", "UTAH", "WSH"}
 MAX_LEGS = 25
@@ -148,7 +139,11 @@ def player_logs(team_id: str, team_abbr: str) -> tuple[list[str], dict[str, dict
     meta = {g["event_id"]: g for g in sched}
     players: dict[str, dict] = {}
     for ev in events:
-        rows = espn.box_score(ev).get(team_abbr, [])
+        box = espn.box_score(ev)
+        rows = box.get(team_abbr, [])
+        others = [r for abbr, rs in box.items() if abbr != team_abbr for r in rs]
+        if rows and others:  # the box score has every player, so the points add up to the final score
+            meta[ev]["margin"] = sum(r["pts"] or 0 for r in rows) - sum(r["pts"] or 0 for r in others)
         for row in rows:
             p = players.setdefault(row["id"], {"name": row["name"], "pos": row["pos"], "games": {}})
             if not row["dnp"]:
@@ -269,6 +264,12 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
                 except ValueError:
                     pass
             at_home = side == "home"
+            # tonight's line against this team's usual result, with home court taken out of the line
+            line_shift = None
+            margins = [td["meta"][ev]["margin"] for ev in events if td["meta"].get(ev, {}).get("margin") is not None]
+            if fav is not None and len(margins) >= MIN_GAMES:
+                signed = spread if team == fav else -spread
+                line_shift = round(signed - (model.HOME_EDGE if at_home else -model.HOME_EDGE) - model.rating(margins), 1)
             for pid in rotation:
                 p = td["players"][pid]
                 name = p["name"]
@@ -304,13 +305,7 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
                     proj_min *= model.B2B_CUT_STAR if avg_min[pid] >= 30 else model.B2B_CUT
                     note_bits.append("second night of a back-to-back")
                 underdog = fav is not None and team != fav
-                cut = 1.0
-                if underdog and spread >= BLOWOUT_SPREAD:
-                    cut = UNDERDOG_CUT_BIG
-                elif underdog and spread >= UNDERDOG_SPREAD:
-                    cut = UNDERDOG_CUT
-                elif spread >= BLOWOUT_SPREAD:
-                    cut = BLOWOUT_CUT
+                cut = model.blowout_cut((-spread if underdog else spread) if fav is not None else None)
                 if cut < 1:
                     proj_min *= cut
                     note_bits.append(f"blowout risk ({g['favourite']} {-spread:g}"
@@ -349,10 +344,7 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
                     pace_factor = 1.0
                     if g.get("total"):
                         pace_factor = max(0.95, min(1.05, 1 + PACE_WEIGHT[stat] * (g["total"] / avg_total - 1)))
-                    side_factor = 1.0
-                    if fav is not None and spread and g.get("total"):
-                        share = spread / g["total"] * (-1 if underdog else 1)
-                        side_factor = 1 + max(-SIDE_CAP, min(SIDE_CAP, SIDE_WEIGHT[stat] * share))
+                    side_factor = model.side_factor(stat, line_shift, g.get("total")) if line_shift is not None else 1.0
                     if best_ctx and abs(best_ctx[0]) < 0.3:
                         best_ctx = None  # too small to matter: don't show it
                     prior_vals = [x[key] for x in prior["games"] if x.get(key) is not None]
@@ -387,7 +379,7 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
                             extra={"event_id": g["event_id"], "athlete_id": pid, "risky": risky,
                                    "books": odds.allowed(prices["books"].get((name.lower(), stat, line))),
                                    "at_home": at_home, "venue_games": len(venue_vals), "b2b": b2b,
-                                   "underdog": underdog, "spread": spread,
+                                   "underdog": underdog, "spread": spread, "line_shift": line_shift,
                                    "context_detail": best_ctx[3] if best_ctx else None},
                         )
                         res = evaluate(leg)
@@ -497,9 +489,10 @@ def explain(leg: Leg, res) -> str:
     if abs(leg.pace_factor - 1) >= 0.01:
         parts.append(f"{'Faster' if leg.pace_factor > 1 else 'Slower'} game expected ({leg.pace_factor - 1:+.0%} for pace).")
     if abs(leg.side_factor - 1) >= 0.01:
-        parts.append(f"His team are {leg.extra.get('spread', 0):g}-point "
-                     f"{'underdogs' if leg.side_factor < 1 else 'favourites'}, so they're expected to score "
-                     f"{'less' if leg.side_factor < 1 else 'more'} ({leg.side_factor - 1:+.0%}).")
+        shift = leg.extra.get("line_shift") or 0
+        parts.append(f"Tonight's line is {abs(shift):.0f} points {'tougher' if shift < 0 else 'easier'} than his team's "
+                     f"usual ({'underdogs' if leg.extra.get('underdog') else 'favourites'} by {leg.extra.get('spread', 0):g}), "
+                     f"so they're expected to score {'less' if leg.side_factor < 1 else 'more'} ({leg.side_factor - 1:+.0%}).")
     if abs(res.matchup - 1) >= 0.02:
         pct = round((res.matchup - 1) * 100)
         who = leg.game.replace(leg.team, "").replace("@", "").strip()

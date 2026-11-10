@@ -22,6 +22,22 @@ RECENT_WEIGHT = 1.5      # ...count this much more than older ones
 B2B_CUT_STAR = 0.95      # minutes on the second night of a back-to-back, players averaging 30+
 B2B_CUT = 0.97           # ...and everyone else
 
+# Tonight's line against the team's usual result. A player's averages already carry his team's
+# usual standing (a bad team's players are underdogs most nights), so only the difference counts:
+# a line 6 points worse than usual in a 228-point game is about 3 points, 2.6%, off the team's score.
+# Rebounds don't follow the score. The weekly backtest fits these from past results.
+SIDE_WEIGHT = {"points": 1.0, "threes": 1.0, "assists": 0.5, "rebounds": 0.0}
+SIDE_CAP = 0.06          # never move a prediction more than this for the line
+LEAGUE_TOTAL = 228.0     # used when the game has no total
+HOME_EDGE = 2.5          # points of the line that are just home court (his home/away split covers that)
+RATING_GAMES = 5         # a team's average margin counts as its rating once it has this many games (shrunk before)
+# Minutes when the game is expected to be one-sided: starters sit once it's decided
+BLOWOUT_SPREAD = 10      # both teams from here...
+BLOWOUT_CUT = 0.95
+UNDERDOG_SPREAD = 7      # ...and the underdog from here
+UNDERDOG_CUT = 0.98
+UNDERDOG_CUT_BIG = 0.95  # underdog, line of BLOWOUT_SPREAD or more
+
 # Same-game links between legs in a multi
 SAME_GAME_REBOUNDS = -0.15
 SAME_TEAM_POINTS = -0.05
@@ -31,7 +47,8 @@ WIN_VS_OPPONENT = -0.20  # a team to win + a scoring leg from the team it's play
 # Settings the weekly backtest is allowed to tune (see backtest.py). Values above are the
 # hand-set defaults; tuned.json, when present, replaces them.
 TUNABLE = ("SPREAD", "PRIOR_GAMES", "SPREAD_GAMES", "RECENT_GAMES", "RECENT_WEIGHT", "OPP_WEIGHT",
-           "B2B_CUT_STAR", "B2B_CUT", "SAME_GAME_REBOUNDS", "SAME_TEAM_POINTS", "SAME_GAME_OTHER")
+           "B2B_CUT_STAR", "B2B_CUT", "SAME_GAME_REBOUNDS", "SAME_TEAM_POINTS", "SAME_GAME_OTHER",
+           "SIDE_WEIGHT", "BLOWOUT_CUT", "UNDERDOG_CUT", "UNDERDOG_CUT_BIG")
 TUNED_FILE = Path(__file__).with_name("tuned.json")
 CALIBRATION: dict[str, list[list[float]]] = {}  # stat -> [[model chance, actual landed], ...] from graded live legs
 BACKTEST_CURVE: dict[str, list[list[float]]] = {}  # the same, from the backtest (applied first)
@@ -79,10 +96,47 @@ def _curve(pts, p: float) -> float:
     return p
 
 
-def backtest_correct(stat: str, p: float) -> float:
+def curve_for(curves: dict, stat: str, line: float | None):
+    """The correction for one line of a stat where the backtest had enough of them ("points:10"),
+    else the stat's general one. Low lines behave differently: a 16-a-game scorer has more
+    single-figure nights than a bell curve allows, so 10+ lines land less often than they look."""
+    if line is not None:
+        pts = curves.get(f"{stat}:{int(line)}")
+        if pts:
+            return pts
+    return curves.get(stat)
+
+
+def backtest_correct(stat: str, p: float, line: float | None = None) -> float:
     """Correct the bell curve's known lean (from the backtest): stats are lopsided, so lines near
     or above a player's average land a little less often than a symmetric curve says."""
-    return _curve(BACKTEST_CURVE.get(stat), p) if CALIBRATE else p
+    return _curve(curve_for(BACKTEST_CURVE, stat, line), p) if CALIBRATE else p
+
+
+def rating(margins: list[float]) -> float:
+    """A team's usual result: its average winning margin so far, pulled towards zero early in the season."""
+    return sum(margins) / (len(margins) + RATING_GAMES) if margins else 0.0
+
+
+def side_factor(stat: str, shift: float, total: float | None = None) -> float:
+    """`shift` is tonight's expected margin minus the team's usual one, in points (negative = tougher than usual)."""
+    w = SIDE_WEIGHT.get(stat, 0.0)
+    move = w * shift / (total or LEAGUE_TOTAL)
+    return 1 + max(-SIDE_CAP, min(SIDE_CAP, move))
+
+
+def blowout_cut(expected_margin: float | None) -> float:
+    """Minutes factor from tonight's expected margin, from the player's team's point of view."""
+    if expected_margin is None:
+        return 1.0
+    size = abs(expected_margin)
+    if expected_margin < 0 and size >= BLOWOUT_SPREAD:
+        return UNDERDOG_CUT_BIG
+    if expected_margin < 0 and size >= UNDERDOG_SPREAD:
+        return UNDERDOG_CUT
+    if size >= BLOWOUT_SPREAD:
+        return BLOWOUT_CUT
+    return 1.0
 
 
 def calibrate(stat: str, p: float) -> float:
@@ -126,7 +180,7 @@ class Leg:
     roster_overlap: float | None = None
     venue_shift: float = 0.0       # home/away adjustment, in the stat's units
     pace_factor: float = 1.0       # tonight's expected game total vs average
-    side_factor: float = 1.0       # this team's share of tonight's total (underdogs score less)
+    side_factor: float = 1.0       # tonight's line against the team's usual result (see side_factor)
     opp_factor: float | None = None
     avg_minutes: float | None = None
     proj_minutes: float | None = None
@@ -196,7 +250,7 @@ def evaluate(leg: Leg) -> LegResult:
         fair_price = 1 / market_prob if market_prob > 0 else None
         final_mean = MARKET_WEIGHT * market_mean + (1 - MARKET_WEIGHT) * proj_mean
 
-    raw_prob = backtest_correct(leg.stat, 1 - norm_cdf((leg.line - 0.5 - final_mean) / proj_sd))
+    raw_prob = backtest_correct(leg.stat, 1 - norm_cdf((leg.line - 0.5 - final_mean) / proj_sd), leg.line)
     model_prob = calibrate(leg.stat, raw_prob)
     hit_rate = sum(1 for x in xs if x >= leg.line) / n
     implied = 1 / leg.odds if leg.odds else None
