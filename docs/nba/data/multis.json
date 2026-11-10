@@ -3,222 +3,269 @@
   "multi": "4-leg $2+",
   "rank": 1,
   "leg_ids": [
-   "cj_mccollum_points10",
-   "dillon_brooks_points10",
-   "miles_bridges_points10",
-   "de'aaron_fox_points10"
+   "domantas_sabonis_points10",
+   "jaime_jaquez_jr_points10",
+   "og_anunoby_rebounds4",
+   "vj_edgecombe_rebounds4"
   ],
-  "legs_text": "CJ McCollum 10+ points; Dillon Brooks 10+ points; Miles Bridges 10+ points; De'Aaron Fox 10+ points",
-  "est_hit": 0.4817,
-  "break_even": 2.08,
+  "legs_text": "Domantas Sabonis 10+ points; Jaime Jaquez Jr. 10+ points; OG Anunoby 4+ rebounds; VJ Edgecombe 4+ rebounds",
+  "est_hit": 0.3826,
+  "break_even": 2.61,
   "priced_legs": "4 of 4",
-  "known_price": 2.37,
-  "fair_multi": null,
-  "est_price": 2.37,
+  "known_price": 2.31,
+  "fair_multi": 2.93,
+  "est_price": 2.31,
   "book_prices": {
-   "neds": 2.37
+   "neds": 2.31
   },
   "best_book": "neds",
-  "best_book_price": 2.37
+  "best_book_price": 2.31,
+  "verdict": "skip",
+  "value": -0.1162
  },
  {
   "multi": "3-leg $2+",
   "rank": 2,
   "leg_ids": [
-   "cj_mccollum_points10",
-   "dillon_brooks_points10",
-   "stephen_curry_threes3"
+   "domantas_sabonis_points10",
+   "jaime_jaquez_jr_points10",
+   "klay_thompson_points10"
   ],
-  "legs_text": "CJ McCollum 10+ points; Dillon Brooks 10+ points; Stephen Curry 3+ threes",
-  "est_hit": 0.4767,
+  "legs_text": "Domantas Sabonis 10+ points; Jaime Jaquez Jr. 10+ points; Klay Thompson 10+ points",
+  "est_hit": 0.4758,
   "break_even": 2.1,
-  "priced_legs": "2 of 3",
-  "known_price": 1.62,
-  "fair_multi": null,
-  "est_price": 2.18,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null
+  "priced_legs": "3 of 3",
+  "known_price": 2.05,
+  "fair_multi": 2.67,
+  "est_price": 2.02,
+  "book_prices": {
+   "neds": 2.02
+  },
+  "best_book": "neds",
+  "best_book_price": 2.02,
+  "verdict": "skip",
+  "value": -0.0389
+ },
+ {
+  "multi": "2-leg $2+",
+  "rank": 3,
+  "leg_ids": [
+   "jaime_jaquez_jr_points10",
+   "jalen_brunson_points25"
+  ],
+  "legs_text": "Jaime Jaquez Jr. 10+ points; Jalen Brunson 25+ points",
+  "est_hit": 0.469,
+  "break_even": 2.13,
+  "priced_legs": "2 of 2",
+  "known_price": 2.09,
+  "fair_multi": 2.52,
+  "est_price": 2.09,
+  "book_prices": {
+   "neds": 2.09
+  },
+  "best_book": "neds",
+  "best_book_price": 2.09,
+  "verdict": "marginal",
+  "value": -0.0198
  },
  {
   "multi": "4-leg $3+",
-  "rank": 3,
+  "rank": 4,
   "leg_ids": [
-   "cj_mccollum_points10",
-   "miles_bridges_points10",
-   "de'aaron_fox_points10",
-   "dillon_brooks_points15"
+   "domantas_sabonis_points10",
+   "derrick_white_points10",
+   "vj_edgecombe_points10",
+   "jrue_holiday_points10"
   ],
-  "legs_text": "CJ McCollum 10+ points; Miles Bridges 10+ points; De'Aaron Fox 10+ points; Dillon Brooks 15+ points",
-  "est_hit": 0.3551,
-  "break_even": 2.82,
+  "legs_text": "Domantas Sabonis 10+ points; Derrick White 10+ points; VJ Edgecombe 10+ points; Jrue Holiday 10+ points",
+  "est_hit": 0.3441,
+  "break_even": 2.91,
   "priced_legs": "4 of 4",
-  "known_price": 3.62,
-  "fair_multi": null,
-  "est_price": 3.62,
+  "known_price": 3.05,
+  "fair_multi": 3.77,
+  "est_price": 3.07,
   "book_prices": {
-   "neds": 3.62
+   "neds": 3.07
   },
   "best_book": "neds",
-  "best_book_price": 3.62
+  "best_book_price": 3.07,
+  "verdict": "value",
+  "value": 0.0564
  },
  {
   "multi": "4-leg $4+",
-  "rank": 4,
+  "rank": 5,
   "leg_ids": [
-   "cj_mccollum_points10",
-   "de'aaron_fox_points10",
-   "stephen_curry_threes3",
-   "dillon_brooks_points15"
+   "jaime_jaquez_jr_points10",
+   "og_anunoby_rebounds4",
+   "zach_lavine_points15",
+   "domantas_sabonis_points15"
   ],
-  "legs_text": "CJ McCollum 10+ points; De'Aaron Fox 10+ points; Stephen Curry 3+ threes; Dillon Brooks 15+ points",
-  "est_hit": 0.2878,
-  "break_even": 3.47,
-  "priced_legs": "3 of 4",
-  "known_price": 3.01,
-  "fair_multi": null,
-  "est_price": 4.06,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null
+  "legs_text": "Jaime Jaquez Jr. 10+ points; OG Anunoby 4+ rebounds; Zach LaVine 15+ points; Domantas Sabonis 15+ points",
+  "est_hit": 0.2648,
+  "break_even": 3.78,
+  "priced_legs": "4 of 4",
+  "known_price": 3.89,
+  "fair_multi": 5.22,
+  "est_price": 4.03,
+  "book_prices": {
+   "neds": 4.03
+  },
+  "best_book": "neds",
+  "best_book_price": 4.03,
+  "verdict": "value",
+  "value": 0.0671
  },
  {
   "multi": "Best value",
-  "rank": 5,
+  "rank": 6,
   "leg_ids": [
-   "cj_mccollum_points10",
-   "dillon_brooks_points10",
-   "miles_bridges_points10",
-   "de'aaron_fox_points10"
+   "domantas_sabonis_points10",
+   "derrick_white_points10",
+   "vj_edgecombe_points10",
+   "jrue_holiday_points10"
   ],
-  "legs_text": "CJ McCollum 10+ points; Dillon Brooks 10+ points; Miles Bridges 10+ points; De'Aaron Fox 10+ points",
-  "est_hit": 0.4817,
-  "break_even": 2.08,
+  "legs_text": "Domantas Sabonis 10+ points; Derrick White 10+ points; VJ Edgecombe 10+ points; Jrue Holiday 10+ points",
+  "est_hit": 0.3441,
+  "break_even": 2.91,
   "priced_legs": "4 of 4",
-  "known_price": 2.37,
-  "fair_multi": null,
-  "est_price": 2.37,
+  "known_price": 3.05,
+  "fair_multi": 3.77,
+  "est_price": 3.07,
   "book_prices": {
-   "neds": 2.37
+   "neds": 3.07
   },
   "best_book": "neds",
-  "best_book_price": 2.37
+  "best_book_price": 3.07,
+  "verdict": "value",
+  "value": 0.0564
  },
  {
   "multi": "Safest",
-  "rank": 6,
+  "rank": 7,
   "leg_ids": [
-   "cj_mccollum_points10",
-   "dillon_brooks_points10",
-   "miles_bridges_points10",
-   "de'aaron_fox_points10"
+   "domantas_sabonis_points10",
+   "jaime_jaquez_jr_points10",
+   "og_anunoby_rebounds4",
+   "vj_edgecombe_rebounds4"
   ],
-  "legs_text": "CJ McCollum 10+ points; Dillon Brooks 10+ points; Miles Bridges 10+ points; De'Aaron Fox 10+ points",
-  "est_hit": 0.4817,
-  "break_even": 2.08,
+  "legs_text": "Domantas Sabonis 10+ points; Jaime Jaquez Jr. 10+ points; OG Anunoby 4+ rebounds; VJ Edgecombe 4+ rebounds",
+  "est_hit": 0.3826,
+  "break_even": 2.61,
   "priced_legs": "4 of 4",
-  "known_price": 2.37,
-  "fair_multi": null,
-  "est_price": 2.37,
+  "known_price": 2.31,
+  "fair_multi": 2.93,
+  "est_price": 2.31,
   "book_prices": {
-   "neds": 2.37
+   "neds": 2.31
   },
   "best_book": "neds",
-  "best_book_price": 2.37
+  "best_book_price": 2.31,
+  "verdict": "skip",
+  "value": -0.1162
+ },
+ {
+  "multi": "3-leg value",
+  "rank": 8,
+  "leg_ids": [
+   "domantas_sabonis_points10",
+   "derrick_white_points10",
+   "vj_edgecombe_points10"
+  ],
+  "legs_text": "Domantas Sabonis 10+ points; Derrick White 10+ points; VJ Edgecombe 10+ points",
+  "est_hit": 0.4609,
+  "break_even": 2.17,
+  "priced_legs": "3 of 3",
+  "known_price": 2.24,
+  "fair_multi": 2.7,
+  "est_price": 2.26,
+  "book_prices": {
+   "neds": 2.26
+  },
+  "best_book": "neds",
+  "best_book_price": 2.26,
+  "verdict": "marginal",
+  "value": 0.0416
  },
  {
   "multi": "One per game",
-  "rank": 8,
+  "rank": 9,
   "leg_ids": [
-   "cj_mccollum_points10",
-   "dillon_brooks_points10",
-   "pascal_siakam_points15",
-   "kyshawn_george_points10",
-   "stephen_curry_threes2",
-   "cameron_boozer_points10",
-   "amen_thompson_points10",
-   "grayson_allen_points10"
+   "domantas_sabonis_points10",
+   "jaime_jaquez_jr_points10",
+   "vj_edgecombe_rebounds4",
+   "klay_thompson_points10",
+   "jrue_holiday_points10",
+   "rui_hachimura_rebounds4"
   ],
-  "legs_text": "CJ McCollum 10+ points; Dillon Brooks 10+ points; Pascal Siakam 15+ points; Kyshawn George 10+ points; Stephen Curry 2+ threes; Cameron Boozer 10+ points; Amen Thompson 10+ points; Grayson Allen 10+ points",
-  "est_hit": 0.2015,
-  "break_even": 4.96,
-  "priced_legs": "2 of 8",
-  "known_price": 1.62,
-  "fair_multi": null,
-  "est_price": 3.4,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null
+  "legs_text": "Domantas Sabonis 10+ points; Jaime Jaquez Jr. 10+ points; VJ Edgecombe 4+ rebounds; Klay Thompson 10+ points; Jrue Holiday 10+ points; Rui Hachimura 4+ rebounds",
+  "est_hit": 0.2035,
+  "break_even": 4.91,
+  "priced_legs": "6 of 6",
+  "known_price": 4.31,
+  "fair_multi": 5.81,
+  "est_price": 4.21,
+  "book_prices": {
+   "neds": 4.21
+  },
+  "best_book": "neds",
+  "best_book_price": 4.21,
+  "verdict": "skip",
+  "value": -0.1433
  },
  {
   "multi": "Mid-range $8+",
-  "rank": 9,
-  "leg_ids": [
-   "cj_mccollum_points10",
-   "miles_bridges_points10",
-   "dyson_daniels_rebounds4",
-   "de'aaron_fox_points10",
-   "dillon_brooks_points15",
-   "onyeka_okongwu_points15"
-  ],
-  "legs_text": "CJ McCollum 10+ points; Miles Bridges 10+ points; Dyson Daniels 4+ rebounds; De'Aaron Fox 10+ points; Dillon Brooks 15+ points; Onyeka Okongwu 15+ points",
-  "est_hit": 0.1387,
-  "break_even": 7.21,
-  "priced_legs": "4 of 6",
-  "known_price": 3.62,
-  "fair_multi": null,
-  "est_price": 8.63,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null
- },
- {
-  "multi": "Long multi 8+",
   "rank": 10,
   "leg_ids": [
-   "andrew_nembhard_points10",
-   "brandin_podziemski_points10",
-   "saddiq_bey_points10",
-   "cj_mccollum_points10",
-   "duncan_robinson_points10",
-   "dillon_brooks_points10",
-   "miles_bridges_points10",
-   "de'aaron_fox_points10"
+   "jaime_jaquez_jr_points10",
+   "derrick_white_points10",
+   "vj_edgecombe_points10",
+   "jrue_holiday_points10",
+   "paul_george_rebounds4",
+   "domantas_sabonis_points15"
   ],
-  "legs_text": "Andrew Nembhard 10+ points; Brandin Podziemski 10+ points; Saddiq Bey 10+ points; CJ McCollum 10+ points; Duncan Robinson 10+ points; Dillon Brooks 10+ points; Miles Bridges 10+ points; De'Aaron Fox 10+ points",
-  "est_hit": 0.2448,
-  "break_even": 4.09,
-  "priced_legs": "8 of 8",
-  "known_price": 4.41,
-  "fair_multi": null,
-  "est_price": 4.33,
+  "legs_text": "Jaime Jaquez Jr. 10+ points; Derrick White 10+ points; VJ Edgecombe 10+ points; Jrue Holiday 10+ points; Paul George 4+ rebounds; Domantas Sabonis 15+ points",
+  "est_hit": 0.1454,
+  "break_even": 6.88,
+  "priced_legs": "6 of 6",
+  "known_price": 7.89,
+  "fair_multi": 10.86,
+  "est_price": 8.05,
   "book_prices": {
-   "neds": 4.33
+   "neds": 8.05
   },
   "best_book": "neds",
-  "best_book_price": 4.33
+  "best_book_price": 8.05,
+  "verdict": "value",
+  "value": 0.1705
  },
  {
   "multi": "Long shot $50",
-  "rank": 11,
+  "rank": 12,
   "leg_ids": [
-   "cj_mccollum_points10",
-   "nikola_jokic_assists8",
-   "dillon_brooks_points15",
-   "miles_bridges_points15",
-   "de'aaron_fox_points15",
-   "jalen_green_points15",
-   "onyeka_okongwu_points15"
+   "tyrese_maxey_assists4",
+   "derrick_white_points10",
+   "myles_turner_rebounds4",
+   "vj_edgecombe_points10",
+   "jrue_holiday_points10",
+   "jalen_brunson_points25",
+   "domantas_sabonis_points15",
+   "jaime_jaquez_jr_points15",
+   "klay_thompson_points15"
   ],
-  "legs_text": "CJ McCollum 10+ points; Nikola Jokic 8+ assists; Dillon Brooks 15+ points; Miles Bridges 15+ points; De'Aaron Fox 15+ points; Jalen Green 15+ points; Onyeka Okongwu 15+ points",
-  "est_hit": 0.0267,
-  "break_even": 37.51,
-  "priced_legs": "4 of 7",
-  "known_price": 8.68,
-  "fair_multi": null,
-  "est_price": 50.04,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null
+  "legs_text": "Tyrese Maxey 4+ assists; Derrick White 10+ points; Myles Turner 4+ rebounds; VJ Edgecombe 10+ points; Jrue Holiday 10+ points; Jalen Brunson 25+ points; Domantas Sabonis 15+ points; Jaime Jaquez Jr. 15+ points; Klay Thompson 15+ points",
+  "est_hit": 0.0248,
+  "break_even": 40.35,
+  "priced_legs": "9 of 9",
+  "known_price": 46.5,
+  "fair_multi": 93.11,
+  "est_price": 50.96,
+  "book_prices": {
+   "neds": 50.96
+  },
+  "best_book": "neds",
+  "best_book_price": 50.96,
+  "verdict": "value",
+  "value": 0.2638
  }
 ]

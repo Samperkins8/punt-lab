@@ -222,5 +222,95 @@
   "est_hit": 0.0164,
   "landed": false,
   "price": 50.34
+ },
+ {
+  "slate_date": "2026-11-10",
+  "multi": "4-leg $2+",
+  "legs": "CJ McCollum 10+ points; Dillon Brooks 10+ points; Miles Bridges 10+ points; De'Aaron Fox 10+ points",
+  "est_hit": 0.4817,
+  "landed": false,
+  "verdict": null,
+  "price": 2.37
+ },
+ {
+  "slate_date": "2026-11-10",
+  "multi": "3-leg $2+",
+  "legs": "CJ McCollum 10+ points; Dillon Brooks 10+ points; Stephen Curry 3+ threes",
+  "est_hit": 0.4767,
+  "landed": false,
+  "verdict": null,
+  "price": 2.18
+ },
+ {
+  "slate_date": "2026-11-10",
+  "multi": "4-leg $3+",
+  "legs": "CJ McCollum 10+ points; Miles Bridges 10+ points; De'Aaron Fox 10+ points; Dillon Brooks 15+ points",
+  "est_hit": 0.3551,
+  "landed": false,
+  "verdict": null,
+  "price": 3.62
+ },
+ {
+  "slate_date": "2026-11-10",
+  "multi": "4-leg $4+",
+  "legs": "CJ McCollum 10+ points; De'Aaron Fox 10+ points; Stephen Curry 3+ threes; Dillon Brooks 15+ points",
+  "est_hit": 0.2878,
+  "landed": false,
+  "verdict": null,
+  "price": 4.06
+ },
+ {
+  "slate_date": "2026-11-10",
+  "multi": "Best value",
+  "legs": "CJ McCollum 10+ points; Dillon Brooks 10+ points; Miles Bridges 10+ points; De'Aaron Fox 10+ points",
+  "est_hit": 0.4817,
+  "landed": false,
+  "verdict": null,
+  "price": 2.37
+ },
+ {
+  "slate_date": "2026-11-10",
+  "multi": "Safest",
+  "legs": "CJ McCollum 10+ points; Dillon Brooks 10+ points; Miles Bridges 10+ points; De'Aaron Fox 10+ points",
+  "est_hit": 0.4817,
+  "landed": false,
+  "verdict": null,
+  "price": 2.37
+ },
+ {
+  "slate_date": "2026-11-10",
+  "multi": "One per game",
+  "legs": "CJ McCollum 10+ points; Dillon Brooks 10+ points; Pascal Siakam 15+ points; Kyshawn George 10+ points; Stephen Curry 2+ threes; Cameron Boozer 10+ points; Amen Thompson 10+ points; Grayson Allen 10+ points",
+  "est_hit": 0.2015,
+  "landed": false,
+  "verdict": null,
+  "price": 3.4
+ },
+ {
+  "slate_date": "2026-11-10",
+  "multi": "Mid-range $8+",
+  "legs": "CJ McCollum 10+ points; Miles Bridges 10+ points; Dyson Daniels 4+ rebounds; De'Aaron Fox 10+ points; Dillon Brooks 15+ points; Onyeka Okongwu 15+ points",
+  "est_hit": 0.1387,
+  "landed": false,
+  "verdict": null,
+  "price": 8.63
+ },
+ {
+  "slate_date": "2026-11-10",
+  "multi": "Long multi 8+",
+  "legs": "Andrew Nembhard 10+ points; Brandin Podziemski 10+ points; Saddiq Bey 10+ points; CJ McCollum 10+ points; Duncan Robinson 10+ points; Dillon Brooks 10+ points; Miles Bridges 10+ points; De'Aaron Fox 10+ points",
+  "est_hit": 0.2448,
+  "landed": false,
+  "verdict": null,
+  "price": 4.33
+ },
+ {
+  "slate_date": "2026-11-10",
+  "multi": "Long shot $50",
+  "legs": "CJ McCollum 10+ points; Nikola Jokic 8+ assists; Dillon Brooks 15+ points; Miles Bridges 15+ points; De'Aaron Fox 15+ points; Jalen Green 15+ points; Onyeka Okongwu 15+ points",
+  "est_hit": 0.0267,
+  "landed": false,
+  "verdict": null,
+  "price": 50.04
  }
 ]

@@ -1,74 +1,62 @@
 [
  {
-  "game": "LAL @ ATL",
-  "tip": "11:00am",
-  "favourite": "ATL",
-  "spread": -2.5,
-  "total": 233.5,
-  "fav_win_prob": 0.583,
-  "status": "Analysed"
- },
- {
-  "game": "CLE @ CHA",
-  "tip": "11:00am",
-  "favourite": "CLE",
-  "spread": -9.5,
-  "total": 215.5,
-  "fav_win_prob": 0.786,
-  "status": "Analysed"
- },
- {
-  "game": "WSH @ DET",
-  "tip": "11:00am",
-  "favourite": "DET",
-  "spread": -9.5,
-  "total": 218.5,
-  "fav_win_prob": 0.786,
-  "status": "Analysed"
- },
- {
-  "game": "MEM @ TOR",
+  "game": "MIL @ NY",
   "tip": "11:30am",
-  "favourite": "MEM",
-  "spread": -2.5,
-  "total": 225.5,
-  "fav_win_prob": 0.583,
+  "start": "2026-11-11T11:30:00+11:00",
+  "favourite": "NY",
+  "spread": -15.5,
+  "total": 222.5,
+  "fav_win_prob": 0.902,
   "status": "Analysed"
  },
  {
-  "game": "IND @ DAL",
+  "game": "BOS @ PHI",
   "tip": "12:00pm",
-  "favourite": "DAL",
-  "spread": -4.5,
-  "total": 226.5,
-  "fav_win_prob": 0.646,
+  "start": "2026-11-11T12:00:00+11:00",
+  "favourite": "BOS",
+  "spread": -1.5,
+  "total": 217.5,
+  "fav_win_prob": 0.55,
   "status": "Analysed"
  },
  {
-  "game": "DEN @ HOU",
-  "tip": "12:30pm",
-  "favourite": "HOU",
-  "spread": -4.5,
-  "total": 223.5,
-  "fav_win_prob": 0.646,
-  "status": "Analysed"
- },
- {
-  "game": "SA @ PHX",
+  "game": "LAC @ PHX",
   "tip": "1:00pm",
-  "favourite": "SA",
-  "spread": -8.5,
-  "total": 226.5,
-  "fav_win_prob": 0.761,
+  "start": "2026-11-11T13:00:00+11:00",
+  "favourite": "PHX",
+  "spread": -3.5,
+  "total": 224.5,
+  "fav_win_prob": 0.615,
   "status": "Analysed"
  },
  {
-  "game": "NO @ GS",
+  "game": "MIA @ UTAH",
+  "tip": "1:00pm",
+  "start": "2026-11-11T13:00:00+11:00",
+  "favourite": "MIA",
+  "spread": -9.5,
+  "total": 227.5,
+  "fav_win_prob": 0.786,
+  "status": "Analysed"
+ },
+ {
+  "game": "ORL @ SAC",
   "tip": "2:00pm",
-  "favourite": "GS",
-  "spread": -11.5,
-  "total": 229.5,
-  "fav_win_prob": 0.831,
+  "start": "2026-11-11T14:00:00+11:00",
+  "favourite": "ORL",
+  "spread": -5.5,
+  "total": 222.5,
+  "fav_win_prob": 0.677,
+  "status": "Analysed"
+ },
+ {
+  "game": "OKC @ POR",
+  "tip": "3:00pm",
+  "start": "2026-11-11T15:00:00+11:00",
+  "favourite": "OKC",
+  "spread": -1.5,
+  "total": 226.5,
+  "fav_win_prob": 0.55,
   "status": "Analysed"
  }
 ]
