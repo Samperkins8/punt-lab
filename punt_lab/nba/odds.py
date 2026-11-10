@@ -153,6 +153,8 @@ def merge(*sources: dict) -> dict:
             for bk, pr in allowed(books).items():
                 slot[bk] = max(slot.get(bk, 0), pr)
         for k, vals in src.get("market", {}).items():
+            if isinstance(vals, tuple):  # already one market view (kept from the morning): count it as one bookie
+                vals = [(vals[0], vals[1])]
             out["market"].setdefault(k, []).extend(vals)
         out["priced"] += src.get("priced", [])
         if src.get("credits_left") is not None:

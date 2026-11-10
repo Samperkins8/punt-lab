@@ -80,6 +80,31 @@ def save_json(name: str, data) -> None:
     (DATA / name).write_text(json.dumps(data, indent=1, ensure_ascii=False, default=str), encoding="utf-8")
 
 
+# ---------------------------------------------------------------- the morning's prices
+
+def save_prices(slate: date, prices: dict) -> None:
+    """Keep every price and bookie line the morning run fetched, so the re-checks later in the day
+    still know them for legs that weren't listed in the morning."""
+    save_json("prices.json", {
+        "slate_date": slate.isoformat(),
+        "books": [[p, stat, line, bk] for (p, stat, line), bk in prices["books"].items() if bk],
+        "market": [[p, stat, *v] for (p, stat), v in prices["market"].items() if isinstance(v, tuple)],
+    })
+
+
+def load_prices(slate: date) -> dict | None:
+    """The morning's prices for this slate, or None if there are none (then the legs' own prices are used)."""
+    data = load_json("prices.json", {})
+    if data.get("slate_date") != slate.isoformat() or not (data.get("books") or data.get("market")):
+        return None
+    prices = odds.empty()
+    for p, stat, line, bk in data.get("books", []):
+        prices["books"][(p, stat, int(line))] = bk
+    for row in data.get("market", []):
+        prices["market"][(row[0], row[1])] = tuple(row[2:])
+    return prices
+
+
 # ---------------------------------------------------------------- grading
 
 def grade_previous(today: date) -> str:
@@ -687,7 +712,7 @@ def main() -> None:
     prices = odds.empty()
     if args.mode == "pretip":  # keep the morning's prices
         from .late import restore_prices
-        prices = restore_prices(load_json("legs.json", []))
+        prices = load_prices(slate) or restore_prices(load_json("legs.json", []))
 
     # optional AI read of injury notes for players on today's teams
     teams_today = {g["home"] for g in upcoming} | {g["away"] for g in upcoming}
@@ -709,6 +734,7 @@ def main() -> None:
                 st[l.stat] = st.get(l.stat, 0) + (10 if i in in_multis else 1)
         prices = odds.finalise(odds.merge(oddspapi.fetch([g["start"] for g in upcoming]), odds.fetch(upcoming, wanted)))
         if prices["books"] or prices["market"]:
+            save_prices(slate, prices)
             found = analyse(slate, upcoming, ov, inj, ai_inj, prices)
             cands, chosen = select(found, upcoming)
     legs_out = [leg_row(l, r) for l, r in cands]

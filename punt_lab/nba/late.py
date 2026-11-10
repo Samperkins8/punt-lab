@@ -23,7 +23,7 @@ import re
 from datetime import datetime, timedelta
 
 from . import ai, espn, odds, oddspapi, overrides
-from .build import ROOT, analyse, leg_row, load_json, save_json
+from .build import ROOT, analyse, leg_row, load_json, load_prices, save_json, save_prices
 from .model import multi_chance
 
 log = logging.getLogger("punt_lab.nba.late")
@@ -154,12 +154,13 @@ def run(slate, now: datetime) -> bool:
                      if (snap.get(n) or "").lower() != (now_snap.get(n) or "").lower()
                      and any(w in (now_snap.get(n) or "").lower() for w in BAD + ("questionable", "day-to-day")))
 
-    prices = restore_prices(legs)
+    prices = load_prices(slate) or restore_prices(legs)
     refreshed = ""
     if changed and oddspapi.enabled() and report.get("late_refreshes", 0) < MAX_REFRESHES:
         fresh = oddspapi.fetch([g["start"] for g in due], books=REFRESH_BOOKS)
         if fresh["books"]:
             prices = odds.finalise(odds.merge(prices, fresh))
+            save_prices(slate, prices)
             report["late_refreshes"] = report.get("late_refreshes", 0) + 1
             refreshed = "prices refreshed"
 

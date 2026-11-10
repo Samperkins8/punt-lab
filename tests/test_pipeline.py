@@ -174,3 +174,47 @@ def test_role_change_and_starters():
         assert espn.starters("e", ("LAL", "POR")) == {}      # one team's five isn't in yet
     finally:
         espn.get = monkeypatch_get
+
+
+def test_rechecks_keep_the_mornings_prices(monkeypatch, tmp_path):
+    """The pre-tip and late re-checks must still know every price the morning fetched, not just the
+    prices of the legs the morning happened to list (they used to swap priced legs for unpriced ones)."""
+    from punt_lab.nba import late, odds, oddspapi
+    fake_world(monkeypatch, tmp_path)
+    names = [f"{t} Player{i}".lower() for t in ("LAL", "POR", "PHI", "CLE") for i in range(7)]
+
+    def feed(starts, books=None):
+        out = {"market": {}, "books": {}, "requests": 1, "bookies": ["neds"]}
+        for n in names:
+            out["market"][(n, "points")] = [(19.5, 0.5)]
+            for line, pr in ((10, 1.08), (15, 1.3), (20, 1.9), (25, 3.2), (30, 6.0)):
+                out["books"][(n, "points", line)] = {"neds": pr}
+        return out
+
+    monkeypatch.setattr(odds, "enabled", lambda: True)
+    monkeypatch.setattr(odds, "fetch", lambda games, wanted=None: odds.empty())
+    monkeypatch.setattr(odds, "fetch_h2h", lambda games: [])
+    monkeypatch.setattr(oddspapi, "enabled", lambda: True)
+    monkeypatch.setattr(oddspapi, "fetch", feed)
+    monkeypatch.setattr("sys.argv", ["build", "--date", "2026-11-07"])
+    build.main()
+    morning = json.loads((tmp_path / "legs.json").read_text())
+    kept = build.load_prices(build.date(2026, 11, 7))
+    assert len(kept["books"]) == len(names) * 5 and len(kept["market"]) == len(names)
+    assert len(kept["books"]) > len(late.restore_prices(morning)["books"])     # more than the listed legs carry
+    assert build.load_prices(build.date(2026, 11, 8)) is None                  # yesterday's prices are never reused
+
+    # the feeds are not called again; a late scratch reshuffles the legs
+    monkeypatch.setattr(oddspapi, "fetch", lambda *a, **k: (_ for _ in ()).throw(AssertionError("no refetch")))
+    star = next(l for l in morning if l["stat"] == "points")
+    monkeypatch.setattr(espn, "injuries", lambda: {star["player"].lower(): {"status": "Out", "comment": "rest", "team": "x"}})
+    monkeypatch.setattr("sys.argv", ["build", "--date", "2026-11-07", "--mode", "pretip"])
+    build.main()
+    after = json.loads((tmp_path / "legs.json").read_text())
+    points = [l for l in after if l["stat"] == "points"]
+    assert points and all(l["books"] == {"neds": l["best_price"]} and l["market_line"] == 19.5 for l in points)
+    assert {l["leg_id"] for l in points} != {l["leg_id"] for l in morning if l["stat"] == "points"}   # the list did change
+
+    # merging a refresh onto kept prices works (the kept bookie line counts as one bookie)
+    merged = odds.finalise(odds.merge(kept, {"market": {(names[0], "points"): [(21.5, 0.52)]}, "books": {(names[0], "points", 20): {"neds": 2.0}}}))
+    assert merged["market"][(names[0], "points")][0] in (19.5, 21.5) and merged["books"][(names[0], "points", 20)]["neds"] == 2.0
