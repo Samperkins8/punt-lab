@@ -3,7 +3,7 @@
  "headline": "Value today: 4-leg $3+ on Neds $3.07 (needs $2.91); 4-leg $4+ on Neds $4.03 (needs $3.78); Mid-range $8+ on Neds $8.05 (needs $6.88). Note: only 4 legs are 80%+ likely at $1.15+, not enough for a long multi; 3-leg value includes legs without a confirmed worth-it price.",
  "injuries": "Yanic Konan Niederhauser (Out), Brandon Ingram (Out), Bradley Beal (Out), Jordan Miller (Out), Josh Hart (Out), Jaylin Williams (Out), Thomas Sorber (Out), Cason Wallace (Out), Chet Holmgren (Out), Jalen Williams (Out), Jalen Suggs (Out), Jonathan Isaac (Out) and others",
  "graded": "",
- "next_run": "Re-checked 10:13am: no changes",
+ "next_run": "Late check 10:40am — MIL @ NY: Tyler Herro out; prices refreshed",
  "sources": {
   "stats": "ESPN",
   "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API",
@@ -50,5 +50,12 @@
   "SAME_TEAM_POINTS": 0.031,
   "SAME_GAME_OTHER": 0.048,
   "WIN_VS_OPPONENT": -0.2
- }
+ },
+ "late_refreshes": 1,
+ "late_checked": [
+  "MIL @ NY"
+ ],
+ "late_log": [
+  "10:40am MIL @ NY: Tyler Herro out; prices refreshed"
+ ]
 }
