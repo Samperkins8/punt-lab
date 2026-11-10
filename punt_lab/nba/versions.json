@@ -1,0 +1,59 @@
+[
+ {
+  "date": "2026-11-07",
+  "settings": {
+   "SPREAD": {
+    "points": 0.416,
+    "rebounds": 0.432,
+    "assists": 0.462,
+    "threes": 0.892
+   },
+   "SPREAD_GAMES": 32,
+   "RECENT_GAMES": 10,
+   "RECENT_WEIGHT": 3.0,
+   "OPP_WEIGHT": 0.25
+  },
+  "curve": "none"
+ },
+ {
+  "date": "2026-11-07",
+  "settings": {
+   "SPREAD": {
+    "points": 0.416,
+    "rebounds": 0.432,
+    "assists": 0.462,
+    "threes": 0.892
+   },
+   "SPREAD_GAMES": 32,
+   "RECENT_GAMES": 10,
+   "RECENT_WEIGHT": 3.0,
+   "OPP_WEIGHT": 0.25
+  },
+  "curve": "stat"
+ },
+ {
+  "date": "2026-11-10",
+  "settings": {
+   "SPREAD": {
+    "points": 0.416,
+    "rebounds": 0.432,
+    "assists": 0.462,
+    "threes": 0.892
+   },
+   "SPREAD_GAMES": 32,
+   "RECENT_GAMES": 10,
+   "RECENT_WEIGHT": 3.0,
+   "OPP_WEIGHT": 0.25,
+   "SIDE_WEIGHT": {
+    "points": 0.75,
+    "threes": 1.5,
+    "assists": 0.5,
+    "rebounds": 0.25
+   },
+   "BLOWOUT_CUT": 1.0,
+   "UNDERDOG_CUT": 1.0,
+   "UNDERDOG_CUT_BIG": 0.98
+  },
+  "curve": "stat"
+ }
+]

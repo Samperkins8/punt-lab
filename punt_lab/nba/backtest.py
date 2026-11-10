@@ -66,6 +66,7 @@ GRID = {
 }
 LINK_MIN_PAIRS = 1500                # pairs of legs needed before a same-game link is measured rather than assumed
 LINKS = ("SAME_GAME_REBOUNDS", "SAME_TEAM_POINTS", "SAME_GAME_OTHER")
+VERSIONS_FILE = HERE / "versions.json"  # every set of settings that has been in use, oldest first
 SPREAD_STEPS = [0.8, 0.9, 1.0, 1.1, 1.2, 1.35]
 
 
@@ -476,6 +477,42 @@ def live_calibration(results: list[dict]) -> tuple[dict, dict]:
     return curves, summary
 
 
+# ---------- version history ----------
+
+def _curve_kind(curves: dict) -> str:
+    return "none" if not curves else ("line" if any(":" in k for k in curves) else "stat")
+
+
+def load_versions() -> list[dict]:
+    try:
+        return json.loads(VERSIONS_FILE.read_text())
+    except (OSError, ValueError):
+        return []
+
+
+def record_version(versions: list[dict], day: str, settings: dict, curves: dict, defaults: dict) -> list[dict]:
+    """Add this week's settings to the history if they'd change a single leg's chance. Same-game links
+    only matter to multis, so they don't make a new version on this chart."""
+    entry = {"date": day, "settings": {k: v for k, v in settings.items() if k not in LINKS and v != defaults.get(k)},
+             "curve": _curve_kind(curves)}
+    last = versions[-1] if versions else {"settings": {}, "curve": "none"}
+    if (entry["settings"], entry["curve"]) != (last["settings"], last["curve"]):
+        versions = versions + [entry]
+    return versions
+
+
+def score_versions(versions: list[dict], defaults: dict, train: list[dict], test: list[dict]) -> list[dict]:
+    """Re-score the hand-set model and every past version on this week's legs, the same way: settings
+    applied, correction curve (if that version used one) fitted on the older season, checked on the newer."""
+    out = []
+    for v in [{"date": None, "settings": {}, "curve": "none"}] + versions:
+        apply_settings({**defaults, **v["settings"]})
+        curves = fit_curves(train, by_line=v["curve"] == "line") if v["curve"] != "none" else {}
+        r = score(test, curves)
+        out.append({"date": v["date"], "curve": v["curve"], "n": r["n"], "log_loss": r["log_loss"], "brier": r["brier"], "bins": r["bins"]})
+    return out
+
+
 # ---------- main ----------
 
 def main() -> None:
@@ -542,6 +579,13 @@ def main() -> None:
     log.info("newer seasons log loss: hand-set %.4f, in use %.4f, new tune %.4f (%s)", before["test"]["log_loss"],
              prev_test, new_test, "switched to new tune" if better else "kept the settings in use")
 
+    versions = load_versions()
+    if applied:
+        versions = record_version(versions, today.isoformat(), final, curves, defaults)
+    history = score_versions(versions, defaults, train, test)
+    apply_settings(final)
+    VERSIONS_FILE.write_text(json.dumps(versions, indent=1))
+
     try:
         live = json.loads((DATA / "results.json").read_text())
     except (OSError, ValueError):
@@ -558,7 +602,7 @@ def main() -> None:
         "applied": applied, "defaults": defaults, "tuned": final, "changed_this_week": better, "links": links,
         "lines": {**line_report, "fitted_on_scores": has_lines(train), "train_share": round(sum(1 for s in train if s.get("shift") is not None) / len(train), 3),
                   "curves_by_line": sorted(k for k in curves if ":" in k)},
-        "before": before, "after": after,
+        "before": before, "after": after, "versions": history,
         "live": {"summary": live_summary, "curves": live_curves, "min_legs": LIVE_MIN_LEGS},
         "backtest_curve": curves,
     }, indent=1))

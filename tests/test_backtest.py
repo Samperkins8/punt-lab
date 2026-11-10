@@ -31,6 +31,7 @@ def test_backtest_finds_wider_spread_and_applies_it(monkeypatch, tmp_path):
     monkeypatch.setattr(backtest, "DATA", tmp_path)
     monkeypatch.setattr(backtest, "MIN_SAMPLES", 200)
     monkeypatch.setattr(model, "TUNED_FILE", tmp_path / "tuned.json")
+    monkeypatch.setattr(backtest, "VERSIONS_FILE", tmp_path / "versions.json")
     try:
         backtest.main()
         out = json.loads((tmp_path / "backtest.json").read_text())
@@ -45,6 +46,12 @@ def test_backtest_finds_wider_spread_and_applies_it(monkeypatch, tmp_path):
         backtest.main()
         again = json.loads((tmp_path / "tuned.json").read_text())
         assert again["settings"] and again["settings"]["SPREAD"]["points"] > saved["SPREAD"]["points"]
+        # every version is kept and re-scored: hand-set first, the one in use last, matching "after"
+        out = json.loads((tmp_path / "backtest.json").read_text())
+        versions = json.loads((tmp_path / "versions.json").read_text())
+        assert len(out["versions"]) == len(versions) + 1 >= 2
+        assert out["versions"][0]["log_loss"] == out["before"]["test"]["log_loss"]
+        assert abs(out["versions"][-1]["log_loss"] - out["after"]["test"]["log_loss"]) < 1e-9
     finally:
         backtest.apply_settings(saved)
         model.CALIBRATE = True
@@ -121,3 +128,12 @@ def test_team_ratings_stand_in_for_the_line():
     assert model.blowout_cut(12) == model.BLOWOUT_CUT and model.blowout_cut(-8) == model.UNDERDOG_CUT
     assert espn._margin({"homeTeamScore": "118", "awayTeamScore": "104"}, home=False) == -14
     assert espn._margin({"score": "W 121-110", "gameResult": "W"}, home=None) == 11 and espn._margin({}, True) is None
+
+
+def test_record_version_skips_link_only_changes():
+    d = {"SPREAD": {"points": 0.3}, "SAME_GAME_OTHER": 0.05}
+    v = backtest.record_version([], "2026-11-01", {"SPREAD": {"points": 0.4}, "SAME_GAME_OTHER": 0.05}, {}, d)
+    v = backtest.record_version(v, "2026-11-08", {"SPREAD": {"points": 0.4}, "SAME_GAME_OTHER": 0.09}, {}, d)
+    assert len(v) == 1
+    v = backtest.record_version(v, "2026-11-15", {"SPREAD": {"points": 0.4}}, {"points": [[0.5, 0.5]]}, d)
+    assert [x["curve"] for x in v] == ["none", "stat"]

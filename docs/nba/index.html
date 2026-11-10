@@ -160,6 +160,11 @@
     .wrap { max-width: 980px; }
     .slips { grid-template-columns: 1fr 1fr; align-items: start; }
   }
+  #honest-legend { display: flex; flex-wrap: wrap; gap: 4px 14px; }
+  .ver-key { background: none; border: 0; padding: 2px 0; color: inherit; font: inherit; text-align: left; cursor: pointer; display: inline-flex; gap: 6px; }
+  .ver-key.dim { opacity: 0.4; }
+  .ver-sw { width: 1em; text-align: center; }
+  #honest-chart .ver { transition: opacity .15s; }
 </style>
 </head>
 <body>
@@ -224,7 +229,7 @@
       <h3 class="section-title">How honest are the percentages?</h3>
       <p class="lede" id="honest-sub"></p>
       <svg id="honest-chart" viewBox="0 0 320 250" role="img" aria-label="Predicted chance against how often legs actually landed" style="width:100%;max-width:520px;height:auto"></svg>
-      <p class="lede"><span style="color:var(--chart-new)">&#9679;</span> Tuned settings (in use) &nbsp; <span style="color:var(--chart-old)">&#9675;</span> Old settings &nbsp; - - Perfectly honest</p>
+      <div id="honest-legend" class="lede"></div>
       <p id="honest-take" class="small"></p>
       <div class="scroll"><table id="honest-settings"><thead><tr><th>Setting</th><th class="num">Was</th><th class="num">Now</th></tr></thead><tbody></tbody></table></div>
       <p class="lede" id="honest-live"></p>
@@ -763,17 +768,51 @@ function honest(bt) {
   for (const t of [0.2, 0.4, 0.6, 0.8, 1.0]) h += `<line x1="40" y1="${Y(t)}" x2="300" y2="${Y(t)}" stroke="var(--line)"/><text x="34" y="${Y(t) + 3}" font-size="10" text-anchor="end" fill="var(--muted)">${t * 100}%</text>`;
   h += `<line x1="${X(0.35)}" y1="${Y(0.35)}" x2="${X(1)}" y2="${Y(1)}" stroke="var(--fg)" stroke-dasharray="4 4" opacity="0.6"/>`;
   h += `<text x="170" y="244" font-size="10" text-anchor="middle" fill="var(--muted)">Model said</text><text x="10" y="115" font-size="10" text-anchor="middle" fill="var(--muted)" transform="rotate(-90 10 115)">Actually landed</text>`;
-  for (const [series, color, old] of [[before.bins, 'var(--chart-old)', true], [after.bins, 'var(--chart-new)', false]]) {
-    const pts = series.filter((b) => b.n >= 30);
-    h += `<polyline fill="none" stroke="${color}" stroke-width="${old ? 1.5 : 2.5}" ${old ? 'stroke-dasharray="2 3"' : ''} points="${pts.map((b) => X(b.predicted) + ',' + Y(Math.max(0.2, b.actual))).join(' ')}"/>`;
-    for (const b of pts) h += `<circle cx="${X(b.predicted)}" cy="${Y(Math.max(0.2, b.actual))}" r="${old ? 2.5 : 3.5}" fill="${old ? 'var(--panel)' : color}" stroke="${color}" stroke-width="1.5"><title>${pct(b.predicted)} predicted, ${pct(b.actual)} landed (${b.n} legs)</title></circle>`;
-  }
+  // every version, re-scored on the same legs: hand-set first, the one in use last
+  const vers = bt.versions && bt.versions.length >= 2 ? bt.versions
+    : [{ date: null, ...before }, { date: bt.updated.slice(0, 10), ...after }];
+  const last = vers.length - 1;
+  const day = (d) => new Date(d + 'T12:00:00').toLocaleDateString('en-AU', { day: 'numeric', month: 'short' });
+  const curveNote = { none: '', stat: ', with correction curve', line: ', with per-line correction curve' };
+  const style = (i) => {
+    if (i === 0) return { color: 'var(--chart-old)', w: 1.5, dash: '2 3', r: 2.5, hollow: true };
+    if (i === last) return { color: 'var(--chart-new)', w: 2.5, dash: '', r: 3.5, hollow: false };
+    const mix = Math.round(25 + 50 * i / last);   // older versions fade toward grey
+    return { color: `color-mix(in srgb, var(--chart-new) ${mix}%, var(--chart-old))`, w: 1.5, dash: '', r: 2, hollow: true };
+  };
+  vers.forEach((v, i) => {
+    const st = style(i), pts = v.bins.filter((b) => b.n >= 30);
+    h += `<g class="ver" data-i="${i}"><polyline fill="none" stroke="${st.color}" stroke-width="${st.w}" ${st.dash ? `stroke-dasharray="${st.dash}"` : ''} points="${pts.map((b) => X(b.predicted) + ',' + Y(Math.max(0.2, b.actual))).join(' ')}"/>`;
+    for (const b of pts) h += `<circle cx="${X(b.predicted)}" cy="${Y(Math.max(0.2, b.actual))}" r="${st.r}" fill="${st.hollow ? 'var(--panel)' : st.color}" stroke="${st.color}" stroke-width="1.5"><title>${pct(b.predicted)} predicted, ${pct(b.actual)} landed (${b.n} legs)</title></circle>`;
+    h += '</g>';
+  });
+  // legend: tap a version to pick it out
+  const leg = document.getElementById('honest-legend'); leg.replaceChildren();
+  const base = vers[0].log_loss;
+  vers.forEach((v, i) => {
+    const st = style(i), row = el('button', 'ver-key');
+    row.type = 'button'; row.dataset.i = i;
+    const sw = el('span', 'ver-sw', st.hollow ? '\u25CB' : '\u25CF'); sw.style.color = st.color;
+    const name = i === 0 ? 'Hand-set' : `v${i} · ${day(v.date)}${i === last ? ' (in use)' : ''}`;
+    const gain = i === 0 ? '' : ` · ${((base - v.log_loss) / base * 100).toFixed(1)}% more accurate`;
+    row.append(sw, el('span', '', name + (curveNote[v.curve] || '') + gain));
+    row.onclick = () => {
+      const on = leg.dataset.pick === String(i) ? '' : String(i);
+      leg.dataset.pick = on;
+      for (const g of svg.querySelectorAll('.ver')) g.style.opacity = !on || g.dataset.i === on ? 1 : 0.12;
+      for (const k of leg.querySelectorAll('.ver-key')) k.classList.toggle('dim', !!on && k.dataset.i !== on);
+    };
+    leg.append(row);
+  });
+  leg.append(el('span', 'ver-key muted', '- - Perfectly honest'));
   svg.innerHTML = h;
   const near = (bins, p) => bins.reduce((a, b) => (Math.abs(b.predicted - p) < Math.abs(a.predicted - p) ? b : a), bins[0]);
-  const b85 = near(before.bins, 0.85), a85 = near(after.bins, 0.85);
-  const gain = (before.log_loss - after.log_loss) / before.log_loss;
+  const b85 = near(vers[0].bins, 0.85), a85 = near(vers[last].bins, 0.85);
+  const gain = (vers[0].log_loss - vers[last].log_loss) / vers[0].log_loss;
+  const prev = vers.length > 2 ? vers[last - 1] : null;
+  const step = prev ? ` The latest change (v${last}) was ${((prev.log_loss - vers[last].log_loss) / prev.log_loss * 100).toFixed(1)}% more accurate than v${last - 1}, which had them landing ${pct(near(prev.bins, 0.85).actual)}.` : '';
   text('honest-take', bt.applied
-    ? `Tuning made the predictions ${(gain * 100).toFixed(1)}% more accurate on the seasons it wasn't tuned on, so the new settings are in use. Legs rated about 85% landed ${pct(b85.actual)} with the old settings and ${pct(a85.actual)} with the tuned ones.`
+    ? `Tuning made the predictions ${(gain * 100).toFixed(1)}% more accurate than the hand-set model on the seasons it wasn't tuned on. Legs rated about 85% landed ${pct(b85.actual)} hand-set and ${pct(a85.actual)} with the settings in use.${step} Tap a version to pick it out.`
     : `Tuning couldn't beat the current settings on the seasons it wasn't tuned on, so nothing was changed. Legs rated about 85% landed ${pct(b85.actual)}.`);
   const tb = document.querySelector('#honest-settings tbody'); tb.replaceChildren();
   const flat = (o) => Object.entries(o).flatMap(([k, v]) => typeof v === 'object' ? Object.entries(v).map(([s, x]) => [k + '.' + s, x]) : [[k, v]]);
