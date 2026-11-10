@@ -643,7 +643,13 @@ def verdict(m: dict) -> dict:
 def headline_for(multis: list[dict]) -> str:
     def where(m):
         return f"{m['multi']} on {odds.BOOK_NAMES.get(m['best_book'], m['best_book'])} ${m['best_book_price']:.2f} (needs ${m['break_even']:.2f})"
-    priced = [m for m in multis if m.get("verdict") in ("value", "marginal", "skip")]
+    seen, distinct = set(), []          # several named multis are often the same legs: say each once
+    for m in multis:
+        key = frozenset(m.get("leg_ids") or [m["multi"]])
+        if key not in seen:
+            seen.add(key)
+            distinct.append(m)
+    priced = [m for m in distinct if m.get("verdict") in ("value", "marginal", "skip")]
     good = sorted((m for m in priced if m["verdict"] == "value"), key=lambda m: -m["est_hit"])
     if good:
         return "Value today: " + "; ".join(where(m) for m in good[:3]) + "."

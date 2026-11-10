@@ -274,5 +274,7 @@ def test_two_leg_multi_and_verdicts():
     bad = {**base, "multi": "4-leg $2+", "best_book_price": 1.8, **build.verdict({**base, "best_book_price": 1.8})}
     assert build.headline_for([bad, good]).startswith("Value today: 2-leg $2+ on Neds $2.20 (needs $2.00)")
     assert build.headline_for([bad]).startswith("Skip today")
+    twin = {**good, "multi": "Best value", "leg_ids": ["a", "b"]}
+    assert build.headline_for([{**good, "leg_ids": ["b", "a"]}, twin]).count("$2.20") == 1    # same legs, said once
     unpriced = {**base, "best_book_price": None, **build.verdict({**base, "best_book_price": None})}
     assert "No app prices every leg yet" in build.headline_for([unpriced])
