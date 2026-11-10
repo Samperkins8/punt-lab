@@ -6,20 +6,23 @@
 <meta http-equiv="Cache-Control" content="no-cache">
 <title>Punt Lab</title>
 <style>
-  :root { --bg: #ffffff; --panel: #ffffff; --fg: #1b1030; --muted: #6a5f7d; --line: #e7e1f0; --good: #1f7a3d; --accent: #552583; --gold: #fdb927;
-          --serif: "Iowan Old Style", "Palatino Linotype", Georgia, serif; --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-  @media (prefers-color-scheme: dark) { :root { --bg: #160d24; --panel: #22163a; --fg: #f4f0fa; --muted: #b5a8cc; --line: #3a2c55; --good: #6fd08f; --accent: #fdb927; } }
-  body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.45 var(--sans); }
+  @font-face { font-family: "Barlow"; font-weight: 400; font-display: swap; src: url("fonts/barlow-latin-400-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Barlow"; font-weight: 600; font-display: swap; src: url("fonts/barlow-latin-600-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Barlow Condensed"; font-weight: 700; font-display: swap; src: url("fonts/barlow-condensed-latin-700-normal.woff2") format("woff2"); }
+  :root { --bg: #f5f2f9; --panel: #ffffff; --fg: #1b1030; --muted: #675c7a; --line: #e2d9ee; --good: #1f7a3d; --accent: #552583; --gold: #fdb927;
+          --serif: "Barlow Condensed", "Arial Narrow", sans-serif; --sans: "Barlow", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #140b21; --panel: #21153a; --fg: #f4f0fa; --muted: #b5a8cc; --line: #3b2d57; --good: #6fd08f; --accent: #d3bdf2; } }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.45 var(--sans); }
   main { max-width: 720px; margin: 0 auto; padding: 28px 16px; display: grid; gap: 16px; }
-  h1 { font: 400 32px/1.15 var(--serif); margin: 0; }
+  h1 { font: 700 44px/0.95 var(--serif); margin: 0; }
   p { margin: 0; color: var(--muted); }
-  a.card { display: grid; gap: 4px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px; color: inherit; text-decoration: none; }
-  a.card strong { font-size: 18px; }
+  a.card { display: grid; gap: 4px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px; color: inherit; text-decoration: none; }
+  a.card strong { font: 700 24px/1.1 var(--serif); }
   .soon { opacity: .55; pointer-events: none; }
   .band { background: #552583; color: #fff; border-bottom: 4px solid var(--gold); }
   .band div { max-width: 720px; margin: 0 auto; padding: 22px 16px 18px; display: grid; gap: 6px; }
   .band h1 { color: #fff; } .band p { color: #e6dcf5; }
-  a.card { border-top: 3px solid var(--accent); } a.card strong { color: var(--accent); }
+  a.card strong { color: var(--accent); }
 </style>
 </head>
 <body>

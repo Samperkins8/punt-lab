@@ -557,6 +557,24 @@ def leg_row(leg: Leg, res) -> dict:
     }
 
 
+def pool_rows(found, winners) -> list[dict]:
+    """Every leg the model rates, not just the listed ones: the site's promo builder searches these
+    (a same-game promo needs four or more legs from one game, more than the main list keeps)."""
+    rows = []
+    for leg, res in list(found) + list(winners):
+        books = leg.extra.get("books") or None
+        rows.append({
+            "leg_id": leg.leg_id, "player": leg.player, "team": leg.team, "game": leg.game, "stat": leg.stat,
+            "line": leg.line, "market": leg.market, "model_prob": round(res.model_prob, 4),
+            "books": books, "best_price": odds.best(books)[1] or leg.odds,
+            "fair_price": round(res.fair_price, 2) if res.fair_price else None,
+            "questionable": leg.extra.get("risky", False), "hits": sum(1 for x in leg.log if x >= leg.line),
+            "games": len(leg.log),
+        })
+    rows.sort(key=lambda r: -r["model_prob"])
+    return rows
+
+
 def multi_rows(cands, chosen) -> list[dict]:
     rows = []
     order = ("4-leg $2+", "3-leg $2+", "2-leg $2+", "4-leg $3+", "4-leg $4+", "Best value", "Safest", "3-leg value", "One per game", "Mid-range $8+", "Long multi 8+", "Long shot $50")
@@ -711,6 +729,7 @@ def main() -> None:
             fav_win = round(norm_cdf(abs(g["spread"]) / 12), 3)
         slate_out.append({
             "game": f"{g['away']} @ {g['home']}", "tip": g["start"].strftime("%-I:%M%p").lower(),
+            "start": g["start"].isoformat(),
             "favourite": g.get("favourite"), "spread": g.get("spread"), "total": g.get("total"),
             "fav_win_prob": fav_win, "status": "Analysed" if g in upcoming else "Started",
         })
@@ -731,6 +750,8 @@ def main() -> None:
                     "injury_reading": "Claude" if ai.enabled() else "rules"},
         "updated_at": now.isoformat(),
         "inj_snapshot": {n: v["status"] for n, v in inj.items() if v.get("team") in slate_teams and v.get("status")},
+        # how legs in one game move together, for the site's promo builder
+        "links": {k: getattr(model, k) for k in ("SAME_GAME_REBOUNDS", "SAME_TEAM_POINTS", "SAME_GAME_OTHER", "WIN_VS_OPPONENT")},
     }
     if args.mode == "pretip":  # keep what the late checks have done so far today
         prev = load_json("report.json", {})
@@ -740,6 +761,7 @@ def main() -> None:
     if args.mode == "daily":
         save_json("h2h.json", odds.fetch_h2h(upcoming))  # for the promo page; 2 credits
     save_json("legs.json", legs_out)
+    save_json("pool.json", pool_rows(found, match_winners(upcoming)))
     save_json("multis.json", multis_out)
     save_json("slate.json", slate_out)
     save_json("report.json", report)

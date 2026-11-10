@@ -49,6 +49,11 @@ def test_build_runs(monkeypatch, tmp_path):
     assert {"4-leg $2+", "3-leg $2+", "4-leg $3+", "4-leg $4+"} <= {m["multi"] for m in multis}
     assert not any(l["player"] == "LAL Player2" for l in legs)  # injured player excluded
     assert all(l["model_prob"] <= 0.83 or (l["fair_price"] or l["odds"] or 0) >= 1.2 for l in legs)
+    # the promo builder's data: every rated leg, game start times, and how same-game legs move together
+    pool = json.loads((tmp_path / "pool.json").read_text())
+    assert len(pool) >= len([l for l in legs if l["stat"] != "win"]) and {l["leg_id"] for l in legs if l["stat"] != "win"} <= {p["leg_id"] for p in pool}
+    assert all(g["start"].startswith("2026-11-07T11:00") for g in json.loads((tmp_path / "slate.json").read_text()))
+    assert set(json.loads((tmp_path / "report.json").read_text())["links"]) == {"SAME_GAME_REBOUNDS", "SAME_TEAM_POINTS", "SAME_GAME_OTHER", "WIN_VS_OPPONENT"}
 
     # next morning: grading the previous slate
     monkeypatch.setattr("sys.argv", ["build", "--date", "2026-11-08"])

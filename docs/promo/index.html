@@ -6,24 +6,28 @@
 <meta http-equiv="Cache-Control" content="no-cache">
 <title>Promo Calculator</title>
 <style>
+  @font-face { font-family: "Barlow"; font-weight: 400; font-display: swap; src: url("../fonts/barlow-latin-400-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Barlow"; font-weight: 600; font-display: swap; src: url("../fonts/barlow-latin-600-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Barlow Condensed"; font-weight: 600; font-display: swap; src: url("../fonts/barlow-condensed-latin-600-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Barlow Condensed"; font-weight: 700; font-display: swap; src: url("../fonts/barlow-condensed-latin-700-normal.woff2") format("woff2"); }
   :root {
-    --bg: #ffffff; --panel: #ffffff; --fg: #1b1030; --muted: #6a5f7d; --line: #e7e1f0;
+    --bg: #f5f2f9; --panel: #ffffff; --fg: #1b1030; --muted: #675c7a; --line: #e2d9ee;
     --good: #1f7a3d; --bad: #b3261e; --accent: #552583; --gold: #fdb927; --bar: #efe9f7;
-    --serif: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --serif: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --sans: "Barlow", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
   @media (prefers-color-scheme: dark) {
-    :root { --bg: #160d24; --panel: #22163a; --fg: #f4f0fa; --muted: #b5a8cc; --line: #3a2c55; --good: #6fd08f; --bad: #f08c84; --accent: #fdb927; --bar: #3a2c55; }
+    :root { --bg: #140b21; --panel: #21153a; --fg: #f4f0fa; --muted: #b5a8cc; --line: #3b2d57; --good: #6fd08f; --bad: #f08c84; --accent: #d3bdf2; --bar: #3b2d57; }
   }
   * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.45 var(--sans); }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.45 var(--sans); }
   .band { background: #552583; color: #fff; border-bottom: 4px solid var(--gold); }
   .band div { max-width: 760px; margin: 0 auto; padding: 22px 16px 18px; display: grid; gap: 6px; }
-  .band h1 { font: 400 30px/1.15 var(--serif); margin: 0; color: #fff; }
+  .band h1 { font: 700 40px/0.95 var(--serif); margin: 0; color: #fff; }
   .band p { margin: 0; color: #e6dcf5; } .band a { color: #fff; }
   main { max-width: 760px; margin: 0 auto; padding: 20px 16px 48px; display: grid; gap: 20px; }
-  .card { background: var(--panel); border: 1px solid var(--line); border-top: 3px solid var(--accent); border-radius: 10px; padding: 18px; display: grid; gap: 12px; min-width: 0; }
-  h2 { font-size: 17px; font-weight: 600; margin: 0; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: grid; gap: 12px; min-width: 0; }
+  h2 { font: 600 22px/1.15 var(--serif); margin: 0; }
   p { margin: 0; } .sub { color: var(--muted); font-size: 13px; }
   .seg { display: flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
   .seg button { flex: 1; font: inherit; padding: 9px 6px; border: 0; background: transparent; color: inherit; cursor: pointer; }
@@ -32,7 +36,7 @@
   label { display: grid; gap: 4px; font-size: 13px; color: var(--muted); }
   input { font: inherit; font-size: 16px; padding: 8px 10px; border-radius: 6px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); width: 100%; }
   .result { display: grid; gap: 6px; padding: 14px; border-radius: 8px; background: var(--bar); }
-  .big { font: 400 28px/1.1 var(--serif); color: var(--accent); }
+  .big { font: 600 30px/1 var(--serif); color: var(--accent); }
   .steps { margin: 0; padding-left: 20px; display: grid; gap: 4px; }
   table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
   th { text-align: left; color: var(--muted); font-weight: 500; padding: 6px 8px 6px 0; border-bottom: 1px solid var(--line); }

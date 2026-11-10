@@ -2,203 +2,259 @@
 <html lang="en-AU">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta http-equiv="Cache-Control" content="no-cache">
+<meta name="theme-color" content="#552583">
 <title>NBA Daily Multi</title>
+<link rel="preload" href="../fonts/barlow-condensed-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+  @font-face { font-family: "Barlow"; font-weight: 400; font-display: swap; src: url("../fonts/barlow-latin-400-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Barlow"; font-weight: 600; font-display: swap; src: url("../fonts/barlow-latin-600-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Barlow Condensed"; font-weight: 600; font-display: swap; src: url("../fonts/barlow-condensed-latin-600-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Barlow Condensed"; font-weight: 700; font-display: swap; src: url("../fonts/barlow-condensed-latin-700-normal.woff2") format("woff2"); }
   :root {
-    --bg: #ffffff; --panel: #ffffff; --fg: #1b1030; --muted: #6a5f7d; --line: #e7e1f0;
-    --good: #1f7a3d; --bad: #b3261e; --accent: #552583; --gold: #fdb927; --bar: #efe9f7; --band: #552583; --band-fg: #ffffff;
-    --serif: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --bg: #f5f2f9; --panel: #ffffff; --fg: #1b1030; --muted: #675c7a; --line: #e2d9ee; --tint: #efe9f7;
+    --accent: #552583; --gold: #fdb927; --band: #552583; --band-fg: #ffffff; --band-soft: #dccdf0;
+    --good: #1f7a3d; --on-good: #ffffff; --bad: #b3261e; --on-bad: #ffffff; --warn: #8a5a00; --warn-bg: #fff3d1;
+    --body: "Barlow", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --cond: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+    --nav-h: 58px;
   }
   @media (prefers-color-scheme: dark) {
-    :root { --bg: #160d24; --panel: #22163a; --fg: #f4f0fa; --muted: #b5a8cc; --line: #3a2c55; --good: #6fd08f; --bad: #f08c84; --accent: #fdb927; --bar: #3a2c55; --band: #2c1748; --band-fg: #ffffff; }
+    :root { --bg: #140b21; --panel: #21153a; --fg: #f4f0fa; --muted: #b5a8cc; --line: #3b2d57; --tint: #2c1d49;
+      --accent: #d3bdf2; --band: #2c1748; --band-soft: #cdbbe6;
+      --good: #6fd08f; --on-good: #0d2a17; --bad: #f08c84; --on-bad: #3a0d09; --warn: #f2c14e; --warn-bg: #3a2c12; }
   }
   * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.45 var(--sans); }
-  main { max-width: 1100px; margin: 0 auto; padding: 20px 16px 48px; display: grid; gap: 20px; }
-  h1 { font: 400 30px/1.15 var(--serif); margin: 0; }
-  h2 { font-size: 17px; font-weight: 600; margin: 0 0 4px; }
-  p { margin: 0; }
-  .sub { color: var(--muted); font-size: 13px; }
-  .take { max-width: 65ch; }
-  .pickbar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 0 0 12px; }
-  .pickbar label { font-weight: 600; }
-  .pickbar select { font: inherit; font-size: 16px; padding: 8px 12px; border-radius: 8px; border: 2px solid var(--accent); background: var(--panel); color: inherit; flex: 1 1 220px; max-width: 360px; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 14px; }
-  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
-  .late-warn { border-left: 4px solid var(--bad); padding: 8px 12px; background: var(--bar); border-radius: 4px; }
-  .stake { display: grid; gap: 6px; padding: 12px; border: 1px solid var(--line); border-radius: 8px; }
-  .stake label { font-weight: 600; font-size: 14px; }
-  .stake .row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-  .stake input { font: inherit; font-size: 16px; width: 7.5em; padding: 6px 10px; border-radius: 6px; border: 1px solid var(--line); background: var(--bg); color: inherit; }
-  .stake .verdict { font-weight: 600; }
-  .stake .verdict.good { color: var(--good); } .stake .verdict.bad { color: var(--bad); }
-  .figs { display: flex; flex-wrap: wrap; gap: 18px; }
-  .fig { display: grid; gap: 2px; }
-  .big { font: 400 26px/1.1 var(--serif); font-variant-numeric: tabular-nums; }
-  .scroll { overflow-x: auto; }
-  table { border-collapse: collapse; width: 100%; font-size: 13px; font-variant-numeric: tabular-nums; }
-  th { text-align: left; color: var(--muted); font-weight: 500; padding: 6px 10px 6px 0; border-bottom: 1px solid var(--line); white-space: nowrap; }
-  td { padding: 7px 10px 7px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
-  .num { text-align: right; white-space: nowrap; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.45 var(--body); padding-bottom: calc(var(--nav-h) + env(safe-area-inset-bottom) + 24px); }
+  p, h1, h2, h3 { margin: 0; }
+  a { color: inherit; }
+  button, input, select { font: inherit; color: inherit; }
+  :focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 14px; }
   .muted { color: var(--muted); } .good { color: var(--good); } .bad { color: var(--bad); }
-  .strong { font-weight: 600; } .nowrap { white-space: nowrap; }
-  .bar { display: inline-block; width: 46px; height: 6px; border-radius: 3px; background: var(--bar); vertical-align: middle; margin-right: 6px; position: relative; overflow: hidden; }
-  .bar i { position: absolute; inset: 0 auto 0 0; background: var(--good); }
-  .pill { display: inline-block; padding: 0 7px; border: 1px solid var(--line); border-radius: 99px; font-size: 12px; }
-  details summary { cursor: pointer; color: var(--muted); font-size: 13px; }
-  dl { display: grid; gap: 4px; font-size: 13px; margin: 10px 0 0; }
-  dt { font-weight: 600; } dd { margin: 0 0 6px; color: var(--muted); }
-  .empty { color: var(--muted); font-size: 13px; }
-  .band { background: var(--band); color: var(--band-fg); border-bottom: 4px solid var(--gold); }
-  .band-inner { max-width: 1100px; margin: 0 auto; padding: 18px 16px 16px; display: grid; gap: 6px; }
-  .band h1 { color: var(--band-fg); }
-  .band .sub, .band a { color: #e6dcf5; }
-  .band .take { color: var(--band-fg); }
-  .card { border-top: 3px solid var(--accent); }
-  .big, .c-model, td.strong { color: var(--accent); }
-  .pill.good { color: #ffffff; background: var(--good); border-color: var(--good); }
-  .pill.bad { color: #ffffff; background: var(--bad); border-color: var(--bad); }
-  .rating { margin: 10px 0 0; }
-  .bar i { background: var(--good); }
-  h2 { color: var(--accent); }
-  @media (prefers-color-scheme: dark) { h2 { color: var(--fg); } .card { border-top-color: var(--gold); } }
+  .small { font-size: 14px; } .nowrap { white-space: nowrap; }
+  [hidden] { display: none !important; }
 
-  @media (max-width: 640px) {
-    .cards thead { display: none; }
-    .cards, .cards tbody { display: block; }
-    .cards tr { display: grid; grid-template-columns: 1fr 1fr 1fr; column-gap: 10px; row-gap: 2px; padding: 10px 0; border-bottom: 1px solid var(--line); }
-    .cards td { border: 0; padding: 0; text-align: left; white-space: normal; }
-    .cards td:empty { display: none; }
-    .cards td[data-label]::before { content: attr(data-label); display: block; color: var(--muted); font-size: 11px; font-weight: 400; }
-    .cards .c-player { grid-column: 1 / 3; font-weight: 600; font-size: 15px; }
-    .cards .c-leg { grid-column: 1 / 3; }
-    .cards .c-model { grid-column: 3; grid-row: 1 / 3; text-align: right; font: 400 24px/1.1 var(--serif); align-self: center; }
-    .cards .c-odds, .cards .c-edge, .cards .c-fair { margin-top: 4px; }
-    .cards .c-wide { grid-column: 1 / -1; color: var(--muted); font-size: 12px; }
-    .cards .c-hide { display: none; }
-    .cards .c-why { color: var(--fg); opacity: .85; margin-top: 2px; }
+  /* band: the day's call */
+  .band { background: var(--band); color: var(--band-fg); border-bottom: 4px solid var(--gold); }
+  .band .wrap { padding-top: 12px; padding-bottom: 16px; display: grid; gap: 8px; }
+  .crumbs { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; color: var(--band-soft); }
+  .crumbs a { text-decoration: none; border-bottom: 1px solid currentColor; }
+  .call { font: 700 44px/0.95 var(--cond); }
+  .call-lines { display: grid; gap: 8px; margin: 4px 0 0; padding: 0; list-style: none; }
+  .call-lines li { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 12px; }
+  .call-lines button { all: unset; cursor: pointer; text-decoration: underline; text-decoration-color: var(--band-soft); text-underline-offset: 3px; }
+  .call-lines button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+  .call-lines .fig { font: 600 19px/1 var(--cond); white-space: nowrap; }
+  .call-note { color: var(--band-soft); font-size: 14px; }
+  body:not([data-tab="multis"]) .call { font-size: 26px; }
+  body:not([data-tab="multis"]) .call-lines, body:not([data-tab="multis"]) .call-note { display: none; }
+  body:not([data-tab="multis"]) .band .wrap { padding-bottom: 12px; gap: 4px; }
+
+  /* views */
+  main.wrap { padding-top: 18px; }
+  .view { display: grid; gap: 14px; }
+  .view > h2, .section-title { font: 600 22px/1.15 var(--cond); }
+  .lede { color: var(--muted); font-size: 14px; max-width: 62ch; }
+  .empty { color: var(--muted); padding: 18px 16px; background: var(--panel); border: 1px dashed var(--line); border-radius: 12px; }
+
+  /* chips */
+  .chips { display: flex; gap: 8px; overflow-x: auto; margin: 0 -14px; padding: 2px 14px 6px; scrollbar-width: none; }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip { flex: none; min-height: 40px; padding: 0 14px; border-radius: 20px; border: 1px solid var(--line); background: var(--panel); cursor: pointer; }
+  .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--panel); font-weight: 600; }
+  .chip .count { font-family: var(--cond); font-weight: 700; margin-left: 4px; }
+
+  /* the slip */
+  .slips { display: grid; gap: 14px; }
+  .slip { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; position: relative; }
+  .slip-head { padding: 14px 16px 12px; display: grid; gap: 10px; }
+  .slip-title { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+  .slip-title h3 { font: 600 23px/1.1 var(--cond); }
+  .slip-title .lede { margin-top: 2px; }
+  .aka { font-size: 14px; color: var(--muted); }
+  .pill { flex: none; display: inline-block; padding: 3px 10px; border-radius: 99px; font-size: 14px; font-weight: 600; border: 1px solid var(--line); white-space: nowrap; }
+  .pill.value { background: var(--good); border-color: var(--good); color: var(--on-good); }
+  .pill.skip { background: var(--bad); border-color: var(--bad); color: var(--on-bad); }
+  .pill.marginal, .pill.check { background: var(--warn-bg); border-color: transparent; color: var(--warn); }
+  .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .trio div { display: grid; gap: 2px; align-content: start; }
+  .trio b { font: 600 30px/1 var(--cond); font-variant-numeric: tabular-nums; color: var(--accent); }
+  .trio span { font-size: 13px; color: var(--muted); line-height: 1.25; }
+  .why-rating { font-size: 14px; }
+  .notice { font-size: 14px; padding: 8px 12px; border-radius: 8px; background: var(--warn-bg); color: var(--warn); }
+  .notice.bad { background: transparent; border: 1px solid var(--bad); color: var(--bad); }
+  .tear { border-top: 2px dashed var(--line); margin: 0 14px; position: relative; }
+  .tear::before, .tear::after { content: ""; position: absolute; top: -9px; width: 16px; height: 16px; border-radius: 50%; background: var(--bg); border: 1px solid var(--line); }
+  .tear::before { left: -23px; clip-path: inset(0 0 0 calc(50% - 1px)); }
+  .tear::after { right: -23px; clip-path: inset(0 calc(50% - 1px) 0 0); }
+
+  /* leg rows */
+  .legs { margin: 0; padding: 4px 16px; list-style: none; }
+  .legs > li + li { border-top: 1px solid var(--line); }
+  .leg > summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; padding: 11px 0; align-items: center; }
+  .leg > summary::-webkit-details-marker { display: none; }
+  .leg .who { font-weight: 600; }
+  .leg .what { grid-column: 1; font-size: 14px; color: var(--muted); }
+  .leg .odds { grid-column: 2; grid-row: 1 / 3; text-align: right; display: grid; }
+  .leg .odds b { font: 600 24px/1 var(--cond); font-variant-numeric: tabular-nums; }
+  .leg .odds span { font-size: 13px; color: var(--muted); white-space: nowrap; }
+  .leg .tag { display: inline-block; margin-left: 6px; padding: 0 7px; border-radius: 99px; font-size: 12px; font-weight: 600; background: var(--warn-bg); color: var(--warn); vertical-align: 1px; }
+  .leg .tag.bad { background: var(--bad); color: var(--on-bad); }
+  .leg[open] > summary .who::after { content: " –"; color: var(--muted); font-weight: 400; }
+  .leg:not([open]) > summary .who::after { content: " +"; color: var(--muted); font-weight: 400; }
+  .leg .more { padding: 0 0 12px; font-size: 14px; display: grid; gap: 6px; }
+  .leg .more dl { margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .leg .more dt { font-size: 12px; color: var(--muted); } .leg .more dd { margin: 0; font-weight: 400; }
+  .hitbar { height: 6px; border-radius: 3px; background: var(--tint); overflow: hidden; }
+  .hitbar i { display: block; height: 100%; background: var(--good); }
+
+  /* price check */
+  .check { padding: 12px 16px 16px; display: grid; gap: 8px; }
+  .check label { font-weight: 600; font-size: 14px; }
+  .check .row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .money { display: flex; align-items: center; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); padding-left: 10px; }
+  .money input { border: 0; background: transparent; width: 5.2em; height: 44px; padding: 0 8px 0 4px; font: 600 22px/1 var(--cond); }
+  .money input:focus { outline: none; } .money:focus-within { outline: 3px solid var(--gold); outline-offset: 1px; }
+  .verdict { font-weight: 600; }
+
+  /* forms (promo) */
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px 16px; display: grid; gap: 14px; }
+  .field { display: grid; gap: 6px; }
+  .field > label, .field > .label { font-weight: 600; font-size: 14px; }
+  .hint { font-size: 13px; color: var(--muted); }
+  .seg { display: flex; flex-wrap: wrap; gap: 6px; }
+  .seg button { min-height: 40px; padding: 0 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); cursor: pointer; }
+  .seg button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--panel); font-weight: 600; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .stepper { display: flex; align-items: center; gap: 0; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); width: fit-content; }
+  .stepper button { width: 44px; height: 44px; border: 0; background: transparent; font: 600 24px/1 var(--cond); cursor: pointer; }
+  .stepper output { min-width: 2.2em; text-align: center; font: 600 22px/1 var(--cond); }
+  select.pick { height: 44px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); padding: 0 10px; width: 100%; }
+
+  /* games and tables */
+  .game { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; }
+  .game-head { padding: 12px 16px 10px; display: flex; justify-content: space-between; align-items: baseline; gap: 10px; border-bottom: 1px solid var(--line); }
+  .game-head h3 { font: 600 21px/1.1 var(--cond); }
+  .game-head p { font-size: 13px; color: var(--muted); text-align: right; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
+  th { text-align: left; color: var(--muted); font-weight: 400; font-size: 13px; padding: 6px 8px 6px 0; border-bottom: 1px solid var(--line); }
+  td { padding: 8px 8px 8px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th:last-child, td:last-child { padding-right: 0; }
+  .num { text-align: right; white-space: nowrap; }
+  .scroll { overflow-x: auto; }
+  details.how summary { cursor: pointer; font-weight: 600; }
+  details.how dl { display: grid; gap: 4px; font-size: 14px; margin: 10px 0 0; }
+  details.how dt { font-weight: 600; } details.how dd { margin: 0 0 8px; color: var(--muted); }
+
+  /* bottom tabs */
+  .tabs { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; background: var(--panel); border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom); }
+  .tabs .wrap { display: grid; grid-template-columns: repeat(4, 1fr); padding: 0; }
+  .tabs button { height: var(--nav-h); border: 0; background: transparent; cursor: pointer; font-weight: 400; color: var(--muted); border-top: 3px solid transparent; margin-top: -1px; }
+  .tabs button[aria-current="page"] { color: var(--fg); font-weight: 600; border-top-color: var(--gold); }
+
+  @media (min-width: 860px) {
+    .wrap { max-width: 980px; }
+    .slips { grid-template-columns: 1fr 1fr; align-items: start; }
   }
 </style>
 </head>
 <body>
-<header class="band"><div class="band-inner">
-    <p class="sub"><a href="../" style="color:inherit">← All sports</a> · <a href="../promo/" style="color:inherit">Promo calculator</a></p>
-    <h1>NBA daily multi</h1>
-    <p class="sub"><span id="slate-date">—</span> · <span id="next-run">—</span></p>
-    <p class="take" id="headline">Loading…</p>
-    <p class="sub" id="graded"></p>
-  </div></header>
-<main>
+<header class="band"><div class="wrap">
+  <p class="crumbs"><span><a href="../">Punt Lab</a> NBA</span><span id="slate-date"></span></p>
+  <h1 class="call" id="call">Loading…</h1>
+  <ul class="call-lines" id="call-lines"></ul>
+  <p class="call-note" id="call-note"></p>
+</div></header>
 
-  <div class="pickbar">
-    <label for="multi-pick">Show</label>
-    <select id="multi-pick">
-      <option value="$2">$2+ multis (4, 3 and 2 legs)</option>
-      <option value="4-leg $2+">Best 4-leg paying $2+</option>
-      <option value="3-leg $2+">Best 3-leg paying $2+</option>
-      <option value="2-leg $2+">Best 2-leg paying $2+</option>
-      <option value="value">Only multis rated value today</option>
-      <option value="4-leg $3+">Best 4-leg paying $3+</option>
-      <option value="4-leg $4+">Best 4-leg paying $4+</option>
-      <option value="4leg">4-leg at $2, $3 and $4</option>
-      <option value="Safest">Safest 4-leg</option>
-      <option value="Best value">Best value 4-leg</option>
-      <option value="3-leg value">Best value 3-leg</option>
-      <option value="One per game">One leg from each game</option>
-      <option value="Mid-range $8+">Mid-range, 6–7 legs paying $8+</option>
-      <option value="Long multi 8+">Long multi, 8+ legs (each 80%+, $1.15+)</option>
-      <option value="Long shot $50">Long shot, up to 15 legs paying ~$50</option>
-      <option value="all">All multis</option>
-    </select>
-  </div>
-  <section class="grid" id="multis"></section>
-
-  <section class="card" id="value" hidden data-retired>
-    <h2>Value legs</h2>
-    <p class="sub">Legs where the best bookie's price beats the model's chance, best value first. These are worth most as singles or doubles: every extra leg in a multi adds the bookie's margin again. A very big edge (marked "check news") usually means the model is missing something, like a minutes limit or a role change, so check before betting.</p>
-    <div class="scroll"><table class="cards" id="value-legs">
-      <thead><tr><th>Player</th><th>Leg</th><th class="num">Model</th><th class="num">Best price</th><th class="num">Value</th><th class="num">Single stake</th><th>Game</th></tr></thead>
-      <tbody></tbody>
-    </table></div>
-    <p class="sub" id="value-none" hidden>No leg is priced above its fair value today. Skipping is the winning move on days like this.</p>
+<main class="wrap">
+  <section class="view" id="view-multis">
+    <div class="chips" id="multi-chips" role="group" aria-label="Which multis to show"></div>
+    <div class="slips" id="multis"></div>
   </section>
 
-  <section class="card">
-    <h2>Every candidate leg</h2>
-    <p class="sub">Model is the chance the leg lands. Edge is model minus the chance the odds imply: positive means the price is generous. Fair price is from Australian bookies' over/under lines with their margin taken out. Best price is the most any bookie pays.</p>
-    <div class="scroll"><table class="cards" id="legs">
-      <thead><tr><th>Player</th><th>Leg</th><th class="num">Model</th><th class="num">Odds</th><th class="num">Edge</th><th class="num">Fair price</th><th>Hit rate</th><th class="num">Projected</th><th class="num">Matchup</th><th>Why</th><th>Game</th><th>Watch</th></tr></thead>
-      <tbody></tbody>
-    </table></div>
+  <section class="view" id="view-promo" hidden>
+    <h2>Build a multi for a promo</h2>
+    <p class="lede">Enter the offer's terms from the app. Punt Lab finds the multi that qualifies and is worth the most once the bonus is counted, from games that haven't started.</p>
+    <div class="panel" id="promo-form">
+      <div class="field"><span class="label">Offer</span><div class="seg" id="promo-type"></div><p class="hint" id="promo-type-hint"></p></div>
+      <div class="two">
+        <div class="field"><label for="promo-app">App</label>
+          <select class="pick" id="promo-app"><option value="neds">Neds</option><option value="tab">TAB</option><option value="bet365_au">Bet365</option><option value="any">Any app</option></select></div>
+        <div class="field"><span class="label">Legs</span>
+          <div class="stepper"><button type="button" id="legs-less" aria-label="Fewer legs">−</button><output id="promo-legs">4</output><button type="button" id="legs-more" aria-label="More legs">+</button></div></div>
+      </div>
+      <div class="field"><span class="label">Where the legs come from</span><div class="seg" id="promo-scope"></div></div>
+      <div class="two">
+        <div class="field"><label for="promo-minleg">Lowest price per leg</label><div class="money">$<input id="promo-minleg" type="number" inputmode="decimal" step="0.01" min="1" value="1.20"></div></div>
+        <div class="field"><label for="promo-minmulti">Lowest multi price</label><div class="money">$<input id="promo-minmulti" type="number" inputmode="decimal" step="0.1" min="1" value="2.00"></div></div>
+      </div>
+      <div class="two">
+        <div class="field" id="boost-field"><label for="promo-boost">Winnings boost</label><div class="money"><input id="promo-boost" type="number" inputmode="decimal" step="1" min="0" value="0">%</div></div>
+        <div class="field" id="worth-field"><label for="promo-worth">A bonus bet is worth</label><div class="money"><input id="promo-worth" type="number" inputmode="decimal" step="5" min="0" max="100" value="70">%</div></div>
+      </div>
+      <p class="hint" id="worth-hint">A bonus bet pays the winnings but not the stake, so a $25 bonus bet is worth about $17.50 in cash if you use it well. 70% is a fair working figure.</p>
+    </div>
+    <h2 id="promo-results-title">Best qualifying multis</h2>
+    <div class="slips" id="promo-results"></div>
+    <p class="lede">Chances are the model's estimates. Same-game multis usually pay less in the app than the legs multiplied, so the price shown is a guide: type the app's price into the slip to get the real answer. Offer terms vary, so check the minimum legs, minimum odds and any maximum stake in the app.</p>
   </section>
 
-  <section class="card">
-    <h2>Today's games</h2>
-    <p class="sub">Melbourne tip-off times. A line tougher than a team's usual lowers its players' predictions; an easier one raises them.</p>
-    <div class="scroll"><table class="cards" id="slate">
-      <thead><tr><th>Game</th><th>Status</th><th>Tip</th><th>Fav</th><th class="num">Line</th><th class="num">Total</th><th class="num">Fav win</th></tr></thead>
-      <tbody></tbody>
-    </table></div>
-    <p class="sub">Out or doubtful: <span id="injuries">—</span></p>
+  <section class="view" id="view-legs" hidden>
+    <h2>Every leg, by game</h2>
+    <p class="lede">The chance is the model's estimate that the leg lands. Tap a leg for the reasoning.</p>
+    <div class="slips" id="games"></div>
+    <p class="lede">Out or doubtful: <span id="injuries">none listed</span>.</p>
   </section>
 
-  <section class="card">
+  <section class="view" id="view-record" hidden>
     <h2>Track record</h2>
-    <p class="sub">Each morning the previous day's legs and multis are graded against the box scores. If the model is right, "actually landed" should sit close to "predicted". The leg-type table shows where it's over- or under-confident, and the rating table shows whether multis rated value have done better than those rated skip (ratings are recorded from 11 Nov).</p>
+    <p class="lede" id="graded"></p>
+    <p class="lede">Each morning the previous day's legs and multis are graded against the box scores. If the model is right, "landed" sits close to "predicted".</p>
     <p class="empty" id="track-empty">No results yet. Grading starts after the first slate is played.</p>
-    <div class="scroll"><table id="calibration">
-      <thead><tr><th>Model chance</th><th class="num">Legs</th><th class="num">Predicted</th><th class="num">Actually landed</th></tr></thead>
-      <tbody></tbody>
-    </table></div>
-    <div class="scroll"><table id="stat-record">
-      <thead><tr><th>Leg type</th><th class="num">Legs</th><th class="num">Predicted</th><th class="num">Actually landed</th></tr></thead>
-      <tbody></tbody>
-    </table></div>
-    <div class="scroll"><table id="rating-record">
-      <thead><tr><th>Multis rated</th><th class="num">Multis</th><th class="num">Landed</th><th class="num">Predicted</th><th class="num">Actual</th><th class="num">Profit ($1 each)</th></tr></thead>
-      <tbody></tbody>
-    </table></div>
-    <div class="scroll"><table id="multi-record">
-      <thead><tr><th>Multi</th><th class="num">Days</th><th class="num">Landed</th><th class="num">Predicted</th><th class="num">Actual</th><th class="num">Profit ($1 each)</th></tr></thead>
-      <tbody></tbody>
-    </table></div>
+    <div class="panel" id="record-rating" hidden><h3 class="section-title">By rating</h3><p class="lede">Do multis rated value do better than those rated skip? Recorded from 11 Nov. Profit is what $1 on each would have made.</p><div class="scroll"><table id="rating-record"><thead><tr><th>Rated</th><th class="num">Landed</th><th class="num">Predicted</th><th class="num">Profit</th></tr></thead><tbody></tbody></table></div></div>
+    <div class="panel" id="record-multi" hidden><h3 class="section-title">By multi</h3><div class="scroll"><table id="multi-record"><thead><tr><th>Multi</th><th class="num">Landed</th><th class="num">Predicted</th><th class="num">Profit</th></tr></thead><tbody></tbody></table></div><p class="lede">Profit is what $1 on each would have made. It uses the app's price when every leg had one, otherwise the estimate. * means some days had no price saved and are left out.</p></div>
+    <div class="panel" id="record-legs" hidden><h3 class="section-title">Legs</h3><div class="scroll"><table id="calibration"><thead><tr><th>Model said</th><th class="num">Legs</th><th class="num">Predicted</th><th class="num">Landed</th></tr></thead><tbody></tbody></table></div>
+      <div class="scroll"><table id="stat-record"><thead><tr><th>Leg type</th><th class="num">Legs</th><th class="num">Predicted</th><th class="num">Landed</th></tr></thead><tbody></tbody></table></div></div>
+    <div class="panel" id="honest" hidden>
+      <h3 class="section-title">How honest are the percentages?</h3>
+      <p class="lede" id="honest-sub"></p>
+      <svg id="honest-chart" viewBox="0 0 320 250" role="img" aria-label="Predicted chance against how often legs actually landed" style="width:100%;max-width:520px;height:auto"></svg>
+      <p class="lede"><span style="color:var(--muted)">&#9679;</span> Old settings &nbsp; <span style="color:var(--accent)">&#9679;</span> Tuned settings &nbsp; - - Perfectly honest</p>
+      <p id="honest-take" class="small"></p>
+      <div class="scroll"><table id="honest-settings"><thead><tr><th>Setting</th><th class="num">Was</th><th class="num">Now</th></tr></thead><tbody></tbody></table></div>
+      <p class="lede" id="honest-live"></p>
+    </div>
+    <details class="how panel">
+      <summary>How the multis are picked</summary>
+      <dl>
+        <dt>Model</dt><dd>This season's games (recent games count extra; the weekly tune sets how much) blended with last season (last season counts as 8 games' worth, less if he played under 40 games), shifted towards games played in tonight's situation (a teammate in or out), adjusted for the opponent's defence against his position and last season's head-to-head (shrunk by how much of the opponent's roster is still the same, and by sample size), adjusted for home or away (from his own split, shrunk for small samples), tonight's expected pace (the game total against the slate average) and tonight's line against his team's usual result (his averages already reflect how good his team is, so only a line tougher or easier than usual moves the prediction), scaled by expected minutes (cut on the second night of a back-to-back, and for one-sided games by whatever the weekly tune finds: past seasons show starters' minutes barely drop on average, so that cut is small), and blended 60/40 with the bookies' over/under line (margin removed) where one is available. The weekly tune fits the line and blowout settings on past seasons, standing in for old betting lines with each team's results up to that day, and keeps them only if they predict the newer seasons better than no adjustment.</dd>
+        <dt>Chance all land</dt><dd>The legs' chances multiplied, adjusted for same-game links: two rebound legs from one game work against each other, two points legs from one team share the shots, a team to win works against legs from the team it's playing, other same-game legs move a little together with pace.</dd>
+        <dt>Value, marginal, skip</dt><dd>Each multi is rated from the price one app pays for all its legs against the price it needs. Value: the price beats break-even by 5% or more. Skip: it falls 3% or more short. Marginal: in between, too close to call given the chances are estimates. The top of the page lists the value multis, or says to skip the day when there are none.</dd>
+        <dt>Needs</dt><dd>1 ÷ the chance all legs land. If the app's price for the whole multi is at or above it, the model says it's worth taking.</dd>
+        <dt>Pays</dt><dd>Each multi is priced as a whole at TAB, Neds and Bet365, and shows the app whose prices for every leg multiply to the most. When no one app prices every leg yet, an estimate is shown instead (fair price less a typical margin); check it in the app.</dd>
+        <dt>Price in the app</dt><dd>Type the price on offer and the slip suggests a share of your betting budget: a quarter of the Kelly amount ((chance × price − 1) ÷ (price − 1)), at most 3%, and nothing when the price is under break-even. Prices you type stay on your phone only.</dd>
+        <dt>Promo builder</dt><dd>Searches every rated leg from games yet to start for the multi that meets the offer's terms and is worth the most with the bonus counted: stake back as a bonus bet is valued at the share you set (70% by default), and the chance exactly one leg misses is worked out from the legs' chances.</dd>
+        <dt>Late checks</dt><dd>15–75 minutes before each game, its injury news is checked again. The morning's multis stay as they were (you may have bet them), but a leg whose player is ruled out is marked and its multis get a warning with a suggested swap. In the last 35 minutes before a tip, once the starting line-ups are posted, a usual starter who isn't in the starting five is marked "not starting". A starter who came off the bench in his last two games (or a bench player who started them) is predicted on those games' minutes.</dd>
+        <dt>Rules</dt><dd>No leg priced under $1.20 (where no price is known, the line is stepped up until the model is about 83% or lower). Never two rebound legs from the same game. At most two legs from one game in a 2-, 3- or 4-leg multi and three in a bigger one, so one bad game can't sink it. Never a team to win with a leg from the team it's playing. Players listed out or doubtful are left out.</dd>
+        <dt>Prices</dt><dd>Only TAB, Neds and Bet365. Each morning every game is priced at Neds (from OddsPapi), and the games the multis use most are also priced at TAB and Bet365 (from The Odds API, within its free daily credits).</dd>
+        <dt>Overrides</dt><dd>Edit overrides/nba.txt in the repo to skip a player, set minutes, mark someone out or enter odds. The next run uses it.</dd>
+        <dt>Caveat</dt><dd>Early-season samples are small and bookies price props well. This is analysis, not a guarantee.</dd>
+      </dl>
+    </details>
+    <p class="lede" id="sources"></p>
+    <p class="lede"><a href="../promo/">Bonus bet calculator</a>: turn a bonus bet you already hold into cash.</p>
   </section>
-
-  <section class="card" id="honest" hidden>
-    <h2>How honest are the percentages?</h2>
-    <p class="sub" id="honest-sub"></p>
-    <svg id="honest-chart" viewBox="0 0 320 250" role="img" aria-label="Predicted chance against how often legs actually landed" style="width:100%;max-width:520px;height:auto"></svg>
-    <p class="sub"><span style="color:var(--muted)">&#9679;</span> Old settings &nbsp; <span style="color:var(--accent)">&#9679;</span> Tuned settings &nbsp; - - Perfectly honest</p>
-    <p id="honest-take" class="take"></p>
-    <div class="scroll"><table id="honest-settings">
-      <thead><tr><th>Setting</th><th class="num">Was</th><th class="num">Now</th></tr></thead>
-      <tbody></tbody>
-    </table></div>
-    <p class="sub" id="honest-live"></p>
-  </section>
-
-  <details>
-    <summary>How the multis are picked</summary>
-    <dl>
-      <dt>Model</dt><dd>This season's games (recent games count extra; the weekly tune sets how much) blended with last season (last season counts as 8 games' worth, less if he played under 40 games), shifted towards games played in tonight's situation (a teammate in or out), adjusted for the opponent's defence against his position and last season's head-to-head (shrunk by how much of the opponent's roster is still the same, worked out from last season's teams, and by sample size), adjusted for home or away (from his own split, shrunk for small samples) and tonight's expected pace (the game total against the slate average) and tonight's line against his team's usual result (his averages already reflect how good his team is, so only a line tougher or easier than usual moves the prediction: a line 6 points tougher takes about 2.6% off points and threes, half that off assists, nothing off rebounds), scaled by expected minutes (cut on the second night of a back-to-back, and for one-sided games by whatever the weekly tune finds: past seasons show starters' minutes barely drop on average, so that cut is small). The weekly tune fits the line and blowout settings on past seasons, standing in for old betting lines with each team's results up to that day, and keeps them only if they predict the newer seasons better than no adjustment, and blended 60/40 with the bookies' over/under line (margin removed) where one is available.</dd>
-      <dt>Est. chance all land</dt><dd>The legs' chances multiplied, adjusted for same-game links: two rebound legs from one game work against each other, two points legs from one team share the shots, a team to win works against legs from the team it's playing, other same-game legs move a little together with pace.</dd>
-      <dt>Bet on</dt><dd>Each multi is priced as a whole at TAB, Neds and Bet365, and shows the app whose prices for every leg multiply to the most, with the others for comparison. Multis are picked on that price, so a $2+ multi pays $2+ in that app. When no one app prices every leg yet, an estimate is shown instead (fair price less a typical margin); check it in the app.</dd>
-      <dt>Late checks</dt><dd>15–75 minutes before each game, its injury news is checked again. The morning's multis stay as they were (you may have bet them), but a leg whose player is ruled out is marked and its multis get a warning with a suggested swap. The game is re-analysed, so teammates who gain from a late out show updated chances (and new legs worth a look are added). Prices are refreshed only when someone's status changed. In the last 35 minutes before a tip, once the starting line-ups are posted, a usual starter who isn't in the starting five is marked "not starting" and his multis get a warning. A starter who came off the bench in his last two games (or a bench player who started them) is predicted on those games' minutes, not his season average.</dd>
-      <dt>Prices</dt><dd>Only TAB, Neds and Bet365. Each morning every game is priced at Neds (from OddsPapi), and the games the multis use most are also priced at TAB and Bet365 (from The Odds API, within its free daily credits).</dd>
-      <dt>Stake</dt><dd>Type the price on offer and the card suggests a share of your betting budget: a quarter of the Kelly amount ((chance × price − 1) ÷ (price − 1)), at most 3%, and nothing when the price is under break-even. Prices you type stay on your phone only.</dd>
-      <dt>Profit ($1 each)</dt><dd>What $1 on that multi every day would have made, at the real price when every leg had one, otherwise the estimated price. * means some older days had no price saved and are left out.</dd>
-      <dt>Value, marginal, skip</dt><dd>Each multi is rated from the price one app pays for all its legs against the price it needs. Value: the price beats break-even by 5% or more. Skip: it falls 3% or more short. Marginal: in between, too close to call given the chances are estimates. The headline lists the value multis, or says to skip the day when there are none.</dd>
-      <dt>Worth it if it pays at least</dt><dd>1 ÷ the chance all legs land. If the app's price for the whole multi is at or above it, the model says it's worth taking.</dd>
-      <dt>Rules</dt><dd>No leg priced under $1.20 (where no price is known, the line is stepped up until the model is about 83% or lower). Never two rebound legs from the same game. At most two legs from one game in a 3- or 4-leg multi and three in a bigger one, so one bad game can't sink it (and apps price same-game legs lower than the legs multiplied). Never a team to win with a leg from the team it's playing. Players listed out or doubtful are left out.</dd>
-      <dt>Overrides</dt><dd>Edit overrides/nba.txt in the repo to skip a player, set minutes, mark someone out or enter odds. The next run uses it.</dd>
-      <dt>Caveat</dt><dd>Early-season samples are small and bookies price props well. This is analysis, not a guarantee.</dd>
-    </dl>
-  </details>
-  <p class="sub" id="sources"></p>
 </main>
+
+<nav class="tabs" aria-label="Sections"><div class="wrap">
+  <button type="button" data-tab="multis">Multis</button>
+  <button type="button" data-tab="promo">Promo</button>
+  <button type="button" data-tab="legs">Legs</button>
+  <button type="button" data-tab="record">Record</button>
+</div></nav>
 
 <script>
 const pct = (v) => v == null ? '' : (v < 0.1 ? (v * 100).toFixed(1) : Math.round(v * 100)) + '%';
@@ -207,254 +263,434 @@ const BOOKS = { sportsbet: 'Sportsbet', tab: 'TAB', tabtouch: 'TABtouch', ladbro
   pointsbetau: 'PointsBet', unibet: 'Unibet', betr_au: 'Betr', betright: 'BetRight', playup: 'PlayUp', bet365_au: 'Bet365',
   dabble_au: 'Dabble', picklebet_au: 'Picklebet', betfair_ex_au: 'Betfair' };
 const book = (k) => BOOKS[k] || k || '';
-const bestPrice = (l) => l.best_price ? price(l.best_price) + ' ' + book(l.best_book) : price(l.odds);
-const fmt1 = (v) => v == null ? '' : Number(v).toFixed(1);
-const signedPts = (v) => v == null ? '' : (v > 0 ? '+' : '') + Math.round(v * 100) + ' pts';
 const text = (id, v) => { document.getElementById(id).textContent = v ?? ''; };
+const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
+const store = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
+const NOW = () => { const q = new URLSearchParams(location.search).get('now'); return q ? Date.parse(q) : Date.now(); };
 
-function cell(tr, value, cls, label) {
-  const td = tr.insertCell();
-  td.textContent = value ?? '';
-  if (cls) td.className = cls;
-  if (label && value !== '' && value != null) td.dataset.label = label;
-  return td;
-}
-
+function cell(tr, value, cls) { const td = tr.insertCell(); td.textContent = value ?? ''; if (cls) td.className = cls; return td; }
 async function load(name, fallback) {
-  try {
-    const r = await fetch('data/' + name + '?t=' + Date.now());
-    if (!r.ok) return fallback;
-    return await r.json();
-  } catch { return fallback; }
+  try { const r = await fetch('data/' + name + '?t=' + Date.now()); if (!r.ok) return fallback; return await r.json(); } catch { return fallback; }
 }
 
-function legsTable(tbody, legs, compact) {
-  tbody.replaceChildren();
-  for (const l of legs) {
-    const tr = tbody.insertRow();
-    cell(tr, l.player, 'nowrap c-player');
-    cell(tr, l.market + (l.late_out ? ' — ' + l.late_out.toUpperCase() : l.late_bench ? ' — NOT STARTING' : l.late_new ? ' (new)' : ''), 'nowrap c-leg' + (l.late_out || l.late_bench ? ' bad' : ''));
-    cell(tr, pct(l.model_prob) + (l.late_was ? ' (was ' + pct(l.late_was) + ')' : ''), 'num strong c-model', 'Model');
-    cell(tr, bestPrice(l), 'num c-odds', 'Best price');
-    if (!compact) cell(tr, signedPts(l.edge), 'num c-edge ' + (l.edge == null ? '' : l.edge > 0.05 ? 'good' : l.edge < 0 ? 'bad' : 'muted'), 'Edge');
-    cell(tr, price(l.fair_price), 'num muted c-fair', 'Fair price');
-    if (compact) {
-      cell(tr, l.game, 'muted nowrap c-wide');
-      cell(tr, l.log ? 'This season: ' + l.log : '', 'muted c-wide');
-      cell(tr, l.why || '', 'muted c-wide c-why');
-      continue;
-    }
-    const hr = tr.insertCell(); hr.className = 'nowrap c-wide';
-    if (l.stat === 'win') { cell(tr, '', 'c-hide'); } else {
-    const bar = document.createElement('span'); bar.className = 'bar';
-    const fill = document.createElement('i'); fill.style.width = (l.hit_rate * 100) + '%'; bar.append(fill);
-    hr.append(bar, document.createTextNode(pct(l.hit_rate) + ' hit rate (' + l.hits + ' of ' + l.games + ' games)'));
-    cell(tr, fmt1(l.proj_mean), 'num muted c-hide'); }
-    const mu = l.matchup;
-    cell(tr, mu == null || Math.abs(mu - 1) < 0.005 ? '' : (mu > 1 ? '+' : '') + Math.round((mu - 1) * 100) + '%', 'num c-hide ' + (mu > 1.005 ? 'good' : mu < 0.995 ? 'bad' : 'muted'));
-    cell(tr, l.why || (l.context_label ? l.context_label + '. ' + (l.context_detail || '') : ''), 'muted c-wide c-why');
-    cell(tr, l.game, 'muted nowrap c-wide');
-    cell(tr, l.note, 'muted c-wide');
+let D = { report: {}, legs: [], multis: [], slate: [], pool: [] };
+const gameInfo = (game) => D.slate.find((g) => g.game === game);
+const started = (game) => { const g = gameInfo(game); return !!g && (g.start ? Date.parse(g.start) <= NOW() : g.status === 'Started'); };
+const tipOf = (game) => (gameInfo(game) || {}).tip || '';
+
+// ---------- leg rows ----------
+function legPriceText(l) {
+  if (l.best_price) return price(l.best_price) + ' ' + book(l.best_book);
+  if (l.odds) return price(l.odds);
+  return l.fair_price ? 'fair ' + price(l.fair_price) : 'no price yet';
+}
+function legRow(l, opts = {}) {
+  const li = el('li');
+  const d = el('details', 'leg');
+  const s = el('summary');
+  const who = el('span', 'who', l.player);
+  const state = l.late_out ? [l.late_out, 'bad'] : l.late_bench ? ['Not starting', 'bad'] : l.questionable ? ['Questionable', ''] : started(l.game) ? ['Started', ''] : l.late_new ? ['New', ''] : null;
+  const what = el('span', 'what', l.market + (opts.hideGame ? '' : ', ' + l.game + (tipOf(l.game) ? ' ' + tipOf(l.game) : '')));
+  if (state) { const t = el('span', 'tag ' + state[1], state[0]); what.append(t); }
+  const odds = el('span', 'odds');
+  odds.append(el('b', null, pct(l.model_prob)), el('span', null, opts.priceText || legPriceText(l)));
+  s.append(who, what, odds);
+  const more = el('div', 'more');
+  if (l.why) more.append(el('p', null, l.why));
+  if (l.late_was) more.append(el('p', 'muted', 'Was ' + pct(l.late_was) + ' this morning.'));
+  if (l.stat !== 'win' && l.games) {
+    const bar = el('div', 'hitbar'); const fill = el('i'); fill.style.width = Math.round((l.hits / l.games) * 100) + '%'; bar.append(fill);
+    more.append(el('p', 'muted', 'Landed in ' + l.hits + ' of ' + l.games + ' games this season' + (l.log ? ': ' + l.log : '')), bar);
   }
+  const dl = el('dl');
+  const pair = (k, v, cls) => { if (v === '' || v == null) return; const w = el('div'); w.append(el('dt', null, k), el('dd', cls, v)); dl.append(w); };
+  pair('Fair price', price(l.fair_price));
+  pair('Edge', l.edge == null ? '' : (l.edge > 0 ? '+' : '') + Math.round(l.edge * 100) + ' pts', l.edge > 0.05 ? 'good' : l.edge < 0 ? 'bad' : '');
+  pair('Predicted', l.stat === 'win' || l.proj_mean == null ? '' : Number(l.proj_mean).toFixed(1));
+  if (dl.children.length) more.append(dl);
+  if (l.note) more.append(el('p', 'muted', l.note));
+  d.append(s, more); li.append(d);
+  return li;
 }
 
-let ALL_MULTIS = [];
-const KELLY_SHARE = 0.25;  // quarter Kelly: the percentages are estimates, so bet a quarter of the "perfect" amount
-const MAX_STAKE = 0.03;    // never more than 3% of the budget on one multi
-
-function stakeFor(p, price) {
-  if (!p || !price || price <= 1) return null;
-  const f = (p * price - 1) / (price - 1);
+// ---------- stake ----------
+const KELLY_SHARE = 0.25, MAX_STAKE = 0.03;
+function stakeFor(p, pr) {
+  if (!p || !pr || pr <= 1) return null;
+  const f = (p * pr - 1) / (pr - 1);
   if (f <= 0) return 0;
-  return Math.min(MAX_STAKE, Math.max(0.0025, Math.round(f * KELLY_SHARE * 400) / 400));  // to the nearest 0.25%
+  return Math.min(MAX_STAKE, Math.max(0.0025, Math.round(f * KELLY_SHARE * 400) / 400));
 }
-
-function stakeBox(m) {
-  const box = document.createElement('div'); box.className = 'stake';
-  const id = 'price-' + m.multi.replace(/[^a-z0-9]/gi, '');
-  const lab = document.createElement('label'); lab.htmlFor = id; lab.textContent = 'Price on offer';
-  const row = document.createElement('div'); row.className = 'row';
-  const input = document.createElement('input'); input.id = id; input.type = 'number'; input.inputMode = 'decimal';
-  input.step = '0.01'; input.min = '1.01'; input.placeholder = (m.best_book_price || m.est_price || 2).toFixed(2);
-  const verdict = document.createElement('span'); verdict.className = 'verdict';
-  const why = document.createElement('p'); why.className = 'sub';
-  row.append('$', input, verdict);
-  const key = 'punt-lab-price-' + (document.getElementById('slate-date')?.textContent || '') + m.multi;
+function priceCheck(key, placeholder, judge) {
+  // judge(price) -> { cls, verdict, why }
+  const box = el('div', 'check');
+  const id = 'price-' + key.replace(/[^a-z0-9]/gi, '');
+  const lab = el('label', null, 'Price in the app'); lab.htmlFor = id;
+  const row = el('div', 'row');
+  const money = el('div', 'money'); money.append('$');
+  const input = el('input'); input.id = id; input.type = 'number'; input.inputMode = 'decimal'; input.step = '0.01'; input.min = '1.01';
+  input.placeholder = placeholder ? Number(placeholder).toFixed(2) : '';
+  money.append(input);
+  const verdict = el('span', 'verdict');
+  const why = el('p', 'small muted');
+  row.append(money, verdict);
+  const sk = 'punt-lab-price-' + (D.report.slate_date || '') + key;
   const update = () => {
-    const price = parseFloat(input.value);
-    if (!price) {
-      verdict.className = 'verdict'; verdict.textContent = '';
-      why.textContent = `Type the bookie's price to get a stake. Break-even is $${m.break_even.toFixed(2)}.`;
-      return;
-    }
-    const f = stakeFor(m.est_hit, price);
-    const ev = m.est_hit * price - 1;
-    if (!f) {
-      verdict.className = 'verdict bad'; verdict.textContent = 'Skip';
-      why.textContent = `Below the $${m.break_even.toFixed(2)} break-even: about ${Math.round(-ev * 100)}c lost per $1 over time.`;
-    } else {
-      verdict.className = 'verdict good'; verdict.textContent = `Bet ${(f * 100).toFixed(2).replace(/\.?0+$/, '')}% of your budget`;
-      why.textContent = `About ${Math.round(ev * 100)}c profit per $1 over time, if the ${pct(m.est_hit)} chance is right. $100 budget = $${(f * 100).toFixed(2)}.`;
-    }
-    try { localStorage.setItem(key, input.value); } catch (e) {}
+    const pr = parseFloat(input.value);
+    const r = judge(pr || null);
+    verdict.className = 'verdict ' + (r.cls || ''); verdict.textContent = r.verdict || ''; why.textContent = r.why || '';
+    store.set(sk, input.value);
   };
-  try { const saved = localStorage.getItem(key); if (saved) input.value = saved; } catch (e) {}
-  input.addEventListener('input', update);
-  update();
+  const saved = store.get(sk); if (saved) input.value = saved;
+  input.addEventListener('input', update); update();
   box.append(lab, row, why);
-  const shared = ALL_MULTIS.filter((o) => o.multi !== m.multi && o.leg_ids.filter((x) => m.leg_ids.includes(x)).length >= Math.min(2, m.leg_ids.length));
-  if (shared.length) {
-    const warn = document.createElement('p'); warn.className = 'sub';
-    warn.textContent = 'Shares legs with ' + shared.map((o) => o.multi).join(', ') + '. Betting more than one of these is mostly the same bet twice, so split one stake between them.';
-    box.append(warn);
-  }
   return box;
 }
 
-function valueLegs(legs) {
-  const rows = legs.filter((l) => l.best_price && l.stat !== 'win')
-    .map((l) => ({ l, ev: l.model_prob * l.best_price - 1 }))
-    .filter((x) => x.ev >= 0.03).sort((a, b) => b.ev - a.ev).slice(0, 10);
-  const anyPriced = legs.some((l) => l.best_price);
-  document.getElementById('value').hidden = !anyPriced;
-  document.getElementById('value-none').hidden = rows.length > 0;
-  const tb = document.querySelector('#value-legs tbody'); tb.replaceChildren();
-  document.getElementById('value-legs').hidden = !rows.length;
-  for (const { l, ev } of rows) {
-    const tr = tb.insertRow();
-    cell(tr, l.player, 'nowrap c-player'); cell(tr, l.market, 'nowrap c-leg');
-    cell(tr, pct(l.model_prob), 'num strong', 'Model');
-    cell(tr, bestPrice(l), 'num nowrap', 'Best price');
-    cell(tr, '+' + Math.round(ev * 100) + 'c per $1' + (ev > 0.15 ? ' · check news' : ''), 'num nowrap ' + (ev > 0.15 ? '' : 'good'), 'Value');
-    const f = stakeFor(l.model_prob, l.best_price);
-    cell(tr, f ? (f * 100).toFixed(2).replace(/\.?0+$/, '') + '%' : '', 'num', 'Single stake');
-    cell(tr, l.game, 'muted nowrap c-wide');
-  }
-}
+// ---------- multis ----------
+const TITLES = {
+  '4-leg $2+': ['4 legs, pays $2+', 'The likeliest four that pay $2 or more.'],
+  '4-leg $3+': ['4 legs, pays $3+', 'The likeliest four that pay $3 or more.'],
+  '4-leg $4+': ['4 legs, pays $4+', 'The likeliest four that pay $4 or more.'],
+  '3-leg $2+': ['3 legs, pays $2+', 'The likeliest three that pay $2 or more.'],
+  '2-leg $2+': ['2 legs, pays $2+', 'The likeliest pair that pays $2 or more. Fewer legs, less bookie margin.'],
+  'Long multi 8+': ['Long multi, 8+ legs', 'Every leg 80%+ likely and paying $1.15 or more.'],
+  'One per game': ['One leg from each game', 'The likeliest leg from every game, so one bad game costs one leg.'],
+  'Mid-range $8+': ['6 or 7 legs, pays $8+', 'The likeliest six or seven that pay $8 or more.'],
+  'Long shot $50': ['Long shot, about $50', 'A fun bet, not a value one: roughly a 2 to 4% shot.'],
+  'Best value': ['Best value 4 legs', 'Built from legs whose price beats the model.'],
+  'Safest': ['Safest 4 legs', 'The highest chance among legs at $1.20 or more.'],
+  '3-leg value': ['Best value 3 legs', 'Only legs whose price beats the model.'] };
+const GROUPS = [
+  ['value', 'Value', (m) => m.verdict === 'value' && !gone(m)],
+  ['2', '2 legs', (m) => m.leg_ids.length === 2],
+  ['3', '3 legs', (m) => m.leg_ids.length === 3],
+  ['4', '4 legs', (m) => m.leg_ids.length === 4],
+  ['long', 'Longer', (m) => m.leg_ids.length > 4],
+  ['all', 'All', () => true]];
+const gone = (m) => m.leg_ids.some((id) => { const l = D.legs.find((x) => x.leg_id === id); return l && started(l.game); });
+const RATING = { value: 'Value', marginal: 'Marginal', skip: 'Skip', check: 'Check price' };
 
-function verdictLine(m) {
-  if (!m.verdict) return null;
-  const el = document.createElement('p'); el.className = 'rating';
-  const pill = document.createElement('span');
+function ratingSentence(m) {
   const cents = m.value == null ? '' : Math.abs(Math.round(m.value * 100)) + 'c per $1';
-  const pays = m.best_book_price ? `${book(m.best_book)} pays ${price(m.best_book_price)}, it needs ${price(m.break_even)}` : '';
-  let label, cls, msg;
-  if (m.verdict === 'value') { label = 'Value'; cls = 'pill good'; msg = `${pays}: about ${cents} in your favour if the chance is right.`; }
-  else if (m.verdict === 'marginal') { label = 'Marginal'; cls = 'pill'; msg = `${pays}: too close to call either way.`; }
-  else if (m.verdict === 'skip') { label = 'Skip'; cls = 'pill bad'; msg = `${pays}: about ${cents} against you over time.`; }
-  else { label = 'Check price'; cls = 'pill'; msg = `No one app prices every leg yet. Worth it only at ${price(m.break_even)} or better.`; }
-  pill.className = cls; pill.textContent = label;
-  el.append(pill, ' ' + msg);
-  return el;
+  const pays = m.best_book_price ? `${book(m.best_book)} pays ${price(m.best_book_price)} and it needs ${price(m.break_even)}` : '';
+  if (m.verdict === 'value') return `${pays}: about ${cents} in your favour if the chance is right.`;
+  if (m.verdict === 'marginal') return `${pays}: too close to call.`;
+  if (m.verdict === 'skip') return `${pays}: about ${cents} against you over time.`;
+  return `No one app prices every leg yet. Worth it only at ${price(m.break_even)} or better.`;
 }
 
-function multiCard(m, legsById) {
-  const legs = m.leg_ids.map((id) => legsById.get(id)).filter(Boolean);
-  const card = document.createElement('div'); card.className = 'card';
-  const titles = { '4-leg $2+': ['Best 4-leg multi paying $2+', 'Highest chance all four land, with an estimated price of $2.00 or more.'],
-                   '4-leg $3+': ['Best 4-leg multi paying $3+', 'Highest chance all four land, with an estimated price of $3.00 or more.'],
-                   '4-leg $4+': ['Best 4-leg multi paying $4+', 'Highest chance all four land, with an estimated price of $4.00 or more.'],
-                   '3-leg $2+': ['Best 3-leg multi paying $2+', 'Highest chance all three land, with an estimated price of $2.00 or more.'],
-                   '2-leg $2+': ['Best 2-leg multi paying $2+', 'Highest chance both land, with an estimated price of $2.00 or more. Fewer legs means the bookie\'s margin is taken fewer times.'],
-                   'Long multi 8+': ['Long multi, 8+ legs', 'Every leg at least 80% likely and estimated to pay $1.15 or more, including match winners. The best-value 8, plus any extra legs that are worth it on their own.'],
-                   'One per game': ['One leg from each game', 'The most likely leg from every game (up to 8), so one blowout or late scratch can only cost one leg.'],
-                   'Mid-range $8+': ['Mid-range multi paying $8+', 'Six legs (seven if six can\'t get there), highest chance all land with an estimated price of $8.00 or more.'],
-                   'Long shot $50': ['Long shot, ~$50', 'Reaches about $50 in up to 15 legs while giving up as little chance as possible, mixing safe legs with some players\' next line up. Roughly a 2\u20134% shot \u2014 a fun bet, not a value one.'],
-                   'Best value': ['Best value 4-leg multi', 'Higher payout, built from legs whose price beats the model.'],
-                   'Safest': ['Safest 4-leg multi', 'Highest combined chance among legs at $1.20 or more.'],
-                   '3-leg value': ['Best value 3-leg multi', 'Fewer legs, higher chance; only legs whose price beats the model.'] };
-  const [title, sub] = titles[m.multi] || [m.multi, ''];
-  const h = document.createElement('h2'); h.textContent = title;
-  const p = document.createElement('p'); p.className = 'sub'; p.textContent = sub;
-  const figs = document.createElement('div'); figs.className = 'figs';
-  const fig = (value, label) => {
-    const d = document.createElement('div'); d.className = 'fig';
-    const b = document.createElement('span'); b.className = 'big'; b.textContent = value || '—';
-    const s = document.createElement('span'); s.className = 'sub'; s.textContent = label;
-    d.append(b, s); figs.append(d);
-  };
-  fig(pct(m.est_hit), 'Est. chance all ' + legs.length + ' land');
-  if (m.best_book_price) {
-    const others = Object.entries(m.book_prices || {}).filter(([k]) => k !== m.best_book)
-      .map(([k, v]) => book(k) + ' ' + price(v)).join(' · ');
-    fig('Bet on ' + book(m.best_book) + ' ' + price(m.best_book_price), others ? 'Best app for all ' + legs.length + ' legs. ' + others : 'Only app pricing all ' + legs.length + ' legs');
-  } else {
-    fig(price(m.est_price), 'Est. price (no one app prices every leg yet)');
+// several named multis often turn out to be the same legs: show them once
+function distinct(multis) {
+  const seen = new Map(), out = [];
+  for (const m of [...multis].sort((a, b) => a.rank - b.rank)) {
+    const key = [...m.leg_ids].sort().join('|');
+    if (seen.has(key)) seen.get(key).aka.push(m.multi); else { const copy = { ...m, aka: [] }; seen.set(key, copy); out.push(copy); }
   }
-  fig(price(m.break_even), 'Worth it if it pays at least');
-  const wrap = document.createElement('div'); wrap.className = 'scroll';
-  const table = document.createElement('table'); table.className = 'cards';
-  table.innerHTML = '<thead><tr><th>Player</th><th>Leg</th><th class="num">Model</th><th class="num">Odds</th><th class="num">Fair price</th><th>Game</th><th>This season</th><th>Why</th></tr></thead><tbody></tbody>';
-  legsTable(table.tBodies[0], legs, true);
-  wrap.append(table);
-  card.append(h, p, figs);
-  const v = verdictLine(m);
-  if (v) card.append(v);
-  if (m.late_warning) {
-    const w = document.createElement('p'); w.className = 'late-warn';
-    w.textContent = '⚠ Late change: ' + m.late_warning + (m.est_hit_after_void ? ` Chance on the remaining legs: ${pct(m.est_hit_after_void)}.` : '');
-    card.append(w);
-  }
-  card.append(stakeBox(m), wrap);
+  return out;
+}
+
+function slip(m, byId) {
+  const legs = m.leg_ids.map((id) => byId.get(id)).filter(Boolean);
+  const card = el('article', 'slip'); card.id = 'slip-' + m.multi.replace(/[^a-z0-9]/gi, '');
+  const head = el('div', 'slip-head');
+  const [title, sub] = TITLES[m.multi] || [m.multi, ''];
+  const tw = el('div'); tw.append(el('h3', null, title), el('p', 'lede', sub));
+  const tr = el('div', 'slip-title'); tr.append(tw);
+  const off = gone(m);
+  if (off) tr.append(el('span', 'pill', 'Started')); else if (m.verdict) tr.append(el('span', 'pill ' + m.verdict, RATING[m.verdict]));
+  const trio = el('div', 'trio');
+  const fig = (v, label) => { const d = el('div'); d.append(el('b', null, v || '–'), el('span', null, label)); trio.append(d); };
+  fig(pct(m.est_hit), 'chance all ' + legs.length + ' land');
+  if (m.best_book_price) fig(price(m.best_book_price), 'pays on ' + book(m.best_book)); else fig(price(m.est_price), 'estimated price');
+  fig(price(m.break_even), 'needs at least');
+  head.append(tr, trio);
+  if (m.aka && m.aka.length) head.append(el('p', 'aka', 'Also today\'s ' + m.aka.map((k) => (TITLES[k] || [k])[0].toLowerCase()).join(' and ') + '.'));
+  if (m.verdict && !off) head.append(el('p', 'why-rating', ratingSentence(m)));
+  const others = Object.entries(m.book_prices || {}).filter(([k]) => k !== m.best_book).map(([k, v]) => book(k) + ' ' + price(v));
+  if (others.length) head.append(el('p', 'small muted', 'Other apps: ' + others.join(', ') + '.'));
+  const tipped = [...new Set(legs.filter((l) => started(l.game)).map((l) => l.game))];
+  if (tipped.length) head.append(el('p', 'notice', (tipped.length === 1 ? tipped[0] + ' has' : tipped.join(' and ') + ' have') + ' started, so this multi can no longer be placed as it is. The Promo tab builds from games still to tip.'));
+  if (m.late_warning) head.append(el('p', 'notice bad', 'Late change: ' + m.late_warning + (m.est_hit_after_void ? ' Chance on the remaining legs: ' + pct(m.est_hit_after_void) + '.' : '')));
+  const list = el('ul', 'legs'); for (const l of legs) list.append(legRow(l));
+  const check = priceCheck(m.multi, m.best_book_price || m.est_price, (pr) => {
+    if (!pr) return { why: 'Type the price the app shows for the whole multi to get a stake.' };
+    const f = stakeFor(m.est_hit, pr), ev = m.est_hit * pr - 1;
+    if (!f) return { cls: 'bad', verdict: 'Skip', why: `Below the ${price(m.break_even)} it needs: about ${Math.round(-ev * 100)}c lost per $1 over time.` };
+    return { cls: 'good', verdict: 'Bet ' + (f * 100).toFixed(2).replace(/\.?0+$/, '') + '% of your budget', why: `About ${Math.round(ev * 100)}c profit per $1 over time, if the ${pct(m.est_hit)} chance is right. On a $100 budget that's $${(f * 100).toFixed(2)}.` };
+  });
+  const shared = distinct(D.multis).filter((o) => o.multi !== m.multi && o.leg_ids.filter((x) => m.leg_ids.includes(x)).length >= Math.min(2, m.leg_ids.length));
+  if (shared.length) check.append(el('p', 'small muted', 'Shares two or more legs with ' + (shared.length === 1 ? 'one other multi' : shared.length + ' other multis') + ' today. Betting more than one is mostly the same bet twice.'));
+  card.append(head, el('div', 'tear'), list, el('div', 'tear'), check);
   return card;
 }
 
+function renderMultis() {
+  const byId = new Map(D.legs.map((l) => [l.leg_id, l]));
+  const sorted = distinct(D.multis);
+  const chips = document.getElementById('multi-chips'), box = document.getElementById('multis');
+  const nValue = sorted.filter(GROUPS[0][2]).length;
+  let current = store.get('punt-lab-group');
+  if (!GROUPS.some((g) => g[0] === current)) current = nValue ? 'value' : '4';
+  const show = () => {
+    chips.replaceChildren(...GROUPS.map(([key, label]) => {
+      const b = el('button', 'chip', label); b.type = 'button'; b.setAttribute('aria-pressed', key === current);
+      if (key === 'value') b.append(el('span', 'count', String(nValue)));
+      b.addEventListener('click', () => { current = key; store.set('punt-lab-group', key); show(); });
+      return b;
+    }));
+    const want = sorted.filter(GROUPS.find((g) => g[0] === current)[2]);
+    if (want.length) { box.replaceChildren(...want.map((m) => slip(m, byId))); return; }
+    const notes = (D.report.headline || '').match(/Note: (.*)/);
+    box.replaceChildren(el('p', 'empty', !sorted.length ? (D.report.status || 'No multis yet. They appear after the morning run.')
+      : current === 'value' ? (sorted.some((m) => m.verdict === 'value') ? 'The value multis include games that have started. The Promo tab builds from games still to tip.' : 'No multi is rated value today: none beats the price it needs by 5% in one app. Skipping is the right call on days like this.')
+      : 'None of these today' + (notes ? ' (' + notes[1].replace(/\.$/, '') + ')' : '') + '.'));
+  };
+  show();
+  return (multi) => { current = 'all'; show(); const t = document.getElementById('slip-' + multi.replace(/[^a-z0-9]/gi, '')); if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+}
+
+// ---------- the day's call ----------
+function renderCall(jump) {
+  const r = D.report, lines = document.getElementById('call-lines'); lines.replaceChildren();
+  if (r.slate_date) text('slate-date', new Date(r.slate_date + 'T12:00:00').toLocaleDateString('en-AU', { weekday: 'short', day: 'numeric', month: 'short' }));
+  const note = [r.next_run, ((r.headline || '').match(/Note: .*/) || [''])[0]].filter(Boolean).join(' ');
+  if (r.status && !D.multis.length) { text('call', 'No multis today'); text('call-note', r.status); return; }
+  if (!D.multis.length) { text('call', 'No multis yet'); text('call-note', 'They appear after the morning run.'); return; }
+  const live = distinct(D.multis).filter((m) => !gone(m));
+  const rated = live.filter((m) => ['value', 'marginal', 'skip'].includes(m.verdict));
+  const good = rated.filter((m) => m.verdict === 'value').sort((a, b) => b.est_hit - a.est_hit);
+  const line = (m) => {
+    const li = el('li'); const b = el('button', null, (TITLES[m.multi] || [m.multi])[0]); b.type = 'button';
+    b.addEventListener('click', () => { setTab('multis'); jump(m.multi); });
+    li.append(b, el('span', 'fig', book(m.best_book) + ' ' + price(m.best_book_price) + ', needs ' + price(m.break_even)));
+    lines.append(li);
+  };
+  if (!live.length) { text('call', 'Games have started'); text('call-note', 'Today\'s multis include games that have tipped off. Use the Promo tab to build from what\'s left, or come back after the next morning run. ' + (r.next_run || '')); return; }
+  if (good.length) { text('call', good.length === 1 ? '1 value multi today' : good.length + ' value multis today'); good.slice(0, 3).forEach(line); }
+  else if (rated.length) { text('call', 'Skip today'); const c = rated.reduce((a, b) => (b.value > a.value ? b : a)); line(c);
+    text('call-note', 'No multi beats the price it needs by 5%. The closest is above. ' + note); return; }
+  else { text('call', 'No app prices yet'); text('call-note', 'Each slip shows the price it needs. Check the app before betting. ' + note); return; }
+  text('call-note', note);
+}
+
+// ---------- legs by game ----------
+function renderGames() {
+  const box = document.getElementById('games'); box.replaceChildren();
+  const games = D.slate.length ? D.slate : [...new Set(D.legs.map((l) => l.game))].map((game) => ({ game }));
+  for (const g of games) {
+    const legs = D.legs.filter((l) => l.game === g.game).sort((a, b) => b.model_prob - a.model_prob);
+    const card = el('article', 'game'); const head = el('div', 'game-head');
+    head.append(el('h3', null, g.game));
+    const bits = [started(g.game) ? 'Started' : g.tip, g.favourite && g.spread != null ? g.favourite + ' by ' + Math.abs(g.spread) : '', g.total ? 'total ' + g.total : ''].filter(Boolean);
+    head.append(el('p', null, bits.join(', ')));
+    card.append(head);
+    if (legs.length) { const list = el('ul', 'legs'); for (const l of legs) list.append(legRow(l, { hideGame: true })); card.append(list); }
+    else { const none = el('p', 'small muted', 'No legs rated 70% or better in this game.'); none.style.padding = '12px 16px'; card.append(none); }
+    box.append(card);
+  }
+  if (!games.length) box.append(el('p', 'empty', 'No games loaded yet.'));
+}
+
+// ---------- promo builder ----------
+const PROMOS = {
+  sgm1: { label: 'Stake back if 1 leg misses, same game', hint: 'A same-game multi where your stake comes back as a bonus bet if exactly one leg lets you down.', refund: 'one', scope: 'same', legs: 4, boost: 0 },
+  any1: { label: 'Stake back if 1 leg misses, any games', hint: 'Any multi where your stake comes back as a bonus bet if exactly one leg misses.', refund: 'one', scope: 'any', legs: 4, boost: 0 },
+  lose: { label: 'Stake back if it loses', hint: 'Your stake comes back as a bonus bet if the multi loses, however many legs miss.', refund: 'any', scope: 'any', legs: 3, boost: 0 },
+  boost: { label: 'Winnings boost', hint: 'The app adds a percentage to your winnings if the multi lands.', refund: 'none', scope: 'any', legs: 3, boost: 25 } };
+const SGM_FACTOR = 0.88;   // apps pay less on 3+ same-game legs than the legs multiplied; a guide until you type the real price
+let P = { type: 'sgm1', app: 'neds', legs: 4, scope: 'same', minLeg: 1.2, minMulti: 2, boost: 0, worth: 70 };
+
+function pairLink(a, b) {
+  const L = D.report.links || { SAME_GAME_REBOUNDS: 0.05, SAME_TEAM_POINTS: 0.03, SAME_GAME_OTHER: 0.05, WIN_VS_OPPONENT: -0.2 };
+  if (a.game !== b.game) return 0;
+  if (a.stat === 'win' || b.stat === 'win') return a.stat === b.stat ? 0 : a.team === b.team ? L.SAME_GAME_OTHER : L.WIN_VS_OPPONENT;
+  if (a.stat === 'rebounds' && b.stat === 'rebounds') return L.SAME_GAME_REBOUNDS;
+  if (a.team === b.team && a.stat === 'points' && b.stat === 'points') return L.SAME_TEAM_POINTS;
+  return L.SAME_GAME_OTHER;
+}
+function chanceAll(legs) {
+  let p = 1, adj = 1;
+  for (const l of legs) p *= l.model_prob;
+  for (let i = 0; i < legs.length; i++) for (let j = i + 1; j < legs.length; j++) {
+    const r = pairLink(legs[i], legs[j]), a = legs[i].model_prob, b = legs[j].model_prob;
+    if (r) adj *= Math.max(0.5, 1 + r * Math.sqrt((1 - a) * (1 - b) / (a * b)));
+  }
+  return Math.min(1, p * adj);
+}
+function chanceOneMiss(legs) { let all = 1, sum = 0; for (const l of legs) { all *= l.model_prob; sum += (1 - l.model_prob) / l.model_prob; } return Math.min(1, all * sum); }
+function appPrice(l, app) {
+  const b = l.books || {};
+  if (app !== 'any' && b[app]) return { v: b[app], est: false };
+  if (app === 'any' && l.best_price) return { v: l.best_price, est: false };
+  if (l.best_price) return { v: l.best_price, est: true };
+  if (l.fair_price) return { v: l.fair_price * 0.92, est: true };
+  return { v: 0.92 / Math.max(l.model_prob, 0.05), est: true };
+}
+function promoValue(pAll, pOne, pr) {
+  const w = P.worth / 100, boosted = 1 + (pr - 1) * (1 + P.boost / 100);
+  const back = PROMOS[P.type].refund === 'one' ? pOne * w : PROMOS[P.type].refund === 'any' ? (1 - pAll) * w : 0;
+  return pAll * boosted + back - 1;
+}
+function promoNeeds(pAll, pOne) {
+  const w = P.worth / 100;
+  const back = PROMOS[P.type].refund === 'one' ? pOne * w : PROMOS[P.type].refund === 'any' ? (1 - pAll) * w : 0;
+  const boosted = (1 - back) / pAll;                       // the boosted price it must reach
+  return Math.max(1.01, 1 + (boosted - 1) / (1 + P.boost / 100));
+}
+function okTogether(combo, l, sameGame) {
+  let inGame = 0;
+  for (const o of combo) {
+    if (o.player === l.player) return false;
+    if (o.game === l.game) {
+      inGame++;
+      if (o.stat === 'rebounds' && l.stat === 'rebounds') return false;
+      if ((o.stat === 'win') !== (l.stat === 'win') && o.team !== l.team) return false;
+    }
+  }
+  return sameGame || inGame < (P.legs <= 4 ? 2 : 3);
+}
+function searchPromo() {
+  const out = new Set(D.legs.filter((l) => l.late_out || l.late_bench).map((l) => l.player));
+  const src = (D.pool.length ? D.pool : D.legs).filter((l) => !started(l.game) && !l.questionable && !out.has(l.player) && l.model_prob >= 0.5)
+    .map((l) => ({ ...l, pr: appPrice(l, P.app) })).filter((l) => l.pr.v >= P.minLeg - 1e-9);
+  const sameGame = P.scope === 'same';
+  const groups = sameGame ? [...new Set(src.map((l) => l.game))].map((g) => src.filter((l) => l.game === g)) : [src];
+  const cap = P.legs <= 4 ? (sameGame ? 18 : 24) : P.legs === 5 ? 18 : 14;
+  const found = [];
+  for (const group of groups) {
+    const cands = [...group].sort((a, b) => b.model_prob - a.model_prob).slice(0, cap);
+    let best = null, likely = null;
+    const walk = (start, combo) => {
+      if (combo.length === P.legs) {
+        let pr = 1; for (const l of combo) pr *= l.pr.v;
+        const games = new Set(combo.map((l) => l.game));
+        if (games.size === 1 && combo.length >= 3) pr *= SGM_FACTOR;
+        if (pr < P.minMulti) return;
+        const pAll = chanceAll(combo), pOne = chanceOneMiss(combo), value = promoValue(pAll, pOne, pr);
+        const hit = () => ({ legs: [...combo], price: pr, pAll, pOne, value, oneGame: games.size === 1 });
+        if (!best || value > best.value) best = hit();
+        if (value >= 0.05 && (!likely || pAll > likely.pAll)) likely = hit();
+        return;
+      }
+      for (let i = start; i < cands.length; i++) if (okTogether(combo, cands[i], sameGame)) { combo.push(cands[i]); walk(i + 1, combo); combo.pop(); }
+    };
+    walk(0, []);
+    if (best) found.push({ best, likely });
+  }
+  // the likeliest multi that is still value with the promo comes first; then the best value outright
+  const key = (r) => r.legs.map((l) => l.leg_id).sort().join('|');
+  const likeliest = found.map((f) => f.likely).filter(Boolean).sort((a, b) => b.pAll - a.pAll)[0];
+  const byValue = found.map((f) => f.best).sort((a, b) => b.value - a.value);
+  const results = [];
+  if (likeliest) results.push({ ...likeliest, role: 'The likeliest to land that is still value with the promo.' });
+  for (const r of byValue) {
+    if (results.length >= 3) break;
+    if (results.some((x) => key(x) === key(r))) { if (results.length === 1 && key(results[0]) === key(r)) results[0].role = 'The likeliest to land and the best value with the promo.'; continue; }
+    results.push({ ...r, role: r === byValue[0] ? 'The best value with the promo, at a lower chance.' : 'Next best value.' });
+  }
+  return { results, games: [...new Set(src.map((l) => l.game))].length, legs: src.length };
+}
+function promoSlip(r, n) {
+  const card = el('article', 'slip'), head = el('div', 'slip-head');
+  const games = [...new Set(r.legs.map((l) => l.game))];
+  const tw = el('div'); tw.append(el('h3', null, r.oneGame ? games[0] + ' ' + tipOf(games[0]) : P.legs + ' legs across ' + games.length + ' games'),
+    el('p', 'lede', r.role));
+  const tr = el('div', 'slip-title'); tr.append(tw);
+  const rate = (v) => v >= 0.05 ? 'value' : v < -0.03 ? 'skip' : 'marginal';
+  const pill = el('span', 'pill ' + rate(r.value), RATING[rate(r.value)] + ' with promo'); tr.append(pill);
+  const trio = el('div', 'trio');
+  const fig = (v, label) => { const d = el('div'); d.append(el('b', null, v), el('span', null, label)); trio.append(d); };
+  const refund = PROMOS[P.type].refund;
+  fig(pct(r.pAll), 'chance all ' + P.legs + ' land');
+  if (refund === 'one') fig(pct(r.pOne), 'chance one leg misses'); else if (refund === 'any') fig(pct(1 - r.pAll), 'chance stake comes back'); else fig('+' + P.boost + '%', 'on winnings');
+  const needPromo = promoNeeds(r.pAll, r.pOne), needPlain = 1 / r.pAll;
+  fig(price(needPromo), 'needs with promo');
+  head.append(tr, trio);
+  const anyEst = r.legs.some((l) => l.pr.est) || r.oneGame;
+  head.append(el('p', 'why-rating', `At about ${price(r.price)} it's worth ${r.value >= 0 ? 'about ' + Math.round(r.value * 100) + 'c per $1 in your favour' : 'about ' + Math.round(-r.value * 100) + 'c per $1 against you'} with the promo. As a plain bet it would need ${price(needPlain)}.`));
+  if (anyEst) head.append(el('p', 'small muted', r.oneGame ? 'The price is a guide: same-game multis pay less than the legs multiplied.' : 'Some leg prices are estimates, so the price is a guide.'));
+  const list = el('ul', 'legs');
+  for (const l of r.legs) { const full = D.legs.find((x) => x.leg_id === l.leg_id) || l; list.append(legRow({ ...full, model_prob: l.model_prob }, { priceText: (l.pr.est ? 'about ' : '') + price(l.pr.v) + (l.pr.est ? '' : ' ' + (P.app === 'any' ? '' : book(P.app))) })); }
+  const check = priceCheck('promo' + n + P.type, r.price, (pr) => {
+    if (!pr) return { why: 'Type the price the app shows for this multi.' };
+    const v = promoValue(r.pAll, r.pOne, pr), plain = r.pAll * pr - 1;
+    const tail = ` As a plain bet: ${plain >= 0 ? '+' : '−'}${Math.abs(Math.round(plain * 100))}c per $1.`;
+    if (v < -0.03) return { cls: 'bad', verdict: 'Skip', why: `About ${Math.round(-v * 100)}c per $1 against you even with the promo. It needs ${price(needPromo)}.` + tail };
+    if (v < 0.05) return { cls: '', verdict: 'Marginal', why: `About ${v >= 0 ? '+' : '−'}${Math.abs(Math.round(v * 100))}c per $1 with the promo: too close to call.` + tail };
+    return { cls: 'good', verdict: 'Worth taking', why: `About ${Math.round(v * 100)}c per $1 in your favour with the promo, if the chances are right.` + tail };
+  });
+  card.append(head, el('div', 'tear'), list, el('div', 'tear'), check);
+  return card;
+}
+function renderPromo() {
+  const saved = store.get('punt-lab-promo'); if (saved) { try { P = { ...P, ...JSON.parse(saved) }; } catch (e) {} }
+  if (!PROMOS[P.type]) P.type = 'sgm1';
+  const seg = (id, options, get, set) => {
+    const box = document.getElementById(id);
+    const draw = () => box.replaceChildren(...options.map(([k, label]) => { const b = el('button', null, label); b.type = 'button'; b.setAttribute('aria-pressed', get() === k); b.addEventListener('click', () => { set(k); sync(); }); return b; }));
+    return draw;
+  };
+  const drawType = seg('promo-type', Object.entries(PROMOS).map(([k, v]) => [k, v.label]), () => P.type, (k) => { P.type = k; P.scope = PROMOS[k].scope; P.legs = PROMOS[k].legs; P.boost = PROMOS[k].boost; });
+  const drawScope = seg('promo-scope', [['same', 'One game'], ['any', 'Any games']], () => P.scope, (k) => { P.scope = k; });
+  const num = (id, key, lo, hi) => { const i = document.getElementById(id); i.addEventListener('input', () => { const v = parseFloat(i.value); if (!isNaN(v)) { P[key] = Math.min(hi, Math.max(lo, v)); sync(true); } }); return i; };
+  const inputs = { minLeg: num('promo-minleg', 'minLeg', 1, 10), minMulti: num('promo-minmulti', 'minMulti', 1, 500), boost: num('promo-boost', 'boost', 0, 300), worth: num('promo-worth', 'worth', 0, 100) };
+  const app = document.getElementById('promo-app'); app.addEventListener('change', () => { P.app = app.value; sync(); });
+  document.getElementById('legs-less').addEventListener('click', () => { P.legs = Math.max(2, P.legs - 1); sync(); });
+  document.getElementById('legs-more').addEventListener('click', () => { P.legs = Math.min(8, P.legs + 1); sync(); });
+  function sync(typing) {
+    store.set('punt-lab-promo', JSON.stringify(P));
+    drawType(); drawScope();
+    text('promo-type-hint', PROMOS[P.type].hint);
+    text('promo-legs', String(P.legs)); app.value = P.app;
+    if (!typing) { inputs.minLeg.value = P.minLeg.toFixed(2); inputs.minMulti.value = P.minMulti.toFixed(2); inputs.boost.value = P.boost; inputs.worth.value = P.worth; }
+    const refund = PROMOS[P.type].refund !== 'none';
+    document.getElementById('worth-field').hidden = !refund; document.getElementById('worth-hint').hidden = !refund;
+    const box = document.getElementById('promo-results');
+    const { results, games, legs } = searchPromo();
+    if (results.length) { box.replaceChildren(...results.map(promoSlip)); return; }
+    box.replaceChildren(el('p', 'empty', !games ? 'No games left to tip today, or no legs loaded yet. The builder fills up after the morning run.'
+      : `Nothing qualifies from the ${legs} legs in ${games} game${games === 1 ? '' : 's'} still to tip. Try fewer legs, a lower price per leg, or legs from any games.`));
+  }
+  sync();
+}
+
+// ---------- record ----------
 function trackRecord(results, multiResults) {
   const graded = results.filter((r) => r.landed === true || r.landed === false);
   document.getElementById('track-empty').hidden = graded.length > 0;
+  document.getElementById('record-legs').hidden = !graded.length;
   const tb = document.querySelector('#calibration tbody'); tb.replaceChildren();
-  const bands = [[0, 0.7, 'Under 70%'], [0.7, 0.8, '70–80%'], [0.8, 1.01, '80%+'], [0, 1.01, 'All legs']];
-  if (graded.length) for (const [lo, hi, band] of bands) {
-    const g = graded.filter((r) => r.model_prob >= lo && r.model_prob < hi);
-    if (!g.length) continue;
-    const pred = g.reduce((a, r) => a + r.model_prob, 0) / g.length;
-    const act = g.filter((r) => r.landed).length / g.length;
-    const tr = tb.insertRow();
-    cell(tr, band, band === 'All legs' ? 'strong' : '');
-    cell(tr, g.length, 'num'); cell(tr, pct(pred), 'num muted');
-    cell(tr, pct(act), 'num ' + (act >= pred - 0.05 ? 'good' : 'bad'));
+  const row = (tbody, label, g) => {
+    const pred = g.reduce((a, r) => a + r.model_prob, 0) / g.length, act = g.filter((r) => r.landed).length / g.length;
+    const tr = tbody.insertRow(); cell(tr, label); cell(tr, g.length, 'num'); cell(tr, pct(pred), 'num muted');
+    cell(tr, pct(act), 'num ' + (g.length < 30 ? 'muted' : act >= pred - 0.05 ? 'good' : 'bad'));
+  };
+  for (const [lo, hi, band] of [[0, 0.7, 'Under 70%'], [0.7, 0.8, '70 to 80%'], [0.8, 1.01, '80%+'], [0, 1.01, 'All legs']]) {
+    const g = graded.filter((r) => r.model_prob >= lo && r.model_prob < hi); if (g.length) row(tb, band, g);
   }
-  // by leg type: where the model is over- or under-confident
   const sb = document.querySelector('#stat-record tbody'); sb.replaceChildren();
   const statOf = (r) => r.stat || ['points', 'rebounds', 'assists', 'threes'].find((k) => (r.market || '').includes(k)) || 'win';
-  const statNames = { points: 'Points', rebounds: 'Rebounds', assists: 'Assists', threes: 'Threes', win: 'Team to win' };
-  for (const k of Object.keys(statNames)) {
-    const g = graded.filter((r) => statOf(r) === k);
-    if (!g.length) continue;
-    const pred = g.reduce((a, r) => a + r.model_prob, 0) / g.length;
-    const act = g.filter((r) => r.landed).length / g.length;
-    const tr = sb.insertRow();
-    cell(tr, statNames[k]); cell(tr, g.length, 'num'); cell(tr, pct(pred), 'num muted');
-    cell(tr, pct(act) + (g.length < 30 ? ' (few legs)' : ''), 'num ' + (g.length < 30 ? 'muted' : act >= pred - 0.05 ? 'good' : 'bad'));
+  for (const [k, label] of [['points', 'Points'], ['rebounds', 'Rebounds'], ['assists', 'Assists'], ['threes', 'Threes'], ['win', 'Team to win']]) {
+    const g = graded.filter((r) => statOf(r) === k); if (g.length) row(sb, label + (g.length < 30 ? ' (few)' : ''), g);
   }
-  document.getElementById('stat-record').hidden = !sb.rows.length;
   const done = multiResults.filter((r) => r.landed === true || r.landed === false);
-  const recordRow = (tb, label, g) => {
-    const tr = tb.insertRow();
-    const landed = g.filter((r) => r.landed).length;
-    cell(tr, label, 'nowrap'); cell(tr, g.length, 'num'); cell(tr, landed, 'num');
+  const recordRow = (tbody, label, g) => {
+    const tr = tbody.insertRow(), landed = g.filter((r) => r.landed).length;
+    cell(tr, label); cell(tr, landed + ' of ' + g.length, 'num');
     cell(tr, pct(g.reduce((a, r) => a + r.est_hit, 0) / g.length), 'num muted');
-    cell(tr, pct(landed / g.length), 'num');
     const priced = g.filter((r) => r.price);
-    if (priced.length) {
-      const profit = priced.reduce((a, r) => a + (r.landed ? r.price - 1 : -1), 0);
-      cell(tr, (profit < 0 ? '−$' : '+$') + Math.abs(profit).toFixed(2) + (priced.length < g.length ? ' *' : ''), 'num ' + (profit >= 0 ? 'good' : 'bad'));
-    } else cell(tr, '–', 'num muted');
+    if (priced.length) { const profit = priced.reduce((a, r) => a + (r.landed ? r.price - 1 : -1), 0);
+      cell(tr, (profit < 0 ? '−$' : '+$') + Math.abs(profit).toFixed(2) + (priced.length < g.length ? ' *' : ''), 'num ' + (profit >= 0 ? 'good' : 'bad')); }
+    else cell(tr, '–', 'num muted');
   };
-  // by rating: do the multis rated value actually do better than the ones rated skip?
   const rb = document.querySelector('#rating-record tbody'); rb.replaceChildren();
-  for (const [k, label] of [['value', 'Value'], ['marginal', 'Marginal'], ['skip', 'Skip'], ['check', 'No app price']]) {
-    const g = done.filter((r) => r.verdict === k);
-    if (g.length) recordRow(rb, label, g);
-  }
-  document.getElementById('rating-record').hidden = !rb.rows.length;
+  for (const [k, label] of [['value', 'Value'], ['marginal', 'Marginal'], ['skip', 'Skip'], ['check', 'No app price']]) { const g = done.filter((r) => r.verdict === k); if (g.length) recordRow(rb, label, g); }
+  document.getElementById('record-rating').hidden = !rb.rows.length;
   const mb = document.querySelector('#multi-record tbody'); mb.replaceChildren();
-  const byMulti = new Map();
-  for (const r of done) {
-    if (!byMulti.has(r.multi)) byMulti.set(r.multi, []);
-    byMulti.get(r.multi).push(r);
-  }
-  for (const [multi, g] of byMulti) recordRow(mb, multi, g);
+  const byMulti = new Map(); for (const r of done) { if (!byMulti.has(r.multi)) byMulti.set(r.multi, []); byMulti.get(r.multi).push(r); }
+  for (const [multi, g] of byMulti) recordRow(mb, (TITLES[multi] || [multi])[0], g);
+  document.getElementById('record-multi').hidden = !mb.rows.length;
 }
 
 const SETTING_NAMES = {
@@ -504,58 +740,42 @@ function honest(bt) {
   }
   document.getElementById('honest-settings').hidden = !tb.rows.length;
   const live = bt.live || {}, sm = live.summary || {};
-  const parts = Object.entries(sm).map(([stat, s]) => (live.curves || {})[stat]
-    ? `${stat}: correcting from ${s.legs} graded legs`
-    : `${stat}: ${s.legs} of ${live.min_legs} graded legs needed`);
-  text('honest-live', parts.length ? 'Live correction from your own graded legs, ' + parts.join(' · ') + '.' : 'Live correction starts once enough of the daily legs have been graded.');
+  const parts = Object.entries(sm).map(([stat, s]) => (live.curves || {})[stat] ? `${stat}: correcting from ${s.legs} graded legs` : `${stat}: ${s.legs} of ${live.min_legs} graded legs needed`);
+  text('honest-live', parts.length ? 'Live correction from your own graded legs, ' + parts.join('; ') + '.' : 'Live correction starts once enough of the daily legs have been graded.');
 }
 
+// ---------- tabs ----------
+const TABS = ['multis', 'promo', 'legs', 'record'];
+function setTab(tab, keepScroll) {
+  if (!TABS.includes(tab)) tab = 'multis';
+  for (const t of TABS) document.getElementById('view-' + t).hidden = t !== tab;
+  document.body.dataset.tab = tab;
+  for (const b of document.querySelectorAll('.tabs button')) { if (b.dataset.tab === tab) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current'); }
+  if (location.hash !== '#' + tab) history.replaceState(null, '', '#' + tab);
+  if (!keepScroll) window.scrollTo({ top: 0 });
+}
+for (const b of document.querySelectorAll('.tabs button')) b.addEventListener('click', () => setTab(b.dataset.tab));
+
 (async () => {
-  const [report, legs, multis, slate, results, multiResults, bt] = await Promise.all([
+  setTab(location.hash.slice(1), true);
+  const [report, legs, multis, slate, results, multiResults, bt, pool] = await Promise.all([
     load('report.json', {}), load('legs.json', []), load('multis.json', []), load('slate.json', []),
-    load('results.json', []), load('multi_results.json', []), load('backtest.json', null)]);
+    load('results.json', []), load('multi_results.json', []), load('backtest.json', null), load('pool.json', [])]);
+  for (const m of multis) if (!m.verdict) {   // slates built before ratings existed
+    const v = m.best_book_price && m.est_hit ? m.est_hit * m.best_book_price - 1 : null;
+    m.value = v; m.verdict = v == null ? 'check' : v >= 0.05 ? 'value' : v < -0.03 ? 'skip' : 'marginal';
+  }
+  D = { report, legs, multis, slate, pool };
+  const jump = renderMultis();
+  renderCall(jump);
+  renderGames();
+  renderPromo();
+  trackRecord(results, multiResults);
   honest(bt);
-  if (report.slate_date) text('slate-date', new Date(report.slate_date + 'T12:00:00').toLocaleDateString('en-AU', { weekday: 'short', day: 'numeric', month: 'short' }));
-  text('next-run', report.next_run || '');
-  text('headline', report.status || report.headline || 'No multis yet.');
   text('graded', report.graded || '');
   text('injuries', report.injuries || 'none listed');
   const src = report.sources || {};
-  text('sources', 'Data: ' + (src.stats || 'ESPN') + (src.odds ? ' · prices: ' + src.odds : '') + ' · injury notes read by ' + (src.injury_reading || 'rules') + (report.updated_at ? ' · updated ' + new Date(report.updated_at).toLocaleString('en-AU', { timeZone: 'Australia/Melbourne', hour: 'numeric', minute: '2-digit', day: 'numeric', month: 'short' }) : ''));
-
-  const byId = new Map(legs.map((l) => [l.leg_id, l]));
-  const box = document.getElementById('multis');
-  const sorted = [...multis].sort((a, b) => a.rank - b.rank);
-  ALL_MULTIS = sorted;
-  // value legs list replaced by the 'Bet on' app on each multi
-  const pickEl = document.getElementById('multi-pick');
-  try { const saved = localStorage.getItem('punt-lab-multi'); if (saved && [...pickEl.options].some((o) => o.value === saved)) pickEl.value = saved; } catch (e) {}
-  const showMultis = () => {
-    const v = pickEl.value;
-    const want = v === 'all' ? sorted : v === 'value' ? sorted.filter((m) => m.verdict === 'value') : v === '$2' ? sorted.filter((m) => m.multi.endsWith('$2+')) : v === '4leg' ? sorted.filter((m) => /^4-leg \$\d\+$/.test(m.multi)) : sorted.filter((m) => m.multi === v);
-    if (want.length) { box.replaceChildren(...want.map((m) => multiCard(m, byId))); return; }
-    const msg = document.createElement('p'); msg.className = 'empty';
-    const why = (report.headline || '').match(/Note: (.*)/);
-    msg.textContent = v === 'value' ? 'No multi is rated value today: none beats its break-even price by 5% in one app. Skipping is the right call on days like this.'
-      : 'No "' + pickEl.selectedOptions[0].text + '" today' + (why ? ' (' + why[1] + ')' : '') + '. It appears after the next run if the slate allows.';
-    box.replaceChildren(msg);
-  };
-  pickEl.addEventListener('change', () => { try { localStorage.setItem('punt-lab-multi', pickEl.value); } catch (e) {} showMultis(); });
-  showMultis();
-  legsTable(document.querySelector('#legs tbody'), legs, false);
-
-  const st = document.querySelector('#slate tbody');
-  for (const g of slate) {
-    const tr = st.insertRow();
-    cell(tr, g.game, 'strong c-player');
-    const s = tr.insertCell(); s.className = 'c-model';
-    const pill = document.createElement('span'); pill.className = 'pill' + (g.status === 'Analysed' ? ' good' : ''); pill.textContent = g.status; s.append(pill);
-    cell(tr, g.tip, 'muted', 'Tip'); cell(tr, g.favourite, '', 'Fav');
-    cell(tr, g.spread == null ? '' : (g.spread > 0 ? '+' : '') + g.spread.toFixed(1), 'num', 'Line');
-    cell(tr, g.total == null ? '' : g.total.toFixed(1), 'num', 'Total');
-    cell(tr, pct(g.fav_win_prob), 'num', 'Fav win');
-  }
-  trackRecord(results, multiResults);
+  text('sources', 'Data from ' + (src.stats || 'ESPN') + (src.odds ? '. Prices from ' + src.odds : '') + '. Injury notes read by ' + (src.injury_reading || 'rules') + (report.updated_at ? '. Updated ' + new Date(report.updated_at).toLocaleString('en-AU', { timeZone: 'Australia/Melbourne', hour: 'numeric', minute: '2-digit', day: 'numeric', month: 'short' }) : '') + '.');
 })();
 </script>
 </body>
