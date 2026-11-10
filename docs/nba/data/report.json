@@ -3,7 +3,7 @@
  "headline": "3-leg $2+: CJ McCollum 10+ points; Dillon Brooks 10+ points; Stephen Curry 3+ threes — about 48% to land, est. price $2.18, worth it at $2.10+. Note: no 3-leg value multi pays $2, so it's left out.",
  "injuries": "Asa Newell (Out), Keshon Gilbert (Out), Mouhamed Gueye (Out), Henri Veesaar (Out), Moussa Diabate (Out), Grant Williams (Out), Kon Knueppel (Out), Dennis Schroder (Out), Brandon Miller (Out), Sam Merrill (Out), Jaylon Tyson (Out), Morez Johnson Jr. (Out) and others",
  "graded": "",
- "next_run": "Late check 10:43am — LAL @ ATL, CLE @ CHA, WSH @ DET, MEM @ TOR: no new outs; 1 new leg worth a look",
+ "next_run": "Late check 12:02pm — DEN @ HOU, SA @ PHX: no new outs",
  "sources": {
   "stats": "ESPN",
   "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API",
@@ -75,11 +75,14 @@
  },
  "late_checked": [
   "CLE @ CHA",
+  "DEN @ HOU",
   "LAL @ ATL",
   "MEM @ TOR",
+  "SA @ PHX",
   "WSH @ DET"
  ],
  "late_log": [
-  "10:43am LAL @ ATL, CLE @ CHA, WSH @ DET, MEM @ TOR: no new outs; 1 new leg worth a look"
+  "10:43am LAL @ ATL, CLE @ CHA, WSH @ DET, MEM @ TOR: no new outs; 1 new leg worth a look",
+  "12:02pm DEN @ HOU, SA @ PHX: no new outs"
  ]
 }
