@@ -154,6 +154,14 @@ def box_score(event_id: str) -> dict:
     return out
 
 
+def starters(event_id: str, teams: tuple[str, str]) -> dict[str, set[str]]:
+    """{team_abbr: {athlete ids}} once both teams' starting fives are posted for a game, else {}.
+    ESPN flags starters in the same feed as the box score; before line-ups are in, nobody is flagged."""
+    box = box_score(event_id)
+    out = {t: {r["id"] for r in box.get(t, []) if r["starter"]} for t in teams}
+    return out if all(len(ids) == 5 for ids in out.values()) else {}
+
+
 def _minutes(v):
     if v is None:
         return None

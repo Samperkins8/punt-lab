@@ -11,6 +11,10 @@ bet them); instead:
   get updated chances, and any that now look like value are added to the legs list;
 - prices are refreshed from OddsPapi only when someone's status in that game changed since
   the morning (2 requests, at most twice a day), so the free plan still covers it.
+
+Starting line-ups come out about 30 minutes before a tip, after that check, so each game also
+gets a line-up check in its last 35 minutes: a usual starter who isn't in the starting five is
+marked on his legs, and any multi using him gets a warning.
 """
 from __future__ import annotations
 
@@ -28,6 +32,54 @@ MAX_REFRESHES = 2                       # OddsPapi price refreshes per day
 REFRESH_BOOKS = ("neds.com.au",)
 MAX_NEW_LEGS = 8                        # new legs added per check (value or 80%+)
 BAD = ("out", "doubtful")
+LINEUP_WINDOW = timedelta(minutes=35)   # line-ups are due 30 minutes before the tip
+
+
+def check_lineups(report: dict, games: list[dict], now: datetime) -> bool:
+    """Mark legs whose usual starter isn't in tonight's starting five. Each game is done once, when its
+    line-ups are posted. Changes `report` in place; returns True if anything was written."""
+    done = set(report.get("lineup_checked", []))
+    due = [g for g in games if g.get("state") in (None, "pre") and f"{g['away']} @ {g['home']}" not in done
+           and timedelta(0) < g["start"] - now <= LINEUP_WINDOW]
+    if not due:
+        return False
+    legs = load_json("legs.json", [])
+    multis = load_json("multis.json", [])
+    stamp = now.strftime("%-I:%M%p").lower()
+    posted, benched = [], []
+    for g in due:
+        label = f"{g['away']} @ {g['home']}"
+        five = espn.starters(g["event_id"], (g["home"], g["away"]))
+        if not five:
+            continue   # not posted yet: the next run tries again
+        posted.append(label)
+        for i, l in enumerate(legs):
+            if l["game"] != label or l.get("stat") == "win" or l.get("late_out") or not l.get("usual_starter"):
+                continue
+            if str(l.get("athlete_id")) not in five.get(l.get("team"), set()):
+                legs[i] = {**l, "late_bench": True, "lineup_checked": stamp,
+                           "note": "; ".join(x for x in (l.get("note"), "not in tonight's starting five") if x)}
+                if l["player"] not in benched:
+                    benched.append(l["player"])
+    if not posted:
+        log.info("Line-ups not posted yet for %s.", ", ".join(f"{g['away']} @ {g['home']}" for g in due))
+        return False
+    bench_ids = {l["leg_id"]: l["player"] for l in legs if l.get("late_bench") and l.get("lineup_checked") == stamp}
+    for m in multis:
+        names = list(dict.fromkeys(bench_ids[i] for i in m["leg_ids"] if i in bench_ids))
+        if names:
+            msg = (f"{' and '.join(names)} {'is' if len(names) == 1 else 'are'} not in the starting five, "
+                   "so expect fewer minutes than the prediction assumed.")
+            m["late_warning"] = " ".join(x for x in (m.get("late_warning"), msg) if x)
+    summary = ", ".join(posted) + " line-ups: " + (", ".join(benched) + " not starting" if benched else "usual starters all in")
+    report["lineup_checked"] = sorted(done | set(posted))
+    report["late_log"] = (report.get("late_log") or []) + [f"{stamp} {summary}"]
+    report["next_run"] = f"Line-up check {stamp} — {summary}"
+    save_json("legs.json", legs)
+    save_json("multis.json", multis)
+    save_json("report.json", report)
+    log.info("Line-up check: %s", summary)
+    return True
 
 
 def restore_prices(legs: list[dict]) -> dict:
@@ -82,12 +134,13 @@ def run(slate, now: datetime) -> bool:
         log.info("No slate built for %s; nothing to check.", slate)
         return False
     games = espn.slate_games(slate)
+    lineups = check_lineups(report, games, now)
     checked = set(report.get("late_checked", []))
     due = [g for g in games if g.get("state") in (None, "pre") and f"{g['away']} @ {g['home']}" not in checked
            and WINDOW[0] <= g["start"] - now <= WINDOW[1]]
     if not due:
         log.info("No game tips in the next 15-75 minutes that hasn't been checked.")
-        return False
+        return lineups
     labels = [f"{g['away']} @ {g['home']}" for g in due]
     started = {f"{g['away']} @ {g['home']}" for g in games if g.get("state") not in (None, "pre")}
     legs = load_json("legs.json", [])
@@ -131,6 +184,8 @@ def run(slate, now: datetime) -> bool:
             new = fresh_rows.pop(l["leg_id"])
             legs[i] = {**new, "late_checked": stamp,
                        "late_was": l["model_prob"] if abs(new["model_prob"] - l["model_prob"]) >= 0.03 else None}
+            if l.get("late_bench"):  # keep what the line-up check found
+                legs[i].update(late_bench=True, lineup_checked=l.get("lineup_checked"), note=l.get("note"))
         else:
             legs[i] = {**l, "late_checked": stamp}
     # teammates who now look good: value at the best price, or 80%+

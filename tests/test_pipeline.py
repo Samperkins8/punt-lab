@@ -114,3 +114,58 @@ def test_underdog_scorers_are_marked_down(monkeypatch, tmp_path):
     assert lower and all(v < means(close, "POR")[k] for k, v in lower)
     higher = [(k, v) for k, v in means(wide, "LAL").items() if k in means(close, "LAL") and k[1] != "rebounds"]
     assert higher and all(v >= means(close, "LAL")[k] for k, v in higher)   # the favourite's scorers aren't cut
+
+
+def test_lineup_check_flags_a_usual_starter_on_the_bench(monkeypatch, tmp_path):
+    from punt_lab.nba import late
+    fake_world(monkeypatch, tmp_path)
+    monkeypatch.setattr("sys.argv", ["build", "--date", "2026-11-07"])
+    build.main()
+    legs = json.loads((tmp_path / "legs.json").read_text())
+    multis = json.loads((tmp_path / "multis.json").read_text())
+    target = next(l for l in legs if l["stat"] != "win" and l["usual_starter"] and any(l["leg_id"] in m["leg_ids"] for m in multis))
+    game = next(g for g in espn.slate_games(None) if f"{g['away']} @ {g['home']}" == target["game"])
+    ids = {t: [str(l["athlete_id"]) for l in legs if l.get("team") == t and l["stat"] != "win"] for t in (game["home"], game["away"])}
+
+    def five(team, drop=None):
+        keep = [i for i in dict.fromkeys(ids[team]) if i != drop][:5]
+        return set(keep + [f"{team}-filler{k}" for k in range(5 - len(keep))])
+
+    now = game["start"] - timedelta(minutes=20)
+    # line-ups not posted yet: nothing happens, and the game is tried again next run
+    monkeypatch.setattr(espn, "starters", lambda ev, teams: {})
+    assert not late.check_lineups(json.loads((tmp_path / "report.json").read_text()), [game], now)
+    # posted, with the target on the bench
+    posted = {t: five(t, drop=str(target["athlete_id"])) for t in ids}
+    monkeypatch.setattr(espn, "starters", lambda ev, teams: posted if ev == game["event_id"] else {})
+    report = json.loads((tmp_path / "report.json").read_text())
+    assert late.check_lineups(report, [game], now)
+    after = {l["leg_id"]: l for l in json.loads((tmp_path / "legs.json").read_text())}
+    assert after[target["leg_id"]]["late_bench"] and "starting five" in after[target["leg_id"]]["note"]
+    started = [l for l in after.values() if l["game"] == target["game"] and str(l.get("athlete_id")) in posted.get(l.get("team"), ())]
+    assert started and not any(l.get("late_bench") for l in started)
+    hit = [m for m in json.loads((tmp_path / "multis.json").read_text()) if target["leg_id"] in m["leg_ids"]]
+    assert hit and all(target["player"] in m["late_warning"] for m in hit)
+    assert target["game"] in report["lineup_checked"]
+    assert not late.check_lineups(report, [game], now)     # once per game
+    assert not late.check_lineups({}, [game], game["start"] - timedelta(minutes=50))   # too early
+
+
+def test_role_change_and_starters():
+    starter, bench = [True] * 8, [False] * 8
+    note, mins = build.role_change(starter + [False, False], [34] * 8 + [22, 20])
+    assert "off the bench" in note and mins == 21
+    note, mins = build.role_change(bench + [True, True], [18] * 8 + [30, 32])
+    assert "started" in note and mins == 31
+    assert build.role_change(starter + [True, False], [34] * 10) is None     # one game isn't a change
+    assert build.role_change([True, False, False], [30, 20, 20]) is None     # too few games to know his usual role
+    row = lambda i, s: {"athlete": {"id": str(i), "displayName": f"P{i}"}, "starter": s, "stats": []}
+    block = lambda abbr, n: {"team": {"abbreviation": abbr}, "statistics": [{"labels": ["MIN", "PTS"], "athletes": [row(f"{abbr}{i}", i < n) for i in range(8)]}]}
+    monkeypatch_get = espn.get
+    try:
+        espn.get = lambda url, params=None: {"boxscore": {"players": [block("LAL", 5), block("POR", 5)]}}
+        assert espn.starters("e", ("LAL", "POR")) == {"LAL": {f"LAL{i}" for i in range(5)}, "POR": {f"POR{i}" for i in range(5)}}
+        espn.get = lambda url, params=None: {"boxscore": {"players": [block("LAL", 5), block("POR", 0)]}}
+        assert espn.starters("e", ("LAL", "POR")) == {}      # one team's five isn't in yet
+    finally:
+        espn.get = monkeypatch_get

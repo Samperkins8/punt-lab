@@ -32,6 +32,9 @@ WIN_MARGIN = 0.95   # head-to-head prices carry a smaller bookie margin than pla
 WIN_SD = 12.0       # points: spread -> win chance
 STEP_UP_LOW = 0.40  # a player's next line up is kept if at least this likely ($2+ multis only use those 55%+; see pick.py)
 VENUE_GAMES = 8     # home/away split is halfway with this many matching games
+STARTER_RATE = 0.6  # a player who started at least this share of his games is a usual starter
+ROLE_GAMES = 2      # his role has changed if his last this-many games all went the other way
+ROLE_MIN_GAMES = 5  # ...and he has at least this many games to judge his usual role from
 PACE_WEIGHT = {"points": 0.5, "assists": 0.5, "threes": 0.5, "rebounds": 0.3}
 B2B_HOURS = 30      # a game within this many hours of the last one is a back-to-back
 ALL_TEAMS = {"ATL", "BOS", "BKN", "CHA", "CHI", "CLE", "DAL", "DEN", "DET", "GS", "HOU", "IND", "LAC", "LAL",
@@ -149,6 +152,23 @@ def player_logs(team_id: str, team_abbr: str) -> tuple[list[str], dict[str, dict
             if not row["dnp"]:
                 p["games"][ev] = row
     return events, players, meta
+
+
+def role_change(starts: list[bool], minutes: list[float]) -> tuple[str, float] | None:
+    """A usual starter who came off the bench in his last couple of games (or a bench player who started
+    them) plays his new role's minutes tonight, not his season average. Returns (note, minutes) or None."""
+    if len(starts) < ROLE_MIN_GAMES or len(minutes) != len(starts):
+        return None
+    recent, recent_min = starts[-ROLE_GAMES:], [m for m in minutes[-ROLE_GAMES:] if m]
+    earlier = starts[:-ROLE_GAMES]
+    if not recent_min or not earlier:
+        return None
+    rate = sum(earlier) / len(earlier)
+    if rate >= STARTER_RATE and not any(recent):
+        return f"came off the bench in his last {ROLE_GAMES} games", mean(recent_min)
+    if rate <= 1 - STARTER_RATE and all(recent):
+        return f"started his last {ROLE_GAMES} games", mean(recent_min)
+    return None
 
 
 def last_team(prior: dict) -> str | None:
@@ -291,6 +311,11 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
 
                 # minutes tonight
                 proj_min = avg_min[pid]
+                starts = [bool(p["games"][ev].get("starter")) for ev in played_events]
+                role = role_change(starts, [p["games"][ev]["min"] or 0 for ev in played_events])
+                if role and name.lower() not in ov.minutes:
+                    proj_min = role[1]
+                    note_bits.append(role[0])
                 a = ai_inj.get(name.lower()) or {}
                 if name.lower() in ov.minutes:
                     proj_min = ov.minutes[name.lower()]
@@ -380,6 +405,7 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
                                    "books": odds.allowed(prices["books"].get((name.lower(), stat, line))),
                                    "at_home": at_home, "venue_games": len(venue_vals), "b2b": b2b,
                                    "underdog": underdog, "spread": spread, "line_shift": line_shift,
+                                   "usual_starter": sum(starts) >= STARTER_RATE * len(starts),
                                    "context_detail": best_ctx[3] if best_ctx else None},
                         )
                         res = evaluate(leg)
@@ -509,6 +535,7 @@ def leg_row(leg: Leg, res) -> dict:
         "why": explain(leg, res),
         "venue_shift": leg.venue_shift, "pace_factor": leg.pace_factor, "side_factor": leg.side_factor,
         "underdog": leg.extra.get("underdog", False), "roster_overlap": leg.roster_overlap,
+        "usual_starter": leg.extra.get("usual_starter"),
         "back_to_back": leg.extra.get("b2b", False),
         "leg_id": leg.leg_id, "player": leg.player, "team": leg.team, "game": leg.game,
         "market": leg.market, "stat": leg.stat, "line": leg.line,
@@ -707,7 +734,7 @@ def main() -> None:
     }
     if args.mode == "pretip":  # keep what the late checks have done so far today
         prev = load_json("report.json", {})
-        for k in ("late_checked", "late_refreshes", "late_log"):
+        for k in ("late_checked", "late_refreshes", "late_log", "lineup_checked"):
             if prev.get(k):
                 report[k] = prev[k]
     if args.mode == "daily":
