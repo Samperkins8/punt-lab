@@ -9,7 +9,7 @@
    "vj_edgecombe_rebounds4"
   ],
   "legs_text": "Domantas Sabonis 10+ points; Jaime Jaquez Jr. 10+ points; OG Anunoby 4+ rebounds; VJ Edgecombe 4+ rebounds",
-  "est_hit": 0.3826,
+  "est_hit": 0.3825,
   "break_even": 2.61,
   "priced_legs": "4 of 4",
   "known_price": 2.31,
@@ -21,7 +21,7 @@
   "best_book": "neds",
   "best_book_price": 2.31,
   "verdict": "skip",
-  "value": -0.1162
+  "value": -0.1164
  },
  {
   "multi": "3-leg $2+",
@@ -32,7 +32,7 @@
    "klay_thompson_points10"
   ],
   "legs_text": "Domantas Sabonis 10+ points; Jaime Jaquez Jr. 10+ points; Klay Thompson 10+ points",
-  "est_hit": 0.4758,
+  "est_hit": 0.4756,
   "break_even": 2.1,
   "priced_legs": "3 of 3",
   "known_price": 2.05,
@@ -44,7 +44,7 @@
   "best_book": "neds",
   "best_book_price": 2.02,
   "verdict": "skip",
-  "value": -0.0389
+  "value": -0.0393
  },
  {
   "multi": "2-leg $2+",
@@ -54,8 +54,8 @@
    "jalen_brunson_points25"
   ],
   "legs_text": "Jaime Jaquez Jr. 10+ points; Jalen Brunson 25+ points",
-  "est_hit": 0.469,
-  "break_even": 2.13,
+  "est_hit": 0.4682,
+  "break_even": 2.14,
   "priced_legs": "2 of 2",
   "known_price": 2.09,
   "fair_multi": 2.52,
@@ -66,7 +66,7 @@
   "best_book": "neds",
   "best_book_price": 2.09,
   "verdict": "marginal",
-  "value": -0.0198
+  "value": -0.0215
  },
  {
   "multi": "4-leg $3+",
@@ -102,11 +102,11 @@
    "domantas_sabonis_points15"
   ],
   "legs_text": "Jaime Jaquez Jr. 10+ points; OG Anunoby 4+ rebounds; Zach LaVine 15+ points; Domantas Sabonis 15+ points",
-  "est_hit": 0.2648,
+  "est_hit": 0.2647,
   "break_even": 3.78,
   "priced_legs": "4 of 4",
   "known_price": 3.89,
-  "fair_multi": 5.22,
+  "fair_multi": 5.21,
   "est_price": 4.03,
   "book_prices": {
    "neds": 4.03
@@ -114,7 +114,7 @@
   "best_book": "neds",
   "best_book_price": 4.03,
   "verdict": "value",
-  "value": 0.0671
+  "value": 0.0667
  },
  {
   "multi": "Best value",
@@ -150,7 +150,7 @@
    "vj_edgecombe_rebounds4"
   ],
   "legs_text": "Domantas Sabonis 10+ points; Jaime Jaquez Jr. 10+ points; OG Anunoby 4+ rebounds; VJ Edgecombe 4+ rebounds",
-  "est_hit": 0.3826,
+  "est_hit": 0.3825,
   "break_even": 2.61,
   "priced_legs": "4 of 4",
   "known_price": 2.31,
@@ -162,7 +162,7 @@
   "best_book": "neds",
   "best_book_price": 2.31,
   "verdict": "skip",
-  "value": -0.1162
+  "value": -0.1164
  },
  {
   "multi": "3-leg value",
@@ -199,8 +199,8 @@
    "rui_hachimura_rebounds4"
   ],
   "legs_text": "Domantas Sabonis 10+ points; Jaime Jaquez Jr. 10+ points; VJ Edgecombe 4+ rebounds; Klay Thompson 10+ points; Jrue Holiday 10+ points; Rui Hachimura 4+ rebounds",
-  "est_hit": 0.2035,
-  "break_even": 4.91,
+  "est_hit": 0.2034,
+  "break_even": 4.92,
   "priced_legs": "6 of 6",
   "known_price": 4.31,
   "fair_multi": 5.81,
@@ -211,7 +211,7 @@
   "best_book": "neds",
   "best_book_price": 4.21,
   "verdict": "skip",
-  "value": -0.1433
+  "value": -0.1437
  },
  {
   "multi": "Mid-range $8+",
@@ -225,11 +225,11 @@
    "domantas_sabonis_points15"
   ],
   "legs_text": "Jaime Jaquez Jr. 10+ points; Derrick White 10+ points; VJ Edgecombe 10+ points; Jrue Holiday 10+ points; Paul George 4+ rebounds; Domantas Sabonis 15+ points",
-  "est_hit": 0.1454,
+  "est_hit": 0.1453,
   "break_even": 6.88,
   "priced_legs": "6 of 6",
   "known_price": 7.89,
-  "fair_multi": 10.86,
+  "fair_multi": 10.85,
   "est_price": 8.05,
   "book_prices": {
    "neds": 8.05
@@ -237,7 +237,7 @@
   "best_book": "neds",
   "best_book_price": 8.05,
   "verdict": "value",
-  "value": 0.1705
+  "value": 0.1697
  },
  {
   "multi": "Long shot $50",
@@ -254,11 +254,11 @@
    "klay_thompson_points15"
   ],
   "legs_text": "Tyrese Maxey 4+ assists; Derrick White 10+ points; Myles Turner 4+ rebounds; VJ Edgecombe 10+ points; Jrue Holiday 10+ points; Jalen Brunson 25+ points; Domantas Sabonis 15+ points; Jaime Jaquez Jr. 15+ points; Klay Thompson 15+ points",
-  "est_hit": 0.0248,
-  "break_even": 40.35,
+  "est_hit": 0.0247,
+  "break_even": 40.47,
   "priced_legs": "9 of 9",
   "known_price": 46.5,
-  "fair_multi": 93.11,
+  "fair_multi": 93.1,
   "est_price": 50.96,
   "book_prices": {
    "neds": 50.96
@@ -266,6 +266,6 @@
   "best_book": "neds",
   "best_book_price": 50.96,
   "verdict": "value",
-  "value": 0.2638
+  "value": 0.2587
  }
 ]

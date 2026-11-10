@@ -1,15 +1,15 @@
 {
  "slate_date": "2026-11-11",
- "headline": "Value today: 4-leg $3+ on Neds $3.07 (needs $2.91); Best value on Neds $3.07 (needs $2.91); 4-leg $4+ on Neds $4.03 (needs $3.78). Note: only 4 legs are 80%+ likely at $1.15+, not enough for a long multi; 3-leg value includes legs without a confirmed worth-it price.",
- "injuries": "Yanic Konan Niederhauser (Out), Brandon Ingram (Out), Bradley Beal (Out), Jordan Miller (Out), Jaylin Williams (Out), Thomas Sorber (Out), Cason Wallace (Out), Chet Holmgren (Out), Jalen Williams (Out), Jalen Suggs (Out), Jonathan Isaac (Out), Paolo Banchero (Out) and others",
- "graded": "Yesterday: 24 of 37 legs landed; 4-leg $2+ missed, 3-leg $2+ missed, 4-leg $3+ missed, 4-leg $4+ missed, Best value missed, Safest missed, One per game missed, Mid-range $8+ missed, Long multi 8+ missed, Long shot $50 missed.",
- "next_run": "Built 8:23am; re-checked before the first tip",
+ "headline": "Value today: 4-leg $3+ on Neds $3.07 (needs $2.91); 4-leg $4+ on Neds $4.03 (needs $3.78); Mid-range $8+ on Neds $8.05 (needs $6.88). Note: only 4 legs are 80%+ likely at $1.15+, not enough for a long multi; 3-leg value includes legs without a confirmed worth-it price.",
+ "injuries": "Yanic Konan Niederhauser (Out), Brandon Ingram (Out), Bradley Beal (Out), Jordan Miller (Out), Josh Hart (Out), Jaylin Williams (Out), Thomas Sorber (Out), Cason Wallace (Out), Chet Holmgren (Out), Jalen Williams (Out), Jalen Suggs (Out), Jonathan Isaac (Out) and others",
+ "graded": "",
+ "next_run": "Re-checked 10:13am: no changes",
  "sources": {
   "stats": "ESPN",
-  "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API (4 games, 310 credits left)",
+  "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API",
   "injury_reading": "Claude"
  },
- "updated_at": "2026-11-11T08:23:36.265381+11:00",
+ "updated_at": "2026-11-11T10:13:18.328483+11:00",
  "inj_snapshot": {
   "yanic konan niederhauser": "Out",
   "brandon ingram": "Out",
@@ -19,7 +19,7 @@
   "giannis antetokounmpo": "Day-To-Day",
   "kel'el ware": "Day-To-Day",
   "tyler herro": "Day-To-Day",
-  "josh hart": "Day-To-Day",
+  "josh hart": "Out",
   "jaylin williams": "Out",
   "thomas sorber": "Out",
   "cason wallace": "Out",
