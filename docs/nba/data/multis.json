@@ -3,280 +3,334 @@
   "multi": "4-leg $2+",
   "rank": 1,
   "leg_ids": [
-   "domantas_sabonis_points10",
-   "jaime_jaquez_jr_points10",
-   "og_anunoby_rebounds4",
-   "vj_edgecombe_rebounds4"
+   "luka_doncic_threes1",
+   "michael_porter_jr_threes1",
+   "matisse_thybulle_threes1",
+   "josh_hart_threes1"
   ],
-  "legs_text": "Domantas Sabonis 10+ points; Jaime Jaquez Jr. 10+ points; OG Anunoby 4+ rebounds; VJ Edgecombe 4+ rebounds",
-  "est_hit": 0.3825,
-  "break_even": 2.61,
-  "priced_legs": "4 of 4",
-  "known_price": 2.31,
-  "fair_multi": 2.93,
-  "est_price": 2.31,
-  "book_prices": {
-   "neds": 2.31
-  },
-  "best_book": "neds",
-  "best_book_price": 2.31,
-  "verdict": "skip",
-  "value": -0.1164,
-  "landed": false
+  "legs_text": "Luka Doncic 1+ threes; Michael Porter Jr. 1+ threes; Matisse Thybulle 1+ threes; Josh Hart 1+ threes",
+  "est_hit": 0.5878,
+  "break_even": 1.7,
+  "priced_legs": "2 of 4",
+  "known_price": 1.54,
+  "fair_multi": null,
+  "est_price": 2.1,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null,
+  "verdict": "check",
+  "value": null
  },
  {
   "multi": "3-leg $2+",
   "rank": 2,
   "leg_ids": [
-   "domantas_sabonis_points10",
-   "jaime_jaquez_jr_points10",
-   "klay_thompson_points10"
+   "matisse_thybulle_threes1",
+   "josh_hart_threes1",
+   "evan_mobley_threes1"
   ],
-  "legs_text": "Domantas Sabonis 10+ points; Jaime Jaquez Jr. 10+ points; Klay Thompson 10+ points",
-  "est_hit": 0.4756,
-  "break_even": 2.1,
+  "legs_text": "Matisse Thybulle 1+ threes; Josh Hart 1+ threes; Evan Mobley 1+ threes",
+  "est_hit": 0.6113,
+  "break_even": 1.64,
   "priced_legs": "3 of 3",
   "known_price": 2.05,
-  "fair_multi": 2.67,
-  "est_price": 2.02,
+  "fair_multi": null,
+  "est_price": 2.05,
   "book_prices": {
-   "neds": 2.02
+   "neds": 2.05
   },
   "best_book": "neds",
-  "best_book_price": 2.02,
-  "verdict": "skip",
-  "value": -0.0393,
-  "landed": false
+  "best_book_price": 2.05,
+  "verdict": "value",
+  "value": 0.2532
  },
  {
   "multi": "2-leg $2+",
   "rank": 3,
   "leg_ids": [
-   "jaime_jaquez_jr_points10",
-   "jalen_brunson_points25"
+   "evan_mobley_threes1",
+   "peyton_watson_assists2"
   ],
-  "legs_text": "Jaime Jaquez Jr. 10+ points; Jalen Brunson 25+ points",
-  "est_hit": 0.4682,
-  "break_even": 2.14,
+  "legs_text": "Evan Mobley 1+ threes; Peyton Watson 2+ assists",
+  "est_hit": 0.6151,
+  "break_even": 1.63,
   "priced_legs": "2 of 2",
-  "known_price": 2.09,
-  "fair_multi": 2.52,
-  "est_price": 2.09,
+  "known_price": 2.13,
+  "fair_multi": null,
+  "est_price": 2.13,
   "book_prices": {
-   "neds": 2.09
+   "neds": 2.13
   },
   "best_book": "neds",
-  "best_book_price": 2.09,
-  "verdict": "marginal",
-  "value": -0.0215,
-  "landed": false
+  "best_book_price": 2.13,
+  "verdict": "value",
+  "value": 0.3102
  },
  {
   "multi": "4-leg $3+",
   "rank": 4,
   "leg_ids": [
-   "domantas_sabonis_points10",
-   "derrick_white_points10",
-   "vj_edgecombe_points10",
-   "jrue_holiday_points10"
+   "luka_doncic_threes1",
+   "matisse_thybulle_threes1",
+   "evan_mobley_threes1",
+   "peyton_watson_assists2"
   ],
-  "legs_text": "Domantas Sabonis 10+ points; Derrick White 10+ points; VJ Edgecombe 10+ points; Jrue Holiday 10+ points",
-  "est_hit": 0.3441,
-  "break_even": 2.91,
-  "priced_legs": "4 of 4",
-  "known_price": 3.05,
-  "fair_multi": 3.77,
-  "est_price": 3.07,
-  "book_prices": {
-   "neds": 3.07
-  },
-  "best_book": "neds",
-  "best_book_price": 3.07,
-  "verdict": "value",
-  "value": 0.0564,
-  "landed": false
+  "legs_text": "Luka Doncic 1+ threes; Matisse Thybulle 1+ threes; Evan Mobley 1+ threes; Peyton Watson 2+ assists",
+  "est_hit": 0.4778,
+  "break_even": 2.09,
+  "priced_legs": "3 of 4",
+  "known_price": 2.64,
+  "fair_multi": null,
+  "est_price": 3.06,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null,
+  "verdict": "check",
+  "value": null
  },
  {
   "multi": "4-leg $4+",
   "rank": 5,
   "leg_ids": [
-   "jaime_jaquez_jr_points10",
-   "og_anunoby_rebounds4",
-   "zach_lavine_points15",
-   "domantas_sabonis_points15"
+   "luka_doncic_threes1",
+   "michael_porter_jr_threes1",
+   "peyton_watson_assists2",
+   "stephon_castle_assists6"
   ],
-  "legs_text": "Jaime Jaquez Jr. 10+ points; OG Anunoby 4+ rebounds; Zach LaVine 15+ points; Domantas Sabonis 15+ points",
-  "est_hit": 0.2647,
-  "break_even": 3.78,
-  "priced_legs": "4 of 4",
-  "known_price": 3.89,
-  "fair_multi": 5.21,
-  "est_price": 4.03,
-  "book_prices": {
-   "neds": 4.03
-  },
-  "best_book": "neds",
-  "best_book_price": 4.03,
-  "verdict": "value",
-  "value": 0.0667,
-  "landed": false
+  "legs_text": "Luka Doncic 1+ threes; Michael Porter Jr. 1+ threes; Peyton Watson 2+ assists; Stephon Castle 6+ assists",
+  "est_hit": 0.3578,
+  "break_even": 2.79,
+  "priced_legs": "2 of 4",
+  "known_price": 2.98,
+  "fair_multi": null,
+  "est_price": 4.07,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null,
+  "verdict": "check",
+  "value": null
  },
  {
   "multi": "Best value",
   "rank": 6,
   "leg_ids": [
-   "domantas_sabonis_points10",
-   "derrick_white_points10",
-   "vj_edgecombe_points10",
-   "jrue_holiday_points10"
+   "matisse_thybulle_threes1",
+   "victor_wembanyama_assists2",
+   "evan_mobley_threes1",
+   "peyton_watson_assists2"
   ],
-  "legs_text": "Domantas Sabonis 10+ points; Derrick White 10+ points; VJ Edgecombe 10+ points; Jrue Holiday 10+ points",
-  "est_hit": 0.3441,
-  "break_even": 2.91,
+  "legs_text": "Matisse Thybulle 1+ threes; Victor Wembanyama 2+ assists; Evan Mobley 1+ threes; Peyton Watson 2+ assists",
+  "est_hit": 0.4475,
+  "break_even": 2.23,
   "priced_legs": "4 of 4",
-  "known_price": 3.05,
-  "fair_multi": 3.77,
-  "est_price": 3.07,
+  "known_price": 3.25,
+  "fair_multi": null,
+  "est_price": 3.27,
   "book_prices": {
-   "neds": 3.07
+   "neds": 3.27
   },
   "best_book": "neds",
-  "best_book_price": 3.07,
+  "best_book_price": 3.27,
   "verdict": "value",
-  "value": 0.0564,
-  "landed": false
+  "value": 0.4633
  },
  {
   "multi": "Safest",
   "rank": 7,
   "leg_ids": [
-   "domantas_sabonis_points10",
-   "jaime_jaquez_jr_points10",
-   "og_anunoby_rebounds4",
-   "vj_edgecombe_rebounds4"
+   "luka_doncic_threes1",
+   "michael_porter_jr_threes1",
+   "matisse_thybulle_threes1",
+   "josh_hart_threes1"
   ],
-  "legs_text": "Domantas Sabonis 10+ points; Jaime Jaquez Jr. 10+ points; OG Anunoby 4+ rebounds; VJ Edgecombe 4+ rebounds",
-  "est_hit": 0.3825,
-  "break_even": 2.61,
-  "priced_legs": "4 of 4",
-  "known_price": 2.31,
-  "fair_multi": 2.93,
-  "est_price": 2.31,
-  "book_prices": {
-   "neds": 2.31
-  },
-  "best_book": "neds",
-  "best_book_price": 2.31,
-  "verdict": "skip",
-  "value": -0.1164,
-  "landed": false
+  "legs_text": "Luka Doncic 1+ threes; Michael Porter Jr. 1+ threes; Matisse Thybulle 1+ threes; Josh Hart 1+ threes",
+  "est_hit": 0.5878,
+  "break_even": 1.7,
+  "priced_legs": "2 of 4",
+  "known_price": 1.54,
+  "fair_multi": null,
+  "est_price": 2.1,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null,
+  "verdict": "check",
+  "value": null
  },
  {
   "multi": "3-leg value",
   "rank": 8,
   "leg_ids": [
-   "domantas_sabonis_points10",
-   "derrick_white_points10",
-   "vj_edgecombe_points10"
+   "matisse_thybulle_threes1",
+   "evan_mobley_threes1",
+   "peyton_watson_assists2"
   ],
-  "legs_text": "Domantas Sabonis 10+ points; Derrick White 10+ points; VJ Edgecombe 10+ points",
-  "est_hit": 0.4609,
-  "break_even": 2.17,
+  "legs_text": "Matisse Thybulle 1+ threes; Evan Mobley 1+ threes; Peyton Watson 2+ assists",
+  "est_hit": 0.5324,
+  "break_even": 1.88,
   "priced_legs": "3 of 3",
-  "known_price": 2.24,
-  "fair_multi": 2.7,
-  "est_price": 2.26,
+  "known_price": 2.64,
+  "fair_multi": null,
+  "est_price": 2.64,
   "book_prices": {
-   "neds": 2.26
+   "neds": 2.64
   },
   "best_book": "neds",
-  "best_book_price": 2.26,
-  "verdict": "marginal",
-  "value": 0.0416,
-  "landed": false
+  "best_book_price": 2.64,
+  "verdict": "value",
+  "value": 0.4055
  },
  {
   "multi": "One per game",
   "rank": 9,
   "leg_ids": [
-   "domantas_sabonis_points10",
-   "jaime_jaquez_jr_points10",
-   "vj_edgecombe_rebounds4",
-   "klay_thompson_points10",
-   "jrue_holiday_points10",
-   "rui_hachimura_rebounds4"
+   "luka_doncic_threes1",
+   "michael_porter_jr_threes1",
+   "josh_hart_threes1",
+   "victor_wembanyama_assists2",
+   "jabari_smith_jr_points10",
+   "kyshawn_george_points10",
+   "cedric_coward_assists2",
+   "derrick_white_points10"
   ],
-  "legs_text": "Domantas Sabonis 10+ points; Jaime Jaquez Jr. 10+ points; VJ Edgecombe 4+ rebounds; Klay Thompson 10+ points; Jrue Holiday 10+ points; Rui Hachimura 4+ rebounds",
-  "est_hit": 0.2034,
-  "break_even": 4.92,
-  "priced_legs": "6 of 6",
-  "known_price": 4.31,
-  "fair_multi": 5.81,
-  "est_price": 4.21,
-  "book_prices": {
-   "neds": 4.21
-  },
-  "best_book": "neds",
-  "best_book_price": 4.21,
-  "verdict": "skip",
-  "value": -0.1437,
-  "landed": false
+  "legs_text": "Luka Doncic 1+ threes; Michael Porter Jr. 1+ threes; Josh Hart 1+ threes; Victor Wembanyama 2+ assists; Jabari Smith Jr. 10+ points; Kyshawn George 10+ points; Cedric Coward 2+ assists; Derrick White 10+ points",
+  "est_hit": 0.2233,
+  "break_even": 4.48,
+  "priced_legs": "5 of 8",
+  "known_price": 2.91,
+  "fair_multi": null,
+  "est_price": 4.49,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null,
+  "verdict": "check",
+  "value": null
  },
  {
   "multi": "Mid-range $8+",
   "rank": 10,
   "leg_ids": [
-   "jaime_jaquez_jr_points10",
-   "derrick_white_points10",
-   "vj_edgecombe_points10",
-   "jrue_holiday_points10",
-   "paul_george_rebounds4",
-   "domantas_sabonis_points15"
+   "luka_doncic_threes1",
+   "michael_porter_jr_threes1",
+   "matisse_thybulle_threes1",
+   "josh_hart_threes1",
+   "peyton_watson_assists2",
+   "evan_mobley_threes2"
   ],
-  "legs_text": "Jaime Jaquez Jr. 10+ points; Derrick White 10+ points; VJ Edgecombe 10+ points; Jrue Holiday 10+ points; Paul George 4+ rebounds; Domantas Sabonis 15+ points",
-  "est_hit": 0.1453,
-  "break_even": 6.88,
-  "priced_legs": "6 of 6",
-  "known_price": 7.89,
-  "fair_multi": 10.85,
-  "est_price": 8.05,
-  "book_prices": {
-   "neds": 8.05
-  },
-  "best_book": "neds",
-  "best_book_price": 8.05,
-  "verdict": "value",
-  "value": 0.1697,
-  "landed": false
+  "legs_text": "Luka Doncic 1+ threes; Michael Porter Jr. 1+ threes; Matisse Thybulle 1+ threes; Josh Hart 1+ threes; Peyton Watson 2+ assists; Evan Mobley 2+ threes",
+  "est_hit": 0.2302,
+  "break_even": 4.34,
+  "priced_legs": "4 of 6",
+  "known_price": 5.9,
+  "fair_multi": null,
+  "est_price": 8.08,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null,
+  "verdict": "check",
+  "value": null
+ },
+ {
+  "multi": "Long multi 8+",
+  "rank": 11,
+  "leg_ids": [
+   "luka_doncic_threes1",
+   "michael_porter_jr_threes1",
+   "jamal_murray_threes1",
+   "matisse_thybulle_threes1",
+   "josh_hart_threes1",
+   "zion_williamson_assists2",
+   "victor_wembanyama_assists2",
+   "jaime_jaquez_jr_assists2",
+   "evan_mobley_threes1"
+  ],
+  "legs_text": "Luka Doncic 1+ threes; Michael Porter Jr. 1+ threes; Jamal Murray 1+ threes; Matisse Thybulle 1+ threes; Josh Hart 1+ threes; Zion Williamson 2+ assists; Victor Wembanyama 2+ assists; Jaime Jaquez Jr. 2+ assists; Evan Mobley 1+ threes",
+  "est_hit": 0.2568,
+  "break_even": 3.89,
+  "priced_legs": "6 of 9",
+  "known_price": 3.74,
+  "fair_multi": null,
+  "est_price": 5.92,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null,
+  "verdict": "check",
+  "value": null
  },
  {
   "multi": "Long shot $50",
   "rank": 12,
   "leg_ids": [
-   "tyrese_maxey_assists4",
-   "derrick_white_points10",
-   "myles_turner_rebounds4",
-   "vj_edgecombe_points10",
-   "jrue_holiday_points10",
-   "jalen_brunson_points25",
-   "domantas_sabonis_points15",
-   "jaime_jaquez_jr_points15",
-   "klay_thompson_points15"
+   "luka_doncic_threes1",
+   "michael_porter_jr_threes1",
+   "jamal_murray_threes1",
+   "matisse_thybulle_threes1",
+   "josh_hart_threes1",
+   "zion_williamson_assists2",
+   "victor_wembanyama_assists2",
+   "jaime_jaquez_jr_assists2",
+   "evan_mobley_threes1",
+   "de'aaron_fox_points10",
+   "cedric_coward_assists2",
+   "peyton_watson_assists2",
+   "stephon_castle_assists6",
+   "saddiq_bey_points15"
   ],
-  "legs_text": "Tyrese Maxey 4+ assists; Derrick White 10+ points; Myles Turner 4+ rebounds; VJ Edgecombe 10+ points; Jrue Holiday 10+ points; Jalen Brunson 25+ points; Domantas Sabonis 15+ points; Jaime Jaquez Jr. 15+ points; Klay Thompson 15+ points",
-  "est_hit": 0.0247,
-  "break_even": 40.47,
-  "priced_legs": "9 of 9",
-  "known_price": 46.5,
-  "fair_multi": 93.1,
-  "est_price": 50.96,
+  "legs_text": "Luka Doncic 1+ threes; Michael Porter Jr. 1+ threes; Jamal Murray 1+ threes; Matisse Thybulle 1+ threes; Josh Hart 1+ threes; Zion Williamson 2+ assists; Victor Wembanyama 2+ assists; Jaime Jaquez Jr. 2+ assists; Evan Mobley 1+ threes; De'Aaron Fox 10+ points; Cedric Coward 2+ assists; Peyton Watson 2+ assists; Stephon Castle 6+ assists; Saddiq Bey 15+ points",
+  "est_hit": 0.0454,
+  "break_even": 22.02,
+  "priced_legs": "11 of 14",
+  "known_price": 32.88,
+  "fair_multi": null,
+  "est_price": 52.04,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null,
+  "verdict": "check",
+  "value": null
+ },
+ {
+  "multi": "Top pick",
+  "rank": 13,
+  "leg_ids": [
+   "evan_mobley_threes1",
+   "peyton_watson_assists2"
+  ],
+  "legs_text": "Evan Mobley 1+ threes; Peyton Watson 2+ assists",
+  "est_hit": 0.6151,
+  "break_even": 1.63,
+  "priced_legs": "2 of 2",
+  "known_price": 2.13,
+  "fair_multi": null,
+  "est_price": 2.13,
   "book_prices": {
-   "neds": 50.96
+   "neds": 2.13
   },
   "best_book": "neds",
-  "best_book_price": 50.96,
+  "best_book_price": 2.13,
   "verdict": "value",
-  "value": 0.2587,
-  "landed": false
+  "value": 0.3102
+ },
+ {
+  "multi": "Second pick",
+  "rank": 14,
+  "leg_ids": [
+   "matisse_thybulle_threes1",
+   "josh_hart_threes1",
+   "peyton_watson_assists2"
+  ],
+  "legs_text": "Matisse Thybulle 1+ threes; Josh Hart 1+ threes; Peyton Watson 2+ assists",
+  "est_hit": 0.5632,
+  "break_even": 1.78,
+  "priced_legs": "3 of 3",
+  "known_price": 2.46,
+  "fair_multi": null,
+  "est_price": 2.46,
+  "book_prices": {
+   "neds": 2.46
+  },
+  "best_book": "neds",
+  "best_book_price": 2.46,
+  "verdict": "value",
+  "value": 0.3855
  }
 ]

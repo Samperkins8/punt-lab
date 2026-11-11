@@ -312,5 +312,104 @@
   "landed": false,
   "verdict": null,
   "price": 50.04
+ },
+ {
+  "slate_date": "2026-11-11",
+  "multi": "4-leg $2+",
+  "legs": "Domantas Sabonis 10+ points; Jaime Jaquez Jr. 10+ points; OG Anunoby 4+ rebounds; VJ Edgecombe 4+ rebounds",
+  "est_hit": 0.3825,
+  "landed": false,
+  "verdict": "skip",
+  "price": 2.31
+ },
+ {
+  "slate_date": "2026-11-11",
+  "multi": "3-leg $2+",
+  "legs": "Domantas Sabonis 10+ points; Jaime Jaquez Jr. 10+ points; Klay Thompson 10+ points",
+  "est_hit": 0.4756,
+  "landed": false,
+  "verdict": "skip",
+  "price": 2.02
+ },
+ {
+  "slate_date": "2026-11-11",
+  "multi": "2-leg $2+",
+  "legs": "Jaime Jaquez Jr. 10+ points; Jalen Brunson 25+ points",
+  "est_hit": 0.4682,
+  "landed": false,
+  "verdict": "marginal",
+  "price": 2.09
+ },
+ {
+  "slate_date": "2026-11-11",
+  "multi": "4-leg $3+",
+  "legs": "Domantas Sabonis 10+ points; Derrick White 10+ points; VJ Edgecombe 10+ points; Jrue Holiday 10+ points",
+  "est_hit": 0.3441,
+  "landed": false,
+  "verdict": "value",
+  "price": 3.07
+ },
+ {
+  "slate_date": "2026-11-11",
+  "multi": "4-leg $4+",
+  "legs": "Jaime Jaquez Jr. 10+ points; OG Anunoby 4+ rebounds; Zach LaVine 15+ points; Domantas Sabonis 15+ points",
+  "est_hit": 0.2647,
+  "landed": false,
+  "verdict": "value",
+  "price": 4.03
+ },
+ {
+  "slate_date": "2026-11-11",
+  "multi": "Best value",
+  "legs": "Domantas Sabonis 10+ points; Derrick White 10+ points; VJ Edgecombe 10+ points; Jrue Holiday 10+ points",
+  "est_hit": 0.3441,
+  "landed": false,
+  "verdict": "value",
+  "price": 3.07
+ },
+ {
+  "slate_date": "2026-11-11",
+  "multi": "Safest",
+  "legs": "Domantas Sabonis 10+ points; Jaime Jaquez Jr. 10+ points; OG Anunoby 4+ rebounds; VJ Edgecombe 4+ rebounds",
+  "est_hit": 0.3825,
+  "landed": false,
+  "verdict": "skip",
+  "price": 2.31
+ },
+ {
+  "slate_date": "2026-11-11",
+  "multi": "3-leg value",
+  "legs": "Domantas Sabonis 10+ points; Derrick White 10+ points; VJ Edgecombe 10+ points",
+  "est_hit": 0.4609,
+  "landed": false,
+  "verdict": "marginal",
+  "price": 2.26
+ },
+ {
+  "slate_date": "2026-11-11",
+  "multi": "One per game",
+  "legs": "Domantas Sabonis 10+ points; Jaime Jaquez Jr. 10+ points; VJ Edgecombe 4+ rebounds; Klay Thompson 10+ points; Jrue Holiday 10+ points; Rui Hachimura 4+ rebounds",
+  "est_hit": 0.2034,
+  "landed": false,
+  "verdict": "skip",
+  "price": 4.21
+ },
+ {
+  "slate_date": "2026-11-11",
+  "multi": "Mid-range $8+",
+  "legs": "Jaime Jaquez Jr. 10+ points; Derrick White 10+ points; VJ Edgecombe 10+ points; Jrue Holiday 10+ points; Paul George 4+ rebounds; Domantas Sabonis 15+ points",
+  "est_hit": 0.1453,
+  "landed": false,
+  "verdict": "value",
+  "price": 8.05
+ },
+ {
+  "slate_date": "2026-11-11",
+  "multi": "Long shot $50",
+  "legs": "Tyrese Maxey 4+ assists; Derrick White 10+ points; Myles Turner 4+ rebounds; VJ Edgecombe 10+ points; Jrue Holiday 10+ points; Jalen Brunson 25+ points; Domantas Sabonis 15+ points; Jaime Jaquez Jr. 15+ points; Klay Thompson 15+ points",
+  "est_hit": 0.0247,
+  "landed": false,
+  "verdict": "value",
+  "price": 50.96
  }
 ]
