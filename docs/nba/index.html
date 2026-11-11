@@ -296,12 +296,13 @@ function legPriceText(l) {
   if (l.odds) return price(l.odds);
   return l.fair_price ? 'fair ' + price(l.fair_price) : 'no price yet';
 }
+const score = (l) => (l.stat !== 'win' && l.actual != null ? ' ' + Math.round(l.actual) + '/' + l.line : '');
 function legRow(l, opts = {}) {
   const li = el('li');
   const d = el('details', 'leg');
   const s = el('summary');
   const who = el('span', 'who', l.player);
-  const state = (l.landed === null && 'actual' in l) ? ['Void, didn\'t play', ''] : l.late_out ? [l.late_out, 'bad'] : l.late_bench ? ['Not starting', 'bad'] : l.questionable ? ['Questionable', ''] : l.landed === true ? ['Landed', 'good'] : l.landed === false ? ['Missed', 'bad'] : started(l.game) ? ['Started', ''] : l.late_new ? ['New', ''] : null;
+  const state = (l.landed === null && 'actual' in l) ? ['Void, didn\'t play', ''] : l.late_out ? [l.late_out, 'bad'] : l.late_bench ? ['Not starting', 'bad'] : l.questionable ? ['Questionable', ''] : l.landed === true ? ['Landed' + score(l), 'good'] : l.landed === false ? ['Missed' + score(l), 'bad'] : started(l.game) ? ['Started', ''] : l.late_new ? ['New', ''] : null;
   const what = el('span', 'what', l.market + (opts.hideGame ? '' : ', ' + l.game + (tipOf(l.game) ? ' ' + tipOf(l.game) : '')));
   if (state) { const t = el('span', 'tag ' + state[1], state[0]); what.append(t); }
   if (l.left_early) { const x = el('span', 'tag hurt', '✚ Injured'); x.title = 'Left the game early'; what.append(x); }
