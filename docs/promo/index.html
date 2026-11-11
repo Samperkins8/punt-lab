@@ -46,19 +46,26 @@
   .scroll { overflow-x: auto; }
   details summary { cursor: pointer; font-weight: 600; }
   details dd { margin: 0 0 10px; color: var(--muted); } details dt { font-weight: 600; margin-top: 8px; }
+  .warn { color: var(--bad); font-size: 14px; }
+  .checklist { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+  [hidden] { display: none !important; }
   @media (max-width: 480px) { .hide-sm { display: none; } }
 </style>
 </head>
 <body>
 <header class="band"><div>
   <h1>Promo calculator</h1>
-  <p>Turn a bonus bet into locked-in cash by laying it on Betfair. <a href="../">Punt Lab</a> · <a href="../nba/">NBA</a></p>
+  <p>Turn a bonus bet into locked-in cash by laying it on Betfair, on NBA or horses. <a href="../">Punt Lab</a> · <a href="../nba/">NBA</a></p>
 </div></header>
 <main>
 
   <section class="card">
     <h2>Calculator</h2>
-    <div class="seg" role="group" aria-label="Bet type">
+    <div class="seg" role="group" aria-label="Sport" id="sport">
+      <button type="button" data-sport="nba" aria-pressed="true">NBA</button>
+      <button type="button" data-sport="horses" aria-pressed="false">Horses</button>
+    </div>
+    <div class="seg" role="group" aria-label="Bet type" id="bettype">
       <button type="button" data-type="bonus" aria-pressed="true">Bonus bet</button>
       <button type="button" data-type="normal" aria-pressed="false">Normal bet</button>
     </div>
@@ -68,7 +75,9 @@
       <label>Bookie's price<input id="back" type="number" inputmode="decimal" step="0.01" min="1.01" value="4.00"></label>
       <label>Betfair lay price<input id="lay" type="number" inputmode="decimal" step="0.01" min="1.01" value="4.10"></label>
       <label>Betfair commission (%)<input id="comm" type="number" inputmode="decimal" step="0.5" min="0" max="15" value="7"></label>
+      <label class="horses-only" hidden>Available to lay ($, optional)<input id="avail" type="number" inputmode="decimal" step="1" min="0" placeholder="next to lay price"></label>
     </div>
+    <p class="sub horses-only" id="comm-help" hidden>Racing commission varies by market. Check the rate in the race's market info on Betfair; this page remembers a separate rate for horses.</p>
     <div class="result">
       <span class="sub">Lay on Betfair</span>
       <span class="big" id="lay-stake">—</span>
@@ -79,10 +88,24 @@
       <tbody id="outcomes"></tbody>
     </table>
     <p id="verdict"></p>
+    <div id="warnings"></div>
     <ol class="steps" id="steps"></ol>
   </section>
 
-  <section class="card" id="best-card">
+  <section class="card horses-only" id="race-card" hidden>
+    <h2>Picking a race</h2>
+    <p class="sub">There's no free feed of racing prices, so compare the bookie's fixed price with Betfair yourself and enter both above.</p>
+    <ol class="checklist">
+      <li><b>Australian metro meetings</b> (Saturday Melbourne, Sydney, Brisbane) or <b>UK and Irish racing</b>. These have the most money on Betfair. Skip Japan, France, Turkey, South Africa and most midweek overseas cards.</li>
+      <li><b>Wait until 5–10 minutes before the jump.</b> Betfair fills up late, so lay prices are tightest then and scratchings are already known.</li>
+      <li><b>Pick a horse at about $4–$8</b> where the bookie's price is within about 5% of Betfair's lay price. Short favourites keep less of a bonus bet.</li>
+      <li><b>Fixed-odds Win bet only</b>, not tote, place or each-way, so your price is locked and matches the Betfair Win market.</li>
+      <li><b>Check the amount available</b> next to the lay price covers your lay stake. Enter it above and the calculator will warn you.</li>
+      <li><b>Avoid maidens and races with a late scratching risk</b> where you can. A scratching means deductions at the bookie and a reduction on Betfair, which don't always cancel out.</li>
+    </ol>
+  </section>
+
+  <section class="card nba-only" id="best-card">
     <h2>Best games for a bonus bet today</h2>
     <p class="sub">Every Australian bookie's head-to-head price against Betfair's lay price, from this morning. The closer the two prices, the more of a bonus bet you keep. Tap a row to load it into the calculator, and check the live prices before you bet: they move.</p>
     <div class="scroll"><table>
@@ -100,6 +123,7 @@
       <dt>Liability</dt><dd>What the Betfair bet costs if the bookie bet wins. It must be in your Betfair account when you place the lay, and comes back when the game is settled.</dd>
       <dt>Bonus bets on longer prices</dt><dd>A bonus bet keeps more of its value at longer prices ($3–$6), because the stake isn't returned. The table ranks today's games by this.</dd>
       <dt>Refund promos ("1 leg fails, get a bonus bet")</dt><dd>These are worth taking on bets you were making anyway; the refund is a bonus bet you can then lock in here.</dd>
+      <dt>Horses</dt><dd>Works the same way: a fixed-odds Win bet at the bookie, laid in Betfair's Win market for the same race. Racing commission differs by market, so check it. If another runner is scratched after you bet, the bookie applies a deduction to your winnings and Betfair reduces your lay price by that runner's reduction factor; they're usually close but not identical, so betting near the jump is safest. If your own horse is scratched, the bonus bet is normally refunded and the Betfair lay is void.</dd>
       <dt>Before you start</dt><dd>You need a Betfair Australia account. Lay at the price showing when you place the bookie bet, and place both bets one straight after the other so the prices don't move. Bookies can restrict accounts that only bet on promos.</dd>
     </dl>
   </details>
@@ -112,6 +136,8 @@ const BOOKS = { sportsbet: 'Sportsbet', tab: 'TAB', tabtouch: 'TABtouch', ladbro
 const $ = (id) => document.getElementById(id);
 const money = (v) => (v < 0 ? '−$' : '$') + Math.abs(v).toFixed(2);
 let type = 'bonus';
+let sport = 'nba';
+const COMM_KEY = { nba: 'punt-lab-comm', horses: 'punt-lab-comm-horses' };
 
 function calc(t, S, B, L, c) {
   if (!(S > 0 && B > 1 && L > 1 && L > c)) return null;
@@ -131,6 +157,7 @@ function render() {
     : 'Your own money, e.g. the bet that qualifies you for a promo.';
   const r = calc(type, S, B, L, c);
   const tb = $('outcomes'); tb.replaceChildren();
+  const warnBox = $('warnings'); warnBox.replaceChildren();
   if (!r) { $('lay-stake').textContent = '—'; $('liability').textContent = 'Enter a stake and both prices.'; $('verdict').textContent = ''; $('steps').replaceChildren(); return; }
   $('lay-stake').textContent = money(r.layStake);
   $('liability').textContent = `at $${L.toFixed(2)} · needs ${money(r.liability)} in your Betfair account (liability)`;
@@ -143,25 +170,53 @@ function render() {
   $('verdict').textContent = type === 'bonus'
     ? `You lock in about ${money(worst)} whatever happens: ${Math.round(worst / S * 100)}% of the bonus bet.` + (worst / S < 0.6 ? ' Try a longer price or a closer lay price to keep more.' : '')
     : (worst >= 0 ? `Locked-in profit of about ${money(worst)} either way.` : `Qualifying loss of about ${money(-worst)}, whatever happens.`);
-  const steps = [
+  const warns = [];
+  if (sport === 'horses') {
+    const A = parseFloat($('avail').value);
+    if (A > 0 && A < r.layStake) warns.push(`Only ${money(A)} is available to lay at $${L.toFixed(2)}, less than the ${money(r.layStake)} you need. Part of your lay would sit unmatched; pick another horse or race.`);
+    if (L > B * 1.05) warns.push(`Betfair's lay price is ${Math.round((L / B - 1) * 100)}% above the bookie's. Under about 5% is worth doing; look for a closer horse or wait until nearer the jump.`);
+    if (B < 3 && type === 'bonus') warns.push('Bonus bets keep more at longer prices. A horse at $4–$8 usually locks in more.');
+  }
+  warnBox.replaceChildren(...warns.map((t) => { const p = document.createElement('p'); p.className = 'warn'; p.textContent = '⚠ ' + t; return p; }));
+  const what = sport === 'horses' ? 'horse' : 'team';
+  const steps = sport === 'horses' ? [
+    `About 5–10 minutes before the jump, place the ${type === 'bonus' ? 'bonus bet' : 'bet'} of ${money(S)} as a fixed-odds Win bet at $${B.toFixed(2)}.`,
+    `Straight away, lay the same horse in Betfair's Win market: ${money(r.layStake)} at $${L.toFixed(2)}.`,
+    'Check the bookie bet is accepted and the Betfair lay is fully matched. If the lay price has moved, update it above first and lay the new amount.',
+  ] : [
     `Place the ${type === 'bonus' ? 'bonus bet' : 'bet'} of ${money(S)} at the bookie at $${B.toFixed(2)}.`,
-    `Straight away, lay the same team on Betfair: ${money(r.layStake)} at $${L.toFixed(2)}.`,
+    `Straight away, lay the same ${what} on Betfair: ${money(r.layStake)} at $${L.toFixed(2)}.`,
     'Check both bets show as placed (on Betfair, fully matched). Then wait for the result.',
   ];
   $('steps').replaceChildren(...steps.map((t) => { const li = document.createElement('li'); li.textContent = t; return li; }));
 }
 
-document.querySelectorAll('.seg button').forEach((b) => b.addEventListener('click', () => {
+document.querySelectorAll('#bettype button').forEach((b) => b.addEventListener('click', () => {
   type = b.dataset.type;
-  document.querySelectorAll('.seg button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+  document.querySelectorAll('#bettype button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
   render();
 }));
-for (const id of ['stake', 'back', 'lay', 'comm']) $(id).addEventListener('input', () => {
-  if (id === 'comm') { try { localStorage.setItem('punt-lab-comm', $('comm').value); } catch (e) {} }
+function loadComm() {
+  let c = null; try { c = localStorage.getItem(COMM_KEY[sport]); } catch (e) {}
+  if (c) $('comm').value = c; else if (sport === 'nba') $('comm').value = 7;
+}
+function setSport(s) {
+  sport = s;
+  document.querySelectorAll('#sport button').forEach((x) => x.setAttribute('aria-pressed', String(x.dataset.sport === s)));
+  document.querySelectorAll('.horses-only').forEach((e) => { e.hidden = s !== 'horses'; });
+  document.querySelectorAll('.nba-only').forEach((e) => { e.hidden = s !== 'nba'; });
+  $('back').closest('label').firstChild.textContent = s === 'horses' ? "Bookie's fixed Win price" : "Bookie's price";
+  try { localStorage.setItem('punt-lab-sport', s); } catch (e) {}
+  loadComm(); render();
+}
+document.querySelectorAll('#sport button').forEach((b) => b.addEventListener('click', () => setSport(b.dataset.sport)));
+for (const id of ['stake', 'back', 'lay', 'comm', 'avail']) $(id).addEventListener('input', () => {
+  if (id === 'comm') { try { localStorage.setItem(COMM_KEY[sport], $('comm').value); } catch (e) {} }
   render();
 });
-try { const c = localStorage.getItem('punt-lab-comm'); if (c) $('comm').value = c; } catch (e) {}
-render();
+let startSport = 'nba';
+try { startSport = new URLSearchParams(location.search).get('sport') || localStorage.getItem('punt-lab-sport') || 'nba'; } catch (e) {}
+setSport(startSport === 'horses' ? 'horses' : 'nba');
 
 fetch('../nba/data/h2h.json?t=' + Date.now()).then((r) => r.ok ? r.json() : []).catch(() => []).then((rows) => {
   const c = (parseFloat($('comm').value) || 0) / 100;
@@ -178,8 +233,9 @@ fetch('../nba/data/h2h.json?t=' + Date.now()).then((r) => r.ok ? r.json() : []).
     const k = tr.insertCell(); k.className = 'num ' + (r.k >= 0.7 ? 'good' : ''); k.textContent = Math.round(r.k * 100) + '%';
     const g = tr.insertCell(); g.className = 'hide-sm sub'; g.textContent = `${r.game}${r.tip ? ' · ' + r.tip : ''}`;
     tr.addEventListener('click', () => {
+      setSport('nba');
       $('back').value = r.best_back.toFixed(2); $('lay').value = r.lay.toFixed(2);
-      document.querySelector('.seg button[data-type="bonus"]').click();
+      document.querySelector('#bettype button[data-type="bonus"]').click();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
