@@ -3,13 +3,17 @@ from __future__ import annotations
 
 import math
 from itertools import combinations
+from statistics import median
 
 from .model import Leg, LegResult, multi_chance
 
 MIN_PRICE = 1.20          # Sam rarely takes a leg shorter than this
 MAX_UNPRICED_MODEL = 0.83 # with no price known, a leg this likely would be priced under $1.20
 BOOKIE_MARGIN = 0.92      # assumed app price = this x fair, when no price is known
-POOL = 16                 # legs considered when searching combinations
+POOL = 16                 # likeliest legs considered when searching combinations
+VALUE_EXTRA = 8           # plus up to this many less likely legs that are clearly better value
+VALUE_EDGE = 0.03         # "clearly": chance x app price beats the likeliest legs' typical value by this much
+VALUE_BASE = 0.95         # the typical value assumed when none of the likeliest legs has an app price
 MIN_MULTI = 2.00          # the "$2+" multis must be estimated to pay at least this
 LONG_MIN_LEGS = 8         # long multi: at least this many legs
 LONG_MAX_LEGS = 12        # extra legs past 8 only when each is worth it on its own
@@ -69,6 +73,8 @@ def _ok_combo(legs: list[Leg], long: bool = False) -> bool:
             continue
         if a.stat == "rebounds" and b.stat == "rebounds":
             return False  # two players chasing the same boards
+        if a.stat == "win" and b.stat == "win":
+            return False  # both teams to win the same game
         if (a.stat == "win") != (b.stat == "win") and a.team != b.team:
             return False  # a team to win against a leg from the team it's playing: they pull against each other
     return True
@@ -121,6 +127,17 @@ def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
     every = [i for i in every if not cands[i][0].extra.get("long_only")]  # safe lines / match winners: long multi only
     idx = [i for i in every if not cands[i][0].extra.get("step_up")]  # step-up legs only feed the $2+ multis
     pool = idx[:POOL]
+
+    # Less likely legs get a look when the app pays clearly more than their chance is worth next to the
+    # likeliest legs. Only legs with a real app price: a leg that merely looks like value is often one
+    # the model has overrated, so the bar is the typical value plus a margin.
+    def value(i):
+        return cands[i][1].model_prob * cands[i][0].odds
+
+    priced = [value(i) for i in pool if cands[i][0].odds]
+    bar = (median(priced) if priced else VALUE_BASE) + VALUE_EDGE
+    extra = sorted((i for i in idx[POOL:] if cands[i][0].odds and value(i) >= bar), key=lambda i: -value(i))[:VALUE_EXTRA]
+    pool = pool + extra
     out: dict[str, list[int]] = {}
 
     def chance(combo):
@@ -187,7 +204,7 @@ def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
         all_worth = True
         out.setdefault("_notes", []).append("no 3-leg value multi pays $2, so it's left out")
     # $2+ multis: highest chance all land, with the estimated Sportsbet price at least $2.00
-    wide = idx[:WIDE_POOL] + [i for i in every if cands[i][0].extra.get("step_up")
+    wide = idx[:WIDE_POOL] + [i for i in extra if i not in idx[:WIDE_POOL]] + [i for i in every if cands[i][0].extra.get("step_up")
                               and cands[i][1].model_prob >= WIDE_STEP_MIN][:WIDE_POOL]
 
     # fewer legs give the bookie's margin fewer chances to compound, so a 2-leg is offered too

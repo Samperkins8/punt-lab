@@ -249,6 +249,8 @@
         <dt>Price in the app</dt><dd>Type the price on offer and the slip suggests a share of your betting budget: a quarter of the Kelly amount ((chance × price − 1) ÷ (price − 1)), at most 3%, and nothing when the price is under break-even. Prices you type stay on your phone only.</dd>
         <dt>Same-game prices</dt><dd>Apps price legs from one game together, so a same-game multi rarely pays the legs multiplied. When you finish typing an app's price into a slip, it's compared with the legs multiplied and the difference is kept on this phone (never uploaded). The average, starting from a guess of 12% under for three or more legs in a game, sets the price the slips and the promo builder tell you to expect.</dd>
         <dt>Promo builder</dt><dd>Searches every rated leg from games yet to start for the multi that meets the offer's terms and is worth the most with the bonus counted: stake back as a bonus bet is valued at the share you set (70% by default), and the chance exactly one leg misses is worked out from the legs' chances.</dd>
+        <dt>Team to win</dt><dd>A team's chance to win blends the bookies' head-to-head prices (margin removed, 70%) with the betting line (30%). Teams 60%+ likely are rated in every game and go into any multi when TAB, Neds or Bet365 pays $1.20 or more. A less likely team is rated only when one of those apps pays more than its chance is worth.</dd>
+        <dt>Which legs a multi can use</dt><dd>The 16 likeliest legs, plus up to 8 less likely ones that are clearly better value: chance × app price at least 3c per $1 above the likeliest legs' typical value. Only legs with a real app price can get in this way, because a leg that merely looks like value is often one the model has overrated. Assists start at 2+ and threes at 1+.</dd>
         <dt>Late checks</dt><dd>15–75 minutes before each game, its injury news is checked again. The morning's multis stay as they were (you may have bet them), but a leg whose player is ruled out is marked and its multis get a warning with a suggested swap. In the last 35 minutes before a tip, once the starting line-ups are posted, a usual starter who isn't in the starting five is marked "not starting". A starter who came off the bench in his last two games (or a bench player who started them) is predicted on those games' minutes.</dd>
         <dt>Rules</dt><dd>No leg priced under $1.20 (where no price is known, the line is stepped up until the model is about 83% or lower). Never two rebound legs from the same game. At most two legs from one game in a 2-, 3- or 4-leg multi and three in a bigger one, so one bad game can't sink it. Never a team to win with a leg from the team it's playing. Players listed out or doubtful are left out.</dd>
         <dt>Prices</dt><dd>Only TAB, Neds and Bet365. Each morning every game is priced at Neds (from OddsPapi), and the games the multis use most are also priced at TAB and Bet365 (from The Odds API, within its free daily credits).</dd>
@@ -600,6 +602,7 @@ function okTogether(combo, l, sameGame) {
     if (o.game === l.game) {
       inGame++;
       if (o.stat === 'rebounds' && l.stat === 'rebounds') return false;
+      if (o.stat === 'win' && l.stat === 'win') return false;
       if ((o.stat === 'win') !== (l.stat === 'win') && o.team !== l.team) return false;
     }
   }

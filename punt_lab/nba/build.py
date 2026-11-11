@@ -11,7 +11,7 @@ import logging
 from collections import defaultdict
 from datetime import date, datetime, timedelta
 from pathlib import Path
-from statistics import mean
+from statistics import mean, median
 
 from . import ai, espn, model, odds, oddspapi, overrides, pick
 from .model import Leg, LegResult, evaluate, multi_chance, norm_cdf
@@ -23,8 +23,8 @@ DATA = ROOT / "docs" / "nba" / "data"
 STATS = {"points": "pts", "rebounds": "reb", "assists": "ast", "threes": "threes"}
 # Sportsbet-style milestone lines to consider for each stat
 LINES = {"points": [10, 15, 20, 25, 30, 35, 40], "rebounds": [4, 6, 8, 10, 12, 14],
-         "assists": [4, 6, 8, 10, 12], "threes": [2, 3, 4, 5]}
-MIN_STAT_AVG = {"points": 12, "rebounds": 5, "assists": 4, "threes": 1.5}
+         "assists": [2, 4, 6, 8, 10, 12], "threes": [1, 2, 3, 4, 5]}
+MIN_STAT_AVG = {"points": 12, "rebounds": 5, "assists": 2.5, "threes": 1.2}
 ROTATION_MINUTES = 24
 MIN_GAMES = 3
 TARGET_LOW = 0.70   # lowest model chance worth listing as a leg
@@ -534,36 +534,52 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
     return cands
 
 
-WIN_MIN_PROB = 0.60  # favourites at least this likely are rated; the multis then judge them like any leg
+WIN_MIN_PROB = 0.60  # teams at least this likely to win are rated; the multis then judge them like any leg
+DOG_MIN_PROB = 0.40  # a less likely team is rated only when Sam's apps pay more than its chance is worth
+H2H_WEIGHT = 0.7     # win chance = this x the bookies' head-to-head prices (margin removed) + the rest from the spread
+
+
+def h2h_chance(raw: dict, label: str, name: str, other: str) -> float | None:
+    """The team's chance to win from every bookie that prices both sides, margin removed; the middle bookie."""
+    a, b = raw.get((label, odds.nickname(name))) or {}, raw.get((label, odds.nickname(other))) or {}
+    ps = [(1 / a[bk]) / (1 / a[bk] + 1 / b[bk]) for bk in set(a) & set(b) if a[bk] > 1 and b[bk] > 1]
+    return median(ps) if ps else None
 
 
 def match_winners(games: list[dict], h2h: list[dict] | None = None) -> list[tuple[Leg, LegResult]]:
-    """Favourite-to-win legs: the chance from the betting spread (free from ESPN), the price from the
-    morning's head-to-head prices at TAB, Neds and Bet365. They go into every multi on the same terms
-    as player legs ($1.20+)."""
-    prices = {(r.get("game"), r.get("team")): odds.allowed(r.get("books")) for r in h2h or []}
+    """Team-to-win legs. The chance blends the bookies' head-to-head prices (margin removed) with the
+    betting spread from ESPN; the price is TAB's, Neds' or Bet365's. They go into every multi on the
+    same terms as player legs ($1.20+)."""
+    raw = {(r.get("game"), odds.nickname(r.get("team"))): r.get("books") or {} for r in h2h or []}
     out = []
     for g in games:
-        if g.get("spread") is None or not g.get("favourite"):
-            continue
-        fav = g["favourite"]
-        if fav not in (g["home"], g["away"]):
-            continue
-        name = g["home_name"] if fav == g["home"] else g["away_name"]
-        p = norm_cdf(abs(g["spread"]) / WIN_SD)
-        if p < WIN_MIN_PROB:
-            continue
         label = f"{g['away']} @ {g['home']}"
-        books = prices.get((label, name)) or {}
-        leg = Leg(leg_id=f"{fav.lower()}_win", player=name, team=fav, game=label,
-                  stat="win", line=1, log=[], prior_mean=0, prior_games=0, market=f"{name} to win",
-                  odds=odds.typical(books), note=f"{abs(g['spread']):g}-point favourite",
-                  extra={"event_id": g["event_id"], "margin": WIN_MARGIN, "spread": abs(g["spread"]),
-                         "books": books or None})
-        res = LegResult(hit_rate=0.0, context_shift=0.0, matchup=1.0, minutes_factor=1.0, proj_mean=0.0,
-                        proj_sd=0.0, market_mean=None, fair_price=1 / p, model_prob=p, implied=None, edge=None)
-        if pick.eligible(leg, res):  # pays $1.20+ (or, with no price yet, likely to)
-            out.append((leg, res))
+        fav = g.get("favourite") if g.get("spread") is not None and g.get("favourite") in (g["home"], g["away"]) else None
+        p_fav = norm_cdf(abs(g["spread"]) / WIN_SD) if fav else None
+        for abbr, name, other in ((g["home"], g["home_name"], g["away_name"]), (g["away"], g["away_name"], g["home_name"])):
+            p_spread = None if p_fav is None else p_fav if abbr == fav else 1 - p_fav
+            p_market = h2h_chance(raw, label, name, other)
+            if p_market is not None and p_spread is not None:
+                p = H2H_WEIGHT * p_market + (1 - H2H_WEIGHT) * p_spread
+            else:
+                p = p_market if p_market is not None else p_spread
+            if p is None:
+                continue
+            books = odds.allowed(raw.get((label, odds.nickname(name))))
+            price = odds.typical(books)
+            if p < WIN_MIN_PROB and not (p >= DOG_MIN_PROB and price and p * price >= 1.0):
+                continue
+            spread = abs(g["spread"]) if fav else None
+            side = "favourite" if (abbr == fav if fav else p >= 0.5) else "underdog"
+            leg = Leg(leg_id=f"{abbr.lower()}_win", player=name, team=abbr, game=label,
+                      stat="win", line=1, log=[], prior_mean=0, prior_games=0, market=f"{name} to win",
+                      odds=price, note=f"{spread:g}-point {side}" if spread is not None else side,
+                      extra={"event_id": g["event_id"], "margin": WIN_MARGIN, "spread": spread, "side": side,
+                             "h2h_chance": p_market, "books": books or None})
+            res = LegResult(hit_rate=0.0, context_shift=0.0, matchup=1.0, minutes_factor=1.0, proj_mean=0.0,
+                            proj_sd=0.0, market_mean=None, fair_price=1 / p, model_prob=p, implied=None, edge=None)
+            if pick.eligible(leg, res):  # pays $1.20+ (or, with no price yet, likely to)
+                out.append((leg, res))
     return out
 
 
@@ -603,7 +619,10 @@ def select(found, upcoming, h2h=None):
     step_ups = [c for c in found if c[0].extra.get("step_up") and c[0].player in keep_players]
     safe_legs = [c for c in found if c[0].extra.get("long_only")]
     winners = match_winners(upcoming, h2h)
-    cands = main_legs + step_ups + safe_legs + winners
+    listed = {id(c) for c in main_legs}
+    # legs outside the likeliest 25 that have an app price: pick.py uses one only when its value clearly beats the rest
+    priced_rest = [c for c in found if id(c) not in listed and c[0].odds and not any(c[0].extra.get(k) for k in extra_kinds)]
+    cands = main_legs + step_ups + safe_legs + winners + priced_rest
     chosen = pick.choose(cands)
     used = {i for k, v in chosen.items() if not k.startswith("_") for i in v}
     kept = [i for i in range(len(cands)) if i < len(main_legs) or i in used or cands[i][0].stat == "win"]
@@ -616,8 +635,11 @@ def select(found, upcoming, h2h=None):
 def explain(leg: Leg, res) -> str:
     """One plain sentence or three on why this leg's prediction is what it is."""
     if leg.stat == "win":
-        return (f"{leg.player} are {leg.extra['spread']:g}-point favourites. The betting line makes that "
-                f"about a {res.model_prob:.0%} chance to win, fair price ${res.fair_price:.2f}."
+        sp, mk = leg.extra.get("spread"), leg.extra.get("h2h_chance")
+        lead = f"{leg.player} are {sp:g}-point {leg.extra.get('side', 'favourite')}s. " if sp is not None else ""
+        how = ("The bookies' head-to-head prices (margin removed) and the betting line together make that" if mk and sp is not None
+               else "The bookies' head-to-head prices (margin removed) make that" if mk else "The betting line makes that")
+        return (f"{lead}{how} about a {res.model_prob:.0%} chance to win, fair price ${res.fair_price:.2f}."
                 + (" Pays ${1:.2f} at {0}.".format(odds.BOOK_NAMES.get(bk, bk), pr) if (bk := odds.best(leg.extra.get("books"))[0]) and (pr := odds.best(leg.extra.get("books"))[1]) else ""))
     unit = leg.stat
     season = mean(leg.log)

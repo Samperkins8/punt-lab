@@ -189,6 +189,11 @@ def typical(books: dict[str, float] | None) -> float | None:
     return round(median(books.values()), 2) if books else None
 
 
+def nickname(team: str | None) -> str:
+    """'Los Angeles Clippers' and 'LA Clippers' -> 'clippers'."""
+    return (team or "").split()[-1].lower() if (team or "").split() else ""
+
+
 def fetch_h2h(games: list[dict]) -> list[dict]:
     """Head-to-head prices for today's games at every Australian bookie, plus Betfair's lay price,
     for the promo page (best game to use a bonus bet on). One request for the whole slate,
@@ -210,10 +215,11 @@ def fetch_h2h(games: list[dict]) -> list[dict]:
     except (requests.RequestException, ValueError) as e:
         log.warning("Odds API head-to-head failed: %s", e)
         return []
-    abbr = {(g["home_name"], g["away_name"]): (f"{g['away']} @ {g['home']}", g["start"]) for g in games}
+    # matched on nicknames: ESPN says "LA Clippers" where the odds feed says "Los Angeles Clippers"
+    abbr = {(nickname(g["home_name"]), nickname(g["away_name"])): (f"{g['away']} @ {g['home']}", g["start"]) for g in games}
     rows = []
     for ev in data if isinstance(data, list) else []:
-        label, start = abbr.get((ev.get("home_team"), ev.get("away_team")), (f"{ev.get('away_team')} @ {ev.get('home_team')}", None))
+        label, start = abbr.get((nickname(ev.get("home_team")), nickname(ev.get("away_team"))), (f"{ev.get('away_team')} @ {ev.get('home_team')}", None))
         back: dict[str, dict[str, float]] = {}
         lay: dict[str, float] = {}
         for book in ev.get("bookmakers", []):

@@ -239,7 +239,7 @@ def test_live_grading_marks_multis_as_games_finish(monkeypatch, tmp_path):
     monkeypatch.setattr(espn, "slate_games", lambda d: [{**g, "state": "post"} for g in games])
     assert build.grade_live(now)
     after = json.loads((tmp_path / "multis.json").read_text())
-    prop_only = [m for m in after if all(i in {l["leg_id"] for l in by_ath.values()} for i in m["leg_ids"])]
+    prop_only = [m for m in after if all(i in {l["leg_id"] for l in legs if l["stat"] != "win"} for i in m["leg_ids"])]
     assert prop_only and all(m["landed"] is True for m in prop_only)
     assert all(l.get("landed") is True for l in json.loads((tmp_path / "legs.json").read_text()) if l["stat"] != "win")
     assert not build.grade_live(now + timedelta(minutes=30))  # each game graded once
@@ -295,4 +295,44 @@ def test_favourites_can_go_in_any_multi(monkeypatch, tmp_path):
     build.main()
     legs = json.loads((tmp_path / "legs.json").read_text())
     assert any(l["leg_id"] == "lal_win" and l["best_price"] == 1.32 for l in legs)
+
+
+def test_win_chance_blends_head_to_head_prices_and_rates_a_value_underdog(monkeypatch, tmp_path):
+    from punt_lab.nba import odds as odds_mod
+    fake_world(monkeypatch, tmp_path, spread=-8.5)
+    games = espn.slate_games(None)
+    # every bookie prices both sides: LAL about 80% with the margin removed, against 76% from the spread
+    h2h = [{"game": "POR @ LAL", "team": "Los Angeles Lakers", "books": {"neds": 1.20, "tab": 1.20, "sportsbet": 1.20}},
+           {"game": "POR @ LAL", "team": "Portland Trail Blazers", "books": {"neds": 4.60, "tab": 4.60, "sportsbet": 4.60}}]
+    wins = {l.team: (l, r) for l, r in build.match_winners(games, h2h)}
+    market = (1 / 1.20) / (1 / 1.20 + 1 / 4.60)
+    assert abs(wins["LAL"][1].model_prob - (0.7 * market + 0.3 * build.norm_cdf(8.5 / 12))) < 1e-9
+    assert "POR" not in wins  # about 21%: not rated
+    # ESPN and the odds feed name some teams differently
+    assert odds_mod.nickname("LA Clippers") == odds_mod.nickname("Los Angeles Clippers") == "clippers"
+    # CLE v PHI is close to even; PHI is rated only when Sam's apps pay over the odds
+    even = [{"game": "PHI @ CLE", "team": "Cleveland Cavaliers", "books": {"sportsbet": 1.80, "unibet": 1.80, "neds": 1.75}},
+            {"game": "PHI @ CLE", "team": "Philadelphia 76ers", "books": {"sportsbet": 2.05, "unibet": 2.05, "neds": 2.05}}]
+    assert not {l.team for l, _ in build.match_winners(games, even)} & {"PHI", "CLE"}
+    even[1]["books"]["neds"] = 2.40
+    phi = next(l for l, _ in build.match_winners(games, even) if l.team == "PHI")
+    assert phi.extra["side"] == "underdog" and phi.odds == 2.40
+
+
+def test_a_less_likely_leg_needs_clearly_better_value_to_be_used():
+    from punt_lab.nba import pick
+    from punt_lab.nba.model import Leg, LegResult
+
+    def cand(n, prob, price, game):
+        leg = Leg(leg_id=f"p{n}", player=f"P{n}", team=f"T{n}", game=game, stat="points", line=10, log=[12.0] * 5,
+                  prior_mean=12, prior_games=0, odds=price, extra={"books": {"neds": price}})
+        return leg, LegResult(hit_rate=prob, context_shift=0.0, matchup=1.0, minutes_factor=1.0, proj_mean=12.0, proj_sd=3.0,
+                              market_mean=None, fair_price=1 / prob, model_prob=prob, implied=None, edge=None)
+
+    base = [cand(n, 0.80 - n * 0.002, 1.20, f"G{n % 8}") for n in range(16)]   # value about 0.95 each
+    fair = cand(90, 0.60, 1.60, "G90")    # value 0.96: not clearly better, never searched
+    great = cand(91, 0.60, 1.90, "G91")   # value 1.14: clearly better
+    used = lambda cands: {cands[i][0].leg_id for k, v in pick.choose(cands).items() if k in ("Safest", "Best value", "3-leg value") for i in v}
+    assert "p90" not in used(base + [fair])
+    assert "p91" in used(base + [great])
 
