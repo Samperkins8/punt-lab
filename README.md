@@ -15,6 +15,8 @@ Runs on GitHub Actions (`.github/workflows/nba.yml`):
 
 You can also run it by hand: Actions → NBA daily multi → Run workflow.
 
+The site also shows a **top pick** and **second pick** (the best 2- to 4-leg multis of the day by chance and price together, `pick_score` in `pick.py`), a **ready to bet?** box (whether the re-check has run and when the next game tips), and a **closing price** record (each leg's Neds price when listed against its price at the late check).
+
 ### Your overrides
 
 Edit `overrides/nba.txt` (works in the GitHub app or browser):
@@ -35,7 +37,7 @@ Lines under a `date:` header apply only to that day. The next run picks them up.
 | Secret | What it adds | Cost |
 |---|---|---|
 | `ODDS_API_KEY` | TAB, Neds and Bet365 prices for each leg (only those apps are kept; change with a `PUNT_BOOKS` variable) and their over/under lines (fair prices), from the-odds-api.com. Only the games and stats today's legs need are priced, within `ODDS_DAILY_CREDITS` (16 a day fits the free 500 a month) | Free plan, 500 credits a month |
-| `ODDSPAPI_KEY` | Every game's player prices at Neds, from oddspapi.io: one request for the whole slate (~30 of the free 250 a month) | Free plan |
+| `ODDSPAPI_KEY` | Every game's player prices at Neds, from oddspapi.io: one request for the whole slate each morning, plus up to six a day at the late checks (price refreshes and closing prices): at most ~215 of the free 250 a month | Free plan |
 | `ANTHROPIC_API_KEY` | Claude reads vague injury notes (minutes limits, coming off the bench) | Pay-as-you-go, a few cents a month |
 
 Without them everything still runs on free ESPN data and rules.

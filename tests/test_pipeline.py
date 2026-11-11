@@ -336,3 +336,34 @@ def test_a_less_likely_leg_needs_clearly_better_value_to_be_used():
     assert "p90" not in used(base + [fair])
     assert "p91" in used(base + [great])
 
+
+
+def test_closing_prices_are_saved_and_graded(monkeypatch, tmp_path):
+    from punt_lab.nba import late, oddspapi
+    fake_world(monkeypatch, tmp_path)
+    monkeypatch.setattr("sys.argv", ["build", "--date", "2026-11-07"])
+    build.main()
+    report = json.loads((tmp_path / "report.json").read_text())
+    assert report["recheck_at"] and "rechecked_at" not in report      # for the site's "ready to bet?" box
+    assert {"Top pick", "Second pick"} <= {m["multi"] for m in json.loads((tmp_path / "multis.json").read_text())}
+    legs = json.loads((tmp_path / "legs.json").read_text())
+    leg = next(l for l in legs if l["stat"] != "win")
+    for l in legs:                                                    # the morning's Neds price
+        if l["leg_id"] == leg["leg_id"]:
+            l["open_books"] = {"neds": 1.50}
+    (tmp_path / "legs.json").write_text(json.dumps(legs))
+    calls = []
+    monkeypatch.setattr(oddspapi, "enabled", lambda: True)
+    monkeypatch.setattr(oddspapi, "fetch", lambda starts, books=None: calls.append(1) or {
+        "market": {}, "books": {(leg["player"].lower(), leg["stat"], int(leg["line"])): {"neds": 1.40, "unibet": 1.6}}})
+    start = espn.slate_games(None)[0]["start"]
+    assert late.run(build.date(2026, 11, 7), start - timedelta(minutes=45))
+    after = next(l for l in json.loads((tmp_path / "legs.json").read_text()) if l["leg_id"] == leg["leg_id"])
+    assert after["open_books"] == {"neds": 1.50} and after["close_books"] == {"neds": 1.40}   # only Sam's apps
+    report = json.loads((tmp_path / "report.json").read_text())
+    assert report["close_fetches"] == 1 and not report.get("late_refreshes") and len(calls) == 1
+    monkeypatch.setattr(oddspapi, "enabled", lambda: False)
+    monkeypatch.setattr("sys.argv", ["build", "--date", "2026-11-08"])
+    build.main()
+    row = next(r for r in json.loads((tmp_path / "results.json").read_text()) if r["leg_id"] == leg["leg_id"])
+    assert (row["open_price"], row["close_price"], row["close_book"]) == (1.50, 1.40, "neds")

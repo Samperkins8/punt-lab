@@ -10,7 +10,9 @@ bet them); instead:
 - the game is re-analysed with the fresh injury list, so teammates who gain from a late out
   get updated chances, and any that now look like value are added to the legs list;
 - prices are refreshed from OddsPapi only when someone's status in that game changed since
-  the morning (2 requests, at most twice a day), so the free plan still covers it.
+  the morning (at most twice a day), so the free plan still covers it;
+- each leg's price at that moment is saved as its closing price (up to four more requests a
+  day), so the track record can show whether legs were listed at better prices than they closed at.
 
 Starting line-ups come out about 30 minutes before a tip, after that check, so each game also
 gets a line-up check in its last 35 minutes: a usual starter who isn't in the starting five is
@@ -28,7 +30,9 @@ from .model import multi_chance
 
 log = logging.getLogger("punt_lab.nba.late")
 WINDOW = (timedelta(minutes=15), timedelta(minutes=75))
-MAX_REFRESHES = 2                       # OddsPapi price refreshes per day
+MAX_REFRESHES = 2                       # OddsPapi price refreshes per day (a status changed)
+MAX_CLOSE = 4                           # plus this many fetches a day just to record closing prices; with the
+                                        # morning's one that is at most 7 requests a day, ~215 a month of the free 250
 REFRESH_BOOKS = ("neds.com.au",)
 MAX_NEW_LEGS = 8                        # new legs added per check (value or 80%+)
 BAD = ("out", "doubtful")
@@ -156,13 +160,19 @@ def run(slate, now: datetime) -> bool:
 
     prices = load_prices(slate) or restore_prices(legs)
     refreshed = ""
-    if changed and oddspapi.enabled() and report.get("late_refreshes", 0) < MAX_REFRESHES:
+    closing: dict = {}   # the apps' prices now, for the track record's closing-price check
+    refresh = bool(changed) and report.get("late_refreshes", 0) < MAX_REFRESHES
+    if oddspapi.enabled() and (refresh or report.get("close_fetches", 0) < MAX_CLOSE):
         fresh = oddspapi.fetch([g["start"] for g in due], books=REFRESH_BOOKS)
         if fresh["books"]:
-            prices = odds.finalise(odds.merge(prices, fresh))
-            save_prices(slate, prices)
-            report["late_refreshes"] = report.get("late_refreshes", 0) + 1
-            refreshed = "prices refreshed"
+            closing = fresh["books"]
+            if refresh:
+                prices = odds.finalise(odds.merge(prices, fresh))
+                save_prices(slate, prices)
+                report["late_refreshes"] = report.get("late_refreshes", 0) + 1
+                refreshed = "prices refreshed"
+            else:
+                report["close_fetches"] = report.get("close_fetches", 0) + 1
 
     ov = overrides.load(ROOT / "overrides" / "nba.txt", slate)
     # Claude reads the fresh notes for these games' players (minutes limits, bench roles), if a key is set
@@ -189,6 +199,10 @@ def run(slate, now: datetime) -> bool:
                 legs[i].update(late_bench=True, lineup_checked=l.get("lineup_checked"), note=l.get("note"))
         else:
             legs[i] = {**l, "late_checked": stamp}
+        legs[i]["open_books"] = l.get("open_books") or l.get("books")   # what it paid when it was listed
+        shut = odds.allowed(closing.get((l["player"].lower(), l["stat"], int(l["line"]))))
+        if shut:
+            legs[i]["close_books"] = shut
     # teammates who now look good: value at the best price, or 80%+
     extra = [r for r in fresh_rows.values() if not r.get("questionable") and not r.get("step_up")
              and ((r.get("best_price") and r["model_prob"] * r["best_price"] > 1.03) or r["model_prob"] >= 0.80)]

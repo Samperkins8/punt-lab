@@ -61,6 +61,13 @@
   .lede { color: var(--muted); font-size: 14px; max-width: 62ch; }
   .empty { color: var(--muted); padding: 18px 16px; background: var(--panel); border: 1px dashed var(--line); border-radius: 12px; }
 
+  /* ready to bet? */
+  .ready { display: grid; gap: 2px; padding: 10px 14px; border-radius: 12px; background: var(--panel); border: 1px solid var(--line); border-left: 6px solid var(--warn); }
+  .ready.good { border-left-color: var(--good); } .ready.bad { border-left-color: var(--bad); }
+  .ready b { font: 600 21px/1.15 var(--cond); }
+  .ready span { font-size: 14px; color: var(--muted); }
+  .pick-tag { justify-self: start; padding: 2px 10px; border-radius: 99px; background: var(--gold); color: #1b1030; font: 700 14px/1.4 var(--cond); letter-spacing: 0.04em; text-transform: uppercase; }
+
   /* chips */
   .chips { display: flex; gap: 8px; overflow-x: auto; margin: 0 -14px; padding: 2px 14px 6px; scrollbar-width: none; }
   .chips::-webkit-scrollbar { display: none; }
@@ -180,6 +187,7 @@
 
 <main class="wrap">
   <section class="view" id="view-multis">
+    <div class="ready" id="ready" role="status" hidden></div>
     <div class="chips" id="multi-chips" role="group" aria-label="Which multis to show"></div>
     <div class="slips" id="multis"></div>
   </section>
@@ -226,6 +234,10 @@
     <p class="empty" id="track-empty">No results yet. Grading starts after the first slate is played.</p>
     <div class="panel" id="record-rating" hidden><h3 class="section-title">By rating</h3><p class="lede">Do multis rated value do better than those rated skip? Recorded from 11 Nov. Profit is what $1 on each would have made.</p><div class="scroll"><table id="rating-record"><thead><tr><th>Rated</th><th class="num">Landed</th><th class="num">Predicted</th><th class="num">Profit</th></tr></thead><tbody></tbody></table></div></div>
     <div class="panel" id="record-multi" hidden><h3 class="section-title">By multi</h3><div class="scroll"><table id="multi-record"><thead><tr><th>Multi</th><th class="num">Landed</th><th class="num">Predicted</th><th class="num">Profit</th></tr></thead><tbody></tbody></table></div><p class="lede">Profit is what $1 on each would have made. It uses the app's price when every leg had one, otherwise the estimate. * means some days had no price saved and are left out.</p></div>
+    <div class="panel" id="record-close" hidden><h3 class="section-title">Against the closing price</h3>
+      <p class="lede">Neds' price for each leg when Punt Lab listed it, against Neds' price at the late check 15 to 75 minutes before its game. Legs that are usually listed at a better price than they close at are a sign the model is finding real value, and it shows up much sooner than wins and losses do.</p>
+      <div class="scroll"><table id="close-record"><thead><tr><th>Legs</th><th class="num">Count</th><th class="num">Better</th><th class="num">Worse</th><th class="num">Average</th></tr></thead><tbody></tbody></table></div>
+      <p class="lede" id="close-note"></p></div>
     <div class="panel" id="record-legs" hidden><h3 class="section-title">Legs</h3><div class="scroll"><table id="calibration"><thead><tr><th>Model said</th><th class="num">Legs</th><th class="num">Predicted</th><th class="num">Landed</th></tr></thead><tbody></tbody></table></div>
       <p class="lede" id="minutes-record" hidden></p>
       <div class="scroll"><table id="stat-record"><thead><tr><th>Leg type</th><th class="num">Legs</th><th class="num">Predicted</th><th class="num">Landed</th></tr></thead><tbody></tbody></table></div></div>
@@ -242,6 +254,8 @@
       <summary>How the multis are picked</summary>
       <dl>
         <dt>Model</dt><dd>This season's games (recent games count extra; the weekly tune sets how much) blended with last season (last season counts as 8 games' worth, less if he played under 40 games), shifted towards games played in tonight's situation (a teammate in or out), adjusted for the opponent's defence against his position and last season's head-to-head (shrunk by how much of the opponent's roster is still the same, and by sample size), adjusted for home or away (from his own split, shrunk for small samples), tonight's expected pace (the game total against the slate average) and tonight's line against his team's usual result (his averages already reflect how good his team is, so only a line tougher or easier than usual moves the prediction), scaled by expected minutes (cut on the second night of a back-to-back, and for one-sided games by whatever the weekly tune finds: past seasons show starters' minutes barely drop on average, so that cut is small), and blended 60/40 with the bookies' over/under line (margin removed) where one is available. The weekly tune fits the line and blowout settings on past seasons, standing in for old betting lines with each team's results up to that day, and keeps them only if they predict the newer seasons better than no adjustment.</dd>
+        <dt>Top picks</dt><dd>Every 2-, 3- and 4-leg combination that pays $2 or more with a 25%+ chance is scored on chance and price together: when the price beats the chance, by its edge over its winnings (the Kelly share, which prefers the likelier of two equally good prices). Combinations one app prices in full come first. The second pick is the next best that shares at most one player with the top pick. A pick is the best on offer, not a promise of value: check its rating, and on a skip day the honest call is still to skip.</dd>
+        <dt>Ready to bet?</dt><dd>The box above the multis says whether the injury recheck has run (legs can change until then), when the next game tips, and whether a late check has ruled a player out of one of the multis.</dd>
         <dt>Chance all land</dt><dd>The legs' chances multiplied, adjusted for same-game links: two rebound legs from one game work against each other, two points legs from one team share the shots, a team to win works against legs from the team it's playing, other same-game legs move a little together with pace.</dd>
         <dt>Value, marginal, skip</dt><dd>Each multi is rated from the price one app pays for all its legs against the price it needs. Value: the price beats break-even by 5% or more. Skip: it falls 3% or more short. Marginal: in between, too close to call given the chances are estimates. The top of the page lists the value multis, or says to skip the day when there are none.</dd>
         <dt>Needs</dt><dd>1 ÷ the chance all legs land. If the app's price for the whole multi is at or above it, the model says it's worth taking.</dd>
@@ -253,7 +267,7 @@
         <dt>Which legs a multi can use</dt><dd>The 16 likeliest legs, plus up to 8 less likely ones that are clearly better value: chance × app price at least 3c per $1 above the likeliest legs' typical value. Only legs with a real app price can get in this way, because a leg that merely looks like value is often one the model has overrated. Assists start at 2+ and threes at 1+.</dd>
         <dt>Late checks</dt><dd>15–75 minutes before each game, its injury news is checked again. The morning's multis stay as they were (you may have bet them), but a leg whose player is ruled out is marked and its multis get a warning with a suggested swap. In the last 35 minutes before a tip, once the starting line-ups are posted, a usual starter who isn't in the starting five is marked "not starting". A starter who came off the bench in his last two games (or a bench player who started them) is predicted on those games' minutes.</dd>
         <dt>Rules</dt><dd>No leg priced under $1.20 (where no price is known, the line is stepped up until the model is about 83% or lower). Never two rebound legs from the same game. At most two legs from one game in a 2-, 3- or 4-leg multi and three in a bigger one, so one bad game can't sink it. Never a team to win with a leg from the team it's playing. Players listed out or doubtful are left out.</dd>
-        <dt>Prices</dt><dd>Only TAB, Neds and Bet365. Each morning every game is priced at Neds (from OddsPapi), and the games the multis use most are also priced at TAB and Bet365 (from The Odds API, within its free daily credits).</dd>
+        <dt>Prices</dt><dd>Only TAB, Neds and Bet365. Each morning every game is priced at Neds (from OddsPapi), and the games the multis use most are also priced at TAB and Bet365 (from The Odds API, within its free daily credits). At each game's late check Neds' prices are fetched again (up to four times a day) and saved as the legs' closing prices for the track record.</dd>
         <dt>Overrides</dt><dd>Edit overrides/nba.txt in the repo to skip a player, set minutes, mark someone out or enter odds. The next run uses it.</dd>
         <dt>Caveat</dt><dd>Early-season samples are small and bookies price props well. This is analysis, not a guarantee.</dd>
       </dl>
@@ -405,8 +419,13 @@ const TITLES = {
   'Long shot $50': ['Long shot, about $50', 'A fun bet, not a value one: roughly a 2 to 4% shot.'],
   'Best value': ['Best value 4 legs', 'Built from legs whose price beats the model.'],
   'Safest': ['Safest 4 legs', 'The highest chance among legs at $1.20 or more.'],
-  '3-leg value': ['Best value 3 legs', 'Only legs whose price beats the model.'] };
+  '3-leg value': ['Best value 3 legs', 'Only legs whose price beats the model.'],
+  'Top pick': ['Top pick', 'Today\'s best bet by chance and price together, from 2 to 4 legs.'],
+  'Second pick': ['Second pick', 'The next best bet, sharing at most one player with the top pick.'] };
+const PICKS = ['Top pick', 'Second pick'];
+const picksOf = (m) => PICKS.filter((k) => m.multi === k || (m.aka || []).includes(k));
 const GROUPS = [
+  ['picks', 'Top picks', (m) => picksOf(m).length > 0],
   ['value', 'Value', (m) => m.verdict === 'value' && !gone(m)],
   ['2', '2 legs', (m) => m.leg_ids.length === 2],
   ['3', '3 legs', (m) => m.leg_ids.length === 3],
@@ -442,6 +461,8 @@ function slip(m, byId) {
   const [title, sub] = TITLES[m.multi] || [m.multi, ''];
   const tw = el('div'); tw.append(el('h3', null, title), el('p', 'lede', sub));
   const tr = el('div', 'slip-title'); tr.append(tw);
+  const picked = picksOf(m).filter((k) => k !== m.multi), aka = (m.aka || []).filter((k) => !PICKS.includes(k));
+  if (picked.length) head.append(el('span', 'pick-tag', picked[0]));
   const off = gone(m);
   if (off) {
     const pills = el('span', 'pills'); pills.append(el('span', 'pill', 'Started'));
@@ -455,8 +476,11 @@ function slip(m, byId) {
   if (m.best_book_price) fig(price(m.best_book_price), 'pays on ' + book(m.best_book)); else fig(price(m.est_price), 'estimated price');
   fig(price(m.break_even), 'needs at least');
   head.append(tr, trio);
-  if (m.aka && m.aka.length) head.append(el('p', 'aka', 'Also today\'s ' + m.aka.map((k) => (TITLES[k] || [k])[0].toLowerCase()).join(' and ') + '.'));
+  if (aka.length) head.append(el('p', 'aka', 'Also today\'s ' + aka.map((k) => (TITLES[k] || [k])[0].toLowerCase()).join(' and ') + '.'));
   if (m.verdict && !off) head.append(el('p', 'why-rating', ratingSentence(m)));
+  if (picksOf(m).length && !off && (m.verdict === 'skip' || m.verdict === 'check')) head.append(el('p', 'small muted', m.verdict === 'skip'
+    ? 'It\'s the pick only because nothing better is on today. The honest call is to skip.'
+    : 'Picked on estimated prices, so check the app\'s price against what it needs before betting.'));
   const bucket = sgmBucket(legs), sg = bucket ? sgmStats(bucket) : null;
   if (sg && m.best_book_price && !off && Math.abs(sg.factor - 1) >= 0.02) {
     const expect = m.best_book_price * sg.factor, n = bucket === 4 ? 'Four or more' : bucket === 3 ? 'Three' : 'Two';
@@ -487,9 +511,10 @@ function renderMultis() {
   const byId = new Map(D.legs.map((l) => [l.leg_id, l]));
   const sorted = distinct(D.multis);
   const chips = document.getElementById('multi-chips'), box = document.getElementById('multis');
-  const nValue = sorted.filter(GROUPS[0][2]).length;
+  const nValue = sorted.filter(GROUPS.find((g) => g[0] === 'value')[2]).length;
+  const pickRank = (m) => Math.min(...picksOf(m).map((k) => PICKS.indexOf(k)));
   let current = store.get('punt-lab-group');
-  if (!GROUPS.some((g) => g[0] === current)) current = nValue ? 'value' : '4';
+  if (!GROUPS.some((g) => g[0] === current)) current = sorted.some((m) => picksOf(m).length) ? 'picks' : nValue ? 'value' : '4';
   const show = () => {
     chips.replaceChildren(...GROUPS.map(([key, label]) => {
       const b = el('button', 'chip', label); b.type = 'button'; b.setAttribute('aria-pressed', key === current);
@@ -498,14 +523,45 @@ function renderMultis() {
       return b;
     }));
     const want = sorted.filter(GROUPS.find((g) => g[0] === current)[2]);
+    if (current === 'picks') want.sort((a, b) => pickRank(a) - pickRank(b));
     if (want.length) { box.replaceChildren(...want.map((m) => slip(m, byId))); return; }
     const notes = (D.report.headline || '').match(/Note: (.*)/);
     box.replaceChildren(el('p', 'empty', !sorted.length ? (D.report.status || 'No multis yet. They appear after the morning run.')
       : current === 'value' ? (sorted.some((m) => m.verdict === 'value') ? 'The value multis include games that have started. The Promo tab builds from games still to tip.' : 'No multi is rated value today: none beats the price it needs by 5% in one app. Skipping is the right call on days like this.')
+      : current === 'picks' ? 'No top pick today: no 2- to 4-leg multi pays $2 with a 25%+ chance.'
       : 'None of these today' + (notes ? ' (' + notes[1].replace(/\.$/, '') + ')' : '') + '.'));
   };
   show();
   return (multi) => { current = 'all'; show(); const t = document.getElementById('slip-' + multi.replace(/[^a-z0-9]/gi, '')); if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+}
+
+// ---------- ready to bet? ----------
+const clock = (ms) => new Date(ms).toLocaleTimeString('en-AU', { timeZone: 'Australia/Melbourne', hour: 'numeric', minute: '2-digit' }).replace(' ', '');
+const wait = (ms) => { const m = Math.max(1, Math.round(ms / 60000)); return m < 60 ? m + ' min' : Math.floor(m / 60) + 'h' + (m % 60 ? ' ' + (m % 60) + 'm' : ''); };
+function renderReady() {
+  const box = document.getElementById('ready'), r = D.report, now = NOW();
+  const starts = D.slate.map((g) => Date.parse(g.start)).filter(Boolean).sort((a, b) => a - b);
+  const live = distinct(D.multis).filter((m) => !gone(m));
+  if (!live.length || !starts.length) { box.hidden = true; return; }
+  const next = starts.find((t) => t > now), first = starts[0];
+  const nextTip = next ? `Next game tips ${clock(next)}, in ${wait(next - now)}.` : '';
+  const warned = live.filter((m) => m.late_warning).length;
+  const rechecked = !!r.rechecked_at || /^(Re-checked|Late check|Line-up check)/.test(r.next_run || '');
+  const due = r.recheck_at ? Date.parse(r.recheck_at) : null;
+  let cls = 'good', head, body;
+  if (warned) { cls = 'bad'; head = 'Late change';
+    body = `${warned === 1 ? 'One multi has' : warned + ' multis have'} a player ruled out or benched since this morning. Read the warning on the slip before betting. ${nextTip}`; }
+  else if (now >= first) { head = 'Some games have started';
+    body = `${live.length === 1 ? 'One multi only uses' : live.length + ' multis only use'} games still to tip, so ${live.length === 1 ? 'it' : 'they'} can still be bet. ${nextTip}`; }
+  else if (!rechecked && due && due >= first) { head = 'Ready to bet';
+    body = `The first game tips ${clock(first)}, before the injury recheck, so these are as final as they get. Each game still gets a late check 15 to 75 minutes before its tip.`; }
+  else if (!rechecked && due && now > due + 5 * 60000) { cls = ''; head = 'Recheck running late';
+    body = `The injury recheck was due at ${clock(due)}. GitHub often starts it 10 to 30 minutes late, so reload in a few minutes. First game tips ${clock(first)}.`; }
+  else if (!rechecked) { cls = ''; head = 'Wait for the recheck';
+    body = `Injury news is rechecked ${due ? 'at about ' + clock(due) : 'mid-morning'} and legs can be swapped then. First game tips ${clock(first)}.`; }
+  else { head = 'Ready to bet';
+    body = `Injuries rechecked${r.rechecked_at ? ' at ' + clock(Date.parse(r.rechecked_at)) : ''}, so the multis are final. First game tips ${clock(first)}, in ${wait(first - now)}.`; }
+  box.className = 'ready ' + cls; box.replaceChildren(el('b', null, head), el('span', null, body)); box.hidden = false;
 }
 
 // ---------- the day's call ----------
@@ -741,6 +797,19 @@ function trackRecord(results, multiResults) {
   for (const [k, label] of [['points', 'Points'], ['rebounds', 'Rebounds'], ['assists', 'Assists'], ['threes', 'Threes'], ['win', 'Team to win']]) {
     const g = graded.filter((r) => statOf(r) === k); if (g.length) row(sb, label + (g.length < 30 ? ' (few)' : ''), g);
   }
+  const closed = results.filter((r) => r.open_price > 1 && r.close_price > 1);
+  const cb = document.querySelector('#close-record tbody'); cb.replaceChildren();
+  for (const [label, keep] of [['In a multi', (r) => !!r.in_multis], ['All listed', () => true]]) {
+    const g = closed.filter(keep); if (!g.length) continue;
+    const better = g.filter((r) => r.open_price > r.close_price).length, worse = g.filter((r) => r.open_price < r.close_price).length;
+    const avg = g.reduce((a, r) => a + r.open_price / r.close_price - 1, 0) / g.length;
+    const tr = cb.insertRow(); cell(tr, label); cell(tr, g.length, 'num'); cell(tr, pct(better / g.length), 'num'); cell(tr, pct(worse / g.length), 'num');
+    cell(tr, (avg >= 0 ? '+' : '−') + Math.abs(avg * 100).toFixed(1) + '%', 'num ' + (g.length < 50 ? 'muted' : avg > 0 ? 'good' : 'bad'));
+  }
+  document.getElementById('record-close').hidden = !results.length;
+  document.getElementById('close-record').hidden = !closed.length;
+  text('close-note', !closed.length ? 'No closing prices saved yet. They are recorded from 12 Nov and appear here once those games are graded.'
+    : 'Average is how much higher the listed price was than the closing price. The rest of the legs closed at the same price.' + (closed.length < 100 ? ' Too few legs to read much into yet: give it a few weeks.' : ''));
   const missed = graded.filter((r) => r.landed === false && 'minutes_flag' in r);
   const mr = document.getElementById('minutes-record');
   if (missed.length) {
@@ -877,6 +946,7 @@ for (const b of document.querySelectorAll('.tabs button')) b.addEventListener('c
   }
   D = { report, legs, multis, slate, pool };
   const jump = renderMultis();
+  renderReady(); setInterval(renderReady, 60000);
   renderCall(jump);
   renderGames();
   renderPromo();

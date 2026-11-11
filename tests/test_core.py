@@ -278,3 +278,18 @@ def test_two_leg_multi_and_verdicts():
     assert build.headline_for([{**good, "leg_ids": ["b", "a"]}, twin]).count("$2.20") == 1    # same legs, said once
     unpriced = {**base, "best_book_price": None, **build.verdict({**base, "best_book_price": None})}
     assert "No app prices every leg yet" in build.headline_for([unpriced])
+
+
+def test_top_pick_weighs_chance_and_price_and_second_pick_differs():
+    # A legs: 70% at $1.50 in the app (worth it). B legs: likelier, but the app pays less than they're worth.
+    cands = [_fake(f"A{k}", f"G{k}", 0.70, 1.50) for k in range(3)] + [_fake(f"B{k}", f"H{k}", 0.80, 1.20) for k in range(6)]
+    for l, _ in cands:
+        l.extra["books"] = {"neds": l.odds}
+    chosen = pick.choose(cands)
+    top, second = ([cands[i][0].player for i in chosen[k]] for k in ("Top pick", "Second pick"))
+    assert sorted(top) == ["A0", "A1"] or sorted(top) == ["A0", "A2"] or sorted(top) == ["A1", "A2"]   # two worth-it legs: $2.25 at 49%
+    assert len(set(top) & set(second)) <= pick.PICK_SHARED and 2 <= len(second) <= 4
+    assert pick.combo_price(cands, chosen["Second pick"]) >= pick.MIN_MULTI
+    # a price that beats the chance always outranks one that doesn't; of two equal edges the likelier wins
+    assert pick.pick_score(0.5, 2.1) > 0 > pick.pick_score(0.5, 1.9)
+    assert pick.pick_score(0.5, 2.2) > pick.pick_score(0.25, 4.4)

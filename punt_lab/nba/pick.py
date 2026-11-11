@@ -32,6 +32,8 @@ PER_GAME_MAX = 8          # one-per-game multi: at most this many games
 GAME_MAX_SHORT = 2        # 3- and 4-leg multis: at most this many legs from one game, so one bad game can't sink it
 GAME_MAX_LONG = 3         # bigger multis: at most this many
 SHORT_LEGS = 4
+PICK_MIN_CHANCE = 0.25    # top picks: a 2- to 4-leg multi at least this likely to land
+PICK_SHARED = 1           # the second pick shares at most this many players with the top pick
 _caps = (GAME_MAX_SHORT, GAME_MAX_LONG)  # (short, long) for tonight; choose() loosens them on a tiny slate
 
 
@@ -112,6 +114,14 @@ def combo_price(cands, combo) -> float:
     for i in combo:
         price *= _assumed_price(*cands[i])
     return price
+
+
+def pick_score(p: float, price: float) -> float:
+    """How good a bet is, chance and price together. When the price beats the chance it's the Kelly share
+    (edge over the winnings), which favours the likelier of two equally good prices; when it doesn't,
+    it's the loss per $1, so any multi worth taking ranks above every one that isn't."""
+    edge = p * price - 1
+    return edge / (price - 1) if edge > 0 and price > 1 else edge
 
 
 def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
@@ -210,6 +220,7 @@ def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
     # fewer legs give the bookie's margin fewer chances to compound, so a 2-leg is offered too
     targets = {4: [("4-leg $2+", 2.0), ("4-leg $3+", 3.0), ("4-leg $4+", 4.0)], 3: [("3-leg $2+", 2.0)],
                2: [("2-leg $2+", 2.0)]}
+    rated = []  # every 2- to 4-leg combo paying $2+: (one app prices every leg, score, chance, combo)
     for n, wanted in targets.items():
         best = {name: None for name, _ in wanted}
         fallback = None
@@ -225,6 +236,9 @@ def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
                         best[name] = (c, combo)
             if fallback is None or pr > fallback[0]:
                 fallback = (pr, combo)
+            if c is not None and pr >= MIN_MULTI and c >= PICK_MIN_CHANCE:
+                real = app_price([cands[i][0] for i in combo])[1] is not None
+                rated.append((real, pick_score(c, pr), c, combo))
         for name, target in wanted:
             if best[name]:
                 out[name] = list(best[name][1])
@@ -233,6 +247,19 @@ def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
             elif fallback:
                 out[name] = list(fallback[1])
                 out.setdefault("_notes", []).append(f"no {n}-leg combo reaches ${target:.2f}, so {name} shows the longest-priced one")
+
+    # Top pick: the best bet of the day by chance and price together, from every 2- to 4-leg combo paying $2+.
+    # Combos one app prices in full come first: without a real price the edge is only a guess.
+    # Second pick: the next best that shares at most one player with it, so it's a real alternative.
+    if rated:
+        rated.sort(key=lambda r: r[:3], reverse=True)
+        top = rated[0][3]
+        out["Top pick"] = sorted(top, key=lambda i: -cands[i][1].model_prob)
+        top_players = {cands[i][0].player for i in top}
+        for _, _, _, combo in rated[1:]:
+            if len(top_players & {cands[i][0].player for i in combo}) <= PICK_SHARED:
+                out["Second pick"] = sorted(combo, key=lambda i: -cands[i][1].model_prob)
+                break
 
     # Long multi: 8+ legs, each 80%+ likely and paying $1.15+, best value first
     long_idx, note = _long_multi(cands)

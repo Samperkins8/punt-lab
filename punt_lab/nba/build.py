@@ -9,7 +9,7 @@ import argparse
 import json
 import logging
 from collections import defaultdict
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from statistics import mean, median
 
@@ -40,6 +40,7 @@ B2B_HOURS = 30      # a game within this many hours of the last one is a back-to
 ALL_TEAMS = {"ATL", "BOS", "BKN", "CHA", "CHI", "CLE", "DAL", "DEN", "DET", "GS", "HOU", "IND", "LAC", "LAL",
              "MEM", "MIA", "MIL", "MIN", "NO", "NY", "OKC", "ORL", "PHI", "PHX", "POR", "SAC", "SA", "TOR", "UTAH", "WSH"}
 MAX_LEGS = 25
+PRETIP_UTC = (22, 38)  # when the pre-tip re-check is scheduled (.github/workflows/nba.yml), for the site's "ready to bet" banner
 VALUE_MARGIN = 0.05   # a multi is "value" when its app price beats break-even by this much: the chances are estimates
 SKIP_MARGIN = -0.03   # ...and a "skip" when it falls this far short; in between is marginal
 
@@ -151,6 +152,17 @@ def minutes_flags(leg: dict, boxes: dict) -> dict:
     return {"minutes_played": round(mins), "expected_minutes": round(expected), "minutes_flag": flag}
 
 
+def close_move(leg: dict) -> dict:
+    """One app's price for the leg when it was listed and at the last check before its game, when both
+    were saved (Neds where it has both: it's the app priced for every game)."""
+    opened, closed = leg.get("open_books") or {}, leg.get("close_books") or {}
+    both = [bk for bk in opened if bk in closed]
+    if not both:
+        return {}
+    bk = "neds" if "neds" in both else both[0]
+    return {"open_price": opened[bk], "close_price": closed[bk], "close_book": bk}
+
+
 def grade_live(now: datetime) -> bool:
     """Grades today's legs as each game finishes, so the site can show a multi as landed or missed
     straight after its last game, not the next morning. Uses ESPN's free box scores, no odds credits.
@@ -221,7 +233,7 @@ def grade_previous(today: date) -> str:
             "slate_date": prev, "leg_id": leg["leg_id"], "player": leg["player"], "game": leg["game"],
             "market": leg["market"], "stat": leg.get("stat"), "line": leg["line"], "model_prob": leg["model_prob"], "raw_prob": leg.get("raw_prob"), "best_price": leg.get("best_price"),
             "odds": leg.get("odds"), "fair_price": leg.get("fair_price"), "actual": actual, "landed": landed,
-            **minutes_flags(leg, boxes),
+            **minutes_flags(leg, boxes), **close_move(leg),
             "in_multis": ", ".join(m["multi"] for m in multis if leg["leg_id"] in m["leg_ids"]),
         })
     mres = load_json("multi_results.json", [])
@@ -694,6 +706,7 @@ def leg_row(leg: Leg, res) -> dict:
         "edge": round(res.edge, 4) if res.edge is not None else None,
         "hit_rate": round(res.hit_rate, 4), "market_line": leg.market_line, "market_p_over": leg.market_p_over,
         "books": leg.extra.get("books") or None, "best_book": odds.best(leg.extra.get("books"))[0],
+        "open_books": leg.extra.get("books") or None,  # the prices when the leg was listed; late checks add close_books
         "best_price": odds.best(leg.extra.get("books"))[1], "market_source": leg.market_source,
         "questionable": leg.extra.get("risky", False), "step_up": leg.extra.get("step_up", False), "note": leg.note, "event_id": leg.extra.get("event_id"), "athlete_id": leg.extra.get("athlete_id"),
     }
@@ -719,7 +732,8 @@ def pool_rows(found, winners) -> list[dict]:
 
 def multi_rows(cands, chosen) -> list[dict]:
     rows = []
-    order = ("4-leg $2+", "3-leg $2+", "2-leg $2+", "4-leg $3+", "4-leg $4+", "Best value", "Safest", "3-leg value", "One per game", "Mid-range $8+", "Long multi 8+", "Long shot $50")
+    order = ("4-leg $2+", "3-leg $2+", "2-leg $2+", "4-leg $3+", "4-leg $4+", "Best value", "Safest", "3-leg value", "One per game", "Mid-range $8+", "Long multi 8+", "Long shot $50",
+             "Top pick", "Second pick")  # last, so a pick that matches a named multi keeps that multi's name on the site
     rank = {n: i + 1 for i, n in enumerate(order)}
     for name in order:
         ids = chosen.get(name)
@@ -906,10 +920,21 @@ def main() -> None:
         "links": {k: getattr(model, k) for k in ("SAME_GAME_REBOUNDS", "SAME_TEAM_POINTS", "SAME_GAME_OTHER", "WIN_VS_OPPONENT")},
     }
     if args.mode == "pretip":  # keep what the late checks have done so far today
+        report["rechecked_at"] = now.isoformat()
         prev = load_json("report.json", {})
-        for k in ("late_checked", "late_refreshes", "late_log", "lineup_checked"):
+        for k in ("late_checked", "late_refreshes", "late_log", "lineup_checked", "close_fetches"):
             if prev.get(k):
                 report[k] = prev[k]
+        # and the prices saved for the closing-price record
+        was = {l["leg_id"]: l for l in load_json("legs.json", [])}
+        for row in legs_out:
+            for k in ("open_books", "close_books"):
+                if (was.get(row["leg_id"]) or {}).get(k):
+                    row[k] = was[row["leg_id"]][k]
+    else:  # when the re-check is due, so the site can say whether the multis are final yet
+        utc = now.astimezone(timezone.utc)
+        due = utc.replace(hour=PRETIP_UTC[0], minute=PRETIP_UTC[1], second=0, microsecond=0)
+        report["recheck_at"] = (due if due > utc else due + timedelta(days=1)).astimezone(espn.MELB).isoformat()
     if args.mode == "daily":
         save_json("h2h.json", h2h)  # for the promo page
     save_json("legs.json", legs_out)

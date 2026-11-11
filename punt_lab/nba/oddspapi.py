@@ -2,7 +2,8 @@
 
 Only runs when the ODDSPAPI_KEY secret is set. One request per bookie returns every NBA
 game on the board, every player line (Over and Under), so the whole slate costs one
-request per bookie: about 4 a day, ~120 a month against the free 250.
+request per bookie. Only Neds is fetched: one request each morning, plus the late checks'
+(late.py: at most 6 a day), so at most ~215 a month against the free 250.
 
 Returns the same shape as odds.fetch, so the two sources merge:
   {'market': {(player, stat): [(line, p_over), ...]}, 'books': {(player, stat, milestone): {bookie: price}}}
