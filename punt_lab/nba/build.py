@@ -534,8 +534,14 @@ def analyse(slate: date, games: list[dict], ov, inj: dict, ai_inj: dict, prices:
     return cands
 
 
-def match_winners(games: list[dict]) -> list[tuple[Leg, LegResult]]:
-    """Favourite-to-win legs from the betting spread (free from ESPN)."""
+WIN_MIN_PROB = 0.60  # favourites at least this likely are rated; the multis then judge them like any leg
+
+
+def match_winners(games: list[dict], h2h: list[dict] | None = None) -> list[tuple[Leg, LegResult]]:
+    """Favourite-to-win legs: the chance from the betting spread (free from ESPN), the price from the
+    morning's head-to-head prices at TAB, Neds and Bet365. They go into every multi on the same terms
+    as player legs ($1.20+)."""
+    prices = {(r.get("game"), r.get("team")): odds.allowed(r.get("books")) for r in h2h or []}
     out = []
     for g in games:
         if g.get("spread") is None or not g.get("favourite"):
@@ -545,14 +551,18 @@ def match_winners(games: list[dict]) -> list[tuple[Leg, LegResult]]:
             continue
         name = g["home_name"] if fav == g["home"] else g["away_name"]
         p = norm_cdf(abs(g["spread"]) / WIN_SD)
-        leg = Leg(leg_id=f"{fav.lower()}_win", player=name, team=fav, game=f"{g['away']} @ {g['home']}",
+        if p < WIN_MIN_PROB:
+            continue
+        label = f"{g['away']} @ {g['home']}"
+        books = prices.get((label, name)) or {}
+        leg = Leg(leg_id=f"{fav.lower()}_win", player=name, team=fav, game=label,
                   stat="win", line=1, log=[], prior_mean=0, prior_games=0, market=f"{name} to win",
-                  note=f"{abs(g['spread']):g}-point favourite",
-                  extra={"event_id": g["event_id"], "margin": WIN_MARGIN, "long_only": True,
-                         "spread": abs(g["spread"])})
+                  odds=odds.typical(books), note=f"{abs(g['spread']):g}-point favourite",
+                  extra={"event_id": g["event_id"], "margin": WIN_MARGIN, "spread": abs(g["spread"]),
+                         "books": books or None})
         res = LegResult(hit_rate=0.0, context_shift=0.0, matchup=1.0, minutes_factor=1.0, proj_mean=0.0,
                         proj_sd=0.0, market_mean=None, fair_price=1 / p, model_prob=p, implied=None, edge=None)
-        if leg.odds is None and pick.long_ok(leg, res):
+        if pick.eligible(leg, res):  # pays $1.20+ (or, with no price yet, likely to)
             out.append((leg, res))
     return out
 
@@ -585,17 +595,18 @@ def price_source(prices: dict) -> str | None:
     return " + ".join(bits) or None
 
 
-def select(found, upcoming):
+def select(found, upcoming, h2h=None):
     """Trim the candidate legs, pick the multis, and keep only the legs worth listing."""
     extra_kinds = ("step_up", "long_only")
     main_legs = trim([c for c in found if not any(c[0].extra.get(k) for k in extra_kinds)])
     keep_players = {c[0].player for c in main_legs}
     step_ups = [c for c in found if c[0].extra.get("step_up") and c[0].player in keep_players]
-    safe_legs = [c for c in found if c[0].extra.get("long_only")] + match_winners(upcoming)
-    cands = main_legs + step_ups + safe_legs
+    safe_legs = [c for c in found if c[0].extra.get("long_only")]
+    winners = match_winners(upcoming, h2h)
+    cands = main_legs + step_ups + safe_legs + winners
     chosen = pick.choose(cands)
     used = {i for k, v in chosen.items() if not k.startswith("_") for i in v}
-    kept = [i for i in range(len(cands)) if i < len(main_legs) or i in used]
+    kept = [i for i in range(len(cands)) if i < len(main_legs) or i in used or cands[i][0].stat == "win"]
     remap = {old: new for new, old in enumerate(kept)}
     cands = [cands[i] for i in kept]
     chosen = {k: (v if k.startswith("_") else [remap[i] for i in v]) for k, v in chosen.items()}
@@ -606,7 +617,8 @@ def explain(leg: Leg, res) -> str:
     """One plain sentence or three on why this leg's prediction is what it is."""
     if leg.stat == "win":
         return (f"{leg.player} are {leg.extra['spread']:g}-point favourites. The betting line makes that "
-                f"about a {res.model_prob:.0%} chance to win, fair price ${res.fair_price:.2f}.")
+                f"about a {res.model_prob:.0%} chance to win, fair price ${res.fair_price:.2f}."
+                + (" Pays ${1:.2f} at {0}.".format(odds.BOOK_NAMES.get(bk, bk), pr) if (bk := odds.best(leg.extra.get("books"))[0]) and (pr := odds.best(leg.extra.get("books"))[1]) else ""))
     unit = leg.stat
     season = mean(leg.log)
     parts = [f"Predicted {res.proj_mean:.1f} {unit} tonight, needs {int(leg.line)}+."]
@@ -810,8 +822,10 @@ def main() -> None:
                for n, v in inj.items() if v.get("comment") and v.get("status", "").lower() not in ("out",)]
     ai_inj = ai.read_injuries(ai_rows[:120]) if teams_today else {}
 
+    # head-to-head prices: fetched in the morning (2 credits, also used by the promo page), reused on re-checks
+    h2h = odds.fetch_h2h(upcoming) if args.mode == "daily" else load_json("h2h.json", [])
     found = analyse(slate, upcoming, ov, inj, ai_inj, prices)
-    cands, chosen = select(found, upcoming)
+    cands, chosen = select(found, upcoming, h2h)
     if args.mode == "daily" and (odds.enabled() or oddspapi.enabled()) and found:
         # second pass: price the games and stats the multis use first, then the other listed legs
         # (ESPN data is cached, so re-analysing is quick)
@@ -826,7 +840,7 @@ def main() -> None:
         if prices["books"] or prices["market"]:
             save_prices(slate, prices)
             found = analyse(slate, upcoming, ov, inj, ai_inj, prices)
-            cands, chosen = select(found, upcoming)
+            cands, chosen = select(found, upcoming, h2h)
     legs_out = [leg_row(l, r) for l, r in cands]
     multis_out = multi_rows(cands, chosen)
 
@@ -875,9 +889,9 @@ def main() -> None:
             if prev.get(k):
                 report[k] = prev[k]
     if args.mode == "daily":
-        save_json("h2h.json", odds.fetch_h2h(upcoming))  # for the promo page; 2 credits
+        save_json("h2h.json", h2h)  # for the promo page
     save_json("legs.json", legs_out)
-    save_json("pool.json", pool_rows(found, match_winners(upcoming)))
+    save_json("pool.json", pool_rows(found, match_winners(upcoming, h2h)))
     save_json("multis.json", multis_out)
     save_json("slate.json", slate_out)
     save_json("report.json", report)

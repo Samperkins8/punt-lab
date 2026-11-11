@@ -276,3 +276,23 @@ def test_minutes_flags():
     assert build.minutes_flags(leg, boxes(21, 25))["minutes_flag"] == "blowout"
     assert build.minutes_flags(leg, boxes(21, 5)) == {"minutes_played": 21, "expected_minutes": 34, "minutes_flag": "low"}
     assert build.minutes_flags({**leg, "stat": "win"}, boxes(21, 5)) == {}
+
+
+def test_favourites_can_go_in_any_multi(monkeypatch, tmp_path):
+    from punt_lab.nba import odds
+    fake_world(monkeypatch, tmp_path, spread=-8.5)  # LAL about a 76% chance
+    games = espn.slate_games(None)
+    h2h = [{"game": "POR @ LAL", "team": "Los Angeles Lakers", "books": {"neds": 1.32, "tab": 1.30, "sportsbet": 1.40}}]
+    wins = build.match_winners(games, h2h)
+    lal = next(l for l, r in wins if l.team == "LAL")
+    assert lal.odds == 1.31 and lal.extra["books"] == {"neds": 1.32, "tab": 1.30}  # Sam's apps only
+    assert not lal.extra.get("long_only")
+    # below $1.20 it isn't used
+    assert not [l for l, _ in build.match_winners(games, [{**h2h[0], "books": {"neds": 1.12}}]) if l.team == "LAL"]
+    # in a build it is listed on the legs page
+    monkeypatch.setattr(odds, "fetch_h2h", lambda g: h2h)
+    monkeypatch.setattr("sys.argv", ["build", "--date", "2026-11-07"])
+    build.main()
+    legs = json.loads((tmp_path / "legs.json").read_text())
+    assert any(l["leg_id"] == "lal_win" and l["best_price"] == 1.32 for l in legs)
+
