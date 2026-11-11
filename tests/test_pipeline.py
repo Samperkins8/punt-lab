@@ -243,6 +243,16 @@ def test_live_grading_marks_multis_as_games_finish(monkeypatch, tmp_path):
     assert prop_only and all(m["landed"] is True for m in prop_only)
     assert all(l.get("landed") is True for l in json.loads((tmp_path / "legs.json").read_text()) if l["stat"] != "win")
     assert not build.grade_live(now + timedelta(minutes=30))  # each game graded once
+    # a player who played well under his expected minutes is flagged as having left hurt
+    rep = json.loads((tmp_path / "report.json").read_text()); rep["final_games"] = []
+    (tmp_path / "report.json").write_text(json.dumps(rep))
+    hurt_id = next(iter(by_ath))
+    monkeypatch.setattr(espn, "box_score", lambda ev: {k: [{**r, "min": 4} if r["id"] == hurt_id else r for r in v] for k, v in box(ev).items()})
+    monkeypatch.setattr(espn, "injuries", lambda: {by_ath[hurt_id]["player"].lower(): {"status": "Day-To-Day", "comment": "ankle", "team": "x"}})
+    assert build.grade_live(now)
+    flagged = [l for l in json.loads((tmp_path / "legs.json").read_text()) if l.get("left_early")]
+    assert flagged and all(str(l["athlete_id"]) == hurt_id for l in flagged)
+    assert flagged[0]["left_early"]["minutes"] == 4 and "ankle" in flagged[0]["left_early"]["injury"]
     # a missed leg makes its multis miss, even before the rest are decided
     first = multis[0]["leg_ids"][0]
     actual_line = next(l for l in legs if l["leg_id"] == first)

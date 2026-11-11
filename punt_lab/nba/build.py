@@ -126,6 +126,17 @@ def leg_actual(leg: dict, boxes: dict) -> float | None:
     return None
 
 
+LEFT_EARLY = 0.5  # under half his expected minutes: he most likely left the game hurt
+
+
+def leg_minutes(leg: dict, boxes: dict) -> float | None:
+    for rows in boxes.get(leg.get("event_id"), {}).values():
+        for row in rows:
+            if row["id"] == str(leg.get("athlete_id")) and not row["dnp"]:
+                return row["min"]
+    return None
+
+
 def grade_live(now: datetime) -> bool:
     """Grades today's legs as each game finishes, so the site can show a multi as landed or missed
     straight after its last game, not the next morning. Uses ESPN's free box scores, no odds credits.
@@ -146,6 +157,20 @@ def grade_live(now: datetime) -> bool:
             actual = leg_actual(leg, boxes)
             leg["actual"] = actual
             leg["landed"] = None if actual is None else actual >= leg["line"]
+            mins = leg_minutes(leg, boxes) if leg["stat"] != "win" else None
+            expected = leg.get("proj_minutes") or 0
+            if mins is not None and expected >= 15 and mins < LEFT_EARLY * expected:
+                leg["left_early"] = {"minutes": round(mins), "expected": round(expected)}
+    hurt = [l for l in legs if l["game"] in finished and l.get("left_early")]
+    if hurt:  # ESPN's injury list usually names the injury within the hour
+        try:
+            inj = espn.injuries()
+        except Exception:  # noqa: BLE001 - the flag stands without it
+            inj = {}
+        for l in hurt:
+            i = inj.get(l["player"].lower())
+            if i:
+                l["left_early"]["injury"] = " ".join(x for x in (i.get("status"), i.get("comment")) if x)
     done |= finished
     by_id = {l["leg_id"]: l for l in legs}
     multis = load_json("multis.json", [])

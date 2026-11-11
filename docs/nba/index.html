@@ -105,6 +105,7 @@
   .leg .odds span { font-size: 13px; color: var(--muted); white-space: nowrap; }
   .leg .tag { display: inline-block; margin-left: 6px; padding: 0 7px; border-radius: 99px; font-size: 12px; font-weight: 600; background: var(--warn-bg); color: var(--warn); vertical-align: 1px; }
   .leg .tag.bad { background: var(--bad); color: var(--on-bad); }
+  .leg .tag.hurt { background: transparent; color: var(--bad); border: 1px solid var(--bad); }
   .leg .tag.good { background: var(--good); color: var(--on-good); }
   .leg[open] > summary .who::after { content: " –"; color: var(--muted); font-weight: 400; }
   .leg:not([open]) > summary .who::after { content: " +"; color: var(--muted); font-weight: 400; }
@@ -302,10 +303,12 @@ function legRow(l, opts = {}) {
   const state = (l.landed === null && 'actual' in l) ? ['Void, didn\'t play', ''] : l.late_out ? [l.late_out, 'bad'] : l.late_bench ? ['Not starting', 'bad'] : l.questionable ? ['Questionable', ''] : l.landed === true ? ['Landed', 'good'] : l.landed === false ? ['Missed', 'bad'] : started(l.game) ? ['Started', ''] : l.late_new ? ['New', ''] : null;
   const what = el('span', 'what', l.market + (opts.hideGame ? '' : ', ' + l.game + (tipOf(l.game) ? ' ' + tipOf(l.game) : '')));
   if (state) { const t = el('span', 'tag ' + state[1], state[0]); what.append(t); }
+  if (l.left_early) { const x = el('span', 'tag hurt', '✚ Injured'); x.title = 'Left the game early'; what.append(x); }
   const odds = el('span', 'odds');
   odds.append(el('b', null, pct(l.model_prob)), el('span', null, opts.priceText || legPriceText(l)));
   s.append(who, what, odds);
   const more = el('div', 'more');
+  if (l.left_early) more.append(el('p', 'bad', `Played only ${l.left_early.minutes} of about ${l.left_early.expected} expected minutes, so he most likely left the game hurt.` + (l.left_early.injury ? ' ESPN now lists: ' + l.left_early.injury + '.' : '')));
   if (l.why) more.append(el('p', null, l.why));
   if (l.late_was) more.append(el('p', 'muted', 'Was ' + pct(l.late_was) + ' this morning.'));
   if (l.stat !== 'win' && l.games) {
