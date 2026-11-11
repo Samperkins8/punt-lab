@@ -2,14 +2,14 @@
  "slate_date": "2026-11-12",
  "headline": "Value today: 2-leg $2+ on Neds $2.13 (needs $1.63); 3-leg $2+ on Neds $2.05 (needs $1.64); Second pick on Neds $2.46 (needs $1.78).",
  "injuries": "Paul George (Out), Nolan Traore (Out), Mikel Brown Jr. (Out), Tobe Awaka (Out), Sam Merrill (Out), Jaylon Tyson (Out), Julian Strawther (Out), Gary Payton Ii (Out), Brandon Williams (Out), Kristaps Porzingis (Out), Moses Moody (Out), Jimmy Butler Iii (Out) and others",
- "graded": "Yesterday: 18 of 30 legs landed; 4-leg $2+ missed, 3-leg $2+ missed, 2-leg $2+ missed, 4-leg $3+ missed, 4-leg $4+ missed, Best value missed, Safest missed, 3-leg value missed, One per game missed, Mid-range $8+ missed, Long shot $50 missed.",
- "next_run": "Built 10:07am; re-checked before the first tip",
+ "graded": "",
+ "next_run": "Re-checked 10:28am: 1 multi(s) changed: Long shot $50",
  "sources": {
   "stats": "ESPN",
-  "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API (6 games, 292 credits left)",
+  "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API",
   "injury_reading": "Claude"
  },
- "updated_at": "2026-11-12T10:07:43.335018+11:00",
+ "updated_at": "2026-11-12T10:28:02.645703+11:00",
  "inj_snapshot": {
   "paul george": "Out",
   "nolan traore": "Out",
@@ -82,5 +82,5 @@
   "SAME_GAME_OTHER": 0.048,
   "WIN_VS_OPPONENT": -0.2
  },
- "recheck_at": "2026-11-13T09:38:00+11:00"
+ "rechecked_at": "2026-11-12T10:28:02.645703+11:00"
 }

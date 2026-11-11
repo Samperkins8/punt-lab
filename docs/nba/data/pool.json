@@ -23,10 +23,10 @@
   "stat": "threes",
   "line": 1,
   "market": "1+ threes",
-  "model_prob": 0.8786,
+  "model_prob": 0.8773,
   "books": null,
   "best_price": null,
-  "fair_price": 1.28,
+  "fair_price": 1.29,
   "questionable": false,
   "hits": 9,
   "games": 10
@@ -109,7 +109,7 @@
   "stat": "assists",
   "line": 2,
   "market": "2+ assists",
-  "model_prob": 0.8511,
+  "model_prob": 0.851,
   "books": {
    "neds": 1.2
   },
@@ -201,7 +201,7 @@
   "stat": "points",
   "line": 10,
   "market": "10+ points",
-  "model_prob": 0.8382,
+  "model_prob": 0.8381,
   "books": {
    "neds": 1.15
   },
@@ -311,7 +311,7 @@
   "stat": "points",
   "line": 10,
   "market": "10+ points",
-  "model_prob": 0.8223,
+  "model_prob": 0.822,
   "books": {
    "neds": 1.2
   },
@@ -437,12 +437,12 @@
   "stat": "assists",
   "line": 4,
   "market": "4+ assists",
-  "model_prob": 0.8071,
+  "model_prob": 0.807,
   "books": {
    "neds": 1.16
   },
   "best_price": 1.16,
-  "fair_price": 1.28,
+  "fair_price": 1.27,
   "questionable": false,
   "hits": 6,
   "games": 8
@@ -455,7 +455,7 @@
   "stat": "points",
   "line": 15,
   "market": "15+ points",
-  "model_prob": 0.8059,
+  "model_prob": 0.8056,
   "books": {
    "neds": 1.15
   },
@@ -509,7 +509,7 @@
   "stat": "points",
   "line": 10,
   "market": "10+ points",
-  "model_prob": 0.7994,
+  "model_prob": 0.8001,
   "books": null,
   "best_price": null,
   "fair_price": null,
@@ -670,7 +670,7 @@
   "stat": "assists",
   "line": 4,
   "market": "4+ assists",
-  "model_prob": 0.7737,
+  "model_prob": 0.7739,
   "books": {
    "neds": 1.22
   },
@@ -699,25 +699,6 @@
   "games": 8
  },
  {
-  "leg_id": "derrick_white_points10",
-  "player": "Derrick White",
-  "team": "BOS",
-  "game": "BOS @ TOR",
-  "stat": "points",
-  "line": 10,
-  "market": "10+ points",
-  "model_prob": 0.7701,
-  "books": {
-   "neds": 1.22,
-   "tab": 1.24
-  },
-  "best_price": 1.24,
-  "fair_price": 1.21,
-  "questionable": false,
-  "hits": 6,
-  "games": 11
- },
- {
   "leg_id": "ziaire_williams_threes1",
   "player": "Ziaire Williams",
   "team": "LAL",
@@ -734,6 +715,25 @@
   "questionable": false,
   "hits": 9,
   "games": 9
+ },
+ {
+  "leg_id": "derrick_white_points10",
+  "player": "Derrick White",
+  "team": "BOS",
+  "game": "BOS @ TOR",
+  "stat": "points",
+  "line": 10,
+  "market": "10+ points",
+  "model_prob": 0.7698,
+  "books": {
+   "neds": 1.22,
+   "tab": 1.24
+  },
+  "best_price": 1.24,
+  "fair_price": 1.21,
+  "questionable": false,
+  "hits": 6,
+  "games": 11
  },
  {
   "leg_id": "alex_sarr_rebounds6",
@@ -795,7 +795,7 @@
   "stat": "rebounds",
   "line": 4,
   "market": "4+ rebounds",
-  "model_prob": 0.7627,
+  "model_prob": 0.7626,
   "books": {
    "neds": 1.2
   },
@@ -813,7 +813,7 @@
   "stat": "threes",
   "line": 2,
   "market": "2+ threes",
-  "model_prob": 0.7622,
+  "model_prob": 0.7617,
   "books": null,
   "best_price": null,
   "fair_price": null,
@@ -847,13 +847,13 @@
   "stat": "threes",
   "line": 1,
   "market": "1+ threes",
-  "model_prob": 0.7589,
+  "model_prob": 0.7587,
   "books": {
    "neds": 1.26,
    "tab": 1.23
   },
   "best_price": 1.26,
-  "fair_price": 1.33,
+  "fair_price": 1.34,
   "questionable": false,
   "hits": 6,
   "games": 10
@@ -933,22 +933,6 @@
   "games": 9
  },
  {
-  "leg_id": "jamal_shead_assists8",
-  "player": "Jamal Shead",
-  "team": "TOR",
-  "game": "BOS @ TOR",
-  "stat": "assists",
-  "line": 8,
-  "market": "8+ assists",
-  "model_prob": 0.7515,
-  "books": null,
-  "best_price": null,
-  "fair_price": null,
-  "questionable": false,
-  "hits": 3,
-  "games": 10
- },
- {
   "leg_id": "og_anunoby_rebounds4",
   "player": "OG Anunoby",
   "team": "NY",
@@ -985,6 +969,22 @@
   "games": 10
  },
  {
+  "leg_id": "jamal_shead_assists8",
+  "player": "Jamal Shead",
+  "team": "TOR",
+  "game": "BOS @ TOR",
+  "stat": "assists",
+  "line": 8,
+  "market": "8+ assists",
+  "model_prob": 0.7505,
+  "books": null,
+  "best_price": null,
+  "fair_price": null,
+  "questionable": false,
+  "hits": 3,
+  "games": 10
+ },
+ {
   "leg_id": "jabari_smith_jr_rebounds6",
   "player": "Jabari Smith Jr.",
   "team": "HOU",
@@ -1008,7 +1008,7 @@
   "stat": "points",
   "line": 15,
   "market": "15+ points",
-  "model_prob": 0.7498,
+  "model_prob": 0.7496,
   "books": {
    "neds": 1.25
   },
@@ -1334,7 +1334,7 @@
   "stat": "assists",
   "line": 4,
   "market": "4+ assists",
-  "model_prob": 0.7226,
+  "model_prob": 0.7224,
   "books": {
    "neds": 1.26
   },
@@ -1370,7 +1370,7 @@
   "stat": "assists",
   "line": 4,
   "market": "4+ assists",
-  "model_prob": 0.7193,
+  "model_prob": 0.7189,
   "books": {
    "neds": 1.28
   },
@@ -1442,12 +1442,12 @@
   "stat": "points",
   "line": 20,
   "market": "20+ points",
-  "model_prob": 0.7135,
+  "model_prob": 0.7146,
   "books": {
    "neds": 1.28
   },
   "best_price": 1.28,
-  "fair_price": 1.42,
+  "fair_price": 1.43,
   "questionable": false,
   "hits": 6,
   "games": 10
@@ -1622,7 +1622,7 @@
   "stat": "rebounds",
   "line": 6,
   "market": "6+ rebounds",
-  "model_prob": 0.7038,
+  "model_prob": 0.7034,
   "books": {
    "neds": 1.32
   },
@@ -1676,7 +1676,7 @@
   "stat": "rebounds",
   "line": 4,
   "market": "4+ rebounds",
-  "model_prob": 0.7023,
+  "model_prob": 0.702,
   "books": {
    "neds": 1.33
   },
@@ -1824,7 +1824,7 @@
   "stat": "assists",
   "line": 10,
   "market": "10+ assists",
-  "model_prob": 0.6179,
+  "model_prob": 0.6163,
   "books": null,
   "best_price": null,
   "fair_price": null,
@@ -1894,7 +1894,7 @@
   "stat": "threes",
   "line": 3,
   "market": "3+ threes",
-  "model_prob": 0.5701,
+  "model_prob": 0.5705,
   "books": {
    "neds": 1.46
   },
@@ -1931,7 +1931,7 @@
   "stat": "points",
   "line": 15,
   "market": "15+ points",
-  "model_prob": 0.5499,
+  "model_prob": 0.5487,
   "books": {
    "neds": 1.83
   },
@@ -2146,7 +2146,7 @@
   "stat": "threes",
   "line": 3,
   "market": "3+ threes",
-  "model_prob": 0.5128,
+  "model_prob": 0.5125,
   "books": {
    "neds": 1.67
   },
@@ -2252,7 +2252,7 @@
   "stat": "points",
   "line": 20,
   "market": "20+ points",
-  "model_prob": 0.4978,
+  "model_prob": 0.4962,
   "books": {
    "neds": 1.85
   },
@@ -2261,6 +2261,24 @@
   "questionable": false,
   "hits": 3,
   "games": 9
+ },
+ {
+  "leg_id": "michael_porter_jr_points25",
+  "player": "Michael Porter Jr.",
+  "team": "BKN",
+  "game": "BKN @ NO",
+  "stat": "points",
+  "line": 25,
+  "market": "25+ points",
+  "model_prob": 0.495,
+  "books": {
+   "neds": 1.87
+  },
+  "best_price": 1.87,
+  "fair_price": 2.0,
+  "questionable": false,
+  "hits": 5,
+  "games": 10
  },
  {
   "leg_id": "evan_mobley_threes2",
@@ -2315,24 +2333,6 @@
   "questionable": false,
   "hits": 6,
   "games": 11
- },
- {
-  "leg_id": "michael_porter_jr_points25",
-  "player": "Michael Porter Jr.",
-  "team": "BKN",
-  "game": "BKN @ NO",
-  "stat": "points",
-  "line": 25,
-  "market": "25+ points",
-  "model_prob": 0.493,
-  "books": {
-   "neds": 1.87
-  },
-  "best_price": 1.87,
-  "fair_price": 2.0,
-  "questionable": false,
-  "hits": 5,
-  "games": 10
  },
  {
   "leg_id": "karl-anthony_towns_points20",
@@ -2559,7 +2559,7 @@
   "stat": "assists",
   "line": 6,
   "market": "6+ assists",
-  "model_prob": 0.438,
+  "model_prob": 0.4388,
   "books": {
    "neds": 1.94
   },
@@ -2577,7 +2577,7 @@
   "stat": "rebounds",
   "line": 6,
   "market": "6+ rebounds",
-  "model_prob": 0.4319,
+  "model_prob": 0.4314,
   "books": {
    "neds": 1.85
   },
@@ -2595,7 +2595,7 @@
   "stat": "points",
   "line": 15,
   "market": "15+ points",
-  "model_prob": 0.4204,
+  "model_prob": 0.4197,
   "books": {
    "neds": 1.88,
    "tab": 1.85

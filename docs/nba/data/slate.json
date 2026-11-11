@@ -25,7 +25,7 @@
   "start": "2026-11-12T11:00:00+11:00",
   "favourite": "BOS",
   "spread": -5.5,
-  "total": 216.5,
+  "total": 215.5,
   "fav_win_prob": 0.677,
   "status": "Analysed"
  },
@@ -64,9 +64,9 @@
   "tip": "12:00pm",
   "start": "2026-11-12T12:00:00+11:00",
   "favourite": "NO",
-  "spread": -3.5,
+  "spread": -2.5,
   "total": 228.5,
-  "fav_win_prob": 0.615,
+  "fav_win_prob": 0.583,
   "status": "Analysed"
  },
  {
