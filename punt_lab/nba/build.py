@@ -126,15 +126,29 @@ def leg_actual(leg: dict, boxes: dict) -> float | None:
     return None
 
 
-LEFT_EARLY = 0.5  # under half his expected minutes: he most likely left the game hurt
+LEFT_EARLY = 0.5    # under half his expected minutes: he most likely left the game hurt
+LOW_MINUTES = 0.7   # under 70%: his minutes were cut (blowout, fouls, rest)
+BLOWOUT = 20        # final margin that counts as a blowout
 
 
-def leg_minutes(leg: dict, boxes: dict) -> float | None:
-    for rows in boxes.get(leg.get("event_id"), {}).values():
-        for row in rows:
-            if row["id"] == str(leg.get("athlete_id")) and not row["dnp"]:
-                return row["min"]
-    return None
+def minutes_flags(leg: dict, boxes: dict) -> dict:
+    """Minutes played against expected, and why they were short: {"minutes_played", "expected_minutes",
+    "minutes_flag": "injured" / "blowout" / "low" / None}. Empty for team legs or players who didn't play."""
+    if leg["stat"] == "win":
+        return {}
+    box = boxes.get(leg.get("event_id"), {})
+    mins = next((r["min"] for rows in box.values() for r in rows
+                 if r["id"] == str(leg.get("athlete_id")) and not r["dnp"]), None)
+    expected = leg.get("proj_minutes") or 0
+    if mins is None or not expected:
+        return {}
+    flag = None
+    if expected >= 15 and mins < LEFT_EARLY * expected:
+        flag = "injured"
+    elif mins < LOW_MINUTES * expected:
+        scores = [sum(r["pts"] or 0 for r in rows) for rows in box.values()]
+        flag = "blowout" if len(scores) == 2 and abs(scores[0] - scores[1]) >= BLOWOUT else "low"
+    return {"minutes_played": round(mins), "expected_minutes": round(expected), "minutes_flag": flag}
 
 
 def grade_live(now: datetime) -> bool:
@@ -157,10 +171,9 @@ def grade_live(now: datetime) -> bool:
             actual = leg_actual(leg, boxes)
             leg["actual"] = actual
             leg["landed"] = None if actual is None else actual >= leg["line"]
-            mins = leg_minutes(leg, boxes) if leg["stat"] != "win" else None
-            expected = leg.get("proj_minutes") or 0
-            if mins is not None and expected >= 15 and mins < LEFT_EARLY * expected:
-                leg["left_early"] = {"minutes": round(mins), "expected": round(expected)}
+            leg.update(minutes_flags(leg, boxes))
+            if leg.get("minutes_flag") == "injured":
+                leg["left_early"] = {"minutes": leg["minutes_played"], "expected": leg["expected_minutes"]}
     hurt = [l for l in legs if l["game"] in finished and l.get("left_early")]
     if hurt:  # ESPN's injury list usually names the injury within the hour
         try:
@@ -208,6 +221,7 @@ def grade_previous(today: date) -> str:
             "slate_date": prev, "leg_id": leg["leg_id"], "player": leg["player"], "game": leg["game"],
             "market": leg["market"], "stat": leg.get("stat"), "line": leg["line"], "model_prob": leg["model_prob"], "raw_prob": leg.get("raw_prob"), "best_price": leg.get("best_price"),
             "odds": leg.get("odds"), "fair_price": leg.get("fair_price"), "actual": actual, "landed": landed,
+            **minutes_flags(leg, boxes),
             "in_multis": ", ".join(m["multi"] for m in multis if leg["leg_id"] in m["leg_ids"]),
         })
     mres = load_json("multi_results.json", [])

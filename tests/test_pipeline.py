@@ -253,6 +253,8 @@ def test_live_grading_marks_multis_as_games_finish(monkeypatch, tmp_path):
     flagged = [l for l in json.loads((tmp_path / "legs.json").read_text()) if l.get("left_early")]
     assert flagged and all(str(l["athlete_id"]) == hurt_id for l in flagged)
     assert flagged[0]["left_early"]["minutes"] == 4 and "ankle" in flagged[0]["left_early"]["injury"]
+    assert all("minutes_played" in l for l in json.loads((tmp_path / "legs.json").read_text()) if l["stat"] != "win")
+
     # a missed leg makes its multis miss, even before the rest are decided
     first = multis[0]["leg_ids"][0]
     actual_line = next(l for l in legs if l["leg_id"] == first)
@@ -263,3 +265,14 @@ def test_live_grading_marks_multis_as_games_finish(monkeypatch, tmp_path):
         {**g, "state": "post" if f"{g['away']} @ {g['home']}" == actual_line["game"] else "in"} for g in games])
     assert build.grade_live(now)
     assert next(m for m in json.loads((tmp_path / "multis.json").read_text()) if m["multi"] == multis[0]["multi"])["landed"] is False
+
+
+def test_minutes_flags():
+    leg = {"stat": "points", "event_id": "E", "athlete_id": 7, "proj_minutes": 34}
+    def boxes(mins, margin):
+        return {"E": {"A": [{"id": "7", "dnp": False, "min": mins, "pts": 100 + margin}], "B": [{"id": "8", "dnp": False, "min": 30, "pts": 100}]}}
+    assert build.minutes_flags(leg, boxes(33, 5))["minutes_flag"] is None
+    assert build.minutes_flags(leg, boxes(10, 5))["minutes_flag"] == "injured"
+    assert build.minutes_flags(leg, boxes(21, 25))["minutes_flag"] == "blowout"
+    assert build.minutes_flags(leg, boxes(21, 5)) == {"minutes_played": 21, "expected_minutes": 34, "minutes_flag": "low"}
+    assert build.minutes_flags({**leg, "stat": "win"}, boxes(21, 5)) == {}

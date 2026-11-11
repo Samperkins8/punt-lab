@@ -227,6 +227,7 @@
     <div class="panel" id="record-rating" hidden><h3 class="section-title">By rating</h3><p class="lede">Do multis rated value do better than those rated skip? Recorded from 11 Nov. Profit is what $1 on each would have made.</p><div class="scroll"><table id="rating-record"><thead><tr><th>Rated</th><th class="num">Landed</th><th class="num">Predicted</th><th class="num">Profit</th></tr></thead><tbody></tbody></table></div></div>
     <div class="panel" id="record-multi" hidden><h3 class="section-title">By multi</h3><div class="scroll"><table id="multi-record"><thead><tr><th>Multi</th><th class="num">Landed</th><th class="num">Predicted</th><th class="num">Profit</th></tr></thead><tbody></tbody></table></div><p class="lede">Profit is what $1 on each would have made. It uses the app's price when every leg had one, otherwise the estimate. * means some days had no price saved and are left out.</p></div>
     <div class="panel" id="record-legs" hidden><h3 class="section-title">Legs</h3><div class="scroll"><table id="calibration"><thead><tr><th>Model said</th><th class="num">Legs</th><th class="num">Predicted</th><th class="num">Landed</th></tr></thead><tbody></tbody></table></div>
+      <p class="lede" id="minutes-record" hidden></p>
       <div class="scroll"><table id="stat-record"><thead><tr><th>Leg type</th><th class="num">Legs</th><th class="num">Predicted</th><th class="num">Landed</th></tr></thead><tbody></tbody></table></div></div>
     <div class="panel" id="honest" hidden>
       <h3 class="section-title">How honest are the percentages?</h3>
@@ -304,11 +305,14 @@ function legRow(l, opts = {}) {
   const what = el('span', 'what', l.market + (opts.hideGame ? '' : ', ' + l.game + (tipOf(l.game) ? ' ' + tipOf(l.game) : '')));
   if (state) { const t = el('span', 'tag ' + state[1], state[0]); what.append(t); }
   if (l.left_early) { const x = el('span', 'tag hurt', '✚ Injured'); x.title = 'Left the game early'; what.append(x); }
+  else if (l.minutes_flag === 'blowout' || l.minutes_flag === 'low') what.append(el('span', 'tag', l.minutes_flag === 'blowout' ? 'Low minutes, blowout' : 'Low minutes'));
   const odds = el('span', 'odds');
   odds.append(el('b', null, pct(l.model_prob)), el('span', null, opts.priceText || legPriceText(l)));
   s.append(who, what, odds);
   const more = el('div', 'more');
   if (l.left_early) more.append(el('p', 'bad', `Played only ${l.left_early.minutes} of about ${l.left_early.expected} expected minutes, so he most likely left the game hurt.` + (l.left_early.injury ? ' ESPN now lists: ' + l.left_early.injury + '.' : '')));
+  else if (l.minutes_played != null) more.append(el('p', l.minutes_flag ? 'bad' : 'muted', `Played ${l.minutes_played} of about ${l.expected_minutes} expected minutes`
+    + (l.minutes_flag === 'blowout' ? ', cut short by a blowout.' : l.minutes_flag === 'low' ? ', well under (foul trouble, rest or a coaching call).' : '.')));
   if (l.why) more.append(el('p', null, l.why));
   if (l.late_was) more.append(el('p', 'muted', 'Was ' + pct(l.late_was) + ' this morning.'));
   if (l.stat !== 'win' && l.games) {
@@ -733,6 +737,15 @@ function trackRecord(results, multiResults) {
   for (const [k, label] of [['points', 'Points'], ['rebounds', 'Rebounds'], ['assists', 'Assists'], ['threes', 'Threes'], ['win', 'Team to win']]) {
     const g = graded.filter((r) => statOf(r) === k); if (g.length) row(sb, label + (g.length < 30 ? ' (few)' : ''), g);
   }
+  const missed = graded.filter((r) => r.landed === false && 'minutes_flag' in r);
+  const mr = document.getElementById('minutes-record');
+  if (missed.length) {
+    const n = (f) => missed.filter((r) => r.minutes_flag === f).length, inj = n('injured'), blow = n('blowout'), low = n('low'), short = inj + blow + low;
+    const why = [inj && `${inj} injured`, blow && `${blow} in blowouts`, low && `${low} for other reasons`].filter(Boolean).join(', ');
+    mr.textContent = `Missed legs: ${short} of ${missed.length} had low minutes` + (short ? ` (${why})` : '') + '. The rest played normal minutes and had a quiet night.'
+      + (missed.length >= 20 && short / missed.length > 0.3 ? ' That is a lot: the minutes predictions are the weak spot.' : '');
+    mr.hidden = false;
+  } else mr.hidden = true;
   const done = multiResults.filter((r) => r.landed === true || r.landed === false);
   const recordRow = (tbody, label, g) => {
     const tr = tbody.insertRow(), landed = g.filter((r) => r.landed).length;
