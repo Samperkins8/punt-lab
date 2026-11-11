@@ -77,6 +77,7 @@
   .slip-title .lede { margin-top: 2px; }
   .aka { font-size: 14px; color: var(--muted); }
   .pill { flex: none; display: inline-block; padding: 3px 10px; border-radius: 99px; font-size: 14px; font-weight: 600; border: 1px solid var(--line); white-space: nowrap; }
+  .pills { flex: none; display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
   .pill.value { background: var(--good); border-color: var(--good); color: var(--on-good); }
   .pill.skip { background: var(--bad); border-color: var(--bad); color: var(--on-bad); }
   .pill.marginal, .pill.check { background: var(--warn-bg); border-color: transparent; color: var(--warn); }
@@ -104,6 +105,7 @@
   .leg .odds span { font-size: 13px; color: var(--muted); white-space: nowrap; }
   .leg .tag { display: inline-block; margin-left: 6px; padding: 0 7px; border-radius: 99px; font-size: 12px; font-weight: 600; background: var(--warn-bg); color: var(--warn); vertical-align: 1px; }
   .leg .tag.bad { background: var(--bad); color: var(--on-bad); }
+  .leg .tag.good { background: var(--good); color: var(--on-good); }
   .leg[open] > summary .who::after { content: " –"; color: var(--muted); font-weight: 400; }
   .leg:not([open]) > summary .who::after { content: " +"; color: var(--muted); font-weight: 400; }
   .leg .more { padding: 0 0 12px; font-size: 14px; display: grid; gap: 6px; }
@@ -297,7 +299,7 @@ function legRow(l, opts = {}) {
   const d = el('details', 'leg');
   const s = el('summary');
   const who = el('span', 'who', l.player);
-  const state = l.late_out ? [l.late_out, 'bad'] : l.late_bench ? ['Not starting', 'bad'] : l.questionable ? ['Questionable', ''] : started(l.game) ? ['Started', ''] : l.late_new ? ['New', ''] : null;
+  const state = l.late_out ? [l.late_out, 'bad'] : l.late_bench ? ['Not starting', 'bad'] : l.questionable ? ['Questionable', ''] : l.landed === true ? ['Landed', 'good'] : l.landed === false ? ['Missed', 'bad'] : started(l.game) ? ['Started', ''] : l.late_new ? ['New', ''] : null;
   const what = el('span', 'what', l.market + (opts.hideGame ? '' : ', ' + l.game + (tipOf(l.game) ? ' ' + tipOf(l.game) : '')));
   if (state) { const t = el('span', 'tag ' + state[1], state[0]); what.append(t); }
   const odds = el('span', 'odds');
@@ -431,7 +433,12 @@ function slip(m, byId) {
   const tw = el('div'); tw.append(el('h3', null, title), el('p', 'lede', sub));
   const tr = el('div', 'slip-title'); tr.append(tw);
   const off = gone(m);
-  if (off) tr.append(el('span', 'pill', 'Started')); else if (m.verdict) tr.append(el('span', 'pill ' + m.verdict, RATING[m.verdict]));
+  if (off) {
+    const pills = el('span', 'pills'); pills.append(el('span', 'pill', 'Started'));
+    if (m.landed === true) pills.append(el('span', 'pill value', 'Successful'));
+    else if (m.landed === false) pills.append(el('span', 'pill skip', 'Missed'));
+    tr.append(pills);
+  } else if (m.verdict) tr.append(el('span', 'pill ' + m.verdict, RATING[m.verdict]));
   const trio = el('div', 'trio');
   const fig = (v, label) => { const d = el('div'); d.append(el('b', null, v || '–'), el('span', null, label)); trio.append(d); };
   fig(pct(m.est_hit), 'chance all ' + legs.length + ' land');

@@ -218,3 +218,38 @@ def test_rechecks_keep_the_mornings_prices(monkeypatch, tmp_path):
     # merging a refresh onto kept prices works (the kept bookie line counts as one bookie)
     merged = odds.finalise(odds.merge(kept, {"market": {(names[0], "points"): [(21.5, 0.52)]}, "books": {(names[0], "points", 20): {"neds": 2.0}}}))
     assert merged["market"][(names[0], "points")][0] in (19.5, 21.5) and merged["books"][(names[0], "points", 20)]["neds"] == 2.0
+
+
+def test_live_grading_marks_multis_as_games_finish(monkeypatch, tmp_path):
+    fake_world(monkeypatch, tmp_path)
+    monkeypatch.setattr("sys.argv", ["build", "--date", "2026-11-07"])
+    build.main()
+    legs = json.loads((tmp_path / "legs.json").read_text())
+    multis = json.loads((tmp_path / "multis.json").read_text())
+    games = espn.slate_games(None)
+    now = games[0]["start"] + timedelta(hours=6)
+    assert not build.grade_live(now)  # nothing final yet
+    # every leg gets exactly what it needed, then both games finish
+    by_ath = {str(l.get("athlete_id")): l for l in legs if l["stat"] != "win"}
+    def box(ev):
+        rows = [{"id": a, "name": "", "pos": "G", "starter": True, "dnp": False, "min": 30,
+                 "pts": 99, "reb": 99, "ast": 99, "threes": 99} for a in by_ath]
+        return {"A": rows, "B": []}
+    monkeypatch.setattr(espn, "box_score", box)
+    monkeypatch.setattr(espn, "slate_games", lambda d: [{**g, "state": "post"} for g in games])
+    assert build.grade_live(now)
+    after = json.loads((tmp_path / "multis.json").read_text())
+    prop_only = [m for m in after if all(i in {l["leg_id"] for l in by_ath.values()} for i in m["leg_ids"])]
+    assert prop_only and all(m["landed"] is True for m in prop_only)
+    assert all(l.get("landed") is True for l in json.loads((tmp_path / "legs.json").read_text()) if l["stat"] != "win")
+    assert not build.grade_live(now + timedelta(minutes=30))  # each game graded once
+    # a missed leg makes its multis miss, even before the rest are decided
+    first = multis[0]["leg_ids"][0]
+    actual_line = next(l for l in legs if l["leg_id"] == first)
+    monkeypatch.setattr(build, "leg_actual", lambda leg, boxes: (leg["line"] - 1) if leg["leg_id"] == first else leg["line"])
+    rep = json.loads((tmp_path / "report.json").read_text()); rep["final_games"] = []
+    (tmp_path / "report.json").write_text(json.dumps(rep))
+    monkeypatch.setattr(espn, "slate_games", lambda d: [
+        {**g, "state": "post" if f"{g['away']} @ {g['home']}" == actual_line["game"] else "in"} for g in games])
+    assert build.grade_live(now)
+    assert next(m for m in json.loads((tmp_path / "multis.json").read_text()) if m["multi"] == multis[0]["multi"])["landed"] is False

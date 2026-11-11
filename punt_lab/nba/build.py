@@ -107,6 +107,64 @@ def load_prices(slate: date) -> dict | None:
 
 # ---------------------------------------------------------------- grading
 
+def leg_actual(leg: dict, boxes: dict) -> float | None:
+    """The leg's stat from the box score (1/0 for a win leg), or None if he didn't play or there's no score."""
+    ev = leg.get("event_id")
+    if ev and ev not in boxes:
+        boxes[ev] = espn.box_score(ev)
+    if leg["stat"] == "win":
+        box = boxes.get(ev, {})
+        if len(box) == 2 and leg["team"] in box:
+            scores = {t: sum(r["pts"] or 0 for r in rows) for t, rows in box.items()}
+            mine = scores.pop(leg["team"])
+            return 1 if mine > max(scores.values()) else 0
+        return None
+    for rows in boxes.get(ev, {}).values():
+        for row in rows:
+            if row["id"] == str(leg.get("athlete_id")) and not row["dnp"]:
+                return row[STATS[leg["stat"]]]
+    return None
+
+
+def grade_live(now: datetime) -> bool:
+    """Grades today's legs as each game finishes, so the site can show a multi as landed or missed
+    straight after its last game, not the next morning. Uses ESPN's free box scores, no odds credits.
+    Returns True if anything was written."""
+    report = load_json("report.json", {})
+    slate = report.get("slate_date")
+    if not slate:
+        return False
+    done = set(report.get("final_games", []))
+    games = espn.slate_games(date.fromisoformat(slate))
+    finished = {f"{g['away']} @ {g['home']}" for g in games if g.get("state") == "post"} - done
+    if not finished:
+        return False
+    legs = load_json("legs.json", [])
+    boxes: dict = {}
+    for leg in legs:
+        if leg["game"] in finished:
+            actual = leg_actual(leg, boxes)
+            leg["actual"] = actual
+            leg["landed"] = None if actual is None else actual >= leg["line"]
+    done |= finished
+    by_id = {l["leg_id"]: l for l in legs}
+    multis = load_json("multis.json", [])
+    for m in multis:
+        ms = [by_id[i] for i in m["leg_ids"] if i in by_id]
+        if any(l.get("landed") is False for l in ms):
+            m["landed"] = False
+        elif ms and all(l["game"] in done for l in ms) and any(l.get("landed") for l in ms):
+            m["landed"] = True  # a leg whose player didn't play is void; the rest got up
+        else:
+            m["landed"] = None
+    report["final_games"] = sorted(done)
+    save_json("legs.json", legs)
+    save_json("multis.json", multis)
+    save_json("report.json", report)
+    log.info("Graded finished games: %s", ", ".join(sorted(finished)))
+    return True
+
+
 def grade_previous(today: date) -> str:
     report = load_json("report.json", {})
     prev = report.get("slate_date")
@@ -118,21 +176,7 @@ def grade_previous(today: date) -> str:
     boxes: dict[str, dict] = {}
     landed_by_leg: dict[str, bool | None] = {}
     for leg in legs:
-        ev = leg.get("event_id")
-        if ev and ev not in boxes:
-            boxes[ev] = espn.box_score(ev)
-        actual = None
-        if leg["stat"] == "win":
-            box = boxes.get(ev, {})
-            if len(box) == 2 and leg["team"] in box:
-                scores = {t: sum(r["pts"] or 0 for r in rows) for t, rows in box.items()}
-                mine = scores.pop(leg["team"])
-                actual = 1 if mine > max(scores.values()) else 0
-        else:
-          for rows in boxes.get(ev, {}).values():
-            for row in rows:
-                if row["id"] == str(leg.get("athlete_id")) and not row["dnp"]:
-                    actual = row[STATS[leg["stat"]]]
+        actual = leg_actual(leg, boxes)
         landed = None if actual is None else actual >= leg["line"]
         landed_by_leg[leg["leg_id"]] = landed
         results.append({
@@ -697,6 +741,7 @@ def main() -> None:
     slate = date.fromisoformat(args.date) if args.date else default_slate
     if args.mode == "late":
         from . import late
+        grade_live(now)  # today's slate, even after 4pm when `slate` has moved on to tomorrow
         late.run(slate, now)
         return
     graded = grade_previous(slate) if args.mode == "daily" else ""

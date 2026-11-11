@@ -5,7 +5,7 @@ on:
     # GitHub schedules run in UTC. 20:44 UTC = 7:44am Melbourne in summer time (8:44am in winter).
     - cron: "44 20 * * *"   # morning build: grade yesterday, analyse today
     - cron: "38 22 * * *"   # pre-tip re-check (9:38am Melbourne summer time)
-    - cron: "8,38 21-23,0-4 * * *"   # late checks every 30 min, ~8am-3:30pm Melbourne: each game once 15-75 min before tip, and its line-ups once in the last 35
+    - cron: "8,38 21-23,0-7 * * *"   # late checks every 30 min, ~8am-6:30pm Melbourne: each game once 15-75 min before tip, its line-ups once in the last 35, and each game graded once it's final
   workflow_dispatch:
     inputs:
       mode:
@@ -44,7 +44,7 @@ jobs:
           if [ -z "$MODE" ]; then
             case "${{ github.event.schedule }}" in
               "38 22 * * *") MODE=pretip ;;
-              "8,38 21-23,0-4 * * *") MODE=late ;;
+              "8,38 21-23,0-7 * * *") MODE=late ;;
               *) MODE=daily ;;
             esac
           fi
