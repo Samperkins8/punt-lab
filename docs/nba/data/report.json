@@ -64,5 +64,13 @@
   "12:05pm LAC @ PHX, MIA @ UTAH: no new outs; 2 new legs worth a look",
   "1:08pm ORL @ SAC: Tristan da Silva out; 1 new leg worth a look; prices refreshed",
   "2:29pm OKC @ POR: no new outs"
+ ],
+ "final_games": [
+  "BOS @ PHI",
+  "LAC @ PHX",
+  "MIA @ UTAH",
+  "MIL @ NY",
+  "OKC @ POR",
+  "ORL @ SAC"
  ]
 }
