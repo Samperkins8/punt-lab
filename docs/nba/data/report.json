@@ -3,7 +3,7 @@
  "headline": "Value today: 4-leg $3+ on Neds $3.07 (needs $2.91); 4-leg $4+ on Neds $4.03 (needs $3.78); Mid-range $8+ on Neds $8.05 (needs $6.88). Note: only 4 legs are 80%+ likely at $1.15+, not enough for a long multi; 3-leg value includes legs without a confirmed worth-it price.",
  "injuries": "Yanic Konan Niederhauser (Out), Brandon Ingram (Out), Bradley Beal (Out), Jordan Miller (Out), Josh Hart (Out), Jaylin Williams (Out), Thomas Sorber (Out), Cason Wallace (Out), Chet Holmgren (Out), Jalen Williams (Out), Jalen Suggs (Out), Jonathan Isaac (Out) and others",
  "graded": "",
- "next_run": "Late check 1:08pm — ORL @ SAC: Tristan da Silva out; 1 new leg worth a look; prices refreshed",
+ "next_run": "Late check 2:29pm — OKC @ POR: no new outs",
  "sources": {
   "stats": "ESPN",
   "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API",
@@ -56,11 +56,13 @@
   "LAC @ PHX",
   "MIA @ UTAH",
   "MIL @ NY",
+  "OKC @ POR",
   "ORL @ SAC"
  ],
  "late_log": [
   "10:40am MIL @ NY: Tyler Herro out; prices refreshed",
   "12:05pm LAC @ PHX, MIA @ UTAH: no new outs; 2 new legs worth a look",
-  "1:08pm ORL @ SAC: Tristan da Silva out; 1 new leg worth a look; prices refreshed"
+  "1:08pm ORL @ SAC: Tristan da Silva out; 1 new leg worth a look; prices refreshed",
+  "2:29pm OKC @ POR: no new outs"
  ]
 }
