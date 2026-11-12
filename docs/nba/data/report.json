@@ -3,7 +3,7 @@
  "headline": "Value today: 2-leg $2+ on Neds $2.13 (needs $1.63); 3-leg $2+ on Neds $2.05 (needs $1.64); Second pick on Neds $2.46 (needs $1.78).",
  "injuries": "Paul George (Out), Nolan Traore (Out), Mikel Brown Jr. (Out), Tobe Awaka (Out), Sam Merrill (Out), Jaylon Tyson (Out), Julian Strawther (Out), Gary Payton Ii (Out), Brandon Williams (Out), Kristaps Porzingis (Out), Moses Moody (Out), Jimmy Butler Iii (Out) and others",
  "graded": "",
- "next_run": "Late check 12:06pm — ORL @ UTAH: no new outs; 1 new leg worth a look",
+ "next_run": "Late check 1:14pm — GS @ HOU, OKC @ POR: no new outs; 3 new legs worth a look",
  "sources": {
   "stats": "ESPN",
   "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API",
@@ -87,13 +87,16 @@
  "late_checked": [
   "BKN @ NO",
   "DEN @ MEM",
+  "GS @ HOU",
   "LAL @ MIL",
+  "OKC @ POR",
   "ORL @ UTAH",
   "SA @ CHI"
  ],
  "late_log": [
   "10:48am SA @ CHI, DEN @ MEM, LAL @ MIL, BKN @ NO: no new outs; 6 new legs worth a look; prices refreshed",
-  "12:06pm ORL @ UTAH: no new outs; 1 new leg worth a look"
+  "12:06pm ORL @ UTAH: no new outs; 1 new leg worth a look",
+  "1:14pm GS @ HOU, OKC @ POR: no new outs; 3 new legs worth a look"
  ],
- "close_fetches": 1
+ "close_fetches": 2
 }
