@@ -98,5 +98,11 @@
   "12:06pm ORL @ UTAH: no new outs; 1 new leg worth a look",
   "1:14pm GS @ HOU, OKC @ POR: no new outs; 3 new legs worth a look"
  ],
- "close_fetches": 2
+ "close_fetches": 2,
+ "final_games": [
+  "BOS @ TOR",
+  "CLE @ NY",
+  "SA @ CHI",
+  "WSH @ IND"
+ ]
 }
