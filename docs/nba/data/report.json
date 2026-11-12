@@ -3,7 +3,7 @@
  "headline": "Value today: Top pick on TAB $2.17 (needs $2.06); Second pick on Neds $2.29 (needs $2.16). Note: the one-per-game multi only pays about $1.87, under $2, so it's left out; the long shot only reaches about $39 with 12 legs; 3-leg value includes legs without a confirmed worth-it price.",
  "injuries": "Brandon Miller (Out), Kon Knueppel (Out), Dennis Schroder (Out), Dereck Lively Ii (Out), Tarik Biberovic (Out), Sergio De Larrea (Out), Isaiah Joe (Out), Jalen Duren (Out), Anthony Edwards (Out), Donte Divincenzo (Out), Lebron James (Out), Dominick Barlow (Out) and others",
  "graded": "Yesterday: 35 of 45 legs landed; 4-leg $2+ missed, 3-leg $2+ missed, 2-leg $2+ missed, 4-leg $3+ missed, 4-leg $4+ missed, Best value missed, Safest missed, 3-leg value missed, One per game missed, Mid-range $8+ missed, Long multi 8+ missed, Long shot $50 missed, Top pick missed, Second pick missed.",
- "next_run": "Built 8:28am; re-checked before the first tip",
+ "next_run": "Late check 9:45am — TOR @ PHI, DET @ WSH: no new outs",
  "sources": {
   "stats": "ESPN",
   "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API (3 games, 276 credits left)",
@@ -44,5 +44,13 @@
   "SAME_GAME_OTHER": 0.048,
   "WIN_VS_OPPONENT": -0.2
  },
- "recheck_at": "2026-11-13T09:38:00+11:00"
+ "recheck_at": "2026-11-13T09:38:00+11:00",
+ "close_fetches": 1,
+ "late_checked": [
+  "DET @ WSH",
+  "TOR @ PHI"
+ ],
+ "late_log": [
+  "9:45am TOR @ PHI, DET @ WSH: no new outs"
+ ]
 }
