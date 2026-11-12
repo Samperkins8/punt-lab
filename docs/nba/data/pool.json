@@ -7,10 +7,10 @@
   "stat": "threes",
   "line": 1,
   "market": "1+ threes",
-  "model_prob": 0.894,
+  "model_prob": 0.8941,
   "books": null,
   "best_price": null,
-  "fair_price": 1.23,
+  "fair_price": 1.22,
   "questionable": false,
   "hits": 10,
   "games": 11
@@ -23,7 +23,7 @@
   "stat": "threes",
   "line": 1,
   "market": "1+ threes",
-  "model_prob": 0.8937,
+  "model_prob": 0.8936,
   "books": null,
   "best_price": null,
   "fair_price": 1.24,
@@ -39,7 +39,7 @@
   "stat": "threes",
   "line": 1,
   "market": "1+ threes",
-  "model_prob": 0.8863,
+  "model_prob": 0.8864,
   "books": null,
   "best_price": null,
   "fair_price": 1.26,
@@ -91,7 +91,7 @@
   "stat": "points",
   "line": 10,
   "market": "10+ points",
-  "model_prob": 0.8413,
+  "model_prob": 0.8414,
   "books": {
    "neds": 1.17,
    "tab": 1.21
@@ -110,7 +110,7 @@
   "stat": "points",
   "line": 10,
   "market": "10+ points",
-  "model_prob": 0.8392,
+  "model_prob": 0.8391,
   "books": {
    "neds": 1.16
   },
@@ -146,7 +146,7 @@
   "stat": "assists",
   "line": 2,
   "market": "2+ assists",
-  "model_prob": 0.8162,
+  "model_prob": 0.8161,
   "books": {
    "neds": 1.25
   },
@@ -182,7 +182,7 @@
   "stat": "rebounds",
   "line": 4,
   "market": "4+ rebounds",
-  "model_prob": 0.7989,
+  "model_prob": 0.7988,
   "books": {
    "neds": 1.22,
    "tab": 1.32
@@ -201,7 +201,7 @@
   "stat": "threes",
   "line": 1,
   "market": "1+ threes",
-  "model_prob": 0.7941,
+  "model_prob": 0.7942,
   "books": {
    "neds": 1.25,
    "tab": 1.25
@@ -239,7 +239,7 @@
   "stat": "threes",
   "line": 1,
   "market": "1+ threes",
-  "model_prob": 0.7918,
+  "model_prob": 0.7919,
   "books": {
    "neds": 1.26,
    "tab": 1.27
@@ -276,7 +276,7 @@
   "stat": "rebounds",
   "line": 4,
   "market": "4+ rebounds",
-  "model_prob": 0.7872,
+  "model_prob": 0.7873,
   "books": {
    "neds": 1.2
   },
@@ -294,7 +294,7 @@
   "stat": "threes",
   "line": 1,
   "market": "1+ threes",
-  "model_prob": 0.7835,
+  "model_prob": 0.7836,
   "books": {
    "neds": 1.22
   },
@@ -312,7 +312,7 @@
   "stat": "rebounds",
   "line": 4,
   "market": "4+ rebounds",
-  "model_prob": 0.7803,
+  "model_prob": 0.7804,
   "books": {
    "neds": 1.24
   },
@@ -330,7 +330,7 @@
   "stat": "assists",
   "line": 2,
   "market": "2+ assists",
-  "model_prob": 0.7803,
+  "model_prob": 0.7802,
   "books": {
    "neds": 1.26
   },
@@ -366,7 +366,7 @@
   "stat": "threes",
   "line": 1,
   "market": "1+ threes",
-  "model_prob": 0.7673,
+  "model_prob": 0.7674,
   "books": {
    "neds": 1.25,
    "tab": 1.29
@@ -385,7 +385,7 @@
   "stat": "points",
   "line": 10,
   "market": "10+ points",
-  "model_prob": 0.7627,
+  "model_prob": 0.7629,
   "books": {
    "neds": 1.22,
    "tab": 1.22
@@ -434,24 +434,6 @@
   "games": 12
  },
  {
-  "leg_id": "sion_james_assists2",
-  "player": "Sion James",
-  "team": "CHA",
-  "game": "CHA @ PHX",
-  "stat": "assists",
-  "line": 2,
-  "market": "2+ assists",
-  "model_prob": 0.7519,
-  "books": {
-   "neds": 1.24
-  },
-  "best_price": 1.24,
-  "fair_price": 1.22,
-  "questionable": false,
-  "hits": 7,
-  "games": 11
- },
- {
   "leg_id": "daniss_jenkins_assists4",
   "player": "Daniss Jenkins",
   "team": "DET",
@@ -459,7 +441,7 @@
   "stat": "assists",
   "line": 4,
   "market": "4+ assists",
-  "model_prob": 0.7517,
+  "model_prob": 0.7518,
   "books": {
    "neds": 1.26,
    "tab": 1.29
@@ -469,6 +451,24 @@
   "questionable": false,
   "hits": 7,
   "games": 10
+ },
+ {
+  "leg_id": "sion_james_assists2",
+  "player": "Sion James",
+  "team": "CHA",
+  "game": "CHA @ PHX",
+  "stat": "assists",
+  "line": 2,
+  "market": "2+ assists",
+  "model_prob": 0.7518,
+  "books": {
+   "neds": 1.24
+  },
+  "best_price": 1.24,
+  "fair_price": 1.22,
+  "questionable": false,
+  "hits": 7,
+  "games": 11
  },
  {
   "leg_id": "jonathan_kuminga_points10",
@@ -526,6 +526,22 @@
   "games": 11
  },
  {
+  "leg_id": "alex_sarr_rebounds6",
+  "player": "Alex Sarr",
+  "team": "WSH",
+  "game": "DET @ WSH",
+  "stat": "rebounds",
+  "line": 6,
+  "market": "6+ rebounds",
+  "model_prob": 0.7463,
+  "books": null,
+  "best_price": null,
+  "fair_price": null,
+  "questionable": false,
+  "hits": 8,
+  "games": 11
+ },
+ {
   "leg_id": "daniss_jenkins_points10",
   "player": "Daniss Jenkins",
   "team": "DET",
@@ -543,22 +559,6 @@
   "questionable": false,
   "hits": 6,
   "games": 10
- },
- {
-  "leg_id": "alex_sarr_rebounds6",
-  "player": "Alex Sarr",
-  "team": "WSH",
-  "game": "DET @ WSH",
-  "stat": "rebounds",
-  "line": 6,
-  "market": "6+ rebounds",
-  "model_prob": 0.7459,
-  "books": null,
-  "best_price": null,
-  "fair_price": null,
-  "questionable": false,
-  "hits": 8,
-  "games": 11
  },
  {
   "leg_id": "naz_reid_rebounds6",
@@ -586,7 +586,7 @@
   "stat": "rebounds",
   "line": 4,
   "market": "4+ rebounds",
-  "model_prob": 0.7367,
+  "model_prob": 0.7366,
   "books": {
    "neds": 1.24,
    "tab": 1.24
@@ -605,7 +605,7 @@
   "stat": "points",
   "line": 20,
   "market": "20+ points",
-  "model_prob": 0.719,
+  "model_prob": 0.7188,
   "books": {
    "neds": 1.28
   },
@@ -642,7 +642,7 @@
   "stat": "assists",
   "line": 4,
   "market": "4+ assists",
-  "model_prob": 0.718,
+  "model_prob": 0.7178,
   "books": {
    "neds": 1.35
   },
@@ -660,7 +660,7 @@
   "stat": "rebounds",
   "line": 8,
   "market": "8+ rebounds",
-  "model_prob": 0.7169,
+  "model_prob": 0.7171,
   "books": {
    "neds": 1.3
   },
@@ -678,7 +678,7 @@
   "stat": "assists",
   "line": 2,
   "market": "2+ assists",
-  "model_prob": 0.7162,
+  "model_prob": 0.7161,
   "books": {
    "neds": 1.35
   },
@@ -696,7 +696,7 @@
   "stat": "assists",
   "line": 6,
   "market": "6+ assists",
-  "model_prob": 0.7142,
+  "model_prob": 0.7143,
   "books": {
    "neds": 1.22,
    "tab": 1.19
@@ -715,7 +715,7 @@
   "stat": "points",
   "line": 20,
   "market": "20+ points",
-  "model_prob": 0.71,
+  "model_prob": 0.7102,
   "books": {
    "neds": 1.28,
    "tab": 1.33
@@ -753,7 +753,7 @@
   "stat": "points",
   "line": 15,
   "market": "15+ points",
-  "model_prob": 0.7043,
+  "model_prob": 0.704,
   "books": {
    "neds": 1.35,
    "tab": 1.28
@@ -847,7 +847,7 @@
   "stat": "threes",
   "line": 3,
   "market": "3+ threes",
-  "model_prob": 0.5738,
+  "model_prob": 0.5737,
   "books": {
    "neds": 1.45,
    "tab": 1.48
@@ -866,7 +866,7 @@
   "stat": "points",
   "line": 15,
   "market": "15+ points",
-  "model_prob": 0.5664,
+  "model_prob": 0.566,
   "books": {
    "neds": 1.83
   },
@@ -889,7 +889,7 @@
    "neds": 1.45
   },
   "best_price": 1.45,
-  "fair_price": 1.72,
+  "fair_price": 1.71,
   "questionable": false,
   "hits": 7,
   "games": 11
@@ -902,7 +902,7 @@
   "stat": "points",
   "line": 25,
   "market": "25+ points",
-  "model_prob": 0.5336,
+  "model_prob": 0.5332,
   "books": {
    "neds": 1.85
   },
@@ -920,7 +920,7 @@
   "stat": "threes",
   "line": 3,
   "market": "3+ threes",
-  "model_prob": 0.5299,
+  "model_prob": 0.5298,
   "books": {
    "neds": 1.64,
    "tab": 1.6
@@ -939,7 +939,7 @@
   "stat": "rebounds",
   "line": 8,
   "market": "8+ rebounds",
-  "model_prob": 0.514,
+  "model_prob": 0.5149,
   "books": null,
   "best_price": null,
   "fair_price": null,
@@ -955,7 +955,7 @@
   "stat": "rebounds",
   "line": 10,
   "market": "10+ rebounds",
-  "model_prob": 0.5038,
+  "model_prob": 0.5042,
   "books": {
    "neds": 1.83
   },
@@ -973,7 +973,7 @@
   "stat": "points",
   "line": 25,
   "market": "25+ points",
-  "model_prob": 0.4866,
+  "model_prob": 0.4871,
   "books": {
    "neds": 1.87,
    "tab": 1.7
@@ -1010,7 +1010,7 @@
   "stat": "rebounds",
   "line": 6,
   "market": "6+ rebounds",
-  "model_prob": 0.4814,
+  "model_prob": 0.4817,
   "books": {
    "neds": 1.98
   },
@@ -1019,6 +1019,24 @@
   "questionable": false,
   "hits": 3,
   "games": 10
+ },
+ {
+  "leg_id": "aj_dybantsa_rebounds6",
+  "player": "AJ Dybantsa",
+  "team": "WSH",
+  "game": "DET @ WSH",
+  "stat": "rebounds",
+  "line": 6,
+  "market": "6+ rebounds",
+  "model_prob": 0.4813,
+  "books": {
+   "neds": 1.88
+  },
+  "best_price": 1.88,
+  "fair_price": 2.02,
+  "questionable": false,
+  "hits": 5,
+  "games": 8
  },
  {
   "leg_id": "vj_edgecombe_points15",
@@ -1039,24 +1057,6 @@
   "games": 11
  },
  {
-  "leg_id": "aj_dybantsa_rebounds6",
-  "player": "AJ Dybantsa",
-  "team": "WSH",
-  "game": "DET @ WSH",
-  "stat": "rebounds",
-  "line": 6,
-  "market": "6+ rebounds",
-  "model_prob": 0.481,
-  "books": {
-   "neds": 1.88
-  },
-  "best_price": 1.88,
-  "fair_price": 2.02,
-  "questionable": false,
-  "hits": 5,
-  "games": 8
- },
- {
   "leg_id": "kyshawn_george_points15",
   "player": "Kyshawn George",
   "team": "WSH",
@@ -1064,7 +1064,7 @@
   "stat": "points",
   "line": 15,
   "market": "15+ points",
-  "model_prob": 0.4618,
+  "model_prob": 0.4623,
   "books": {
    "neds": 1.91,
    "tab": 1.75
@@ -1083,7 +1083,7 @@
   "stat": "points",
   "line": 15,
   "market": "15+ points",
-  "model_prob": 0.4594,
+  "model_prob": 0.4589,
   "books": {
    "tab": 2.1,
    "neds": 2.15
@@ -1102,7 +1102,7 @@
   "stat": "rebounds",
   "line": 6,
   "market": "6+ rebounds",
-  "model_prob": 0.4583,
+  "model_prob": 0.458,
   "books": {
    "neds": 1.94,
    "tab": 2.0
@@ -1121,7 +1121,7 @@
   "stat": "assists",
   "line": 8,
   "market": "8+ assists",
-  "model_prob": 0.4524,
+  "model_prob": 0.4526,
   "books": {
    "neds": 1.77,
    "tab": 1.68
@@ -1140,7 +1140,7 @@
   "stat": "points",
   "line": 20,
   "market": "20+ points",
-  "model_prob": 0.4295,
+  "model_prob": 0.4292,
   "books": {
    "neds": 1.67
   },
@@ -1158,7 +1158,7 @@
   "stat": "rebounds",
   "line": 6,
   "market": "6+ rebounds",
-  "model_prob": 0.423,
+  "model_prob": 0.4226,
   "books": {
    "neds": 1.95,
    "tab": 1.89
@@ -1177,7 +1177,7 @@
   "stat": "points",
   "line": 20,
   "market": "20+ points",
-  "model_prob": 0.4229,
+  "model_prob": 0.4226,
   "books": {
    "neds": 2.1,
    "tab": 2.2
@@ -1196,7 +1196,7 @@
   "stat": "threes",
   "line": 2,
   "market": "2+ threes",
-  "model_prob": 0.4156,
+  "model_prob": 0.4154,
   "books": {
    "neds": 2.02
   },
@@ -1232,7 +1232,7 @@
   "stat": "points",
   "line": 15,
   "market": "15+ points",
-  "model_prob": 0.4092,
+  "model_prob": 0.4095,
   "books": {
    "neds": 1.87,
    "tab": 1.8
@@ -1251,7 +1251,7 @@
   "stat": "threes",
   "line": 2,
   "market": "2+ threes",
-  "model_prob": 0.4061,
+  "model_prob": 0.4059,
   "books": {
    "neds": 2.15,
    "tab": 2.15

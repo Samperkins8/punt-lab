@@ -9,7 +9,7 @@
    "jaden_mcdaniels_rebounds4"
   ],
   "legs_text": "Grayson Allen 1+ threes; Duncan Robinson 1+ threes; Naji Marshall 2+ assists; Jaden McDaniels 4+ rebounds",
-  "est_hit": 0.5269,
+  "est_hit": 0.5268,
   "break_even": 1.9,
   "priced_legs": "2 of 4",
   "known_price": 1.59,
@@ -53,7 +53,7 @@
    "dillon_brooks_points15"
   ],
   "legs_text": "Grayson Allen 1+ threes; Dillon Brooks 15+ points",
-  "est_hit": 0.5136,
+  "est_hit": 0.5134,
   "break_even": 1.95,
   "priced_legs": "1 of 2",
   "known_price": 1.83,
@@ -75,7 +75,7 @@
    "dillon_brooks_points15"
   ],
   "legs_text": "Duncan Robinson 1+ threes; LaMelo Ball 1+ threes; Naji Marshall 2+ assists; Dillon Brooks 15+ points",
-  "est_hit": 0.3692,
+  "est_hit": 0.3689,
   "break_even": 2.71,
   "priced_legs": "2 of 4",
   "known_price": 2.29,
@@ -97,12 +97,12 @@
    "dillon_brooks_points15"
   ],
   "legs_text": "Grayson Allen 1+ threes; LaMelo Ball 1+ threes; Tyrese Maxey 25+ points; Dillon Brooks 15+ points",
-  "est_hit": 0.2745,
+  "est_hit": 0.2744,
   "break_even": 3.64,
   "priced_legs": "2 of 4",
   "known_price": 3.11,
   "fair_multi": 5.73,
-  "est_price": 4.06,
+  "est_price": 4.05,
   "book_prices": null,
   "best_book": null,
   "best_book_price": null,
@@ -119,7 +119,7 @@
    "jaden_mcdaniels_rebounds4"
   ],
   "legs_text": "Grayson Allen 1+ threes; Duncan Robinson 1+ threes; Naji Marshall 2+ assists; Jaden McDaniels 4+ rebounds",
-  "est_hit": 0.5269,
+  "est_hit": 0.5268,
   "break_even": 1.9,
   "priced_legs": "2 of 4",
   "known_price": 1.59,
@@ -141,7 +141,7 @@
    "jaden_mcdaniels_rebounds4"
   ],
   "legs_text": "Grayson Allen 1+ threes; Duncan Robinson 1+ threes; Naji Marshall 2+ assists; Jaden McDaniels 4+ rebounds",
-  "est_hit": 0.5269,
+  "est_hit": 0.5268,
   "break_even": 1.9,
   "priced_legs": "2 of 4",
   "known_price": 1.59,
@@ -189,11 +189,11 @@
    "dillon_brooks_points15"
   ],
   "legs_text": "LaMelo Ball 1+ threes; Naji Marshall 2+ assists; Jaden McDaniels 4+ rebounds; Phoenix Suns Phoenix Suns to win; Tyrese Maxey 25+ points; Dillon Brooks 15+ points",
-  "est_hit": 0.1421,
+  "est_hit": 0.142,
   "break_even": 7.04,
   "priced_legs": "5 of 6",
   "known_price": 7.11,
-  "fair_multi": 11.36,
+  "fair_multi": 11.35,
   "est_price": 8.22,
   "book_prices": null,
   "best_book": null,
@@ -245,12 +245,12 @@
    "cade_cunningham_rebounds6"
   ],
   "legs_text": "Grayson Allen 1+ threes; Duncan Robinson 1+ threes; LaMelo Ball 1+ threes; Naji Marshall 2+ assists; Jaden McDaniels 4+ rebounds; Detroit Pistons Detroit Pistons to win; VJ Edgecombe 10+ points; Miles Bridges 2+ assists; Philadelphia 76ers Philadelphia 76ers to win; Tyrese Maxey 25+ points; Dillon Brooks 15+ points; Cade Cunningham 6+ rebounds",
-  "est_hit": 0.0314,
-  "break_even": 31.89,
+  "est_hit": 0.0313,
+  "break_even": 31.9,
   "priced_legs": "9 of 12",
   "known_price": 26.14,
-  "fair_multi": 78.43,
-  "est_price": 38.74,
+  "fair_multi": 78.35,
+  "est_price": 38.73,
   "book_prices": null,
   "best_book": null,
   "best_book_price": null,
@@ -266,7 +266,7 @@
    "pj_washington_points10"
   ],
   "legs_text": "Jaden McDaniels 4+ rebounds; Detroit Pistons Detroit Pistons to win; P.J. Washington 10+ points",
-  "est_hit": 0.4852,
+  "est_hit": 0.4851,
   "break_even": 2.06,
   "priced_legs": "3 of 3",
   "known_price": 2.06,
@@ -279,7 +279,7 @@
   "best_book": "tab",
   "best_book_price": 2.17,
   "verdict": "value",
-  "value": 0.0529
+  "value": 0.0527
  },
  {
   "multi": "Second pick",
@@ -289,7 +289,7 @@
    "dillon_brooks_points15"
   ],
   "legs_text": "Naji Marshall 2+ assists; Dillon Brooks 15+ points",
-  "est_hit": 0.4623,
+  "est_hit": 0.4619,
   "break_even": 2.16,
   "priced_legs": "2 of 2",
   "known_price": 2.29,
@@ -301,6 +301,6 @@
   "best_book": "neds",
   "best_book_price": 2.29,
   "verdict": "value",
-  "value": 0.0587
+  "value": 0.0578
  }
 ]
