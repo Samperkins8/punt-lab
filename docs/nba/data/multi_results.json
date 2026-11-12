@@ -411,5 +411,131 @@
   "landed": false,
   "verdict": "value",
   "price": 50.96
+ },
+ {
+  "slate_date": "2026-11-12",
+  "multi": "4-leg $2+",
+  "legs": "Luka Doncic 1+ threes; Michael Porter Jr. 1+ threes; Matisse Thybulle 1+ threes; Josh Hart 1+ threes",
+  "est_hit": 0.587,
+  "landed": false,
+  "verdict": "check",
+  "price": 2.11
+ },
+ {
+  "slate_date": "2026-11-12",
+  "multi": "3-leg $2+",
+  "legs": "Matisse Thybulle 1+ threes; Josh Hart 1+ threes; Evan Mobley 1+ threes",
+  "est_hit": 0.6113,
+  "landed": false,
+  "verdict": "value",
+  "price": 2.05
+ },
+ {
+  "slate_date": "2026-11-12",
+  "multi": "2-leg $2+",
+  "legs": "Evan Mobley 1+ threes; Peyton Watson 2+ assists",
+  "est_hit": 0.6151,
+  "landed": false,
+  "verdict": "value",
+  "price": 2.13
+ },
+ {
+  "slate_date": "2026-11-12",
+  "multi": "4-leg $3+",
+  "legs": "Luka Doncic 1+ threes; Matisse Thybulle 1+ threes; Evan Mobley 1+ threes; Peyton Watson 2+ assists",
+  "est_hit": 0.4778,
+  "landed": false,
+  "verdict": "check",
+  "price": 3.06
+ },
+ {
+  "slate_date": "2026-11-12",
+  "multi": "4-leg $4+",
+  "legs": "Luka Doncic 1+ threes; Michael Porter Jr. 1+ threes; Peyton Watson 2+ assists; Stephon Castle 6+ assists",
+  "est_hit": 0.3573,
+  "landed": false,
+  "verdict": "check",
+  "price": 4.08
+ },
+ {
+  "slate_date": "2026-11-12",
+  "multi": "Best value",
+  "legs": "Matisse Thybulle 1+ threes; Victor Wembanyama 2+ assists; Evan Mobley 1+ threes; Peyton Watson 2+ assists",
+  "est_hit": 0.4475,
+  "landed": false,
+  "verdict": "value",
+  "price": 3.27
+ },
+ {
+  "slate_date": "2026-11-12",
+  "multi": "Safest",
+  "legs": "Luka Doncic 1+ threes; Michael Porter Jr. 1+ threes; Matisse Thybulle 1+ threes; Josh Hart 1+ threes",
+  "est_hit": 0.587,
+  "landed": false,
+  "verdict": "check",
+  "price": 2.11
+ },
+ {
+  "slate_date": "2026-11-12",
+  "multi": "3-leg value",
+  "legs": "Matisse Thybulle 1+ threes; Evan Mobley 1+ threes; Peyton Watson 2+ assists",
+  "est_hit": 0.5324,
+  "landed": false,
+  "verdict": "value",
+  "price": 2.64
+ },
+ {
+  "slate_date": "2026-11-12",
+  "multi": "One per game",
+  "legs": "Luka Doncic 1+ threes; Michael Porter Jr. 1+ threes; Josh Hart 1+ threes; Victor Wembanyama 2+ assists; Jabari Smith Jr. 10+ points; Kyshawn George 10+ points; Cedric Coward 2+ assists; Derrick White 10+ points",
+  "est_hit": 0.2228,
+  "landed": false,
+  "verdict": "check",
+  "price": 4.5
+ },
+ {
+  "slate_date": "2026-11-12",
+  "multi": "Mid-range $8+",
+  "legs": "Luka Doncic 1+ threes; Michael Porter Jr. 1+ threes; Matisse Thybulle 1+ threes; Josh Hart 1+ threes; Peyton Watson 2+ assists; Evan Mobley 2+ threes",
+  "est_hit": 0.2299,
+  "landed": false,
+  "verdict": "check",
+  "price": 8.1
+ },
+ {
+  "slate_date": "2026-11-12",
+  "multi": "Long multi 8+",
+  "legs": "Luka Doncic 1+ threes; Michael Porter Jr. 1+ threes; Jamal Murray 1+ threes; Matisse Thybulle 1+ threes; Josh Hart 1+ threes; Zion Williamson 2+ assists; Victor Wembanyama 2+ assists; Jaime Jaquez Jr. 2+ assists; Evan Mobley 1+ threes",
+  "est_hit": 0.2564,
+  "landed": false,
+  "verdict": "check",
+  "price": 5.94
+ },
+ {
+  "slate_date": "2026-11-12",
+  "multi": "Long shot $50",
+  "legs": "Luka Doncic 1+ threes; Michael Porter Jr. 1+ threes; Jamal Murray 1+ threes; Matisse Thybulle 1+ threes; Josh Hart 1+ threes; Zion Williamson 2+ assists; Victor Wembanyama 2+ assists; Karl-Anthony Towns 2+ assists; Kyle Kuzma 2+ assists; Cedric Coward 2+ assists; DeMar DeRozan 2+ assists; Peyton Watson 2+ assists; Stephon Castle 6+ assists; Saddiq Bey 15+ points",
+  "est_hit": 0.0432,
+  "landed": false,
+  "verdict": "check",
+  "price": 50.46
+ },
+ {
+  "slate_date": "2026-11-12",
+  "multi": "Top pick",
+  "legs": "Evan Mobley 1+ threes; Peyton Watson 2+ assists",
+  "est_hit": 0.6151,
+  "landed": false,
+  "verdict": "value",
+  "price": 2.13
+ },
+ {
+  "slate_date": "2026-11-12",
+  "multi": "Second pick",
+  "legs": "Matisse Thybulle 1+ threes; Josh Hart 1+ threes; Peyton Watson 2+ assists",
+  "est_hit": 0.5632,
+  "landed": false,
+  "verdict": "value",
+  "price": 2.46
  }
 ]
