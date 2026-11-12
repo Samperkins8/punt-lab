@@ -658,7 +658,12 @@
   "event_id": "401909974",
   "athlete_id": "4432639",
   "late_checked": "1:14pm",
-  "late_was": null
+  "late_was": null,
+  "actual": 14.0,
+  "landed": true,
+  "minutes_played": 35,
+  "expected_minutes": 35,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 1.6 threes tonight, needs 1+. This season 2.1 a game over 11 games; last season 1.0 over 65. Tonight's line is 3 points tougher than his team's usual (underdogs by 4.5), so they're expected to score less (-2%). NY gives up more to his position than average (+20%).",
@@ -896,7 +901,9 @@
   "late_was": null,
   "close_books": {
    "neds": 1.36
-  }
+  },
+  "actual": null,
+  "landed": null
  },
  {
   "why": "Predicted 14.7 points tonight, needs 10+. This season 13.9 a game over 11 games; last season 17.9 over 76. Plays a bit worse on the road: 0.3 points fewer predicted. Faster game expected (+3% for pace). Tonight's line is 10 points easier than his team's usual (favourites by 15.5), so they're expected to score more (+3%). Bookies' line: 13.5.",
@@ -1515,7 +1522,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.22
-  }
+  },
+  "actual": 18.0,
+  "landed": true,
+  "minutes_played": 32,
+  "expected_minutes": 28,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 1.6 threes tonight, needs 2+. This season 2.1 a game over 11 games; last season 1.0 over 65. Tonight's line is 3 points tougher than his team's usual (underdogs by 4.5), so they're expected to score less (-2%). NY gives up more to his position than average (+20%).",
@@ -1983,7 +1995,9 @@
   "step_up": false,
   "note": "4.5-point favourite",
   "event_id": "401909973",
-  "athlete_id": null
+  "athlete_id": null,
+  "actual": 1,
+  "landed": true
  },
  {
   "why": "Houston Rockets are 6.5-point favourites. The bookies' head-to-head prices (margin removed) and the betting line together make that about a 70% chance to win, fair price $1.44. Pays $1.39 at TAB.",
@@ -2038,7 +2052,9 @@
   "step_up": false,
   "note": "6.5-point favourite",
   "event_id": "401909974",
-  "athlete_id": null
+  "athlete_id": null,
+  "actual": 1,
+  "landed": true
  },
  {
   "why": "Predicted 2.4 assists tonight, needs 2+. This season 2.7 a game over 9 games; last season 2.1 over 54. NY gives up less to his position than average (-4%).",
@@ -2578,7 +2594,12 @@
   "event_id": "401909973",
   "athlete_id": "4873138",
   "late_new": true,
-  "late_checked": "12:06pm"
+  "late_checked": "12:06pm",
+  "actual": 18.0,
+  "landed": true,
+  "minutes_played": 31,
+  "expected_minutes": 29,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 15.2 points tonight, needs 10+. This season 16.8 a game over 9 games; last season 14.0 over 84. Plays a bit worse on the road: 0.8 points fewer predicted. Slower game expected (-2% for pace). Tonight's line is 10 points tougher than his team's usual (underdogs by 6.5), so they're expected to score less (-4%). HOU gives up more to his position than average (+8%). Bookies' line: 15.5.",
@@ -2635,7 +2656,12 @@
   "event_id": "401909974",
   "athlete_id": "4709138",
   "late_new": true,
-  "late_checked": "1:14pm"
+  "late_checked": "1:14pm",
+  "actual": 22.0,
+  "landed": true,
+  "minutes_played": 37,
+  "expected_minutes": 33,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 14.7 points tonight, needs 10+. This season 14.9 a game over 11 games; last season 18.3 over 79. Thompson averaged 14.0 in the 9 games with Sengun (14.9 across all 11), so he's predicted 0.6 points fewer tonight. Plays a bit worse at home: 1.2 points fewer predicted. Slower game expected (-2% for pace). GS gives up less to his position than average (-3%). Bookies' line: 15.5.",
@@ -2692,7 +2718,12 @@
   "event_id": "401909974",
   "athlete_id": "4684740",
   "late_new": true,
-  "late_checked": "1:14pm"
+  "late_checked": "1:14pm",
+  "actual": 19.0,
+  "landed": true,
+  "minutes_played": 29,
+  "expected_minutes": 33,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 1.6 threes tonight, needs 1+. This season 1.4 a game over 11 games; last season 2.3 over 81. Slower game expected (-2% for pace). Tonight's line is 2 points tougher than his team's usual (favourites by 6.5), so they're expected to score less (-2%). GS gives up more to his position than average (+6%). Bookies' line: 1.5.",
@@ -2747,6 +2778,11 @@
   "event_id": "401909974",
   "athlete_id": "3202",
   "late_new": true,
-  "late_checked": "1:14pm"
+  "late_checked": "1:14pm",
+  "actual": 1.0,
+  "landed": true,
+  "minutes_played": 34,
+  "expected_minutes": 34,
+  "minutes_flag": null
  }
 ]
