@@ -45,7 +45,7 @@
   "best_book_price": 2.01,
   "verdict": "marginal",
   "value": 0.0243,
-  "landed": null
+  "landed": true
  },
  {
   "multi": "2-leg $2+",
@@ -183,7 +183,7 @@
   "best_book_price": 2.01,
   "verdict": "marginal",
   "value": 0.0243,
-  "landed": null
+  "landed": true
  },
  {
   "multi": "Mid-range $8+",
@@ -266,7 +266,7 @@
   "best_book_price": null,
   "verdict": "check",
   "value": null,
-  "landed": null
+  "landed": false
  },
  {
   "multi": "Top pick",
@@ -291,7 +291,7 @@
   "best_book_price": 2.17,
   "verdict": "value",
   "value": 0.0527,
-  "landed": null
+  "landed": true
  },
  {
   "multi": "Second pick",
