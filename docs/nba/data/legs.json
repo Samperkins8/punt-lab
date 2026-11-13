@@ -48,7 +48,12 @@
   "event_id": "401909979",
   "athlete_id": "3135045",
   "late_checked": "12:03pm",
-  "late_was": null
+  "late_was": null,
+  "actual": 4.0,
+  "landed": true,
+  "minutes_played": 34,
+  "expected_minutes": 28,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 3.4 threes tonight, needs 1+. This season 4.2 a game over 10 games; last season 2.9 over 77. Tonight's line is 8 points easier than his team's usual (favourites by 10.5), so they're expected to score more (+5%). WSH gives up more to his position than average (+2%). Bookies' line: 3.5.",
@@ -214,7 +219,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.2
-  }
+  },
+  "actual": 15.0,
+  "landed": true,
+  "minutes_played": 30,
+  "expected_minutes": 30,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 3.1 assists tonight, needs 2+. This season 4.5 a game over 8 games; last season 3.3 over 74. Tonight's line is 6 points tougher than his team's usual (underdogs by 5.5), so they're expected to score less (-1%). MIN gives up less to his position than average (-7%). Bookies' line: 2.5.",
@@ -632,7 +642,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.22
-  }
+  },
+  "actual": 0.0,
+  "landed": false,
+  "minutes_played": 32,
+  "expected_minutes": 26,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 5.6 rebounds tonight, needs 4+. This season 5.2 a game over 10 games; last season 5.4 over 67. WSH gives up more to his position than average (+7%). Bookies' line: 5.5.",
@@ -751,7 +766,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.26
-  }
+  },
+  "actual": 3.0,
+  "landed": true,
+  "minutes_played": 25,
+  "expected_minutes": 30,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 1.3 threes tonight, needs 1+. This season 1.4 a game over 11 games; last season 1.7 over 57. Barrett averaged 0.3 in the 3 games without Barnes (1.4 across all 11), so he's predicted 0.4 threes fewer tonight. Tonight's line is 7 points tougher than his team's usual (underdogs by 7.5), so they're expected to score less (-5%). PHI gives up more to his position than average (+3%). Expected minutes 31.4 vs his usual 33.1. Bookies' line: 1.5.",
@@ -1118,7 +1138,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.24
-  }
+  },
+  "actual": 6.0,
+  "landed": true,
+  "minutes_played": 32,
+  "expected_minutes": 26,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 5.1 assists tonight, needs 4+. This season 4.7 a game over 10 games; last season 3.9 over 72. Tonight's line is 8 points easier than his team's usual (favourites by 10.5), so they're expected to score more (+2%). WSH gives up more to his position than average (+8%). Bookies' line: 5.5.",
@@ -1360,7 +1385,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.2
-  }
+  },
+  "actual": 16.0,
+  "landed": true,
+  "minutes_played": 34,
+  "expected_minutes": 30,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 7.9 rebounds tonight, needs 6+. This season 7.3 a game over 11 games; last season 7.4 over 48. Sarr averaged 8.4 in the 7 games with Dybantsa (7.3 across all 11), so he's predicted 0.7 rebounds more tonight. Tonight's line is 9 points tougher than his team's usual (underdogs by 10.5), so they're expected to score less (-1%). DET gives up more to his position than average (+5%). Expected minutes 24.5 vs his usual 25.8.",
@@ -1657,7 +1687,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.82
-  }
+  },
+  "actual": 15.0,
+  "landed": true,
+  "minutes_played": 30,
+  "expected_minutes": 30,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 5.6 assists tonight, needs 4+. This season 5.3 a game over 12 games; last season 6.4 over 74. Maxey averaged 4.0 in the 2 games without James (5.3 across all 12), so he's predicted 0.4 assists fewer tonight. Tonight's line is 4 points easier than his team's usual (favourites by 7.5), so they're expected to score more (+1%). Bookies' line: 5.5.",
@@ -1958,7 +1993,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.17
-  }
+  },
+  "actual": 11.0,
+  "landed": true,
+  "minutes_played": 25,
+  "expected_minutes": 30,
+  "minutes_flag": null
  },
  {
   "why": "Philadelphia 76ers are 7.5-point favourites. The bookies' head-to-head prices (margin removed) and the betting line together make that about a 71% chance to win, fair price $1.41. Pays $1.39 at TAB.",
@@ -2184,6 +2224,8 @@
   "step_up": false,
   "note": "6.5-point favourite",
   "event_id": "401909979",
-  "athlete_id": null
+  "athlete_id": null,
+  "actual": 1,
+  "landed": true
  }
 ]
