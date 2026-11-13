@@ -54,5 +54,8 @@
   "9:45am TOR @ PHI, DET @ WSH: no new outs",
   "12:03pm CHA @ PHX: no new outs"
  ],
- "close_fetches": 2
+ "close_fetches": 2,
+ "final_games": [
+  "TOR @ PHI"
+ ]
 }
