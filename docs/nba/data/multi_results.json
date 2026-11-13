@@ -537,5 +537,122 @@
   "landed": false,
   "verdict": "value",
   "price": 2.46
+ },
+ {
+  "slate_date": "2026-11-13",
+  "multi": "4-leg $2+",
+  "legs": "Grayson Allen 1+ threes; Duncan Robinson 1+ threes; Naji Marshall 2+ assists; Jaden McDaniels 4+ rebounds",
+  "est_hit": 0.5268,
+  "landed": true,
+  "verdict": "check",
+  "price": 2.03
+ },
+ {
+  "slate_date": "2026-11-13",
+  "multi": "3-leg $2+",
+  "legs": "Jaden McDaniels 4+ rebounds; Cooper Flagg 1+ threes; Detroit Pistons Detroit Pistons to win",
+  "est_hit": 0.5096,
+  "landed": true,
+  "verdict": "marginal",
+  "price": 2.01
+ },
+ {
+  "slate_date": "2026-11-13",
+  "multi": "2-leg $2+",
+  "legs": "Grayson Allen 1+ threes; Dillon Brooks 15+ points",
+  "est_hit": 0.5134,
+  "landed": true,
+  "verdict": "check",
+  "price": 2.06
+ },
+ {
+  "slate_date": "2026-11-13",
+  "multi": "4-leg $3+",
+  "legs": "Duncan Robinson 1+ threes; LaMelo Ball 1+ threes; Naji Marshall 2+ assists; Dillon Brooks 15+ points",
+  "est_hit": 0.3689,
+  "landed": true,
+  "verdict": "check",
+  "price": 3.01
+ },
+ {
+  "slate_date": "2026-11-13",
+  "multi": "4-leg $4+",
+  "legs": "Grayson Allen 1+ threes; LaMelo Ball 1+ threes; Tyrese Maxey 25+ points; Dillon Brooks 15+ points",
+  "est_hit": 0.2744,
+  "landed": true,
+  "verdict": "check",
+  "price": 4.05
+ },
+ {
+  "slate_date": "2026-11-13",
+  "multi": "Best value",
+  "legs": "Grayson Allen 1+ threes; Duncan Robinson 1+ threes; Naji Marshall 2+ assists; Jaden McDaniels 4+ rebounds",
+  "est_hit": 0.5268,
+  "landed": true,
+  "verdict": "check",
+  "price": 2.03
+ },
+ {
+  "slate_date": "2026-11-13",
+  "multi": "Safest",
+  "legs": "Grayson Allen 1+ threes; Duncan Robinson 1+ threes; Naji Marshall 2+ assists; Jaden McDaniels 4+ rebounds",
+  "est_hit": 0.5268,
+  "landed": true,
+  "verdict": "check",
+  "price": 2.03
+ },
+ {
+  "slate_date": "2026-11-13",
+  "multi": "3-leg value",
+  "legs": "Jaden McDaniels 4+ rebounds; Cooper Flagg 1+ threes; Detroit Pistons Detroit Pistons to win",
+  "est_hit": 0.5096,
+  "landed": true,
+  "verdict": "marginal",
+  "price": 2.01
+ },
+ {
+  "slate_date": "2026-11-13",
+  "multi": "Mid-range $8+",
+  "legs": "LaMelo Ball 1+ threes; Naji Marshall 2+ assists; Jaden McDaniels 4+ rebounds; Phoenix Suns Phoenix Suns to win; Tyrese Maxey 25+ points; Dillon Brooks 15+ points",
+  "est_hit": 0.142,
+  "landed": true,
+  "verdict": "check",
+  "price": 8.22
+ },
+ {
+  "slate_date": "2026-11-13",
+  "multi": "Long multi 8+",
+  "legs": "LaMelo Ball 1+ threes; Jaden McDaniels 2+ assists; VJ Edgecombe 2+ assists; Duncan Robinson 10+ points; Miles Bridges 10+ points; Dillon Brooks 10+ points; Naji Marshall 2+ assists; Tyrese Maxey 4+ assists",
+  "est_hit": 0.2697,
+  "landed": true,
+  "verdict": "check",
+  "price": 3.64
+ },
+ {
+  "slate_date": "2026-11-13",
+  "multi": "Long shot $50",
+  "legs": "Grayson Allen 1+ threes; Duncan Robinson 1+ threes; LaMelo Ball 1+ threes; Naji Marshall 2+ assists; Jaden McDaniels 4+ rebounds; Detroit Pistons Detroit Pistons to win; VJ Edgecombe 10+ points; Miles Bridges 2+ assists; Philadelphia 76ers Philadelphia 76ers to win; Tyrese Maxey 25+ points; Dillon Brooks 15+ points; Cade Cunningham 6+ rebounds",
+  "est_hit": 0.0313,
+  "landed": false,
+  "verdict": "check",
+  "price": 38.73
+ },
+ {
+  "slate_date": "2026-11-13",
+  "multi": "Top pick",
+  "legs": "Jaden McDaniels 4+ rebounds; Detroit Pistons Detroit Pistons to win; P.J. Washington 10+ points",
+  "est_hit": 0.4851,
+  "landed": true,
+  "verdict": "value",
+  "price": 2.17
+ },
+ {
+  "slate_date": "2026-11-13",
+  "multi": "Second pick",
+  "legs": "Naji Marshall 2+ assists; Dillon Brooks 15+ points",
+  "est_hit": 0.4619,
+  "landed": true,
+  "verdict": "value",
+  "price": 2.29
  }
 ]

@@ -1,42 +1,92 @@
 [
  {
-  "game": "TOR @ PHI",
+  "game": "NY @ IND",
   "tip": "11:00am",
-  "start": "2026-11-13T11:00:00+11:00",
-  "favourite": "PHI",
-  "spread": -7.5,
+  "start": "2026-11-14T11:00:00+11:00",
+  "favourite": "NY",
+  "spread": -8.5,
+  "total": 219.5,
+  "fav_win_prob": 0.761,
+  "status": "Analysed"
+ },
+ {
+  "game": "MIL @ ORL",
+  "tip": "11:00am",
+  "start": "2026-11-14T11:00:00+11:00",
+  "favourite": "ORL",
+  "spread": -9.5,
   "total": 223.5,
+  "fav_win_prob": 0.786,
+  "status": "Analysed"
+ },
+ {
+  "game": "CLE @ MIA",
+  "tip": "12:00pm",
+  "start": "2026-11-14T12:00:00+11:00",
+  "favourite": "MIA",
+  "spread": -2.5,
+  "total": 236.5,
+  "fav_win_prob": 0.583,
+  "status": "Analysed"
+ },
+ {
+  "game": "ATL @ CHI",
+  "tip": "12:00pm",
+  "start": "2026-11-14T12:00:00+11:00",
+  "favourite": "ATL",
+  "spread": -7.5,
+  "total": 245.5,
   "fav_win_prob": 0.734,
   "status": "Analysed"
  },
  {
-  "game": "DET @ WSH",
-  "tip": "11:00am",
-  "start": "2026-11-13T11:00:00+11:00",
-  "favourite": "DET",
+  "game": "MEM @ NO",
+  "tip": "12:00pm",
+  "start": "2026-11-14T12:00:00+11:00",
+  "favourite": "MEM",
+  "spread": -3.5,
+  "total": 235.5,
+  "fav_win_prob": 0.615,
+  "status": "Analysed"
+ },
+ {
+  "game": "UTAH @ HOU",
+  "tip": "12:30pm",
+  "start": "2026-11-14T12:30:00+11:00",
+  "favourite": "HOU",
+  "spread": -15.5,
+  "total": 220.5,
+  "fav_win_prob": 0.902,
+  "status": "Analysed"
+ },
+ {
+  "game": "GS @ SA",
+  "tip": "1:30pm",
+  "start": "2026-11-14T13:30:00+11:00",
+  "favourite": "SA",
+  "spread": -12.5,
+  "total": 217.5,
+  "fav_win_prob": 0.851,
+  "status": "Analysed"
+ },
+ {
+  "game": "POR @ SAC",
+  "tip": "2:00pm",
+  "start": "2026-11-14T14:00:00+11:00",
+  "favourite": "POR",
   "spread": -10.5,
-  "total": 222.5,
+  "total": 229.5,
   "fav_win_prob": 0.809,
   "status": "Analysed"
  },
  {
-  "game": "DAL @ MIN",
-  "tip": "12:00pm",
-  "start": "2026-11-13T12:00:00+11:00",
-  "favourite": "MIN",
-  "spread": -5.5,
-  "total": 225.5,
-  "fav_win_prob": 0.677,
-  "status": "Analysed"
- },
- {
-  "game": "CHA @ PHX",
-  "tip": "1:00pm",
-  "start": "2026-11-13T13:00:00+11:00",
-  "favourite": "PHX",
-  "spread": -6.5,
-  "total": 214.5,
-  "fav_win_prob": 0.706,
+  "game": "OKC @ LAC",
+  "tip": "2:30pm",
+  "start": "2026-11-14T14:30:00+11:00",
+  "favourite": "OKC",
+  "spread": -7.5,
+  "total": 222.5,
+  "fav_win_prob": 0.734,
   "status": "Analysed"
  }
 ]
