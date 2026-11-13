@@ -27,6 +27,8 @@ SHOT_TARGET = 50.00       # long shot: keep adding the most likely legs until th
 SHOT_MAX_LEGS = 15        # but never more than this many legs
 SHOT_MIN_PRICE = 20.00    # if the slate can't get the long shot this far, leave it out
 SHOT_MIN_PROB = 0.40      # no long-shot / mid-range leg less likely than this
+VALUE_FLOOR = 0.97        # long-shot / mid-range: skip a priced leg whose chance x app price is under this
+                          # (a bad-value leg makes the whole multi a worse bet), unless the target can't be reached without it
 WIDE_STEP_MIN = 0.55      # step-up legs used by the $2+ multis must be at least this likely
 PER_GAME_MAX = 8          # one-per-game multi: at most this many games
 GAME_MAX_SHORT = 2        # 3- and 4-leg multis: at most this many legs from one game, so one bad game can't sink it
@@ -276,11 +278,15 @@ def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
         out.setdefault("_notes", []).append(note)
 
     # Mid-range: 6 (or 7) legs, highest chance with an estimated price of $8+
-    vp = _value_pool(cands, every_any)
-    by_value = sorted(vp, key=lambda i: _chance_cost(*cands[i]))
-    by_chance = sorted(vp, key=lambda i: -cands[i][1].model_prob)
-    mid_pool = list(dict.fromkeys(by_chance[:MID_POOL // 2] + by_value))[:MID_POOL]  # half safest, half best value
-    mid, note = _target_multi(cands, mid_pool, MID_LEGS, MID_TARGET, chance, multi_price)
+    # Bad-value legs are left out first, and only let back in if $8 can't be reached without them
+    for strict in (True, False):
+        vp = _value_pool(cands, every_any, strict)
+        by_value = sorted(vp, key=lambda i: _chance_cost(*cands[i]))
+        by_chance = sorted(vp, key=lambda i: -cands[i][1].model_prob)
+        mid_pool = list(dict.fromkeys(by_chance[:MID_POOL // 2] + by_value))[:MID_POOL]  # half safest, half best value
+        mid, note = _target_multi(cands, mid_pool, MID_LEGS, MID_TARGET, chance, multi_price)
+        if mid and not note:
+            break
     if mid:
         out["Mid-range $8+"] = mid
     if note:
@@ -359,15 +365,30 @@ def _chance_cost(leg: Leg, res: LegResult) -> float:
     return -math.log(res.model_prob) / math.log(price)
 
 
-def _value_pool(cands, ordered: list[int]) -> list[int]:
-    return [i for i in ordered if cands[i][1].model_prob >= SHOT_MIN_PROB and _chance_cost(*cands[i]) < math.inf]
+def _bad_value(leg: Leg, res: LegResult) -> bool:
+    """A leg with a real app price that pays clearly less than its chance is worth. Unpriced legs are
+    never flagged: their assumed price already has the bookie's margin taken off."""
+    return bool(leg.odds) and res.model_prob * leg.odds < VALUE_FLOOR
+
+
+def _value_pool(cands, ordered: list[int], strict: bool = True) -> list[int]:
+    return [i for i in ordered if cands[i][1].model_prob >= SHOT_MIN_PROB and _chance_cost(*cands[i]) < math.inf
+            and not (strict and _bad_value(*cands[i]))]
 
 
 def _long_shot(cands, ordered: list[int]) -> tuple[list[int] | None, str]:
+    """Bad-value legs are left out first; they're only let back in if $50 can't be reached without them."""
+    combo, note = _long_shot_from(cands, ordered, strict=True)
+    if combo and not note:
+        return combo, note
+    return _long_shot_from(cands, ordered, strict=False)
+
+
+def _long_shot_from(cands, ordered: list[int], strict: bool) -> tuple[list[int] | None, str]:
     """Reach SHOT_TARGET in at most SHOT_MAX_LEGS legs while giving up as little chance as possible.
     Take legs (one per player) in order of chance given up per unit of price, until the price passes
     the target; then swap each leg for a more likely unused one wherever the price still clears it."""
-    pool = sorted(_value_pool(cands, ordered), key=lambda i: _chance_cost(*cands[i]))
+    pool = sorted(_value_pool(cands, ordered, strict), key=lambda i: _chance_cost(*cands[i]))
     combo: list[int] = []
     for i in pool:
         if _price(cands, combo) >= SHOT_TARGET or len(combo) >= SHOT_MAX_LEGS:

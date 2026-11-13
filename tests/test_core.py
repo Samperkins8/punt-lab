@@ -293,3 +293,17 @@ def test_top_pick_weighs_chance_and_price_and_second_pick_differs():
     # a price that beats the chance always outranks one that doesn't; of two equal edges the likelier wins
     assert pick.pick_score(0.5, 2.1) > 0 > pick.pick_score(0.5, 1.9)
     assert pick.pick_score(0.5, 2.2) > pick.pick_score(0.25, 4.4)
+
+
+def test_big_multis_skip_bad_value_legs_when_they_can():
+    from punt_lab.nba import pick
+    cands = [_fake(f"A{k}", f"G{k % 8}", 0.76 - 0.002 * k, 1.30) for k in range(10)]   # likely, fair-priced
+    cands += [_fake(f"B{k}", f"H{k % 8}", 0.62 - 0.002 * k, 1.62) for k in range(7)]   # longer, fair-priced
+    cands += [_fake(f"C{k}", f"J{k % 8}", 0.42, 2.30) for k in range(3)]               # 0.42 x 2.30 = 0.966: bad value
+    bad = {i for i, (l, _) in enumerate(cands) if l.player.startswith("C")}
+    chosen = pick.choose(cands)
+    for name in ("Long shot $50", "Mid-range $8+"):
+        assert chosen[name] and not bad & set(chosen[name]), name
+    # when only bad-value legs can add the price, they're still used rather than dropping the multi
+    only_bad = [_fake(f"B{k}", f"G{k % 8}", 0.48, 1.98) for k in range(12)]
+    assert pick.choose(only_bad).get("Mid-range $8+")
