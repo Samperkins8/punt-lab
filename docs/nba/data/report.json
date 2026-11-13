@@ -1,15 +1,15 @@
 {
  "slate_date": "2026-11-14",
- "headline": "Value today: 3-leg $2+ on Neds $2.01 (needs $1.56); Top pick on Neds $2.11 (needs $1.58); Second pick on Neds $2.03 (needs $1.71).",
+ "headline": "Value today: 3-leg $2+ on Neds $2.01 (needs $1.57); Top pick on Neds $2.11 (needs $1.58); Second pick on Neds $2.03 (needs $1.71).",
  "injuries": "Mouhamed Gueye (Out), Keshon Gilbert (Out), Asa Newell (Out), Henri Veesaar (Out), Tobe Awaka (Out), Caleb Wilson (Out), Evan Mobley (Out), Sam Merrill (Out), Stephen Curry (Out), Brandon Williams (Out), Kristaps Porzingis (Out), Moses Moody (Out) and others",
- "graded": "Yesterday: 33 of 37 legs landed; 4-leg $2+ landed, 3-leg $2+ landed, 2-leg $2+ landed, 4-leg $3+ landed, 4-leg $4+ landed, Best value landed, Safest landed, 3-leg value landed, Mid-range $8+ landed, Long multi 8+ landed, Long shot $50 missed, Top pick landed, Second pick landed.",
- "next_run": "Built 8:30am; re-checked before the first tip",
+ "graded": "",
+ "next_run": "Re-checked 10:16am: 6 multi(s) changed: 4-leg $2+, 4-leg $4+, Safest, One per game, Mid-range $8+, Long shot $50",
  "sources": {
   "stats": "ESPN",
-  "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API (4 games, 260 credits left)",
+  "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API",
   "injury_reading": "Claude"
  },
- "updated_at": "2026-11-14T08:30:05.091993+11:00",
+ "updated_at": "2026-11-14T10:16:36.038415+11:00",
  "inj_snapshot": {
   "mouhamed gueye": "Out",
   "keshon gilbert": "Out",
@@ -31,8 +31,6 @@
   "marcus smart": "Suspension",
   "clint capela": "Out",
   "steven adams": "Out",
-  "t.j. mcconnell": "Day-To-Day",
-  "aaron nesmith": "Day-To-Day",
   "tyrese haliburton": "Out",
   "johnny furphy": "Out",
   "ben sheppard": "Out",
@@ -45,7 +43,7 @@
   "scotty pippen jr.": "Out",
   "richie saunders": "Out",
   "klay thompson": "Day-To-Day",
-  "pelle larsson": "Day-To-Day",
+  "pelle larsson": "Out",
   "dejounte murray": "Out",
   "bryce mcgowens": "Out",
   "yves missi": "Out",
@@ -58,9 +56,6 @@
   "cason wallace": "Out",
   "chet holmgren": "Out",
   "jalen williams": "Out",
-  "jamal cain": "Day-To-Day",
-  "tristan da silva": "Day-To-Day",
-  "jalen suggs": "Out",
   "jonathan isaac": "Out",
   "paolo banchero": "Out",
   "noah penda": "Out",
@@ -69,7 +64,7 @@
   "vit krejci": "Out",
   "ja morant": "Out",
   "shaedon sharpe": "Out",
-  "precious achiuwa": "Day-To-Day",
+  "precious achiuwa": "Out",
   "maxime raynaud": "Out",
   "ben simmons": "Out",
   "devin vassell": "Day-To-Day",
@@ -87,5 +82,5 @@
   "SAME_GAME_OTHER": 0.048,
   "WIN_VS_OPPONENT": -0.2
  },
- "recheck_at": "2026-11-14T09:38:00+11:00"
+ "rechecked_at": "2026-11-14T10:16:36.038415+11:00"
 }

@@ -3,23 +3,25 @@
   "multi": "4-leg $2+",
   "rank": 1,
   "leg_ids": [
-   "klay_thompson_threes1",
-   "desmond_bane_threes1",
    "karl-anthony_towns_threes1",
-   "josh_hart_threes1"
+   "josh_hart_threes1",
+   "victor_wembanyama_assists2",
+   "derrick_jones_jr_threes1"
   ],
-  "legs_text": "Klay Thompson 1+ threes; Desmond Bane 1+ threes; Karl-Anthony Towns 1+ threes; Josh Hart 1+ threes",
-  "est_hit": 0.6074,
-  "break_even": 1.65,
-  "priced_legs": "2 of 4",
-  "known_price": 1.65,
+  "legs_text": "Karl-Anthony Towns 1+ threes; Josh Hart 1+ threes; Victor Wembanyama 2+ assists; Derrick Jones Jr. 1+ threes",
+  "est_hit": 0.5315,
+  "break_even": 1.88,
+  "priced_legs": "4 of 4",
+  "known_price": 2.58,
   "fair_multi": null,
-  "est_price": 2.09,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null,
-  "verdict": "check",
-  "value": null
+  "est_price": 2.58,
+  "book_prices": {
+   "neds": 2.58
+  },
+  "best_book": "neds",
+  "best_book_price": 2.58,
+  "verdict": "value",
+  "value": 0.3713
  },
  {
   "multi": "3-leg $2+",
@@ -30,8 +32,8 @@
    "victor_wembanyama_assists2"
   ],
   "legs_text": "Karl-Anthony Towns 1+ threes; Josh Hart 1+ threes; Victor Wembanyama 2+ assists",
-  "est_hit": 0.6399,
-  "break_even": 1.56,
+  "est_hit": 0.6381,
+  "break_even": 1.57,
   "priced_legs": "3 of 3",
   "known_price": 2.01,
   "fair_multi": null,
@@ -42,7 +44,7 @@
   "best_book": "neds",
   "best_book_price": 2.01,
   "verdict": "value",
-  "value": 0.2862
+  "value": 0.2826
  },
  {
   "multi": "2-leg $2+",
@@ -52,8 +54,8 @@
    "patrick_williams_assists2"
   ],
   "legs_text": "Josh Hart 1+ threes; Patrick Williams 2+ assists",
-  "est_hit": 0.6085,
-  "break_even": 1.64,
+  "est_hit": 0.6069,
+  "break_even": 1.65,
   "priced_legs": "2 of 2",
   "known_price": 2.01,
   "fair_multi": null,
@@ -74,7 +76,7 @@
    "patrick_williams_assists2"
   ],
   "legs_text": "Karl-Anthony Towns 1+ threes; Josh Hart 1+ threes; Victor Wembanyama 2+ assists; Patrick Williams 2+ assists",
-  "est_hit": 0.4551,
+  "est_hit": 0.4536,
   "break_even": 2.2,
   "priced_legs": "4 of 4",
   "known_price": 3.06,
@@ -90,23 +92,25 @@
   "multi": "4-leg $4+",
   "rank": 5,
   "leg_ids": [
-   "desmond_bane_threes1",
    "josh_hart_threes1",
+   "victor_wembanyama_assists2",
    "derrick_jones_jr_threes1",
    "karl-anthony_towns_threes2"
   ],
-  "legs_text": "Desmond Bane 1+ threes; Josh Hart 1+ threes; Derrick Jones Jr. 1+ threes; Karl-Anthony Towns 2+ threes",
-  "est_hit": 0.3586,
-  "break_even": 2.79,
-  "priced_legs": "3 of 4",
-  "known_price": 3.55,
+  "legs_text": "Josh Hart 1+ threes; Victor Wembanyama 2+ assists; Derrick Jones Jr. 1+ threes; Karl-Anthony Towns 2+ threes",
+  "est_hit": 0.3371,
+  "break_even": 2.97,
+  "priced_legs": "4 of 4",
+  "known_price": 4.33,
   "fair_multi": null,
-  "est_price": 4.07,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null,
-  "verdict": "check",
-  "value": null
+  "est_price": 4.33,
+  "book_prices": {
+   "neds": 4.33
+  },
+  "best_book": "neds",
+  "best_book_price": 4.33,
+  "verdict": "value",
+  "value": 0.4596
  },
  {
   "multi": "Best value",
@@ -118,8 +122,8 @@
    "patrick_williams_assists2"
   ],
   "legs_text": "Karl-Anthony Towns 1+ threes; Josh Hart 1+ threes; Derrick Jones Jr. 1+ threes; Patrick Williams 2+ assists",
-  "est_hit": 0.4502,
-  "break_even": 2.22,
+  "est_hit": 0.4486,
+  "break_even": 2.23,
   "priced_legs": "4 of 4",
   "known_price": 3.21,
   "fair_multi": null,
@@ -134,23 +138,25 @@
   "multi": "Safest",
   "rank": 7,
   "leg_ids": [
-   "klay_thompson_threes1",
-   "desmond_bane_threes1",
    "karl-anthony_towns_threes1",
-   "josh_hart_threes1"
+   "josh_hart_threes1",
+   "victor_wembanyama_assists2",
+   "derrick_jones_jr_threes1"
   ],
-  "legs_text": "Klay Thompson 1+ threes; Desmond Bane 1+ threes; Karl-Anthony Towns 1+ threes; Josh Hart 1+ threes",
-  "est_hit": 0.6074,
-  "break_even": 1.65,
-  "priced_legs": "2 of 4",
-  "known_price": 1.65,
+  "legs_text": "Karl-Anthony Towns 1+ threes; Josh Hart 1+ threes; Victor Wembanyama 2+ assists; Derrick Jones Jr. 1+ threes",
+  "est_hit": 0.5315,
+  "break_even": 1.88,
+  "priced_legs": "4 of 4",
+  "known_price": 2.58,
   "fair_multi": null,
-  "est_price": 2.09,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null,
-  "verdict": "check",
-  "value": null
+  "est_price": 2.58,
+  "book_prices": {
+   "neds": 2.58
+  },
+  "best_book": "neds",
+  "best_book_price": 2.58,
+  "verdict": "value",
+  "value": 0.3713
  },
  {
   "multi": "3-leg value",
@@ -161,8 +167,8 @@
    "patrick_williams_assists2"
   ],
   "legs_text": "Karl-Anthony Towns 1+ threes; Josh Hart 1+ threes; Patrick Williams 2+ assists",
-  "est_hit": 0.5404,
-  "break_even": 1.85,
+  "est_hit": 0.5385,
+  "break_even": 1.86,
   "priced_legs": "3 of 3",
   "known_price": 2.51,
   "fair_multi": null,
@@ -177,51 +183,55 @@
   "multi": "One per game",
   "rank": 9,
   "leg_ids": [
-   "klay_thompson_threes1",
-   "desmond_bane_threes1",
    "karl-anthony_towns_threes1",
    "victor_wembanyama_assists2",
    "derrick_jones_jr_threes1",
    "nickeil_alexander-walker_assists2",
    "cedric_coward_assists2",
+   "davion_mitchell_points10",
+   "franz_wagner_threes1",
    "por_win"
   ],
-  "legs_text": "Klay Thompson 1+ threes; Desmond Bane 1+ threes; Karl-Anthony Towns 1+ threes; Victor Wembanyama 2+ assists; Derrick Jones Jr. 1+ threes; Nickeil Alexander-Walker 2+ assists; Cedric Coward 2+ assists; Portland Trail Blazers Portland Trail Blazers to win",
-  "est_hit": 0.2683,
-  "break_even": 3.73,
-  "priced_legs": "6 of 8",
-  "known_price": 3.66,
+  "legs_text": "Karl-Anthony Towns 1+ threes; Victor Wembanyama 2+ assists; Derrick Jones Jr. 1+ threes; Nickeil Alexander-Walker 2+ assists; Cedric Coward 2+ assists; Davion Mitchell 10+ points; Franz Wagner 1+ threes; Portland Trail Blazers Portland Trail Blazers to win",
+  "est_hit": 0.2228,
+  "break_even": 4.49,
+  "priced_legs": "8 of 8",
+  "known_price": 5.27,
   "fair_multi": null,
-  "est_price": 4.65,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null,
-  "verdict": "check",
-  "value": null
+  "est_price": 5.27,
+  "book_prices": {
+   "neds": 5.27
+  },
+  "best_book": "neds",
+  "best_book_price": 5.27,
+  "verdict": "value",
+  "value": 0.1742
  },
  {
   "multi": "Mid-range $8+",
   "rank": 10,
   "leg_ids": [
-   "desmond_bane_threes1",
    "karl-anthony_towns_threes1",
+   "victor_wembanyama_assists2",
    "derrick_jones_jr_threes1",
    "nickeil_alexander-walker_assists2",
-   "patrick_williams_assists2",
+   "peyton_watson_assists2",
    "josh_hart_threes2"
   ],
-  "legs_text": "Desmond Bane 1+ threes; Karl-Anthony Towns 1+ threes; Derrick Jones Jr. 1+ threes; Nickeil Alexander-Walker 2+ assists; Patrick Williams 2+ assists; Josh Hart 2+ threes",
-  "est_hit": 0.2076,
-  "break_even": 4.82,
-  "priced_legs": "5 of 6",
-  "known_price": 7.09,
+  "legs_text": "Karl-Anthony Towns 1+ threes; Victor Wembanyama 2+ assists; Derrick Jones Jr. 1+ threes; Nickeil Alexander-Walker 2+ assists; Peyton Watson 2+ assists; Josh Hart 2+ threes",
+  "est_hit": 0.2016,
+  "break_even": 4.96,
+  "priced_legs": "6 of 6",
+  "known_price": 8.08,
   "fair_multi": null,
-  "est_price": 8.13,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null,
-  "verdict": "check",
-  "value": null
+  "est_price": 8.08,
+  "book_prices": {
+   "neds": 8.08
+  },
+  "best_book": "neds",
+  "best_book_price": 8.08,
+  "verdict": "value",
+  "value": 0.6289
  },
  {
   "multi": "Long multi 8+",
@@ -237,8 +247,8 @@
    "cedric_coward_assists2"
   ],
   "legs_text": "Zion Williamson 2+ assists; Karl-Anthony Towns 1+ threes; Josh Hart 1+ threes; Andrew Nembhard 10+ points; Victor Wembanyama 2+ assists; Derrick Jones Jr. 1+ threes; Nickeil Alexander-Walker 2+ assists; Cedric Coward 2+ assists",
-  "est_hit": 0.2884,
-  "break_even": 3.47,
+  "est_hit": 0.2876,
+  "break_even": 3.48,
   "priced_legs": "8 of 8",
   "known_price": 5.33,
   "fair_multi": null,
@@ -249,14 +259,12 @@
   "best_book": "neds",
   "best_book_price": 5.33,
   "verdict": "value",
-  "value": 0.5372
+  "value": 0.5329
  },
  {
   "multi": "Long shot $50",
   "rank": 12,
   "leg_ids": [
-   "klay_thompson_threes1",
-   "desmond_bane_threes1",
    "karl-anthony_towns_threes1",
    "josh_hart_threes1",
    "victor_wembanyama_assists2",
@@ -264,24 +272,27 @@
    "nickeil_alexander-walker_assists2",
    "cedric_coward_assists2",
    "keldon_johnson_rebounds4",
+   "onyeka_okongwu_assists2",
    "kyle_kuzma_assists2",
-   "jaime_jaquez_jr_threes1",
+   "aaron_wiggins_points10",
    "toumani_camara_points10",
    "peyton_watson_assists2",
    "jrue_holiday_points15"
   ],
-  "legs_text": "Klay Thompson 1+ threes; Desmond Bane 1+ threes; Karl-Anthony Towns 1+ threes; Josh Hart 1+ threes; Victor Wembanyama 2+ assists; Derrick Jones Jr. 1+ threes; Nickeil Alexander-Walker 2+ assists; Cedric Coward 2+ assists; Keldon Johnson 4+ rebounds; Kyle Kuzma 2+ assists; Jaime Jaquez Jr. 1+ threes; Toumani Camara 10+ points; Peyton Watson 2+ assists; Jrue Holiday 15+ points",
-  "est_hit": 0.0403,
-  "break_even": 24.83,
-  "priced_legs": "12 of 14",
-  "known_price": 39.45,
+  "legs_text": "Karl-Anthony Towns 1+ threes; Josh Hart 1+ threes; Victor Wembanyama 2+ assists; Derrick Jones Jr. 1+ threes; Nickeil Alexander-Walker 2+ assists; Cedric Coward 2+ assists; Keldon Johnson 4+ rebounds; Onyeka Okongwu 2+ assists; Kyle Kuzma 2+ assists; Aaron Wiggins 10+ points; Toumani Camara 10+ points; Peyton Watson 2+ assists; Jrue Holiday 15+ points",
+  "est_hit": 0.0377,
+  "break_even": 26.52,
+  "priced_legs": "13 of 13",
+  "known_price": 52.03,
   "fair_multi": null,
-  "est_price": 50.07,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null,
-  "verdict": "check",
-  "value": null
+  "est_price": 50.43,
+  "book_prices": {
+   "neds": 50.43
+  },
+  "best_book": "neds",
+  "best_book_price": 50.43,
+  "verdict": "value",
+  "value": 0.9012
  },
  {
   "multi": "Top pick",
@@ -292,7 +303,7 @@
    "derrick_jones_jr_threes1"
   ],
   "legs_text": "Karl-Anthony Towns 1+ threes; Josh Hart 1+ threes; Derrick Jones Jr. 1+ threes",
-  "est_hit": 0.6329,
+  "est_hit": 0.6311,
   "break_even": 1.58,
   "priced_legs": "3 of 3",
   "known_price": 2.11,
@@ -304,7 +315,7 @@
   "best_book": "neds",
   "best_book_price": 2.11,
   "verdict": "value",
-  "value": 0.3354
+  "value": 0.3316
  },
  {
   "multi": "Second pick",
@@ -315,7 +326,7 @@
    "cedric_coward_assists2"
   ],
   "legs_text": "Josh Hart 1+ threes; Nickeil Alexander-Walker 2+ assists; Cedric Coward 2+ assists",
-  "est_hit": 0.5848,
+  "est_hit": 0.5835,
   "break_even": 1.71,
   "priced_legs": "3 of 3",
   "known_price": 2.03,
@@ -327,6 +338,6 @@
   "best_book": "neds",
   "best_book_price": 2.03,
   "verdict": "value",
-  "value": 0.1871
+  "value": 0.1845
  }
 ]
