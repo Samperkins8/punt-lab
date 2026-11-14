@@ -3,7 +3,7 @@
  "headline": "Value today: 3-leg $2+ on Neds $2.01 (needs $1.57); Top pick on Neds $2.11 (needs $1.58); Second pick on Neds $2.03 (needs $1.71).",
  "injuries": "Mouhamed Gueye (Out), Keshon Gilbert (Out), Asa Newell (Out), Henri Veesaar (Out), Tobe Awaka (Out), Caleb Wilson (Out), Evan Mobley (Out), Sam Merrill (Out), Stephen Curry (Out), Brandon Williams (Out), Kristaps Porzingis (Out), Moses Moody (Out) and others",
  "graded": "",
- "next_run": "Late check 11:57am — UTAH @ HOU: no new outs; 1 new leg worth a look",
+ "next_run": "Late check 12:59pm — GS @ SA, POR @ SAC: no new outs; 2 new legs worth a look",
  "sources": {
   "stats": "ESPN",
   "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API",
@@ -83,14 +83,17 @@
   "WIN_VS_OPPONENT": -0.2
  },
  "rechecked_at": "2026-11-14T10:16:36.038415+11:00",
- "close_fetches": 2,
+ "close_fetches": 3,
  "late_checked": [
+  "GS @ SA",
   "MIL @ ORL",
   "NY @ IND",
+  "POR @ SAC",
   "UTAH @ HOU"
  ],
  "late_log": [
   "10:39am NY @ IND, MIL @ ORL: no new outs; 1 new leg worth a look",
-  "11:57am UTAH @ HOU: no new outs; 1 new leg worth a look"
+  "11:57am UTAH @ HOU: no new outs; 1 new leg worth a look",
+  "12:59pm GS @ SA, POR @ SAC: no new outs; 2 new legs worth a look"
  ]
 }

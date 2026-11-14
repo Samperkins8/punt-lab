@@ -165,9 +165,9 @@
   }
  },
  {
-  "why": "Predicted 3.0 assists tonight, needs 2+. This season 2.8 a game over 12 games; last season 3.0 over 67. Slower game expected (-2% for pace). GS gives up more to his position than average (+17%). Bookies' line: 2.5.",
+  "why": "Predicted 3.0 assists tonight, needs 2+. This season 2.8 a game over 12 games; last season 3.0 over 67. Slower game expected (-3% for pace). GS gives up more to his position than average (+18%). Bookies' line: 2.5.",
   "venue_shift": 0.07,
-  "pace_factor": 0.979,
+  "pace_factor": 0.973,
   "side_factor": 1.005,
   "underdog": false,
   "roster_overlap": 0.91,
@@ -188,7 +188,7 @@
   "prior_games": 67,
   "context_label": null,
   "context_detail": null,
-  "matchup": 1.168,
+  "matchup": 1.175,
   "context_shift": 0.0,
   "minutes_factor": 1.0,
   "avg_minutes": 30.0,
@@ -196,7 +196,7 @@
   "proj_mean": 3.0,
   "model_prob": 0.8422,
   "raw_prob": 0.8422,
-  "fair_price": 1.27,
+  "fair_price": 1.28,
   "implied": 0.8197,
   "edge": 0.0226,
   "hit_rate": 0.9167,
@@ -215,7 +215,12 @@
   "step_up": false,
   "note": "",
   "event_id": "401909302",
-  "athlete_id": "5104157"
+  "athlete_id": "5104157",
+  "late_checked": "12:59pm",
+  "late_was": null,
+  "close_books": {
+   "neds": 1.22
+  }
  },
  {
   "why": "Predicted 1.6 threes tonight, needs 1+. This season 1.9 a game over 9 games; last season 1.1 over 51. Slower game expected (-1% for pace). Tonight's line is 6 points tougher than his team's usual (underdogs by 7.5), so they're expected to score less (-4%). OKC gives up more to his position than average (+20%).",
@@ -594,9 +599,9 @@
   }
  },
  {
-  "why": "Predicted 5.3 rebounds tonight, needs 4+. This season 5.7 a game over 12 games; last season 5.3 over 83. Slower game expected (-1% for pace). Bookies' line: 5.5.",
+  "why": "Predicted 5.3 rebounds tonight, needs 4+. This season 5.7 a game over 12 games; last season 5.3 over 83. Slower game expected (-2% for pace). Bookies' line: 5.5.",
   "venue_shift": -0.14,
-  "pace_factor": 0.987,
+  "pace_factor": 0.984,
   "side_factor": 1.002,
   "underdog": false,
   "roster_overlap": 0.91,
@@ -623,11 +628,11 @@
   "avg_minutes": 24.0,
   "proj_minutes": 24.0,
   "proj_mean": 5.3,
-  "model_prob": 0.7956,
-  "raw_prob": 0.7956,
+  "model_prob": 0.7954,
+  "raw_prob": 0.7954,
   "fair_price": 1.24,
   "implied": 0.7937,
-  "edge": 0.0019,
+  "edge": 0.0018,
   "hit_rate": 1.0,
   "market_line": 5.5,
   "market_p_over": 0.45608914831520303,
@@ -644,7 +649,12 @@
   "step_up": false,
   "note": "",
   "event_id": "401909302",
-  "athlete_id": "4395723"
+  "athlete_id": "4395723",
+  "late_checked": "12:59pm",
+  "late_was": null,
+  "close_books": {
+   "neds": 1.26
+  }
  },
  {
   "why": "Predicted 2.8 assists tonight, needs 2+. This season 2.8 a game over 12 games; last season 3.1 over 74. Faster game expected (+4% for pace). Tonight's line is 8 points easier than his team's usual (favourites by 7.5), so they're expected to score more (+2%). CHI gives up more to his position than average (+7%). Bookies' line: 2.5.",
@@ -926,9 +936,9 @@
   "athlete_id": "4683778"
  },
  {
-  "why": "Predicted 5.7 rebounds tonight, needs 4+. This season 5.6 a game over 12 games; last season 5.3 over 69. Plays better at home: 0.4 rebounds more predicted. Slower game expected (-1% for pace). GS gives up more to his position than average (+9%). Bookies' line: 5.5.",
+  "why": "Predicted 5.7 rebounds tonight, needs 4+. This season 5.6 a game over 12 games; last season 5.3 over 69. Plays better at home: 0.4 rebounds more predicted. Slower game expected (-2% for pace). GS gives up more to his position than average (+9%). Bookies' line: 5.5.",
   "venue_shift": 0.39,
-  "pace_factor": 0.987,
+  "pace_factor": 0.984,
   "side_factor": 1.002,
   "underdog": false,
   "roster_overlap": 0.91,
@@ -955,11 +965,11 @@
   "avg_minutes": 29.0,
   "proj_minutes": 29.0,
   "proj_mean": 5.7,
-  "model_prob": 0.7799,
-  "raw_prob": 0.7799,
+  "model_prob": 0.7796,
+  "raw_prob": 0.7796,
   "fair_price": 1.32,
   "implied": 0.8065,
-  "edge": -0.0266,
+  "edge": -0.0268,
   "hit_rate": 0.8333,
   "market_line": 5.5,
   "market_p_over": 0.466950959488273,
@@ -976,7 +986,12 @@
   "step_up": false,
   "note": "",
   "event_id": "401909302",
-  "athlete_id": "4845367"
+  "athlete_id": "4845367",
+  "late_checked": "12:59pm",
+  "late_was": null,
+  "close_books": {
+   "neds": 1.28
+  }
  },
  {
   "why": "Predicted 5.6 rebounds tonight, needs 4+. This season 5.4 a game over 11 games; last season 5.3 over 68. Plays better on the road: 0.4 rebounds more predicted. Slower game expected (-1% for pace). IND gives up more to his position than average (+10%). Bookies' line: 5.5.",
@@ -1333,17 +1348,17 @@
   "prior_games": 54,
   "context_label": "Ja Morant out tonight",
   "context_detail": "Holiday averaged 14.1 in the 7 games without Morant (13.4 across all 11), so he's predicted 0.5 points more tonight.",
-  "matchup": 1.008,
+  "matchup": 1.01,
   "context_shift": 0.45,
   "minutes_factor": 1.0,
   "avg_minutes": 26.2,
   "proj_minutes": 26.2,
   "proj_mean": 14.2,
-  "model_prob": 0.7584,
-  "raw_prob": 0.7584,
+  "model_prob": 0.7585,
+  "raw_prob": 0.7585,
   "fair_price": 1.47,
   "implied": 0.7353,
-  "edge": 0.0231,
+  "edge": 0.0232,
   "hit_rate": 0.8182,
   "market_line": 12.5,
   "market_p_over": 0.5009340805978115,
@@ -1360,7 +1375,12 @@
   "step_up": false,
   "note": "",
   "event_id": "401909303",
-  "athlete_id": "3995"
+  "athlete_id": "3995",
+  "late_checked": "12:59pm",
+  "late_was": null,
+  "close_books": {
+   "neds": 1.35
+  }
  },
  {
   "why": "Predicted 1.9 threes tonight, needs 2+. This season 1.9 a game over 11 games; last season 1.5 over 78. Slower game expected (-2% for pace). Tonight's line is 5 points easier than his team's usual (favourites by 7.5), so they're expected to score more (+4%). IND gives up less to his position than average (-4%).",
@@ -1502,17 +1522,17 @@
   "prior_games": 54,
   "context_label": "Ja Morant out tonight",
   "context_detail": "Holiday averaged 14.1 in the 7 games without Morant (13.4 across all 11), so he's predicted 0.5 points more tonight.",
-  "matchup": 1.008,
+  "matchup": 1.01,
   "context_shift": 0.45,
   "minutes_factor": 1.0,
   "avg_minutes": 26.2,
   "proj_minutes": 26.2,
   "proj_mean": 14.2,
-  "model_prob": 0.4651,
-  "raw_prob": 0.4651,
+  "model_prob": 0.4665,
+  "raw_prob": 0.4665,
   "fair_price": 2.64,
   "implied": 0.4255,
-  "edge": 0.0396,
+  "edge": 0.0409,
   "hit_rate": 0.3636,
   "market_line": 12.5,
   "market_p_over": 0.5009340805978115,
@@ -1529,7 +1549,12 @@
   "step_up": true,
   "note": "",
   "event_id": "401909303",
-  "athlete_id": "3995"
+  "athlete_id": "3995",
+  "late_checked": "12:59pm",
+  "late_was": null,
+  "close_books": {
+   "neds": 2.3
+  }
  },
  {
   "why": "Predicted 15.9 points tonight, needs 10+. This season 17.1 a game over 10 games; last season 16.9 over 57. Slower game expected (-2% for pace). Tonight's line is 8 points tougher than his team's usual (underdogs by 7.5), so they're expected to score less (-3%). NY gives up more to his position than average (+5%). Bookies' line: 15.5.",
@@ -2127,7 +2152,12 @@
   "step_up": false,
   "note": "",
   "event_id": "401909303",
-  "athlete_id": "4431736"
+  "athlete_id": "4431736",
+  "late_checked": "12:59pm",
+  "late_was": null,
+  "close_books": {
+   "neds": 1.38
+  }
  },
  {
   "why": "Predicted 15.7 points tonight, needs 10+. This season 17.8 a game over 8 games; last season 14.8 over 66. Black averaged 15.7 in the 6 games with Silva (17.8 across all 8), so he's predicted 1.1 points fewer tonight. Tonight's line is 11 points easier than his team's usual (favourites by 9.5), so they're expected to score more (+4%). MIL gives up more to his position than average (+3%). Bookies' line: 15.5.",
@@ -2240,5 +2270,115 @@
   "athlete_id": "2991230",
   "late_new": true,
   "late_checked": "11:57am"
+ },
+ {
+  "why": "Predicted 5.8 assists tonight, needs 4+. This season 6.2 a game over 12 games; last season 6.0 over 76. Slower game expected (-3% for pace). GS gives up more to his position than average (+4%). Bookies' line: 5.5.",
+  "venue_shift": -0.07,
+  "pace_factor": 0.973,
+  "side_factor": 1.005,
+  "underdog": false,
+  "roster_overlap": 0.91,
+  "usual_starter": true,
+  "back_to_back": false,
+  "leg_id": "de'aaron_fox_assists4",
+  "player": "De'Aaron Fox",
+  "team": "SA",
+  "game": "GS @ SA",
+  "market": "4+ assists",
+  "stat": "assists",
+  "line": 4,
+  "hits": 11,
+  "games": 12,
+  "log": "7, 9, 9, 6, 4, 7, 3, 4, 4, 6, 6, 9",
+  "odds": 1.16,
+  "prior_mean": 6.0,
+  "prior_games": 76,
+  "context_label": null,
+  "context_detail": null,
+  "matchup": 1.04,
+  "context_shift": 0.0,
+  "minutes_factor": 1.0,
+  "avg_minutes": 29.6,
+  "proj_minutes": 29.6,
+  "proj_mean": 5.8,
+  "model_prob": 0.8132,
+  "raw_prob": 0.8132,
+  "fair_price": 1.25,
+  "implied": 0.8621,
+  "edge": -0.0489,
+  "hit_rate": 0.9167,
+  "market_line": 5.5,
+  "market_p_over": 0.5281408375566817,
+  "books": {
+   "neds": 1.16
+  },
+  "best_book": "neds",
+  "open_books": {
+   "neds": 1.16
+  },
+  "best_price": 1.16,
+  "market_source": "AU bookies",
+  "questionable": false,
+  "step_up": false,
+  "note": "",
+  "event_id": "401909302",
+  "athlete_id": "4066259",
+  "late_new": true,
+  "late_checked": "12:59pm"
+ },
+ {
+  "why": "Predicted 21.3 points tonight, needs 15+. This season 19.8 a game over 11 games. Lillard averaged 20.6 in the 7 games without Morant (19.8 across all 11), so he's predicted 0.4 points more tonight. Plays better on the road: 0.7 points more predicted. Tonight's line is 8 points easier than his team's usual (favourites by 10.5), so they're expected to score more (+3%). SAC gives up less to his position than average (-2%). Bookies' line: 21.5.",
+  "venue_shift": 0.72,
+  "pace_factor": 1.003,
+  "side_factor": 1.026,
+  "underdog": false,
+  "roster_overlap": null,
+  "usual_starter": true,
+  "back_to_back": false,
+  "leg_id": "damian_lillard_points15",
+  "player": "Damian Lillard",
+  "team": "POR",
+  "game": "POR @ SAC",
+  "market": "15+ points",
+  "stat": "points",
+  "line": 15,
+  "hits": 9,
+  "games": 11,
+  "log": "25, 19, 21, 9, 22, 20, 25, 22, 12, 25, 18",
+  "odds": 1.15,
+  "prior_mean": 19.8,
+  "prior_games": 0,
+  "context_label": "Ja Morant out tonight",
+  "context_detail": "Lillard averaged 20.6 in the 7 games without Morant (19.8 across all 11), so he's predicted 0.4 points more tonight.",
+  "matchup": 0.98,
+  "context_shift": 0.44,
+  "minutes_factor": 1.0,
+  "avg_minutes": 29.2,
+  "proj_minutes": 29.2,
+  "proj_mean": 21.3,
+  "model_prob": 0.8032,
+  "raw_prob": 0.8032,
+  "fair_price": 1.23,
+  "implied": 0.8696,
+  "edge": -0.0664,
+  "hit_rate": 0.8182,
+  "market_line": 21.5,
+  "market_p_over": 0.5040279269602578,
+  "books": {
+   "neds": 1.15
+  },
+  "best_book": "neds",
+  "open_books": {
+   "neds": 1.15
+  },
+  "best_price": 1.15,
+  "market_source": "AU bookies",
+  "questionable": false,
+  "step_up": false,
+  "note": "",
+  "event_id": "401909303",
+  "athlete_id": "6606",
+  "late_new": true,
+  "late_checked": "12:59pm"
  }
 ]
