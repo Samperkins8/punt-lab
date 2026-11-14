@@ -232,7 +232,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.22
-  }
+  },
+  "actual": 6.0,
+  "landed": true,
+  "minutes_played": 21,
+  "expected_minutes": 30,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 1.6 threes tonight, needs 1+. This season 1.9 a game over 9 games; last season 1.1 over 51. Slower game expected (-1% for pace). Tonight's line is 5 points tougher than his team's usual (underdogs by 6.5), so they're expected to score less (-3%). OKC gives up more to his position than average (+21%).",
@@ -701,7 +706,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.26
-  }
+  },
+  "actual": 4.0,
+  "landed": true,
+  "minutes_played": 25,
+  "expected_minutes": 24,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 2.8 assists tonight, needs 2+. This season 2.8 a game over 12 games; last season 3.1 over 74. Faster game expected (+4% for pace). Tonight's line is 8 points easier than his team's usual (favourites by 7.5), so they're expected to score more (+2%). CHI gives up more to his position than average (+7%). Bookies' line: 2.5.",
@@ -1063,7 +1073,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.28
-  }
+  },
+  "actual": 5.0,
+  "landed": true,
+  "minutes_played": 25,
+  "expected_minutes": 29,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 5.6 rebounds tonight, needs 4+. This season 5.4 a game over 11 games; last season 5.3 over 68. Plays better on the road: 0.4 rebounds more predicted. Slower game expected (-1% for pace). IND gives up more to his position than average (+10%). Bookies' line: 5.5.",
@@ -1482,7 +1497,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.35
-  }
+  },
+  "actual": 6.0,
+  "landed": false,
+  "minutes_played": 27,
+  "expected_minutes": 26,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 1.9 threes tonight, needs 2+. This season 1.9 a game over 11 games; last season 1.5 over 78. Slower game expected (-2% for pace). Tonight's line is 5 points easier than his team's usual (favourites by 7.5), so they're expected to score more (+4%). IND gives up less to his position than average (-4%).",
@@ -1666,7 +1686,12 @@
   "late_was": null,
   "close_books": {
    "neds": 2.3
-  }
+  },
+  "actual": 6.0,
+  "landed": false,
+  "minutes_played": 27,
+  "expected_minutes": 26,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 15.9 points tonight, needs 10+. This season 17.1 a game over 10 games; last season 16.9 over 57. Slower game expected (-2% for pace). Tonight's line is 8 points tougher than his team's usual (underdogs by 7.5), so they're expected to score less (-3%). NY gives up more to his position than average (+5%). Bookies' line: 15.5.",
@@ -2013,7 +2038,9 @@
   "step_up": false,
   "note": "10.5-point favourite",
   "event_id": "401909303",
-  "athlete_id": null
+  "athlete_id": null,
+  "actual": 1,
+  "landed": true
  },
  {
   "why": "Oklahoma City Thunder are 7.5-point favourites. The bookies' head-to-head prices (margin removed) and the betting line together make that about a 71% chance to win, fair price $1.41. Pays $1.38 at TAB.",
@@ -2300,7 +2327,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.38
-  }
+  },
+  "actual": 14.0,
+  "landed": true,
+  "minutes_played": 36,
+  "expected_minutes": 28,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 15.7 points tonight, needs 10+. This season 17.8 a game over 8 games; last season 14.8 over 66. Black averaged 15.7 in the 6 games with Silva (17.8 across all 8), so he's predicted 1.1 points fewer tonight. Tonight's line is 11 points easier than his team's usual (favourites by 9.5), so they're expected to score more (+4%). MIL gives up more to his position than average (+3%). Bookies' line: 15.5.",
@@ -2477,7 +2509,12 @@
   "event_id": "401909302",
   "athlete_id": "4066259",
   "late_new": true,
-  "late_checked": "12:59pm"
+  "late_checked": "12:59pm",
+  "actual": 1.0,
+  "landed": false,
+  "minutes_played": 17,
+  "expected_minutes": 30,
+  "minutes_flag": "blowout"
  },
  {
   "why": "Predicted 21.3 points tonight, needs 15+. This season 19.8 a game over 11 games. Lillard averaged 20.6 in the 7 games without Morant (19.8 across all 11), so he's predicted 0.4 points more tonight. Plays better on the road: 0.7 points more predicted. Tonight's line is 8 points easier than his team's usual (favourites by 10.5), so they're expected to score more (+3%). SAC gives up less to his position than average (-2%). Bookies' line: 21.5.",
@@ -2532,6 +2569,11 @@
   "event_id": "401909303",
   "athlete_id": "6606",
   "late_new": true,
-  "late_checked": "12:59pm"
+  "late_checked": "12:59pm",
+  "actual": 29.0,
+  "landed": true,
+  "minutes_played": 33,
+  "expected_minutes": 29,
+  "minutes_flag": null
  }
 ]
