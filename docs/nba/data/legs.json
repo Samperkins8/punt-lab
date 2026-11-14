@@ -1186,7 +1186,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.24
-  }
+  },
+  "actual": 3.0,
+  "landed": false,
+  "minutes_played": 33,
+  "expected_minutes": 34,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 14.3 points tonight, needs 10+. This season 13.7 a game over 12 games; last season 15.2 over 74. Okongwu averaged 12.8 in the 9 games with Johnson (13.7 across all 12), so he's predicted 0.6 points fewer tonight. Plays a bit worse on the road: 1.4 points fewer predicted. Faster game expected (+4% for pace). Tonight's line is 8 points easier than his team's usual (favourites by 7.5), so they're expected to score more (+3%). CHI gives up more to his position than average (+5%). Bookies' line: 14.5.",
@@ -2412,7 +2417,12 @@
   "event_id": "401909301",
   "athlete_id": "2991230",
   "late_new": true,
-  "late_checked": "11:57am"
+  "late_checked": "11:57am",
+  "actual": 17.0,
+  "landed": true,
+  "minutes_played": 34,
+  "expected_minutes": 30,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 5.8 assists tonight, needs 4+. This season 6.2 a game over 12 games; last season 6.0 over 76. Slower game expected (-3% for pace). GS gives up more to his position than average (+4%). Bookies' line: 5.5.",
