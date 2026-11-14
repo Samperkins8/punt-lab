@@ -654,5 +654,131 @@
   "landed": true,
   "verdict": "value",
   "price": 2.29
+ },
+ {
+  "slate_date": "2026-11-14",
+  "multi": "4-leg $2+",
+  "legs": "Karl-Anthony Towns 1+ threes; Josh Hart 1+ threes; Victor Wembanyama 2+ assists; Derrick Jones Jr. 1+ threes",
+  "est_hit": 0.5315,
+  "landed": false,
+  "verdict": "value",
+  "price": 2.58
+ },
+ {
+  "slate_date": "2026-11-14",
+  "multi": "3-leg $2+",
+  "legs": "Karl-Anthony Towns 1+ threes; Josh Hart 1+ threes; Victor Wembanyama 2+ assists",
+  "est_hit": 0.6381,
+  "landed": false,
+  "verdict": "value",
+  "price": 2.01
+ },
+ {
+  "slate_date": "2026-11-14",
+  "multi": "2-leg $2+",
+  "legs": "Josh Hart 1+ threes; Patrick Williams 2+ assists",
+  "est_hit": 0.6069,
+  "landed": false,
+  "verdict": "check",
+  "price": 2.01
+ },
+ {
+  "slate_date": "2026-11-14",
+  "multi": "4-leg $3+",
+  "legs": "Karl-Anthony Towns 1+ threes; Josh Hart 1+ threes; Victor Wembanyama 2+ assists; Patrick Williams 2+ assists",
+  "est_hit": 0.4536,
+  "landed": false,
+  "verdict": "check",
+  "price": 3.06
+ },
+ {
+  "slate_date": "2026-11-14",
+  "multi": "4-leg $4+",
+  "legs": "Josh Hart 1+ threes; Victor Wembanyama 2+ assists; Derrick Jones Jr. 1+ threes; Karl-Anthony Towns 2+ threes",
+  "est_hit": 0.3371,
+  "landed": false,
+  "verdict": "value",
+  "price": 4.33
+ },
+ {
+  "slate_date": "2026-11-14",
+  "multi": "Best value",
+  "legs": "Karl-Anthony Towns 1+ threes; Josh Hart 1+ threes; Derrick Jones Jr. 1+ threes; Patrick Williams 2+ assists",
+  "est_hit": 0.4486,
+  "landed": false,
+  "verdict": "check",
+  "price": 3.21
+ },
+ {
+  "slate_date": "2026-11-14",
+  "multi": "Safest",
+  "legs": "Karl-Anthony Towns 1+ threes; Josh Hart 1+ threes; Victor Wembanyama 2+ assists; Derrick Jones Jr. 1+ threes",
+  "est_hit": 0.5315,
+  "landed": false,
+  "verdict": "value",
+  "price": 2.58
+ },
+ {
+  "slate_date": "2026-11-14",
+  "multi": "3-leg value",
+  "legs": "Karl-Anthony Towns 1+ threes; Josh Hart 1+ threes; Patrick Williams 2+ assists",
+  "est_hit": 0.5385,
+  "landed": false,
+  "verdict": "check",
+  "price": 2.51
+ },
+ {
+  "slate_date": "2026-11-14",
+  "multi": "One per game",
+  "legs": "Karl-Anthony Towns 1+ threes; Victor Wembanyama 2+ assists; Derrick Jones Jr. 1+ threes; Nickeil Alexander-Walker 2+ assists; Cedric Coward 2+ assists; Davion Mitchell 10+ points; Franz Wagner 1+ threes; Portland Trail Blazers Portland Trail Blazers to win",
+  "est_hit": 0.2228,
+  "landed": true,
+  "verdict": "value",
+  "price": 5.27
+ },
+ {
+  "slate_date": "2026-11-14",
+  "multi": "Mid-range $8+",
+  "legs": "Karl-Anthony Towns 1+ threes; Victor Wembanyama 2+ assists; Derrick Jones Jr. 1+ threes; Nickeil Alexander-Walker 2+ assists; Peyton Watson 2+ assists; Josh Hart 2+ threes",
+  "est_hit": 0.2016,
+  "landed": false,
+  "verdict": "value",
+  "price": 8.08
+ },
+ {
+  "slate_date": "2026-11-14",
+  "multi": "Long multi 8+",
+  "legs": "Zion Williamson 2+ assists; Karl-Anthony Towns 1+ threes; Josh Hart 1+ threes; Andrew Nembhard 10+ points; Victor Wembanyama 2+ assists; Derrick Jones Jr. 1+ threes; Nickeil Alexander-Walker 2+ assists; Cedric Coward 2+ assists",
+  "est_hit": 0.2876,
+  "landed": false,
+  "verdict": "value",
+  "price": 5.33
+ },
+ {
+  "slate_date": "2026-11-14",
+  "multi": "Long shot $50",
+  "legs": "Karl-Anthony Towns 1+ threes; Josh Hart 1+ threes; Victor Wembanyama 2+ assists; Derrick Jones Jr. 1+ threes; Nickeil Alexander-Walker 2+ assists; Cedric Coward 2+ assists; Keldon Johnson 4+ rebounds; Onyeka Okongwu 2+ assists; Kyle Kuzma 2+ assists; Aaron Wiggins 10+ points; Toumani Camara 10+ points; Peyton Watson 2+ assists; Jrue Holiday 15+ points",
+  "est_hit": 0.0377,
+  "landed": false,
+  "verdict": "value",
+  "price": 50.43
+ },
+ {
+  "slate_date": "2026-11-14",
+  "multi": "Top pick",
+  "legs": "Karl-Anthony Towns 1+ threes; Josh Hart 1+ threes; Derrick Jones Jr. 1+ threes",
+  "est_hit": 0.6311,
+  "landed": false,
+  "verdict": "value",
+  "price": 2.11
+ },
+ {
+  "slate_date": "2026-11-14",
+  "multi": "Second pick",
+  "legs": "Josh Hart 1+ threes; Nickeil Alexander-Walker 2+ assists; Cedric Coward 2+ assists",
+  "est_hit": 0.5835,
+  "landed": false,
+  "verdict": "value",
+  "price": 2.03
  }
 ]
