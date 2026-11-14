@@ -214,7 +214,7 @@
   "best_book_price": 5.27,
   "verdict": "value",
   "value": 0.1742,
-  "landed": null
+  "landed": true
  },
  {
   "multi": "Mid-range $8+",

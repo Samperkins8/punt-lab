@@ -295,7 +295,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.28
-  }
+  },
+  "actual": 4.0,
+  "landed": true,
+  "minutes_played": 29,
+  "expected_minutes": 29,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 2.8 assists tonight, needs 2+. This season 2.6 a game over 12 games; last season 3.7 over 78. Faster game expected (+4% for pace). Tonight's line is 8 points easier than his team's usual (favourites by 7.5), so they're expected to score more (+2%). CHI gives up less to his position than average (-3%). Bookies' line: 2.5.",
@@ -957,7 +962,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.28
-  }
+  },
+  "actual": 1.0,
+  "landed": true,
+  "minutes_played": 15,
+  "expected_minutes": 24,
+  "minutes_flag": "low"
  },
  {
   "why": "Predicted 14.5 points tonight, needs 10+. This season 12.7 a game over 12 games; last season 8.3 over 67. McCain averaged 13.9 in the 9 games without Holmgren (12.7 across all 12), so he's predicted 0.8 points more tonight. Plays better on the road: 0.7 points more predicted. Slower game expected (-1% for pace). Tonight's line is 6 points easier than his team's usual (favourites by 6.5), so they're expected to score more (+2%). LAC gives up less to his position than average (-3%). Expected minutes 31 vs his usual 26.2. Bookies' line: 14.5.",
@@ -1015,7 +1025,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.16
-  }
+  },
+  "actual": 23.0,
+  "landed": true,
+  "minutes_played": 31,
+  "expected_minutes": 31,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 5.7 rebounds tonight, needs 4+. This season 5.6 a game over 12 games; last season 5.3 over 69. Plays better at home: 0.4 rebounds more predicted. Slower game expected (-2% for pace). GS gives up more to his position than average (+9%). Bookies' line: 5.5.",
@@ -2095,7 +2110,9 @@
   "step_up": false,
   "note": "7.5-point favourite",
   "event_id": "401909304",
-  "athlete_id": null
+  "athlete_id": null,
+  "actual": 0,
+  "landed": false
  },
  {
   "why": "Predicted 2.4 assists tonight, needs 2+. This season 2.8 a game over 10 games; last season 2.1 over 54. Faster game expected (+2% for pace). MIA gives up more to his position than average (+3%). Bookies' line: 2.5.",
