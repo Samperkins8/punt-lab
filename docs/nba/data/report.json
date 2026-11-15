@@ -3,7 +3,7 @@
  "headline": "Value today: 3-leg $2+ on Neds $2.10 (needs $1.98). Note: spread the legs around so one miss can't sink most multis: Best value, 3-leg value, 4-leg $4+.",
  "injuries": "Kingston Flemings (Out), Mouhamed Gueye (Out), Keshon Gilbert (Out), Asa Newell (Out), Henri Veesaar (Out), Kon Knueppel (Out), Dennis Schroder (Out), Dereck Lively Ii (Out), Tarik Biberovic (Out), Sergio De Larrea (Out), Clint Capela (Out), Fred Vanvleet (Out) and others",
  "graded": "Yesterday: 23 of 33 legs landed; 4-leg $2+ missed, 3-leg $2+ void, 2-leg $2+ missed, 4-leg $3+ missed, 4-leg $4+ missed, Best value missed, Safest missed, 3-leg value landed, One per game missed, Mid-range $8+ missed, Long multi 8+ landed, Long shot $50 missed, Top pick missed, Second pick missed.",
- "next_run": "Late check 8:37am — SA @ UTAH: no new outs; 2 new legs worth a look",
+ "next_run": "Late check 9:15am — DAL @ BOS, NY @ TOR: no new outs; prices refreshed",
  "sources": {
   "stats": "ESPN",
   "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API (3 games, 230 credits left)",
@@ -85,9 +85,13 @@
  ],
  "close_fetches": 1,
  "late_checked": [
+  "DAL @ BOS",
+  "NY @ TOR",
   "SA @ UTAH"
  ],
  "late_log": [
-  "8:37am SA @ UTAH: no new outs; 2 new legs worth a look"
- ]
+  "8:37am SA @ UTAH: no new outs; 2 new legs worth a look",
+  "9:15am DAL @ BOS, NY @ TOR: no new outs; prices refreshed"
+ ],
+ "late_refreshes": 1
 }
