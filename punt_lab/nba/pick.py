@@ -35,7 +35,14 @@ GAME_MAX_SHORT = 2        # 3- and 4-leg multis: at most this many legs from one
 GAME_MAX_LONG = 3         # bigger multis: at most this many
 SHORT_LEGS = 4
 PICK_MIN_CHANCE = 0.25    # top picks: a 2- to 4-leg multi at least this likely to land
-PICK_SHARED = 1           # the second pick shares at most this many players with the top pick
+PICK_SHARED = 0           # the second pick shares no player with the top pick, so one miss can't sink both
+REUSE_MAX = 5             # a player is in at most this many of the short (2- to 4-leg) multis: half of them
+REUSE_KEEP = 0.80         # ...as long as the multi without him is at least this share as likely to land
+REUSE_VALUE = 0.90        # ...and returns at least this share as much per $1 (chance x price)
+# The short multis, most important first: when a player is over-used, the later ones are rebuilt without him.
+SHORT_MULTIS = ("Top pick", "4-leg $3+", "Safest", "4-leg $2+", "3-leg $2+", "2-leg $2+", "Best value",
+                "3-leg value", "4-leg $4+", "Second pick")
+SHORT_TARGETS = {"4-leg $3+": 3.0, "4-leg $4+": 4.0}  # every other short multi must pay MIN_MULTI
 _caps = (GAME_MAX_SHORT, GAME_MAX_LONG)  # (short, long) for tonight; choose() loosens them on a tiny slate
 
 
@@ -127,7 +134,54 @@ def pick_score(p: float, price: float) -> float:
 
 
 def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
-    """Returns {multi name: [indexes into cands]}"""
+    """Returns {multi name: [indexes into cands]}. Each multi is first chosen on its own merits, which
+    tends to put the same one or two players in nearly all of them, so a single miss sinks the day.
+    The short multis are then walked in order of importance: once a player is in REUSE_MAX of them,
+    later ones are rebuilt without him, if what replaces them is nearly as likely, nearly as good value and
+    still pays its target."""
+    global _caps
+    out = _choose_all(cands)
+    caps = _caps  # the rebuilds below see fewer legs; keep the caps worked out for the whole slate
+    used: dict[str, int] = {}
+    reruns: dict[frozenset, tuple[list[int], dict]] = {}
+
+    def without(players: frozenset):
+        if players not in reruns:
+            keep = [i for i, (l, _) in enumerate(cands) if l.player not in players]
+            reruns[players] = (keep, _choose_all([cands[i] for i in keep]))
+        return reruns[players]
+
+    def chance(combo):
+        return multi_chance([cands[i][0] for i in combo], [cands[i][1].model_prob for i in combo])
+
+    swapped = []
+    for name in SHORT_MULTIS:
+        combo = out.get(name)
+        if not combo:
+            continue
+        full = frozenset(p for p, n in used.items() if n >= REUSE_MAX)
+        banned = full
+        if name == "Second pick":  # the best bet that shares nobody with the top pick
+            banned = banned | {cands[i][0].player for i in out.get("Top pick", [])}
+        if full & {cands[i][0].player for i in combo}:
+            keep, again = without(frozenset(banned))
+            new = again.get("Top pick" if name == "Second pick" else name)
+            new = [keep[i] for i in new] if new else None
+            if (new and combo_price(cands, new) >= SHORT_TARGETS.get(name, MIN_MULTI)
+                    and chance(new) >= REUSE_KEEP * chance(combo)
+                    and chance(new) * combo_price(cands, new) >= REUSE_VALUE * chance(combo) * combo_price(cands, combo)):
+                out[name] = combo = new
+                swapped.append(name)
+        for p in {cands[i][0].player for i in combo}:
+            used[p] = used.get(p, 0) + 1
+    _caps = caps
+    if swapped:
+        out.setdefault("_notes", []).append("spread the legs around so one miss can't sink most multis: " + ", ".join(swapped))
+    return out
+
+
+def _choose_all(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
+    """Every multi chosen on its own merits, with no limit on how often a player is reused."""
     global _caps
     n_games = len({l.game for l, _ in cands}) or 1
     # with one game on, everything is same-game; with two, a long multi needs four from each
@@ -252,15 +306,18 @@ def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
 
     # Top pick: the best bet of the day by chance and price together, from every 2- to 4-leg combo paying $2+.
     # Combos one app prices in full come first: without a real price the edge is only a guess.
-    # Second pick: the next best that shares at most one player with it, so it's a real alternative.
+    # Second pick: the next best that shares no player with it, so one miss can't sink both.
     if rated:
         rated.sort(key=lambda r: r[:3], reverse=True)
         top = rated[0][3]
         out["Top pick"] = sorted(top, key=lambda i: -cands[i][1].model_prob)
         top_players = {cands[i][0].player for i in top}
-        for _, _, _, combo in rated[1:]:
-            if len(top_players & {cands[i][0].player for i in combo}) <= PICK_SHARED:
-                out["Second pick"] = sorted(combo, key=lambda i: -cands[i][1].model_prob)
+        for shared in range(PICK_SHARED, len(top)):  # on a thin slate, allow an overlap rather than no second pick
+            for _, _, _, combo in rated[1:]:
+                if len(top_players & {cands[i][0].player for i in combo}) <= shared:
+                    out["Second pick"] = sorted(combo, key=lambda i: -cands[i][1].model_prob)
+                    break
+            if "Second pick" in out:
                 break
 
     # Long multi: 8+ legs, each 80%+ likely and paying $1.15+, best value first

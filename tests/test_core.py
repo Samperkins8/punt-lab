@@ -14,13 +14,11 @@ def leg(**kw):
 
 def test_matches_dashboard_numbers():
     # Values the dashboard showed for 7 Nov 2026
-    reaves = leg(context_log=[23, 29, 26, 27, 21], odds=1.57)
-    r = evaluate(reaves)
-    assert abs(r.model_prob - 0.80) <= 0.02   # recent-form weighting shifts it slightly
-    assert 0.12 <= r.edge <= 0.19
+    reaves = leg(context_log=[23, 29, 26, 27, 21])
+    assert abs(evaluate(reaves).model_prob - 0.80) <= 0.02   # recent-form weighting shifts it slightly
 
     clingan = leg(stat="rebounds", line=10, log=[7, 11, 10, 8, 9, 18, 11], prior_mean=11.6,
-                  prior_games=77, context_log=[9, 18, 11], odds=1.42, team="POR")
+                  prior_games=77, context_log=[9, 18, 11], team="POR")
     assert abs(evaluate(clingan).model_prob - 0.75) <= 0.03
 
     kessler = leg(stat="rebounds", line=8, log=[9, 8, 7, 8, 9, 13, 15, 15, 8], prior_mean=10.8, prior_games=5)
@@ -307,3 +305,41 @@ def test_big_multis_skip_bad_value_legs_when_they_can():
     # when only bad-value legs can add the price, they're still used rather than dropping the multi
     only_bad = [_fake(f"B{k}", f"G{k % 8}", 0.48, 1.98) for k in range(12)]
     assert pick.choose(only_bad).get("Mid-range $8+")
+
+
+def test_a_hopeful_model_is_pulled_back_towards_the_app_price():
+    from punt_lab.nba import model
+    plain = evaluate(leg(context_log=[23, 29, 26, 27, 21]))
+    # $1.57 says about 61% once the bookie's cut is out; the model says about 80%: meet half-way
+    priced = evaluate(leg(context_log=[23, 29, 26, 27, 21], odds=1.57))
+    fair = model.ODDS_MARGIN / 1.57
+    assert abs(priced.model_prob - (fair + plain.model_prob) / 2) < 1e-9 and priced.raw_prob == plain.raw_prob
+    assert 0.03 <= priced.edge <= 0.10 and priced.edge < plain.model_prob - 1 / 1.57
+    # a price that already agrees with the model, or is shorter than it, changes nothing: never pushed up
+    assert evaluate(leg(context_log=[23, 29, 26, 27, 21], odds=1.10)).model_prob == plain.model_prob
+
+
+def test_one_player_cant_be_in_most_of_the_short_multis():
+    # Star is a touch likelier and better priced than the rest, so on merit he is in nearly every short multi
+    def slate(star_prob):
+        cands = [_fake("Star", "G0", star_prob, 1.29)]
+        cands += [_fake(f"A{k}", f"G{k + 1}", 0.80 - 0.004 * k, 1.28) for k in range(12)]
+        cands += [_fake(f"B{k}", f"H{k}", 0.66 - 0.004 * k, 1.60) for k in range(8)]
+        for l, _ in cands:
+            l.extra["books"] = {"neds": l.odds}
+        return cands
+
+    def star_count(cands, chosen):
+        return sum(1 for n in pick.SHORT_MULTIS if any(cands[i][0].player == "Star" for i in chosen.get(n, [])))
+
+    cands = slate(0.805)
+    merit, chosen = pick._choose_all(cands), pick.choose(cands)
+    assert star_count(cands, merit) > pick.REUSE_MAX >= star_count(cands, chosen)
+    assert any(cands[i][0].player == "Star" for i in chosen["Top pick"])          # the most important multis keep him
+    assert not {cands[i][0].player for i in chosen["Top pick"]} & {cands[i][0].player for i in chosen["Second pick"]}
+    for name in pick.SHORT_MULTIS:                                                # and every rebuilt multi still pays its target
+        assert pick.combo_price(cands, chosen[name]) >= pick.SHORT_TARGETS.get(name, pick.MIN_MULTI), name
+    assert set(chosen) - {"_notes"} == set(merit) - {"_notes"} and "spread the legs" in " ".join(chosen["_notes"])
+    # the big multis are left alone
+    for name in ("Long multi 8+", "Mid-range $8+", "Long shot $50", "One per game"):
+        assert chosen.get(name) == merit.get(name), name

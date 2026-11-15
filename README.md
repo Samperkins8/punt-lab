@@ -15,6 +15,11 @@ Runs on GitHub Actions (`.github/workflows/nba.yml`):
 
 You can also run it by hand: Actions → NBA daily multi → Run workflow.
 
+Two guards against the model being too sure of itself (added 15 Nov 2026 after the "value" multis landed 3 of 23):
+a leg the model rates above its app price is pulled half-way back towards the price (`ODDS_PULL`, `ODDS_MARGIN` in `model.py`),
+and a player can be in at most half of the short multis, with the second pick sharing nobody with the top pick
+(`REUSE_MAX`, `PICK_SHARED` in `pick.py`).
+
 The site also shows a **top pick** and **second pick** (the best 2- to 4-leg multis of the day by chance and price together, `pick_score` in `pick.py`), a **ready to bet?** box (whether the re-check has run and when the next game tips), and a **closing price** record (each leg's Neds price when listed against its price at the late check).
 
 ### Your overrides

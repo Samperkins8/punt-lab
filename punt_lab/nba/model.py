@@ -13,6 +13,8 @@ PRIOR_FULL_SEASON = 40   # ...if the player played at least this many games then
 SPREAD_GAMES = 8         # weight of the typical spread when estimating SD
 CONTEXT_GAMES = 5        # situation shift is halfway with this many matching games
 MARKET_WEIGHT = 0.6      # share of the final mean taken from the betting market
+ODDS_PULL = 0.5          # a leg the model rates above its app price is pulled this far back towards the price
+ODDS_MARGIN = 0.95       # ...taking the chance the price implies as 1 / price less the bookie's cut
 OPP_WEIGHT = 0.5         # this season's defence vs position
 H2H_WEIGHT = 0.5         # last season's head-to-head (also scaled by roster overlap)
 H2H_GAMES = 4            # head-to-head is halfway with this many games
@@ -254,6 +256,10 @@ def evaluate(leg: Leg) -> LegResult:
     model_prob = calibrate(leg.stat, raw_prob)
     hit_rate = sum(1 for x in xs if x >= leg.line) / n
     implied = 1 / leg.odds if leg.odds else None
+    # Where the model has disagreed most with the bookies, the bookies have been closer. So when the
+    # model is the more hopeful of the two, meet the price part-way; it's never pushed up.
+    if implied is not None and model_prob > ODDS_MARGIN * implied:
+        model_prob = ODDS_MARGIN * implied + (1 - ODDS_PULL) * (model_prob - ODDS_MARGIN * implied)
     edge = model_prob - implied if implied is not None else None
     return LegResult(hit_rate, context_shift, matchup, minutes_factor, final_mean, proj_sd,
                      market_mean, fair_price, model_prob, implied, edge, raw_prob)
