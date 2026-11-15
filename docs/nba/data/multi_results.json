@@ -780,5 +780,131 @@
   "landed": false,
   "verdict": "value",
   "price": 2.03
+ },
+ {
+  "slate_date": "2026-11-15",
+  "multi": "4-leg $2+",
+  "legs": "Kyrie Irving 1+ threes; Michael Porter Jr. 1+ threes; Jamal Murray 1+ threes; Cameron Johnson 10+ points",
+  "est_hit": 0.5279,
+  "landed": false,
+  "verdict": "check",
+  "price": 2.01
+ },
+ {
+  "slate_date": "2026-11-15",
+  "multi": "3-leg $2+",
+  "legs": "Michael Porter Jr. 1+ threes; Christian Braun 1+ threes; Cameron Johnson 10+ points",
+  "est_hit": 0.5286,
+  "landed": null,
+  "verdict": "check",
+  "price": 2.03
+ },
+ {
+  "slate_date": "2026-11-15",
+  "multi": "2-leg $2+",
+  "legs": "Christian Braun 1+ threes; Jamal Murray 3+ threes",
+  "est_hit": 0.4477,
+  "landed": false,
+  "verdict": "skip",
+  "price": 2.08
+ },
+ {
+  "slate_date": "2026-11-15",
+  "multi": "4-leg $3+",
+  "legs": "LaMelo Ball 1+ threes; Jaden McDaniels 1+ threes; Christian Braun 1+ threes; Jamal Murray 3+ threes",
+  "est_hit": 0.3276,
+  "landed": false,
+  "verdict": "check",
+  "price": 3.01
+ },
+ {
+  "slate_date": "2026-11-15",
+  "multi": "4-leg $4+",
+  "legs": "Jonathan Kuminga 1+ threes; Cameron Johnson 10+ points; Michael Porter Jr. 3+ threes; Jamal Murray 3+ threes",
+  "est_hit": 0.1905,
+  "landed": false,
+  "verdict": "skip",
+  "price": 4.07
+ },
+ {
+  "slate_date": "2026-11-15",
+  "multi": "Best value",
+  "legs": "LaMelo Ball 1+ threes; Jonathan Kuminga 1+ threes; Christian Braun 1+ threes; Cameron Johnson 10+ points",
+  "est_hit": 0.4212,
+  "landed": false,
+  "verdict": "check",
+  "price": 2.64
+ },
+ {
+  "slate_date": "2026-11-15",
+  "multi": "Safest",
+  "legs": "Kyrie Irving 1+ threes; Michael Porter Jr. 1+ threes; Jamal Murray 1+ threes; Cameron Johnson 10+ points",
+  "est_hit": 0.5279,
+  "landed": false,
+  "verdict": "check",
+  "price": 2.01
+ },
+ {
+  "slate_date": "2026-11-15",
+  "multi": "3-leg value",
+  "legs": "LaMelo Ball 1+ threes; Christian Braun 1+ threes; Cameron Johnson 10+ points",
+  "est_hit": 0.5256,
+  "landed": true,
+  "verdict": "check",
+  "price": 2.06
+ },
+ {
+  "slate_date": "2026-11-15",
+  "multi": "One per game",
+  "legs": "Kyrie Irving 1+ threes; Michael Porter Jr. 1+ threes; Jamal Murray 1+ threes; LaMelo Ball 1+ threes; Daniss Jenkins 10+ points",
+  "est_hit": 0.4783,
+  "landed": false,
+  "verdict": "check",
+  "price": 2.12
+ },
+ {
+  "slate_date": "2026-11-15",
+  "multi": "Mid-range $8+",
+  "legs": "LaMelo Ball 1+ threes; Jaden McDaniels 1+ threes; Andrew Wiggins 1+ threes; Cameron Johnson 10+ points; Aaron Gordon 4+ rebounds; Christian Braun 2+ threes",
+  "est_hit": 0.1655,
+  "landed": false,
+  "verdict": "check",
+  "price": 8.0
+ },
+ {
+  "slate_date": "2026-11-15",
+  "multi": "Long multi 8+",
+  "legs": "Bam Adebayo 2+ assists; Zion Williamson 2+ assists; LaMelo Ball 1+ threes; Duncan Robinson 10+ points; Jaden McDaniels 1+ threes",
+  "est_hit": 0.5147,
+  "landed": true,
+  "verdict": "check",
+  "price": 2.28
+ },
+ {
+  "slate_date": "2026-11-15",
+  "multi": "Long shot $50",
+  "legs": "Kyrie Irving 1+ threes; Michael Porter Jr. 1+ threes; Jamal Murray 1+ threes; LaMelo Ball 1+ threes; Jaden McDaniels 1+ threes; P.J. Washington 10+ points; Jonathan Kuminga 1+ threes; Cade Cunningham 4+ rebounds; Andrew Wiggins 1+ threes; Cameron Johnson 10+ points; Cedric Coward 6+ rebounds; Christian Braun 2+ threes; Daniss Jenkins 6+ assists",
+  "est_hit": 0.0284,
+  "landed": false,
+  "verdict": "check",
+  "price": 50.49
+ },
+ {
+  "slate_date": "2026-11-15",
+  "multi": "Top pick",
+  "legs": "Jaden McDaniels 1+ threes; Jonathan Kuminga 1+ threes; Christian Braun 1+ threes",
+  "est_hit": 0.5187,
+  "landed": false,
+  "verdict": "value",
+  "price": 2.06
+ },
+ {
+  "slate_date": "2026-11-15",
+  "multi": "Second pick",
+  "legs": "Christian Braun 1+ threes; Andrew Wiggins 1+ threes; Cameron Johnson 10+ points",
+  "est_hit": 0.4532,
+  "landed": false,
+  "verdict": "marginal",
+  "price": 2.3
  }
 ]

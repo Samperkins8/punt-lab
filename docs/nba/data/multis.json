@@ -3,302 +3,178 @@
   "multi": "4-leg $2+",
   "rank": 1,
   "leg_ids": [
-   "kyrie_irving_threes1",
-   "michael_porter_jr_threes1",
-   "jamal_murray_threes1",
-   "cameron_johnson_points10"
+   "brook_lopez_threes1",
+   "nickeil_alexander-walker_assists2",
+   "victor_wembanyama_assists2",
+   "jaime_jaquez_jr_points10"
   ],
-  "legs_text": "Kyrie Irving 1+ threes; Michael Porter Jr. 1+ threes; Jamal Murray 1+ threes; Cameron Johnson 10+ points",
-  "est_hit": 0.5279,
-  "break_even": 1.89,
-  "priced_legs": "1 of 4",
-  "known_price": 1.36,
-  "fair_multi": 2.7,
-  "est_price": 2.01,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null,
-  "verdict": "check",
-  "value": null,
-  "landed": false
+  "legs_text": "Brook Lopez 1+ threes; Nickeil Alexander-Walker 2+ assists; Victor Wembanyama 2+ assists; Jaime Jaquez Jr. 10+ points",
+  "est_hit": 0.4278,
+  "break_even": 2.34,
+  "priced_legs": "4 of 4",
+  "known_price": 2.21,
+  "fair_multi": null,
+  "est_price": 2.21,
+  "book_prices": {
+   "neds": 2.21
+  },
+  "best_book": "neds",
+  "best_book_price": 2.21,
+  "verdict": "skip",
+  "value": -0.0546
  },
  {
   "multi": "3-leg $2+",
   "rank": 2,
   "leg_ids": [
-   "michael_porter_jr_threes1",
-   "christian_braun_threes1",
-   "cameron_johnson_points10"
+   "brook_lopez_threes1",
+   "derrick_jones_jr_threes1",
+   "josh_hart_threes1"
   ],
-  "legs_text": "Michael Porter Jr. 1+ threes; Christian Braun 1+ threes; Cameron Johnson 10+ points",
-  "est_hit": 0.5286,
-  "break_even": 1.89,
-  "priced_legs": "2 of 3",
-  "known_price": 1.77,
+  "legs_text": "Brook Lopez 1+ threes; Derrick Jones Jr. 1+ threes; Josh Hart 1+ threes",
+  "est_hit": 0.5041,
+  "break_even": 1.98,
+  "priced_legs": "3 of 3",
+  "known_price": 2.1,
   "fair_multi": null,
-  "est_price": 2.03,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null,
-  "verdict": "check",
-  "value": null,
-  "landed": true
+  "est_price": 2.1,
+  "book_prices": {
+   "neds": 2.1
+  },
+  "best_book": "neds",
+  "best_book_price": 2.1,
+  "verdict": "value",
+  "value": 0.0586
  },
  {
   "multi": "2-leg $2+",
   "rank": 3,
   "leg_ids": [
-   "christian_braun_threes1",
-   "jamal_murray_threes3"
+   "derrick_jones_jr_threes1",
+   "isaiah_hartenstein_rebounds10"
   ],
-  "legs_text": "Christian Braun 1+ threes; Jamal Murray 3+ threes",
-  "est_hit": 0.4477,
-  "break_even": 2.23,
+  "legs_text": "Derrick Jones Jr. 1+ threes; Isaiah Hartenstein 10+ rebounds",
+  "est_hit": 0.4856,
+  "break_even": 2.06,
   "priced_legs": "2 of 2",
-  "known_price": 2.08,
+  "known_price": 2.01,
   "fair_multi": null,
-  "est_price": 2.08,
+  "est_price": 2.01,
   "book_prices": {
-   "neds": 2.08
+   "neds": 2.01
   },
   "best_book": "neds",
-  "best_book_price": 2.08,
-  "verdict": "skip",
-  "value": -0.0688,
-  "landed": false
+  "best_book_price": 2.01,
+  "verdict": "marginal",
+  "value": -0.0239
  },
  {
   "multi": "4-leg $3+",
   "rank": 4,
   "leg_ids": [
-   "lamelo_ball_threes1",
-   "jaden_mcdaniels_threes1",
-   "christian_braun_threes1",
-   "jamal_murray_threes3"
+   "brook_lopez_threes1",
+   "nickeil_alexander-walker_assists2",
+   "derrick_jones_jr_threes1",
+   "isaiah_hartenstein_rebounds10"
   ],
-  "legs_text": "LaMelo Ball 1+ threes; Jaden McDaniels 1+ threes; Christian Braun 1+ threes; Jamal Murray 3+ threes",
-  "est_hit": 0.3276,
-  "break_even": 3.05,
-  "priced_legs": "3 of 4",
-  "known_price": 2.58,
+  "legs_text": "Brook Lopez 1+ threes; Nickeil Alexander-Walker 2+ assists; Derrick Jones Jr. 1+ threes; Isaiah Hartenstein 10+ rebounds",
+  "est_hit": 0.3234,
+  "break_even": 3.09,
+  "priced_legs": "4 of 4",
+  "known_price": 3.04,
   "fair_multi": null,
-  "est_price": 3.01,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null,
-  "verdict": "check",
-  "value": null,
-  "landed": false
+  "est_price": 3.04,
+  "book_prices": {
+   "neds": 3.04
+  },
+  "best_book": "neds",
+  "best_book_price": 3.04,
+  "verdict": "marginal",
+  "value": -0.0169
  },
  {
   "multi": "4-leg $4+",
   "rank": 5,
   "leg_ids": [
-   "jonathan_kuminga_threes1",
-   "cameron_johnson_points10",
-   "michael_porter_jr_threes3",
-   "jamal_murray_threes3"
+   "josh_hart_threes1",
+   "keldon_johnson_rebounds4",
+   "isaiah_hartenstein_rebounds10",
+   "karl-anthony_towns_rebounds12"
   ],
-  "legs_text": "Jonathan Kuminga 1+ threes; Cameron Johnson 10+ points; Michael Porter Jr. 3+ threes; Jamal Murray 3+ threes",
-  "est_hit": 0.1905,
-  "break_even": 5.25,
+  "legs_text": "Josh Hart 1+ threes; Keldon Johnson 4+ rebounds; Isaiah Hartenstein 10+ rebounds; Karl-Anthony Towns 12+ rebounds",
+  "est_hit": 0.2199,
+  "break_even": 4.55,
   "priced_legs": "4 of 4",
-  "known_price": 4.07,
+  "known_price": 4.03,
   "fair_multi": null,
-  "est_price": 4.07,
+  "est_price": 4.06,
   "book_prices": {
-   "neds": 4.07
+   "neds": 4.06
   },
   "best_book": "neds",
-  "best_book_price": 4.07,
+  "best_book_price": 4.06,
   "verdict": "skip",
-  "value": -0.2247,
-  "landed": false
+  "value": -0.1072
  },
  {
   "multi": "Best value",
   "rank": 6,
   "leg_ids": [
-   "lamelo_ball_threes1",
-   "jonathan_kuminga_threes1",
-   "christian_braun_threes1",
-   "cameron_johnson_points10"
+   "nickeil_alexander-walker_assists2",
+   "victor_wembanyama_assists2",
+   "derrick_jones_jr_threes1",
+   "josh_hart_threes1"
   ],
-  "legs_text": "LaMelo Ball 1+ threes; Jonathan Kuminga 1+ threes; Christian Braun 1+ threes; Cameron Johnson 10+ points",
-  "est_hit": 0.4212,
-  "break_even": 2.37,
-  "priced_legs": "3 of 4",
-  "known_price": 2.26,
+  "legs_text": "Nickeil Alexander-Walker 2+ assists; Victor Wembanyama 2+ assists; Derrick Jones Jr. 1+ threes; Josh Hart 1+ threes",
+  "est_hit": 0.398,
+  "break_even": 2.51,
+  "priced_legs": "4 of 4",
+  "known_price": 2.51,
   "fair_multi": null,
-  "est_price": 2.64,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null,
-  "verdict": "check",
-  "value": null,
-  "landed": false
+  "est_price": 2.51,
+  "book_prices": {
+   "neds": 2.51
+  },
+  "best_book": "neds",
+  "best_book_price": 2.51,
+  "verdict": "marginal",
+  "value": -0.001
  },
  {
   "multi": "Safest",
   "rank": 7,
   "leg_ids": [
-   "kyrie_irving_threes1",
-   "michael_porter_jr_threes1",
-   "jamal_murray_threes1",
-   "cameron_johnson_points10"
+   "brook_lopez_threes1",
+   "nickeil_alexander-walker_assists2",
+   "victor_wembanyama_assists2",
+   "jaime_jaquez_jr_points10"
   ],
-  "legs_text": "Kyrie Irving 1+ threes; Michael Porter Jr. 1+ threes; Jamal Murray 1+ threes; Cameron Johnson 10+ points",
-  "est_hit": 0.5279,
-  "break_even": 1.89,
-  "priced_legs": "1 of 4",
-  "known_price": 1.36,
-  "fair_multi": 2.7,
-  "est_price": 2.01,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null,
-  "verdict": "check",
-  "value": null,
-  "landed": false
+  "legs_text": "Brook Lopez 1+ threes; Nickeil Alexander-Walker 2+ assists; Victor Wembanyama 2+ assists; Jaime Jaquez Jr. 10+ points",
+  "est_hit": 0.4278,
+  "break_even": 2.34,
+  "priced_legs": "4 of 4",
+  "known_price": 2.21,
+  "fair_multi": null,
+  "est_price": 2.21,
+  "book_prices": {
+   "neds": 2.21
+  },
+  "best_book": "neds",
+  "best_book_price": 2.21,
+  "verdict": "skip",
+  "value": -0.0546
  },
  {
   "multi": "3-leg value",
   "rank": 8,
   "leg_ids": [
-   "lamelo_ball_threes1",
-   "christian_braun_threes1",
-   "cameron_johnson_points10"
+   "victor_wembanyama_assists2",
+   "josh_hart_threes1",
+   "keldon_johnson_rebounds4"
   ],
-  "legs_text": "LaMelo Ball 1+ threes; Christian Braun 1+ threes; Cameron Johnson 10+ points",
-  "est_hit": 0.5256,
-  "break_even": 1.9,
-  "priced_legs": "2 of 3",
-  "known_price": 1.77,
-  "fair_multi": null,
-  "est_price": 2.06,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null,
-  "verdict": "check",
-  "value": null,
-  "landed": true
- },
- {
-  "multi": "One per game",
-  "rank": 9,
-  "leg_ids": [
-   "kyrie_irving_threes1",
-   "michael_porter_jr_threes1",
-   "jamal_murray_threes1",
-   "lamelo_ball_threes1",
-   "daniss_jenkins_points10"
-  ],
-  "legs_text": "Kyrie Irving 1+ threes; Michael Porter Jr. 1+ threes; Jamal Murray 1+ threes; LaMelo Ball 1+ threes; Daniss Jenkins 10+ points",
-  "est_hit": 0.4783,
-  "break_even": 2.09,
-  "priced_legs": "1 of 5",
-  "known_price": 1.23,
-  "fair_multi": 3.21,
-  "est_price": 2.12,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null,
-  "verdict": "check",
-  "value": null,
-  "landed": false
- },
- {
-  "multi": "Mid-range $8+",
-  "rank": 10,
-  "leg_ids": [
-   "lamelo_ball_threes1",
-   "jaden_mcdaniels_threes1",
-   "andrew_wiggins_threes1",
-   "cameron_johnson_points10",
-   "aaron_gordon_rebounds4",
-   "christian_braun_threes2"
-  ],
-  "legs_text": "LaMelo Ball 1+ threes; Jaden McDaniels 1+ threes; Andrew Wiggins 1+ threes; Cameron Johnson 10+ points; Aaron Gordon 4+ rebounds; Christian Braun 2+ threes",
-  "est_hit": 0.1655,
-  "break_even": 6.04,
-  "priced_legs": "5 of 6",
-  "known_price": 6.86,
-  "fair_multi": null,
-  "est_price": 8.0,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null,
-  "verdict": "check",
-  "value": null,
-  "landed": false
- },
- {
-  "multi": "Long multi 8+",
-  "rank": 11,
-  "leg_ids": [
-   "bam_adebayo_assists2",
-   "zion_williamson_assists2",
-   "lamelo_ball_threes1",
-   "duncan_robinson_points10",
-   "jaden_mcdaniels_threes1"
-  ],
-  "legs_text": "Bam Adebayo 2+ assists; Zion Williamson 2+ assists; LaMelo Ball 1+ threes; Duncan Robinson 10+ points; Jaden McDaniels 1+ threes",
-  "est_hit": 0.5147,
-  "break_even": 1.94,
-  "priced_legs": "4 of 5",
-  "known_price": 1.95,
-  "fair_multi": 2.25,
-  "est_price": 2.28,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null,
-  "verdict": "check",
-  "value": null,
-  "landed": true
- },
- {
-  "multi": "Long shot $50",
-  "rank": 12,
-  "leg_ids": [
-   "kyrie_irving_threes1",
-   "michael_porter_jr_threes1",
-   "jamal_murray_threes1",
-   "lamelo_ball_threes1",
-   "jaden_mcdaniels_threes1",
-   "pj_washington_points10",
-   "jonathan_kuminga_threes1",
-   "cade_cunningham_rebounds4",
-   "andrew_wiggins_threes1",
-   "cameron_johnson_points10",
-   "cedric_coward_rebounds6",
-   "christian_braun_threes2",
-   "daniss_jenkins_assists6"
-  ],
-  "legs_text": "Kyrie Irving 1+ threes; Michael Porter Jr. 1+ threes; Jamal Murray 1+ threes; LaMelo Ball 1+ threes; Jaden McDaniels 1+ threes; P.J. Washington 10+ points; Jonathan Kuminga 1+ threes; Cade Cunningham 4+ rebounds; Andrew Wiggins 1+ threes; Cameron Johnson 10+ points; Cedric Coward 6+ rebounds; Christian Braun 2+ threes; Daniss Jenkins 6+ assists",
-  "est_hit": 0.0284,
-  "break_even": 35.21,
-  "priced_legs": "8 of 13",
-  "known_price": 25.73,
-  "fair_multi": null,
-  "est_price": 50.49,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null,
-  "verdict": "check",
-  "value": null,
-  "landed": false
- },
- {
-  "multi": "Top pick",
-  "rank": 13,
-  "leg_ids": [
-   "jaden_mcdaniels_threes1",
-   "jonathan_kuminga_threes1",
-   "christian_braun_threes1"
-  ],
-  "legs_text": "Jaden McDaniels 1+ threes; Jonathan Kuminga 1+ threes; Christian Braun 1+ threes",
-  "est_hit": 0.5187,
-  "break_even": 1.93,
+  "legs_text": "Victor Wembanyama 2+ assists; Josh Hart 1+ threes; Keldon Johnson 4+ rebounds",
+  "est_hit": 0.4829,
+  "break_even": 2.07,
   "priced_legs": "3 of 3",
   "known_price": 2.06,
   "fair_multi": null,
@@ -308,32 +184,158 @@
   },
   "best_book": "neds",
   "best_book_price": 2.06,
+  "verdict": "marginal",
+  "value": -0.0052
+ },
+ {
+  "multi": "One per game",
+  "rank": 9,
+  "leg_ids": [
+   "brook_lopez_threes1",
+   "nickeil_alexander-walker_assists2",
+   "victor_wembanyama_assists2",
+   "pj_washington_rebounds4",
+   "kevin_durant_threes1",
+   "okc_win",
+   "karl-anthony_towns_threes1"
+  ],
+  "legs_text": "Brook Lopez 1+ threes; Nickeil Alexander-Walker 2+ assists; Victor Wembanyama 2+ assists; P.J. Washington 4+ rebounds; Kevin Durant 1+ threes; Oklahoma City Thunder Oklahoma City Thunder to win; Karl-Anthony Towns 1+ threes",
+  "est_hit": 0.2111,
+  "break_even": 4.74,
+  "priced_legs": "6 of 7",
+  "known_price": 3.22,
+  "fair_multi": null,
+  "est_price": 3.71,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null,
+  "verdict": "check",
+  "value": null
+ },
+ {
+  "multi": "Mid-range $8+",
+  "rank": 10,
+  "leg_ids": [
+   "grayson_allen_threes1",
+   "brook_lopez_threes1",
+   "derrick_jones_jr_threes1",
+   "hou_win",
+   "atl_win",
+   "josh_hart_threes2"
+  ],
+  "legs_text": "Grayson Allen 1+ threes; Brook Lopez 1+ threes; Derrick Jones Jr. 1+ threes; Houston Rockets Houston Rockets to win; Atlanta Hawks Atlanta Hawks to win; Josh Hart 2+ threes",
+  "est_hit": 0.1366,
+  "break_even": 7.32,
+  "priced_legs": "5 of 6",
+  "known_price": 6.5,
+  "fair_multi": null,
+  "est_price": 8.04,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null,
+  "verdict": "check",
+  "value": null
+ },
+ {
+  "multi": "Long multi 8+",
+  "rank": 11,
+  "leg_ids": [
+   "grayson_allen_threes1",
+   "karl-anthony_towns_assists2",
+   "cj_mccollum_points10",
+   "immanuel_quickley_points10",
+   "brook_lopez_threes1",
+   "nickeil_alexander-walker_assists2",
+   "victor_wembanyama_assists2",
+   "jaime_jaquez_jr_points10"
+  ],
+  "legs_text": "Grayson Allen 1+ threes; Karl-Anthony Towns 2+ assists; CJ McCollum 10+ points; Immanuel Quickley 10+ points; Brook Lopez 1+ threes; Nickeil Alexander-Walker 2+ assists; Victor Wembanyama 2+ assists; Jaime Jaquez Jr. 10+ points",
+  "est_hit": 0.2229,
+  "break_even": 4.49,
+  "priced_legs": "7 of 8",
+  "known_price": 3.4,
+  "fair_multi": null,
+  "est_price": 4.2,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null,
+  "verdict": "check",
+  "value": null
+ },
+ {
+  "multi": "Long shot $50",
+  "rank": 12,
+  "leg_ids": [
+   "grayson_allen_threes1",
+   "brook_lopez_threes1",
+   "nickeil_alexander-walker_assists2",
+   "victor_wembanyama_assists2",
+   "derrick_jones_jr_threes1",
+   "josh_hart_threes1",
+   "keldon_johnson_rebounds4",
+   "kyle_kuzma_assists2",
+   "onyeka_okongwu_assists2",
+   "hou_win",
+   "domantas_sabonis_points10",
+   "payton_pritchard_points15",
+   "ace_bailey_points15"
+  ],
+  "legs_text": "Grayson Allen 1+ threes; Brook Lopez 1+ threes; Nickeil Alexander-Walker 2+ assists; Victor Wembanyama 2+ assists; Derrick Jones Jr. 1+ threes; Josh Hart 1+ threes; Keldon Johnson 4+ rebounds; Kyle Kuzma 2+ assists; Onyeka Okongwu 2+ assists; Houston Rockets Houston Rockets to win; Domantas Sabonis 10+ points; Payton Pritchard 15+ points; Ace Bailey 15+ points",
+  "est_hit": 0.0206,
+  "break_even": 48.57,
+  "priced_legs": "12 of 13",
+  "known_price": 42.54,
+  "fair_multi": null,
+  "est_price": 52.6,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null,
+  "verdict": "check",
+  "value": null
+ },
+ {
+  "multi": "Top pick",
+  "rank": 13,
+  "leg_ids": [
+   "brook_lopez_threes1",
+   "derrick_jones_jr_threes1",
+   "josh_hart_threes1"
+  ],
+  "legs_text": "Brook Lopez 1+ threes; Derrick Jones Jr. 1+ threes; Josh Hart 1+ threes",
+  "est_hit": 0.5041,
+  "break_even": 1.98,
+  "priced_legs": "3 of 3",
+  "known_price": 2.1,
+  "fair_multi": null,
+  "est_price": 2.1,
+  "book_prices": {
+   "neds": 2.1
+  },
+  "best_book": "neds",
+  "best_book_price": 2.1,
   "verdict": "value",
-  "value": 0.0685,
-  "landed": false
+  "value": 0.0586
  },
  {
   "multi": "Second pick",
   "rank": 14,
   "leg_ids": [
-   "christian_braun_threes1",
-   "andrew_wiggins_threes1",
-   "cameron_johnson_points10"
+   "nickeil_alexander-walker_assists2",
+   "grayson_allen_threes3"
   ],
-  "legs_text": "Christian Braun 1+ threes; Andrew Wiggins 1+ threes; Cameron Johnson 10+ points",
-  "est_hit": 0.4532,
-  "break_even": 2.21,
-  "priced_legs": "3 of 3",
-  "known_price": 2.32,
-  "fair_multi": null,
-  "est_price": 2.3,
+  "legs_text": "Nickeil Alexander-Walker 2+ assists; Grayson Allen 3+ threes",
+  "est_hit": 0.4576,
+  "break_even": 2.19,
+  "priced_legs": "2 of 2",
+  "known_price": 2.07,
+  "fair_multi": 2.32,
+  "est_price": 2.07,
   "book_prices": {
-   "neds": 2.3
+   "neds": 2.07
   },
   "best_book": "neds",
-  "best_book_price": 2.3,
-  "verdict": "marginal",
-  "value": 0.0424,
-  "landed": false
+  "best_book_price": 2.07,
+  "verdict": "skip",
+  "value": -0.0528
  }
 ]
