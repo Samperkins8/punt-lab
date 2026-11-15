@@ -3,7 +3,7 @@
  "headline": "Value today: Top pick on Neds $2.06 (needs $1.93). Note: only 5 legs are 80%+ likely at $1.15+, so the long multi is short.",
  "injuries": "Tobe Awaka (Out), Caleb Wilson (Out), Evan Mobley (Out), Sam Merrill (Out), Nae'Qwan Tomlin (Out), Dereck Lively Ii (Out), Tarik Biberovic (Out), Sergio De Larrea (Out), Julian Strawther (Out), Isaiah Joe (Out), Jalen Duren (Out), Quinten Post (Out) and others",
  "graded": "Yesterday: 29 of 42 legs landed; 4-leg $2+ missed, 3-leg $2+ missed, 2-leg $2+ missed, 4-leg $3+ missed, 4-leg $4+ missed, Best value missed, Safest missed, 3-leg value missed, One per game landed, Mid-range $8+ missed, Long multi 8+ missed, Long shot $50 missed, Top pick missed, Second pick missed.",
- "next_run": "Late check 10:10am — DEN @ NO: no new outs",
+ "next_run": "Late check 11:07am — DAL @ CLE, DET @ MIA, BKN @ MEM, CHI @ MIN: Donovan Mitchell out; Peyton Watson out; Jarrett Allen out; 1 new leg worth a look; prices refreshed",
  "sources": {
   "stats": "ESPN",
   "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API (3 games, 244 credits left)",
@@ -60,9 +60,15 @@
  "recheck_at": "2026-11-15T09:38:00+11:00",
  "close_fetches": 1,
  "late_checked": [
-  "DEN @ NO"
+  "BKN @ MEM",
+  "CHI @ MIN",
+  "DAL @ CLE",
+  "DEN @ NO",
+  "DET @ MIA"
  ],
  "late_log": [
-  "10:10am DEN @ NO: no new outs"
- ]
+  "10:10am DEN @ NO: no new outs",
+  "11:07am DAL @ CLE, DET @ MIA, BKN @ MEM, CHI @ MIN: Donovan Mitchell out; Peyton Watson out; Jarrett Allen out; 1 new leg worth a look; prices refreshed"
+ ],
+ "late_refreshes": 1
 }
