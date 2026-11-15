@@ -70,5 +70,8 @@
   "10:10am DEN @ NO: no new outs",
   "11:07am DAL @ CLE, DET @ MIA, BKN @ MEM, CHI @ MIN: Donovan Mitchell out; Peyton Watson out; Jarrett Allen out; 1 new leg worth a look; prices refreshed"
  ],
- "late_refreshes": 1
+ "late_refreshes": 1,
+ "final_games": [
+  "DEN @ NO"
+ ]
 }
