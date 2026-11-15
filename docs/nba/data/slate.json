@@ -23,31 +23,31 @@
   "game": "CHA @ LAC",
   "tip": "8:30am",
   "start": "2026-11-16T08:30:00+11:00",
-  "favourite": "LAC",
-  "spread": -1.5,
-  "total": 213.5,
-  "fav_win_prob": 0.55,
-  "status": "Analysed"
+  "favourite": null,
+  "spread": null,
+  "total": null,
+  "fav_win_prob": null,
+  "status": "Started"
  },
  {
   "game": "SA @ UTAH",
   "tip": "9:00am",
   "start": "2026-11-16T09:00:00+11:00",
-  "favourite": "SA",
-  "spread": -14.5,
-  "total": 222.5,
-  "fav_win_prob": 0.887,
-  "status": "Analysed"
+  "favourite": null,
+  "spread": null,
+  "total": null,
+  "fav_win_prob": null,
+  "status": "Started"
  },
  {
   "game": "DAL @ BOS",
   "tip": "10:00am",
   "start": "2026-11-16T10:00:00+11:00",
-  "favourite": "BOS",
-  "spread": -14.5,
-  "total": 218.5,
-  "fav_win_prob": 0.887,
-  "status": "Analysed"
+  "favourite": null,
+  "spread": null,
+  "total": null,
+  "fav_win_prob": null,
+  "status": "Started"
  },
  {
   "game": "NY @ TOR",
@@ -57,7 +57,7 @@
   "spread": null,
   "total": null,
   "fav_win_prob": null,
-  "status": "Analysed"
+  "status": "Started"
  },
  {
   "game": "HOU @ WSH",

@@ -1,15 +1,15 @@
 {
  "slate_date": "2026-11-16",
- "headline": "Value today: 3-leg $2+ on Neds $2.10 (needs $1.98). Note: spread the legs around so one miss can't sink most multis: Best value, 3-leg value, 4-leg $4+.",
- "injuries": "Kingston Flemings (Out), Mouhamed Gueye (Out), Keshon Gilbert (Out), Asa Newell (Out), Henri Veesaar (Out), Kon Knueppel (Out), Dennis Schroder (Out), Dereck Lively Ii (Out), Tarik Biberovic (Out), Sergio De Larrea (Out), Clint Capela (Out), Fred Vanvleet (Out) and others",
- "graded": "Yesterday: 23 of 33 legs landed; 4-leg $2+ missed, 3-leg $2+ void, 2-leg $2+ missed, 4-leg $3+ missed, 4-leg $4+ missed, Best value missed, Safest missed, 3-leg value landed, One per game missed, Mid-range $8+ missed, Long multi 8+ landed, Long shot $50 missed, Top pick missed, Second pick missed.",
- "next_run": "Late check 10:14am — HOU @ WSH: no new outs; 3 new legs worth a look; prices refreshed",
+ "headline": "Skip today: no multi beats its break-even price by 5%. Closest: Top pick on TAB $2.30 (needs $2.27). Note: only 7 legs are 80%+ likely at $1.15+, so the long multi is short; the one-per-game multi only pays about $1.76, under $2, so it's left out; 3-leg value includes legs without a confirmed worth-it price.",
+ "injuries": "Kingston Flemings (Out), Mouhamed Gueye (Out), Keshon Gilbert (Out), Asa Newell (Out), Henri Veesaar (Out), Kon Knueppel (Out), Dennis Schroder (Out), Santi Aldama (Out), Max Christie (Out), Kyrie Irving (Out), Dereck Lively Ii (Out), Tarik Biberovic (Out) and others",
+ "graded": "",
+ "next_run": "Re-checked 10:15am: 13 multi(s) changed: 4-leg $2+, 3-leg $2+, 2-leg $2+, 4-leg $3+, 4-leg $4+, Best value, Safest, 3-leg value, Mid-range $8+, Long multi 8+, Long shot $50, Top pick, Second pick",
  "sources": {
   "stats": "ESPN",
-  "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API (3 games, 230 credits left)",
+  "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API",
   "injury_reading": "Claude"
  },
- "updated_at": "2026-11-16T08:20:17.122298+11:00",
+ "updated_at": "2026-11-16T10:15:43.475511+11:00",
  "inj_snapshot": {
   "jock landale": "Day-To-Day",
   "kingston flemings": "Out",
@@ -19,10 +19,9 @@
   "henri veesaar": "Out",
   "kon knueppel": "Out",
   "dennis schroder": "Out",
-  "santi aldama": "Day-To-Day",
-  "max christie": "Day-To-Day",
-  "kyrie irving": "Day-To-Day",
-  "daniel gafford": "Day-To-Day",
+  "santi aldama": "Out",
+  "max christie": "Out",
+  "kyrie irving": "Out",
   "dereck lively ii": "Out",
   "tarik biberovic": "Out",
   "sergio de larrea": "Out",
@@ -59,7 +58,6 @@
   "tobias harris": "Out",
   "jayden quaintance": "Out",
   "nate bittle": "Out",
-  "scottie barnes": "Out",
   "kevin mccullar jr.": "Day-To-Day",
   "kawhi leonard": "Out",
   "jaxson hayes": "Out",
@@ -67,7 +65,7 @@
   "lauri markkanen": "Out",
   "jusuf nurkic": "Out",
   "jaren jackson jr.": "Out",
-  "tre johnson": "Day-To-Day",
+  "tre johnson": "Out",
   "tristan vukcevic": "Out",
   "reece beekman": "Out",
   "justin champagnie": "Out",
@@ -79,21 +77,18 @@
   "SAME_GAME_OTHER": 0.048,
   "WIN_VS_OPPONENT": -0.2
  },
- "recheck_at": "2026-11-16T09:38:00+11:00",
- "final_games": [
-  "IND @ PHI"
- ],
- "close_fetches": 1,
+ "rechecked_at": "2026-11-16T10:15:43.475511+11:00",
  "late_checked": [
   "DAL @ BOS",
   "HOU @ WSH",
   "NY @ TOR",
   "SA @ UTAH"
  ],
+ "late_refreshes": 2,
  "late_log": [
   "8:37am SA @ UTAH: no new outs; 2 new legs worth a look",
   "9:15am DAL @ BOS, NY @ TOR: no new outs; prices refreshed",
   "10:14am HOU @ WSH: no new outs; 3 new legs worth a look; prices refreshed"
  ],
- "late_refreshes": 2
+ "close_fetches": 1
 }
