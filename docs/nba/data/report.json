@@ -1,22 +1,20 @@
 {
  "slate_date": "2026-11-17",
- "headline": "Skip today: no multi beats its break-even price by 5%. Closest: 3-leg $2+ on Neds $2.03 (needs $1.97). Note: 3-leg value includes legs without a confirmed worth-it price; spread the legs around so one miss can't sink most multis: 2-leg $2+, Best value, 3-leg value, 4-leg $4+.",
- "injuries": "Tobe Awaka (Out), Caleb Wilson (Out), Evan Mobley (Out), Sam Merrill (Out), Nae'Qwan Tomlin (Out), Julian Strawther (Out), Stephen Curry (Out), Brandon Williams (Out), Kristaps Porzingis (Out), Moses Moody (Out), Jimmy Butler Iii (Out), Clint Capela (Out) and others",
- "graded": "Yesterday: 29 of 37 legs landed; 4-leg $2+ missed, 3-leg $2+ missed, 2-leg $2+ landed, 4-leg $3+ landed, 4-leg $4+ landed, Best value missed, Safest missed, 3-leg value missed, Mid-range $8+ missed, Long multi 8+ missed, Long shot $50 missed, Top pick missed, Second pick landed.",
- "next_run": "Late check 9:47am — ORL @ BOS, CHI @ CLE, MEM @ WSH: no new outs; 2 new legs worth a look; prices refreshed",
+ "headline": "Value today: Top pick on Neds $2.33 (needs $2.21). Note: spread the legs around so one miss can't sink most multis: 2-leg $2+, Best value, 3-leg value, 4-leg $4+, Second pick.",
+ "injuries": "Neemias Queta (Out), Tobe Awaka (Out), Caleb Wilson (Out), Jaylon Tyson (Out), Evan Mobley (Out), Sam Merrill (Out), Nae'Qwan Tomlin (Out), Julian Strawther (Out), Stephen Curry (Out), Brandon Williams (Out), Kristaps Porzingis (Out), Moses Moody (Out) and others",
+ "graded": "",
+ "next_run": "Re-checked 10:19am: 8 multi(s) changed: 4-leg $3+, 4-leg $4+, Best value, 3-leg value, Mid-range $8+, Long shot $50, Top pick, Second pick",
  "sources": {
   "stats": "ESPN",
-  "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API (4 games, 214 credits left)",
+  "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API",
   "injury_reading": "Claude"
  },
- "updated_at": "2026-11-17T08:30:48.753874+11:00",
+ "updated_at": "2026-11-17T10:19:05.137769+11:00",
  "inj_snapshot": {
-  "neemias queta": "Day-To-Day",
+  "neemias queta": "Out",
   "tobe awaka": "Out",
-  "jalen smith": "Day-To-Day",
   "caleb wilson": "Out",
-  "jaylon tyson": "Day-To-Day",
-  "peyton watson": "Day-To-Day",
+  "jaylon tyson": "Out",
   "evan mobley": "Out",
   "sam merrill": "Out",
   "nae'qwan tomlin": "Out",
@@ -39,8 +37,8 @@
   "quinten post": "Out",
   "zach edey": "Day-To-Day",
   "richie saunders": "Out",
-  "nikola jovic": "Day-To-Day",
-  "pelle larsson": "Day-To-Day",
+  "nikola jovic": "Out",
+  "pelle larsson": "Out",
   "jaylen clark": "Out",
   "anthony edwards": "Out",
   "donte divincenzo": "Out",
@@ -64,7 +62,6 @@
   "vit krejci": "Out",
   "ja morant": "Out",
   "shaedon sharpe": "Out",
-  "tre johnson": "Day-To-Day",
   "tristan vukcevic": "Out",
   "reece beekman": "Out",
   "justin champagnie": "Out",
@@ -76,13 +73,13 @@
   "SAME_GAME_OTHER": 0.042,
   "WIN_VS_OPPONENT": -0.2
  },
- "recheck_at": "2026-11-17T09:38:00+11:00",
- "late_refreshes": 1,
+ "rechecked_at": "2026-11-17T10:19:05.137769+11:00",
  "late_checked": [
   "CHI @ CLE",
   "MEM @ WSH",
   "ORL @ BOS"
  ],
+ "late_refreshes": 1,
  "late_log": [
   "9:47am ORL @ BOS, CHI @ CLE, MEM @ WSH: no new outs; 2 new legs worth a look; prices refreshed"
  ]
