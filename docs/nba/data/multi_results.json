@@ -906,5 +906,122 @@
   "landed": false,
   "verdict": "marginal",
   "price": 2.3
+ },
+ {
+  "slate_date": "2026-11-16",
+  "multi": "4-leg $2+",
+  "legs": "Nickeil Alexander-Walker 2+ assists; Jaime Jaquez Jr. 10+ points; Kevin Durant 1+ threes; Oklahoma City Thunder Oklahoma City Thunder to win",
+  "est_hit": 0.4152,
+  "landed": false,
+  "verdict": "skip",
+  "price": 2.11
+ },
+ {
+  "slate_date": "2026-11-16",
+  "multi": "3-leg $2+",
+  "legs": "Nickeil Alexander-Walker 2+ assists; Oklahoma City Thunder Oklahoma City Thunder to win; Onyeka Okongwu 2+ assists",
+  "est_hit": 0.4961,
+  "landed": false,
+  "verdict": "marginal",
+  "price": 2.01
+ },
+ {
+  "slate_date": "2026-11-16",
+  "multi": "2-leg $2+",
+  "legs": "Kyle Kuzma 2+ assists; Isaiah Hartenstein 10+ rebounds",
+  "est_hit": 0.4646,
+  "landed": true,
+  "verdict": "skip",
+  "price": 2.01
+ },
+ {
+  "slate_date": "2026-11-16",
+  "multi": "4-leg $3+",
+  "legs": "Nickeil Alexander-Walker 2+ assists; Oklahoma City Thunder Oklahoma City Thunder to win; Houston Rockets Houston Rockets to win; Isaiah Hartenstein 10+ rebounds",
+  "est_hit": 0.2956,
+  "landed": true,
+  "verdict": "skip",
+  "price": 3.03
+ },
+ {
+  "slate_date": "2026-11-16",
+  "multi": "4-leg $4+",
+  "legs": "Kyle Kuzma 2+ assists; Houston Rockets Houston Rockets to win; Isaiah Hartenstein 10+ rebounds; Shai Gilgeous-Alexander 30+ points",
+  "est_hit": 0.202,
+  "landed": true,
+  "verdict": "skip",
+  "price": 4.11
+ },
+ {
+  "slate_date": "2026-11-16",
+  "multi": "Best value",
+  "legs": "Oklahoma City Thunder Oklahoma City Thunder to win; Kyle Kuzma 2+ assists; Onyeka Okongwu 2+ assists; AJ Dybantsa 4+ rebounds",
+  "est_hit": 0.3584,
+  "landed": false,
+  "verdict": "marginal",
+  "price": 2.72
+ },
+ {
+  "slate_date": "2026-11-16",
+  "multi": "Safest",
+  "legs": "Nickeil Alexander-Walker 2+ assists; Jaime Jaquez Jr. 10+ points; Kevin Durant 1+ threes; Oklahoma City Thunder Oklahoma City Thunder to win",
+  "est_hit": 0.4152,
+  "landed": false,
+  "verdict": "skip",
+  "price": 2.11
+ },
+ {
+  "slate_date": "2026-11-16",
+  "multi": "3-leg value",
+  "legs": "Kyle Kuzma 2+ assists; Onyeka Okongwu 2+ assists; AJ Dybantsa 4+ rebounds",
+  "est_hit": 0.4506,
+  "landed": false,
+  "verdict": "marginal",
+  "price": 2.23
+ },
+ {
+  "slate_date": "2026-11-16",
+  "multi": "Mid-range $8+",
+  "legs": "Nickeil Alexander-Walker 2+ assists; Jaime Jaquez Jr. 10+ points; Kevin Durant 1+ threes; Myles Turner 1+ threes; Trae Young 8+ assists; AJ Dybantsa 6+ rebounds",
+  "est_hit": 0.1179,
+  "landed": false,
+  "verdict": "skip",
+  "price": 8.1
+ },
+ {
+  "slate_date": "2026-11-16",
+  "multi": "Long multi 8+",
+  "legs": "CJ McCollum 10+ points; Kevin Durant 15+ points; AJ Dybantsa 10+ points; Nickeil Alexander-Walker 2+ assists; Jared McCain 10+ points; Tari Eason 4+ rebounds; Jaime Jaquez Jr. 10+ points",
+  "est_hit": 0.2503,
+  "landed": false,
+  "verdict": "skip",
+  "price": 3.0
+ },
+ {
+  "slate_date": "2026-11-16",
+  "multi": "Long shot $50",
+  "legs": "Nickeil Alexander-Walker 2+ assists; Kyle Kuzma 2+ assists; Jaime Jaquez Jr. 1+ threes; Isaiah Hartenstein 10+ rebounds; Trae Young 8+ assists; Kyshawn George 15+ points; AJ Dybantsa 6+ rebounds; Domantas Sabonis 15+ points",
+  "est_hit": 0.0188,
+  "landed": false,
+  "verdict": "marginal",
+  "price": 51.83
+ },
+ {
+  "slate_date": "2026-11-16",
+  "multi": "Top pick",
+  "legs": "Kyle Kuzma 2+ assists; Onyeka Okongwu 2+ assists; Houston Rockets Houston Rockets to win",
+  "est_hit": 0.4403,
+  "landed": false,
+  "verdict": "marginal",
+  "price": 2.3
+ },
+ {
+  "slate_date": "2026-11-16",
+  "multi": "Second pick",
+  "legs": "Jaime Jaquez Jr. 1+ threes; Isaiah Hartenstein 10+ rebounds",
+  "est_hit": 0.4621,
+  "landed": true,
+  "verdict": "skip",
+  "price": 2.01
  }
 ]

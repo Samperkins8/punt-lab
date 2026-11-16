@@ -3,331 +3,326 @@
   "multi": "4-leg $2+",
   "rank": 1,
   "leg_ids": [
-   "nickeil_alexander-walker_assists2",
-   "jaime_jaquez_jr_points10",
-   "kevin_durant_threes1",
-   "okc_win"
+   "klay_thompson_threes1",
+   "josh_giddey_threes1",
+   "zion_williamson_assists2",
+   "patrick_williams_threes1"
   ],
-  "legs_text": "Nickeil Alexander-Walker 2+ assists; Jaime Jaquez Jr. 10+ points; Kevin Durant 1+ threes; Oklahoma City Thunder Oklahoma City Thunder to win",
-  "est_hit": 0.4152,
-  "break_even": 2.41,
-  "priced_legs": "4 of 4",
-  "known_price": 2.13,
-  "fair_multi": 2.66,
-  "est_price": 2.11,
-  "book_prices": {
-   "neds": 2.11
-  },
-  "best_book": "neds",
-  "best_book_price": 2.11,
-  "verdict": "skip",
-  "value": -0.1239,
-  "landed": false
+  "legs_text": "Klay Thompson 1+ threes; Josh Giddey 1+ threes; Zion Williamson 2+ assists; Patrick Williams 1+ threes",
+  "est_hit": 0.45,
+  "break_even": 2.22,
+  "priced_legs": "2 of 4",
+  "known_price": 1.56,
+  "fair_multi": null,
+  "est_price": 2.05,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null,
+  "verdict": "check",
+  "value": null
  },
  {
   "multi": "3-leg $2+",
   "rank": 2,
   "leg_ids": [
-   "nickeil_alexander-walker_assists2",
-   "okc_win",
-   "onyeka_okongwu_assists2"
+   "josh_giddey_threes1",
+   "zion_williamson_assists2",
+   "danny_wolf_threes1"
   ],
-  "legs_text": "Nickeil Alexander-Walker 2+ assists; Oklahoma City Thunder Oklahoma City Thunder to win; Onyeka Okongwu 2+ assists",
-  "est_hit": 0.4961,
-  "break_even": 2.02,
+  "legs_text": "Josh Giddey 1+ threes; Zion Williamson 2+ assists; Danny Wolf 1+ threes",
+  "est_hit": 0.5076,
+  "break_even": 1.97,
   "priced_legs": "3 of 3",
-  "known_price": 1.9,
-  "fair_multi": 2.0,
-  "est_price": 2.01,
+  "known_price": 2.03,
+  "fair_multi": null,
+  "est_price": 2.03,
   "book_prices": {
-   "tab": 2.01,
-   "neds": 1.82
+   "neds": 2.03
   },
-  "best_book": "tab",
-  "best_book_price": 2.01,
+  "best_book": "neds",
+  "best_book_price": 2.03,
   "verdict": "marginal",
-  "value": -0.0028,
-  "landed": false
+  "value": 0.0304
  },
  {
   "multi": "2-leg $2+",
   "rank": 3,
   "leg_ids": [
-   "kyle_kuzma_assists2",
-   "isaiah_hartenstein_rebounds10"
+   "zion_williamson_assists2",
+   "tyrese_maxey_points25"
   ],
-  "legs_text": "Kyle Kuzma 2+ assists; Isaiah Hartenstein 10+ rebounds",
-  "est_hit": 0.4646,
-  "break_even": 2.15,
+  "legs_text": "Zion Williamson 2+ assists; Tyrese Maxey 25+ points",
+  "est_hit": 0.4482,
+  "break_even": 2.23,
   "priced_legs": "2 of 2",
-  "known_price": 2.03,
-  "fair_multi": 2.14,
-  "est_price": 2.01,
+  "known_price": 2.04,
+  "fair_multi": 2.21,
+  "est_price": 2.04,
   "book_prices": {
-   "neds": 2.01
+   "neds": 2.04
   },
   "best_book": "neds",
-  "best_book_price": 2.01,
+  "best_book_price": 2.04,
   "verdict": "skip",
-  "value": -0.0662,
-  "landed": true
+  "value": -0.0857
  },
  {
   "multi": "4-leg $3+",
   "rank": 4,
   "leg_ids": [
-   "nickeil_alexander-walker_assists2",
-   "okc_win",
-   "hou_win",
-   "isaiah_hartenstein_rebounds10"
+   "klay_thompson_threes1",
+   "josh_giddey_threes1",
+   "miles_bridges_points10",
+   "nikola_jokic_points25"
   ],
-  "legs_text": "Nickeil Alexander-Walker 2+ assists; Oklahoma City Thunder Oklahoma City Thunder to win; Houston Rockets Houston Rockets to win; Isaiah Hartenstein 10+ rebounds",
-  "est_hit": 0.2956,
-  "break_even": 3.38,
-  "priced_legs": "4 of 4",
-  "known_price": 3.06,
-  "fair_multi": 3.74,
-  "est_price": 3.03,
-  "book_prices": {
-   "neds": 3.03
-  },
-  "best_book": "neds",
-  "best_book_price": 3.03,
-  "verdict": "skip",
-  "value": -0.1043,
-  "landed": true
+  "legs_text": "Klay Thompson 1+ threes; Josh Giddey 1+ threes; Miles Bridges 10+ points; Nikola Jokic 25+ points",
+  "est_hit": 0.3106,
+  "break_even": 3.22,
+  "priced_legs": "3 of 4",
+  "known_price": 2.7,
+  "fair_multi": null,
+  "est_price": 3.07,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null,
+  "verdict": "check",
+  "value": null
  },
  {
   "multi": "4-leg $4+",
   "rank": 5,
   "leg_ids": [
-   "kyle_kuzma_assists2",
-   "hou_win",
-   "isaiah_hartenstein_rebounds10",
-   "shai_gilgeous-alexander_points30"
+   "klay_thompson_threes1",
+   "miles_bridges_points10",
+   "tyrese_maxey_points25",
+   "nikola_jokic_points25"
   ],
-  "legs_text": "Kyle Kuzma 2+ assists; Houston Rockets Houston Rockets to win; Isaiah Hartenstein 10+ rebounds; Shai Gilgeous-Alexander 30+ points",
-  "est_hit": 0.202,
-  "break_even": 4.95,
-  "priced_legs": "4 of 4",
-  "known_price": 4.14,
-  "fair_multi": 4.97,
-  "est_price": 4.11,
-  "book_prices": {
-   "neds": 4.11
-  },
-  "best_book": "neds",
-  "best_book_price": 4.11,
-  "verdict": "skip",
-  "value": -0.1698,
-  "landed": true
+  "legs_text": "Klay Thompson 1+ threes; Miles Bridges 10+ points; Tyrese Maxey 25+ points; Nikola Jokic 25+ points",
+  "est_hit": 0.2142,
+  "break_even": 4.67,
+  "priced_legs": "3 of 4",
+  "known_price": 3.52,
+  "fair_multi": 5.61,
+  "est_price": 4.0,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null,
+  "verdict": "check",
+  "value": null
  },
  {
   "multi": "Best value",
   "rank": 6,
   "leg_ids": [
-   "okc_win",
-   "kyle_kuzma_assists2",
-   "onyeka_okongwu_assists2",
-   "aj_dybantsa_rebounds4"
+   "klay_thompson_threes1",
+   "danny_wolf_threes1",
+   "davion_mitchell_points10",
+   "vj_edgecombe_points10"
   ],
-  "legs_text": "Oklahoma City Thunder Oklahoma City Thunder to win; Kyle Kuzma 2+ assists; Onyeka Okongwu 2+ assists; AJ Dybantsa 4+ rebounds",
-  "est_hit": 0.3584,
-  "break_even": 2.79,
-  "priced_legs": "4 of 4",
-  "known_price": 2.56,
-  "fair_multi": 2.57,
-  "est_price": 2.72,
-  "book_prices": {
-   "tab": 2.72,
-   "neds": 2.4
-  },
-  "best_book": "tab",
-  "best_book_price": 2.72,
-  "verdict": "marginal",
-  "value": -0.0252,
-  "landed": false
+  "legs_text": "Klay Thompson 1+ threes; Danny Wolf 1+ threes; Davion Mitchell 10+ points; VJ Edgecombe 10+ points",
+  "est_hit": 0.3973,
+  "break_even": 2.52,
+  "priced_legs": "3 of 4",
+  "known_price": 2.15,
+  "fair_multi": null,
+  "est_price": 2.44,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null,
+  "verdict": "check",
+  "value": null
  },
  {
   "multi": "Safest",
   "rank": 7,
   "leg_ids": [
-   "nickeil_alexander-walker_assists2",
-   "jaime_jaquez_jr_points10",
-   "kevin_durant_threes1",
-   "okc_win"
+   "klay_thompson_threes1",
+   "josh_giddey_threes1",
+   "zion_williamson_assists2",
+   "patrick_williams_threes1"
   ],
-  "legs_text": "Nickeil Alexander-Walker 2+ assists; Jaime Jaquez Jr. 10+ points; Kevin Durant 1+ threes; Oklahoma City Thunder Oklahoma City Thunder to win",
-  "est_hit": 0.4152,
-  "break_even": 2.41,
-  "priced_legs": "4 of 4",
-  "known_price": 2.13,
-  "fair_multi": 2.66,
-  "est_price": 2.11,
-  "book_prices": {
-   "neds": 2.11
-  },
-  "best_book": "neds",
-  "best_book_price": 2.11,
-  "verdict": "skip",
-  "value": -0.1239,
-  "landed": false
+  "legs_text": "Klay Thompson 1+ threes; Josh Giddey 1+ threes; Zion Williamson 2+ assists; Patrick Williams 1+ threes",
+  "est_hit": 0.45,
+  "break_even": 2.22,
+  "priced_legs": "2 of 4",
+  "known_price": 1.56,
+  "fair_multi": null,
+  "est_price": 2.05,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null,
+  "verdict": "check",
+  "value": null
  },
  {
   "multi": "3-leg value",
   "rank": 8,
   "leg_ids": [
-   "kyle_kuzma_assists2",
-   "onyeka_okongwu_assists2",
-   "aj_dybantsa_rebounds4"
+   "danny_wolf_threes1",
+   "davion_mitchell_points10",
+   "vj_edgecombe_points10"
   ],
-  "legs_text": "Kyle Kuzma 2+ assists; Onyeka Okongwu 2+ assists; AJ Dybantsa 4+ rebounds",
-  "est_hit": 0.4506,
-  "break_even": 2.22,
+  "legs_text": "Danny Wolf 1+ threes; Davion Mitchell 10+ points; VJ Edgecombe 10+ points",
+  "est_hit": 0.4569,
+  "break_even": 2.19,
   "priced_legs": "3 of 3",
-  "known_price": 2.11,
-  "fair_multi": 2.05,
-  "est_price": 2.23,
+  "known_price": 2.15,
+  "fair_multi": null,
+  "est_price": 2.13,
   "book_prices": {
-   "tab": 2.23,
-   "neds": 2.0
+   "neds": 2.13
   },
-  "best_book": "tab",
-  "best_book_price": 2.23,
+  "best_book": "neds",
+  "best_book_price": 2.13,
   "verdict": "marginal",
-  "value": 0.0048,
-  "landed": false
+  "value": -0.0268
+ },
+ {
+  "multi": "One per game",
+  "rank": 9,
+  "leg_ids": [
+   "klay_thompson_threes1",
+   "josh_giddey_threes1",
+   "zion_williamson_assists2",
+   "miles_bridges_points10",
+   "alex_sarr_rebounds6",
+   "danny_wolf_threes1",
+   "jaden_mcdaniels_rebounds4",
+   "bos_win"
+  ],
+  "legs_text": "Klay Thompson 1+ threes; Josh Giddey 1+ threes; Zion Williamson 2+ assists; Miles Bridges 10+ points; Alex Sarr 6+ rebounds; Danny Wolf 1+ threes; Jaden McDaniels 4+ rebounds; Boston Celtics Boston Celtics to win",
+  "est_hit": 0.1581,
+  "break_even": 6.33,
+  "priced_legs": "6 of 8",
+  "known_price": 4.03,
+  "fair_multi": null,
+  "est_price": 5.34,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null,
+  "verdict": "check",
+  "value": null
  },
  {
   "multi": "Mid-range $8+",
   "rank": 10,
   "leg_ids": [
-   "nickeil_alexander-walker_assists2",
-   "jaime_jaquez_jr_points10",
-   "kevin_durant_threes1",
-   "myles_turner_threes1",
-   "trae_young_assists8",
-   "aj_dybantsa_rebounds6"
+   "donovan_mitchell_threes1",
+   "danny_wolf_threes1",
+   "julius_randle_threes1",
+   "jrue_holiday_points10",
+   "james_harden_points15",
+   "josh_giddey_threes2"
   ],
-  "legs_text": "Nickeil Alexander-Walker 2+ assists; Jaime Jaquez Jr. 10+ points; Kevin Durant 1+ threes; Myles Turner 1+ threes; Trae Young 8+ assists; AJ Dybantsa 6+ rebounds",
-  "est_hit": 0.1179,
-  "break_even": 8.48,
-  "priced_legs": "6 of 6",
-  "known_price": 7.64,
-  "fair_multi": 10.33,
-  "est_price": 8.1,
-  "book_prices": {
-   "neds": 8.1
-  },
-  "best_book": "neds",
-  "best_book_price": 8.1,
-  "verdict": "skip",
-  "value": -0.045,
-  "landed": false
+  "legs_text": "Donovan Mitchell 1+ threes; Danny Wolf 1+ threes; Julius Randle 1+ threes; Jrue Holiday 10+ points; James Harden 15+ points; Josh Giddey 2+ threes",
+  "est_hit": 0.1428,
+  "break_even": 7.0,
+  "priced_legs": "5 of 6",
+  "known_price": 7.09,
+  "fair_multi": null,
+  "est_price": 8.24,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null,
+  "verdict": "check",
+  "value": null
  },
  {
   "multi": "Long multi 8+",
   "rank": 11,
   "leg_ids": [
-   "cj_mccollum_points10",
-   "kevin_durant_points15",
-   "aj_dybantsa_points10",
-   "nickeil_alexander-walker_assists2",
-   "jared_mccain_points10",
-   "tari_eason_rebounds4",
-   "jaime_jaquez_jr_points10"
+   "donovan_mitchell_threes1",
+   "jaden_mcdaniels_assists2",
+   "jamal_murray_threes1",
+   "cedric_coward_points10",
+   "matas_buzelis_points10",
+   "dillon_brooks_points10",
+   "josh_giddey_threes1",
+   "zion_williamson_assists2"
   ],
-  "legs_text": "CJ McCollum 10+ points; Kevin Durant 15+ points; AJ Dybantsa 10+ points; Nickeil Alexander-Walker 2+ assists; Jared McCain 10+ points; Tari Eason 4+ rebounds; Jaime Jaquez Jr. 10+ points",
-  "est_hit": 0.2503,
-  "break_even": 4.0,
-  "priced_legs": "7 of 7",
-  "known_price": 3.05,
-  "fair_multi": 4.05,
-  "est_price": 3.0,
-  "book_prices": {
-   "neds": 3.0
-  },
-  "best_book": "neds",
-  "best_book_price": 3.0,
-  "verdict": "skip",
-  "value": -0.2491,
-  "landed": false
+  "legs_text": "Donovan Mitchell 1+ threes; Jaden McDaniels 2+ assists; Jamal Murray 1+ threes; Cedric Coward 10+ points; Matas Buzelis 10+ points; Dillon Brooks 10+ points; Josh Giddey 1+ threes; Zion Williamson 2+ assists",
+  "est_hit": 0.2253,
+  "break_even": 4.44,
+  "priced_legs": "6 of 8",
+  "known_price": 2.88,
+  "fair_multi": null,
+  "est_price": 3.95,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null,
+  "verdict": "check",
+  "value": null
  },
  {
   "multi": "Long shot $50",
   "rank": 12,
   "leg_ids": [
-   "nickeil_alexander-walker_assists2",
-   "kyle_kuzma_assists2",
-   "jaime_jaquez_jr_threes1",
-   "isaiah_hartenstein_rebounds10",
-   "trae_young_assists8",
-   "kyshawn_george_points15",
-   "aj_dybantsa_rebounds6",
-   "domantas_sabonis_points15"
+   "donovan_mitchell_threes1",
+   "andrew_wiggins_threes1",
+   "julius_randle_threes1",
+   "jrue_holiday_points10",
+   "tristan_da_silva_points10",
+   "saddiq_bey_points15",
+   "josh_giddey_threes2",
+   "miles_bridges_points15",
+   "danny_wolf_threes2"
   ],
-  "legs_text": "Nickeil Alexander-Walker 2+ assists; Kyle Kuzma 2+ assists; Jaime Jaquez Jr. 1+ threes; Isaiah Hartenstein 10+ rebounds; Trae Young 8+ assists; Kyshawn George 15+ points; AJ Dybantsa 6+ rebounds; Domantas Sabonis 15+ points",
-  "est_hit": 0.0188,
-  "break_even": 53.09,
-  "priced_legs": "8 of 8",
-  "known_price": 49.25,
+  "legs_text": "Donovan Mitchell 1+ threes; Andrew Wiggins 1+ threes; Julius Randle 1+ threes; Jrue Holiday 10+ points; Tristan da Silva 10+ points; Saddiq Bey 15+ points; Josh Giddey 2+ threes; Miles Bridges 15+ points; Danny Wolf 2+ threes",
+  "est_hit": 0.0239,
+  "break_even": 41.8,
+  "priced_legs": "8 of 9",
+  "known_price": 43.39,
   "fair_multi": null,
-  "est_price": 51.83,
-  "book_prices": {
-   "neds": 51.83
-  },
-  "best_book": "neds",
-  "best_book_price": 51.83,
-  "verdict": "marginal",
-  "value": -0.0256,
-  "landed": false
+  "est_price": 50.47,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null,
+  "verdict": "check",
+  "value": null
  },
  {
   "multi": "Top pick",
   "rank": 13,
   "leg_ids": [
-   "kyle_kuzma_assists2",
-   "onyeka_okongwu_assists2",
-   "hou_win"
+   "josh_giddey_threes1",
+   "zion_williamson_assists2",
+   "danny_wolf_threes1"
   ],
-  "legs_text": "Kyle Kuzma 2+ assists; Onyeka Okongwu 2+ assists; Houston Rockets Houston Rockets to win",
-  "est_hit": 0.4403,
-  "break_even": 2.27,
+  "legs_text": "Josh Giddey 1+ threes; Zion Williamson 2+ assists; Danny Wolf 1+ threes",
+  "est_hit": 0.5076,
+  "break_even": 1.97,
   "priced_legs": "3 of 3",
-  "known_price": 2.2,
-  "fair_multi": 2.07,
-  "est_price": 2.3,
+  "known_price": 2.03,
+  "fair_multi": null,
+  "est_price": 2.03,
   "book_prices": {
-   "tab": 2.3,
-   "neds": 2.1
+   "neds": 2.03
   },
-  "best_book": "tab",
-  "best_book_price": 2.3,
+  "best_book": "neds",
+  "best_book_price": 2.03,
   "verdict": "marginal",
-  "value": 0.0127,
-  "landed": false
+  "value": 0.0304
  },
  {
   "multi": "Second pick",
   "rank": 14,
   "leg_ids": [
-   "jaime_jaquez_jr_threes1",
-   "isaiah_hartenstein_rebounds10"
+   "den_win",
+   "nikola_jokic_points25"
   ],
-  "legs_text": "Jaime Jaquez Jr. 1+ threes; Isaiah Hartenstein 10+ rebounds",
-  "est_hit": 0.4621,
-  "break_even": 2.16,
+  "legs_text": "Denver Nuggets Denver Nuggets to win; Nikola Jokic 25+ points",
+  "est_hit": 0.4347,
+  "break_even": 2.3,
   "priced_legs": "2 of 2",
-  "known_price": 2.01,
-  "fair_multi": null,
-  "est_price": 2.01,
+  "known_price": 2.18,
+  "fair_multi": 2.49,
+  "est_price": 2.18,
   "book_prices": {
-   "neds": 2.01
+   "neds": 2.18
   },
   "best_book": "neds",
-  "best_book_price": 2.01,
+  "best_book_price": 2.18,
   "verdict": "skip",
-  "value": -0.0712,
-  "landed": true
+  "value": -0.0524
  }
 ]
