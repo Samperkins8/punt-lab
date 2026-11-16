@@ -990,7 +990,9 @@
   "step_up": false,
   "note": "blowout risk (OKC -10.5, he is on the underdog)",
   "event_id": "401909993",
-  "athlete_id": "4065732"
+  "athlete_id": "4065732",
+  "actual": null,
+  "landed": null
  },
  {
   "why": "Predicted 10.9 rebounds tonight, needs 8+. This season 10.5 a game over 13 games; last season 9.4 over 47. Hartenstein averaged 11.6 in the 10 games without Holmgren (10.5 across all 13), so he's predicted 0.7 rebounds more tonight. Tonight's line is 10 points easier than his team's usual (favourites by 10.5), so they're expected to score more (+1%). SAC gives up more to his position than average (+8%). Bookies' line: 10.5.",
@@ -1043,7 +1045,12 @@
   "step_up": false,
   "note": "",
   "event_id": "401909993",
-  "athlete_id": "4222252"
+  "athlete_id": "4222252",
+  "actual": 11.0,
+  "landed": true,
+  "minutes_played": 18,
+  "expected_minutes": 25,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 5.1 assists tonight, needs 4+. This season 4.5 a game over 13 games; last season 6.6 over 68. Plays a bit worse on the road: 0.3 assists fewer predicted. Slower game expected (-1% for pace). Tonight's line is 10 points easier than his team's usual (favourites by 10.5), so they're expected to score more (+2%). SAC gives up less to his position than average (-7%). Bookies' line: 5.5.",
@@ -1096,7 +1103,12 @@
   "step_up": false,
   "note": "",
   "event_id": "401909993",
-  "athlete_id": "4278073"
+  "athlete_id": "4278073",
+  "actual": 2.0,
+  "landed": false,
+  "minutes_played": 30,
+  "expected_minutes": 33,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 31.5 points tonight, needs 25+. This season 30.5 a game over 13 games; last season 31.1 over 68. Gilgeous-Alexander averaged 29.5 in the 11 games with Mitchell (30.5 across all 13), so he's predicted 0.6 points fewer tonight. Slower game expected (-1% for pace). Tonight's line is 10 points easier than his team's usual (favourites by 10.5), so they're expected to score more (+3%). Bookies' line: 31.5.",
@@ -1149,7 +1161,12 @@
   "step_up": false,
   "note": "",
   "event_id": "401909993",
-  "athlete_id": "4278073"
+  "athlete_id": "4278073",
+  "actual": 37.0,
+  "landed": true,
+  "minutes_played": 30,
+  "expected_minutes": 33,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 13.3 points tonight, needs 10+. This season 13.9 a game over 13 games; last season 15.2 over 74. Okongwu averaged 13.2 in the 10 games with Johnson (13.9 across all 13), so he's predicted 0.5 points fewer tonight. Plays a bit worse on the road: 1.2 points fewer predicted. Faster game expected (+1% for pace). Tonight's line is 10 points easier than his team's usual (favourites by 8.5), so they're expected to score more (+3%). MIL gives up less to his position than average (-6%). Bookies' line: 13.5.",
@@ -1267,7 +1284,12 @@
   "step_up": false,
   "note": "blowout risk (OKC -10.5, he is on the underdog)",
   "event_id": "401909993",
-  "athlete_id": "3155942"
+  "athlete_id": "3155942",
+  "actual": 3.0,
+  "landed": false,
+  "minutes_played": 29,
+  "expected_minutes": 34,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 2.5 assists tonight, needs 2+. This season 2.8 a game over 12 games; last season 2.3 over 39. Slower game expected (-1% for pace). OKC gives up less to his position than average (-2%). Expected minutes 32.3 vs his usual 33. Bookies' line: 2.5.",
@@ -1320,7 +1342,9 @@
   "step_up": false,
   "note": "blowout risk (OKC -10.5, he is on the underdog)",
   "event_id": "401909993",
-  "athlete_id": "3064440"
+  "athlete_id": "3064440",
+  "actual": null,
+  "landed": null
  },
  {
   "why": "Predicted 13.4 points tonight, needs 10+. This season 14.5 a game over 11 games; last season 15.8 over 19. Sabonis averaged 15.5 in the 4 games with Murray (14.5 across all 11), so he's predicted 0.5 points more tonight. Plays better at home: 0.7 points more predicted. Slower game expected (-1% for pace). Tonight's line is 4 points tougher than his team's usual (underdogs by 10.5), so they're expected to score less (-1%). OKC gives up less to his position than average (-6%). Expected minutes 33.8 vs his usual 34.5. Bookies' line: 12.5.",
@@ -1373,7 +1397,12 @@
   "step_up": false,
   "note": "blowout risk (OKC -10.5, he is on the underdog)",
   "event_id": "401909993",
-  "athlete_id": "3155942"
+  "athlete_id": "3155942",
+  "actual": 11.0,
+  "landed": true,
+  "minutes_played": 29,
+  "expected_minutes": 34,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 19.5 points tonight, needs 15+. This season 19.7 a game over 13 games; last season 17.9 over 15. Young averaged 20.8 in the 11 games with Davis (19.7 across all 13), so he's predicted 0.8 points more tonight. Plays better at home: 1.5 points more predicted. Slower game expected (-1% for pace). Tonight's line is 7 points tougher than his team's usual (underdogs by 8.5), so they're expected to score less (-2%). HOU gives up more to his position than average (+2%). Bookies' line: 18.5.",
@@ -1720,7 +1749,12 @@
   "step_up": true,
   "note": "blowout risk (OKC -10.5, he is on the underdog)",
   "event_id": "401909993",
-  "athlete_id": "3155942"
+  "athlete_id": "3155942",
+  "actual": 11.0,
+  "landed": false,
+  "minutes_played": 29,
+  "expected_minutes": 34,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 10.9 rebounds tonight, needs 10+. This season 10.5 a game over 13 games; last season 9.4 over 47. Hartenstein averaged 11.6 in the 10 games without Holmgren (10.5 across all 13), so he's predicted 0.7 rebounds more tonight. Tonight's line is 10 points easier than his team's usual (favourites by 10.5), so they're expected to score more (+1%). SAC gives up more to his position than average (+8%). Bookies' line: 10.5.",
@@ -1773,7 +1807,12 @@
   "step_up": true,
   "note": "",
   "event_id": "401909993",
-  "athlete_id": "4222252"
+  "athlete_id": "4222252",
+  "actual": 11.0,
+  "landed": true,
+  "minutes_played": 18,
+  "expected_minutes": 25,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 31.5 points tonight, needs 30+. This season 30.5 a game over 13 games; last season 31.1 over 68. Gilgeous-Alexander averaged 29.5 in the 11 games with Mitchell (30.5 across all 13), so he's predicted 0.6 points fewer tonight. Slower game expected (-1% for pace). Tonight's line is 10 points easier than his team's usual (favourites by 10.5), so they're expected to score more (+3%). Bookies' line: 31.5.",
@@ -1826,7 +1865,12 @@
   "step_up": true,
   "note": "",
   "event_id": "401909993",
-  "athlete_id": "4278073"
+  "athlete_id": "4278073",
+  "actual": 37.0,
+  "landed": true,
+  "minutes_played": 30,
+  "expected_minutes": 33,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 14.2 points tonight, needs 10+. This season 15.0 a game over 9 games. Dybantsa averaged 14.2 in the 8 games with Sarr (15.0 across all 9), so he's predicted 0.5 points fewer tonight. Plays a bit worse at home: 1.3 points fewer predicted. Slower game expected (-1% for pace). Tonight's line is 7 points tougher than his team's usual (underdogs by 8.5), so they're expected to score less (-2%). HOU gives up less to his position than average (-4%). Bookies' line: 15.5.",
@@ -2118,7 +2162,12 @@
   "step_up": false,
   "note": "",
   "event_id": "401909993",
-  "athlete_id": "4683778"
+  "athlete_id": "4683778",
+  "actual": 12.0,
+  "landed": true,
+  "minutes_played": 30,
+  "expected_minutes": 26,
+  "minutes_flag": null
  },
  {
   "why": "Houston Rockets are 8.5-point favourites. The bookies' head-to-head prices (margin removed) and the betting line together make that about a 74% chance to win, fair price $1.34. Pays $1.32 at TAB.",
@@ -2287,6 +2336,8 @@
   "step_up": false,
   "note": "10.5-point favourite",
   "event_id": "401909993",
-  "athlete_id": null
+  "athlete_id": null,
+  "actual": 1,
+  "landed": true
  }
 ]

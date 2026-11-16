@@ -70,7 +70,7 @@
   "best_book_price": 2.01,
   "verdict": "skip",
   "value": -0.0662,
-  "landed": null
+  "landed": true
  },
  {
   "multi": "4-leg $3+",
@@ -95,7 +95,7 @@
   "best_book_price": 3.03,
   "verdict": "skip",
   "value": -0.1043,
-  "landed": null
+  "landed": true
  },
  {
   "multi": "4-leg $4+",
@@ -120,7 +120,7 @@
   "best_book_price": 4.11,
   "verdict": "skip",
   "value": -0.1698,
-  "landed": null
+  "landed": true
  },
  {
   "multi": "Best value",
@@ -328,6 +328,6 @@
   "best_book_price": 2.01,
   "verdict": "skip",
   "value": -0.0712,
-  "landed": null
+  "landed": true
  }
 ]
