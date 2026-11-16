@@ -280,7 +280,7 @@
   "best_book_price": 51.83,
   "verdict": "marginal",
   "value": -0.0256,
-  "landed": null
+  "landed": false
  },
  {
   "multi": "Top pick",
