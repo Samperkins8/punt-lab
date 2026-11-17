@@ -1023,5 +1023,131 @@
   "landed": true,
   "verdict": "skip",
   "price": 2.01
+ },
+ {
+  "slate_date": "2026-11-17",
+  "multi": "4-leg $2+",
+  "legs": "Klay Thompson 1+ threes; Josh Giddey 1+ threes; Zion Williamson 2+ assists; Patrick Williams 1+ threes",
+  "est_hit": 0.4497,
+  "landed": false,
+  "verdict": "check",
+  "price": 2.05
+ },
+ {
+  "slate_date": "2026-11-17",
+  "multi": "3-leg $2+",
+  "legs": "Josh Giddey 1+ threes; Zion Williamson 2+ assists; Danny Wolf 1+ threes",
+  "est_hit": 0.508,
+  "landed": true,
+  "verdict": "marginal",
+  "price": 2.03
+ },
+ {
+  "slate_date": "2026-11-17",
+  "multi": "2-leg $2+",
+  "legs": "Zion Williamson 2+ assists; Tyrese Maxey 25+ points",
+  "est_hit": 0.4475,
+  "landed": false,
+  "verdict": "skip",
+  "price": 2.04
+ },
+ {
+  "slate_date": "2026-11-17",
+  "multi": "4-leg $3+",
+  "legs": "Josh Giddey 1+ threes; Danny Wolf 1+ threes; Boston Celtics Boston Celtics to win; Saddiq Bey 15+ points",
+  "est_hit": 0.3412,
+  "landed": false,
+  "verdict": "marginal",
+  "price": 3.03
+ },
+ {
+  "slate_date": "2026-11-17",
+  "multi": "4-leg $4+",
+  "legs": "Miles Bridges 10+ points; Tristan da Silva 10+ points; Saddiq Bey 15+ points; Nikola Jokic 25+ points",
+  "est_hit": 0.228,
+  "landed": true,
+  "verdict": "skip",
+  "price": 4.14
+ },
+ {
+  "slate_date": "2026-11-17",
+  "multi": "Best value",
+  "legs": "Zion Williamson 2+ assists; Danny Wolf 1+ threes; Tristan da Silva 10+ points; Saddiq Bey 15+ points",
+  "est_hit": 0.3257,
+  "landed": true,
+  "verdict": "marginal",
+  "price": 3.11
+ },
+ {
+  "slate_date": "2026-11-17",
+  "multi": "Safest",
+  "legs": "Klay Thompson 1+ threes; Josh Giddey 1+ threes; Zion Williamson 2+ assists; Patrick Williams 1+ threes",
+  "est_hit": 0.4497,
+  "landed": false,
+  "verdict": "check",
+  "price": 2.05
+ },
+ {
+  "slate_date": "2026-11-17",
+  "multi": "3-leg value",
+  "legs": "Danny Wolf 1+ threes; Tristan da Silva 10+ points; Saddiq Bey 15+ points",
+  "est_hit": 0.3996,
+  "landed": true,
+  "verdict": "marginal",
+  "price": 2.55
+ },
+ {
+  "slate_date": "2026-11-17",
+  "multi": "One per game",
+  "legs": "Klay Thompson 1+ threes; Josh Giddey 1+ threes; Zion Williamson 2+ assists; Miles Bridges 10+ points; Alex Sarr 6+ rebounds; Danny Wolf 1+ threes; Jaden McDaniels 4+ rebounds; Boston Celtics Boston Celtics to win",
+  "est_hit": 0.1596,
+  "landed": false,
+  "verdict": "check",
+  "price": 5.35
+ },
+ {
+  "slate_date": "2026-11-17",
+  "multi": "Mid-range $8+",
+  "legs": "Donovan Mitchell 1+ threes; Danny Wolf 1+ threes; Jaden McDaniels 4+ rebounds; Tristan da Silva 10+ points; Peyton Watson 2+ assists; Josh Giddey 2+ threes",
+  "est_hit": 0.1457,
+  "landed": false,
+  "verdict": "check",
+  "price": 8.08
+ },
+ {
+  "slate_date": "2026-11-17",
+  "multi": "Long multi 8+",
+  "legs": "Donovan Mitchell 1+ threes; Jaden McDaniels 2+ assists; Jamal Murray 1+ threes; Cedric Coward 10+ points; Matas Buzelis 10+ points; Dillon Brooks 10+ points; Josh Giddey 1+ threes; Zion Williamson 2+ assists",
+  "est_hit": 0.2266,
+  "landed": true,
+  "verdict": "check",
+  "price": 3.94
+ },
+ {
+  "slate_date": "2026-11-17",
+  "multi": "Long shot $50",
+  "legs": "Klay Thompson 1+ threes; Julius Randle 1+ threes; Andrew Wiggins 1+ threes; Jrue Holiday 10+ points; Tristan da Silva 10+ points; Saddiq Bey 15+ points; Josh Giddey 2+ threes; Miles Bridges 15+ points; Danny Wolf 2+ threes",
+  "est_hit": 0.0237,
+  "landed": false,
+  "verdict": "check",
+  "price": 50.73
+ },
+ {
+  "slate_date": "2026-11-17",
+  "multi": "Top pick",
+  "legs": "Josh Giddey 1+ threes; Danny Wolf 1+ threes; Tristan da Silva 10+ points",
+  "est_hit": 0.4515,
+  "landed": true,
+  "verdict": "value",
+  "price": 2.33
+ },
+ {
+  "slate_date": "2026-11-17",
+  "multi": "Second pick",
+  "legs": "Davion Mitchell 10+ points; Boston Celtics Boston Celtics to win; Saddiq Bey 15+ points",
+  "est_hit": 0.4118,
+  "landed": false,
+  "verdict": "skip",
+  "price": 2.33
  }
 ]
