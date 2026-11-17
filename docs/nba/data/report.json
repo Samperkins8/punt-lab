@@ -1,15 +1,15 @@
 {
  "slate_date": "2026-11-18",
- "headline": "Value today: Mid-range $8+ on Neds $8.04 (needs $7.62); Long shot $50 on Neds $50.09 (needs $45.47). Note: 3-leg value includes legs without a confirmed worth-it price; spread the legs around so one miss can't sink most multis: Second pick.",
+ "headline": "Value today: Mid-range $8+ on Neds $8.04 (needs $7.64); Long shot $50 on Neds $50.61 (needs $45.31). Note: 3-leg value includes legs without a confirmed worth-it price.",
  "injuries": "Kon Knueppel (Out), Dennis Schroder (Out), Isaiah Joe (Out), Duncan Robinson (Out), Taurean Prince (Out), Ronald Holland Ii (Out), Jalen Duren (Out), Yanic Konan Niederhauser (Out), Brandon Ingram (Out), Bradley Beal (Out), Jordan Miller (Out), Austin Reaves (Out) and others",
- "graded": "Yesterday: 39 of 49 legs landed; 4-leg $2+ missed, 3-leg $2+ landed, 2-leg $2+ missed, 4-leg $3+ missed, 4-leg $4+ landed, Best value landed, Safest missed, 3-leg value landed, One per game missed, Mid-range $8+ missed, Long multi 8+ landed, Long shot $50 missed, Top pick landed, Second pick missed.",
- "next_run": "Built 8:34am; re-checked before the first tip",
+ "graded": "",
+ "next_run": "Re-checked 10:25am: 3 multi(s) changed: 2-leg $2+, Long shot $50, Second pick",
  "sources": {
   "stats": "ESPN",
-  "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API (3 games, 200 credits left)",
+  "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API",
   "injury_reading": "Claude"
  },
- "updated_at": "2026-11-18T08:34:09.654578+11:00",
+ "updated_at": "2026-11-18T10:25:10.681889+11:00",
  "inj_snapshot": {
   "kon knueppel": "Out",
   "dennis schroder": "Out",
@@ -36,10 +36,9 @@
   "shaedon sharpe": "Out",
   "tobias harris": "Out",
   "jayden quaintance": "Out",
-  "scottie barnes": "Day-To-Day",
+  "kawhi leonard": "Out",
   "nate bittle": "Out",
   "kevin mccullar jr.": "Day-To-Day",
-  "kawhi leonard": "Out",
   "jaxson hayes": "Out",
   "lauri markkanen": "Out",
   "jusuf nurkic": "Out",
@@ -51,5 +50,5 @@
   "SAME_GAME_OTHER": 0.042,
   "WIN_VS_OPPONENT": -0.2
  },
- "recheck_at": "2026-11-18T09:38:00+11:00"
+ "rechecked_at": "2026-11-18T10:25:10.681889+11:00"
 }

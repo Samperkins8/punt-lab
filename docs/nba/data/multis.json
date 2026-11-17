@@ -9,7 +9,7 @@
    "sa_win"
   ],
   "legs_text": "Victor Wembanyama 2+ assists; Ace Bailey 10+ points; Darryn Peterson 15+ points; San Antonio Spurs San Antonio Spurs to win",
-  "est_hit": 0.3919,
+  "est_hit": 0.3916,
   "break_even": 2.55,
   "priced_legs": "4 of 4",
   "known_price": 2.18,
@@ -21,7 +21,7 @@
   "best_book": "neds",
   "best_book_price": 2.13,
   "verdict": "skip",
-  "value": -0.1653
+  "value": -0.1659
  },
  {
   "multi": "3-leg $2+",
@@ -32,7 +32,7 @@
    "derrick_jones_jr_threes1"
   ],
   "legs_text": "Ace Bailey 10+ points; Jaden McDaniels 4+ rebounds; Derrick Jones Jr. 1+ threes",
-  "est_hit": 0.4839,
+  "est_hit": 0.4837,
   "break_even": 2.07,
   "priced_legs": "3 of 3",
   "known_price": 2.06,
@@ -44,29 +44,29 @@
   "best_book": "neds",
   "best_book_price": 2.04,
   "verdict": "marginal",
-  "value": -0.0128
+  "value": -0.0133
  },
  {
   "multi": "2-leg $2+",
   "rank": 3,
   "leg_ids": [
-   "derrick_jones_jr_threes1",
-   "ny_win"
+   "ace_bailey_points10",
+   "darryn_peterson_points20"
   ],
-  "legs_text": "Derrick Jones Jr. 1+ threes; New York Knicks New York Knicks to win",
-  "est_hit": 0.4817,
-  "break_even": 2.08,
+  "legs_text": "Ace Bailey 10+ points; Darryn Peterson 20+ points",
+  "est_hit": 0.4646,
+  "break_even": 2.15,
   "priced_legs": "2 of 2",
-  "known_price": 2.13,
-  "fair_multi": null,
-  "est_price": 2.12,
+  "known_price": 2.01,
+  "fair_multi": 2.33,
+  "est_price": 2.01,
   "book_prices": {
-   "neds": 2.12
+   "neds": 2.01
   },
   "best_book": "neds",
-  "best_book_price": 2.12,
-  "verdict": "marginal",
-  "value": 0.0212
+  "best_book_price": 2.01,
+  "verdict": "skip",
+  "value": -0.0662
  },
  {
   "multi": "4-leg $3+",
@@ -78,7 +78,7 @@
    "cade_cunningham_rebounds4"
   ],
   "legs_text": "Jaden McDaniels 4+ rebounds; Derrick Jones Jr. 1+ threes; Josh Hart 1+ threes; Cade Cunningham 4+ rebounds",
-  "est_hit": 0.3337,
+  "est_hit": 0.3332,
   "break_even": 3.0,
   "priced_legs": "4 of 4",
   "known_price": 2.99,
@@ -90,7 +90,7 @@
   "best_book": "neds",
   "best_book_price": 3.01,
   "verdict": "marginal",
-  "value": 0.0044
+  "value": 0.0029
  },
  {
   "multi": "4-leg $4+",
@@ -102,8 +102,8 @@
    "jalen_brunson_points25"
   ],
   "legs_text": "Derrick Jones Jr. 1+ threes; Josh Hart 1+ threes; Cade Cunningham 4+ rebounds; Jalen Brunson 25+ points",
-  "est_hit": 0.2426,
-  "break_even": 4.12,
+  "est_hit": 0.2412,
+  "break_even": 4.15,
   "priced_legs": "4 of 4",
   "known_price": 3.73,
   "fair_multi": null,
@@ -114,7 +114,7 @@
   "best_book": "neds",
   "best_book_price": 4.05,
   "verdict": "marginal",
-  "value": -0.0175
+  "value": -0.0231
  },
  {
   "multi": "Best value",
@@ -126,7 +126,7 @@
    "cade_cunningham_rebounds4"
   ],
   "legs_text": "Jaden McDaniels 4+ rebounds; Derrick Jones Jr. 1+ threes; Josh Hart 1+ threes; Cade Cunningham 4+ rebounds",
-  "est_hit": 0.3337,
+  "est_hit": 0.3332,
   "break_even": 3.0,
   "priced_legs": "4 of 4",
   "known_price": 2.99,
@@ -138,7 +138,7 @@
   "best_book": "neds",
   "best_book_price": 3.01,
   "verdict": "marginal",
-  "value": 0.0044
+  "value": 0.0029
  },
  {
   "multi": "Safest",
@@ -150,7 +150,7 @@
    "sa_win"
   ],
   "legs_text": "Victor Wembanyama 2+ assists; Ace Bailey 10+ points; Darryn Peterson 15+ points; San Antonio Spurs San Antonio Spurs to win",
-  "est_hit": 0.3919,
+  "est_hit": 0.3916,
   "break_even": 2.55,
   "priced_legs": "4 of 4",
   "known_price": 2.18,
@@ -162,7 +162,7 @@
   "best_book": "neds",
   "best_book_price": 2.13,
   "verdict": "skip",
-  "value": -0.1653
+  "value": -0.1659
  },
  {
   "multi": "3-leg value",
@@ -173,8 +173,8 @@
    "keldon_johnson_rebounds4"
   ],
   "legs_text": "Victor Wembanyama 2+ assists; Jaden McDaniels 4+ rebounds; Keldon Johnson 4+ rebounds",
-  "est_hit": 0.4774,
-  "break_even": 2.09,
+  "est_hit": 0.4773,
+  "break_even": 2.1,
   "priced_legs": "3 of 3",
   "known_price": 2.01,
   "fair_multi": 1.97,
@@ -186,7 +186,7 @@
   "best_book": "tab",
   "best_book_price": 2.19,
   "verdict": "marginal",
-  "value": 0.0455
+  "value": 0.0453
  },
  {
   "multi": "One per game",
@@ -199,11 +199,11 @@
    "immanuel_quickley_assists4"
   ],
   "legs_text": "Victor Wembanyama 2+ assists; Ace Bailey 10+ points; Jaden McDaniels 4+ rebounds; Matisse Thybulle 1+ threes; Immanuel Quickley 4+ assists",
-  "est_hit": 0.2858,
+  "est_hit": 0.2859,
   "break_even": 3.5,
   "priced_legs": "5 of 5",
   "known_price": 2.88,
-  "fair_multi": 3.57,
+  "fair_multi": 3.56,
   "est_price": 2.81,
   "book_prices": {
    "neds": 2.81
@@ -211,7 +211,7 @@
   "best_book": "neds",
   "best_book_price": 2.81,
   "verdict": "skip",
-  "value": -0.1969
+  "value": -0.1966
  },
  {
   "multi": "Mid-range $8+",
@@ -225,8 +225,8 @@
    "derrick_jones_jr_threes2"
   ],
   "legs_text": "Victor Wembanyama 2+ assists; Jaden McDaniels 4+ rebounds; Keldon Johnson 4+ rebounds; De'Aaron Fox 10+ points; Josh Hart 1+ threes; Derrick Jones Jr. 2+ threes",
-  "est_hit": 0.1312,
-  "break_even": 7.62,
+  "est_hit": 0.1308,
+  "break_even": 7.64,
   "priced_legs": "6 of 6",
   "known_price": 8.7,
   "fair_multi": null,
@@ -237,7 +237,7 @@
   "best_book": "neds",
   "best_book_price": 8.04,
   "verdict": "value",
-  "value": 0.0548
+  "value": 0.0516
  },
  {
   "multi": "Long multi 8+",
@@ -274,27 +274,27 @@
    "victor_wembanyama_assists2",
    "jaden_mcdaniels_rebounds4",
    "jrue_holiday_points10",
-   "keldon_johnson_rebounds4",
+   "de'aaron_fox_points10",
    "josh_hart_threes1",
-   "ny_win",
-   "ace_bailey_points15",
+   "lac_win",
    "derrick_jones_jr_threes2",
-   "brook_lopez_points15"
+   "brook_lopez_points15",
+   "immanuel_quickley_assists6"
   ],
-  "legs_text": "Victor Wembanyama 2+ assists; Jaden McDaniels 4+ rebounds; Jrue Holiday 10+ points; Keldon Johnson 4+ rebounds; Josh Hart 1+ threes; New York Knicks New York Knicks to win; Ace Bailey 15+ points; Derrick Jones Jr. 2+ threes; Brook Lopez 15+ points",
-  "est_hit": 0.022,
-  "break_even": 45.47,
+  "legs_text": "Victor Wembanyama 2+ assists; Jaden McDaniels 4+ rebounds; Jrue Holiday 10+ points; De'Aaron Fox 10+ points; Josh Hart 1+ threes; LA Clippers LA Clippers to win; Derrick Jones Jr. 2+ threes; Brook Lopez 15+ points; Immanuel Quickley 6+ assists",
+  "est_hit": 0.0221,
+  "break_even": 45.31,
   "priced_legs": "9 of 9",
-  "known_price": 54.54,
+  "known_price": 51.88,
   "fair_multi": null,
-  "est_price": 50.09,
+  "est_price": 50.61,
   "book_prices": {
-   "neds": 50.09
+   "neds": 50.61
   },
   "best_book": "neds",
-  "best_book_price": 50.09,
+  "best_book_price": 50.61,
   "verdict": "value",
-  "value": 0.102
+  "value": 0.1185
  },
  {
   "multi": "Top pick",
@@ -305,8 +305,8 @@
    "keldon_johnson_rebounds4"
   ],
   "legs_text": "Victor Wembanyama 2+ assists; Jaden McDaniels 4+ rebounds; Keldon Johnson 4+ rebounds",
-  "est_hit": 0.4774,
-  "break_even": 2.09,
+  "est_hit": 0.4773,
+  "break_even": 2.1,
   "priced_legs": "3 of 3",
   "known_price": 2.01,
   "fair_multi": 1.97,
@@ -318,28 +318,28 @@
   "best_book": "tab",
   "best_book_price": 2.19,
   "verdict": "marginal",
-  "value": 0.0455
+  "value": 0.0453
  },
  {
   "multi": "Second pick",
   "rank": 14,
   "leg_ids": [
-   "josh_hart_threes1",
-   "ny_win"
+   "derrick_jones_jr_threes1",
+   "darryn_peterson_points20"
   ],
-  "legs_text": "Josh Hart 1+ threes; New York Knicks New York Knicks to win",
-  "est_hit": 0.4699,
-  "break_even": 2.13,
+  "legs_text": "Derrick Jones Jr. 1+ threes; Darryn Peterson 20+ points",
+  "est_hit": 0.4619,
+  "break_even": 2.16,
   "priced_legs": "2 of 2",
-  "known_price": 2.1,
+  "known_price": 2.23,
   "fair_multi": null,
-  "est_price": 2.09,
+  "est_price": 2.23,
   "book_prices": {
-   "neds": 2.09
+   "neds": 2.23
   },
   "best_book": "neds",
-  "best_book_price": 2.09,
+  "best_book_price": 2.23,
   "verdict": "marginal",
-  "value": -0.0179
+  "value": 0.03
  }
 ]
