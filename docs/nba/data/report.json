@@ -88,5 +88,12 @@
   "10:42am PHI @ BKN, HOU @ MIA: no new outs; 3 new legs worth a look",
   "12:02pm PHX @ DEN: no new outs"
  ],
- "close_fetches": 2
+ "close_fetches": 2,
+ "final_games": [
+  "CHI @ CLE",
+  "HOU @ MIA",
+  "MEM @ WSH",
+  "ORL @ BOS",
+  "PHI @ BKN"
+ ]
 }

@@ -48,7 +48,12 @@
   "event_id": "401909998",
   "athlete_id": "6475",
   "late_checked": "10:42am",
-  "late_was": null
+  "late_was": null,
+  "actual": 5.0,
+  "landed": true,
+  "minutes_played": 22,
+  "expected_minutes": 24,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 2.1 threes tonight, needs 1+. This season 1.2 a game over 12 games; last season 1.9 over 54. Giddey averaged 2.5 in the 2 games without Wilson (1.2 across all 12), so he's predicted 0.4 threes more tonight. Faster game expected (+3% for pace). Tonight's line is 2 points easier than his team's usual (underdogs by 8.5), so they're expected to score more (+1%). CLE gives up more to his position than average (+7%).",
@@ -104,7 +109,12 @@
   "athlete_id": "4871145",
   "close_books": {
    "neds": 1.28
-  }
+  },
+  "actual": 1.0,
+  "landed": true,
+  "minutes_played": 24,
+  "expected_minutes": 28,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 2.7 assists tonight, needs 2+. This season 2.7 a game over 13 games; last season 3.2 over 62. Slower game expected (-1% for pace). GS gives up less to his position than average (-5%). Bookies' line: 2.5.",
@@ -261,7 +271,12 @@
   "event_id": "401909998",
   "athlete_id": "4432639",
   "late_checked": "10:42am",
-  "late_was": null
+  "late_was": null,
+  "actual": 10.0,
+  "landed": true,
+  "minutes_played": 32,
+  "expected_minutes": 32,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 1.7 threes tonight, needs 1+. This season 1.4 a game over 5 games; last season 1.3 over 72. Williams averaged 3.0 in the 2 games without Wilson (1.4 across all 5), so he's predicted 0.5 threes more tonight. Faster game expected (+3% for pace). Tonight's line is 2 points easier than his team's usual (underdogs by 8.5), so they're expected to score more (+1%). CLE gives up less to his position than average (-5%).",
@@ -310,7 +325,12 @@
   "step_up": false,
   "note": "",
   "event_id": "401909995",
-  "athlete_id": "4431687"
+  "athlete_id": "4431687",
+  "actual": 0.0,
+  "landed": false,
+  "minutes_played": 13,
+  "expected_minutes": 25,
+  "minutes_flag": "low"
  },
  {
   "why": "Predicted 14.9 points tonight, needs 10+. This season 14.6 a game over 12 games; last season 17.2 over 79. Tonight's line is 4 points tougher than his team's usual (underdogs by 9.5), so they're expected to score less (-1%). DEN gives up more to his position than average (+2%). Expected minutes 28.5 vs his usual 29.3. Bookies' line: 14.5.",
@@ -417,7 +437,12 @@
   "step_up": false,
   "note": "second night of a back-to-back",
   "event_id": "401909996",
-  "athlete_id": "5160992"
+  "athlete_id": "5160992",
+  "actual": 4.0,
+  "landed": false,
+  "minutes_played": 31,
+  "expected_minutes": 26,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 1.9 threes tonight, needs 1+. This season 2.1 a game over 7 games; last season 1.2 over 57. Tonight's line is 3 points tougher than his team's usual (underdogs by 4.5), so they're expected to score less (-2%). PHI gives up less to his position than average (-3%). Expected minutes 28.5 vs his usual 24.3.",
@@ -475,6 +500,15 @@
   "late_was": null,
   "close_books": {
    "neds": 1.3
+  },
+  "actual": 1.0,
+  "landed": true,
+  "minutes_played": 11,
+  "expected_minutes": 28,
+  "minutes_flag": "injured",
+  "left_early": {
+   "minutes": 11,
+   "expected": 28
   }
  },
  {
@@ -531,7 +565,12 @@
   "athlete_id": "3908809",
   "close_books": {
    "neds": 1.22
-  }
+  },
+  "actual": 4.0,
+  "landed": true,
+  "minutes_played": 36,
+  "expected_minutes": 33,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 5.5 rebounds tonight, needs 4+. This season 6.2 a game over 13 games; last season 4.2 over 73. POR gives up more to his position than average (+8%). Bookies' line: 5.5.",
@@ -698,7 +737,12 @@
   "athlete_id": "5142718",
   "close_books": {
    "neds": 1.24
-  }
+  },
+  "actual": 5.0,
+  "landed": true,
+  "minutes_played": 32,
+  "expected_minutes": 32,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 14.3 points tonight, needs 10+. This season 16.8 a game over 13 games; last season 9.6 over 71. Mitchell averaged 18.5 in the 2 games without Larsson (16.8 across all 13), so he's predicted 0.5 points more tonight. Tonight's line is 4 points tougher than his team's usual (underdogs by 2.5), so they're expected to score less (-1%). HOU gives up more to his position than average (+5%). Bookies' line: 13.5.",
@@ -758,7 +802,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.28
-  }
+  },
+  "actual": 16.0,
+  "landed": true,
+  "minutes_played": 33,
+  "expected_minutes": 36,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 1.5 threes tonight, needs 1+. This season 1.8 a game over 13 games; last season 1.9 over 74. Brown averaged 1.0 in the 3 games without James (1.8 across all 13), so he's predicted 0.3 threes fewer tonight. Tonight's line is 5 points easier than his team's usual (favourites by 4.5), so they're expected to score more (+4%). BKN gives up more to his position than average (+11%). Bookies' line: 1.5.",
@@ -816,7 +865,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.22
-  }
+  },
+  "actual": 3.0,
+  "landed": true,
+  "minutes_played": 33,
+  "expected_minutes": 35,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 13.7 points tonight, needs 10+. This season 12.8 a game over 13 games; last season 16.0 over 76. Edgecombe averaged 14.0 in the 3 games without James (12.8 across all 13), so he's predicted 0.5 points more tonight. Plays a bit worse on the road: 0.5 points fewer predicted. Tonight's line is 5 points easier than his team's usual (favourites by 4.5), so they're expected to score more (+2%). Bookies' line: 13.5.",
@@ -874,7 +928,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.28
-  }
+  },
+  "actual": 14.0,
+  "landed": true,
+  "minutes_played": 33,
+  "expected_minutes": 33,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 1.3 threes tonight, needs 1+. This season 1.4 a game over 13 games; last season 1.4 over 73. Tonight's line is 8 points tougher than his team's usual (favourites by 2.5), so they're expected to score less (-6%). POR gives up more to his position than average (+15%). Bookies' line: 1.5.",
@@ -987,7 +1046,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.2
-  }
+  },
+  "actual": 1.0,
+  "landed": true,
+  "minutes_played": 33,
+  "expected_minutes": 33,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 1.4 threes tonight, needs 1+. This season 1.8 a game over 12 games; last season 1.9 over 79. Tonight's line is 4 points tougher than his team's usual (underdogs by 9.5), so they're expected to score less (-2%). DEN gives up less to his position than average (-11%). Expected minutes 28.5 vs his usual 29.3. Bookies' line: 1.5.",
@@ -1156,7 +1220,12 @@
   "step_up": false,
   "note": "second night of a back-to-back",
   "event_id": "401909994",
-  "athlete_id": "4065648"
+  "athlete_id": "4065648",
+  "actual": 24.0,
+  "landed": true,
+  "minutes_played": 36,
+  "expected_minutes": 32,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 26.0 points tonight, needs 20+. This season 26.7 a game over 14 games; last season 27.4 over 74. Maxey averaged 30.3 in the 3 games without James (26.7 across all 14), so he's predicted 1.4 points more tonight. Plays a bit worse on the road: 0.3 points fewer predicted. Tonight's line is 5 points easier than his team's usual (favourites by 4.5), so they're expected to score more (+2%). BKN gives up less to his position than average (-5%). Bookies' line: 25.5.",
@@ -1214,7 +1283,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.22
-  }
+  },
+  "actual": 24.0,
+  "landed": true,
+  "minutes_played": 35,
+  "expected_minutes": 36,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 1.4 threes tonight, needs 1+. This season 1.8 a game over 13 games; last season 1.8 over 69. Tonight's line is 8 points tougher than his team's usual (favourites by 2.5), so they're expected to score less (-6%). POR gives up less to his position than average (-11%). Bookies' line: 1.5.",
@@ -1329,7 +1403,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.22
-  }
+  },
+  "actual": 23.0,
+  "landed": true,
+  "minutes_played": 30,
+  "expected_minutes": 33,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 26.0 points tonight, needs 20+. This season 23.7 a game over 11 games; last season 27.3 over 66. Plays better at home: 1.4 points more predicted. Tonight's line is 6 points easier than his team's usual (favourites by 9.5), so they're expected to score more (+2%). Bookies' line: 25.5.",
@@ -1443,7 +1522,12 @@
   "athlete_id": "4871145",
   "close_books": {
    "neds": 2.2
-  }
+  },
+  "actual": 1.0,
+  "landed": false,
+  "minutes_played": 24,
+  "expected_minutes": 28,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 1.9 threes tonight, needs 2+. This season 2.1 a game over 7 games; last season 1.2 over 57. Tonight's line is 3 points tougher than his team's usual (underdogs by 4.5), so they're expected to score less (-2%). PHI gives up less to his position than average (-3%). Expected minutes 28.5 vs his usual 24.3.",
@@ -1501,6 +1585,15 @@
   "late_was": null,
   "close_books": {
    "neds": 2.3
+  },
+  "actual": 1.0,
+  "landed": false,
+  "minutes_played": 11,
+  "expected_minutes": 28,
+  "minutes_flag": "injured",
+  "left_early": {
+   "minutes": 11,
+   "expected": 28
   }
  },
  {
@@ -1559,7 +1652,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.67
-  }
+  },
+  "actual": 24.0,
+  "landed": false,
+  "minutes_played": 35,
+  "expected_minutes": 36,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 26.0 points tonight, needs 25+. This season 23.7 a game over 11 games; last season 27.3 over 66. Plays better at home: 1.4 points more predicted. Tonight's line is 6 points easier than his team's usual (favourites by 9.5), so they're expected to score more (+2%). Bookies' line: 25.5.",
@@ -1724,7 +1822,12 @@
   "step_up": false,
   "note": "",
   "event_id": "401909995",
-  "athlete_id": "3908809"
+  "athlete_id": "3908809",
+  "actual": 2.0,
+  "landed": true,
+  "minutes_played": 36,
+  "expected_minutes": 33,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 14.8 points tonight, needs 10+. This season 13.7 a game over 12 games; last season 16.3 over 77. Buzelis averaged 14.6 in the 5 games with Williams (13.7 across all 12), so he's predicted 0.5 points more tonight. Plays a bit worse on the road: 0.8 points fewer predicted. Faster game expected (+3% for pace). CLE gives up less to his position than average (-8%). Bookies' line: 15.5.",
@@ -1780,7 +1883,12 @@
   "athlete_id": "4711294",
   "close_books": {
    "neds": 1.16
-  }
+  },
+  "actual": 23.0,
+  "landed": true,
+  "minutes_played": 31,
+  "expected_minutes": 27,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 15.2 points tonight, needs 10+. This season 13.8 a game over 12 games; last season 13.6 over 62. Coward averaged 16.5 in the 2 games without Jerome (13.8 across all 12), so he's predicted 0.8 points more tonight. Bookies' line: 15.5.",
@@ -1838,7 +1946,12 @@
   "athlete_id": "4903027",
   "close_books": {
    "neds": 1.15
-  }
+  },
+  "actual": 18.0,
+  "landed": true,
+  "minutes_played": 27,
+  "expected_minutes": 29,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 3.4 assists tonight, needs 2+. This season 3.8 a game over 13 games; last season 2.7 over 73. Tonight's line is 8 points tougher than his team's usual (favourites by 2.5), so they're expected to score less (-2%). POR gives up more to his position than average (+3%). Bookies' line: 3.5.",
@@ -2057,7 +2170,9 @@
   "step_up": false,
   "note": "9.5-point favourite",
   "event_id": "401909994",
-  "athlete_id": null
+  "athlete_id": null,
+  "actual": 0,
+  "landed": false
  },
  {
   "why": "Cleveland Cavaliers are 8.5-point favourites. The bookies' head-to-head prices (margin removed) and the betting line together make that about a 75% chance to win, fair price $1.34. Pays $1.30 at TAB.",
@@ -2112,7 +2227,9 @@
   "step_up": false,
   "note": "8.5-point favourite",
   "event_id": "401909995",
-  "athlete_id": null
+  "athlete_id": null,
+  "actual": 1,
+  "landed": true
  },
  {
   "why": "Philadelphia 76ers are 4.5-point favourites. The bookies' head-to-head prices (margin removed) and the betting line together make that about a 65% chance to win, fair price $1.54. Pays $1.48 at TAB.",
@@ -2167,7 +2284,9 @@
   "step_up": false,
   "note": "4.5-point favourite",
   "event_id": "401909997",
-  "athlete_id": null
+  "athlete_id": null,
+  "actual": 1,
+  "landed": true
  },
  {
   "why": "Denver Nuggets are 9.5-point favourites. The bookies' head-to-head prices (margin removed) and the betting line together make that about a 77% chance to win, fair price $1.30. Pays $1.26 at TAB.",
@@ -2278,7 +2397,12 @@
   "athlete_id": "4702382",
   "close_books": {
    "neds": 1.4
-  }
+  },
+  "actual": 13.0,
+  "landed": true,
+  "minutes_played": 31,
+  "expected_minutes": 35,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 2.3 assists tonight, needs 2+. This season 2.7 a game over 11 games; last season 2.1 over 54. Faster game expected (+3% for pace). Tonight's line is 5 points easier than his team's usual (favourites by 8.5), so they're expected to score more (+1%). Bookies' line: 2.5.",
@@ -2331,7 +2455,12 @@
   "step_up": false,
   "note": "",
   "event_id": "401909995",
-  "athlete_id": "4576087"
+  "athlete_id": "4576087",
+  "actual": 0.0,
+  "landed": false,
+  "minutes_played": 22,
+  "expected_minutes": 28,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 1.5 threes tonight, needs 1+. This season 1.5 a game over 12 games; last season 1.4 over 79. Tonight's line is 3 points tougher than his team's usual (underdogs by 4.5), so they're expected to score less (-2%).",
@@ -2389,7 +2518,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.32
-  }
+  },
+  "actual": 2.0,
+  "landed": true,
+  "minutes_played": 34,
+  "expected_minutes": 33,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 1.4 threes tonight, needs 1+. This season 1.2 a game over 13 games; last season 2.1 over 69. Tonight's line is 4 points tougher than his team's usual (underdogs by 2.5), so they're expected to score less (-3%). HOU gives up less to his position than average (-9%). Expected minutes 27.5 vs his usual 26.",
@@ -2447,7 +2581,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.3
-  }
+  },
+  "actual": 3.0,
+  "landed": true,
+  "minutes_played": 34,
+  "expected_minutes": 28,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 13.3 points tonight, needs 10+. This season 12.8 a game over 12 games; last season 16.4 over 54. Plays better on the road: 0.6 points more predicted. Tonight's line is 6 points tougher than his team's usual (underdogs by 2.5), so they're expected to score less (-2%). Bookies' line: 12.5.",
@@ -2610,7 +2749,12 @@
   "event_id": "401909998",
   "athlete_id": "3202",
   "late_new": true,
-  "late_checked": "10:42am"
+  "late_checked": "10:42am",
+  "actual": 2.0,
+  "landed": true,
+  "minutes_played": 29,
+  "expected_minutes": 32,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 6.0 rebounds tonight, needs 4+. This season 6.2 a game over 13 games; last season 5.7 over 76. Edgecombe averaged 9.7 in the 3 games without James (6.2 across all 13), so he's predicted 1.3 rebounds more tonight. BKN gives up less to his position than average (-7%). Bookies' line: 5.5.",
@@ -2665,7 +2809,12 @@
   "event_id": "401909997",
   "athlete_id": "5124612",
   "late_new": true,
-  "late_checked": "10:42am"
+  "late_checked": "10:42am",
+  "actual": 9.0,
+  "landed": true,
+  "minutes_played": 33,
+  "expected_minutes": 33,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 8.9 rebounds tonight, needs 6+. This season 8.5 a game over 13 games; last season 9.9 over 74. Adebayo averaged 8.1 in the 12 games with Thompson (8.5 across all 13), so he's predicted 0.3 rebounds fewer tonight. HOU gives up more to his position than average (+7%). Bookies' line: 8.5.",
@@ -2722,6 +2871,16 @@
   "event_id": "401909998",
   "athlete_id": "4066261",
   "late_new": true,
-  "late_checked": "10:42am"
+  "late_checked": "10:42am",
+  "actual": 1.0,
+  "landed": false,
+  "minutes_played": 16,
+  "expected_minutes": 34,
+  "minutes_flag": "injured",
+  "left_early": {
+   "minutes": 16,
+   "expected": 34,
+   "injury": "Day-To-Day Adebayo (hip) has been ruled out for the remainder of Monday's game against the Rockets, Eric Nehm of The Athletic reports. He'll end with four points (1-3 FG, 0-1 3Pt, 2-4 FT), one rebound, two assists and two steals in 16 minutes."
+  }
  }
 ]
