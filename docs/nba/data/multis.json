@@ -21,7 +21,8 @@
   "best_book": "neds",
   "best_book_price": 2.13,
   "verdict": "skip",
-  "value": -0.1659
+  "value": -0.1659,
+  "landed": null
  },
  {
   "multi": "3-leg $2+",
@@ -44,7 +45,8 @@
   "best_book": "neds",
   "best_book_price": 2.04,
   "verdict": "marginal",
-  "value": -0.0133
+  "value": -0.0133,
+  "landed": null
  },
  {
   "multi": "2-leg $2+",
@@ -66,7 +68,8 @@
   "best_book": "neds",
   "best_book_price": 2.01,
   "verdict": "skip",
-  "value": -0.0662
+  "value": -0.0662,
+  "landed": null
  },
  {
   "multi": "4-leg $3+",
@@ -90,7 +93,8 @@
   "best_book": "neds",
   "best_book_price": 3.01,
   "verdict": "marginal",
-  "value": 0.0029
+  "value": 0.0029,
+  "landed": null
  },
  {
   "multi": "4-leg $4+",
@@ -114,7 +118,8 @@
   "best_book": "neds",
   "best_book_price": 4.05,
   "verdict": "marginal",
-  "value": -0.0231
+  "value": -0.0231,
+  "landed": null
  },
  {
   "multi": "Best value",
@@ -138,7 +143,8 @@
   "best_book": "neds",
   "best_book_price": 3.01,
   "verdict": "marginal",
-  "value": 0.0029
+  "value": 0.0029,
+  "landed": null
  },
  {
   "multi": "Safest",
@@ -162,7 +168,8 @@
   "best_book": "neds",
   "best_book_price": 2.13,
   "verdict": "skip",
-  "value": -0.1659
+  "value": -0.1659,
+  "landed": null
  },
  {
   "multi": "3-leg value",
@@ -186,7 +193,8 @@
   "best_book": "tab",
   "best_book_price": 2.19,
   "verdict": "marginal",
-  "value": 0.0453
+  "value": 0.0453,
+  "landed": null
  },
  {
   "multi": "One per game",
@@ -211,7 +219,8 @@
   "best_book": "neds",
   "best_book_price": 2.81,
   "verdict": "skip",
-  "value": -0.1966
+  "value": -0.1966,
+  "landed": null
  },
  {
   "multi": "Mid-range $8+",
@@ -237,7 +246,8 @@
   "best_book": "neds",
   "best_book_price": 8.04,
   "verdict": "value",
-  "value": 0.0516
+  "value": 0.0516,
+  "landed": null
  },
  {
   "multi": "Long multi 8+",
@@ -265,7 +275,8 @@
   "best_book": "neds",
   "best_book_price": 3.39,
   "verdict": "skip",
-  "value": -0.2362
+  "value": -0.2362,
+  "landed": null
  },
  {
   "multi": "Long shot $50",
@@ -294,7 +305,8 @@
   "best_book": "neds",
   "best_book_price": 50.61,
   "verdict": "value",
-  "value": 0.1185
+  "value": 0.1185,
+  "landed": null
  },
  {
   "multi": "Top pick",
@@ -318,7 +330,8 @@
   "best_book": "tab",
   "best_book_price": 2.19,
   "verdict": "marginal",
-  "value": 0.0453
+  "value": 0.0453,
+  "landed": null
  },
  {
   "multi": "Second pick",
@@ -340,6 +353,7 @@
   "best_book": "neds",
   "best_book_price": 2.23,
   "verdict": "marginal",
-  "value": 0.03
+  "value": 0.03,
+  "landed": null
  }
 ]

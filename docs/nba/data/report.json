@@ -3,7 +3,7 @@
  "headline": "Value today: Mid-range $8+ on Neds $8.04 (needs $7.64); Long shot $50 on Neds $50.61 (needs $45.31). Note: 3-leg value includes legs without a confirmed worth-it price.",
  "injuries": "Kon Knueppel (Out), Dennis Schroder (Out), Isaiah Joe (Out), Duncan Robinson (Out), Taurean Prince (Out), Ronald Holland Ii (Out), Jalen Duren (Out), Yanic Konan Niederhauser (Out), Brandon Ingram (Out), Bradley Beal (Out), Jordan Miller (Out), Austin Reaves (Out) and others",
  "graded": "",
- "next_run": "Late check 1:33pm — UTAH @ LAC: no new outs",
+ "next_run": "Late check 2:27pm — CHA @ LAL: no new outs; prices refreshed",
  "sources": {
   "stats": "ESPN",
   "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API",
@@ -53,6 +53,7 @@
  "rechecked_at": "2026-11-18T10:25:10.681889+11:00",
  "close_fetches": 2,
  "late_checked": [
+  "CHA @ LAL",
   "DET @ SA",
   "NY @ TOR",
   "POR @ MIN",
@@ -60,6 +61,11 @@
  ],
  "late_log": [
   "10:50am NY @ TOR, POR @ MIN, DET @ SA: no new outs",
-  "1:33pm UTAH @ LAC: no new outs"
- ]
+  "1:33pm UTAH @ LAC: no new outs",
+  "2:27pm CHA @ LAL: no new outs; prices refreshed"
+ ],
+ "final_games": [
+  "NY @ TOR"
+ ],
+ "late_refreshes": 1
 }

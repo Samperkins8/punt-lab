@@ -650,9 +650,9 @@
   }
  },
  {
-  "why": "Predicted 1.4 threes tonight, needs 1+. This season 1.7 a game over 14 games; last season 1.2 over 31. Tonight's line is 2 points tougher than his team's usual (favourites by 6.5), so they're expected to score less (-1%). Bookies' line: 1.5.",
+  "why": "Predicted 1.4 threes tonight, needs 1+. This season 1.7 a game over 14 games; last season 1.2 over 31. Slower game expected (-1% for pace). Tonight's line is 2 points tougher than his team's usual (favourites by 6.5), so they're expected to score less (-1%). CHA gives up less to his position than average (-2%). Bookies' line: 1.5.",
   "venue_shift": -0.09,
-  "pace_factor": 1.003,
+  "pace_factor": 0.986,
   "side_factor": 0.988,
   "underdog": false,
   "roster_overlap": 0.48,
@@ -673,20 +673,20 @@
   "prior_games": 31,
   "context_label": null,
   "context_detail": null,
-  "matchup": 0.998,
+  "matchup": 0.978,
   "context_shift": 0.0,
   "minutes_factor": 1.0,
   "avg_minutes": 24.4,
   "proj_minutes": 24.4,
   "proj_mean": 1.4,
-  "model_prob": 0.7647,
-  "raw_prob": 0.7647,
-  "fair_price": 1.33,
+  "model_prob": 0.7664,
+  "raw_prob": 0.7667,
+  "fair_price": 1.31,
   "implied": 0.8065,
-  "edge": -0.0418,
+  "edge": -0.04,
   "hit_rate": 0.8571,
   "market_line": 1.5,
-  "market_p_over": 0.4457961611246283,
+  "market_p_over": 0.44743449550453396,
   "books": {
    "neds": 1.24
   },
@@ -700,7 +700,12 @@
   "step_up": false,
   "note": "",
   "event_id": "401910005",
-  "athlete_id": "3907498"
+  "athlete_id": "3907498",
+  "late_checked": "2:27pm",
+  "late_was": null,
+  "close_books": {
+   "neds": 1.22
+  }
  },
  {
   "why": "Predicted 1.5 threes tonight, needs 1+. This season 1.8 a game over 14 games; last season 1.8 over 69. Tonight's line is 8 points tougher than his team's usual (favourites by 2.5), so they're expected to score less (-6%). POR gives up less to his position than average (-11%). Expected minutes 29.5 vs his usual 31.1. Bookies' line: 1.5.",
@@ -818,7 +823,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.32
-  }
+  },
+  "actual": 7.0,
+  "landed": true,
+  "minutes_played": 34,
+  "expected_minutes": 32,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 1.6 threes tonight, needs 1+. This season 1.4 a game over 12 games; last season 1.5 over 76. Tonight's line is 6 points easier than his team's usual (favourites by 5.5), so they're expected to score more (+4%). UTAH gives up more to his position than average (+9%). Expected minutes 30 vs his usual 24.5. Bookies' line: 1.5.",
@@ -1286,7 +1296,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.22
-  }
+  },
+  "actual": 31.0,
+  "landed": true,
+  "minutes_played": 34,
+  "expected_minutes": 34,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 5.4 rebounds tonight, needs 4+. This season 6.5 a game over 13 games; last season 5.3 over 57. Barrett averaged 5.9 in the 9 games with Barnes (6.5 across all 13), so he's predicted 0.4 rebounds fewer tonight. Plays a bit worse at home: 0.5 rebounds fewer predicted. Bookies' line: 5.5.",
@@ -1344,7 +1359,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.2
-  }
+  },
+  "actual": 5.0,
+  "landed": true,
+  "minutes_played": 39,
+  "expected_minutes": 34,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 7.9 assists tonight, needs 6+. This season 7.9 a game over 12 games; last season 9.6 over 67. Tonight's line is 11 points tougher than his team's usual (underdogs by 9.5), so they're expected to score less (-2%). Bookies' line: 7.5.",
@@ -1520,7 +1540,12 @@
   "late_was": null,
   "close_books": {
    "neds": 2.15
-  }
+  },
+  "actual": 7.0,
+  "landed": true,
+  "minutes_played": 34,
+  "expected_minutes": 32,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 25.9 points tonight, needs 25+. This season 26.7 a game over 13 games; last season 25.2 over 78. Brunson averaged 26.0 in the 10 games with Hart (26.7 across all 13), so he's predicted 0.5 points fewer tonight. Plays better on the road: 0.9 points more predicted. Slower game expected (-2% for pace). Bookies' line: 25.5.",
@@ -1580,7 +1605,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.67
-  }
+  },
+  "actual": 31.0,
+  "landed": true,
+  "minutes_played": 34,
+  "expected_minutes": 34,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 2.0 threes tonight, needs 2+. This season 2.2 a game over 11 games; last season 1.1 over 51. Tonight's line is 6 points easier than his team's usual (favourites by 5.5), so they're expected to score more (+4%). UTAH gives up more to his position than average (+8%).",
@@ -1814,7 +1844,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.17
-  }
+  },
+  "actual": 14.0,
+  "landed": true,
+  "minutes_played": 34,
+  "expected_minutes": 32,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 15.9 points tonight, needs 10+. This season 16.4 a game over 13 games; last season 16.9 over 68. Slower game expected (-2% for pace). TOR gives up less to his position than average (-5%). Bookies' line: 16.5.",
@@ -1874,7 +1909,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.15
-  }
+  },
+  "actual": 16.0,
+  "landed": true,
+  "minutes_played": 36,
+  "expected_minutes": 34,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 6.2 rebounds tonight, needs 4+. This season 6.5 a game over 10 games; last season 7.4 over 67. Bookies' line: 5.5.",
@@ -1934,7 +1974,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.18
-  }
+  },
+  "actual": 4.0,
+  "landed": true,
+  "minutes_played": 31,
+  "expected_minutes": 30,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 3.4 assists tonight, needs 2+. This season 3.7 a game over 14 games; last season 2.7 over 73. Tonight's line is 8 points tougher than his team's usual (favourites by 2.5), so they're expected to score less (-2%). POR gives up more to his position than average (+5%). Expected minutes 31.6 vs his usual 33.3. Bookies' line: 3.5.",
@@ -2111,9 +2156,9 @@
   }
  },
  {
-  "why": "Predicted 3.0 assists tonight, needs 2+. This season 3.0 a game over 13 games; last season 2.0 over 84. LAL gives up more to his position than average (+2%). Bookies' line: 3.5.",
+  "why": "Predicted 3.0 assists tonight, needs 2+. This season 3.0 a game over 13 games; last season 2.0 over 84. Slower game expected (-1% for pace). Bookies' line: 3.5.",
   "venue_shift": 0.0,
-  "pace_factor": 1.003,
+  "pace_factor": 0.986,
   "side_factor": 1.009,
   "underdog": true,
   "roster_overlap": 0.38,
@@ -2134,20 +2179,20 @@
   "prior_games": 84,
   "context_label": null,
   "context_detail": null,
-  "matchup": 1.022,
+  "matchup": 1.012,
   "context_shift": 0.0,
   "minutes_factor": 1.0,
   "avg_minutes": 26.8,
   "proj_minutes": 26.8,
   "proj_mean": 3.0,
-  "model_prob": 0.8269,
-  "raw_prob": 0.8349,
-  "fair_price": 1.13,
+  "model_prob": 0.83,
+  "raw_prob": 0.8409,
+  "fair_price": 1.12,
   "implied": 0.8621,
-  "edge": -0.0352,
+  "edge": -0.0321,
   "hit_rate": 0.6923,
   "market_line": 3.5,
-  "market_p_over": 0.42723249153866183,
+  "market_p_over": 0.44585378553603294,
   "books": {
    "neds": 1.16
   },
@@ -2161,7 +2206,12 @@
   "step_up": false,
   "note": "",
   "event_id": "401910005",
-  "athlete_id": "4602025"
+  "athlete_id": "4602025",
+  "late_checked": "2:27pm",
+  "late_was": null,
+  "close_books": {
+   "neds": 1.12
+  }
  },
  {
   "why": "New York Knicks are 2.5-point favourites. The bookies' head-to-head prices (margin removed) and the betting line together make that about a 60% chance to win, fair price $1.67. Pays $1.58 at TAB.",
@@ -2216,7 +2266,9 @@
   "step_up": false,
   "note": "2.5-point favourite",
   "event_id": "401910002",
-  "athlete_id": null
+  "athlete_id": null,
+  "actual": 1,
+  "landed": true
  },
  {
   "why": "San Antonio Spurs are 9.5-point favourites. The bookies' head-to-head prices (margin removed) and the betting line together make that about a 78% chance to win, fair price $1.28. Pays $1.24 at TAB.",
@@ -2439,7 +2491,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.36
-  }
+  },
+  "actual": 1.0,
+  "landed": true,
+  "minutes_played": 31,
+  "expected_minutes": 30,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 5.3 rebounds tonight, needs 4+. This season 5.2 a game over 12 games; last season 5.4 over 67. Tonight's line is 11 points tougher than his team's usual (underdogs by 9.5), so they're expected to score less (-1%). SA gives up more to his position than average (+2%). Bookies' line: 5.5.",
