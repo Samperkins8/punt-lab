@@ -1149,5 +1149,131 @@
   "landed": false,
   "verdict": "skip",
   "price": 2.33
+ },
+ {
+  "slate_date": "2026-11-18",
+  "multi": "4-leg $2+",
+  "legs": "Victor Wembanyama 2+ assists; Ace Bailey 10+ points; Darryn Peterson 15+ points; San Antonio Spurs San Antonio Spurs to win",
+  "est_hit": 0.3916,
+  "landed": false,
+  "verdict": "skip",
+  "price": 2.13
+ },
+ {
+  "slate_date": "2026-11-18",
+  "multi": "3-leg $2+",
+  "legs": "Ace Bailey 10+ points; Jaden McDaniels 4+ rebounds; Derrick Jones Jr. 1+ threes",
+  "est_hit": 0.4837,
+  "landed": false,
+  "verdict": "marginal",
+  "price": 2.04
+ },
+ {
+  "slate_date": "2026-11-18",
+  "multi": "2-leg $2+",
+  "legs": "Ace Bailey 10+ points; Darryn Peterson 20+ points",
+  "est_hit": 0.4646,
+  "landed": false,
+  "verdict": "skip",
+  "price": 2.01
+ },
+ {
+  "slate_date": "2026-11-18",
+  "multi": "4-leg $3+",
+  "legs": "Jaden McDaniels 4+ rebounds; Derrick Jones Jr. 1+ threes; Josh Hart 1+ threes; Cade Cunningham 4+ rebounds",
+  "est_hit": 0.3332,
+  "landed": false,
+  "verdict": "marginal",
+  "price": 3.01
+ },
+ {
+  "slate_date": "2026-11-18",
+  "multi": "4-leg $4+",
+  "legs": "Derrick Jones Jr. 1+ threes; Josh Hart 1+ threes; Cade Cunningham 4+ rebounds; Jalen Brunson 25+ points",
+  "est_hit": 0.2412,
+  "landed": false,
+  "verdict": "marginal",
+  "price": 4.05
+ },
+ {
+  "slate_date": "2026-11-18",
+  "multi": "Best value",
+  "legs": "Jaden McDaniels 4+ rebounds; Derrick Jones Jr. 1+ threes; Josh Hart 1+ threes; Cade Cunningham 4+ rebounds",
+  "est_hit": 0.3332,
+  "landed": false,
+  "verdict": "marginal",
+  "price": 3.01
+ },
+ {
+  "slate_date": "2026-11-18",
+  "multi": "Safest",
+  "legs": "Victor Wembanyama 2+ assists; Ace Bailey 10+ points; Darryn Peterson 15+ points; San Antonio Spurs San Antonio Spurs to win",
+  "est_hit": 0.3916,
+  "landed": false,
+  "verdict": "skip",
+  "price": 2.13
+ },
+ {
+  "slate_date": "2026-11-18",
+  "multi": "3-leg value",
+  "legs": "Victor Wembanyama 2+ assists; Jaden McDaniels 4+ rebounds; Keldon Johnson 4+ rebounds",
+  "est_hit": 0.4773,
+  "landed": false,
+  "verdict": "marginal",
+  "price": 2.19
+ },
+ {
+  "slate_date": "2026-11-18",
+  "multi": "One per game",
+  "legs": "Victor Wembanyama 2+ assists; Ace Bailey 10+ points; Jaden McDaniels 4+ rebounds; Matisse Thybulle 1+ threes; Immanuel Quickley 4+ assists",
+  "est_hit": 0.2859,
+  "landed": false,
+  "verdict": "skip",
+  "price": 2.81
+ },
+ {
+  "slate_date": "2026-11-18",
+  "multi": "Mid-range $8+",
+  "legs": "Victor Wembanyama 2+ assists; Jaden McDaniels 4+ rebounds; Keldon Johnson 4+ rebounds; De'Aaron Fox 10+ points; Josh Hart 1+ threes; Derrick Jones Jr. 2+ threes",
+  "est_hit": 0.1308,
+  "landed": false,
+  "verdict": "value",
+  "price": 8.04
+ },
+ {
+  "slate_date": "2026-11-18",
+  "multi": "Long multi 8+",
+  "legs": "Jaden McDaniels 2+ assists; OG Anunoby 10+ points; Immanuel Quickley 10+ points; Kris Dunn 2+ assists; Sion James 2+ assists; Stephon Castle 10+ points; Josh Hart 4+ rebounds; Victor Wembanyama 2+ assists",
+  "est_hit": 0.2253,
+  "landed": true,
+  "verdict": "skip",
+  "price": 3.39
+ },
+ {
+  "slate_date": "2026-11-18",
+  "multi": "Long shot $50",
+  "legs": "Victor Wembanyama 2+ assists; Jaden McDaniels 4+ rebounds; Jrue Holiday 10+ points; De'Aaron Fox 10+ points; Josh Hart 1+ threes; LA Clippers LA Clippers to win; Derrick Jones Jr. 2+ threes; Brook Lopez 15+ points; Immanuel Quickley 6+ assists",
+  "est_hit": 0.0221,
+  "landed": false,
+  "verdict": "value",
+  "price": 50.61
+ },
+ {
+  "slate_date": "2026-11-18",
+  "multi": "Top pick",
+  "legs": "Victor Wembanyama 2+ assists; Jaden McDaniels 4+ rebounds; Keldon Johnson 4+ rebounds",
+  "est_hit": 0.4773,
+  "landed": false,
+  "verdict": "marginal",
+  "price": 2.19
+ },
+ {
+  "slate_date": "2026-11-18",
+  "multi": "Second pick",
+  "legs": "Derrick Jones Jr. 1+ threes; Darryn Peterson 20+ points",
+  "est_hit": 0.4619,
+  "landed": false,
+  "verdict": "marginal",
+  "price": 2.23
  }
 ]
