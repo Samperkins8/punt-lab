@@ -276,7 +276,7 @@
   "best_book_price": 3.39,
   "verdict": "skip",
   "value": -0.2362,
-  "landed": null
+  "landed": true
  },
  {
   "multi": "Long shot $50",
