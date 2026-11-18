@@ -46,7 +46,7 @@
   "best_book_price": 2.04,
   "verdict": "marginal",
   "value": -0.0133,
-  "landed": null
+  "landed": false
  },
  {
   "multi": "2-leg $2+",
@@ -69,7 +69,7 @@
   "best_book_price": 2.01,
   "verdict": "skip",
   "value": -0.0662,
-  "landed": null
+  "landed": false
  },
  {
   "multi": "4-leg $3+",
@@ -94,7 +94,7 @@
   "best_book_price": 3.01,
   "verdict": "marginal",
   "value": 0.0029,
-  "landed": null
+  "landed": false
  },
  {
   "multi": "4-leg $4+",
@@ -119,7 +119,7 @@
   "best_book_price": 4.05,
   "verdict": "marginal",
   "value": -0.0231,
-  "landed": null
+  "landed": false
  },
  {
   "multi": "Best value",
@@ -144,7 +144,7 @@
   "best_book_price": 3.01,
   "verdict": "marginal",
   "value": 0.0029,
-  "landed": null
+  "landed": false
  },
  {
   "multi": "Safest",
@@ -220,7 +220,7 @@
   "best_book_price": 2.81,
   "verdict": "skip",
   "value": -0.1966,
-  "landed": null
+  "landed": false
  },
  {
   "multi": "Mid-range $8+",
@@ -354,6 +354,6 @@
   "best_book_price": 2.23,
   "verdict": "marginal",
   "value": 0.03,
-  "landed": null
+  "landed": false
  }
 ]
