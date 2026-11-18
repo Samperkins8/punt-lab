@@ -3,7 +3,7 @@
  "headline": "Value today: Long shot $50 on Neds $50.54 (needs $40.54). Note: no 3-leg value multi pays $2, so it's left out; spread the legs around so one miss can't sink most multis: Best value.",
  "injuries": "Jock Landale (Out), Kingston Flemings (Out), Asa Newell (Out), Cj Mccollum (Out), Mouhamed Gueye (Out), Henri Veesaar (Out), Tobe Awaka (Out), Caleb Wilson (Out), Jaylon Tyson (Out), Nae'Qwan Tomlin (Out), Sam Merrill (Out), Evan Mobley (Out) and others",
  "graded": "Yesterday: 30 of 42 legs landed; 4-leg $2+ missed, 3-leg $2+ missed, 2-leg $2+ missed, 4-leg $3+ missed, 4-leg $4+ missed, Best value missed, Safest missed, 3-leg value missed, One per game missed, Mid-range $8+ missed, Long multi 8+ landed, Long shot $50 missed, Top pick missed, Second pick missed.",
- "next_run": "Built 8:37am; re-checked before the first tip",
+ "next_run": "Late check 9:52am — MEM @ CLE, HOU @ IND, MIL @ MIA, PHI @ ORL: Andrew Nembhard out; 1 new leg worth a look; prices refreshed",
  "sources": {
   "stats": "ESPN",
   "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API (5 games, 184 credits left)",
@@ -104,5 +104,15 @@
   "SAME_GAME_OTHER": 0.042,
   "WIN_VS_OPPONENT": -0.2
  },
- "recheck_at": "2026-11-19T09:38:00+11:00"
+ "recheck_at": "2026-11-19T09:38:00+11:00",
+ "late_refreshes": 1,
+ "late_checked": [
+  "HOU @ IND",
+  "MEM @ CLE",
+  "MIL @ MIA",
+  "PHI @ ORL"
+ ],
+ "late_log": [
+  "9:52am MEM @ CLE, HOU @ IND, MIL @ MIA, PHI @ ORL: Andrew Nembhard out; 1 new leg worth a look; prices refreshed"
+ ]
 }
