@@ -3,7 +3,7 @@
  "headline": "Value today: Top pick on Neds $3.14 (needs $2.98); Long shot $50 on Neds $50.15 (needs $43.99). Note: spread the legs around so one miss can't sink most multis: 2-leg $2+, 3-leg value, 4-leg $4+.",
  "injuries": "Jock Landale (Out), Kingston Flemings (Out), Asa Newell (Out), Cj Mccollum (Out), Mouhamed Gueye (Out), Henri Veesaar (Out), Tobe Awaka (Out), Caleb Wilson (Out), Jaylon Tyson (Out), Nae'Qwan Tomlin (Out), Evan Mobley (Out), Sergio De Larrea (Out) and others",
  "graded": "",
- "next_run": "Re-checked 10:24am: 11 multi(s) changed: 3-leg $2+, 2-leg $2+, 4-leg $4+, Best value, 3-leg value, One per game, Mid-range $8+, Long multi 8+, Long shot $50, Top pick, Second pick",
+ "next_run": "Late check 10:50am — CHI @ BKN, WSH @ TOR, DET @ NO, ATL @ OKC, GS @ DAL: no new outs; 2 new legs worth a look; prices refreshed",
  "sources": {
   "stats": "ESPN",
   "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API",
@@ -103,13 +103,19 @@
  },
  "rechecked_at": "2026-11-19T10:24:49.838740+11:00",
  "late_checked": [
+  "ATL @ OKC",
+  "CHI @ BKN",
+  "DET @ NO",
+  "GS @ DAL",
   "HOU @ IND",
   "MEM @ CLE",
   "MIL @ MIA",
-  "PHI @ ORL"
+  "PHI @ ORL",
+  "WSH @ TOR"
  ],
- "late_refreshes": 1,
+ "late_refreshes": 2,
  "late_log": [
-  "9:52am MEM @ CLE, HOU @ IND, MIL @ MIA, PHI @ ORL: Andrew Nembhard out; 1 new leg worth a look; prices refreshed"
+  "9:52am MEM @ CLE, HOU @ IND, MIL @ MIA, PHI @ ORL: Andrew Nembhard out; 1 new leg worth a look; prices refreshed",
+  "10:50am CHI @ BKN, WSH @ TOR, DET @ NO, ATL @ OKC, GS @ DAL: no new outs; 2 new legs worth a look; prices refreshed"
  ]
 }
