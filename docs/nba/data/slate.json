@@ -14,9 +14,9 @@
   "tip": "11:00am",
   "start": "2026-11-19T11:00:00+11:00",
   "favourite": "HOU",
-  "spread": -7.5,
-  "total": 225.5,
-  "fav_win_prob": 0.734,
+  "spread": -8.5,
+  "total": 224.5,
+  "fav_win_prob": 0.761,
   "status": "Analysed"
  },
  {
@@ -24,19 +24,19 @@
   "tip": "11:00am",
   "start": "2026-11-19T11:00:00+11:00",
   "favourite": "MIA",
-  "spread": -11.5,
+  "spread": -12.5,
   "total": 235.5,
-  "fav_win_prob": 0.831,
+  "fav_win_prob": 0.851,
   "status": "Analysed"
  },
  {
   "game": "PHI @ ORL",
   "tip": "11:00am",
   "start": "2026-11-19T11:00:00+11:00",
-  "favourite": "PHI",
-  "spread": -1.5,
-  "total": 221.5,
-  "fav_win_prob": 0.55,
+  "favourite": "ORL",
+  "spread": -2.5,
+  "total": 220.5,
+  "fav_win_prob": 0.583,
   "status": "Analysed"
  },
  {
@@ -44,9 +44,9 @@
   "tip": "11:30am",
   "start": "2026-11-19T11:30:00+11:00",
   "favourite": "BKN",
-  "spread": -2.5,
-  "total": 239.5,
-  "fav_win_prob": 0.583,
+  "spread": -1.5,
+  "total": 238.5,
+  "fav_win_prob": 0.55,
   "status": "Analysed"
  },
  {
@@ -54,9 +54,9 @@
   "tip": "11:30am",
   "start": "2026-11-19T11:30:00+11:00",
   "favourite": "TOR",
-  "spread": -4.5,
-  "total": 225.5,
-  "fav_win_prob": 0.646,
+  "spread": -3.5,
+  "total": 223.5,
+  "fav_win_prob": 0.615,
   "status": "Analysed"
  },
  {
@@ -65,7 +65,7 @@
   "start": "2026-11-19T12:00:00+11:00",
   "favourite": "DET",
   "spread": -4.5,
-  "total": 225.5,
+  "total": 226.5,
   "fav_win_prob": 0.646,
   "status": "Analysed"
  },
@@ -74,9 +74,9 @@
   "tip": "12:00pm",
   "start": "2026-11-19T12:00:00+11:00",
   "favourite": "OKC",
-  "spread": -5.5,
+  "spread": -6.5,
   "total": 228.5,
-  "fav_win_prob": 0.677,
+  "fav_win_prob": 0.706,
   "status": "Analysed"
  },
  {
@@ -95,7 +95,7 @@
   "start": "2026-11-19T13:30:00+11:00",
   "favourite": "BOS",
   "spread": -2.5,
-  "total": 218.5,
+  "total": 219.5,
   "fav_win_prob": 0.583,
   "status": "Analysed"
  },
@@ -105,7 +105,7 @@
   "start": "2026-11-19T14:00:00+11:00",
   "favourite": "LAL",
   "spread": -12.5,
-  "total": 231.5,
+  "total": 230.5,
   "fav_win_prob": 0.851,
   "status": "Analysed"
  },
@@ -114,9 +114,9 @@
   "tip": "2:00pm",
   "start": "2026-11-19T14:00:00+11:00",
   "favourite": "PHX",
-  "spread": -6.5,
+  "spread": -7.5,
   "total": 226.5,
-  "fav_win_prob": 0.706,
+  "fav_win_prob": 0.734,
   "status": "Analysed"
  }
 ]
