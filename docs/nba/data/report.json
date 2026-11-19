@@ -121,5 +121,15 @@
   "10:50am CHI @ BKN, WSH @ TOR, DET @ NO, ATL @ OKC, GS @ DAL: no new outs; 2 new legs worth a look; prices refreshed",
   "1:17pm UTAH @ LAL, PHX @ SAC: no new outs; 1 new leg worth a look"
  ],
- "close_fetches": 1
+ "close_fetches": 1,
+ "final_games": [
+  "ATL @ OKC",
+  "CHI @ BKN",
+  "GS @ DAL",
+  "HOU @ IND",
+  "MEM @ CLE",
+  "MIL @ MIA",
+  "PHI @ ORL",
+  "WSH @ TOR"
+ ]
 }

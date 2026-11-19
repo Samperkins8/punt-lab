@@ -46,7 +46,12 @@
   "step_up": false,
   "note": "",
   "event_id": "401910009",
-  "athlete_id": "6475"
+  "athlete_id": "6475",
+  "actual": 4.0,
+  "landed": true,
+  "minutes_played": 23,
+  "expected_minutes": 24,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 3.3 threes tonight, needs 1+. This season 3.5 a game over 11 games. Slower game expected (-1% for pace). Tonight's line is 4 points easier than his team's usual (favourites by 4.5), so they're expected to score more (+3%). GS gives up less to his position than average (-2%). Bookies' line: 3.5.",
@@ -97,7 +102,12 @@
   "event_id": "401910016",
   "athlete_id": "6442",
   "late_checked": "10:50am",
-  "late_was": null
+  "late_was": null,
+  "actual": 1.0,
+  "landed": true,
+  "minutes_played": 29,
+  "expected_minutes": 31,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 6.2 rebounds tonight, needs 4+. This season 6.8 a game over 14 games; last season 7.0 over 56. Washington averaged 6.1 in the 11 games with Marshall (6.8 across all 14), so he's predicted 0.5 rebounds fewer tonight.",
@@ -148,7 +158,12 @@
   "event_id": "401910016",
   "athlete_id": "4278078",
   "late_checked": "10:50am",
-  "late_was": null
+  "late_was": null,
+  "actual": 5.0,
+  "landed": true,
+  "minutes_played": 25,
+  "expected_minutes": 31,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 2.0 threes tonight, needs 1+. This season 1.4 a game over 14 games; last season 2.1 over 69. Faster game expected (+2% for pace). Tonight's line is 10 points easier than his team's usual (favourites by 12.5), so they're expected to score more (+6%). MIL gives up more to his position than average (+5%). Expected minutes 28.5 vs his usual 26.6.",
@@ -204,7 +219,12 @@
   "athlete_id": "3059319",
   "close_books": {
    "neds": 1.25
-  }
+  },
+  "actual": 1.0,
+  "landed": true,
+  "minutes_played": 26,
+  "expected_minutes": 28,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 15.4 points tonight, needs 10+. This season 15.8 a game over 14 games; last season 15.3 over 76. Jaquez averaged 15.1 in the 13 games with Turner (15.8 across all 14), so he's predicted 0.5 points fewer tonight. Plays better on the road: 1.7 points more predicted. Faster game expected (+2% for pace). MIA gives up less to his position than average (-4%). Bookies' line: 14.5.",
@@ -260,7 +280,12 @@
   "athlete_id": "4432848",
   "close_books": {
    "neds": 1.16
-  }
+  },
+  "actual": 10.0,
+  "landed": true,
+  "minutes_played": 23,
+  "expected_minutes": 28,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 5.9 rebounds tonight, needs 4+. This season 5.3 a game over 14 games; last season 5.7 over 62. Williamson averaged 6.7 in the 6 games without Murray (5.3 across all 14), so he's predicted 0.8 rebounds more tonight. DET gives up more to his position than average (+2%). Bookies' line: 5.5.",
@@ -374,7 +399,12 @@
   "athlete_id": "4278053",
   "close_books": {
    "neds": 1.22
-  }
+  },
+  "actual": 24.0,
+  "landed": true,
+  "minutes_played": 36,
+  "expected_minutes": 36,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 1.7 threes tonight, needs 1+. This season 2.1 a game over 14 games; last season 1.4 over 56. Slower game expected (-1% for pace). Tonight's line is 4 points easier than his team's usual (favourites by 4.5), so they're expected to score more (+3%). GS gives up less to his position than average (-10%).",
@@ -425,7 +455,12 @@
   "event_id": "401910016",
   "athlete_id": "4278078",
   "late_checked": "10:50am",
-  "late_was": null
+  "late_was": null,
+  "actual": 5.0,
+  "landed": true,
+  "minutes_played": 25,
+  "expected_minutes": 31,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 2.6 assists tonight, needs 2+. This season 2.6 a game over 14 games; last season 3.2 over 62. DET gives up less to his position than average (-9%). Bookies' line: 2.5.",
@@ -539,7 +574,12 @@
   "athlete_id": "4432848",
   "close_books": {
    "neds": 1.28
-  }
+  },
+  "actual": 1.0,
+  "landed": true,
+  "minutes_played": 23,
+  "expected_minutes": 28,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 14.8 points tonight, needs 10+. This season 15.2 a game over 15 games; last season 15.8 over 77. Smith averaged 14.6 in the 12 games with VanVleet (15.2 across all 15), so he's predicted 0.4 points fewer tonight. Plays a bit worse on the road: 0.9 points fewer predicted. Tonight's line is 5 points easier than his team's usual (favourites by 8.5), so they're expected to score more (+2%). IND gives up more to his position than average (+6%).",
@@ -588,7 +628,12 @@
   "step_up": false,
   "note": "",
   "event_id": "401910008",
-  "athlete_id": "4432639"
+  "athlete_id": "4432639",
+  "actual": 17.0,
+  "landed": true,
+  "minutes_played": 26,
+  "expected_minutes": 34,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 15.3 points tonight, needs 10+. This season 17.7 a game over 15 games; last season 14.8 over 48. George averaged 16.8 in the 13 games with Davis (17.7 across all 15), so he's predicted 0.6 points fewer tonight. Plays better on the road: 0.9 points more predicted. Slower game expected (-1% for pace). Tonight's line is 5 points easier than his team's usual (underdogs by 3.5), so they're expected to score more (+2%). TOR gives up less to his position than average (-5%). Bookies' line: 14.5.",
@@ -646,7 +691,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.2
-  }
+  },
+  "actual": 20.0,
+  "landed": true,
+  "minutes_played": 40,
+  "expected_minutes": 33,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 21.3 points tonight, needs 15+. This season 23.1 a game over 13 games; last season 23.4 over 64. Siakam averaged 25.5 in the 2 games without Nembhard (23.1 across all 13), so he's predicted 0.7 points more tonight. Tonight's line is 9 points tougher than his team's usual (underdogs by 8.5), so they're expected to score less (-3%). Bookies' line: 20.5.",
@@ -702,7 +752,12 @@
   "athlete_id": "3149673",
   "close_books": {
    "neds": 1.16
-  }
+  },
+  "actual": 24.0,
+  "landed": true,
+  "minutes_played": 33,
+  "expected_minutes": 32,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 2.8 assists tonight, needs 2+. This season 2.7 a game over 12 games; last season 4.1 over 84. Plays a bit worse at home: 0.3 assists fewer predicted. Slower game expected (-2% for pace). Bookies' line: 2.5.",
@@ -760,7 +815,12 @@
   "athlete_id": "4066320",
   "close_books": {
    "neds": 1.24
-  }
+  },
+  "actual": 3.0,
+  "landed": true,
+  "minutes_played": 38,
+  "expected_minutes": 35,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 14.8 points tonight, needs 10+. This season 14.5 a game over 14 games; last season 14.4 over 5. Kessler averaged 17.5 in the 2 games without Reaves (14.5 across all 14), so he's predicted 0.9 points more tonight. Plays better at home: 1.5 points more predicted. Tonight's line is 3 points easier than his team's usual (favourites by 11.5), so they're expected to score more (+1%). Expected minutes 29.3 vs his usual 30.9. Bookies' line: 14.5.",
@@ -874,7 +934,12 @@
   "athlete_id": "4712849",
   "close_books": {
    "neds": 1.22
-  }
+  },
+  "actual": 15.0,
+  "landed": true,
+  "minutes_played": 37,
+  "expected_minutes": 32,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 21.9 points tonight, needs 15+. This season 22.8 a game over 13 games; last season 19.8 over 74. Sengun averaged 24.4 in the 10 games with VanVleet (22.8 across all 13), so he's predicted 1.1 points more tonight. Plays a bit worse on the road: 0.8 points fewer predicted. Tonight's line is 5 points easier than his team's usual (favourites by 8.5), so they're expected to score more (+2%). IND gives up more to his position than average (+9%). Bookies' line: 20.5.",
@@ -930,6 +995,16 @@
   "athlete_id": "4871144",
   "close_books": {
    "neds": 1.2
+  },
+  "actual": 7.0,
+  "landed": false,
+  "minutes_played": 14,
+  "expected_minutes": 34,
+  "minutes_flag": "injured",
+  "left_early": {
+   "minutes": 14,
+   "expected": 34,
+   "injury": "Day-To-Day Sengun (eye) will not return to Wednesday's game against the Pacers, Will Guillory of The Athletic reports."
   }
  },
  {
@@ -986,7 +1061,12 @@
   "athlete_id": "3134907",
   "close_books": {
    "neds": 1.26
-  }
+  },
+  "actual": 1.0,
+  "landed": false,
+  "minutes_played": 30,
+  "expected_minutes": 26,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 15.3 points tonight, needs 10+. This season 13.8 a game over 13 games; last season 20.1 over 58. Plays better on the road: 0.6 points more predicted. Tonight's line is 12 points easier than his team's usual (favourites by 7.5), so they're expected to score more (+4%). Bookies' line: 13.5.",
@@ -1104,7 +1184,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.24
-  }
+  },
+  "actual": 12.0,
+  "landed": true,
+  "minutes_played": 38,
+  "expected_minutes": 33,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 15.1 points tonight, needs 10+. This season 14.7 a game over 13 games; last season 17.2 over 79. Tonight's line is 12 points easier than his team's usual (favourites by 7.5), so they're expected to score more (+4%). SAC gives up more to his position than average (+3%). Bookies' line: 13.5.",
@@ -1222,7 +1307,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.26
-  }
+  },
+  "actual": 14.0,
+  "landed": true,
+  "minutes_played": 26,
+  "expected_minutes": 26,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 5.0 rebounds tonight, needs 4+. This season 5.6 a game over 12 games; last season 5.3 over 38. Plays a bit worse on the road: 0.3 rebounds fewer predicted. Slower game expected (-1% for pace). DEN gives up less to his position than average (-7%). Bookies' line: 5.5.",
@@ -1333,7 +1423,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.22
-  }
+  },
+  "actual": 14.0,
+  "landed": true,
+  "minutes_played": 21,
+  "expected_minutes": 25,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 26.9 points tonight, needs 20+. This season 24.1 a game over 14 games; last season 26.9 over 73. Mitchell averaged 32.0 in the 2 games without Mobley (24.1 across all 14), so he's predicted 2.2 points more tonight. Plays better at home: 0.9 points more predicted. Faster game expected (+2% for pace). Bookies' line: 25.5.",
@@ -1386,7 +1481,12 @@
   "step_up": false,
   "note": "",
   "event_id": "401910007",
-  "athlete_id": "3908809"
+  "athlete_id": "3908809",
+  "actual": 34.0,
+  "landed": true,
+  "minutes_played": 35,
+  "expected_minutes": 33,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 21.3 points tonight, needs 20+. This season 23.1 a game over 13 games; last season 23.4 over 64. Siakam averaged 25.5 in the 2 games without Nembhard (23.1 across all 13), so he's predicted 0.7 points more tonight. Tonight's line is 9 points tougher than his team's usual (underdogs by 8.5), so they're expected to score less (-3%). Bookies' line: 20.5.",
@@ -1442,7 +1542,12 @@
   "athlete_id": "3149673",
   "close_books": {
    "neds": 1.55
-  }
+  },
+  "actual": 24.0,
+  "landed": true,
+  "minutes_played": 33,
+  "expected_minutes": 32,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 21.9 points tonight, needs 20+. This season 22.8 a game over 13 games; last season 19.8 over 74. Sengun averaged 24.4 in the 10 games with VanVleet (22.8 across all 13), so he's predicted 1.1 points more tonight. Plays a bit worse on the road: 0.8 points fewer predicted. Tonight's line is 5 points easier than his team's usual (favourites by 8.5), so they're expected to score more (+2%). IND gives up more to his position than average (+9%). Bookies' line: 20.5.",
@@ -1498,6 +1603,16 @@
   "athlete_id": "4871144",
   "close_books": {
    "neds": 1.67
+  },
+  "actual": 7.0,
+  "landed": false,
+  "minutes_played": 14,
+  "expected_minutes": 34,
+  "minutes_flag": "injured",
+  "left_early": {
+   "minutes": 14,
+   "expected": 34,
+   "injury": "Day-To-Day Sengun (eye) will not return to Wednesday's game against the Pacers, Will Guillory of The Athletic reports."
   }
  },
  {
@@ -1554,7 +1669,12 @@
   "athlete_id": "3059319",
   "close_books": {
    "neds": 2.1
-  }
+  },
+  "actual": 1.0,
+  "landed": false,
+  "minutes_played": 26,
+  "expected_minutes": 28,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 2.0 threes tonight, needs 2+. This season 2.0 a game over 14 games; last season 0.8 over 76. Faster game expected (+2% for pace). MIA gives up less to his position than average (-4%).",
@@ -1610,7 +1730,12 @@
   "athlete_id": "4432848",
   "close_books": {
    "neds": 2.2
-  }
+  },
+  "actual": 1.0,
+  "landed": false,
+  "minutes_played": 23,
+  "expected_minutes": 28,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 15.3 points tonight, needs 15+. This season 17.7 a game over 15 games; last season 14.8 over 48. George averaged 16.8 in the 13 games with Davis (17.7 across all 15), so he's predicted 0.6 points fewer tonight. Plays better on the road: 0.9 points more predicted. Slower game expected (-1% for pace). Tonight's line is 5 points easier than his team's usual (underdogs by 3.5), so they're expected to score more (+2%). TOR gives up less to his position than average (-5%). Bookies' line: 14.5.",
@@ -1668,7 +1793,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.87
-  }
+  },
+  "actual": 20.0,
+  "landed": true,
+  "minutes_played": 40,
+  "expected_minutes": 33,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 15.3 points tonight, needs 15+. This season 13.8 a game over 13 games; last season 20.1 over 58. Plays better on the road: 0.6 points more predicted. Tonight's line is 12 points easier than his team's usual (favourites by 7.5), so they're expected to score more (+4%). Bookies' line: 13.5.",
@@ -1844,7 +1974,12 @@
   "athlete_id": "4903027",
   "close_books": {
    "neds": 1.13
-  }
+  },
+  "actual": 19.0,
+  "landed": true,
+  "minutes_played": 33,
+  "expected_minutes": 29,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 16.3 points tonight, needs 10+. This season 15.8 a game over 14 games; last season 18.3 over 79. Thompson averaged 15.2 in the 12 games with Sengun (15.8 across all 14), so he's predicted 0.4 points fewer tonight. Plays better on the road: 1.7 points more predicted. Tonight's line is 5 points easier than his team's usual (favourites by 8.5), so they're expected to score more (+2%). IND gives up less to his position than average (-2%). Bookies' line: 15.5.",
@@ -1897,7 +2032,12 @@
   "step_up": false,
   "note": "",
   "event_id": "401910008",
-  "athlete_id": "4684740"
+  "athlete_id": "4684740",
+  "actual": 15.0,
+  "landed": true,
+  "minutes_played": 31,
+  "expected_minutes": 33,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 3.3 assists tonight, needs 2+. This season 3.2 a game over 14 games; last season 3.1 over 74. Faster game expected (+2% for pace). Tonight's line is 10 points easier than his team's usual (favourites by 12.5), so they're expected to score more (+2%). Bookies' line: 3.5.",
@@ -1953,7 +2093,12 @@
   "athlete_id": "4066261",
   "close_books": {
    "neds": 1.14
-  }
+  },
+  "actual": 2.0,
+  "landed": true,
+  "minutes_played": 30,
+  "expected_minutes": 32,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 3.4 assists tonight, needs 2+. This season 3.7 a game over 14 games; last season 4.2 over 76. Plays a bit worse on the road: 0.5 assists fewer predicted. Slower game expected (-2% for pace). ORL gives up more to his position than average (+2%). Bookies' line: 3.5.",
@@ -2011,7 +2156,12 @@
   "athlete_id": "5124612",
   "close_books": {
    "neds": 1.13
-  }
+  },
+  "actual": 6.0,
+  "landed": true,
+  "minutes_played": 43,
+  "expected_minutes": 33,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 3.1 assists tonight, needs 2+. This season 2.7 a game over 14 games; last season 3.7 over 78. Tonight's line is 5 points tougher than his team's usual (underdogs by 6.5), so they're expected to score less (-1%). OKC gives up less to his position than average (-3%). Bookies' line: 3.5.",
@@ -2071,7 +2221,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.15
-  }
+  },
+  "actual": 7.0,
+  "landed": true,
+  "minutes_played": 32,
+  "expected_minutes": 32,
+  "minutes_flag": null
  },
  {
   "why": "Cleveland Cavaliers are 4.5-point favourites. The bookies' head-to-head prices (margin removed) and the betting line together make that about a 63% chance to win, fair price $1.58. Pays $1.55 at Neds.",
@@ -2126,7 +2281,9 @@
   "step_up": false,
   "note": "4.5-point favourite",
   "event_id": "401910007",
-  "athlete_id": null
+  "athlete_id": null,
+  "actual": 0,
+  "landed": false
  },
  {
   "why": "Houston Rockets are 8.5-point favourites. The bookies' head-to-head prices (margin removed) and the betting line together make that about a 73% chance to win, fair price $1.37. Pays $1.35 at Neds.",
@@ -2181,7 +2338,9 @@
   "step_up": false,
   "note": "8.5-point favourite",
   "event_id": "401910008",
-  "athlete_id": null
+  "athlete_id": null,
+  "actual": 1,
+  "landed": true
  },
  {
   "why": "Orlando Magic are 2.5-point favourites. The bookies' head-to-head prices (margin removed) and the betting line together make that about a 52% chance to win, fair price $1.93. Pays $2.00 at TAB.",
@@ -2236,7 +2395,9 @@
   "step_up": false,
   "note": "2.5-point favourite",
   "event_id": "401910010",
-  "athlete_id": null
+  "athlete_id": null,
+  "actual": 0,
+  "landed": false
  },
  {
   "why": "Toronto Raptors are 3.5-point favourites. The bookies' head-to-head prices (margin removed) and the betting line together make that about a 63% chance to win, fair price $1.60. Pays $1.55 at Neds.",
@@ -2291,7 +2452,9 @@
   "step_up": false,
   "note": "3.5-point favourite",
   "event_id": "401910012",
-  "athlete_id": null
+  "athlete_id": null,
+  "actual": 0,
+  "landed": false
  },
  {
   "why": "Detroit Pistons are 4.5-point favourites. The bookies' head-to-head prices (margin removed) and the betting line together make that about a 63% chance to win, fair price $1.58. Pays $1.57 at Neds.",
@@ -2401,7 +2564,9 @@
   "step_up": false,
   "note": "6.5-point favourite",
   "event_id": "401910014",
-  "athlete_id": null
+  "athlete_id": null,
+  "actual": 0,
+  "landed": false
  },
  {
   "why": "Dallas Mavericks are 4.5-point favourites. The bookies' head-to-head prices (margin removed) and the betting line together make that about a 63% chance to win, fair price $1.59. Pays $1.55 at Neds.",
@@ -2456,7 +2621,9 @@
   "step_up": false,
   "note": "4.5-point favourite",
   "event_id": "401910016",
-  "athlete_id": null
+  "athlete_id": null,
+  "actual": 1,
+  "landed": true
  },
  {
   "why": "Phoenix Suns are 7.5-point favourites. The bookies' head-to-head prices (margin removed) and the betting line together make that about a 71% chance to win, fair price $1.41. Pays $1.39 at TAB.",
@@ -2568,7 +2735,12 @@
   "event_id": "401910011",
   "athlete_id": "4871145",
   "late_new": true,
-  "late_checked": "10:50am"
+  "late_checked": "10:50am",
+  "actual": 14.0,
+  "landed": true,
+  "minutes_played": 28,
+  "expected_minutes": 28,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 21.2 points tonight, needs 15+. This season 21.5 a game over 14 games; last season 21.0 over 62. Williamson averaged 22.8 in the 5 games without Murphy (21.5 across all 14), so he's predicted 0.7 points more tonight. DET gives up less to his position than average (-5%). Bookies' line: 21.5.",
