@@ -1,15 +1,15 @@
 {
  "slate_date": "2026-11-20",
- "headline": "Skip today: no multi beats its break-even price by 5%. Closest: Top pick on Neds $2.14 (needs $2.25). Note: only 6 legs are 80%+ likely at $1.15+, so the long multi is short; the one-per-game multi only pays about $1.87, under $2, so it's left out; 3-leg value includes legs without a confirmed worth-it price; spread the legs around so one miss can't sink most multis: Best value, 3-leg value, 4-leg $4+.",
+ "headline": "Skip today: no multi beats its break-even price by 5%. Closest: 3-leg $2+ on Neds $2.03 (needs $2.13). Note: only 6 legs are 80%+ likely at $1.15+, so the long multi is short; the one-per-game multi only pays about $1.87, under $2, so it's left out; 3-leg value includes legs without a confirmed worth-it price; spread the legs around so one miss can't sink most multis: Best value, 3-leg value, 4-leg $4+.",
  "injuries": "Draymond Green (Out), Brandon Williams (Out), Stephen Curry (Out), Kristaps Porzingis (Out), Moses Moody (Out), Jimmy Butler Iii (Out), Brandon Ingram (Out), Bradley Beal (Out), Jordan Miller (Out), Zach Edey (Out), Ty Jerome (Out), Gg Jackson (Out) and others",
- "graded": "Yesterday: 37 of 48 legs landed; 4-leg $2+ missed, 3-leg $2+ landed, 2-leg $2+ missed, 4-leg $3+ missed, 4-leg $4+ missed, Best value missed, Safest missed, 3-leg value missed, One per game landed, Mid-range $8+ missed, Long multi 8+ landed, Long shot $50 missed, Top pick missed, Second pick missed.",
- "next_run": "Built 8:32am; re-checked before the first tip",
+ "graded": "",
+ "next_run": "Re-checked 10:19am: 3 multi(s) changed: 4-leg $4+, 3-leg value, Second pick",
  "sources": {
   "stats": "ESPN",
-  "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API (3 games, 172 credits left)",
+  "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API",
   "injury_reading": "Claude"
  },
- "updated_at": "2026-11-20T08:32:46.996408+11:00",
+ "updated_at": "2026-11-20T10:19:53.780542+11:00",
  "inj_snapshot": {
   "draymond green": "Out",
   "lj cryer": "Day-To-Day",
@@ -51,5 +51,5 @@
   "SAME_GAME_OTHER": 0.042,
   "WIN_VS_OPPONENT": -0.2
  },
- "recheck_at": "2026-11-20T09:38:00+11:00"
+ "rechecked_at": "2026-11-20T10:19:53.780542+11:00"
 }
