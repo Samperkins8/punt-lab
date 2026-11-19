@@ -343,7 +343,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.2
-  }
+  },
+  "actual": 7.0,
+  "landed": true,
+  "minutes_played": 32,
+  "expected_minutes": 32,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 14.4 points tonight, needs 10+. This season 16.7 a game over 14 games; last season 9.6 over 71. Faster game expected (+2% for pace). Tonight's line is 10 points easier than his team's usual (favourites by 12.5), so they're expected to score more (+3%). Bookies' line: 14.5.",
@@ -518,7 +523,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.24
-  }
+  },
+  "actual": 1.0,
+  "landed": false,
+  "minutes_played": 32,
+  "expected_minutes": 32,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 2.0 threes tonight, needs 1+. This season 2.0 a game over 14 games; last season 0.8 over 76. Faster game expected (+2% for pace). MIA gives up less to his position than average (-4%).",
@@ -2509,7 +2519,9 @@
   "step_up": false,
   "note": "4.5-point favourite",
   "event_id": "401910013",
-  "athlete_id": null
+  "athlete_id": null,
+  "actual": 1,
+  "landed": true
  },
  {
   "why": "Oklahoma City Thunder are 6.5-point favourites. The bookies' head-to-head prices (margin removed) and the betting line together make that about a 68% chance to win, fair price $1.46. Pays $1.43 at TAB.",
@@ -2795,7 +2807,12 @@
   "event_id": "401910013",
   "athlete_id": "4395628",
   "late_new": true,
-  "late_checked": "10:50am"
+  "late_checked": "10:50am",
+  "actual": 24.0,
+  "landed": true,
+  "minutes_played": 32,
+  "expected_minutes": 32,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 6.0 rebounds tonight, needs 4+. This season 7.0 a game over 13 games; last season 5.8 over 79. Tonight's line is 12 points easier than his team's usual (favourites by 7.5), so they're expected to score more (+1%). Bookies' line: 5.5.",
