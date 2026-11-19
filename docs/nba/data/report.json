@@ -124,6 +124,7 @@
  "close_fetches": 1,
  "final_games": [
   "ATL @ OKC",
+  "BOS @ DEN",
   "CHI @ BKN",
   "DET @ NO",
   "GS @ DAL",
@@ -131,6 +132,8 @@
   "MEM @ CLE",
   "MIL @ MIA",
   "PHI @ ORL",
+  "PHX @ SAC",
+  "UTAH @ LAL",
   "WSH @ TOR"
  ]
 }

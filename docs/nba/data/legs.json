@@ -888,7 +888,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.26
-  }
+  },
+  "actual": 10.0,
+  "landed": true,
+  "minutes_played": 31,
+  "expected_minutes": 29,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 14.4 points tonight, needs 10+. This season 16.7 a game over 10 games; last season 14.8 over 66. Black averaged 14.9 in the 8 games with Silva (16.7 across all 10), so he's predicted 1.1 points fewer tonight. Plays a bit worse at home: 0.5 points fewer predicted. Slower game expected (-2% for pace). Bookies' line: 14.5.",
@@ -1136,7 +1141,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.26
-  }
+  },
+  "actual": 29.0,
+  "landed": true,
+  "minutes_played": 31,
+  "expected_minutes": 29,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 5.6 rebounds tonight, needs 4+. This season 6.1 a game over 11 games. TOR gives up less to his position than average (-4%). Bookies' line: 5.5.",
@@ -1259,7 +1269,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.22
-  }
+  },
+  "actual": 13.0,
+  "landed": true,
+  "minutes_played": 29,
+  "expected_minutes": 29,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 12.4 points tonight, needs 10+. This season 13.9 a game over 14 games; last season 9.4 over 65. Plays a bit worse on the road: 1.0 points fewer predicted. Tonight's line is 5 points tougher than his team's usual (underdogs by 6.5), so they're expected to score less (-2%). Bookies' line: 13.5.",
@@ -1375,7 +1390,12 @@
   "step_up": false,
   "note": "",
   "event_id": "401910015",
-  "athlete_id": "4251"
+  "athlete_id": "4251",
+  "actual": 4.0,
+  "landed": true,
+  "minutes_played": 23,
+  "expected_minutes": 30,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 13.0 points tonight, needs 10+. This season 13.3 a game over 12 games; last season 10.2 over 53. Smith averaged 12.0 in the 10 games with Powell (13.3 across all 12), so he's predicted 0.9 points fewer tonight. Plays a bit worse on the road: 1.3 points fewer predicted. Faster game expected (+2% for pace). Tonight's line is 9 points easier than his team's usual (underdogs by 1.5), so they're expected to score more (+3%). BKN gives up more to his position than average (+4%). Bookies' line: 14.5.",
@@ -1868,7 +1888,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.98
-  }
+  },
+  "actual": 29.0,
+  "landed": true,
+  "minutes_played": 31,
+  "expected_minutes": 29,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 15.1 points tonight, needs 15+. This season 14.7 a game over 13 games; last season 17.2 over 79. Tonight's line is 12 points easier than his team's usual (favourites by 7.5), so they're expected to score more (+4%). SAC gives up more to his position than average (+3%). Bookies' line: 13.5.",
@@ -1928,7 +1953,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.92
-  }
+  },
+  "actual": 13.0,
+  "landed": false,
+  "minutes_played": 29,
+  "expected_minutes": 29,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 15.4 points tonight, needs 10+. This season 14.1 a game over 13 games; last season 13.6 over 62. Coward averaged 17.0 in the 3 games without Jerome (14.1 across all 13), so he's predicted 1.1 points more tonight. Faster game expected (+2% for pace). Tonight's line is 9 points tougher than his team's usual (underdogs by 4.5), so they're expected to score less (-3%). CLE gives up less to his position than average (-6%). Bookies' line: 16.5.",
@@ -2690,7 +2720,9 @@
   "step_up": false,
   "note": "7.5-point favourite",
   "event_id": "401910018",
-  "athlete_id": null
+  "athlete_id": null,
+  "actual": 1,
+  "landed": true
  },
  {
   "why": "Predicted 6.4 rebounds tonight, needs 4+. This season 5.2 a game over 13 games; last season 8.3 over 54. Giddey averaged 7.3 in the 3 games without Wilson (5.2 across all 13), so he's predicted 0.8 rebounds more tonight. Plays a bit worse on the road: 0.6 rebounds fewer predicted. Faster game expected (+1% for pace). Tonight's line is 9 points easier than his team's usual (underdogs by 1.5), so they're expected to score more (+1%). BKN gives up more to his position than average (+2%). Bookies' line: 6.5.",
@@ -2867,6 +2899,11 @@
   "event_id": "401910018",
   "athlete_id": "4066383",
   "late_new": true,
-  "late_checked": "1:17pm"
+  "late_checked": "1:17pm",
+  "actual": 6.0,
+  "landed": true,
+  "minutes_played": 29,
+  "expected_minutes": 29,
+  "minutes_flag": null
  }
 ]

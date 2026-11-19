@@ -44,7 +44,7 @@
   "best_book_price": 2.0,
   "verdict": "marginal",
   "value": 0.0046,
-  "landed": null
+  "landed": true
  },
  {
   "multi": "2-leg $2+",
@@ -208,7 +208,7 @@
   "best_book_price": null,
   "verdict": "check",
   "value": null,
-  "landed": null
+  "landed": true
  },
  {
   "multi": "Mid-range $8+",
