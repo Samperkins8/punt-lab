@@ -1275,5 +1275,131 @@
   "landed": false,
   "verdict": "marginal",
   "price": 2.23
+ },
+ {
+  "slate_date": "2026-11-19",
+  "multi": "4-leg $2+",
+  "legs": "Klay Thompson 1+ threes; Kyrie Irving 1+ threes; Andrew Wiggins 1+ threes; Zion Williamson 2+ assists",
+  "est_hit": 0.4736,
+  "landed": false,
+  "verdict": "check",
+  "price": 2.07
+ },
+ {
+  "slate_date": "2026-11-19",
+  "multi": "3-leg $2+",
+  "legs": "Andrew Wiggins 1+ threes; Jaime Jaquez Jr. 1+ threes; Dillon Brooks 10+ points",
+  "est_hit": 0.5023,
+  "landed": true,
+  "verdict": "marginal",
+  "price": 2.0
+ },
+ {
+  "slate_date": "2026-11-19",
+  "multi": "2-leg $2+",
+  "legs": "Pascal Siakam 15+ points; Alperen Sengun 20+ points",
+  "est_hit": 0.4704,
+  "landed": false,
+  "verdict": "skip",
+  "price": 2.0
+ },
+ {
+  "slate_date": "2026-11-19",
+  "multi": "4-leg $3+",
+  "legs": "Kyrie Irving 1+ threes; Andrew Wiggins 1+ threes; Jaime Jaquez Jr. 1+ threes; Alperen Sengun 20+ points",
+  "est_hit": 0.323,
+  "landed": false,
+  "verdict": "check",
+  "price": 3.09
+ },
+ {
+  "slate_date": "2026-11-19",
+  "multi": "4-leg $4+",
+  "legs": "Klay Thompson 1+ threes; Miles Bridges 10+ points; Alperen Sengun 20+ points; Pascal Siakam 20+ points",
+  "est_hit": 0.2344,
+  "landed": false,
+  "verdict": "check",
+  "price": 4.01
+ },
+ {
+  "slate_date": "2026-11-19",
+  "multi": "Best value",
+  "legs": "Klay Thompson 1+ threes; Kyrie Irving 1+ threes; Jaime Jaquez Jr. 1+ threes; Orlando Magic Orlando Magic to win",
+  "est_hit": 0.3033,
+  "landed": false,
+  "verdict": "check",
+  "price": 3.38
+ },
+ {
+  "slate_date": "2026-11-19",
+  "multi": "Safest",
+  "legs": "Klay Thompson 1+ threes; Kyrie Irving 1+ threes; Andrew Wiggins 1+ threes; Zion Williamson 2+ assists",
+  "est_hit": 0.4736,
+  "landed": false,
+  "verdict": "check",
+  "price": 2.07
+ },
+ {
+  "slate_date": "2026-11-19",
+  "multi": "3-leg value",
+  "legs": "Klay Thompson 1+ threes; Jaime Jaquez Jr. 1+ threes; Orlando Magic Orlando Magic to win",
+  "est_hit": 0.3567,
+  "landed": false,
+  "verdict": "check",
+  "price": 2.92
+ },
+ {
+  "slate_date": "2026-11-19",
+  "multi": "One per game",
+  "legs": "Klay Thompson 1+ threes; Kyrie Irving 1+ threes; Zion Williamson 4+ rebounds; Jabari Smith Jr. 10+ points; Kyshawn George 10+ points; Desmond Bane 2+ assists; Walker Kessler 10+ points; Dillon Brooks 10+ points",
+  "est_hit": 0.1731,
+  "landed": true,
+  "verdict": "check",
+  "price": 4.29
+ },
+ {
+  "slate_date": "2026-11-19",
+  "multi": "Mid-range $8+",
+  "legs": "Kyrie Irving 1+ threes; Andrew Wiggins 1+ threes; Davion Mitchell 10+ points; Zion Williamson 2+ assists; Alperen Sengun 20+ points; Jaime Jaquez Jr. 2+ threes",
+  "est_hit": 0.1352,
+  "landed": false,
+  "verdict": "check",
+  "price": 8.03
+ },
+ {
+  "slate_date": "2026-11-19",
+  "multi": "Long multi 8+",
+  "legs": "Bam Adebayo 2+ assists; Klay Thompson 1+ threes; Kyrie Irving 1+ threes; Cedric Coward 10+ points; VJ Edgecombe 2+ assists; Nickeil Alexander-Walker 2+ assists; Amen Thompson 10+ points; Andrew Wiggins 1+ threes",
+  "est_hit": 0.2554,
+  "landed": true,
+  "verdict": "check",
+  "price": 3.5
+ },
+ {
+  "slate_date": "2026-11-19",
+  "multi": "Long shot $50",
+  "legs": "Alperen Sengun 20+ points; Kyshawn George 15+ points; Dillon Brooks 15+ points; Orlando Magic Orlando Magic to win; Andrew Wiggins 2+ threes; Miles Bridges 15+ points",
+  "est_hit": 0.0227,
+  "landed": false,
+  "verdict": "value",
+  "price": 50.15
+ },
+ {
+  "slate_date": "2026-11-19",
+  "multi": "Top pick",
+  "legs": "Andrew Wiggins 1+ threes; Jaime Jaquez Jr. 1+ threes; Orlando Magic Orlando Magic to win",
+  "est_hit": 0.3351,
+  "landed": false,
+  "verdict": "value",
+  "price": 3.14
+ },
+ {
+  "slate_date": "2026-11-19",
+  "multi": "Second pick",
+  "legs": "Zion Williamson 2+ assists; Alperen Sengun 20+ points",
+  "est_hit": 0.4672,
+  "landed": false,
+  "verdict": "skip",
+  "price": 2.07
  }
 ]
