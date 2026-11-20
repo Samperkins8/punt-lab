@@ -2,7 +2,7 @@
  {
   "why": "Predicted 3.4 threes tonight, needs 1+. This season 4.1 a game over 13 games; last season 2.0 over 84. Tonight's line is 12 points easier than his team's usual (favourites by 6.5), so they're expected to score more (+6%). Bookies' line: 3.5.",
   "venue_shift": 0.03,
-  "pace_factor": 0.992,
+  "pace_factor": 0.994,
   "side_factor": 1.06,
   "underdog": false,
   "roster_overlap": 0.67,
@@ -29,14 +29,14 @@
   "avg_minutes": 35.2,
   "proj_minutes": 35.2,
   "proj_mean": 3.4,
-  "model_prob": 0.8847,
-  "raw_prob": 0.8847,
-  "fair_price": 1.2,
+  "model_prob": 0.8827,
+  "raw_prob": 0.8827,
+  "fair_price": 1.21,
   "implied": null,
   "edge": null,
   "hit_rate": 1.0,
   "market_line": 3.5,
-  "market_p_over": 0.4612488584190233,
+  "market_p_over": 0.4576514562365387,
   "books": null,
   "best_book": null,
   "open_books": null,
@@ -46,12 +46,14 @@
   "step_up": false,
   "note": "",
   "event_id": "401909306",
-  "athlete_id": "4066320"
+  "athlete_id": "4066320",
+  "late_checked": "10:47am",
+  "late_was": null
  },
  {
   "why": "Predicted 6.2 rebounds tonight, needs 4+. This season 5.4 a game over 15 games; last season 5.7 over 62. Williamson averaged 6.7 in the 7 games without Murray (5.4 across all 15), so he's predicted 0.8 rebounds more tonight. OKC gives up more to his position than average (+11%). Bookies' line: 5.5.",
   "venue_shift": -0.05,
-  "pace_factor": 1.002,
+  "pace_factor": 1.003,
   "side_factor": 0.996,
   "underdog": true,
   "roster_overlap": 0.77,
@@ -78,14 +80,14 @@
   "avg_minutes": 32.1,
   "proj_minutes": 31.5,
   "proj_mean": 6.2,
-  "model_prob": 0.8037,
-  "raw_prob": 0.8157,
-  "fair_price": 1.3,
+  "model_prob": 0.8045,
+  "raw_prob": 0.8174,
+  "fair_price": 1.29,
   "implied": 0.8333,
-  "edge": -0.0297,
+  "edge": -0.0288,
   "hit_rate": 0.8667,
   "market_line": 5.5,
-  "market_p_over": 0.5118784591760893,
+  "market_p_over": 0.5154903917574275,
   "books": {
    "neds": 1.2,
    "tab": 1.2
@@ -101,7 +103,12 @@
   "step_up": false,
   "note": "blowout risk (OKC -11.5, he is on the underdog)",
   "event_id": "401909310",
-  "athlete_id": "4395628"
+  "athlete_id": "4395628",
+  "late_checked": "10:47am",
+  "late_was": null,
+  "close_books": {
+   "neds": 1.19
+  }
  },
  {
   "why": "Predicted 16.2 points tonight, needs 10+. This season 14.9 a game over 14 games; last season 20.1 over 58. Plays better on the road: 1.3 points more predicted. Tonight's line is 8 points easier than his team's usual (favourites by 4.5), so they're expected to score more (+3%). Bookies' line: 14.5.",
@@ -157,9 +164,9 @@
   "athlete_id": "3155526"
  },
  {
-  "why": "Predicted 15.0 points tonight, needs 10+. This season 13.1 a game over 13 games; last season 15.4 over 56. Allen averaged 13.7 in the 10 games with Watson (13.1 across all 13), so he's predicted 0.4 points more tonight. Plays better at home: 0.5 points more predicted. Faster game expected (+2% for pace). IND gives up more to his position than average (+3%). Bookies' line: 14.5.",
+  "why": "Predicted 14.9 points tonight, needs 10+. This season 13.1 a game over 13 games; last season 15.4 over 56. Allen averaged 13.7 in the 10 games with Watson (13.1 across all 13), so he's predicted 0.4 points more tonight. Plays better at home: 0.5 points more predicted. Faster game expected (+2% for pace). IND gives up more to his position than average (+3%). Bookies' line: 14.5.",
   "venue_shift": 0.47,
-  "pace_factor": 1.017,
+  "pace_factor": 1.016,
   "side_factor": 1.005,
   "underdog": false,
   "roster_overlap": 0.8,
@@ -185,15 +192,15 @@
   "minutes_factor": 1.0,
   "avg_minutes": 26.5,
   "proj_minutes": 26.5,
-  "proj_mean": 15.0,
-  "model_prob": 0.799,
-  "raw_prob": 0.8064,
+  "proj_mean": 14.9,
+  "model_prob": 0.7988,
+  "raw_prob": 0.806,
   "fair_price": 1.26,
   "implied": 0.8333,
-  "edge": -0.0343,
+  "edge": -0.0345,
   "hit_rate": 0.7692,
   "market_line": 14.5,
-  "market_p_over": 0.5101549973276323,
+  "market_p_over": 0.5096302570998097,
   "books": {
    "neds": 1.2
   },
@@ -207,12 +214,17 @@
   "step_up": false,
   "note": "",
   "event_id": "401909307",
-  "athlete_id": "4066328"
+  "athlete_id": "4066328",
+  "late_checked": "10:47am",
+  "late_was": null,
+  "close_books": {
+   "neds": 1.2
+  }
  },
  {
   "why": "Predicted 1.7 threes tonight, needs 1+. This season 1.2 a game over 14 games; last season 1.9 over 54. Faster game expected (+2% for pace). Tonight's line is 6 points easier than his team's usual (favourites by 2.5), so they're expected to score more (+4%). WSH gives up less to his position than average (-3%).",
   "venue_shift": 0.07,
-  "pace_factor": 1.025,
+  "pace_factor": 1.024,
   "side_factor": 1.039,
   "underdog": false,
   "roster_overlap": 0.66,
@@ -239,11 +251,11 @@
   "avg_minutes": 28.1,
   "proj_minutes": 28.1,
   "proj_mean": 1.7,
-  "model_prob": 0.7987,
-  "raw_prob": 0.8434,
+  "model_prob": 0.7986,
+  "raw_prob": 0.8432,
   "fair_price": null,
   "implied": 0.7937,
-  "edge": 0.005,
+  "edge": 0.0049,
   "hit_rate": 0.8571,
   "market_line": null,
   "market_p_over": null,
@@ -260,7 +272,12 @@
   "step_up": false,
   "note": "",
   "event_id": "401909309",
-  "athlete_id": "4871145"
+  "athlete_id": "4871145",
+  "late_checked": "10:47am",
+  "late_was": null,
+  "close_books": {
+   "neds": 1.25
+  }
  },
  {
   "why": "Predicted 1.7 threes tonight, needs 1+. This season 1.2 a game over 13 games; last season 1.7 over 66. Tonight's line is 2 points tougher than his team's usual (favourites by 1.5), so they're expected to score less (-1%). HOU gives up more to his position than average (+7%).",
@@ -371,7 +388,7 @@
  {
   "why": "Predicted 3.1 assists tonight, needs 2+. This season 2.7 a game over 13 games; last season 4.1 over 84. Tonight's line is 12 points easier than his team's usual (favourites by 6.5), so they're expected to score more (+3%). BKN gives up less to his position than average (-2%). Bookies' line: 2.5.",
   "venue_shift": 0.28,
-  "pace_factor": 0.992,
+  "pace_factor": 0.994,
   "side_factor": 1.026,
   "underdog": false,
   "roster_overlap": 0.67,
@@ -398,14 +415,14 @@
   "avg_minutes": 35.2,
   "proj_minutes": 35.2,
   "proj_mean": 3.1,
-  "model_prob": 0.7936,
-  "raw_prob": 0.8086,
+  "model_prob": 0.7938,
+  "raw_prob": 0.8089,
   "fair_price": 1.3,
   "implied": 0.8197,
-  "edge": -0.026,
+  "edge": -0.0259,
   "hit_rate": 0.7692,
   "market_line": 2.5,
-  "market_p_over": 0.5548292551969565,
+  "market_p_over": 0.555192405376256,
   "books": {
    "neds": 1.22
   },
@@ -419,12 +436,17 @@
   "step_up": false,
   "note": "",
   "event_id": "401909306",
-  "athlete_id": "4066320"
+  "athlete_id": "4066320",
+  "late_checked": "10:47am",
+  "late_was": null,
+  "close_books": {
+   "neds": 1.2
+  }
  },
  {
   "why": "Predicted 2.7 assists tonight, needs 2+. This season 2.5 a game over 15 games; last season 3.2 over 62. OKC gives up more to his position than average (+3%). Bookies' line: 2.5.",
   "venue_shift": -0.01,
-  "pace_factor": 1.003,
+  "pace_factor": 1.005,
   "side_factor": 0.993,
   "underdog": true,
   "roster_overlap": 0.77,
@@ -440,7 +462,7 @@
   "hits": 14,
   "games": 15,
   "log": "3, 2, 2, 2, 2, 4, 4, 2, 4, 2, 2, 4, 2, 2, 1",
-  "odds": 1.25,
+  "odds": 1.3,
   "prior_mean": 3.2,
   "prior_games": 62,
   "context_label": null,
@@ -451,28 +473,33 @@
   "avg_minutes": 32.1,
   "proj_minutes": 31.5,
   "proj_mean": 2.7,
-  "model_prob": 0.7894,
-  "raw_prob": 0.8189,
-  "fair_price": 1.23,
-  "implied": 0.8,
-  "edge": -0.0106,
+  "model_prob": 0.7718,
+  "raw_prob": 0.8128,
+  "fair_price": 1.25,
+  "implied": 0.7692,
+  "edge": 0.0025,
   "hit_rate": 0.9333,
   "market_line": 2.5,
-  "market_p_over": 0.5261596520137135,
+  "market_p_over": 0.5110658625267278,
   "books": {
-   "neds": 1.25
+   "neds": 1.3
   },
   "best_book": "neds",
   "open_books": {
    "neds": 1.25
   },
-  "best_price": 1.25,
+  "best_price": 1.3,
   "market_source": "AU bookies",
   "questionable": false,
   "step_up": false,
   "note": "blowout risk (OKC -11.5, he is on the underdog)",
   "event_id": "401909310",
-  "athlete_id": "4395628"
+  "athlete_id": "4395628",
+  "late_checked": "10:47am",
+  "late_was": null,
+  "close_books": {
+   "neds": 1.3
+  }
  },
  {
   "why": "Predicted 14.0 points tonight, needs 10+. This season 13.4 a game over 13 games; last season 10.2 over 53. Smith averaged 12.2 in the 11 games with Powell (13.4 across all 13), so he's predicted 0.8 points fewer tonight. Plays better at home: 1.5 points more predicted. Faster game expected (+2% for pace). Tonight's line is 6 points easier than his team's usual (favourites by 2.5), so they're expected to score more (+2%). Bookies' line: 14.5.",
@@ -525,7 +552,9 @@
   "step_up": false,
   "note": "Day-To-Day: Smith (illness) has been downgraded to questionable for Friday's game against th",
   "event_id": "401909309",
-  "athlete_id": "4397189"
+  "athlete_id": "4397189",
+  "late_out": "Out",
+  "late_checked": "10:47am"
  },
  {
   "why": "Predicted 14.3 points tonight, needs 10+. This season 13.2 a game over 16 games; last season 13.8 over 72. Bailey averaged 14.9 in the 8 games without Markkanen (13.2 across all 16), so he's predicted 1.0 points more tonight. Plays better at home: 0.6 points more predicted. PHX gives up less to his position than average (-5%). Bookies' line: 14.5.",
@@ -1065,7 +1094,7 @@
  {
   "why": "Predicted 2.7 assists tonight, needs 2+. This season 2.8 a game over 8 games; last season 3.3 over 52. ORL gives up less to his position than average (-4%). Bookies' line: 2.5.",
   "venue_shift": 0.0,
-  "pace_factor": 0.992,
+  "pace_factor": 0.994,
   "side_factor": 0.994,
   "underdog": true,
   "roster_overlap": 1.0,
@@ -1092,14 +1121,14 @@
   "avg_minutes": 24.2,
   "proj_minutes": 24.2,
   "proj_mean": 2.7,
-  "model_prob": 0.7668,
-  "raw_prob": 0.7796,
+  "model_prob": 0.767,
+  "raw_prob": 0.7801,
   "fair_price": 1.29,
   "implied": 0.7937,
-  "edge": -0.0269,
+  "edge": -0.0266,
   "hit_rate": 0.75,
   "market_line": 2.5,
-  "market_p_over": 0.5115666610935725,
+  "market_p_over": 0.5122724929765428,
   "books": {
    "neds": 1.26
   },
@@ -1113,7 +1142,12 @@
   "step_up": false,
   "note": "",
   "event_id": "401909306",
-  "athlete_id": "5175643"
+  "athlete_id": "5175643",
+  "late_checked": "10:47am",
+  "late_was": null,
+  "close_books": {
+   "neds": 1.26
+  }
  },
  {
   "why": "Predicted 5.5 assists tonight, needs 4+. This season 5.7 a game over 13 games; last season 7.1 over 77. HOU gives up less to his position than average (-5%). Bookies' line: 5.5.",
@@ -1279,9 +1313,9 @@
   "athlete_id": "3136193"
  },
  {
-  "why": "Predicted 5.5 assists tonight, needs 4+. This season 4.7 a game over 14 games; last season 3.9 over 72. Jenkins averaged 7.0 in the 2 games without Robinson (4.7 across all 14), so he's predicted 0.7 assists more tonight. Slower game expected (-2% for pace). Expected minutes 37 vs his usual 29.3. Bookies' line: 5.5.",
+  "why": "Predicted 5.4 assists tonight, needs 4+. This season 4.7 a game over 14 games; last season 3.9 over 72. Jenkins averaged 7.0 in the 2 games without Robinson (4.7 across all 14), so he's predicted 0.7 assists more tonight. Slower game expected (-2% for pace). Expected minutes 37 vs his usual 29.3. Bookies' line: 4.5.",
   "venue_shift": -0.12,
-  "pace_factor": 0.977,
+  "pace_factor": 0.976,
   "side_factor": 0.998,
   "underdog": false,
   "roster_overlap": 1.0,
@@ -1297,7 +1331,7 @@
   "hits": 10,
   "games": 14,
   "log": "3, 5, 6, 2, 3, 5, 7, 4, 4, 8, 0, 5, 5, 9",
-  "odds": 1.26,
+  "odds": 1.28,
   "prior_mean": 3.9,
   "prior_games": 72,
   "context_label": "Duncan Robinson out tonight",
@@ -1307,35 +1341,40 @@
   "minutes_factor": 1.263,
   "avg_minutes": 29.3,
   "proj_minutes": 37.0,
-  "proj_mean": 5.5,
-  "model_prob": 0.7531,
-  "raw_prob": 0.7531,
-  "fair_price": 1.37,
-  "implied": 0.7937,
-  "edge": -0.0405,
+  "proj_mean": 5.4,
+  "model_prob": 0.7423,
+  "raw_prob": 0.7424,
+  "fair_price": 1.42,
+  "implied": 0.7812,
+  "edge": -0.039,
   "hit_rate": 0.7143,
-  "market_line": 5.5,
-  "market_p_over": 0.4437814903208698,
+  "market_line": 4.5,
+  "market_p_over": 0.5659384048433798,
   "books": {
-   "neds": 1.26
+   "neds": 1.28
   },
   "best_book": "neds",
   "open_books": {
    "neds": 1.26
   },
-  "best_price": 1.26,
+  "best_price": 1.28,
   "market_source": "AU bookies",
   "questionable": false,
   "step_up": false,
   "note": "started his last 2 games",
   "event_id": "401909308",
-  "athlete_id": "5107199"
+  "athlete_id": "5107199",
+  "late_checked": "10:47am",
+  "late_was": null,
+  "close_books": {
+   "neds": 1.28
+  }
  },
  {
   "why": "Predicted 19.7 points tonight, needs 20+. This season 18.5 a game over 13 games; last season 20.2 over 84. Bane averaged 19.7 in the 10 games with Black (18.5 across all 13), so he's predicted 0.8 points more tonight. Plays better on the road: 0.8 points more predicted. Tonight's line is 12 points easier than his team's usual (favourites by 6.5), so they're expected to score more (+4%). BKN gives up less to his position than average (-2%). Bookies' line: 18.5.",
   "venue_shift": 0.85,
-  "pace_factor": 0.992,
-  "side_factor": 1.039,
+  "pace_factor": 0.994,
+  "side_factor": 1.038,
   "underdog": false,
   "roster_overlap": 0.67,
   "usual_starter": true,
@@ -1361,14 +1400,14 @@
   "avg_minutes": 35.2,
   "proj_minutes": 35.2,
   "proj_mean": 19.7,
-  "model_prob": 0.4926,
-  "raw_prob": 0.503,
-  "fair_price": 2.18,
+  "model_prob": 0.4914,
+  "raw_prob": 0.5006,
+  "fair_price": 2.2,
   "implied": 0.5076,
-  "edge": -0.015,
+  "edge": -0.0162,
   "hit_rate": 0.4615,
   "market_line": 18.5,
-  "market_p_over": 0.5073443252899246,
+  "market_p_over": 0.5032051223460565,
   "books": {
    "neds": 2.05,
    "tab": 1.89
@@ -1384,12 +1423,17 @@
   "step_up": true,
   "note": "",
   "event_id": "401909306",
-  "athlete_id": "4066320"
+  "athlete_id": "4066320",
+  "late_checked": "10:47am",
+  "late_was": null,
+  "close_books": {
+   "neds": 2.02
+  }
  },
  {
   "why": "Predicted 6.2 rebounds tonight, needs 6+. This season 5.4 a game over 15 games; last season 5.7 over 62. Williamson averaged 6.7 in the 7 games without Murray (5.4 across all 15), so he's predicted 0.8 rebounds more tonight. OKC gives up more to his position than average (+11%). Bookies' line: 5.5.",
   "venue_shift": -0.05,
-  "pace_factor": 1.002,
+  "pace_factor": 1.003,
   "side_factor": 0.996,
   "underdog": true,
   "roster_overlap": 0.77,
@@ -1416,14 +1460,14 @@
   "avg_minutes": 32.1,
   "proj_minutes": 31.5,
   "proj_mean": 6.2,
-  "model_prob": 0.5461,
-  "raw_prob": 0.5673,
-  "fair_price": 1.95,
+  "model_prob": 0.5481,
+  "raw_prob": 0.5714,
+  "fair_price": 1.94,
   "implied": 0.5525,
-  "edge": -0.0064,
+  "edge": -0.0043,
   "hit_rate": 0.4667,
   "market_line": 5.5,
-  "market_p_over": 0.5118784591760893,
+  "market_p_over": 0.5154903917574275,
   "books": {
    "neds": 1.85,
    "tab": 1.78
@@ -1439,7 +1483,12 @@
   "step_up": true,
   "note": "blowout risk (OKC -11.5, he is on the underdog)",
   "event_id": "401909310",
-  "athlete_id": "4395628"
+  "athlete_id": "4395628",
+  "late_checked": "10:47am",
+  "late_was": null,
+  "close_books": {
+   "neds": 1.8
+  }
  },
  {
   "why": "Predicted 16.2 points tonight, needs 15+. This season 14.9 a game over 14 games; last season 20.1 over 58. Plays better on the road: 1.3 points more predicted. Tonight's line is 8 points easier than his team's usual (favourites by 4.5), so they're expected to score more (+3%). Bookies' line: 14.5.",
@@ -1664,9 +1713,9 @@
   }
  },
  {
-  "why": "Predicted 16.4 points tonight, needs 10+. This season 16.6 a game over 11 games; last season 16.9 over 57. Nembhard averaged 16.1 in the 10 games with Oubre (16.6 across all 11), so he's predicted 0.4 points fewer tonight. Plays better on the road: 0.4 points more predicted. Faster game expected (+2% for pace). CLE gives up more to his position than average (+7%). Bookies' line: 15.5.",
+  "why": "Predicted 16.1 points tonight, needs 10+. This season 16.6 a game over 11 games; last season 16.9 over 57. Nembhard averaged 16.1 in the 10 games with Oubre (16.6 across all 11), so he's predicted 0.4 points fewer tonight. Plays better on the road: 0.4 points more predicted. Faster game expected (+2% for pace). CLE gives up more to his position than average (+7%). Bookies' line: 14.5.",
   "venue_shift": 0.37,
-  "pace_factor": 1.017,
+  "pace_factor": 1.016,
   "side_factor": 0.998,
   "underdog": true,
   "roster_overlap": 0.7,
@@ -1682,7 +1731,7 @@
   "hits": 10,
   "games": 11,
   "log": "18, 16, 14, 18, 22, 23, 22, 9, 12, 17, 12",
-  "odds": 1.18,
+  "odds": 1.2,
   "prior_mean": 16.9,
   "prior_games": 57,
   "context_label": "Kelly Oubre Jr. playing tonight",
@@ -1692,34 +1741,39 @@
   "minutes_factor": 1.0,
   "avg_minutes": 33.4,
   "proj_minutes": 33.4,
-  "proj_mean": 16.4,
-  "model_prob": 0.8259,
-  "raw_prob": 0.8468,
-  "fair_price": 1.26,
-  "implied": 0.8475,
-  "edge": -0.0215,
+  "proj_mean": 16.1,
+  "model_prob": 0.8148,
+  "raw_prob": 0.8379,
+  "fair_price": 1.29,
+  "implied": 0.8333,
+  "edge": -0.0185,
   "hit_rate": 0.9091,
-  "market_line": 15.5,
-  "market_p_over": 0.4803209060608943,
+  "market_line": 14.5,
+  "market_p_over": 0.5129783248595129,
   "books": {
-   "neds": 1.18
+   "neds": 1.2
   },
   "best_book": "neds",
   "open_books": {
    "neds": 1.18
   },
-  "best_price": 1.18,
+  "best_price": 1.2,
   "market_source": "AU bookies",
   "questionable": false,
   "step_up": false,
   "note": "",
   "event_id": "401909307",
-  "athlete_id": "4395712"
+  "athlete_id": "4395712",
+  "late_checked": "10:47am",
+  "late_was": null,
+  "close_books": {
+   "neds": 1.2
+  }
  },
  {
   "why": "Predicted 17.3 points tonight, needs 10+. This season 14.3 a game over 14 games; last season 9.3 over 72. Jenkins averaged 21.0 in the 2 games without Robinson (14.3 across all 14), so he's predicted 1.9 points more tonight. Slower game expected (-2% for pace). TOR gives up more to his position than average (+10%). Expected minutes 37 vs his usual 29.3. Bookies' line: 15.5.",
   "venue_shift": 0.27,
-  "pace_factor": 0.977,
+  "pace_factor": 0.976,
   "side_factor": 0.998,
   "underdog": false,
   "roster_overlap": 1.0,
@@ -1747,13 +1801,13 @@
   "proj_minutes": 37.0,
   "proj_mean": 17.3,
   "model_prob": 0.8207,
-  "raw_prob": 0.8293,
+  "raw_prob": 0.8295,
   "fair_price": 1.32,
   "implied": 0.8547,
   "edge": -0.034,
   "hit_rate": 0.7143,
   "market_line": 15.5,
-  "market_p_over": 0.49184532053946,
+  "market_p_over": 0.4923207392451836,
   "books": {
    "neds": 1.17
   },
@@ -1767,7 +1821,12 @@
   "step_up": false,
   "note": "started his last 2 games",
   "event_id": "401909308",
-  "athlete_id": "5107199"
+  "athlete_id": "5107199",
+  "late_checked": "10:47am",
+  "late_was": null,
+  "close_books": {
+   "neds": 1.17
+  }
  },
  {
   "why": "Predicted 15.7 points tonight, needs 10+. This season 15.7 a game over 15 games; last season 18.3 over 79. Thompson averaged 15.2 in the 13 games with Sengun (15.7 across all 15), so he's predicted 0.4 points fewer tonight. Plays better on the road: 1.5 points more predicted. Tonight's line is 6 points tougher than his team's usual (underdogs by 1.5), so they're expected to score less (-2%). DEN gives up less to his position than average (-5%). Bookies' line: 15.5.",
@@ -2151,10 +2210,10 @@
   "athlete_id": null
  },
  {
-  "why": "Predicted 12.9 points tonight, needs 10+. This season 13.4 a game over 14 games; last season 11.8 over 80. Carter averaged 14.7 in the 6 games with Suggs (13.4 across all 14), so he's predicted 0.7 points more tonight. Tonight's line is 12 points easier than his team's usual (favourites by 6.5), so they're expected to score more (+4%). Bookies' line: 12.5.",
+  "why": "Predicted 13.0 points tonight, needs 10+. This season 13.4 a game over 14 games; last season 11.8 over 80. Carter averaged 14.7 in the 6 games with Suggs (13.4 across all 14), so he's predicted 0.7 points more tonight. Tonight's line is 12 points easier than his team's usual (favourites by 6.5), so they're expected to score more (+4%). Bookies' line: 12.5.",
   "venue_shift": -0.12,
-  "pace_factor": 0.992,
-  "side_factor": 1.039,
+  "pace_factor": 0.994,
+  "side_factor": 1.038,
   "underdog": false,
   "roster_overlap": 0.67,
   "usual_starter": true,
@@ -2179,15 +2238,15 @@
   "minutes_factor": 1.0,
   "avg_minutes": 32.3,
   "proj_minutes": 32.3,
-  "proj_mean": 12.9,
-  "model_prob": 0.702,
-  "raw_prob": 0.7254,
-  "fair_price": 1.48,
+  "proj_mean": 13.0,
+  "model_prob": 0.7028,
+  "raw_prob": 0.7271,
+  "fair_price": 1.47,
   "implied": 0.7143,
-  "edge": -0.0123,
+  "edge": -0.0115,
   "hit_rate": 0.5714,
   "market_line": 12.5,
-  "market_p_over": 0.48895807913424993,
+  "market_p_over": 0.49087711854257854,
   "books": {
    "neds": 1.4
   },
@@ -2201,12 +2260,17 @@
   "step_up": false,
   "note": "",
   "event_id": "401909306",
-  "athlete_id": "4277847"
+  "athlete_id": "4277847",
+  "late_checked": "10:47am",
+  "late_was": null,
+  "close_books": {
+   "neds": 1.38
+  }
  },
  {
-  "why": "Predicted 2.8 assists tonight, needs 2+. This season 2.6 a game over 16 games; last season 2.5 over 72. Bey averaged 3.1 in the 7 games without Murphy (2.6 across all 16), so he's predicted 0.3 assists more tonight. Expected minutes 36.8 vs his usual 29.6. Bookies' line: 2.5.",
+  "why": "Predicted 2.7 assists tonight, needs 2+. This season 2.6 a game over 16 games; last season 2.5 over 72. Expected minutes 36.8 vs his usual 29.6. Bookies' line: 2.5.",
   "venue_shift": -0.06,
-  "pace_factor": 1.003,
+  "pace_factor": 1.005,
   "side_factor": 0.993,
   "underdog": true,
   "roster_overlap": 0.77,
@@ -2225,22 +2289,22 @@
   "odds": 1.4,
   "prior_mean": 2.5,
   "prior_games": 72,
-  "context_label": "Trey Murphy III out tonight",
-  "context_detail": "Bey averaged 3.1 in the 7 games without Murphy (2.6 across all 16), so he's predicted 0.3 assists more tonight.",
+  "context_label": null,
+  "context_detail": null,
   "matchup": 0.999,
-  "context_shift": 0.34,
+  "context_shift": 0.0,
   "minutes_factor": 1.243,
   "avg_minutes": 29.6,
   "proj_minutes": 36.8,
-  "proj_mean": 2.8,
-  "model_prob": 0.719,
-  "raw_prob": 0.7595,
-  "fair_price": 1.52,
+  "proj_mean": 2.7,
+  "model_prob": 0.715,
+  "raw_prob": 0.7514,
+  "fair_price": 1.47,
   "implied": 0.7143,
-  "edge": 0.0047,
+  "edge": 0.0007,
   "hit_rate": 0.6875,
   "market_line": 2.5,
-  "market_p_over": 0.4257334925633639,
+  "market_p_over": 0.429897543859992,
   "books": {
    "neds": 1.4
   },
@@ -2254,6 +2318,180 @@
   "step_up": false,
   "note": "started his last 2 games; blowout risk (OKC -11.5, he is on the underdog)",
   "event_id": "401909310",
-  "athlete_id": "4397136"
+  "athlete_id": "4397136",
+  "late_checked": "10:47am",
+  "late_was": null,
+  "close_books": {
+   "neds": 1.38
+  }
+ },
+ {
+  "why": "Predicted 17.9 points tonight, needs 10+. This season 16.5 a game over 16 games; last season 17.7 over 72. Bey averaged 18.9 in the 7 games without Murray (16.5 across all 16), so he's predicted 1.4 points more tonight. Plays a bit worse on the road: 0.7 points fewer predicted. Tonight's line is 3 points tougher than his team's usual (underdogs by 11.5), so they're expected to score less (-1%). OKC gives up less to his position than average (-9%). Expected minutes 36.8 vs his usual 29.6. Bookies' line: 16.5.",
+  "venue_shift": -0.65,
+  "pace_factor": 1.005,
+  "side_factor": 0.989,
+  "underdog": true,
+  "roster_overlap": 0.77,
+  "usual_starter": false,
+  "back_to_back": false,
+  "leg_id": "saddiq_bey_points10",
+  "player": "Saddiq Bey",
+  "team": "NO",
+  "game": "NO @ OKC",
+  "market": "10+ points",
+  "stat": "points",
+  "line": 10,
+  "hits": 14,
+  "games": 16,
+  "log": "13, 20, 14, 9, 10, 25, 18, 22, 17, 13, 9, 15, 30, 16, 23, 10",
+  "odds": 1.16,
+  "prior_mean": 17.7,
+  "prior_games": 72,
+  "context_label": "Dejounte Murray out tonight",
+  "context_detail": "Bey averaged 18.9 in the 7 games without Murray (16.5 across all 16), so he's predicted 1.4 points more tonight.",
+  "matchup": 0.907,
+  "context_shift": 1.38,
+  "minutes_factor": 1.243,
+  "avg_minutes": 29.6,
+  "proj_minutes": 36.8,
+  "proj_mean": 17.9,
+  "model_prob": 0.8445,
+  "raw_prob": 0.8701,
+  "fair_price": 1.22,
+  "implied": 0.8621,
+  "edge": -0.0175,
+  "hit_rate": 0.875,
+  "market_line": 16.5,
+  "market_p_over": 0.5015453033714535,
+  "books": {
+   "neds": 1.16,
+   "tab": 1.16
+  },
+  "best_book": "neds",
+  "open_books": {
+   "neds": 1.16,
+   "tab": 1.16
+  },
+  "best_price": 1.16,
+  "market_source": "AU bookies",
+  "questionable": false,
+  "step_up": false,
+  "note": "started his last 2 games; blowout risk (OKC -11.5, he is on the underdog)",
+  "event_id": "401909310",
+  "athlete_id": "4397136",
+  "late_new": true,
+  "late_checked": "10:47am"
+ },
+ {
+  "why": "Predicted 14.6 points tonight, needs 10+. This season 13.7 a game over 15 games; last season 8.3 over 67. McCain averaged 14.8 in the 12 games without Holmgren (13.7 across all 15), so he's predicted 0.8 points more tonight. Plays a bit worse at home: 0.8 points fewer predicted. Tonight's line is 6 points easier than his team's usual (favourites by 11.5), so they're expected to score more (+2%). NO gives up more to his position than average (+6%). Bookies' line: 15.5.",
+  "venue_shift": -0.79,
+  "pace_factor": 1.005,
+  "side_factor": 1.019,
+  "underdog": false,
+  "roster_overlap": 0.92,
+  "usual_starter": true,
+  "back_to_back": false,
+  "leg_id": "jared_mccain_points10",
+  "player": "Jared McCain",
+  "team": "OKC",
+  "game": "NO @ OKC",
+  "market": "10+ points",
+  "stat": "points",
+  "line": 10,
+  "hits": 11,
+  "games": 15,
+  "log": "20, 4, 3, 18, 10, 10, 7, 9, 21, 19, 21, 10, 23, 12, 18",
+  "odds": 1.17,
+  "prior_mean": 8.3,
+  "prior_games": 67,
+  "context_label": "Chet Holmgren out tonight",
+  "context_detail": "McCain averaged 14.8 in the 12 games without Holmgren (13.7 across all 15), so he's predicted 0.8 points more tonight.",
+  "matchup": 1.058,
+  "context_shift": 0.82,
+  "minutes_factor": 1.0,
+  "avg_minutes": 27.2,
+  "proj_minutes": 27.2,
+  "proj_mean": 14.6,
+  "model_prob": 0.8099,
+  "raw_prob": 0.8099,
+  "fair_price": 1.18,
+  "implied": 0.8547,
+  "edge": -0.0448,
+  "hit_rate": 0.7333,
+  "market_line": 15.5,
+  "market_p_over": 0.4968593112943631,
+  "books": {
+   "neds": 1.17,
+   "tab": 1.18
+  },
+  "best_book": "tab",
+  "open_books": {
+   "neds": 1.17,
+   "tab": 1.18
+  },
+  "best_price": 1.18,
+  "market_source": "AU bookies",
+  "questionable": false,
+  "step_up": false,
+  "note": "",
+  "event_id": "401909310",
+  "athlete_id": "4683778",
+  "late_new": true,
+  "late_checked": "10:47am"
+ },
+ {
+  "why": "Predicted 3.4 assists tonight, needs 2+. This season 2.7 a game over 14 games; last season 2.6 over 69. Huerter averaged 4.0 in the 2 games without Robinson (2.7 across all 14), so he's predicted 0.4 assists more tonight. Slower game expected (-2% for pace). TOR gives up less to his position than average (-9%). Expected minutes 36 vs his usual 26.1. Bookies' line: 3.5.",
+  "venue_shift": -0.04,
+  "pace_factor": 0.976,
+  "side_factor": 0.998,
+  "underdog": false,
+  "roster_overlap": 1.0,
+  "usual_starter": false,
+  "back_to_back": false,
+  "leg_id": "kevin_huerter_assists2",
+  "player": "Kevin Huerter",
+  "team": "DET",
+  "game": "TOR @ DET",
+  "market": "2+ assists",
+  "stat": "assists",
+  "line": 2,
+  "hits": 10,
+  "games": 14,
+  "log": "2, 2, 2, 0, 3, 3, 3, 0, 5, 3, 0, 7, 1, 7",
+  "odds": 1.16,
+  "prior_mean": 2.6,
+  "prior_games": 69,
+  "context_label": "Duncan Robinson out tonight",
+  "context_detail": "Huerter averaged 4.0 in the 2 games without Robinson (2.7 across all 14), so he's predicted 0.4 assists more tonight.",
+  "matchup": 0.914,
+  "context_shift": 0.37,
+  "minutes_factor": 1.379,
+  "avg_minutes": 26.1,
+  "proj_minutes": 36.0,
+  "proj_mean": 3.4,
+  "model_prob": 0.8224,
+  "raw_prob": 0.8258,
+  "fair_price": 1.25,
+  "implied": 0.8621,
+  "edge": -0.0397,
+  "hit_rate": 0.7143,
+  "market_line": 3.5,
+  "market_p_over": 0.42723249153866183,
+  "books": {
+   "neds": 1.16
+  },
+  "best_book": "neds",
+  "open_books": {
+   "neds": 1.16
+  },
+  "best_price": 1.16,
+  "market_source": "AU bookies",
+  "questionable": false,
+  "step_up": false,
+  "note": "started his last 2 games",
+  "event_id": "401909308",
+  "athlete_id": "4066372",
+  "late_new": true,
+  "late_checked": "10:47am"
  }
 ]
