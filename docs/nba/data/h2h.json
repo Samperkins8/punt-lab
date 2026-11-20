@@ -1,162 +1,362 @@
 [
  {
-  "game": "GS @ MEM",
-  "tip": "12:00pm",
-  "team": "Golden State Warriors",
+  "game": "CHA @ ATL",
+  "tip": "11:00am",
+  "team": "Atlanta Hawks",
   "books": {
-   "sportsbet": 2.81,
-   "picklebet_au": 2.6,
-   "pointsbetau": 2.75,
+   "pointsbetau": 1.4,
+   "playup": 1.38,
+   "sportsbet": 1.37,
+   "picklebet_au": 1.38,
+   "betr_au": 1.37,
+   "tabtouch": 1.36,
+   "tab": 1.39,
+   "ladbrokes_au": 1.42,
+   "neds": 1.42,
+   "unibet": 1.36
+  },
+  "best_book": "ladbrokes_au",
+  "best_back": 1.42,
+  "lay": 1.44
+ },
+ {
+  "game": "CHA @ ATL",
+  "tip": "11:00am",
+  "team": "Charlotte Hornets",
+  "books": {
+   "pointsbetau": 3.0,
+   "playup": 3.0,
+   "sportsbet": 3.2,
+   "picklebet_au": 3.0,
+   "betr_au": 3.2,
+   "tabtouch": 3.15,
+   "tab": 3.1,
+   "ladbrokes_au": 2.9,
+   "neds": 2.9,
+   "unibet": 3.2
+  },
+  "best_book": "sportsbet",
+  "best_back": 3.2,
+  "lay": 3.35
+ },
+ {
+  "game": "ORL @ BKN",
+  "tip": "11:30am",
+  "team": "Brooklyn Nets",
+  "books": {
+   "playup": 3.0,
+   "sportsbet": 3.12,
+   "picklebet_au": 3.0,
+   "betr_au": 3.1,
+   "tab": 3.0,
+   "tabtouch": 3.05,
+   "neds": 2.9,
+   "ladbrokes_au": 2.9,
+   "pointsbetau": 3.1,
+   "unibet": 3.1
+  },
+  "best_book": "sportsbet",
+  "best_back": 3.12,
+  "lay": 3.3
+ },
+ {
+  "game": "ORL @ BKN",
+  "tip": "11:30am",
+  "team": "Orlando Magic",
+  "books": {
+   "playup": 1.36,
+   "sportsbet": 1.39,
+   "picklebet_au": 1.36,
+   "betr_au": 1.39,
+   "tab": 1.41,
+   "tabtouch": 1.38,
+   "neds": 1.42,
+   "ladbrokes_au": 1.42,
+   "pointsbetau": 1.4,
+   "unibet": 1.38
+  },
+  "best_book": "neds",
+  "best_back": 1.42,
+  "lay": 1.45
+ },
+ {
+  "game": "IND @ CLE",
+  "tip": "11:30am",
+  "team": "Cleveland Cavaliers",
+  "books": {
+   "sportsbet": 1.45,
+   "pointsbetau": 1.42,
+   "playup": 1.42,
+   "picklebet_au": 1.42,
+   "betr_au": 1.43,
+   "tab": 1.46,
+   "ladbrokes_au": 1.45,
+   "neds": 1.45,
+   "tabtouch": 1.43,
+   "unibet": 1.44
+  },
+  "best_book": "tab",
+  "best_back": 1.46,
+  "lay": 1.49
+ },
+ {
+  "game": "IND @ CLE",
+  "tip": "11:30am",
+  "team": "Indiana Pacers",
+  "books": {
+   "sportsbet": 2.85,
+   "pointsbetau": 2.9,
    "playup": 2.8,
-   "betr_au": 2.85,
-   "betright": 2.7,
+   "picklebet_au": 2.7,
+   "betr_au": 2.9,
    "tab": 2.8,
    "ladbrokes_au": 2.75,
    "neds": 2.75,
-   "tabtouch": 2.85
-  },
-  "best_book": "betr_au",
-  "best_back": 2.85,
-  "lay": 3.0
- },
- {
-  "game": "GS @ MEM",
-  "tip": "12:00pm",
-  "team": "Memphis Grizzlies",
-  "books": {
-   "sportsbet": 1.46,
-   "picklebet_au": 1.45,
-   "pointsbetau": 1.48,
-   "playup": 1.45,
-   "betr_au": 1.45,
-   "betright": 1.47,
-   "tab": 1.46,
-   "ladbrokes_au": 1.46,
-   "neds": 1.46,
-   "tabtouch": 1.43
+   "tabtouch": 2.8,
+   "unibet": 2.85
   },
   "best_book": "pointsbetau",
-  "best_back": 1.48,
-  "lay": 1.51
+  "best_back": 2.9,
+  "lay": 3.15
  },
  {
-  "game": "LAC @ SA",
-  "tip": "12:00pm",
-  "team": "Los Angeles Clippers",
+  "game": "TOR @ DET",
+  "tip": "11:30am",
+  "team": "Detroit Pistons",
   "books": {
-   "sportsbet": 8.0,
+   "pointsbetau": 1.4,
+   "playup": 1.36,
+   "sportsbet": 1.37,
+   "picklebet_au": 1.35,
+   "tab": 1.39,
+   "ladbrokes_au": 1.38,
+   "betr_au": 1.37,
+   "neds": 1.38,
+   "tabtouch": 1.38,
+   "unibet": 1.4
+  },
+  "best_book": "pointsbetau",
+  "best_back": 1.4,
+  "lay": 1.42
+ },
+ {
+  "game": "TOR @ DET",
+  "tip": "11:30am",
+  "team": "Toronto Raptors",
+  "books": {
+   "pointsbetau": 3.1,
+   "playup": 3.0,
+   "sportsbet": 3.22,
+   "picklebet_au": 3.0,
+   "tab": 3.1,
+   "ladbrokes_au": 3.1,
+   "betr_au": 3.2,
+   "neds": 3.1,
+   "tabtouch": 3.05,
+   "unibet": 3.05
+  },
+  "best_book": "sportsbet",
+  "best_back": 3.22,
+  "lay": 3.55
+ },
+ {
+  "game": "WSH @ CHI",
+  "tip": "12:00pm",
+  "team": "Chicago Bulls",
+  "books": {
+   "playup": 1.7,
+   "sportsbet": 1.76,
+   "picklebet_au": 1.7,
+   "betr_au": 1.73,
+   "tab": 1.73,
+   "neds": 1.72,
+   "ladbrokes_au": 1.72,
+   "tabtouch": 1.72,
+   "pointsbetau": 1.71,
+   "unibet": 1.73
+  },
+  "best_book": "sportsbet",
+  "best_back": 1.76,
+  "lay": 1.82
+ },
+ {
+  "game": "WSH @ CHI",
+  "tip": "12:00pm",
+  "team": "Washington Wizards",
+  "books": {
+   "playup": 2.1,
+   "sportsbet": 2.13,
+   "picklebet_au": 2.1,
+   "betr_au": 2.15,
+   "tab": 2.15,
+   "neds": 2.15,
+   "ladbrokes_au": 2.15,
+   "tabtouch": 2.12,
+   "pointsbetau": 2.2,
+   "unibet": 2.12
+  },
+  "best_book": "pointsbetau",
+  "best_back": 2.2,
+  "lay": 2.26
+ },
+ {
+  "game": "NO @ OKC",
+  "tip": "12:00pm",
+  "team": "New Orleans Pelicans",
+  "books": {
+   "playup": 5.25,
+   "sportsbet": 6.1,
+   "picklebet_au": 4.8,
+   "betr_au": 5.5,
+   "tab": 5.2,
+   "tabtouch": 5.1,
+   "ladbrokes_au": 5.2,
+   "neds": 5.2,
+   "pointsbetau": 5.5,
+   "unibet": 5.1
+  },
+  "best_book": "sportsbet",
+  "best_back": 6.1,
+  "lay": 6.2
+ },
+ {
+  "game": "NO @ OKC",
+  "tip": "12:00pm",
+  "team": "Oklahoma City Thunder",
+  "books": {
+   "playup": 1.15,
+   "sportsbet": 1.14,
+   "picklebet_au": 1.16,
+   "betr_au": 1.16,
+   "tab": 1.18,
+   "tabtouch": 1.17,
+   "ladbrokes_au": 1.17,
+   "neds": 1.17,
+   "pointsbetau": 1.16,
+   "unibet": 1.17
+  },
+  "best_book": "tab",
+  "best_back": 1.18,
+  "lay": 1.21
+ },
+ {
+  "game": "PHX @ UTAH",
+  "tip": "1:30pm",
+  "team": "Phoenix Suns",
+  "books": {
+   "sportsbet": 1.53,
+   "playup": 1.53,
+   "picklebet_au": 1.52,
+   "betr_au": 1.54,
+   "tab": 1.56,
+   "ladbrokes_au": 1.55,
+   "neds": 1.55,
+   "tabtouch": 1.51,
+   "pointsbetau": 1.53,
+   "unibet": 1.52
+  },
+  "best_book": "tab",
+  "best_back": 1.56,
+  "lay": 1.61
+ },
+ {
+  "game": "PHX @ UTAH",
+  "tip": "1:30pm",
+  "team": "Utah Jazz",
+  "books": {
+   "sportsbet": 2.58,
+   "playup": 2.5,
+   "picklebet_au": 2.45,
+   "betr_au": 2.55,
+   "tab": 2.5,
+   "ladbrokes_au": 2.5,
+   "neds": 2.5,
+   "tabtouch": 2.55,
+   "pointsbetau": 2.6,
+   "unibet": 2.55
+  },
+  "best_book": "pointsbetau",
+  "best_back": 2.6,
+  "lay": 2.7
+ },
+ {
+  "game": "HOU @ DEN",
+  "tip": "2:00pm",
+  "team": "Denver Nuggets",
+  "books": {
+   "picklebet_au": 1.76,
+   "betr_au": 1.8,
+   "pointsbetau": 1.83,
+   "sportsbet": 1.83,
+   "tab": 1.8,
+   "ladbrokes_au": 1.78,
+   "neds": 1.78,
+   "tabtouch": 1.8,
+   "playup": 1.8,
+   "unibet": 1.8
+  },
+  "best_book": "pointsbetau",
+  "best_back": 1.83,
+  "lay": 1.88
+ },
+ {
+  "game": "HOU @ DEN",
+  "tip": "2:00pm",
+  "team": "Houston Rockets",
+  "books": {
+   "picklebet_au": 2.0,
+   "betr_au": 2.05,
+   "pointsbetau": 2.0,
+   "sportsbet": 2.02,
+   "tab": 2.05,
+   "ladbrokes_au": 2.05,
+   "neds": 2.05,
+   "tabtouch": 2.02,
+   "playup": 2.0,
+   "unibet": 2.02
+  },
+  "best_book": "betr_au",
+  "best_back": 2.05,
+  "lay": 2.16
+ },
+ {
+  "game": "SAC @ LAL",
+  "tip": "2:00pm",
+  "team": "Los Angeles Lakers",
+  "books": {
+   "sportsbet": 1.1,
+   "playup": 1.1,
+   "picklebet_au": 1.1,
+   "betr_au": 1.11,
+   "tab": 1.12,
+   "tabtouch": 1.1,
+   "ladbrokes_au": 1.12,
+   "neds": 1.12,
+   "pointsbetau": 1.11,
+   "unibet": 1.1
+  },
+  "best_book": "tab",
+  "best_back": 1.12,
+  "lay": 1.15
+ },
+ {
+  "game": "SAC @ LAL",
+  "tip": "2:00pm",
+  "team": "Sacramento Kings",
+  "books": {
+   "sportsbet": 7.5,
+   "playup": 6.75,
    "picklebet_au": 6.5,
-   "playup": 7.5,
-   "betr_au": 8.0,
-   "betright": 7.0,
-   "pointsbetau": 7.5,
-   "tabtouch": 7.5,
-   "tab": 7.5,
-   "neds": 6.75,
-   "ladbrokes_au": 6.75
+   "betr_au": 7.0,
+   "tab": 6.8,
+   "tabtouch": 7.0,
+   "ladbrokes_au": 6.4,
+   "neds": 6.4,
+   "pointsbetau": 7.0,
+   "unibet": 7.0
   },
   "best_book": "sportsbet",
-  "best_back": 8.0,
-  "lay": 9.2
- },
- {
-  "game": "LAC @ SA",
-  "tip": "12:00pm",
-  "team": "San Antonio Spurs",
-  "books": {
-   "sportsbet": 1.09,
-   "picklebet_au": 1.09,
-   "playup": 1.08,
-   "betr_au": 1.09,
-   "betright": 1.1,
-   "pointsbetau": 1.1,
-   "tabtouch": 1.09,
-   "tab": 1.1,
-   "neds": 1.11,
-   "ladbrokes_au": 1.11
-  },
-  "best_book": "neds",
-  "best_back": 1.11,
-  "lay": 1.13
- },
- {
-  "game": "POR @ MIL",
-  "tip": "12:00pm",
-  "team": "Milwaukee Bucks",
-  "books": {
-   "pointsbetau": 4.75,
-   "sportsbet": 5.0,
-   "picklebet_au": 4.6,
-   "playup": 4.6,
-   "betr_au": 4.8,
-   "betright": 4.6,
-   "tabtouch": 4.6,
-   "tab": 4.8,
-   "ladbrokes_au": 4.5,
-   "neds": 4.5
-  },
-  "best_book": "sportsbet",
-  "best_back": 5.0,
-  "lay": 5.5
- },
- {
-  "game": "POR @ MIL",
-  "tip": "12:00pm",
-  "team": "Portland Trail Blazers",
-  "books": {
-   "pointsbetau": 1.2,
-   "sportsbet": 1.19,
-   "picklebet_au": 1.17,
-   "playup": 1.18,
-   "betr_au": 1.2,
-   "betright": 1.2,
-   "tabtouch": 1.2,
-   "tab": 1.2,
-   "ladbrokes_au": 1.2,
-   "neds": 1.2
-  },
-  "best_book": "pointsbetau",
-  "best_back": 1.2,
-  "lay": 1.24
- },
- {
-  "game": "NY @ MIN",
-  "tip": "12:00pm",
-  "team": "Minnesota Timberwolves",
-  "books": {
-   "sportsbet": 1.94,
-   "picklebet_au": 1.91,
-   "pointsbetau": 1.95,
-   "playup": 1.93,
-   "tab": 1.92,
-   "betr_au": 1.96,
-   "betright": 1.92,
-   "ladbrokes_au": 1.94,
-   "neds": 1.94,
-   "tabtouch": 1.83
-  },
-  "best_book": "betr_au",
-  "best_back": 1.96,
-  "lay": 2.04
- },
- {
-  "game": "NY @ MIN",
-  "tip": "12:00pm",
-  "team": "New York Knicks",
-  "books": {
-   "sportsbet": 1.9,
-   "picklebet_au": 1.83,
-   "pointsbetau": 1.87,
-   "playup": 1.86,
-   "tab": 1.92,
-   "betr_au": 1.88,
-   "betright": 1.88,
-   "ladbrokes_au": 1.87,
-   "neds": 1.87,
-   "tabtouch": 1.95
-  },
-  "best_book": "tabtouch",
-  "best_back": 1.95,
-  "lay": 2.0
+  "best_back": 7.5,
+  "lay": 8.0
  }
 ]

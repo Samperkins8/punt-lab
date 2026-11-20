@@ -1401,5 +1401,122 @@
   "landed": false,
   "verdict": "skip",
   "price": 2.07
+ },
+ {
+  "slate_date": "2026-11-20",
+  "multi": "4-leg $2+",
+  "legs": "LaMelo Ball 1+ threes; Damian Lillard 1+ threes; Derrick Jones Jr. 1+ threes; Jaden McDaniels 4+ rebounds",
+  "est_hit": 0.4606,
+  "landed": false,
+  "verdict": "check",
+  "price": 2.06
+ },
+ {
+  "slate_date": "2026-11-20",
+  "multi": "3-leg $2+",
+  "legs": "Portland Trail Blazers Portland Trail Blazers to win; Derrick Jones Jr. 1+ threes; Jrue Holiday 10+ points",
+  "est_hit": 0.4686,
+  "landed": false,
+  "verdict": "skip",
+  "price": 2.03
+ },
+ {
+  "slate_date": "2026-11-20",
+  "multi": "2-leg $2+",
+  "legs": "Josh Hart 1+ threes; Karl-Anthony Towns 12+ rebounds",
+  "est_hit": 0.4476,
+  "landed": true,
+  "verdict": "skip",
+  "price": 2.01
+ },
+ {
+  "slate_date": "2026-11-20",
+  "multi": "4-leg $3+",
+  "legs": "Portland Trail Blazers Portland Trail Blazers to win; Derrick Jones Jr. 1+ threes; Jrue Holiday 10+ points; Karl-Anthony Towns 12+ rebounds",
+  "est_hit": 0.2818,
+  "landed": false,
+  "verdict": "skip",
+  "price": 3.0
+ },
+ {
+  "slate_date": "2026-11-20",
+  "multi": "4-leg $4+",
+  "legs": "Portland Trail Blazers Portland Trail Blazers to win; Stephon Castle 4+ rebounds; Karl-Anthony Towns 12+ rebounds; Jalen Brunson 25+ points",
+  "est_hit": 0.1987,
+  "landed": false,
+  "verdict": "skip",
+  "price": 4.03
+ },
+ {
+  "slate_date": "2026-11-20",
+  "multi": "Best value",
+  "legs": "LaMelo Ball 1+ threes; Damian Lillard 1+ threes; Jaden McDaniels 4+ rebounds; Jrue Holiday 10+ points",
+  "est_hit": 0.4538,
+  "landed": true,
+  "verdict": "check",
+  "price": 2.06
+ },
+ {
+  "slate_date": "2026-11-20",
+  "multi": "Safest",
+  "legs": "LaMelo Ball 1+ threes; Damian Lillard 1+ threes; Derrick Jones Jr. 1+ threes; Jaden McDaniels 4+ rebounds",
+  "est_hit": 0.4606,
+  "landed": false,
+  "verdict": "check",
+  "price": 2.06
+ },
+ {
+  "slate_date": "2026-11-20",
+  "multi": "3-leg value",
+  "legs": "Portland Trail Blazers Portland Trail Blazers to win; Jrue Holiday 10+ points; Devin Vassell 2+ assists",
+  "est_hit": 0.4516,
+  "landed": true,
+  "verdict": "skip",
+  "price": 2.03
+ },
+ {
+  "slate_date": "2026-11-20",
+  "multi": "Mid-range $8+",
+  "legs": "LaMelo Ball 1+ threes; Devin Vassell 2+ assists; Josh Hart 1+ threes; OG Anunoby 4+ rebounds; Stephon Castle 4+ rebounds; Derrick Jones Jr. 2+ threes",
+  "est_hit": 0.1256,
+  "landed": false,
+  "verdict": "check",
+  "price": 8.01
+ },
+ {
+  "slate_date": "2026-11-20",
+  "multi": "Long multi 8+",
+  "legs": "Victor Wembanyama 2+ assists; OG Anunoby 10+ points; De'Aaron Fox 10+ points; Cedric Coward 10+ points; Portland Trail Blazers Portland Trail Blazers to win; Josh Hart 4+ rebounds",
+  "est_hit": 0.3132,
+  "landed": true,
+  "verdict": "skip",
+  "price": 2.63
+ },
+ {
+  "slate_date": "2026-11-20",
+  "multi": "Long shot $50",
+  "legs": "LaMelo Ball 1+ threes; Jaden McDaniels 1+ threes; Brook Lopez 1+ threes; Derrick Jones Jr. 1+ threes; Devin Vassell 2+ assists; Josh Hart 1+ threes; Cedric Coward 6+ rebounds; Jaime Jaquez Jr. 4+ rebounds; Damian Lillard 4+ assists; Memphis Grizzlies Memphis Grizzlies to win; Jrue Holiday 15+ points; Cameron Boozer 20+ points",
+  "est_hit": 0.0135,
+  "landed": false,
+  "verdict": "check",
+  "price": 50.13
+ },
+ {
+  "slate_date": "2026-11-20",
+  "multi": "Top pick",
+  "legs": "Jaden McDaniels 1+ threes; Derrick Jones Jr. 1+ threes; Josh Hart 1+ threes",
+  "est_hit": 0.4442,
+  "landed": false,
+  "verdict": "skip",
+  "price": 2.14
+ },
+ {
+  "slate_date": "2026-11-20",
+  "multi": "Second pick",
+  "legs": "Portland Trail Blazers Portland Trail Blazers to win; Jrue Holiday 10+ points; LaMelo Ball 15+ points",
+  "est_hit": 0.448,
+  "landed": true,
+  "verdict": "skip",
+  "price": 2.06
  }
 ]
