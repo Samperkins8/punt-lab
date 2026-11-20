@@ -3,25 +3,23 @@
   "multi": "4-leg $2+",
   "rank": 1,
   "leg_ids": [
+   "desmond_bane_threes1",
    "zion_williamson_rebounds4",
    "dillon_brooks_points10",
-   "jarrett_allen_points10",
-   "jalen_green_points10"
+   "josh_giddey_threes1"
   ],
-  "legs_text": "Zion Williamson 4+ rebounds; Dillon Brooks 10+ points; Jarrett Allen 10+ points; Jalen Green 10+ points",
-  "est_hit": 0.4139,
-  "break_even": 2.42,
-  "priced_legs": "4 of 4",
-  "known_price": 2.11,
-  "fair_multi": 2.82,
-  "est_price": 2.11,
-  "book_prices": {
-   "neds": 2.11
-  },
-  "best_book": "neds",
-  "best_book_price": 2.11,
-  "verdict": "skip",
-  "value": -0.1267
+  "legs_text": "Desmond Bane 1+ threes; Zion Williamson 4+ rebounds; Dillon Brooks 10+ points; Josh Giddey 1+ threes",
+  "est_hit": 0.4558,
+  "break_even": 2.19,
+  "priced_legs": "3 of 4",
+  "known_price": 1.81,
+  "fair_multi": null,
+  "est_price": 2.01,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null,
+  "verdict": "check",
+  "value": null
  },
  {
   "multi": "3-leg $2+",
@@ -50,16 +48,16 @@
   "multi": "2-leg $2+",
   "rank": 3,
   "leg_ids": [
-   "saddiq_bey_assists2",
-   "darius_acuff_jr_threes3"
+   "desmond_bane_threes1",
+   "dillon_brooks_points15"
   ],
-  "legs_text": "Saddiq Bey 2+ assists; Darius Acuff Jr. 3+ threes",
-  "est_hit": 0.4553,
-  "break_even": 2.2,
+  "legs_text": "Desmond Bane 1+ threes; Dillon Brooks 15+ points",
+  "est_hit": 0.487,
+  "break_even": 2.05,
   "priced_legs": "1 of 2",
-  "known_price": 1.4,
-  "fair_multi": null,
-  "est_price": 2.03,
+  "known_price": 1.85,
+  "fair_multi": 2.39,
+  "est_price": 2.05,
   "book_prices": null,
   "best_book": null,
   "best_book_price": null,
@@ -70,18 +68,18 @@
   "multi": "4-leg $3+",
   "rank": 4,
   "leg_ids": [
+   "desmond_bane_threes1",
    "zion_williamson_rebounds4",
-   "josh_giddey_threes1",
-   "saddiq_bey_assists2",
-   "darius_acuff_jr_threes3"
+   "jalen_green_points10",
+   "dillon_brooks_points15"
   ],
-  "legs_text": "Zion Williamson 4+ rebounds; Josh Giddey 1+ threes; Saddiq Bey 2+ assists; Darius Acuff Jr. 3+ threes",
-  "est_hit": 0.2962,
-  "break_even": 3.38,
+  "legs_text": "Desmond Bane 1+ threes; Zion Williamson 4+ rebounds; Jalen Green 10+ points; Dillon Brooks 15+ points",
+  "est_hit": 0.3162,
+  "break_even": 3.16,
   "priced_legs": "3 of 4",
-  "known_price": 2.12,
-  "fair_multi": null,
-  "est_price": 3.08,
+  "known_price": 2.71,
+  "fair_multi": 4.01,
+  "est_price": 3.0,
   "book_prices": null,
   "best_book": null,
   "best_book_price": null,
@@ -92,25 +90,25 @@
   "multi": "4-leg $4+",
   "rank": 5,
   "leg_ids": [
-   "nikola_jokic_threes1",
-   "jalen_green_assists2",
+   "josh_giddey_threes1",
+   "zion_williamson_assists2",
    "saddiq_bey_assists2",
    "dillon_brooks_points15"
   ],
-  "legs_text": "Nikola Jokic 1+ threes; Jalen Green 2+ assists; Saddiq Bey 2+ assists; Dillon Brooks 15+ points",
-  "est_hit": 0.2498,
-  "break_even": 4.0,
+  "legs_text": "Josh Giddey 1+ threes; Zion Williamson 2+ assists; Saddiq Bey 2+ assists; Dillon Brooks 15+ points",
+  "est_hit": 0.253,
+  "break_even": 3.95,
   "priced_legs": "4 of 4",
-  "known_price": 3.98,
+  "known_price": 4.08,
   "fair_multi": null,
-  "est_price": 4.01,
+  "est_price": 4.08,
   "book_prices": {
-   "neds": 4.01
+   "neds": 4.08
   },
   "best_book": "neds",
-  "best_book_price": 4.01,
+  "best_book_price": 4.08,
   "verdict": "marginal",
-  "value": 0.0017
+  "value": 0.0322
  },
  {
   "multi": "Best value",
@@ -122,7 +120,7 @@
    "saddiq_bey_assists2"
   ],
   "legs_text": "Josh Giddey 1+ threes; Nikola Jokic 1+ threes; Zion Williamson 2+ assists; Saddiq Bey 2+ assists",
-  "est_hit": 0.3663,
+  "est_hit": 0.366,
   "break_even": 2.73,
   "priced_legs": "4 of 4",
   "known_price": 2.76,
@@ -134,75 +132,73 @@
   "best_book": "neds",
   "best_book_price": 2.76,
   "verdict": "marginal",
-  "value": 0.011
+  "value": 0.0102
  },
  {
   "multi": "Safest",
   "rank": 7,
   "leg_ids": [
+   "desmond_bane_threes1",
    "zion_williamson_rebounds4",
    "dillon_brooks_points10",
-   "jarrett_allen_points10",
-   "jalen_green_points10"
+   "josh_giddey_threes1"
   ],
-  "legs_text": "Zion Williamson 4+ rebounds; Dillon Brooks 10+ points; Jarrett Allen 10+ points; Jalen Green 10+ points",
-  "est_hit": 0.4139,
-  "break_even": 2.42,
-  "priced_legs": "4 of 4",
-  "known_price": 2.11,
-  "fair_multi": 2.82,
-  "est_price": 2.11,
-  "book_prices": {
-   "neds": 2.11
-  },
-  "best_book": "neds",
-  "best_book_price": 2.11,
-  "verdict": "skip",
-  "value": -0.1267
+  "legs_text": "Desmond Bane 1+ threes; Zion Williamson 4+ rebounds; Dillon Brooks 10+ points; Josh Giddey 1+ threes",
+  "est_hit": 0.4558,
+  "break_even": 2.19,
+  "priced_legs": "3 of 4",
+  "known_price": 1.81,
+  "fair_multi": null,
+  "est_price": 2.01,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null,
+  "verdict": "check",
+  "value": null
  },
  {
   "multi": "3-leg value",
   "rank": 8,
   "leg_ids": [
-   "josh_giddey_threes1",
+   "nikola_jokic_threes1",
    "zion_williamson_assists2",
    "saddiq_bey_assists2"
   ],
-  "legs_text": "Josh Giddey 1+ threes; Zion Williamson 2+ assists; Saddiq Bey 2+ assists",
-  "est_hit": 0.46,
-  "break_even": 2.17,
+  "legs_text": "Nikola Jokic 1+ threes; Zion Williamson 2+ assists; Saddiq Bey 2+ assists",
+  "est_hit": 0.4582,
+  "break_even": 2.18,
   "priced_legs": "3 of 3",
-  "known_price": 2.2,
+  "known_price": 2.19,
   "fair_multi": null,
-  "est_price": 2.2,
+  "est_price": 2.19,
   "book_prices": {
-   "neds": 2.2
+   "neds": 2.19
   },
   "best_book": "neds",
-  "best_book_price": 2.2,
+  "best_book_price": 2.19,
   "verdict": "marginal",
-  "value": 0.012
+  "value": 0.0035
  },
  {
   "multi": "One per game",
   "rank": 9,
   "leg_ids": [
+   "desmond_bane_threes1",
    "zion_williamson_rebounds4",
    "dillon_brooks_points10",
    "jarrett_allen_points10",
    "josh_giddey_threes1",
-   "onyeka_okongwu_points10",
    "nikola_jokic_threes1",
-   "desmond_bane_assists2",
+   "dyson_daniels_assists4",
    "darius_acuff_jr_threes2"
   ],
-  "legs_text": "Zion Williamson 4+ rebounds; Dillon Brooks 10+ points; Jarrett Allen 10+ points; Josh Giddey 1+ threes; Onyeka Okongwu 10+ points; Nikola Jokic 1+ threes; Desmond Bane 2+ assists; Darius Acuff Jr. 2+ threes",
-  "est_hit": 0.1608,
-  "break_even": 6.22,
-  "priced_legs": "7 of 8",
-  "known_price": 3.98,
+  "legs_text": "Desmond Bane 1+ threes; Zion Williamson 4+ rebounds; Dillon Brooks 10+ points; Jarrett Allen 10+ points; Josh Giddey 1+ threes; Nikola Jokic 1+ threes; Dyson Daniels 4+ assists; Darius Acuff Jr. 2+ threes",
+  "est_hit": 0.1743,
+  "break_even": 5.74,
+  "priced_legs": "6 of 8",
+  "known_price": 3.29,
   "fair_multi": null,
-  "est_price": 4.74,
+  "est_price": 4.34,
   "book_prices": null,
   "best_book": null,
   "best_book_price": null,
@@ -221,8 +217,8 @@
    "dillon_brooks_points15"
   ],
   "legs_text": "Josh Giddey 1+ threes; Zion Williamson 2+ assists; Miles Bridges 10+ points; Saddiq Bey 2+ assists; Phoenix Suns Phoenix Suns to win; Dillon Brooks 15+ points",
-  "est_hit": 0.1303,
-  "break_even": 7.67,
+  "est_hit": 0.1302,
+  "break_even": 7.68,
   "priced_legs": "6 of 6",
   "known_price": 8.15,
   "fair_multi": null,
@@ -233,63 +229,63 @@
   "best_book": "neds",
   "best_book_price": 8.09,
   "verdict": "value",
-  "value": 0.0541
+  "value": 0.0533
  },
  {
   "multi": "Long multi 8+",
   "rank": 11,
   "leg_ids": [
-   "quentin_grimes_assists2",
    "nickeil_alexander-walker_assists2",
+   "quentin_grimes_assists2",
    "brandon_miller_assists2",
    "amen_thompson_points10",
-   "kevin_huerter_assists2",
+   "andrew_nembhard_points10",
    "daniss_jenkins_points10",
    "zion_williamson_rebounds4",
    "dillon_brooks_points10"
   ],
-  "legs_text": "Quentin Grimes 2+ assists; Nickeil Alexander-Walker 2+ assists; Brandon Miller 2+ assists; Amen Thompson 10+ points; Kevin Huerter 2+ assists; Daniss Jenkins 10+ points; Zion Williamson 4+ rebounds; Dillon Brooks 10+ points",
-  "est_hit": 0.2169,
-  "break_even": 4.61,
+  "legs_text": "Nickeil Alexander-Walker 2+ assists; Quentin Grimes 2+ assists; Brandon Miller 2+ assists; Amen Thompson 10+ points; Andrew Nembhard 10+ points; Daniss Jenkins 10+ points; Zion Williamson 4+ rebounds; Dillon Brooks 10+ points",
+  "est_hit": 0.2163,
+  "break_even": 4.62,
   "priced_legs": "8 of 8",
-  "known_price": 3.54,
-  "fair_multi": 5.47,
-  "est_price": 3.48,
+  "known_price": 3.6,
+  "fair_multi": 5.5,
+  "est_price": 3.54,
   "book_prices": {
-   "neds": 3.48
+   "neds": 3.54
   },
   "best_book": "neds",
-  "best_book_price": 3.48,
+  "best_book_price": 3.54,
   "verdict": "skip",
-  "value": -0.2452
+  "value": -0.2343
  },
  {
   "multi": "Long shot $50",
   "rank": 12,
   "leg_ids": [
-   "nikola_jokic_threes1",
-   "aaron_wiggins_points10",
+   "josh_giddey_threes1",
    "saddiq_bey_assists2",
+   "wendell_carter_jr_points10",
    "phx_win",
    "dillon_brooks_points15",
    "zion_williamson_rebounds6",
-   "josh_giddey_rebounds8",
-   "miles_bridges_points15"
+   "jalen_green_points15",
+   "desmond_bane_points20"
   ],
-  "legs_text": "Nikola Jokic 1+ threes; Aaron Wiggins 10+ points; Saddiq Bey 2+ assists; Phoenix Suns Phoenix Suns to win; Dillon Brooks 15+ points; Zion Williamson 6+ rebounds; Josh Giddey 8+ rebounds; Miles Bridges 15+ points",
-  "est_hit": 0.0216,
-  "break_even": 46.28,
+  "legs_text": "Josh Giddey 1+ threes; Saddiq Bey 2+ assists; Wendell Carter Jr. 10+ points; Phoenix Suns Phoenix Suns to win; Dillon Brooks 15+ points; Zion Williamson 6+ rebounds; Jalen Green 15+ points; Desmond Bane 20+ points",
+  "est_hit": 0.0223,
+  "break_even": 44.82,
   "priced_legs": "8 of 8",
-  "known_price": 49.86,
+  "known_price": 48.29,
   "fair_multi": null,
-  "est_price": 50.63,
+  "est_price": 51.03,
   "book_prices": {
-   "neds": 50.63
+   "neds": 51.03
   },
   "best_book": "neds",
-  "best_book_price": 50.63,
+  "best_book_price": 51.03,
   "verdict": "value",
-  "value": 0.0936
+  "value": 0.138
  },
  {
   "multi": "Top pick",
@@ -319,21 +315,21 @@
   "leg_ids": [
    "nikola_jokic_threes1",
    "miles_bridges_points10",
-   "devin_booker_assists4"
+   "saddiq_bey_assists2"
   ],
-  "legs_text": "Nikola Jokic 1+ threes; Miles Bridges 10+ points; Devin Booker 4+ assists",
-  "est_hit": 0.4731,
-  "break_even": 2.11,
+  "legs_text": "Nikola Jokic 1+ threes; Miles Bridges 10+ points; Saddiq Bey 2+ assists",
+  "est_hit": 0.4403,
+  "break_even": 2.27,
   "priced_legs": "3 of 3",
-  "known_price": 1.98,
+  "known_price": 2.24,
   "fair_multi": null,
-  "est_price": 2.02,
+  "est_price": 2.24,
   "book_prices": {
-   "neds": 2.02
+   "neds": 2.24
   },
   "best_book": "neds",
-  "best_book_price": 2.02,
-  "verdict": "skip",
-  "value": -0.0443
+  "best_book_price": 2.24,
+  "verdict": "marginal",
+  "value": -0.0137
  }
 ]

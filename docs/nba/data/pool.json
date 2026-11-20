@@ -1,5 +1,40 @@
 [
  {
+  "leg_id": "desmond_bane_threes1",
+  "player": "Desmond Bane",
+  "team": "ORL",
+  "game": "ORL @ BKN",
+  "stat": "threes",
+  "line": 1,
+  "market": "1+ threes",
+  "model_prob": 0.8847,
+  "books": null,
+  "best_price": null,
+  "fair_price": 1.2,
+  "questionable": false,
+  "hits": 13,
+  "games": 13
+ },
+ {
+  "leg_id": "nickeil_alexander-walker_assists2",
+  "player": "Nickeil Alexander-Walker",
+  "team": "ATL",
+  "game": "CHA @ ATL",
+  "stat": "assists",
+  "line": 2,
+  "market": "2+ assists",
+  "model_prob": 0.8424,
+  "books": {
+   "neds": 1.14,
+   "tab": 1.16
+  },
+  "best_price": 1.16,
+  "fair_price": 1.12,
+  "questionable": false,
+  "hits": 11,
+  "games": 15
+ },
+ {
   "leg_id": "quentin_grimes_assists2",
   "player": "Quentin Grimes",
   "team": "LAL",
@@ -18,25 +53,6 @@
   "games": 14
  },
  {
-  "leg_id": "nickeil_alexander-walker_assists2",
-  "player": "Nickeil Alexander-Walker",
-  "team": "ATL",
-  "game": "CHA @ ATL",
-  "stat": "assists",
-  "line": 2,
-  "market": "2+ assists",
-  "model_prob": 0.8409,
-  "books": {
-   "neds": 1.14,
-   "tab": 1.16
-  },
-  "best_price": 1.16,
-  "fair_price": 1.13,
-  "questionable": false,
-  "hits": 11,
-  "games": 15
- },
- {
   "leg_id": "brandon_miller_assists2",
   "player": "Brandon Miller",
   "team": "CHA",
@@ -44,7 +60,7 @@
   "stat": "assists",
   "line": 2,
   "market": "2+ assists",
-  "model_prob": 0.8339,
+  "model_prob": 0.8342,
   "books": {
    "neds": 1.16,
    "tab": 1.17
@@ -63,7 +79,7 @@
   "stat": "points",
   "line": 10,
   "market": "10+ points",
-  "model_prob": 0.8293,
+  "model_prob": 0.8294,
   "books": {
    "neds": 1.17
   },
@@ -72,6 +88,24 @@
   "questionable": false,
   "hits": 13,
   "games": 15
+ },
+ {
+  "leg_id": "andrew_nembhard_points10",
+  "player": "Andrew Nembhard",
+  "team": "IND",
+  "game": "IND @ CLE",
+  "stat": "points",
+  "line": 10,
+  "market": "10+ points",
+  "model_prob": 0.8259,
+  "books": {
+   "neds": 1.18
+  },
+  "best_price": 1.18,
+  "fair_price": 1.26,
+  "questionable": false,
+  "hits": 10,
+  "games": 11
  },
  {
   "leg_id": "kevin_huerter_assists2",
@@ -99,7 +133,7 @@
   "stat": "points",
   "line": 10,
   "market": "10+ points",
-  "model_prob": 0.8204,
+  "model_prob": 0.8207,
   "books": {
    "neds": 1.17
   },
@@ -117,7 +151,7 @@
   "stat": "points",
   "line": 15,
   "market": "15+ points",
-  "model_prob": 0.8186,
+  "model_prob": 0.8189,
   "books": {
    "neds": 1.16
   },
@@ -153,7 +187,7 @@
   "stat": "points",
   "line": 10,
   "market": "10+ points",
-  "model_prob": 0.8074,
+  "model_prob": 0.8083,
   "books": {
    "neds": 1.17,
    "tab": 1.18
@@ -172,13 +206,13 @@
   "stat": "rebounds",
   "line": 4,
   "market": "4+ rebounds",
-  "model_prob": 0.804,
+  "model_prob": 0.8037,
   "books": {
    "neds": 1.2,
    "tab": 1.2
   },
   "best_price": 1.2,
-  "fair_price": 1.29,
+  "fair_price": 1.3,
   "questionable": false,
   "hits": 13,
   "games": 15
@@ -245,7 +279,7 @@
   "stat": "threes",
   "line": 1,
   "market": "1+ threes",
-  "model_prob": 0.7988,
+  "model_prob": 0.7987,
   "books": {
    "neds": 1.26
   },
@@ -256,24 +290,6 @@
   "games": 14
  },
  {
-  "leg_id": "onyeka_okongwu_points10",
-  "player": "Onyeka Okongwu",
-  "team": "ATL",
-  "game": "CHA @ ATL",
-  "stat": "points",
-  "line": 10,
-  "market": "10+ points",
-  "model_prob": 0.7984,
-  "books": {
-   "neds": 1.2
-  },
-  "best_price": 1.2,
-  "fair_price": 1.3,
-  "questionable": false,
-  "hits": 12,
-  "games": 15
- },
- {
   "leg_id": "nikola_jokic_threes1",
   "player": "Nikola Jokic",
   "team": "DEN",
@@ -281,7 +297,7 @@
   "stat": "threes",
   "line": 1,
   "market": "1+ threes",
-  "model_prob": 0.7964,
+  "model_prob": 0.7965,
   "books": {
    "neds": 1.25
   },
@@ -310,24 +326,6 @@
   "games": 14
  },
  {
-  "leg_id": "jalen_smith_points10",
-  "player": "Jalen Smith",
-  "team": "CHI",
-  "game": "WSH @ CHI",
-  "stat": "points",
-  "line": 10,
-  "market": "10+ points",
-  "model_prob": 0.794,
-  "books": {
-   "neds": 1.2
-  },
-  "best_price": 1.2,
-  "fair_price": 1.21,
-  "questionable": true,
-  "hits": 10,
-  "games": 13
- },
- {
   "leg_id": "desmond_bane_assists2",
   "player": "Desmond Bane",
   "team": "ORL",
@@ -335,12 +333,12 @@
   "stat": "assists",
   "line": 2,
   "market": "2+ assists",
-  "model_prob": 0.7932,
+  "model_prob": 0.7936,
   "books": {
    "neds": 1.22
   },
   "best_price": 1.22,
-  "fair_price": 1.31,
+  "fair_price": 1.3,
   "questionable": false,
   "hits": 10,
   "games": 13
@@ -353,7 +351,7 @@
   "stat": "assists",
   "line": 2,
   "market": "2+ assists",
-  "model_prob": 0.7898,
+  "model_prob": 0.7894,
   "books": {
    "neds": 1.25
   },
@@ -362,6 +360,24 @@
   "questionable": false,
   "hits": 14,
   "games": 15
+ },
+ {
+  "leg_id": "jalen_smith_points10",
+  "player": "Jalen Smith",
+  "team": "CHI",
+  "game": "WSH @ CHI",
+  "stat": "points",
+  "line": 10,
+  "market": "10+ points",
+  "model_prob": 0.7862,
+  "books": {
+   "neds": 1.22
+  },
+  "best_price": 1.22,
+  "fair_price": 1.22,
+  "questionable": true,
+  "hits": 10,
+  "games": 13
  },
  {
   "leg_id": "ace_bailey_points10",
@@ -389,13 +405,32 @@
   "stat": "points",
   "line": 10,
   "market": "10+ points",
-  "model_prob": 0.7777,
+  "model_prob": 0.7792,
   "books": null,
   "best_price": null,
   "fair_price": null,
   "questionable": false,
   "hits": 13,
   "games": 16
+ },
+ {
+  "leg_id": "dyson_daniels_assists4",
+  "player": "Dyson Daniels",
+  "team": "ATL",
+  "game": "CHA @ ATL",
+  "stat": "assists",
+  "line": 4,
+  "market": "4+ assists",
+  "model_prob": 0.7764,
+  "books": {
+   "neds": 1.22,
+   "tab": 1.2
+  },
+  "best_price": 1.22,
+  "fair_price": 1.28,
+  "questionable": false,
+  "hits": 12,
+  "games": 15
  },
  {
   "leg_id": "jalen_green_assists2",
@@ -417,6 +452,24 @@
   "games": 14
  },
  {
+  "leg_id": "luguentz_dort_threes1",
+  "player": "Luguentz Dort",
+  "team": "ATL",
+  "game": "CHA @ ATL",
+  "stat": "threes",
+  "line": 1,
+  "market": "1+ threes",
+  "model_prob": 0.7741,
+  "books": {
+   "neds": 1.2
+  },
+  "best_price": 1.2,
+  "fair_price": 1.3,
+  "questionable": false,
+  "hits": 13,
+  "games": 15
+ },
+ {
   "leg_id": "darius_acuff_jr_threes2",
   "player": "Darius Acuff Jr.",
   "team": "SAC",
@@ -431,6 +484,42 @@
   "questionable": false,
   "hits": 13,
   "games": 14
+ },
+ {
+  "leg_id": "onyeka_okongwu_points10",
+  "player": "Onyeka Okongwu",
+  "team": "ATL",
+  "game": "CHA @ ATL",
+  "stat": "points",
+  "line": 10,
+  "market": "10+ points",
+  "model_prob": 0.7696,
+  "books": {
+   "neds": 1.25
+  },
+  "best_price": 1.25,
+  "fair_price": 1.36,
+  "questionable": false,
+  "hits": 12,
+  "games": 15
+ },
+ {
+  "leg_id": "jalen_johnson_points15",
+  "player": "Jalen Johnson",
+  "team": "ATL",
+  "game": "CHA @ ATL",
+  "stat": "points",
+  "line": 15,
+  "market": "15+ points",
+  "model_prob": 0.7695,
+  "books": {
+   "neds": 1.2
+  },
+  "best_price": 1.2,
+  "fair_price": 1.29,
+  "questionable": false,
+  "hits": 9,
+  "games": 12
  },
  {
   "leg_id": "miles_bridges_points10",
@@ -476,12 +565,12 @@
   "stat": "assists",
   "line": 2,
   "market": "2+ assists",
-  "model_prob": 0.7665,
+  "model_prob": 0.7668,
   "books": {
    "neds": 1.26
   },
   "best_price": 1.26,
-  "fair_price": 1.3,
+  "fair_price": 1.29,
   "questionable": false,
   "hits": 6,
   "games": 8
@@ -494,7 +583,7 @@
   "stat": "assists",
   "line": 4,
   "market": "4+ assists",
-  "model_prob": 0.7656,
+  "model_prob": 0.7657,
   "books": {
    "neds": 1.22
   },
@@ -503,43 +592,6 @@
   "questionable": false,
   "hits": 10,
   "games": 13
- },
- {
-  "leg_id": "jalen_johnson_points15",
-  "player": "Jalen Johnson",
-  "team": "ATL",
-  "game": "CHA @ ATL",
-  "stat": "points",
-  "line": 15,
-  "market": "15+ points",
-  "model_prob": 0.7645,
-  "books": {
-   "neds": 1.2
-  },
-  "best_price": 1.2,
-  "fair_price": 1.3,
-  "questionable": false,
-  "hits": 9,
-  "games": 12
- },
- {
-  "leg_id": "dyson_daniels_assists4",
-  "player": "Dyson Daniels",
-  "team": "ATL",
-  "game": "CHA @ ATL",
-  "stat": "assists",
-  "line": 4,
-  "market": "4+ assists",
-  "model_prob": 0.7645,
-  "books": {
-   "neds": 1.22,
-   "tab": 1.2
-  },
-  "best_price": 1.22,
-  "fair_price": 1.31,
-  "questionable": false,
-  "hits": 12,
-  "games": 15
  },
  {
   "leg_id": "miles_bridges_assists2",
@@ -558,25 +610,6 @@
   "fair_price": 1.36,
   "questionable": false,
   "hits": 12,
-  "games": 14
- },
- {
-  "leg_id": "franz_wagner_threes1",
-  "player": "Franz Wagner",
-  "team": "ORL",
-  "game": "ORL @ BKN",
-  "stat": "threes",
-  "line": 1,
-  "market": "1+ threes",
-  "model_prob": 0.7635,
-  "books": {
-   "neds": 1.24,
-   "tab": 1.22
-  },
-  "best_price": 1.24,
-  "fair_price": 1.34,
-  "questionable": false,
-  "hits": 10,
   "games": 14
  },
  {
@@ -599,6 +632,25 @@
   "games": 14
  },
  {
+  "leg_id": "franz_wagner_threes1",
+  "player": "Franz Wagner",
+  "team": "ORL",
+  "game": "ORL @ BKN",
+  "stat": "threes",
+  "line": 1,
+  "market": "1+ threes",
+  "model_prob": 0.7628,
+  "books": {
+   "neds": 1.24,
+   "tab": 1.22
+  },
+  "best_price": 1.24,
+  "fair_price": 1.35,
+  "questionable": false,
+  "hits": 10,
+  "games": 14
+ },
+ {
   "leg_id": "pascal_siakam_threes1",
   "player": "Pascal Siakam",
   "team": "IND",
@@ -617,6 +669,24 @@
   "games": 14
  },
  {
+  "leg_id": "michael_porter_jr_points15",
+  "player": "Michael Porter Jr.",
+  "team": "BKN",
+  "game": "ORL @ BKN",
+  "stat": "points",
+  "line": 15,
+  "market": "15+ points",
+  "model_prob": 0.76,
+  "books": {
+   "neds": 1.2
+  },
+  "best_price": 1.2,
+  "fair_price": 1.29,
+  "questionable": false,
+  "hits": 10,
+  "games": 13
+ },
+ {
   "leg_id": "zion_williamson_points15",
   "player": "Zion Williamson",
   "team": "NO",
@@ -624,7 +694,7 @@
   "stat": "points",
   "line": 15,
   "market": "15+ points",
-  "model_prob": 0.7592,
+  "model_prob": 0.7587,
   "books": {
    "neds": 1.26,
    "tab": 1.16
@@ -636,42 +706,6 @@
   "games": 15
  },
  {
-  "leg_id": "luguentz_dort_threes1",
-  "player": "Luguentz Dort",
-  "team": "ATL",
-  "game": "CHA @ ATL",
-  "stat": "threes",
-  "line": 1,
-  "market": "1+ threes",
-  "model_prob": 0.7591,
-  "books": {
-   "neds": 1.2
-  },
-  "best_price": 1.2,
-  "fair_price": 1.35,
-  "questionable": false,
-  "hits": 13,
-  "games": 15
- },
- {
-  "leg_id": "cade_cunningham_rebounds4",
-  "player": "Cade Cunningham",
-  "team": "DET",
-  "game": "TOR @ DET",
-  "stat": "rebounds",
-  "line": 4,
-  "market": "4+ rebounds",
-  "model_prob": 0.7581,
-  "books": {
-   "neds": 1.26
-  },
-  "best_price": 1.26,
-  "fair_price": 1.26,
-  "questionable": true,
-  "hits": 11,
-  "games": 13
- },
- {
   "leg_id": "tari_eason_rebounds4",
   "player": "Tari Eason",
   "team": "HOU",
@@ -679,7 +713,7 @@
   "stat": "rebounds",
   "line": 4,
   "market": "4+ rebounds",
-  "model_prob": 0.7576,
+  "model_prob": 0.7577,
   "books": {
    "neds": 1.22
   },
@@ -697,12 +731,12 @@
   "stat": "points",
   "line": 15,
   "market": "15+ points",
-  "model_prob": 0.7551,
+  "model_prob": 0.755,
   "books": {
-   "neds": 1.25,
+   "neds": 1.26,
    "tab": 1.22
   },
-  "best_price": 1.25,
+  "best_price": 1.26,
   "fair_price": 1.37,
   "questionable": false,
   "hits": 12,
@@ -734,7 +768,7 @@
   "stat": "threes",
   "line": 1,
   "market": "1+ threes",
-  "model_prob": 0.7543,
+  "model_prob": 0.7542,
   "books": null,
   "best_price": null,
   "fair_price": null,
@@ -750,7 +784,7 @@
   "stat": "assists",
   "line": 4,
   "market": "4+ assists",
-  "model_prob": 0.7534,
+  "model_prob": 0.7531,
   "books": {
    "neds": 1.26
   },
@@ -761,6 +795,24 @@
   "games": 14
  },
  {
+  "leg_id": "shai_gilgeous-alexander_assists4",
+  "player": "Shai Gilgeous-Alexander",
+  "team": "OKC",
+  "game": "NO @ OKC",
+  "stat": "assists",
+  "line": 4,
+  "market": "4+ assists",
+  "model_prob": 0.7527,
+  "books": {
+   "neds": 1.26
+  },
+  "best_price": 1.26,
+  "fair_price": 1.34,
+  "questionable": false,
+  "hits": 7,
+  "games": 15
+ },
+ {
   "leg_id": "walker_kessler_rebounds8",
   "player": "Walker Kessler",
   "team": "LAL",
@@ -768,7 +820,7 @@
   "stat": "rebounds",
   "line": 8,
   "market": "8+ rebounds",
-  "model_prob": 0.7523,
+  "model_prob": 0.7522,
   "books": {
    "neds": 1.2,
    "tab": 1.2
@@ -780,39 +832,20 @@
   "games": 15
  },
  {
-  "leg_id": "shai_gilgeous-alexander_assists4",
-  "player": "Shai Gilgeous-Alexander",
-  "team": "OKC",
-  "game": "NO @ OKC",
-  "stat": "assists",
+  "leg_id": "cade_cunningham_rebounds4",
+  "player": "Cade Cunningham",
+  "team": "DET",
+  "game": "TOR @ DET",
+  "stat": "rebounds",
   "line": 4,
-  "market": "4+ assists",
-  "model_prob": 0.751,
+  "market": "4+ rebounds",
+  "model_prob": 0.7509,
   "books": {
-   "neds": 1.26
+   "neds": 1.28
   },
-  "best_price": 1.26,
-  "fair_price": 1.35,
-  "questionable": false,
-  "hits": 7,
-  "games": 15
- },
- {
-  "leg_id": "desmond_bane_points15",
-  "player": "Desmond Bane",
-  "team": "ORL",
-  "game": "ORL @ BKN",
-  "stat": "points",
-  "line": 15,
-  "market": "15+ points",
-  "model_prob": 0.7506,
-  "books": {
-   "neds": 1.3,
-   "tab": 1.22
-  },
-  "best_price": 1.3,
-  "fair_price": 1.42,
-  "questionable": false,
+  "best_price": 1.28,
+  "fair_price": 1.26,
+  "questionable": true,
   "hits": 11,
   "games": 13
  },
@@ -887,6 +920,25 @@
   "games": 14
  },
  {
+  "leg_id": "desmond_bane_points15",
+  "player": "Desmond Bane",
+  "team": "ORL",
+  "game": "ORL @ BKN",
+  "stat": "points",
+  "line": 15,
+  "market": "15+ points",
+  "model_prob": 0.7483,
+  "books": {
+   "neds": 1.33,
+   "tab": 1.22
+  },
+  "best_price": 1.33,
+  "fair_price": 1.44,
+  "questionable": false,
+  "hits": 11,
+  "games": 13
+ },
+ {
   "leg_id": "zach_lavine_assists2",
   "player": "Zach LaVine",
   "team": "SAC",
@@ -912,7 +964,7 @@
   "stat": "points",
   "line": 20,
   "market": "20+ points",
-  "model_prob": 0.7476,
+  "model_prob": 0.7477,
   "books": {
    "neds": 1.24
   },
@@ -930,7 +982,7 @@
   "stat": "points",
   "line": 15,
   "market": "15+ points",
-  "model_prob": 0.7432,
+  "model_prob": 0.7433,
   "books": {
    "neds": 1.24
   },
@@ -966,7 +1018,7 @@
   "stat": "assists",
   "line": 4,
   "market": "4+ assists",
-  "model_prob": 0.7416,
+  "model_prob": 0.7417,
   "books": {
    "neds": 1.25
   },
@@ -984,12 +1036,12 @@
   "stat": "rebounds",
   "line": 6,
   "market": "6+ rebounds",
-  "model_prob": 0.7401,
+  "model_prob": 0.7404,
   "books": {
    "neds": 1.24
   },
   "best_price": 1.24,
-  "fair_price": 1.33,
+  "fair_price": 1.32,
   "questionable": false,
   "hits": 12,
   "games": 14
@@ -1020,7 +1072,7 @@
   "stat": "rebounds",
   "line": 8,
   "market": "8+ rebounds",
-  "model_prob": 0.7394,
+  "model_prob": 0.7393,
   "books": {
    "neds": 1.2
   },
@@ -1056,7 +1108,7 @@
   "stat": "rebounds",
   "line": 6,
   "market": "6+ rebounds",
-  "model_prob": 0.7366,
+  "model_prob": 0.7365,
   "books": {
    "neds": 1.25
   },
@@ -1093,7 +1145,7 @@
   "stat": "threes",
   "line": 1,
   "market": "1+ threes",
-  "model_prob": 0.7316,
+  "model_prob": 0.7317,
   "books": {
    "neds": 1.32
   },
@@ -1129,12 +1181,12 @@
   "stat": "points",
   "line": 10,
   "market": "10+ points",
-  "model_prob": 0.7274,
+  "model_prob": 0.7282,
   "books": {
    "neds": 1.35
   },
   "best_price": 1.35,
-  "fair_price": 1.39,
+  "fair_price": 1.37,
   "questionable": false,
   "hits": 12,
   "games": 15
@@ -1147,7 +1199,7 @@
   "stat": "rebounds",
   "line": 4,
   "market": "4+ rebounds",
-  "model_prob": 0.7273,
+  "model_prob": 0.7279,
   "books": {
    "neds": 1.2
   },
@@ -1156,40 +1208,6 @@
   "questionable": false,
   "hits": 10,
   "games": 14
- },
- {
-  "leg_id": "scottie_barnes_assists4",
-  "player": "Scottie Barnes",
-  "team": "TOR",
-  "game": "TOR @ DET",
-  "stat": "assists",
-  "line": 4,
-  "market": "4+ assists",
-  "model_prob": 0.726,
-  "books": {
-   "neds": 1.32
-  },
-  "best_price": 1.32,
-  "fair_price": 1.43,
-  "questionable": false,
-  "hits": 8,
-  "games": 10
- },
- {
-  "leg_id": "alex_sarr_rebounds6",
-  "player": "Alex Sarr",
-  "team": "WSH",
-  "game": "WSH @ CHI",
-  "stat": "rebounds",
-  "line": 6,
-  "market": "6+ rebounds",
-  "model_prob": 0.7258,
-  "books": null,
-  "best_price": null,
-  "fair_price": null,
-  "questionable": false,
-  "hits": 10,
-  "games": 15
  },
  {
   "leg_id": "zach_lavine_points15",
@@ -1210,6 +1228,22 @@
   "games": 13
  },
  {
+  "leg_id": "alex_sarr_rebounds6",
+  "player": "Alex Sarr",
+  "team": "WSH",
+  "game": "WSH @ CHI",
+  "stat": "rebounds",
+  "line": 6,
+  "market": "6+ rebounds",
+  "model_prob": 0.7254,
+  "books": null,
+  "best_price": null,
+  "fair_price": null,
+  "questionable": false,
+  "hits": 10,
+  "games": 15
+ },
+ {
   "leg_id": "josh_giddey_rebounds6",
   "player": "Josh Giddey",
   "team": "CHI",
@@ -1217,7 +1251,7 @@
   "stat": "rebounds",
   "line": 6,
   "market": "6+ rebounds",
-  "model_prob": 0.7235,
+  "model_prob": 0.7232,
   "books": {
    "neds": 1.33
   },
@@ -1228,6 +1262,24 @@
   "games": 14
  },
  {
+  "leg_id": "scottie_barnes_assists4",
+  "player": "Scottie Barnes",
+  "team": "TOR",
+  "game": "TOR @ DET",
+  "stat": "assists",
+  "line": 4,
+  "market": "4+ assists",
+  "model_prob": 0.7228,
+  "books": {
+   "neds": 1.33
+  },
+  "best_price": 1.33,
+  "fair_price": 1.43,
+  "questionable": false,
+  "hits": 8,
+  "games": 10
+ },
+ {
   "leg_id": "fred_vanvleet_points10",
   "player": "Fred VanVleet",
   "team": "HOU",
@@ -1235,7 +1287,7 @@
   "stat": "points",
   "line": 10,
   "market": "10+ points",
-  "model_prob": 0.7223,
+  "model_prob": 0.7224,
   "books": {
    "neds": 1.36
   },
@@ -1253,15 +1305,51 @@
   "stat": "assists",
   "line": 2,
   "market": "2+ assists",
-  "model_prob": 0.7193,
+  "model_prob": 0.719,
   "books": {
    "neds": 1.4
   },
   "best_price": 1.4,
-  "fair_price": 1.51,
+  "fair_price": 1.52,
   "questionable": false,
   "hits": 11,
   "games": 16
+ },
+ {
+  "leg_id": "michael_porter_jr_threes2",
+  "player": "Michael Porter Jr.",
+  "team": "BKN",
+  "game": "ORL @ BKN",
+  "stat": "threes",
+  "line": 2,
+  "market": "2+ threes",
+  "model_prob": 0.7167,
+  "books": {
+   "neds": 1.22
+  },
+  "best_price": 1.22,
+  "fair_price": 1.43,
+  "questionable": false,
+  "hits": 11,
+  "games": 13
+ },
+ {
+  "leg_id": "jarrett_allen_rebounds8",
+  "player": "Jarrett Allen",
+  "team": "CLE",
+  "game": "IND @ CLE",
+  "stat": "rebounds",
+  "line": 8,
+  "market": "8+ rebounds",
+  "model_prob": 0.7166,
+  "books": {
+   "neds": 1.3
+  },
+  "best_price": 1.3,
+  "fair_price": 1.45,
+  "questionable": false,
+  "hits": 9,
+  "games": 13
  },
  {
   "leg_id": "anthony_black_assists4",
@@ -1271,12 +1359,12 @@
   "stat": "assists",
   "line": 4,
   "market": "4+ assists",
-  "model_prob": 0.7173,
+  "model_prob": 0.7165,
   "books": {
    "neds": 1.32
   },
   "best_price": 1.32,
-  "fair_price": 1.42,
+  "fair_price": 1.43,
   "questionable": false,
   "hits": 9,
   "games": 11
@@ -1289,7 +1377,7 @@
   "stat": "threes",
   "line": 2,
   "market": "2+ threes",
-  "model_prob": 0.7161,
+  "model_prob": 0.716,
   "books": {
    "neds": 1.2
   },
@@ -1300,42 +1388,6 @@
   "games": 12
  },
  {
-  "leg_id": "jarrett_allen_rebounds8",
-  "player": "Jarrett Allen",
-  "team": "CLE",
-  "game": "IND @ CLE",
-  "stat": "rebounds",
-  "line": 8,
-  "market": "8+ rebounds",
-  "model_prob": 0.7161,
-  "books": {
-   "neds": 1.3
-  },
-  "best_price": 1.3,
-  "fair_price": 1.45,
-  "questionable": false,
-  "hits": 9,
-  "games": 13
- },
- {
-  "leg_id": "michael_porter_jr_threes2",
-  "player": "Michael Porter Jr.",
-  "team": "BKN",
-  "game": "ORL @ BKN",
-  "stat": "threes",
-  "line": 2,
-  "market": "2+ threes",
-  "model_prob": 0.7147,
-  "books": {
-   "neds": 1.22
-  },
-  "best_price": 1.22,
-  "fair_price": 1.43,
-  "questionable": false,
-  "hits": 11,
-  "games": 13
- },
- {
   "leg_id": "kevin_durant_rebounds4",
   "player": "Kevin Durant",
   "team": "HOU",
@@ -1343,7 +1395,7 @@
   "stat": "rebounds",
   "line": 4,
   "market": "4+ rebounds",
-  "model_prob": 0.7135,
+  "model_prob": 0.7138,
   "books": {
    "neds": 1.32
   },
@@ -1361,7 +1413,7 @@
   "stat": "assists",
   "line": 4,
   "market": "4+ assists",
-  "model_prob": 0.7129,
+  "model_prob": 0.7131,
   "books": {
    "neds": 1.35
   },
@@ -1372,23 +1424,20 @@
   "games": 15
  },
  {
-  "leg_id": "franz_wagner_points20",
-  "player": "Franz Wagner",
-  "team": "ORL",
-  "game": "ORL @ BKN",
-  "stat": "points",
-  "line": 20,
-  "market": "20+ points",
-  "model_prob": 0.7115,
-  "books": {
-   "neds": 1.28,
-   "tab": 1.27
-  },
-  "best_price": 1.28,
-  "fair_price": 1.42,
+  "leg_id": "jabari_smith_jr_rebounds6",
+  "player": "Jabari Smith Jr.",
+  "team": "HOU",
+  "game": "HOU @ DEN",
+  "stat": "rebounds",
+  "line": 6,
+  "market": "6+ rebounds",
+  "model_prob": 0.7113,
+  "books": null,
+  "best_price": null,
+  "fair_price": null,
   "questionable": false,
-  "hits": 10,
-  "games": 14
+  "hits": 8,
+  "games": 16
  },
  {
   "leg_id": "domantas_sabonis_points10",
@@ -1409,38 +1458,42 @@
   "games": 13
  },
  {
-  "leg_id": "jabari_smith_jr_rebounds6",
-  "player": "Jabari Smith Jr.",
-  "team": "HOU",
-  "game": "HOU @ DEN",
-  "stat": "rebounds",
+  "leg_id": "jalen_johnson_assists6",
+  "player": "Jalen Johnson",
+  "team": "ATL",
+  "game": "CHA @ ATL",
+  "stat": "assists",
   "line": 6,
-  "market": "6+ rebounds",
-  "model_prob": 0.7105,
-  "books": null,
-  "best_price": null,
-  "fair_price": null,
-  "questionable": false,
-  "hits": 8,
-  "games": 16
- },
- {
-  "leg_id": "aj_dybantsa_points15",
-  "player": "AJ Dybantsa",
-  "team": "WSH",
-  "game": "WSH @ CHI",
-  "stat": "points",
-  "line": 15,
-  "market": "15+ points",
-  "model_prob": 0.7072,
+  "market": "6+ assists",
+  "model_prob": 0.7104,
   "books": {
-   "neds": 1.33
+   "neds": 1.3,
+   "tab": 1.3
   },
-  "best_price": 1.33,
-  "fair_price": 1.39,
+  "best_price": 1.3,
+  "fair_price": 1.41,
   "questionable": false,
   "hits": 8,
   "games": 12
+ },
+ {
+  "leg_id": "franz_wagner_points20",
+  "player": "Franz Wagner",
+  "team": "ORL",
+  "game": "ORL @ BKN",
+  "stat": "points",
+  "line": 20,
+  "market": "20+ points",
+  "model_prob": 0.7101,
+  "books": {
+   "neds": 1.28,
+   "tab": 1.27
+  },
+  "best_price": 1.28,
+  "fair_price": 1.42,
+  "questionable": false,
+  "hits": 10,
+  "games": 14
  },
  {
   "leg_id": "donovan_mitchell_threes2",
@@ -1468,7 +1521,7 @@
   "stat": "assists",
   "line": 6,
   "market": "6+ assists",
-  "model_prob": 0.7054,
+  "model_prob": 0.7056,
   "books": {
    "neds": 1.28
   },
@@ -1476,6 +1529,42 @@
   "fair_price": 1.46,
   "questionable": false,
   "hits": 10,
+  "games": 14
+ },
+ {
+  "leg_id": "aj_dybantsa_points15",
+  "player": "AJ Dybantsa",
+  "team": "WSH",
+  "game": "WSH @ CHI",
+  "stat": "points",
+  "line": 15,
+  "market": "15+ points",
+  "model_prob": 0.7044,
+  "books": {
+   "neds": 1.35
+  },
+  "best_price": 1.35,
+  "fair_price": 1.4,
+  "questionable": false,
+  "hits": 8,
+  "games": 12
+ },
+ {
+  "leg_id": "wendell_carter_jr_points10",
+  "player": "Wendell Carter Jr.",
+  "team": "ORL",
+  "game": "ORL @ BKN",
+  "stat": "points",
+  "line": 10,
+  "market": "10+ points",
+  "model_prob": 0.702,
+  "books": {
+   "neds": 1.4
+  },
+  "best_price": 1.4,
+  "fair_price": 1.48,
+  "questionable": false,
+  "hits": 8,
   "games": 14
  },
  {
@@ -1514,42 +1603,6 @@
   "questionable": false,
   "hits": 0,
   "games": 0
- },
- {
-  "leg_id": "wendell_carter_jr_points10",
-  "player": "Wendell Carter Jr.",
-  "team": "ORL",
-  "game": "ORL @ BKN",
-  "stat": "points",
-  "line": 10,
-  "market": "10+ points",
-  "model_prob": 0.7014,
-  "books": {
-   "neds": 1.4
-  },
-  "best_price": 1.4,
-  "fair_price": 1.48,
-  "questionable": false,
-  "hits": 8,
-  "games": 14
- },
- {
-  "leg_id": "anthony_davis_points20",
-  "player": "Anthony Davis",
-  "team": "WSH",
-  "game": "WSH @ CHI",
-  "stat": "points",
-  "line": 20,
-  "market": "20+ points",
-  "model_prob": 0.7012,
-  "books": {
-   "neds": 1.3
-  },
-  "best_price": 1.3,
-  "fair_price": 1.44,
-  "questionable": false,
-  "hits": 10,
-  "games": 14
  },
  {
   "leg_id": "det_win",
@@ -1651,7 +1704,7 @@
   "stat": "rebounds",
   "line": 10,
   "market": "10+ rebounds",
-  "model_prob": 0.6147,
+  "model_prob": 0.6145,
   "books": {
    "neds": 1.57,
    "tab": 1.54
@@ -1681,6 +1734,25 @@
   "games": 12
  },
  {
+  "leg_id": "desmond_bane_threes3",
+  "player": "Desmond Bane",
+  "team": "ORL",
+  "game": "ORL @ BKN",
+  "stat": "threes",
+  "line": 3,
+  "market": "3+ threes",
+  "model_prob": 0.5852,
+  "books": {
+   "neds": 1.42,
+   "tab": 1.34
+  },
+  "best_price": 1.42,
+  "fair_price": 1.67,
+  "questionable": false,
+  "hits": 11,
+  "games": 13
+ },
+ {
   "leg_id": "darius_acuff_jr_points25",
   "player": "Darius Acuff Jr.",
   "team": "SAC",
@@ -1697,6 +1769,24 @@
   "games": 14
  },
  {
+  "leg_id": "jalen_johnson_points20",
+  "player": "Jalen Johnson",
+  "team": "ATL",
+  "game": "CHA @ ATL",
+  "stat": "points",
+  "line": 20,
+  "market": "20+ points",
+  "model_prob": 0.5541,
+  "books": {
+   "neds": 1.68
+  },
+  "best_price": 1.68,
+  "fair_price": 1.82,
+  "questionable": false,
+  "hits": 5,
+  "games": 12
+ },
+ {
   "leg_id": "anthony_davis_rebounds10",
   "player": "Anthony Davis",
   "team": "WSH",
@@ -1704,7 +1794,7 @@
   "stat": "rebounds",
   "line": 10,
   "market": "10+ rebounds",
-  "model_prob": 0.5521,
+  "model_prob": 0.5515,
   "books": {
    "neds": 1.57
   },
@@ -1733,24 +1823,6 @@
   "games": 14
  },
  {
-  "leg_id": "jalen_johnson_points20",
-  "player": "Jalen Johnson",
-  "team": "ATL",
-  "game": "CHA @ ATL",
-  "stat": "points",
-  "line": 20,
-  "market": "20+ points",
-  "model_prob": 0.5496,
-  "books": {
-   "neds": 1.68
-  },
-  "best_price": 1.68,
-  "fair_price": 1.84,
-  "questionable": false,
-  "hits": 5,
-  "games": 12
- },
- {
   "leg_id": "zion_williamson_rebounds6",
   "player": "Zion Williamson",
   "team": "NO",
@@ -1758,7 +1830,7 @@
   "stat": "rebounds",
   "line": 6,
   "market": "6+ rebounds",
-  "model_prob": 0.5467,
+  "model_prob": 0.5461,
   "books": {
    "neds": 1.85,
    "tab": 1.78
@@ -1777,7 +1849,7 @@
   "stat": "points",
   "line": 25,
   "market": "25+ points",
-  "model_prob": 0.5423,
+  "model_prob": 0.5427,
   "books": {
    "neds": 1.68
   },
@@ -1788,22 +1860,22 @@
   "games": 13
  },
  {
-  "leg_id": "onyeka_okongwu_points15",
-  "player": "Onyeka Okongwu",
-  "team": "ATL",
-  "game": "CHA @ ATL",
+  "leg_id": "michael_porter_jr_points20",
+  "player": "Michael Porter Jr.",
+  "team": "BKN",
+  "game": "ORL @ BKN",
   "stat": "points",
-  "line": 15,
-  "market": "15+ points",
-  "model_prob": 0.5307,
+  "line": 20,
+  "market": "20+ points",
+  "model_prob": 0.5425,
   "books": {
-   "neds": 1.85
+   "neds": 1.67
   },
-  "best_price": 1.85,
-  "fair_price": 1.98,
+  "best_price": 1.67,
+  "fair_price": 1.8,
   "questionable": false,
-  "hits": 7,
-  "games": 15
+  "hits": 8,
+  "games": 13
  },
  {
   "leg_id": "brandon_miller_threes3",
@@ -1813,7 +1885,7 @@
   "stat": "threes",
   "line": 3,
   "market": "3+ threes",
-  "model_prob": 0.5272,
+  "model_prob": 0.5271,
   "books": {
    "neds": 1.67
   },
@@ -1831,12 +1903,12 @@
   "stat": "threes",
   "line": 3,
   "market": "3+ threes",
-  "model_prob": 0.524,
+  "model_prob": 0.525,
   "books": {
    "neds": 1.68
   },
   "best_price": 1.68,
-  "fair_price": 1.83,
+  "fair_price": 1.82,
   "questionable": false,
   "hits": 9,
   "games": 13
@@ -1878,25 +1950,6 @@
   "games": 14
  },
  {
-  "leg_id": "zion_williamson_points20",
-  "player": "Zion Williamson",
-  "team": "NO",
-  "game": "NO @ OKC",
-  "stat": "points",
-  "line": 20,
-  "market": "20+ points",
-  "model_prob": 0.5203,
-  "books": {
-   "neds": 1.88,
-   "tab": 1.83
-  },
-  "best_price": 1.88,
-  "fair_price": 2.01,
-  "questionable": false,
-  "hits": 11,
-  "games": 15
- },
- {
   "leg_id": "donovan_mitchell_threes3",
   "player": "Donovan Mitchell",
   "team": "CLE",
@@ -1915,6 +1968,25 @@
   "games": 15
  },
  {
+  "leg_id": "zion_williamson_points20",
+  "player": "Zion Williamson",
+  "team": "NO",
+  "game": "NO @ OKC",
+  "stat": "points",
+  "line": 20,
+  "market": "20+ points",
+  "model_prob": 0.5182,
+  "books": {
+   "neds": 1.9,
+   "tab": 1.83
+  },
+  "best_price": 1.9,
+  "fair_price": 2.02,
+  "questionable": false,
+  "hits": 11,
+  "games": 15
+ },
+ {
   "leg_id": "julius_randle_points20",
   "player": "Julius Randle",
   "team": "BKN",
@@ -1922,9 +1994,9 @@
   "stat": "points",
   "line": 20,
   "market": "20+ points",
-  "model_prob": 0.518,
+  "model_prob": 0.5176,
   "books": {
-   "neds": 1.87,
+   "neds": 1.88,
    "tab": 1.88
   },
   "best_price": 1.88,
@@ -1941,7 +2013,7 @@
   "stat": "rebounds",
   "line": 10,
   "market": "10+ rebounds",
-  "model_prob": 0.5073,
+  "model_prob": 0.5078,
   "books": {
    "neds": 1.85
   },
@@ -1952,41 +2024,22 @@
   "games": 13
  },
  {
-  "leg_id": "desmond_bane_points20",
-  "player": "Desmond Bane",
-  "team": "ORL",
-  "game": "ORL @ BKN",
+  "leg_id": "onyeka_okongwu_points15",
+  "player": "Onyeka Okongwu",
+  "team": "ATL",
+  "game": "CHA @ ATL",
   "stat": "points",
-  "line": 20,
-  "market": "20+ points",
-  "model_prob": 0.5032,
+  "line": 15,
+  "market": "15+ points",
+  "model_prob": 0.503,
   "books": {
-   "neds": 1.94,
-   "tab": 1.89
+   "neds": 1.96
   },
-  "best_price": 1.94,
-  "fair_price": 2.13,
-  "questionable": false,
-  "hits": 6,
-  "games": 13
- },
- {
-  "leg_id": "josh_giddey_rebounds8",
-  "player": "Josh Giddey",
-  "team": "CHI",
-  "game": "WSH @ CHI",
-  "stat": "rebounds",
-  "line": 8,
-  "market": "8+ rebounds",
-  "model_prob": 0.4952,
-  "books": {
-   "neds": 2.02
-  },
-  "best_price": 2.02,
+  "best_price": 1.96,
   "fair_price": 2.17,
   "questionable": false,
-  "hits": 5,
-  "games": 14
+  "hits": 7,
+  "games": 15
  },
  {
   "leg_id": "naz_reid_rebounds8",
@@ -1996,12 +2049,12 @@
   "stat": "rebounds",
   "line": 8,
   "market": "8+ rebounds",
-  "model_prob": 0.4939,
+  "model_prob": 0.4945,
   "books": {
    "neds": 1.78
   },
   "best_price": 1.78,
-  "fair_price": 1.91,
+  "fair_price": 1.9,
   "questionable": false,
   "hits": 8,
   "games": 14
@@ -2025,6 +2078,43 @@
   "games": 14
  },
  {
+  "leg_id": "desmond_bane_points20",
+  "player": "Desmond Bane",
+  "team": "ORL",
+  "game": "ORL @ BKN",
+  "stat": "points",
+  "line": 20,
+  "market": "20+ points",
+  "model_prob": 0.4926,
+  "books": {
+   "neds": 2.05,
+   "tab": 1.89
+  },
+  "best_price": 2.05,
+  "fair_price": 2.18,
+  "questionable": false,
+  "hits": 6,
+  "games": 13
+ },
+ {
+  "leg_id": "josh_giddey_rebounds8",
+  "player": "Josh Giddey",
+  "team": "CHI",
+  "game": "WSH @ CHI",
+  "stat": "rebounds",
+  "line": 8,
+  "market": "8+ rebounds",
+  "model_prob": 0.4909,
+  "books": {
+   "neds": 2.05
+  },
+  "best_price": 2.05,
+  "fair_price": 2.18,
+  "questionable": false,
+  "hits": 5,
+  "games": 14
+ },
+ {
   "leg_id": "tari_eason_rebounds6",
   "player": "Tari Eason",
   "team": "HOU",
@@ -2032,7 +2122,7 @@
   "stat": "rebounds",
   "line": 6,
   "market": "6+ rebounds",
-  "model_prob": 0.4904,
+  "model_prob": 0.4907,
   "books": {
    "neds": 1.9
   },
@@ -2043,6 +2133,22 @@
   "games": 16
  },
  {
+  "leg_id": "jabari_smith_jr_points15",
+  "player": "Jabari Smith Jr.",
+  "team": "HOU",
+  "game": "HOU @ DEN",
+  "stat": "points",
+  "line": 15,
+  "market": "15+ points",
+  "model_prob": 0.4892,
+  "books": null,
+  "best_price": null,
+  "fair_price": null,
+  "questionable": false,
+  "hits": 6,
+  "games": 16
+ },
+ {
   "leg_id": "franz_wagner_points25",
   "player": "Franz Wagner",
   "team": "ORL",
@@ -2050,13 +2156,13 @@
   "stat": "points",
   "line": 25,
   "market": "25+ points",
-  "model_prob": 0.4897,
+  "model_prob": 0.4881,
   "books": {
-   "neds": 1.85,
+   "neds": 1.87,
    "tab": 1.52
   },
-  "best_price": 1.85,
-  "fair_price": 1.98,
+  "best_price": 1.87,
+  "fair_price": 1.99,
   "questionable": false,
   "hits": 6,
   "games": 14
@@ -2080,24 +2186,6 @@
   "games": 13
  },
  {
-  "leg_id": "anthony_davis_points25",
-  "player": "Anthony Davis",
-  "team": "WSH",
-  "game": "WSH @ CHI",
-  "stat": "points",
-  "line": 25,
-  "market": "25+ points",
-  "model_prob": 0.4874,
-  "books": {
-   "neds": 1.88
-  },
-  "best_price": 1.88,
-  "fair_price": 2.02,
-  "questionable": false,
-  "hits": 8,
-  "games": 14
- },
- {
   "leg_id": "nikola_jokic_threes2",
   "player": "Nikola Jokic",
   "team": "DEN",
@@ -2105,7 +2193,7 @@
   "stat": "threes",
   "line": 2,
   "market": "2+ threes",
-  "model_prob": 0.487,
+  "model_prob": 0.4872,
   "books": {
    "neds": 2.1
   },
@@ -2114,22 +2202,6 @@
   "questionable": false,
   "hits": 4,
   "games": 13
- },
- {
-  "leg_id": "jabari_smith_jr_points15",
-  "player": "Jabari Smith Jr.",
-  "team": "HOU",
-  "game": "HOU @ DEN",
-  "stat": "points",
-  "line": 15,
-  "market": "15+ points",
-  "model_prob": 0.4869,
-  "books": null,
-  "best_price": null,
-  "fair_price": null,
-  "questionable": false,
-  "hits": 6,
-  "games": 16
  },
  {
   "leg_id": "miles_bridges_threes2",
@@ -2150,6 +2222,25 @@
   "games": 14
  },
  {
+  "leg_id": "dyson_daniels_assists6",
+  "player": "Dyson Daniels",
+  "team": "ATL",
+  "game": "CHA @ ATL",
+  "stat": "assists",
+  "line": 6,
+  "market": "6+ assists",
+  "model_prob": 0.4828,
+  "books": {
+   "neds": 1.94,
+   "tab": 1.91
+  },
+  "best_price": 1.94,
+  "fair_price": 1.97,
+  "questionable": false,
+  "hits": 5,
+  "games": 15
+ },
+ {
   "leg_id": "josh_giddey_threes2",
   "player": "Josh Giddey",
   "team": "CHI",
@@ -2157,7 +2248,7 @@
   "stat": "threes",
   "line": 2,
   "market": "2+ threes",
-  "model_prob": 0.4799,
+  "model_prob": 0.4797,
   "books": {
    "neds": 2.15
   },
@@ -2184,6 +2275,25 @@
   "questionable": false,
   "hits": 8,
   "games": 14
+ },
+ {
+  "leg_id": "jalen_johnson_assists8",
+  "player": "Jalen Johnson",
+  "team": "ATL",
+  "game": "CHA @ ATL",
+  "stat": "assists",
+  "line": 8,
+  "market": "8+ assists",
+  "model_prob": 0.4752,
+  "books": {
+   "neds": 1.98,
+   "tab": 2.05
+  },
+  "best_price": 2.05,
+  "fair_price": 1.99,
+  "questionable": false,
+  "hits": 5,
+  "games": 12
  },
  {
   "leg_id": "zach_lavine_points20",
@@ -2222,25 +2332,6 @@
   "games": 14
  },
  {
-  "leg_id": "dyson_daniels_assists6",
-  "player": "Dyson Daniels",
-  "team": "ATL",
-  "game": "CHA @ ATL",
-  "stat": "assists",
-  "line": 6,
-  "market": "6+ assists",
-  "model_prob": 0.4737,
-  "books": {
-   "neds": 1.94,
-   "tab": 1.91
-  },
-  "best_price": 1.94,
-  "fair_price": 2.08,
-  "questionable": false,
-  "hits": 5,
-  "games": 15
- },
- {
   "leg_id": "ace_bailey_points15",
   "player": "Ace Bailey",
   "team": "UTAH",
@@ -2266,7 +2357,7 @@
   "stat": "assists",
   "line": 6,
   "market": "6+ assists",
-  "model_prob": 0.4708,
+  "model_prob": 0.471,
   "books": {
    "neds": 1.95
   },
@@ -2303,7 +2394,7 @@
   "stat": "rebounds",
   "line": 8,
   "market": "8+ rebounds",
-  "model_prob": 0.4668,
+  "model_prob": 0.4665,
   "books": {
    "neds": 1.82
   },
@@ -2314,6 +2405,24 @@
   "games": 14
  },
  {
+  "leg_id": "luguentz_dort_threes2",
+  "player": "Luguentz Dort",
+  "team": "ATL",
+  "game": "CHA @ ATL",
+  "stat": "threes",
+  "line": 2,
+  "market": "2+ threes",
+  "model_prob": 0.4642,
+  "books": {
+   "neds": 1.96
+  },
+  "best_price": 1.96,
+  "fair_price": 1.99,
+  "questionable": false,
+  "hits": 6,
+  "games": 15
+ },
+ {
   "leg_id": "alex_sarr_rebounds8",
   "player": "Alex Sarr",
   "team": "WSH",
@@ -2321,7 +2430,7 @@
   "stat": "rebounds",
   "line": 8,
   "market": "8+ rebounds",
-  "model_prob": 0.4641,
+  "model_prob": 0.4634,
   "books": null,
   "best_price": null,
   "fair_price": null,
@@ -2355,7 +2464,7 @@
   "stat": "assists",
   "line": 6,
   "market": "6+ assists",
-  "model_prob": 0.4607,
+  "model_prob": 0.4606,
   "books": {
    "neds": 2.1
   },
@@ -2373,15 +2482,31 @@
   "stat": "assists",
   "line": 6,
   "market": "6+ assists",
-  "model_prob": 0.4559,
+  "model_prob": 0.4566,
   "books": {
    "neds": 2.1
   },
   "best_price": 2.1,
-  "fair_price": 2.25,
+  "fair_price": 2.23,
   "questionable": false,
   "hits": 3,
   "games": 15
+ },
+ {
+  "leg_id": "jabari_smith_jr_rebounds8",
+  "player": "Jabari Smith Jr.",
+  "team": "HOU",
+  "game": "HOU @ DEN",
+  "stat": "rebounds",
+  "line": 8,
+  "market": "8+ rebounds",
+  "model_prob": 0.4388,
+  "books": null,
+  "best_price": null,
+  "fair_price": null,
+  "questionable": false,
+  "hits": 6,
+  "games": 16
  },
  {
   "leg_id": "darryn_peterson_points20",
@@ -2402,22 +2527,6 @@
   "games": 16
  },
  {
-  "leg_id": "jabari_smith_jr_rebounds8",
-  "player": "Jabari Smith Jr.",
-  "team": "HOU",
-  "game": "HOU @ DEN",
-  "stat": "rebounds",
-  "line": 8,
-  "market": "8+ rebounds",
-  "model_prob": 0.4379,
-  "books": null,
-  "best_price": null,
-  "fair_price": null,
-  "questionable": false,
-  "hits": 6,
-  "games": 16
- },
- {
   "leg_id": "walker_kessler_points15",
   "player": "Walker Kessler",
   "team": "LAL",
@@ -2433,24 +2542,6 @@
   "fair_price": 2.34,
   "questionable": false,
   "hits": 7,
-  "games": 15
- },
- {
-  "leg_id": "luguentz_dort_threes2",
-  "player": "Luguentz Dort",
-  "team": "ATL",
-  "game": "CHA @ ATL",
-  "stat": "threes",
-  "line": 2,
-  "market": "2+ threes",
-  "model_prob": 0.4343,
-  "books": {
-   "neds": 1.96
-  },
-  "best_price": 1.96,
-  "fair_price": 2.14,
-  "questionable": false,
-  "hits": 6,
   "games": 15
  },
  {
@@ -2479,13 +2570,13 @@
   "stat": "threes",
   "line": 2,
   "market": "2+ threes",
-  "model_prob": 0.4282,
+  "model_prob": 0.428,
   "books": {
-   "neds": 2.2,
+   "neds": 2.25,
    "tab": 2.18
   },
-  "best_price": 2.2,
-  "fair_price": 2.38,
+  "best_price": 2.25,
+  "fair_price": 2.37,
   "questionable": false,
   "hits": 8,
   "games": 14
@@ -2498,15 +2589,33 @@
   "stat": "assists",
   "line": 6,
   "market": "6+ assists",
-  "model_prob": 0.4217,
+  "model_prob": 0.4222,
   "books": {
    "neds": 2.25
   },
   "best_price": 2.25,
-  "fair_price": 2.68,
+  "fair_price": 2.67,
   "questionable": false,
   "hits": 7,
   "games": 15
+ },
+ {
+  "leg_id": "fred_vanvleet_assists6",
+  "player": "Fred VanVleet",
+  "team": "HOU",
+  "game": "HOU @ DEN",
+  "stat": "assists",
+  "line": 6,
+  "market": "6+ assists",
+  "model_prob": 0.4168,
+  "books": {
+   "neds": 2.05
+  },
+  "best_price": 2.05,
+  "fair_price": 2.19,
+  "questionable": false,
+  "hits": 6,
+  "games": 13
  },
  {
   "leg_id": "franz_wagner_threes2",
@@ -2516,7 +2625,7 @@
   "stat": "threes",
   "line": 2,
   "market": "2+ threes",
-  "model_prob": 0.4172,
+  "model_prob": 0.4158,
   "books": {
    "neds": 2.05,
    "tab": 1.95
@@ -2528,42 +2637,6 @@
   "games": 14
  },
  {
-  "leg_id": "fred_vanvleet_assists6",
-  "player": "Fred VanVleet",
-  "team": "HOU",
-  "game": "HOU @ DEN",
-  "stat": "assists",
-  "line": 6,
-  "market": "6+ assists",
-  "model_prob": 0.4163,
-  "books": {
-   "neds": 2.05
-  },
-  "best_price": 2.05,
-  "fair_price": 2.19,
-  "questionable": false,
-  "hits": 6,
-  "games": 13
- },
- {
-  "leg_id": "scottie_barnes_assists6",
-  "player": "Scottie Barnes",
-  "team": "TOR",
-  "game": "TOR @ DET",
-  "stat": "assists",
-  "line": 6,
-  "market": "6+ assists",
-  "model_prob": 0.4147,
-  "books": {
-   "neds": 2.15
-  },
-  "best_price": 2.15,
-  "fair_price": 2.63,
-  "questionable": false,
-  "hits": 2,
-  "games": 10
- },
- {
   "leg_id": "christian_braun_threes2",
   "player": "Christian Braun",
   "team": "DEN",
@@ -2571,7 +2644,7 @@
   "stat": "threes",
   "line": 2,
   "market": "2+ threes",
-  "model_prob": 0.4145,
+  "model_prob": 0.4148,
   "books": {
    "neds": 2.35
   },
@@ -2582,6 +2655,24 @@
   "games": 13
  },
  {
+  "leg_id": "scottie_barnes_assists6",
+  "player": "Scottie Barnes",
+  "team": "TOR",
+  "game": "TOR @ DET",
+  "stat": "assists",
+  "line": 6,
+  "market": "6+ assists",
+  "model_prob": 0.4129,
+  "books": {
+   "neds": 2.2
+  },
+  "best_price": 2.2,
+  "fair_price": 2.65,
+  "questionable": false,
+  "hits": 2,
+  "games": 10
+ },
+ {
   "leg_id": "aj_dybantsa_points20",
   "player": "AJ Dybantsa",
   "team": "WSH",
@@ -2589,12 +2680,12 @@
   "stat": "points",
   "line": 20,
   "market": "20+ points",
-  "model_prob": 0.4088,
+  "model_prob": 0.407,
   "books": {
    "neds": 2.05
   },
   "best_price": 2.05,
-  "fair_price": 2.28,
+  "fair_price": 2.3,
   "questionable": false,
   "hits": 4,
   "games": 12

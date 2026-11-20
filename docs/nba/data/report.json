@@ -1,18 +1,18 @@
 {
  "slate_date": "2026-11-21",
- "headline": "Value today: Mid-range $8+ on Neds $8.09 (needs $7.67); Long shot $50 on Neds $50.63 (needs $46.28). Note: 3-leg value includes legs without a confirmed worth-it price; spread the legs around so one miss can't sink most multis: 4-leg $4+, Second pick.",
- "injuries": "Jock Landale (Out), Asa Newell (Out), Cj Mccollum (Out), Mouhamed Gueye (Out), Henri Veesaar (Out), Grant Nelson (Out), Grant Williams (Out), Grayson Allen (Out), Kon Knueppel (Out), Dennis Schroder (Out), Tobe Awaka (Out), Caleb Wilson (Out) and others",
- "graded": "Yesterday: 29 of 38 legs landed; 4-leg $2+ missed, 3-leg $2+ missed, 2-leg $2+ landed, 4-leg $3+ missed, 4-leg $4+ missed, Best value landed, Safest missed, 3-leg value landed, Mid-range $8+ missed, Long multi 8+ landed, Long shot $50 missed, Top pick missed, Second pick landed.",
- "next_run": "Late check 9:46am — CHA @ ATL: no new outs; prices refreshed",
+ "headline": "Value today: Mid-range $8+ on Neds $8.09 (needs $7.68); Long shot $50 on Neds $51.03 (needs $44.82). Note: 3-leg value includes legs without a confirmed worth-it price; spread the legs around so one miss can't sink most multis: 3-leg value, Second pick.",
+ "injuries": "Kingston Flemings (Out), Jock Landale (Out), Asa Newell (Out), Cj Mccollum (Out), Mouhamed Gueye (Out), Henri Veesaar (Out), Grant Nelson (Out), Grant Williams (Out), Grayson Allen (Out), Kon Knueppel (Out), Dennis Schroder (Out), Tobe Awaka (Out) and others",
+ "graded": "",
+ "next_run": "Re-checked 10:22am: 10 multi(s) changed: 4-leg $2+, 2-leg $2+, 4-leg $3+, 4-leg $4+, Safest, 3-leg value, One per game, Long multi 8+, Long shot $50, Second pick",
  "sources": {
   "stats": "ESPN",
-  "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API (5 games, 156 credits left)",
+  "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API",
   "injury_reading": "Claude"
  },
- "updated_at": "2026-11-21T08:30:16.900088+11:00",
+ "updated_at": "2026-11-21T10:22:18.923603+11:00",
  "inj_snapshot": {
+  "kingston flemings": "Out",
   "jock landale": "Out",
-  "kingston flemings": "Day-To-Day",
   "asa newell": "Out",
   "cj mccollum": "Out",
   "mouhamed gueye": "Out",
@@ -31,8 +31,8 @@
   "nae'qwan tomlin": "Out",
   "evan mobley": "Out",
   "julian strawther": "Out",
-  "ronald holland ii": "Day-To-Day",
   "taurean prince": "Out",
+  "ronald holland ii": "Day-To-Day",
   "ebuka okorie": "Out",
   "cade cunningham": "Day-To-Day",
   "ugonna onyenso": "Day-To-Day",
@@ -43,8 +43,6 @@
   "alperen sengun": "Day-To-Day",
   "tyrese haliburton": "Out",
   "t.j. mcconnell": "Day-To-Day",
-  "andrew nembhard": "Day-To-Day",
-  "braden smith": "Day-To-Day",
   "johnny furphy": "Out",
   "ben sheppard": "Out",
   "austin reaves": "Out",
@@ -87,11 +85,11 @@
   "SAME_GAME_OTHER": 0.042,
   "WIN_VS_OPPONENT": -0.2
  },
- "recheck_at": "2026-11-21T09:38:00+11:00",
- "late_refreshes": 1,
+ "rechecked_at": "2026-11-21T10:22:18.923603+11:00",
  "late_checked": [
   "CHA @ ATL"
  ],
+ "late_refreshes": 1,
  "late_log": [
   "9:46am CHA @ ATL: no new outs; prices refreshed"
  ]
