@@ -3,7 +3,7 @@
  "headline": "Value today: Mid-range $8+ on Neds $8.09 (needs $7.67); Long shot $50 on Neds $50.63 (needs $46.28). Note: 3-leg value includes legs without a confirmed worth-it price; spread the legs around so one miss can't sink most multis: 4-leg $4+, Second pick.",
  "injuries": "Jock Landale (Out), Asa Newell (Out), Cj Mccollum (Out), Mouhamed Gueye (Out), Henri Veesaar (Out), Grant Nelson (Out), Grant Williams (Out), Grayson Allen (Out), Kon Knueppel (Out), Dennis Schroder (Out), Tobe Awaka (Out), Caleb Wilson (Out) and others",
  "graded": "Yesterday: 29 of 38 legs landed; 4-leg $2+ missed, 3-leg $2+ missed, 2-leg $2+ landed, 4-leg $3+ missed, 4-leg $4+ missed, Best value landed, Safest missed, 3-leg value landed, Mid-range $8+ missed, Long multi 8+ landed, Long shot $50 missed, Top pick missed, Second pick landed.",
- "next_run": "Built 8:30am; re-checked before the first tip",
+ "next_run": "Late check 9:46am — CHA @ ATL: no new outs; prices refreshed",
  "sources": {
   "stats": "ESPN",
   "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API (5 games, 156 credits left)",
@@ -87,5 +87,12 @@
   "SAME_GAME_OTHER": 0.042,
   "WIN_VS_OPPONENT": -0.2
  },
- "recheck_at": "2026-11-21T09:38:00+11:00"
+ "recheck_at": "2026-11-21T09:38:00+11:00",
+ "late_refreshes": 1,
+ "late_checked": [
+  "CHA @ ATL"
+ ],
+ "late_log": [
+  "9:46am CHA @ ATL: no new outs; prices refreshed"
+ ]
 }
