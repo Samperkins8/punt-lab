@@ -51,5 +51,11 @@
   "SAME_GAME_OTHER": 0.042,
   "WIN_VS_OPPONENT": -0.2
  },
- "rechecked_at": "2026-11-20T10:19:53.780542+11:00"
+ "rechecked_at": "2026-11-20T10:19:53.780542+11:00",
+ "final_games": [
+  "GS @ MEM",
+  "LAC @ SA",
+  "NY @ MIN",
+  "POR @ MIL"
+ ]
 }
