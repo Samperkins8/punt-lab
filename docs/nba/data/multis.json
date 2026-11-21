@@ -185,7 +185,7 @@
   "best_book_price": 2.19,
   "verdict": "marginal",
   "value": 0.0035,
-  "landed": null
+  "landed": true
  },
  {
   "multi": "One per game",
@@ -268,7 +268,7 @@
   "best_book_price": 3.54,
   "verdict": "skip",
   "value": -0.2343,
-  "landed": null
+  "landed": true
  },
  {
   "multi": "Long shot $50",
@@ -344,6 +344,6 @@
   "best_book_price": 2.24,
   "verdict": "marginal",
   "value": -0.0137,
-  "landed": null
+  "landed": true
  }
 ]

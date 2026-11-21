@@ -365,7 +365,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.26
-  }
+  },
+  "actual": 2.0,
+  "landed": true,
+  "minutes_played": 38,
+  "expected_minutes": 37,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 15.3 points tonight, needs 10+. This season 12.4 a game over 14 games; last season 18.8 over 34. Plays better on the road: 1.0 points more predicted. Tonight's line is 8 points easier than his team's usual (favourites by 4.5), so they're expected to score more (+3%). UTAH gives up more to his position than average (+4%). Bookies' line: 14.5.",
@@ -725,7 +730,12 @@
   "event_id": "401909312",
   "athlete_id": "4432639",
   "late_checked": "1:11pm",
-  "late_was": null
+  "late_was": null,
+  "actual": 21.0,
+  "landed": true,
+  "minutes_played": 32,
+  "expected_minutes": 33,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 5.7 assists tonight, needs 4+. This season 5.5 a game over 15 games; last season 5.9 over 76. Daniels averaged 4.8 in the 12 games with Johnson (5.5 across all 15), so he's predicted 0.4 assists fewer tonight. Plays better at home: 0.7 assists more predicted. Slower game expected (-2% for pace). Bookies' line: 5.5.",
@@ -1336,7 +1346,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.22
-  }
+  },
+  "actual": 7.0,
+  "landed": true,
+  "minutes_played": 36,
+  "expected_minutes": 36,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 2.9 assists tonight, needs 2+. This season 3.1 a game over 14 games; last season 3.2 over 79. Tonight's line is 8 points easier than his team's usual (favourites by 4.5), so they're expected to score more (+2%). UTAH gives up more to his position than average (+5%). Bookies' line: 2.5.",
@@ -2095,7 +2110,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.18
-  }
+  },
+  "actual": 22.0,
+  "landed": true,
+  "minutes_played": 26,
+  "expected_minutes": 33,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 3.7 assists tonight, needs 2+. This season 2.6 a game over 14 games; last season 3.2 over 76. Tonight's line is 7 points easier than his team's usual (favourites by 14.5), so they're expected to score more (+1%). SAC gives up more to his position than average (+11%). Expected minutes 38.5 vs his usual 28.6. Bookies' line: 3.5.",
@@ -2868,7 +2888,12 @@
   "event_id": "401909312",
   "athlete_id": "3202",
   "late_new": true,
-  "late_checked": "1:11pm"
+  "late_checked": "1:11pm",
+  "actual": 16.0,
+  "landed": true,
+  "minutes_played": 35,
+  "expected_minutes": 34,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 6.0 rebounds tonight, needs 4+. This season 6.9 a game over 14 games; last season 5.8 over 79. UTAH gives up more to his position than average (+2%). Bookies' line: 5.5.",
