@@ -1,22 +1,21 @@
 {
  "slate_date": "2026-11-22",
- "headline": "Skip today: no multi beats its break-even price by 5%. Closest: Top pick on Neds $2.48 (needs $2.42). Note: only 4 legs are 80%+ likely at $1.15+, not enough for a long multi; 3-leg value includes legs without a confirmed worth-it price; spread the legs around so one miss can't sink most multis: 3-leg value.",
- "injuries": "Mitchell Robinson (Out), Derrick White (Out), Jayson Tatum (Out), Tobi Lawal (Out), Dereck Lively Ii (Out), Sergio De Larrea (Out), Tarik Biberovic (Out), Brandon Ingram (Out), Bradley Beal (Out), Jordan Miller (Out), Jerami Grant (Out), Javon Small (Out) and others",
- "graded": "Yesterday: 38 of 47 legs landed; 4-leg $2+ missed, 3-leg $2+ missed, 2-leg $2+ landed, 4-leg $3+ landed, 4-leg $4+ missed, Best value missed, Safest missed, 3-leg value landed, One per game missed, Mid-range $8+ missed, Long multi 8+ landed, Long shot $50 missed, Top pick missed, Second pick landed.",
- "next_run": "Built 8:21am; re-checked before the first tip",
+ "headline": "Value today: 3-leg value on Neds $4.22 (needs $3.99). Note: only 4 legs are 80%+ likely at $1.15+, not enough for a long multi; the one-per-game multi only pays about $1.92, under $2, so it's left out; spread the legs around so one miss can't sink most multis: 4-leg $4+, Second pick.",
+ "injuries": "Mitchell Robinson (Out), Derrick White (Out), Jayson Tatum (Out), P.J. Washington (Out), Tobi Lawal (Out), Dereck Lively Ii (Out), Sergio De Larrea (Out), Tarik Biberovic (Out), Brandon Ingram (Out), Bradley Beal (Out), Jordan Miller (Out), Jerami Grant (Out) and others",
+ "graded": "",
+ "next_run": "Re-checked 10:15am: 9 multi(s) changed: 4-leg $2+, 2-leg $2+, 4-leg $3+, 4-leg $4+, Safest, 3-leg value, Long shot $50, Top pick, Second pick",
  "sources": {
   "stats": "ESPN",
-  "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API (4 games, 140 credits left)",
+  "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API",
   "injury_reading": "Claude"
  },
- "updated_at": "2026-11-22T08:21:19.604889+11:00",
+ "updated_at": "2026-11-22T10:15:03.710552+11:00",
  "inj_snapshot": {
   "mitchell robinson": "Out",
   "derrick white": "Out",
   "jayson tatum": "Out",
-  "p.j. washington": "Day-To-Day",
+  "p.j. washington": "Out",
   "tobi lawal": "Out",
-  "walter clayton jr.": "Day-To-Day",
   "dereck lively ii": "Out",
   "sergio de larrea": "Out",
   "tarik biberovic": "Out",
@@ -38,15 +37,14 @@
   "bryce mcgowens": "Out",
   "bennedict mathurin": "Out",
   "dejounte murray": "Out",
-  "og anunoby": "Day-To-Day",
-  "karl-anthony towns": "Day-To-Day",
+  "karl-anthony towns": "Out",
+  "og anunoby": "Out",
   "jordan clarkson": "Out",
   "dean wade": "Out",
   "adem bona": "Out",
   "jaylen brown": "Out",
   "ariel hukporti": "Out",
   "chris youngblood": "Out",
-  "deni avdija": "Day-To-Day",
   "vit krejci": "Out",
   "ja morant": "Out",
   "shaedon sharpe": "Out",
@@ -63,8 +61,5 @@
   "SAME_GAME_OTHER": 0.042,
   "WIN_VS_OPPONENT": -0.2
  },
- "recheck_at": "2026-11-22T09:38:00+11:00",
- "final_games": [
-  "MIL @ PHI"
- ]
+ "rechecked_at": "2026-11-22T10:15:03.710552+11:00"
 }

@@ -13,10 +13,10 @@
   "game": "POR @ NY",
   "tip": "11:30am",
   "start": "2026-11-22T11:30:00+11:00",
-  "favourite": "NY",
-  "spread": -2.5,
-  "total": 215.5,
-  "fav_win_prob": 0.583,
+  "favourite": "POR",
+  "spread": -1.5,
+  "total": 213.5,
+  "fav_win_prob": 0.55,
   "status": "Analysed"
  },
  {
@@ -34,9 +34,9 @@
   "tip": "12:00pm",
   "start": "2026-11-22T12:00:00+11:00",
   "favourite": "MIN",
-  "spread": -6.5,
+  "spread": -5.5,
   "total": 228.5,
-  "fav_win_prob": 0.706,
+  "fav_win_prob": 0.677,
   "status": "Analysed"
  },
  {
@@ -45,7 +45,7 @@
   "start": "2026-11-22T12:00:00+11:00",
   "favourite": "SA",
   "spread": -18.5,
-  "total": 228.5,
+  "total": 229.5,
   "fav_win_prob": 0.938,
   "status": "Analysed"
  },
@@ -55,7 +55,7 @@
   "start": "2026-11-22T14:00:00+11:00",
   "favourite": "BOS",
   "spread": -12.5,
-  "total": 216.5,
+  "total": 215.5,
   "fav_win_prob": 0.851,
   "status": "Analysed"
  }

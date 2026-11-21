@@ -4,23 +4,22 @@
   "rank": 1,
   "leg_ids": [
    "lamelo_ball_threes1",
-   "paul_george_threes1",
+   "damian_lillard_threes1",
    "de'aaron_fox_points10",
    "zion_williamson_assists2"
   ],
-  "legs_text": "LaMelo Ball 1+ threes; Paul George 1+ threes; De'Aaron Fox 10+ points; Zion Williamson 2+ assists",
-  "est_hit": 0.4645,
-  "break_even": 2.15,
+  "legs_text": "LaMelo Ball 1+ threes; Damian Lillard 1+ threes; De'Aaron Fox 10+ points; Zion Williamson 2+ assists",
+  "est_hit": 0.4666,
+  "break_even": 2.14,
   "priced_legs": "2 of 4",
   "known_price": 1.62,
-  "fair_multi": 2.4,
+  "fair_multi": 2.41,
   "est_price": 2.02,
   "book_prices": null,
   "best_book": null,
   "best_book_price": null,
   "verdict": "check",
-  "value": null,
-  "landed": null
+  "value": null
  },
  {
   "multi": "3-leg $2+",
@@ -31,89 +30,86 @@
    "derrick_jones_jr_threes1"
   ],
   "legs_text": "LaMelo Ball 1+ threes; Zion Williamson 2+ assists; Derrick Jones Jr. 1+ threes",
-  "est_hit": 0.4906,
+  "est_hit": 0.4912,
   "break_even": 2.04,
   "priced_legs": "2 of 3",
   "known_price": 1.8,
   "fair_multi": null,
-  "est_price": 2.02,
+  "est_price": 2.01,
   "book_prices": null,
   "best_book": null,
   "best_book_price": null,
   "verdict": "check",
-  "value": null,
-  "landed": null
+  "value": null
  },
  {
   "multi": "2-leg $2+",
   "rank": 3,
   "leg_ids": [
-   "saddiq_bey_assists2",
-   "min_win"
+   "jaden_mcdaniels_rebounds4",
+   "damian_lillard_threes3"
   ],
-  "legs_text": "Saddiq Bey 2+ assists; Minnesota Timberwolves Minnesota Timberwolves to win",
-  "est_hit": 0.4939,
-  "break_even": 2.02,
+  "legs_text": "Jaden McDaniels 4+ rebounds; Damian Lillard 3+ threes",
+  "est_hit": 0.4264,
+  "break_even": 2.35,
   "priced_legs": "2 of 2",
   "known_price": 2.01,
   "fair_multi": 2.2,
-  "est_price": 2.0,
+  "est_price": 2.02,
   "book_prices": {
-   "neds": 2.0
+   "neds": 2.02,
+   "tab": 1.97
   },
   "best_book": "neds",
-  "best_book_price": 2.0,
-  "verdict": "marginal",
-  "value": -0.0122,
-  "landed": null
+  "best_book_price": 2.02,
+  "verdict": "skip",
+  "value": -0.1387
  },
  {
   "multi": "4-leg $3+",
   "rank": 4,
   "leg_ids": [
-   "lamelo_ball_threes1",
+   "rui_hachimura_points10",
+   "zion_williamson_assists2",
    "derrick_jones_jr_threes1",
-   "saddiq_bey_assists2",
-   "min_win"
+   "saddiq_bey_assists2"
   ],
-  "legs_text": "LaMelo Ball 1+ threes; Derrick Jones Jr. 1+ threes; Saddiq Bey 2+ assists; Minnesota Timberwolves Minnesota Timberwolves to win",
-  "est_hit": 0.3282,
+  "legs_text": "Rui Hachimura 10+ points; Zion Williamson 2+ assists; Derrick Jones Jr. 1+ threes; Saddiq Bey 2+ assists",
+  "est_hit": 0.3279,
   "break_even": 3.05,
-  "priced_legs": "3 of 4",
-  "known_price": 2.74,
+  "priced_legs": "4 of 4",
+  "known_price": 3.02,
   "fair_multi": null,
-  "est_price": 3.08,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null,
-  "verdict": "check",
-  "value": null,
-  "landed": null
+  "est_price": 3.02,
+  "book_prices": {
+   "neds": 3.02
+  },
+  "best_book": "neds",
+  "best_book_price": 3.02,
+  "verdict": "marginal",
+  "value": -0.0097
  },
  {
   "multi": "4-leg $4+",
   "rank": 5,
   "leg_ids": [
-   "derrick_jones_jr_threes1",
-   "saddiq_bey_assists2",
-   "min_win",
-   "kyrie_irving_threes3"
+   "lamelo_ball_threes1",
+   "jonathan_kuminga_points10",
+   "jrue_holiday_points10",
+   "por_win"
   ],
-  "legs_text": "Derrick Jones Jr. 1+ threes; Saddiq Bey 2+ assists; Minnesota Timberwolves Minnesota Timberwolves to win; Kyrie Irving 3+ threes",
-  "est_hit": 0.2093,
-  "break_even": 4.78,
-  "priced_legs": "4 of 4",
-  "known_price": 4.06,
-  "fair_multi": null,
-  "est_price": 4.03,
-  "book_prices": {
-   "neds": 4.03
-  },
-  "best_book": "neds",
-  "best_book_price": 4.03,
-  "verdict": "skip",
-  "value": -0.1565,
-  "landed": null
+  "legs_text": "LaMelo Ball 1+ threes; Jonathan Kuminga 10+ points; Jrue Holiday 10+ points; Portland Trail Blazers Portland Trail Blazers to win",
+  "est_hit": 0.2471,
+  "break_even": 4.05,
+  "priced_legs": "3 of 4",
+  "known_price": 3.57,
+  "fair_multi": 4.29,
+  "est_price": 4.0,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null,
+  "verdict": "check",
+  "value": null
  },
  {
   "multi": "Best value",
@@ -125,8 +121,8 @@
    "zion_williamson_assists2"
   ],
   "legs_text": "LaMelo Ball 1+ threes; Derrick Jones Jr. 1+ threes; Saddiq Bey 2+ assists; Zion Williamson 2+ assists",
-  "est_hit": 0.3642,
-  "break_even": 2.75,
+  "est_hit": 0.3647,
+  "break_even": 2.74,
   "priced_legs": "3 of 4",
   "known_price": 2.48,
   "fair_multi": null,
@@ -135,77 +131,52 @@
   "best_book": null,
   "best_book_price": null,
   "verdict": "check",
-  "value": null,
-  "landed": null
+  "value": null
  },
  {
   "multi": "Safest",
   "rank": 7,
   "leg_ids": [
    "lamelo_ball_threes1",
-   "paul_george_threes1",
+   "damian_lillard_threes1",
    "de'aaron_fox_points10",
    "zion_williamson_assists2"
   ],
-  "legs_text": "LaMelo Ball 1+ threes; Paul George 1+ threes; De'Aaron Fox 10+ points; Zion Williamson 2+ assists",
-  "est_hit": 0.4645,
-  "break_even": 2.15,
+  "legs_text": "LaMelo Ball 1+ threes; Damian Lillard 1+ threes; De'Aaron Fox 10+ points; Zion Williamson 2+ assists",
+  "est_hit": 0.4666,
+  "break_even": 2.14,
   "priced_legs": "2 of 4",
   "known_price": 1.62,
-  "fair_multi": 2.4,
+  "fair_multi": 2.41,
   "est_price": 2.02,
   "book_prices": null,
   "best_book": null,
   "best_book_price": null,
   "verdict": "check",
-  "value": null,
-  "landed": null
+  "value": null
  },
  {
   "multi": "3-leg value",
   "rank": 8,
   "leg_ids": [
-   "kyrie_irving_threes1",
+   "por_win",
    "derrick_jones_jr_threes1",
    "saddiq_bey_assists2"
   ],
-  "legs_text": "Kyrie Irving 1+ threes; Derrick Jones Jr. 1+ threes; Saddiq Bey 2+ assists",
-  "est_hit": 0.4737,
-  "break_even": 2.11,
-  "priced_legs": "2 of 3",
-  "known_price": 1.88,
+  "legs_text": "Portland Trail Blazers Portland Trail Blazers to win; Derrick Jones Jr. 1+ threes; Saddiq Bey 2+ assists",
+  "est_hit": 0.2505,
+  "break_even": 3.99,
+  "priced_legs": "3 of 3",
+  "known_price": 4.26,
   "fair_multi": null,
-  "est_price": 2.13,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null,
-  "verdict": "check",
-  "value": null,
-  "landed": null
- },
- {
-  "multi": "One per game",
-  "rank": 9,
-  "leg_ids": [
-   "lamelo_ball_threes1",
-   "paul_george_threes1",
-   "kyrie_irving_threes1",
-   "de'aaron_fox_points10",
-   "josh_hart_threes1"
-  ],
-  "legs_text": "LaMelo Ball 1+ threes; Paul George 1+ threes; Kyrie Irving 1+ threes; De'Aaron Fox 10+ points; Josh Hart 1+ threes",
-  "est_hit": 0.4019,
-  "break_even": 2.49,
-  "priced_legs": "2 of 5",
-  "known_price": 1.53,
-  "fair_multi": 3.02,
-  "est_price": 2.15,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null,
-  "verdict": "check",
-  "value": null,
-  "landed": null
+  "est_price": 4.22,
+  "book_prices": {
+   "neds": 4.22
+  },
+  "best_book": "neds",
+  "best_book_price": 4.22,
+  "verdict": "value",
+  "value": 0.0571
  },
  {
   "multi": "Mid-range $8+",
@@ -219,95 +190,89 @@
    "derrick_jones_jr_threes2"
   ],
   "legs_text": "LaMelo Ball 1+ threes; Kyrie Irving 1+ threes; Zion Williamson 2+ assists; Saddiq Bey 2+ assists; Stephon Castle 4+ rebounds; Derrick Jones Jr. 2+ threes",
-  "est_hit": 0.1353,
-  "break_even": 7.39,
+  "est_hit": 0.1355,
+  "break_even": 7.38,
   "priced_legs": "4 of 6",
   "known_price": 6.41,
   "fair_multi": null,
-  "est_price": 8.18,
+  "est_price": 8.17,
   "book_prices": null,
   "best_book": null,
   "best_book_price": null,
   "verdict": "check",
-  "value": null,
-  "landed": null
+  "value": null
  },
  {
   "multi": "Long shot $50",
   "rank": 12,
   "leg_ids": [
    "lamelo_ball_threes1",
-   "paul_george_threes1",
-   "kyrie_irving_threes1",
+   "damian_lillard_threes1",
    "de'aaron_fox_points10",
    "jaden_mcdaniels_rebounds4",
-   "zach_lavine_assists2",
+   "zion_williamson_assists2",
    "saddiq_bey_assists2",
    "min_win",
    "darius_acuff_jr_threes3",
-   "zion_williamson_rebounds6",
+   "por_win",
    "derrick_jones_jr_threes2"
   ],
-  "legs_text": "LaMelo Ball 1+ threes; Paul George 1+ threes; Kyrie Irving 1+ threes; De'Aaron Fox 10+ points; Jaden McDaniels 4+ rebounds; Zach LaVine 2+ assists; Saddiq Bey 2+ assists; Minnesota Timberwolves Minnesota Timberwolves to win; Darius Acuff Jr. 3+ threes; Zion Williamson 6+ rebounds; Derrick Jones Jr. 2+ threes",
-  "est_hit": 0.0202,
-  "break_even": 49.53,
-  "priced_legs": "7 of 11",
-  "known_price": 21.35,
+  "legs_text": "LaMelo Ball 1+ threes; Damian Lillard 1+ threes; De'Aaron Fox 10+ points; Jaden McDaniels 4+ rebounds; Zion Williamson 2+ assists; Saddiq Bey 2+ assists; Minnesota Timberwolves Minnesota Timberwolves to win; Darius Acuff Jr. 3+ threes; Portland Trail Blazers Portland Trail Blazers to win; Derrick Jones Jr. 2+ threes",
+  "est_hit": 0.0206,
+  "break_even": 48.5,
+  "priced_legs": "7 of 10",
+  "known_price": 24.05,
   "fair_multi": null,
-  "est_price": 50.75,
+  "est_price": 50.41,
   "book_prices": null,
   "best_book": null,
   "best_book_price": null,
   "verdict": "check",
-  "value": null,
-  "landed": null
+  "value": null
  },
  {
   "multi": "Top pick",
   "rank": 13,
   "leg_ids": [
-   "zion_williamson_assists2",
    "derrick_jones_jr_threes1",
-   "saddiq_bey_assists2"
+   "por_win"
   ],
-  "legs_text": "Zion Williamson 2+ assists; Derrick Jones Jr. 1+ threes; Saddiq Bey 2+ assists",
-  "est_hit": 0.4126,
-  "break_even": 2.42,
-  "priced_legs": "3 of 3",
-  "known_price": 2.48,
+  "legs_text": "Derrick Jones Jr. 1+ threes; Portland Trail Blazers Portland Trail Blazers to win",
+  "est_hit": 0.3423,
+  "break_even": 2.92,
+  "priced_legs": "2 of 2",
+  "known_price": 3.09,
   "fair_multi": null,
-  "est_price": 2.48,
+  "est_price": 3.06,
   "book_prices": {
-   "neds": 2.48
+   "neds": 3.06
   },
   "best_book": "neds",
-  "best_book_price": 2.48,
+  "best_book_price": 3.06,
   "verdict": "marginal",
-  "value": 0.0232,
-  "landed": null
+  "value": 0.0474
  },
  {
   "multi": "Second pick",
   "rank": 14,
   "leg_ids": [
-   "domantas_sabonis_points10",
-   "min_win"
+   "jaden_mcdaniels_rebounds4",
+   "keldon_johnson_rebounds4",
+   "saddiq_bey_assists2"
   ],
-  "legs_text": "Domantas Sabonis 10+ points; Minnesota Timberwolves Minnesota Timberwolves to win",
-  "est_hit": 0.474,
-  "break_even": 2.11,
-  "priced_legs": "2 of 2",
-  "known_price": 2.04,
-  "fair_multi": 2.15,
-  "est_price": 2.07,
+  "legs_text": "Jaden McDaniels 4+ rebounds; Keldon Johnson 4+ rebounds; Saddiq Bey 2+ assists",
+  "est_hit": 0.4409,
+  "break_even": 2.27,
+  "priced_legs": "3 of 3",
+  "known_price": 2.21,
+  "fair_multi": 2.38,
+  "est_price": 2.19,
   "book_prices": {
-   "tab": 2.07,
-   "neds": 2.0
+   "neds": 2.19
   },
-  "best_book": "tab",
-  "best_book_price": 2.07,
-  "verdict": "marginal",
-  "value": -0.0188,
-  "landed": null
+  "best_book": "neds",
+  "best_book_price": 2.19,
+  "verdict": "skip",
+  "value": -0.0344
  }
 ]
