@@ -1518,5 +1518,131 @@
   "landed": true,
   "verdict": "skip",
   "price": 2.06
+ },
+ {
+  "slate_date": "2026-11-21",
+  "multi": "4-leg $2+",
+  "legs": "Desmond Bane 1+ threes; Zion Williamson 4+ rebounds; Dillon Brooks 10+ points; Josh Giddey 1+ threes",
+  "est_hit": 0.4558,
+  "landed": false,
+  "verdict": "check",
+  "price": 2.01
+ },
+ {
+  "slate_date": "2026-11-21",
+  "multi": "3-leg $2+",
+  "legs": "Josh Giddey 1+ threes; Nikola Jokic 1+ threes; Miles Bridges 10+ points",
+  "est_hit": 0.489,
+  "landed": false,
+  "verdict": "marginal",
+  "price": 2.02
+ },
+ {
+  "slate_date": "2026-11-21",
+  "multi": "2-leg $2+",
+  "legs": "Desmond Bane 1+ threes; Dillon Brooks 15+ points",
+  "est_hit": 0.487,
+  "landed": true,
+  "verdict": "check",
+  "price": 2.05
+ },
+ {
+  "slate_date": "2026-11-21",
+  "multi": "4-leg $3+",
+  "legs": "Desmond Bane 1+ threes; Zion Williamson 4+ rebounds; Jalen Green 10+ points; Dillon Brooks 15+ points",
+  "est_hit": 0.3162,
+  "landed": true,
+  "verdict": "check",
+  "price": 3.0
+ },
+ {
+  "slate_date": "2026-11-21",
+  "multi": "4-leg $4+",
+  "legs": "Josh Giddey 1+ threes; Zion Williamson 2+ assists; Saddiq Bey 2+ assists; Dillon Brooks 15+ points",
+  "est_hit": 0.253,
+  "landed": false,
+  "verdict": "marginal",
+  "price": 4.08
+ },
+ {
+  "slate_date": "2026-11-21",
+  "multi": "Best value",
+  "legs": "Josh Giddey 1+ threes; Nikola Jokic 1+ threes; Zion Williamson 2+ assists; Saddiq Bey 2+ assists",
+  "est_hit": 0.366,
+  "landed": false,
+  "verdict": "marginal",
+  "price": 2.76
+ },
+ {
+  "slate_date": "2026-11-21",
+  "multi": "Safest",
+  "legs": "Desmond Bane 1+ threes; Zion Williamson 4+ rebounds; Dillon Brooks 10+ points; Josh Giddey 1+ threes",
+  "est_hit": 0.4558,
+  "landed": false,
+  "verdict": "check",
+  "price": 2.01
+ },
+ {
+  "slate_date": "2026-11-21",
+  "multi": "3-leg value",
+  "legs": "Nikola Jokic 1+ threes; Zion Williamson 2+ assists; Saddiq Bey 2+ assists",
+  "est_hit": 0.4582,
+  "landed": true,
+  "verdict": "marginal",
+  "price": 2.19
+ },
+ {
+  "slate_date": "2026-11-21",
+  "multi": "One per game",
+  "legs": "Desmond Bane 1+ threes; Zion Williamson 4+ rebounds; Dillon Brooks 10+ points; Jarrett Allen 10+ points; Josh Giddey 1+ threes; Nikola Jokic 1+ threes; Dyson Daniels 4+ assists; Darius Acuff Jr. 2+ threes",
+  "est_hit": 0.1743,
+  "landed": false,
+  "verdict": "check",
+  "price": 4.34
+ },
+ {
+  "slate_date": "2026-11-21",
+  "multi": "Mid-range $8+",
+  "legs": "Josh Giddey 1+ threes; Zion Williamson 2+ assists; Miles Bridges 10+ points; Saddiq Bey 2+ assists; Phoenix Suns Phoenix Suns to win; Dillon Brooks 15+ points",
+  "est_hit": 0.1302,
+  "landed": false,
+  "verdict": "value",
+  "price": 8.09
+ },
+ {
+  "slate_date": "2026-11-21",
+  "multi": "Long multi 8+",
+  "legs": "Nickeil Alexander-Walker 2+ assists; Quentin Grimes 2+ assists; Brandon Miller 2+ assists; Amen Thompson 10+ points; Andrew Nembhard 10+ points; Daniss Jenkins 10+ points; Zion Williamson 4+ rebounds; Dillon Brooks 10+ points",
+  "est_hit": 0.2163,
+  "landed": true,
+  "verdict": "skip",
+  "price": 3.54
+ },
+ {
+  "slate_date": "2026-11-21",
+  "multi": "Long shot $50",
+  "legs": "Josh Giddey 1+ threes; Saddiq Bey 2+ assists; Wendell Carter Jr. 10+ points; Phoenix Suns Phoenix Suns to win; Dillon Brooks 15+ points; Zion Williamson 6+ rebounds; Jalen Green 15+ points; Desmond Bane 20+ points",
+  "est_hit": 0.0223,
+  "landed": false,
+  "verdict": "value",
+  "price": 51.03
+ },
+ {
+  "slate_date": "2026-11-21",
+  "multi": "Top pick",
+  "legs": "Josh Giddey 1+ threes; Dillon Brooks 15+ points",
+  "est_hit": 0.4397,
+  "landed": false,
+  "verdict": "marginal",
+  "price": 2.33
+ },
+ {
+  "slate_date": "2026-11-21",
+  "multi": "Second pick",
+  "legs": "Nikola Jokic 1+ threes; Miles Bridges 10+ points; Saddiq Bey 2+ assists",
+  "est_hit": 0.4403,
+  "landed": true,
+  "verdict": "marginal",
+  "price": 2.24
  }
 ]
