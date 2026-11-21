@@ -63,5 +63,8 @@
   "SAME_GAME_OTHER": 0.042,
   "WIN_VS_OPPONENT": -0.2
  },
- "recheck_at": "2026-11-22T09:38:00+11:00"
+ "recheck_at": "2026-11-22T09:38:00+11:00",
+ "final_games": [
+  "MIL @ PHI"
+ ]
 }
