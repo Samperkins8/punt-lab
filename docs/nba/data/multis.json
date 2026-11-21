@@ -65,7 +65,7 @@
   "best_book_price": null,
   "verdict": "check",
   "value": null,
-  "landed": null
+  "landed": true
  },
  {
   "multi": "4-leg $3+",
@@ -88,7 +88,7 @@
   "best_book_price": null,
   "verdict": "check",
   "value": null,
-  "landed": null
+  "landed": true
  },
  {
   "multi": "4-leg $4+",
