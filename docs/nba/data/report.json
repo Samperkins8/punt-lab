@@ -103,5 +103,11 @@
   "10:47am ORL @ BKN, IND @ CLE, TOR @ DET, WSH @ CHI, NO @ OKC: Jalen Smith out; 3 new legs worth a look; prices refreshed",
   "1:11pm PHX @ UTAH, HOU @ DEN, SAC @ LAL: no new outs; 3 new legs worth a look"
  ],
- "close_fetches": 1
+ "close_fetches": 1,
+ "final_games": [
+  "CHA @ ATL",
+  "IND @ CLE",
+  "ORL @ BKN",
+  "TOR @ DET"
+ ]
 }
