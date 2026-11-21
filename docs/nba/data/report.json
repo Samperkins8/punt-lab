@@ -3,7 +3,7 @@
  "headline": "Value today: Mid-range $8+ on Neds $8.09 (needs $7.68); Long shot $50 on Neds $51.03 (needs $44.82). Note: 3-leg value includes legs without a confirmed worth-it price; spread the legs around so one miss can't sink most multis: 3-leg value, Second pick.",
  "injuries": "Kingston Flemings (Out), Jock Landale (Out), Asa Newell (Out), Cj Mccollum (Out), Mouhamed Gueye (Out), Henri Veesaar (Out), Grant Nelson (Out), Grant Williams (Out), Grayson Allen (Out), Kon Knueppel (Out), Dennis Schroder (Out), Tobe Awaka (Out) and others",
  "graded": "",
- "next_run": "Late check 10:47am — ORL @ BKN, IND @ CLE, TOR @ DET, WSH @ CHI, NO @ OKC: Jalen Smith out; 3 new legs worth a look; prices refreshed",
+ "next_run": "Late check 1:11pm — PHX @ UTAH, HOU @ DEN, SAC @ LAL: no new outs; 3 new legs worth a look",
  "sources": {
   "stats": "ESPN",
   "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API",
@@ -88,15 +88,20 @@
  "rechecked_at": "2026-11-21T10:22:18.923603+11:00",
  "late_checked": [
   "CHA @ ATL",
+  "HOU @ DEN",
   "IND @ CLE",
   "NO @ OKC",
   "ORL @ BKN",
+  "PHX @ UTAH",
+  "SAC @ LAL",
   "TOR @ DET",
   "WSH @ CHI"
  ],
  "late_refreshes": 2,
  "late_log": [
   "9:46am CHA @ ATL: no new outs; prices refreshed",
-  "10:47am ORL @ BKN, IND @ CLE, TOR @ DET, WSH @ CHI, NO @ OKC: Jalen Smith out; 3 new legs worth a look; prices refreshed"
- ]
+  "10:47am ORL @ BKN, IND @ CLE, TOR @ DET, WSH @ CHI, NO @ OKC: Jalen Smith out; 3 new legs worth a look; prices refreshed",
+  "1:11pm PHX @ UTAH, HOU @ DEN, SAC @ LAL: no new outs; 3 new legs worth a look"
+ ],
+ "close_fetches": 1
 }
