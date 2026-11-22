@@ -1644,5 +1644,113 @@
   "landed": true,
   "verdict": "marginal",
   "price": 2.24
+ },
+ {
+  "slate_date": "2026-11-22",
+  "multi": "4-leg $2+",
+  "legs": "LaMelo Ball 1+ threes; Damian Lillard 1+ threes; De'Aaron Fox 10+ points; Zion Williamson 2+ assists",
+  "est_hit": 0.4666,
+  "landed": false,
+  "verdict": "check",
+  "price": 2.02
+ },
+ {
+  "slate_date": "2026-11-22",
+  "multi": "3-leg $2+",
+  "legs": "LaMelo Ball 1+ threes; Zion Williamson 2+ assists; Derrick Jones Jr. 1+ threes",
+  "est_hit": 0.4912,
+  "landed": null,
+  "verdict": "check",
+  "price": 2.01
+ },
+ {
+  "slate_date": "2026-11-22",
+  "multi": "2-leg $2+",
+  "legs": "Jaden McDaniels 4+ rebounds; Damian Lillard 3+ threes",
+  "est_hit": 0.4264,
+  "landed": false,
+  "verdict": "skip",
+  "price": 2.02
+ },
+ {
+  "slate_date": "2026-11-22",
+  "multi": "4-leg $3+",
+  "legs": "Rui Hachimura 10+ points; Zion Williamson 2+ assists; Derrick Jones Jr. 1+ threes; Saddiq Bey 2+ assists",
+  "est_hit": 0.3279,
+  "landed": null,
+  "verdict": "marginal",
+  "price": 3.02
+ },
+ {
+  "slate_date": "2026-11-22",
+  "multi": "4-leg $4+",
+  "legs": "LaMelo Ball 1+ threes; Jonathan Kuminga 10+ points; Jrue Holiday 10+ points; Portland Trail Blazers Portland Trail Blazers to win",
+  "est_hit": 0.2471,
+  "landed": false,
+  "verdict": "check",
+  "price": 4.0
+ },
+ {
+  "slate_date": "2026-11-22",
+  "multi": "Best value",
+  "legs": "LaMelo Ball 1+ threes; Derrick Jones Jr. 1+ threes; Saddiq Bey 2+ assists; Zion Williamson 2+ assists",
+  "est_hit": 0.3647,
+  "landed": null,
+  "verdict": "check",
+  "price": 2.78
+ },
+ {
+  "slate_date": "2026-11-22",
+  "multi": "Safest",
+  "legs": "LaMelo Ball 1+ threes; Damian Lillard 1+ threes; De'Aaron Fox 10+ points; Zion Williamson 2+ assists",
+  "est_hit": 0.4666,
+  "landed": false,
+  "verdict": "check",
+  "price": 2.02
+ },
+ {
+  "slate_date": "2026-11-22",
+  "multi": "3-leg value",
+  "legs": "Portland Trail Blazers Portland Trail Blazers to win; Derrick Jones Jr. 1+ threes; Saddiq Bey 2+ assists",
+  "est_hit": 0.2505,
+  "landed": false,
+  "verdict": "value",
+  "price": 4.22
+ },
+ {
+  "slate_date": "2026-11-22",
+  "multi": "Mid-range $8+",
+  "legs": "LaMelo Ball 1+ threes; Kyrie Irving 1+ threes; Zion Williamson 2+ assists; Saddiq Bey 2+ assists; Stephon Castle 4+ rebounds; Derrick Jones Jr. 2+ threes",
+  "est_hit": 0.1355,
+  "landed": false,
+  "verdict": "check",
+  "price": 8.17
+ },
+ {
+  "slate_date": "2026-11-22",
+  "multi": "Long shot $50",
+  "legs": "LaMelo Ball 1+ threes; Damian Lillard 1+ threes; De'Aaron Fox 10+ points; Jaden McDaniels 4+ rebounds; Zion Williamson 2+ assists; Saddiq Bey 2+ assists; Minnesota Timberwolves Minnesota Timberwolves to win; Darius Acuff Jr. 3+ threes; Portland Trail Blazers Portland Trail Blazers to win; Derrick Jones Jr. 2+ threes",
+  "est_hit": 0.0206,
+  "landed": false,
+  "verdict": "check",
+  "price": 50.41
+ },
+ {
+  "slate_date": "2026-11-22",
+  "multi": "Top pick",
+  "legs": "Derrick Jones Jr. 1+ threes; Portland Trail Blazers Portland Trail Blazers to win",
+  "est_hit": 0.3423,
+  "landed": false,
+  "verdict": "marginal",
+  "price": 3.06
+ },
+ {
+  "slate_date": "2026-11-22",
+  "multi": "Second pick",
+  "legs": "Jaden McDaniels 4+ rebounds; Keldon Johnson 4+ rebounds; Saddiq Bey 2+ assists",
+  "est_hit": 0.4409,
+  "landed": true,
+  "verdict": "skip",
+  "price": 2.19
  }
 ]
