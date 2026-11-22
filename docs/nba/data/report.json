@@ -3,7 +3,7 @@
  "headline": "Skip today: no multi beats its break-even price by 5%. Closest: Top pick on Neds $2.06 (needs $2.04). Note: 3-leg value includes legs without a confirmed worth-it price; spread the legs around so one miss can't sink most multis: 2-leg $2+, Best value, 3-leg value.",
  "injuries": "Jock Landale (Out), Asa Newell (Out), Cj Mccollum (Out), Mouhamed Gueye (Out), Henri Veesaar (Out), Mitchell Robinson (Out), Paul George (Out), Nic Claxton (Out), Norman Powell (Out), Caleb Wilson (Out), Tobi Lawal (Out), Dereck Lively Ii (Out) and others",
  "graded": "Yesterday: 23 of 30 legs landed; 4-leg $2+ missed, 3-leg $2+ void, 2-leg $2+ missed, 4-leg $3+ void, 4-leg $4+ missed, Best value void, Safest missed, 3-leg value missed, Mid-range $8+ missed, Long shot $50 missed, Top pick missed, Second pick landed.",
- "next_run": "Built 8:26am; re-checked before the first tip",
+ "next_run": "Late check 9:44am — OKC @ MIA: Shai Gilgeous-Alexander out; 1 new leg worth a look; prices refreshed",
  "sources": {
   "stats": "ESPN",
   "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API (4 games, 124 credits left)",
@@ -76,5 +76,12 @@
   "SAME_GAME_OTHER": 0.042,
   "WIN_VS_OPPONENT": -0.2
  },
- "recheck_at": "2026-11-23T09:38:00+11:00"
+ "recheck_at": "2026-11-23T09:38:00+11:00",
+ "late_refreshes": 1,
+ "late_checked": [
+  "OKC @ MIA"
+ ],
+ "late_log": [
+  "9:44am OKC @ MIA: Shai Gilgeous-Alexander out; 1 new leg worth a look; prices refreshed"
+ ]
 }
