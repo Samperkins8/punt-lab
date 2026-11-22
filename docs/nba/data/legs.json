@@ -97,7 +97,12 @@
   "event_id": "401910024",
   "athlete_id": "6606",
   "late_checked": "10:38am",
-  "late_was": null
+  "late_was": null,
+  "actual": 1.0,
+  "landed": true,
+  "minutes_played": 33,
+  "expected_minutes": 30,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 3.2 threes tonight, needs 1+. This season 3.4 a game over 13 games; last season 2.7 over 38. Slower game expected (-2% for pace). Tonight's line is 7 points easier than his team's usual (favourites by 12.5), so they're expected to score more (+5%). SAC gives up less to his position than average (-2%). Bookies' line: 3.5.",
@@ -686,7 +691,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.2
-  }
+  },
+  "actual": 0.0,
+  "landed": false,
+  "minutes_played": 35,
+  "expected_minutes": 30,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 20.4 points tonight, needs 15+. This season 20.9 a game over 15 games. Lillard averaged 19.7 in the 13 games with Avdija (20.9 across all 15), so he's predicted 0.9 points fewer tonight. Plays better on the road: 0.9 points more predicted. Slower game expected (-2% for pace). Bookies' line: 20.5.",
@@ -744,7 +754,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.26
-  }
+  },
+  "actual": 15.0,
+  "landed": true,
+  "minutes_played": 33,
+  "expected_minutes": 30,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 20.0 points tonight, needs 15+. This season 21.7 a game over 16 games; last season 21.0 over 62. Williamson averaged 23.0 in the 6 games without Murphy (21.7 across all 16), so he's predicted 0.7 points more tonight. Faster game expected (+1% for pace). Tonight's line is 10 points tougher than his team's usual (underdogs by 18.5), so they're expected to score less (-3%). Expected minutes 30.2 vs his usual 32.4. Bookies' line: 19.5.",
@@ -1018,7 +1033,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.2
-  }
+  },
+  "actual": 5.0,
+  "landed": true,
+  "minutes_played": 36,
+  "expected_minutes": 32,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 2.6 assists tonight, needs 2+. This season 2.8 a game over 16 games; last season 3.2 over 62. Williamson averaged 2.2 in the 6 games without Murphy (2.8 across all 16), so he's predicted 0.4 assists fewer tonight. Faster game expected (+1% for pace). Tonight's line is 10 points tougher than his team's usual (underdogs by 18.5), so they're expected to score less (-2%). SA gives up more to his position than average (+11%). Expected minutes 30.2 vs his usual 32.4. Bookies' line: 2.5.",
@@ -1182,7 +1202,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.46
-  }
+  },
+  "actual": 13.0,
+  "landed": true,
+  "minutes_played": 31,
+  "expected_minutes": 27,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 5.0 rebounds tonight, needs 4+. This season 5.2 a game over 14 games; last season 3.7 over 76. Plays a bit worse on the road: 0.8 rebounds fewer predicted. DAL gives up more to his position than average (+19%). Bookies' line: 5.5.",
@@ -1401,7 +1426,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.6
-  }
+  },
+  "actual": 1.0,
+  "landed": false,
+  "minutes_played": 33,
+  "expected_minutes": 30,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 1.6 threes tonight, needs 2+. This season 1.8 a game over 13 games; last season 1.1 over 51. Faster game expected (+2% for pace). Tonight's line is 3 points easier than his team's usual (underdogs by 4.5), so they're expected to score more (+2%). DAL gives up more to his position than average (+3%).",
@@ -1560,7 +1590,9 @@
   "step_up": false,
   "note": "1.5-point favourite",
   "event_id": "401910024",
-  "athlete_id": null
+  "athlete_id": null,
+  "actual": 0,
+  "landed": false
  },
  {
   "why": "Dallas Mavericks are 4.5-point favourites. The bookies' head-to-head prices (margin removed) and the betting line together make that about a 64% chance to win, fair price $1.56. Pays $1.52 at TAB.",
