@@ -146,7 +146,8 @@
   "step_up": false,
   "note": "",
   "event_id": "401910028",
-  "athlete_id": "4251"
+  "athlete_id": "4251",
+  "late_checked": "1:07pm"
  },
  {
   "why": "Predicted 3.2 threes tonight, needs 1+. This season 3.3 a game over 12 games. Faster game expected (+2% for pace). Tonight's line is 3 points easier than his team's usual (favourites by 4.5), so they're expected to score more (+2%). LAC gives up more to his position than average (+4%). Bookies' line: 3.5.",
@@ -1237,9 +1238,9 @@
   "athlete_id": "3448"
  },
  {
-  "why": "Predicted 3.1 threes tonight, needs 2+. This season 3.2 a game over 15 games. Slower game expected (-2% for pace). Tonight's line is 5 points tougher than his team's usual (underdogs by 12.5), so they're expected to score less (-4%). BOS gives up less to his position than average (-3%). Expected minutes 34.1 vs his usual 36.6.",
+  "why": "Predicted 3.1 threes tonight, needs 2+. This season 3.2 a game over 15 games. Slower game expected (-2% for pace). Tonight's line is 5 points tougher than his team's usual (underdogs by 12.5), so they're expected to score less (-4%). BOS gives up less to his position than average (-2%). Expected minutes 34.1 vs his usual 36.6.",
   "venue_shift": 0.01,
-  "pace_factor": 0.982,
+  "pace_factor": 0.977,
   "side_factor": 0.965,
   "underdog": true,
   "roster_overlap": null,
@@ -1260,14 +1261,14 @@
   "prior_games": 0,
   "context_label": null,
   "context_detail": null,
-  "matchup": 0.973,
+  "matchup": 0.98,
   "context_shift": 0.0,
   "minutes_factor": 0.932,
   "avg_minutes": 36.6,
   "proj_minutes": 34.1,
   "proj_mean": 3.1,
-  "model_prob": 0.7368,
-  "raw_prob": 0.7368,
+  "model_prob": 0.7374,
+  "raw_prob": 0.7374,
   "fair_price": null,
   "implied": null,
   "edge": null,
@@ -1283,7 +1284,9 @@
   "step_up": false,
   "note": "second night of a back-to-back; blowout risk (BOS -12.5, he is on the underdog)",
   "event_id": "401910028",
-  "athlete_id": "5142620"
+  "athlete_id": "5142620",
+  "late_checked": "1:07pm",
+  "late_was": null
  },
  {
   "why": "Predicted 5.3 rebounds tonight, needs 4+. This season 5.5 a game over 15 games; last season 5.6 over 36. Plays a bit worse at home: 0.5 rebounds fewer predicted. MEM gives up more to his position than average (+4%). Bookies' line: 5.5.",
@@ -1454,9 +1457,9 @@
   "athlete_id": "3936099"
  },
  {
-  "why": "Predicted 3.1 threes tonight, needs 3+. This season 3.2 a game over 15 games. Slower game expected (-2% for pace). Tonight's line is 5 points tougher than his team's usual (underdogs by 12.5), so they're expected to score less (-4%). BOS gives up less to his position than average (-3%). Expected minutes 34.1 vs his usual 36.6.",
+  "why": "Predicted 3.1 threes tonight, needs 3+. This season 3.2 a game over 15 games. Slower game expected (-2% for pace). Tonight's line is 5 points tougher than his team's usual (underdogs by 12.5), so they're expected to score less (-4%). BOS gives up less to his position than average (-2%). Expected minutes 34.1 vs his usual 36.6.",
   "venue_shift": 0.01,
-  "pace_factor": 0.982,
+  "pace_factor": 0.977,
   "side_factor": 0.965,
   "underdog": true,
   "roster_overlap": null,
@@ -1477,14 +1480,14 @@
   "prior_games": 0,
   "context_label": null,
   "context_detail": null,
-  "matchup": 0.973,
+  "matchup": 0.98,
   "context_shift": 0.0,
   "minutes_factor": 0.932,
   "avg_minutes": 36.6,
   "proj_minutes": 34.1,
   "proj_mean": 3.1,
-  "model_prob": 0.5458,
-  "raw_prob": 0.5458,
+  "model_prob": 0.547,
+  "raw_prob": 0.547,
   "fair_price": null,
   "implied": null,
   "edge": null,
@@ -1500,7 +1503,9 @@
   "step_up": true,
   "note": "second night of a back-to-back; blowout risk (BOS -12.5, he is on the underdog)",
   "event_id": "401910028",
-  "athlete_id": "5142620"
+  "athlete_id": "5142620",
+  "late_checked": "1:07pm",
+  "late_was": null
  },
  {
   "why": "Portland Trail Blazers are 1.5-point favourites. The bookies' head-to-head prices (margin removed) and the betting line together make that about a 46% chance to win, fair price $2.18. Pays $2.30 at TAB.",
