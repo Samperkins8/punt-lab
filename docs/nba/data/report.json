@@ -3,7 +3,7 @@
  "headline": "Skip today: no multi beats its break-even price by 5%. Closest: Top pick on Neds $2.18 (needs $2.22). Note: only 6 legs are 80%+ likely at $1.15+, so the long multi is short; 3-leg value includes legs without a confirmed worth-it price; spread the legs around so one miss can't sink most multis: Best value, 3-leg value, 4-leg $4+.",
  "injuries": "Jock Landale (Out), Asa Newell (Out), Cj Mccollum (Out), Mouhamed Gueye (Out), Henri Veesaar (Out), Mitchell Robinson (Out), Paul George (Out), Nic Claxton (Out), Norman Powell (Out), Caleb Wilson (Out), P.J. Washington (Out), Tobi Lawal (Out) and others",
  "graded": "",
- "next_run": "Re-checked 10:18am: 13 multi(s) changed: 4-leg $2+, 3-leg $2+, 2-leg $2+, 4-leg $3+, 4-leg $4+, Best value, Safest, 3-leg value, One per game, Mid-range $8+, Long multi 8+, Long shot $50, Top pick",
+ "next_run": "Late check 10:42am — ORL @ WSH, DEN @ CHI, DAL @ UTAH: no new outs",
  "sources": {
   "stats": "ESPN",
   "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API",
@@ -74,10 +74,18 @@
  },
  "rechecked_at": "2026-11-23T10:18:56.429239+11:00",
  "late_checked": [
-  "OKC @ MIA"
+  "DAL @ UTAH",
+  "DEN @ CHI",
+  "OKC @ MIA",
+  "ORL @ WSH"
  ],
  "late_refreshes": 1,
  "late_log": [
-  "9:44am OKC @ MIA: Shai Gilgeous-Alexander out; 1 new leg worth a look; prices refreshed"
- ]
+  "9:44am OKC @ MIA: Shai Gilgeous-Alexander out; 1 new leg worth a look; prices refreshed",
+  "10:42am ORL @ WSH, DEN @ CHI, DAL @ UTAH: no new outs"
+ ],
+ "final_games": [
+  "DET @ ATL"
+ ],
+ "close_fetches": 1
 }
