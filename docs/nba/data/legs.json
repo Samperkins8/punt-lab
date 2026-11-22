@@ -157,7 +157,12 @@
   "note": "",
   "event_id": "401910028",
   "athlete_id": "4251",
-  "late_checked": "1:07pm"
+  "late_checked": "1:07pm",
+  "actual": 2.0,
+  "landed": true,
+  "minutes_played": 37,
+  "expected_minutes": 30,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 3.2 threes tonight, needs 1+. This season 3.3 a game over 12 games. Faster game expected (+2% for pace). Tonight's line is 3 points easier than his team's usual (favourites by 4.5), so they're expected to score more (+2%). LAC gives up more to his position than average (+4%). Bookies' line: 3.5.",
@@ -1387,7 +1392,12 @@
   "event_id": "401910028",
   "athlete_id": "5142620",
   "late_checked": "1:07pm",
-  "late_was": null
+  "late_was": null,
+  "actual": 2.0,
+  "landed": true,
+  "minutes_played": 40,
+  "expected_minutes": 34,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 5.3 rebounds tonight, needs 4+. This season 5.5 a game over 15 games; last season 5.6 over 36. Plays a bit worse at home: 0.5 rebounds fewer predicted. MEM gives up more to his position than average (+4%). Bookies' line: 5.5.",
@@ -1621,7 +1631,12 @@
   "event_id": "401910028",
   "athlete_id": "5142620",
   "late_checked": "1:07pm",
-  "late_was": null
+  "late_was": null,
+  "actual": 2.0,
+  "landed": false,
+  "minutes_played": 40,
+  "expected_minutes": 34,
+  "minutes_flag": null
  },
  {
   "why": "Portland Trail Blazers are 1.5-point favourites. The bookies' head-to-head prices (margin removed) and the betting line together make that about a 46% chance to win, fair price $2.18. Pays $2.30 at TAB.",
