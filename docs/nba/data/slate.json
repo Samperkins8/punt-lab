@@ -5,7 +5,7 @@
   "start": "2026-11-24T11:00:00+11:00",
   "favourite": "MEM",
   "spread": -2.5,
-  "total": 212.5,
+  "total": 213.5,
   "fav_win_prob": 0.583,
   "status": "Analysed"
  },
@@ -14,9 +14,9 @@
   "tip": "11:00am",
   "start": "2026-11-24T11:00:00+11:00",
   "favourite": "PHI",
-  "spread": -2.5,
+  "spread": -1.5,
   "total": 231.5,
-  "fav_win_prob": 0.583,
+  "fav_win_prob": 0.55,
   "status": "Analysed"
  },
  {
@@ -24,9 +24,9 @@
   "tip": "11:30am",
   "start": "2026-11-24T11:30:00+11:00",
   "favourite": "OKC",
-  "spread": -5.5,
-  "total": 224.5,
-  "fav_win_prob": 0.677,
+  "spread": -4.5,
+  "total": 225.5,
+  "fav_win_prob": 0.646,
   "status": "Analysed"
  },
  {
@@ -44,9 +44,9 @@
   "tip": "11:30am",
   "start": "2026-11-24T11:30:00+11:00",
   "favourite": "MIN",
-  "spread": -11.5,
-  "total": 223.5,
-  "fav_win_prob": 0.831,
+  "spread": -10.5,
+  "total": 222.5,
+  "fav_win_prob": 0.809,
   "status": "Analysed"
  },
  {

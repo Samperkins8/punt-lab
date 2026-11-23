@@ -1,19 +1,18 @@
 {
  "slate_date": "2026-11-24",
- "headline": "Value today: Top pick on Neds $2.24 (needs $2.11); 4-leg $3+ on Neds $3.13 (needs $2.92); Best value on Neds $3.21 (needs $3.02). Note: spread the legs around so one miss can't sink most multis: Best value, 3-leg value, 4-leg $4+.",
+ "headline": "Value today: Top pick on Neds $2.24 (needs $2.11); 4-leg $3+ on Neds $3.13 (needs $2.92); Best value on Neds $3.21 (needs $3.03). Note: spread the legs around so one miss can't sink most multis: Best value, 3-leg value, 4-leg $4+.",
  "injuries": "Nolan Traore (Out), Grayson Allen (Out), Grant Williams (Out), Kon Knueppel (Out), Dennis Schroder (Out), Norman Powell (Out), Caleb Wilson (Out), Jaylon Tyson (Out), Nae'Qwan Tomlin (Out), Evan Mobley (Out), T.J. Mcconnell (Out), Aaron Nesmith (Out) and others",
- "graded": "Yesterday: 29 of 40 legs landed; 4-leg $2+ missed, 3-leg $2+ missed, 2-leg $2+ landed, 4-leg $3+ missed, 4-leg $4+ landed, Best value landed, Safest missed, 3-leg value missed, One per game landed, Mid-range $8+ missed, Long multi 8+ landed, Long shot $50 missed, Top pick missed, Second pick landed.",
- "next_run": "Late check 9:52am — MEM @ CHA, POR @ PHI: no new outs; 5 new legs worth a look",
+ "graded": "",
+ "next_run": "Re-checked 10:26am: 2 multi(s) changed: Long shot $50, Second pick",
  "sources": {
   "stats": "ESPN",
-  "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API (4 games, 110 credits left)",
+  "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API",
   "injury_reading": "Claude"
  },
- "updated_at": "2026-11-24T08:33:41.561536+11:00",
+ "updated_at": "2026-11-24T10:26:36.081008+11:00",
  "inj_snapshot": {
   "nolan traore": "Out",
   "grayson allen": "Out",
-  "brandon miller": "Day-To-Day",
   "grant williams": "Out",
   "kon knueppel": "Out",
   "dennis schroder": "Out",
@@ -26,15 +25,14 @@
   "evan mobley": "Out",
   "t.j. mcconnell": "Out",
   "aaron nesmith": "Out",
-  "pascal siakam": "Day-To-Day",
   "tyrese haliburton": "Out",
   "johnny furphy": "Out",
   "ben sheppard": "Out",
   "bradley beal": "Out",
   "jordan miller": "Out",
   "austin reaves": "Out",
-  "jerami grant": "Out",
   "cameron boozer": "Out",
+  "jerami grant": "Out",
   "gg jackson": "Out",
   "scotty pippen jr.": "Out",
   "richie saunders": "Out",
@@ -53,10 +51,7 @@
   "thomas sorber": "Out",
   "cason wallace": "Out",
   "chet holmgren": "Out",
-  "joel embiid": "Day-To-Day",
-  "adem bona": "Out",
-  "jaylen brown": "Day-To-Day",
-  "dean wade": "Day-To-Day",
+  "joel embiid": "Out",
   "ariel hukporti": "Out",
   "mark williams": "Out",
   "chris youngblood": "Out",
@@ -71,8 +66,6 @@
   "dylan harper": "Out",
   "tobias harris": "Out",
   "jayden quaintance": "Out",
-  "jaden bradley": "Day-To-Day",
-  "collin murray-boyles": "Day-To-Day",
   "nate bittle": "Out",
   "kawhi leonard": "Out",
   "rj barrett": "Out",
@@ -87,13 +80,13 @@
   "SAME_GAME_OTHER": 0.041,
   "WIN_VS_OPPONENT": -0.2
  },
- "recheck_at": "2026-11-24T09:38:00+11:00",
- "close_fetches": 1,
+ "rechecked_at": "2026-11-24T10:26:36.081008+11:00",
  "late_checked": [
   "MEM @ CHA",
   "POR @ PHI"
  ],
  "late_log": [
   "9:52am MEM @ CHA, POR @ PHI: no new outs; 5 new legs worth a look"
- ]
+ ],
+ "close_fetches": 1
 }
