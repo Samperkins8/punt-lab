@@ -488,10 +488,10 @@
   "athlete_id": "3149673"
  },
  {
-  "why": "Predicted 13.5 points tonight, needs 10+. This season 12.7 a game over 15 games; last season 16.5 over 77. White averaged 11.9 in the 14 games with Tatum (12.7 across all 15), so he's predicted 0.6 points fewer tonight. Slower game expected (-2% for pace). GS gives up less to his position than average (-6%). Expected minutes 29 vs his usual 29.9. Bookies' line: 14.5.",
+  "why": "Predicted 13.6 points tonight, needs 10+. This season 12.7 a game over 15 games; last season 16.5 over 77. White averaged 11.9 in the 14 games with Tatum (12.7 across all 15), so he's predicted 0.6 points fewer tonight. Slower game expected (-3% for pace). Tonight's line is 4 points easier than his team's usual (favourites by 8.5), so they're expected to score more (+1%). GS gives up less to his position than average (-5%). Expected minutes 29 vs his usual 29.9. Bookies' line: 14.5.",
   "venue_shift": -0.15,
-  "pace_factor": 0.976,
-  "side_factor": 1.009,
+  "pace_factor": 0.966,
+  "side_factor": 1.013,
   "underdog": false,
   "roster_overlap": 0.93,
   "usual_starter": true,
@@ -511,17 +511,17 @@
   "prior_games": 77,
   "context_label": "Jayson Tatum playing tonight",
   "context_detail": "White averaged 11.9 in the 14 games with Tatum (12.7 across all 15), so he's predicted 0.6 points fewer tonight.",
-  "matchup": 0.936,
+  "matchup": 0.946,
   "context_shift": -0.6,
   "minutes_factor": 0.97,
   "avg_minutes": 29.9,
   "proj_minutes": 29.0,
-  "proj_mean": 13.5,
-  "model_prob": 0.7772,
-  "raw_prob": 0.7772,
+  "proj_mean": 13.6,
+  "model_prob": 0.7779,
+  "raw_prob": 0.7779,
   "fair_price": 1.19,
   "implied": 0.8333,
-  "edge": -0.0562,
+  "edge": -0.0554,
   "hit_rate": 0.6,
   "market_line": 14.5,
   "market_p_over": 0.5072038420490929,
@@ -538,7 +538,12 @@
   "step_up": false,
   "note": "second night of a back-to-back",
   "event_id": "401910035",
-  "athlete_id": "3078576"
+  "athlete_id": "3078576",
+  "late_checked": "12:06pm",
+  "late_was": null,
+  "close_books": {
+   "neds": 1.2
+  }
  },
  {
   "why": "Predicted 1.3 threes tonight, needs 1+. This season 1.5 a game over 15 games; last season 1.0 over 70. Tonight's line is 5 points easier than his team's usual (favourites by 2.5), so they're expected to score more (+3%). UTAH gives up more to his position than average (+10%). Expected minutes 31.9 vs his usual 33.6. Bookies' line: 1.5.",
@@ -1991,10 +1996,10 @@
   }
  },
  {
-  "why": "Predicted 14.5 points tonight, needs 10+. This season 15.8 a game over 14 games; last season 14.0 over 84. Podziemski averaged 13.0 in the 5 games without Curry (15.8 across all 14), so he's predicted 1.4 points fewer tonight. Plays better at home: 1.0 points more predicted. Slower game expected (-2% for pace). Tonight's line is 9 points tougher than his team's usual (underdogs by 7.5), so they're expected to score less (-3%). BOS gives up less to his position than average (-7%). Bookies' line: 15.5.",
+  "why": "Predicted 14.4 points tonight, needs 10+. This season 15.8 a game over 14 games; last season 14.0 over 84. Podziemski averaged 13.0 in the 5 games without Curry (15.8 across all 14), so he's predicted 1.4 points fewer tonight. Plays better at home: 1.0 points more predicted. Slower game expected (-3% for pace). Tonight's line is 10 points tougher than his team's usual (underdogs by 8.5), so they're expected to score less (-4%). BOS gives up less to his position than average (-6%). Bookies' line: 15.5.",
   "venue_shift": 0.97,
-  "pace_factor": 0.976,
-  "side_factor": 0.967,
+  "pace_factor": 0.966,
+  "side_factor": 0.964,
   "underdog": true,
   "roster_overlap": 0.8,
   "usual_starter": true,
@@ -2014,17 +2019,17 @@
   "prior_games": 84,
   "context_label": "Stephen Curry out tonight",
   "context_detail": "Podziemski averaged 13.0 in the 5 games without Curry (15.8 across all 14), so he's predicted 1.4 points fewer tonight.",
-  "matchup": 0.934,
+  "matchup": 0.942,
   "context_shift": -1.39,
   "minutes_factor": 1.0,
   "avg_minutes": 32.0,
   "proj_minutes": 32.0,
-  "proj_mean": 14.5,
-  "model_prob": 0.8249,
-  "raw_prob": 0.8308,
+  "proj_mean": 14.4,
+  "model_prob": 0.8246,
+  "raw_prob": 0.8302,
   "fair_price": 1.15,
   "implied": 0.8621,
-  "edge": -0.0372,
+  "edge": -0.0375,
   "hit_rate": 0.7857,
   "market_line": 15.5,
   "market_p_over": 0.5,
@@ -2041,7 +2046,12 @@
   "step_up": false,
   "note": "",
   "event_id": "401910035",
-  "athlete_id": "4709138"
+  "athlete_id": "4709138",
+  "late_checked": "12:06pm",
+  "late_was": null,
+  "close_books": {
+   "neds": 1.16
+  }
  },
  {
   "why": "Orlando Magic are 4.5-point favourites. The bookies' head-to-head prices (margin removed) and the betting line together make that about a 64% chance to win, fair price $1.56. Pays $1.52 at TAB.",
