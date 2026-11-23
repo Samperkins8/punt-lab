@@ -1,72 +1,102 @@
 [
  {
-  "game": "DET @ ATL",
-  "tip": "7:30am",
-  "start": "2026-11-23T07:30:00+11:00",
-  "favourite": null,
-  "spread": null,
-  "total": null,
-  "fav_win_prob": null,
-  "status": "Started"
- },
- {
-  "game": "OKC @ MIA",
-  "tip": "10:00am",
-  "start": "2026-11-23T10:00:00+11:00",
-  "favourite": null,
-  "spread": null,
-  "total": null,
-  "fav_win_prob": null,
-  "status": "Started"
- },
- {
-  "game": "ORL @ WSH",
+  "game": "MEM @ CHA",
   "tip": "11:00am",
-  "start": "2026-11-23T11:00:00+11:00",
-  "favourite": "ORL",
-  "spread": -4.5,
-  "total": 219.5,
-  "fav_win_prob": 0.646,
-  "status": "Analysed"
- },
- {
-  "game": "DEN @ CHI",
-  "tip": "11:00am",
-  "start": "2026-11-23T11:00:00+11:00",
-  "favourite": "DEN",
-  "spread": -10.5,
-  "total": 236.5,
-  "fav_win_prob": 0.809,
-  "status": "Analysed"
- },
- {
-  "game": "DAL @ UTAH",
-  "tip": "11:00am",
-  "start": "2026-11-23T11:00:00+11:00",
-  "favourite": "DAL",
+  "start": "2026-11-24T11:00:00+11:00",
+  "favourite": "MEM",
   "spread": -2.5,
-  "total": 225.5,
+  "total": 212.5,
   "fav_win_prob": 0.583,
   "status": "Analysed"
  },
  {
-  "game": "IND @ NY",
-  "tip": "12:00pm",
-  "start": "2026-11-23T12:00:00+11:00",
-  "favourite": "NY",
-  "spread": -7.5,
-  "total": 212.5,
-  "fav_win_prob": 0.734,
+  "game": "POR @ PHI",
+  "tip": "11:00am",
+  "start": "2026-11-24T11:00:00+11:00",
+  "favourite": "PHI",
+  "spread": -2.5,
+  "total": 231.5,
+  "fav_win_prob": 0.583,
   "status": "Analysed"
  },
  {
-  "game": "BOS @ GS",
+  "game": "OKC @ IND",
+  "tip": "11:30am",
+  "start": "2026-11-24T11:30:00+11:00",
+  "favourite": "OKC",
+  "spread": -5.5,
+  "total": 224.5,
+  "fav_win_prob": 0.677,
+  "status": "Analysed"
+ },
+ {
+  "game": "MIL @ TOR",
+  "tip": "11:30am",
+  "start": "2026-11-24T11:30:00+11:00",
+  "favourite": "TOR",
+  "spread": -10.5,
+  "total": 222.5,
+  "fav_win_prob": 0.809,
+  "status": "Analysed"
+ },
+ {
+  "game": "BKN @ MIN",
+  "tip": "11:30am",
+  "start": "2026-11-24T11:30:00+11:00",
+  "favourite": "MIN",
+  "spread": -11.5,
+  "total": 223.5,
+  "fav_win_prob": 0.831,
+  "status": "Analysed"
+ },
+ {
+  "game": "CLE @ CHI",
+  "tip": "12:00pm",
+  "start": "2026-11-24T12:00:00+11:00",
+  "favourite": "CLE",
+  "spread": -8.5,
+  "total": 242.5,
+  "fav_win_prob": 0.761,
+  "status": "Analysed"
+ },
+ {
+  "game": "PHX @ NO",
+  "tip": "12:00pm",
+  "start": "2026-11-24T12:00:00+11:00",
+  "favourite": "PHX",
+  "spread": -3.5,
+  "total": 232.5,
+  "fav_win_prob": 0.615,
+  "status": "Analysed"
+ },
+ {
+  "game": "LAC @ HOU",
   "tip": "12:30pm",
-  "start": "2026-11-23T12:30:00+11:00",
-  "favourite": "BOS",
-  "spread": -7.5,
-  "total": 210.5,
-  "fav_win_prob": 0.734,
+  "start": "2026-11-24T12:30:00+11:00",
+  "favourite": "HOU",
+  "spread": -12.5,
+  "total": 223.5,
+  "fav_win_prob": 0.851,
+  "status": "Analysed"
+ },
+ {
+  "game": "UTAH @ LAL",
+  "tip": "2:00pm",
+  "start": "2026-11-24T14:00:00+11:00",
+  "favourite": "LAL",
+  "spread": -13.5,
+  "total": 225.5,
+  "fav_win_prob": 0.87,
+  "status": "Analysed"
+ },
+ {
+  "game": "SA @ SAC",
+  "tip": "2:00pm",
+  "start": "2026-11-24T14:00:00+11:00",
+  "favourite": "SA",
+  "spread": -12.5,
+  "total": 224.5,
+  "fav_win_prob": 0.851,
   "status": "Analysed"
  }
 ]

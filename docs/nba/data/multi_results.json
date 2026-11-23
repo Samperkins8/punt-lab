@@ -1752,5 +1752,131 @@
   "landed": true,
   "verdict": "skip",
   "price": 2.19
+ },
+ {
+  "slate_date": "2026-11-23",
+  "multi": "4-leg $2+",
+  "legs": "Kyrie Irving 1+ threes; Desmond Bane 1+ threes; Jamal Murray 1+ threes; Josh Hart 1+ threes",
+  "est_hit": 0.4726,
+  "landed": false,
+  "verdict": "check",
+  "price": 2.02
+ },
+ {
+  "slate_date": "2026-11-23",
+  "multi": "3-leg $2+",
+  "legs": "Desmond Bane 2+ assists; Andrew Nembhard 10+ points; Josh Hart 1+ threes",
+  "est_hit": 0.4801,
+  "landed": false,
+  "verdict": "skip",
+  "price": 2.01
+ },
+ {
+  "slate_date": "2026-11-23",
+  "multi": "2-leg $2+",
+  "legs": "Denver Nuggets Denver Nuggets to win; Nikola Jokic 25+ points",
+  "est_hit": 0.4551,
+  "landed": true,
+  "verdict": "skip",
+  "price": 2.04
+ },
+ {
+  "slate_date": "2026-11-23",
+  "multi": "4-leg $3+",
+  "legs": "Desmond Bane 1+ threes; Jamal Murray 1+ threes; Josh Hart 1+ threes; Nikola Jokic 25+ points",
+  "est_hit": 0.3134,
+  "landed": false,
+  "verdict": "check",
+  "price": 3.01
+ },
+ {
+  "slate_date": "2026-11-23",
+  "multi": "4-leg $4+",
+  "legs": "Ace Bailey 10+ points; Jalen Smith 10+ points; Nikola Jokic 25+ points; Kyrie Irving 3+ threes",
+  "est_hit": 0.1979,
+  "landed": true,
+  "verdict": "skip",
+  "price": 4.09
+ },
+ {
+  "slate_date": "2026-11-23",
+  "multi": "Best value",
+  "legs": "Desmond Bane 1+ threes; Jamal Murray 1+ threes; Jalen Smith 10+ points; AJ Dybantsa 2+ assists",
+  "est_hit": 0.4177,
+  "landed": true,
+  "verdict": "check",
+  "price": 2.29
+ },
+ {
+  "slate_date": "2026-11-23",
+  "multi": "Safest",
+  "legs": "Kyrie Irving 1+ threes; Desmond Bane 1+ threes; Jamal Murray 1+ threes; Josh Hart 1+ threes",
+  "est_hit": 0.4726,
+  "landed": false,
+  "verdict": "check",
+  "price": 2.02
+ },
+ {
+  "slate_date": "2026-11-23",
+  "multi": "3-leg value",
+  "legs": "Andrew Nembhard 10+ points; Jalen Smith 10+ points; Darryn Peterson 15+ points",
+  "est_hit": 0.4509,
+  "landed": false,
+  "verdict": "skip",
+  "price": 2.1
+ },
+ {
+  "slate_date": "2026-11-23",
+  "multi": "One per game",
+  "legs": "Kyrie Irving 1+ threes; Desmond Bane 1+ threes; Jamal Murray 1+ threes; Andrew Nembhard 10+ points; Derrick White 10+ points",
+  "est_hit": 0.386,
+  "landed": true,
+  "verdict": "check",
+  "price": 2.26
+ },
+ {
+  "slate_date": "2026-11-23",
+  "multi": "Mid-range $8+",
+  "legs": "Kyrie Irving 1+ threes; Desmond Bane 1+ threes; Jamal Murray 1+ threes; Josh Hart 1+ threes; Andrew Nembhard 15+ points; Jalen Smith 15+ points",
+  "est_hit": 0.1223,
+  "landed": false,
+  "verdict": "check",
+  "price": 8.04
+ },
+ {
+  "slate_date": "2026-11-23",
+  "multi": "Long multi 8+",
+  "legs": "Desmond Bane 1+ threes; Jamal Murray 1+ threes; Kyshawn George 10+ points; Anthony Black 10+ points; Brandin Podziemski 10+ points; Josh Giddey 4+ rebounds",
+  "est_hit": 0.3506,
+  "landed": true,
+  "verdict": "check",
+  "price": 2.39
+ },
+ {
+  "slate_date": "2026-11-23",
+  "multi": "Long shot $50",
+  "legs": "Kyrie Irving 1+ threes; Josh Hart 1+ threes; Desmond Bane 20+ points; Andrew Nembhard 15+ points; Jalen Smith 15+ points; Ace Bailey 6+ rebounds; Anthony Black 6+ assists",
+  "est_hit": 0.0192,
+  "landed": false,
+  "verdict": "check",
+  "price": 50.26
+ },
+ {
+  "slate_date": "2026-11-23",
+  "multi": "Top pick",
+  "legs": "Andrew Nembhard 10+ points; Josh Hart 1+ threes; Darryn Peterson 15+ points",
+  "est_hit": 0.4513,
+  "landed": false,
+  "verdict": "marginal",
+  "price": 2.18
+ },
+ {
+  "slate_date": "2026-11-23",
+  "multi": "Second pick",
+  "legs": "Jalen Smith 10+ points; Nikola Jokic 25+ points",
+  "est_hit": 0.4415,
+  "landed": true,
+  "verdict": "skip",
+  "price": 2.14
  }
 ]
