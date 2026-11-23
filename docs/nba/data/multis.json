@@ -285,7 +285,7 @@
   "best_book_price": null,
   "verdict": "check",
   "value": null,
-  "landed": null
+  "landed": false
  },
  {
   "multi": "Top pick",
