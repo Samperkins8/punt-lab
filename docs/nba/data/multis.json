@@ -67,7 +67,7 @@
   "best_book_price": 2.04,
   "verdict": "skip",
   "value": -0.0716,
-  "landed": null
+  "landed": true
  },
  {
   "multi": "4-leg $3+",
@@ -115,7 +115,7 @@
   "best_book_price": 4.09,
   "verdict": "skip",
   "value": -0.1906,
-  "landed": null
+  "landed": true
  },
  {
   "multi": "Best value",
@@ -138,7 +138,7 @@
   "best_book_price": null,
   "verdict": "check",
   "value": null,
-  "landed": null
+  "landed": true
  },
  {
   "multi": "Safest",
@@ -185,7 +185,7 @@
   "best_book_price": 2.1,
   "verdict": "skip",
   "value": -0.0531,
-  "landed": null
+  "landed": false
  },
  {
   "multi": "One per game",
@@ -309,7 +309,7 @@
   "best_book_price": 2.18,
   "verdict": "marginal",
   "value": -0.0162,
-  "landed": null
+  "landed": false
  },
  {
   "multi": "Second pick",
@@ -332,6 +332,6 @@
   "best_book_price": 2.14,
   "verdict": "skip",
   "value": -0.0552,
-  "landed": null
+  "landed": true
  }
 ]

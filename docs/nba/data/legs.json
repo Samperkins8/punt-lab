@@ -48,7 +48,12 @@
   "event_id": "401910033",
   "athlete_id": "6442",
   "late_checked": "10:42am",
-  "late_was": null
+  "late_was": null,
+  "actual": 4.0,
+  "landed": true,
+  "minutes_played": 27,
+  "expected_minutes": 29,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 3.5 threes tonight, needs 1+. This season 4.3 a game over 14 games; last season 2.0 over 84. Bane averaged 4.7 in the 11 games with Black (4.3 across all 14), so he's predicted 0.3 threes more tonight. Tonight's line is 9 points easier than his team's usual (favourites by 4.5), so they're expected to score more (+6%). WSH gives up less to his position than average (-5%). Bookies' line: 3.5.",
@@ -155,7 +160,12 @@
   "event_id": "401910032",
   "athlete_id": "3936299",
   "late_checked": "10:42am",
-  "late_was": null
+  "late_was": null,
+  "actual": 6.0,
+  "landed": true,
+  "minutes_played": 45,
+  "expected_minutes": 36,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 3.2 assists tonight, needs 2+. This season 2.7 a game over 14 games; last season 4.1 over 84. Tonight's line is 9 points easier than his team's usual (favourites by 4.5), so they're expected to score more (+2%). WSH gives up more to his position than average (+6%). Bookies' line: 2.5.",
@@ -382,7 +392,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.22
-  }
+  },
+  "actual": 1.0,
+  "landed": true,
+  "minutes_played": 42,
+  "expected_minutes": 37,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 14.5 points tonight, needs 10+. This season 12.9 a game over 17 games; last season 13.8 over 72. Bailey averaged 14.0 in the 9 games without Markkanen (12.9 across all 17), so he's predicted 0.7 points more tonight. Plays better at home: 0.4 points more predicted. Bookies' line: 14.5.",
@@ -442,7 +457,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.22
-  }
+  },
+  "actual": 16.0,
+  "landed": true,
+  "minutes_played": 33,
+  "expected_minutes": 30,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 20.9 points tonight, needs 15+. This season 23.0 a game over 15 games; last season 23.4 over 64. Siakam averaged 22.5 in the 14 games with Nesmith (23.0 across all 15), so he's predicted 0.4 points fewer tonight. Slower game expected (-2% for pace). Bookies' line: 20.5.",
@@ -613,7 +633,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.22
-  }
+  },
+  "actual": 3.0,
+  "landed": true,
+  "minutes_played": 31,
+  "expected_minutes": 32,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 20.0 points tonight, needs 15+. This season 21.3 a game over 15 games; last season 19.7 over 78. Plays a bit worse at home: 0.7 points fewer predicted. Slower game expected (-2% for pace). IND gives up more to his position than average (+5%). Expected minutes 31.1 vs his usual 32.7. Bookies' line: 20.5.",
@@ -789,7 +814,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.28
-  }
+  },
+  "actual": 26.0,
+  "landed": true,
+  "minutes_played": 34,
+  "expected_minutes": 24,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 20.4 points tonight, needs 15+. This season 18.6 a game over 14 games; last season 20.2 over 84. Bane averaged 19.8 in the 11 games with Black (18.6 across all 14), so he's predicted 0.8 points more tonight. Plays better on the road: 0.9 points more predicted. Tonight's line is 9 points easier than his team's usual (favourites by 4.5), so they're expected to score more (+3%). Bookies' line: 19.5.",
@@ -1028,7 +1058,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.22
-  }
+  },
+  "actual": 37.0,
+  "landed": true,
+  "minutes_played": 42,
+  "expected_minutes": 37,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 1.5 threes tonight, needs 1+. This season 1.7 a game over 15 games; last season 1.6 over 64. Slower game expected (-2% for pace). Tonight's line is 2 points tougher than his team's usual (underdogs by 7.5), so they're expected to score less (-2%). NY gives up more to his position than average (+5%). Bookies' line: 1.5.",
@@ -1141,7 +1176,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.18
-  }
+  },
+  "actual": 4.0,
+  "landed": false,
+  "minutes_played": 34,
+  "expected_minutes": 24,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 13.7 points tonight, needs 10+. This season 13.2 a game over 14 games; last season 12.0 over 44. Faster game expected (+4% for pace). Tonight's line is 12 points easier than his team's usual (favourites by 10.5), so they're expected to score more (+4%). CHI gives up more to his position than average (+2%). Bookies' line: 13.5.",
@@ -1199,7 +1239,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.28
-  }
+  },
+  "actual": 21.0,
+  "landed": true,
+  "minutes_played": 38,
+  "expected_minutes": 34,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 19.5 points tonight, needs 15+. This season 16.7 a game over 17 games. Peterson averaged 20.0 in the 9 games without Markkanen (16.7 across all 17), so he's predicted 2.1 points more tonight. Bookies' line: 18.5.",
@@ -1259,7 +1304,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.28
-  }
+  },
+  "actual": 6.0,
+  "landed": false,
+  "minutes_played": 25,
+  "expected_minutes": 31,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 5.5 rebounds tonight, needs 4+. This season 6.3 a game over 17 games; last season 4.2 over 72. Bailey averaged 5.4 in the 9 games without Markkanen (6.3 across all 17), so he's predicted 0.5 rebounds fewer tonight. Plays better at home: 0.8 rebounds more predicted. DAL gives up more to his position than average (+6%). Bookies' line: 5.5.",
@@ -1317,7 +1367,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.28
-  }
+  },
+  "actual": 5.0,
+  "landed": true,
+  "minutes_played": 33,
+  "expected_minutes": 30,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 2.5 assists tonight, needs 2+. This season 2.5 a game over 13 games. ORL gives up more to his position than average (+4%). Bookies' line: 2.5.",
@@ -1438,7 +1493,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.28
-  }
+  },
+  "actual": 16.0,
+  "landed": true,
+  "minutes_played": 36,
+  "expected_minutes": 28,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 20.4 points tonight, needs 20+. This season 18.6 a game over 14 games; last season 20.2 over 84. Bane averaged 19.8 in the 11 games with Black (18.6 across all 14), so he's predicted 0.8 points more tonight. Plays better on the road: 0.9 points more predicted. Tonight's line is 9 points easier than his team's usual (favourites by 4.5), so they're expected to score more (+3%). Bookies' line: 19.5.",
@@ -1624,7 +1684,12 @@
   "late_was": null,
   "close_books": {
    "neds": 2.05
-  }
+  },
+  "actual": 26.0,
+  "landed": true,
+  "minutes_played": 34,
+  "expected_minutes": 24,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 26.3 points tonight, needs 25+. This season 24.2 a game over 14 games; last season 27.3 over 66. Plays a bit worse on the road: 1.4 points fewer predicted. Faster game expected (+4% for pace). Tonight's line is 12 points easier than his team's usual (favourites by 10.5), so they're expected to score more (+4%). CHI gives up more to his position than average (+5%). Bookies' line: 25.5.",
@@ -1682,7 +1747,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.67
-  }
+  },
+  "actual": 37.0,
+  "landed": true,
+  "minutes_played": 42,
+  "expected_minutes": 37,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 5.5 rebounds tonight, needs 6+. This season 6.3 a game over 17 games; last season 4.2 over 72. Bailey averaged 5.4 in the 9 games without Markkanen (6.3 across all 17), so he's predicted 0.5 rebounds fewer tonight. Plays better at home: 0.8 rebounds more predicted. DAL gives up more to his position than average (+6%). Bookies' line: 5.5.",
@@ -1740,7 +1810,12 @@
   "late_was": null,
   "close_books": {
    "neds": 2.1
-  }
+  },
+  "actual": 5.0,
+  "landed": false,
+  "minutes_played": 33,
+  "expected_minutes": 30,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 3.2 threes tonight, needs 3+. This season 3.3 a game over 13 games. Tonight's line is 5 points easier than his team's usual (favourites by 2.5), so they're expected to score more (+3%). UTAH gives up less to his position than average (-3%). Expected minutes 29.4 vs his usual 31. Bookies' line: 2.5.",
@@ -1800,7 +1875,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.48
-  }
+  },
+  "actual": 4.0,
+  "landed": true,
+  "minutes_played": 27,
+  "expected_minutes": 29,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 15.2 points tonight, needs 15+. This season 16.2 a game over 12 games; last season 16.9 over 57. Nembhard averaged 15.7 in the 11 games with Oubre (16.2 across all 12), so he's predicted 0.4 points fewer tonight. Slower game expected (-2% for pace). NY gives up more to his position than average (+5%). Bookies' line: 14.5.",
@@ -2043,7 +2123,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.13
-  }
+  },
+  "actual": 14.0,
+  "landed": true,
+  "minutes_played": 41,
+  "expected_minutes": 27,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 14.4 points tonight, needs 10+. This season 15.8 a game over 14 games; last season 14.0 over 84. Podziemski averaged 13.0 in the 5 games without Curry (15.8 across all 14), so he's predicted 1.4 points fewer tonight. Plays better at home: 1.0 points more predicted. Slower game expected (-3% for pace). Tonight's line is 10 points tougher than his team's usual (underdogs by 8.5), so they're expected to score less (-4%). BOS gives up less to his position than average (-6%). Bookies' line: 15.5.",
@@ -2213,7 +2298,9 @@
   "step_up": false,
   "note": "10.5-point favourite",
   "event_id": "401910032",
-  "athlete_id": null
+  "athlete_id": null,
+  "actual": 1,
+  "landed": true
  },
  {
   "why": "New York Knicks are 7.5-point favourites. The bookies' head-to-head prices (margin removed) and the betting line together make that about a 72% chance to win, fair price $1.39. Pays $1.35 at TAB.",
