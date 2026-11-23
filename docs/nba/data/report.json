@@ -3,7 +3,7 @@
  "headline": "Value today: Top pick on Neds $2.24 (needs $2.11); 4-leg $3+ on Neds $3.13 (needs $2.92); Best value on Neds $3.21 (needs $3.03). Note: spread the legs around so one miss can't sink most multis: Best value, 3-leg value, 4-leg $4+.",
  "injuries": "Nolan Traore (Out), Grayson Allen (Out), Grant Williams (Out), Kon Knueppel (Out), Dennis Schroder (Out), Norman Powell (Out), Caleb Wilson (Out), Jaylon Tyson (Out), Nae'Qwan Tomlin (Out), Evan Mobley (Out), T.J. Mcconnell (Out), Aaron Nesmith (Out) and others",
  "graded": "",
- "next_run": "Re-checked 10:26am: 2 multi(s) changed: Long shot $50, Second pick",
+ "next_run": "Late check 10:50am — OKC @ IND, MIL @ TOR, BKN @ MIN, CLE @ CHI, PHX @ NO: no new outs; 5 new legs worth a look",
  "sources": {
   "stats": "ESPN",
   "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API",
@@ -82,11 +82,17 @@
  },
  "rechecked_at": "2026-11-24T10:26:36.081008+11:00",
  "late_checked": [
+  "BKN @ MIN",
+  "CLE @ CHI",
   "MEM @ CHA",
+  "MIL @ TOR",
+  "OKC @ IND",
+  "PHX @ NO",
   "POR @ PHI"
  ],
  "late_log": [
-  "9:52am MEM @ CHA, POR @ PHI: no new outs; 5 new legs worth a look"
+  "9:52am MEM @ CHA, POR @ PHI: no new outs; 5 new legs worth a look",
+  "10:50am OKC @ IND, MIL @ TOR, BKN @ MIN, CLE @ CHI, PHX @ NO: no new outs; 5 new legs worth a look"
  ],
- "close_fetches": 1
+ "close_fetches": 2
 }
