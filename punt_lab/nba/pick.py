@@ -1,48 +1,30 @@
-"""Choosing the three multis from the candidate legs."""
+"""Choosing the multis from the candidate legs."""
 from __future__ import annotations
 
 import math
 from itertools import combinations
-from statistics import median
 
 from .model import Leg, LegResult, multi_chance
 
 MIN_PRICE = 1.20          # Sam rarely takes a leg shorter than this
 MAX_UNPRICED_MODEL = 0.83 # with no price known, a leg this likely would be priced under $1.20
 BOOKIE_MARGIN = 0.92      # assumed app price = this x fair, when no price is known
-POOL = 16                 # likeliest legs considered when searching combinations
-VALUE_EXTRA = 8           # plus up to this many less likely legs that are clearly better value
-VALUE_EDGE = 0.03         # "clearly": chance x app price beats the likeliest legs' typical value by this much
-VALUE_BASE = 0.95         # the typical value assumed when none of the likeliest legs has an app price
-MIN_MULTI = 2.00          # the "$2+" multis must be estimated to pay at least this
+MIN_MULTI = 2.00          # Sam doesn't bet a multi paying under $2
+MAIN_TARGET = 3.00        # the main bet: the likeliest 4 legs paying $3+ (the one Sam usually takes)
+THREE_SHARED = 1          # 3-leg $2+ shares at most this many players with the main bet, so they're two bets, not one
 LONG_MIN_LEGS = 8         # long multi: at least this many legs
 LONG_MAX_LEGS = 12        # extra legs past 8 only when each is worth it on its own
 LONG_MIN_PROB = 0.80      # every long-multi leg at least this likely
 LONG_MIN_PRICE = 1.15     # and estimated to pay at least this
-WIDE_POOL = 20            # $2+ multis search the top legs plus up to this many step-up (next line up) legs
-MID_TARGET = 8.00         # mid-range multi: estimated price at least this
-MID_LEGS = (6, 7)         # try 6 legs first, 7 only if 6 can't reach the target
-MID_POOL = 22             # legs searched for the mid-range multi (most likely first)
-SHOT_TARGET = 50.00       # long shot: keep adding the most likely legs until the price passes this
-SHOT_MAX_LEGS = 15        # but never more than this many legs
-SHOT_MIN_PRICE = 20.00    # if the slate can't get the long shot this far, leave it out
-SHOT_MIN_PROB = 0.40      # no long-shot / mid-range leg less likely than this
-VALUE_FLOOR = 0.97        # long-shot / mid-range: skip a priced leg whose chance x app price is under this
-                          # (a bad-value leg makes the whole multi a worse bet), unless the target can't be reached without it
-WIDE_STEP_MIN = 0.55      # step-up legs used by the $2+ multis must be at least this likely
-PER_GAME_MAX = 8          # one-per-game multi: at most this many games
-GAME_MAX_SHORT = 2        # 3- and 4-leg multis: at most this many legs from one game, so one bad game can't sink it
+WIDE_POOL = 20            # short multis search the top legs plus up to this many step-up (next line up) legs
+WIDE_STEP_MIN = 0.55      # step-up legs must be at least this likely
+GAME_MAX_SHORT = 2        # 2- to 4-leg multis: at most this many legs from one game, so one bad game can't sink it
 GAME_MAX_LONG = 3         # bigger multis: at most this many
+THREES_MAX_SHORT = 1      # 2- to 4-leg multis: at most one threes leg. Threes in multis landed 69% against 76%
+                          # predicted (78 legs to 23 Nov): a 2+ threes line rests on a handful of shots
 SHORT_LEGS = 4
-PICK_MIN_CHANCE = 0.25    # top picks: a 2- to 4-leg multi at least this likely to land
-PICK_SHARED = 0           # the second pick shares no player with the top pick, so one miss can't sink both
-REUSE_MAX = 5             # a player is in at most this many of the short (2- to 4-leg) multis: half of them
-REUSE_KEEP = 0.80         # ...as long as the multi without him is at least this share as likely to land
-REUSE_VALUE = 0.90        # ...and returns at least this share as much per $1 (chance x price)
-# The short multis, most important first: when a player is over-used, the later ones are rebuilt without him.
-SHORT_MULTIS = ("Top pick", "4-leg $3+", "Safest", "4-leg $2+", "3-leg $2+", "2-leg $2+", "Best value",
-                "3-leg value", "4-leg $4+", "Second pick")
-SHORT_TARGETS = {"4-leg $3+": 3.0, "4-leg $4+": 4.0}  # every other short multi must pay MIN_MULTI
+PICK_MIN_CHANCE = 0.25    # second pick: a 2- to 4-leg multi at least this likely to land
+PICK_SHARED = 0           # ...sharing no player with the main bet, so one miss can't sink both
 _caps = (GAME_MAX_SHORT, GAME_MAX_LONG)  # (short, long) for tonight; choose() loosens them on a tiny slate
 
 
@@ -79,6 +61,8 @@ def _ok_combo(legs: list[Leg], long: bool = False) -> bool:
         per_game[l.game] = per_game.get(l.game, 0) + 1
         if per_game[l.game] > game_max:
             return False
+    if not (long or len(legs) > SHORT_LEGS) and sum(l.stat == "threes" for l in legs) > THREES_MAX_SHORT:
+        return False
     for a, b in combinations(legs, 2):
         if a.game != b.game:
             continue
@@ -134,54 +118,13 @@ def pick_score(p: float, price: float) -> float:
 
 
 def choose(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
-    """Returns {multi name: [indexes into cands]}. Each multi is first chosen on its own merits, which
-    tends to put the same one or two players in nearly all of them, so a single miss sinks the day.
-    The short multis are then walked in order of importance: once a player is in REUSE_MAX of them,
-    later ones are rebuilt without him, if what replaces them is nearly as likely, nearly as good value and
-    still pays its target."""
-    global _caps
-    out = _choose_all(cands)
-    caps = _caps  # the rebuilds below see fewer legs; keep the caps worked out for the whole slate
-    used: dict[str, int] = {}
-    reruns: dict[frozenset, tuple[list[int], dict]] = {}
+    """Returns {multi name: [indexes into cands]}: the main bet (4-leg $3+), a 3-leg $2+ and a second pick
+    built to share as few players with it as possible, and a long multi.
 
-    def without(players: frozenset):
-        if players not in reruns:
-            keep = [i for i, (l, _) in enumerate(cands) if l.player not in players]
-            reruns[players] = (keep, _choose_all([cands[i] for i in keep]))
-        return reruns[players]
-
-    def chance(combo):
-        return multi_chance([cands[i][0] for i in combo], [cands[i][1].model_prob for i in combo])
-
-    swapped = []
-    for name in SHORT_MULTIS:
-        combo = out.get(name)
-        if not combo:
-            continue
-        full = frozenset(p for p, n in used.items() if n >= REUSE_MAX)
-        banned = full
-        if name == "Second pick":  # the best bet that shares nobody with the top pick
-            banned = banned | {cands[i][0].player for i in out.get("Top pick", [])}
-        if full & {cands[i][0].player for i in combo}:
-            keep, again = without(frozenset(banned))
-            new = again.get("Top pick" if name == "Second pick" else name)
-            new = [keep[i] for i in new] if new else None
-            if (new and combo_price(cands, new) >= SHORT_TARGETS.get(name, MIN_MULTI)
-                    and chance(new) >= REUSE_KEEP * chance(combo)
-                    and chance(new) * combo_price(cands, new) >= REUSE_VALUE * chance(combo) * combo_price(cands, combo)):
-                out[name] = combo = new
-                swapped.append(name)
-        for p in {cands[i][0].player for i in combo}:
-            used[p] = used.get(p, 0) + 1
-    _caps = caps
-    if swapped:
-        out.setdefault("_notes", []).append("spread the legs around so one miss can't sink most multis: " + ", ".join(swapped))
-    return out
-
-
-def _choose_all(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
-    """Every multi chosen on its own merits, with no limit on how often a player is reused."""
+    Cut down from 14 multis on 24 Nov 2026. The legs were landing about as often as predicted (73% v 75%),
+    but the multis landed 61 of 208 against 74 expected: they shared so many legs that one miss sank most of
+    the day (0 of 10, 0 of 11, 0 of 14, then 12 of 13). Fourteen near-identical multis were really one bet
+    a day, so fewer multis, deliberately spread apart."""
     global _caps
     n_games = len({l.game for l, _ in cands}) or 1
     # with one game on, everything is same-game; with two, a long multi needs four from each
@@ -189,178 +132,75 @@ def _choose_all(cands: list[tuple[Leg, LegResult]]) -> dict[str, list[int]]:
              max(GAME_MAX_LONG, -(-LONG_MIN_LEGS // n_games)))
     every = [i for i, (l, r) in enumerate(cands) if eligible(l, r)]
     every.sort(key=lambda i: -cands[i][1].model_prob)
-    every_any = list(every)  # includes match winners / safe lines, for the long shot
     every = [i for i in every if not cands[i][0].extra.get("long_only")]  # safe lines / match winners: long multi only
     idx = [i for i in every if not cands[i][0].extra.get("step_up")]  # step-up legs only feed the $2+ multis
-    pool = idx[:POOL]
-
-    # Less likely legs get a look when the app pays clearly more than their chance is worth next to the
-    # likeliest legs. Only legs with a real app price: a leg that merely looks like value is often one
-    # the model has overrated, so the bar is the typical value plus a margin.
-    def value(i):
-        return cands[i][1].model_prob * cands[i][0].odds
-
-    priced = [value(i) for i in pool if cands[i][0].odds]
-    bar = (median(priced) if priced else VALUE_BASE) + VALUE_EDGE
-    extra = sorted((i for i in idx[POOL:] if cands[i][0].odds and value(i) >= bar), key=lambda i: -value(i))[:VALUE_EXTRA]
-    pool = pool + extra
+    wide = idx[:WIDE_POOL] + [i for i in every if cands[i][0].extra.get("step_up")
+                              and cands[i][1].model_prob >= WIDE_STEP_MIN][:WIDE_POOL]
     out: dict[str, list[int]] = {}
+    notes: list[str] = out.setdefault("_notes", [])
 
     def chance(combo):
         return multi_chance([cands[i][0] for i in combo], [cands[i][1].model_prob for i in combo])
 
-    def multi_price(combo):
-        return combo_price(cands, combo)
+    def players(combo):
+        return {cands[i][0].player for i in combo}
 
-    def pays(combo):  # Sam doesn't bet multis under $2
-        return multi_price(combo) >= MIN_MULTI
+    # every 2- to 4-leg combo that fits together: (size, price, combo)
+    combos = [(n, combo_price(cands, c), c) for n in (2, 3, 4) for c in combinations(wide, n)
+              if _ok_combo([cands[i][0] for i in c])]
 
-    def ev(combo):
-        p = chance(combo)
-        return p * multi_price(combo), p
-
-    # Safest: highest chance all four land
-    best = None
-    for combo in combinations(pool, 4):
-        if _ok_combo([cands[i][0] for i in combo]) and pays(combo):
-            c = chance(combo)
-            if best is None or c > best[0]:
-                best = (c, combo)
-    if best:
-        out["Safest"] = list(best[1])
-    else:
-        out.setdefault("_notes", []).append("no safest 4-leg pays $2, so it's left out")
-
-    # Best value: highest expected return, keeping a sensible chance of landing
-    best = None
-    for combo in combinations(pool, 4):
-        if not _ok_combo([cands[i][0] for i in combo]):
-            continue
-        if not pays(combo):
-            continue
-        e, p = ev(combo)
-        if p >= 0.30 and (best is None or e > best[0]):
-            best = (e, combo)
-    if best:
-        out["Best value"] = list(best[1])
-    else:
-        out.setdefault("_notes", []).append("no best-value 4-leg pays $2 with a 30%+ chance, so it's left out")
-
-    # 3-leg value: every leg must be worth it on its own (model x price > 1)
-    worth = [i for i in pool if price_of(*cands[i])[0] and cands[i][1].model_prob * _assumed_price(*cands[i]) > 1]
-
-    def best_three(search, min_p):
+    def likeliest(n, target, avoid=frozenset(), max_shared=0):
         best = None
-        for combo in combinations(search, 3):
-            if not _ok_combo([cands[i][0] for i in combo]) or not pays(combo):
-                continue
-            e, p = ev(combo)
-            if p >= min_p and (best is None or e > best[0]):
-                best = (e, combo)
-        return best
+        for size, pr, c in combos:
+            if size == n and pr >= target and len(players(c) & avoid) <= max_shared:
+                ch = chance(c)
+                if best is None or ch > best[0]:
+                    best = (ch, c)
+        return list(best[1]) if best else None
 
-    all_worth = True
-    best = best_three(worth, 0.45) or best_three(worth, 0.0)
-    if best is None:  # not enough worth-it legs that fit together: fill from the pool
-        all_worth = False
-        best = best_three(pool, 0.45) or best_three(pool, 0.0)
-    if best:
-        out["3-leg value"] = list(best[1])
+    main = likeliest(4, MAIN_TARGET)
+    if main:
+        out["4-leg $3+"] = main
     else:
-        all_worth = True
-        out.setdefault("_notes", []).append("no 3-leg value multi pays $2, so it's left out")
-    # $2+ multis: highest chance all land, with the estimated Sportsbet price at least $2.00
-    wide = idx[:WIDE_POOL] + [i for i in extra if i not in idx[:WIDE_POOL]] + [i for i in every if cands[i][0].extra.get("step_up")
-                              and cands[i][1].model_prob >= WIDE_STEP_MIN][:WIDE_POOL]
+        longest = max((x for x in combos if x[0] == 4), key=lambda x: x[1], default=None)
+        if longest:
+            out["4-leg $3+"] = list(longest[2])
+            notes.append(f"no 4-leg combo reaches ${MAIN_TARGET:.2f}, so 4-leg $3+ shows the longest-priced one")
+    taken = frozenset(players(out.get("4-leg $3+", [])))
 
-    # fewer legs give the bookie's margin fewer chances to compound, so a 2-leg is offered too
-    targets = {4: [("4-leg $2+", 2.0), ("4-leg $3+", 3.0), ("4-leg $4+", 4.0)], 3: [("3-leg $2+", 2.0)],
-               2: [("2-leg $2+", 2.0)]}
-    rated = []  # every 2- to 4-leg combo paying $2+: (one app prices every leg, score, chance, combo)
-    for n, wanted in targets.items():
-        best = {name: None for name, _ in wanted}
-        fallback = None
-        for combo in combinations(wide, n):
-            if not _ok_combo([cands[i][0] for i in combo]):
-                continue
-            pr = multi_price(combo)
-            c = None
-            for name, target in wanted:
-                if pr >= target:
-                    c = chance(combo) if c is None else c
-                    if best[name] is None or c > best[name][0]:
-                        best[name] = (c, combo)
-            if fallback is None or pr > fallback[0]:
-                fallback = (pr, combo)
-            if c is not None and pr >= MIN_MULTI and c >= PICK_MIN_CHANCE:
-                real = app_price([cands[i][0] for i in combo])[1] is not None
-                rated.append((real, pick_score(c, pr), c, combo))
-        for name, target in wanted:
-            if best[name]:
-                out[name] = list(best[name][1])
-            elif n == 2:
-                out.setdefault("_notes", []).append("no 2-leg combo pays $2, so it's left out")
-            elif fallback:
-                out[name] = list(fallback[1])
-                out.setdefault("_notes", []).append(f"no {n}-leg combo reaches ${target:.2f}, so {name} shows the longest-priced one")
+    # 3-leg $2+: the likeliest three paying $2 that shares at most THREE_SHARED players with the main bet
+    for shared in range(THREE_SHARED, 4):
+        three = likeliest(3, MIN_MULTI, taken, shared)
+        if three:
+            out["3-leg $2+"] = three
+            if shared > THREE_SHARED:
+                notes.append(f"3-leg $2+ shares {shared} players with 4-leg $3+: the slate is thin")
+            break
+    else:
+        notes.append("no 3-leg combo pays $2, so it's left out")
 
-    # Top pick: the best bet of the day by chance and price together, from every 2- to 4-leg combo paying $2+.
+    # Second pick: the best 2- to 4-leg bet by chance and price together that shares nobody with the main bet.
     # Combos one app prices in full come first: without a real price the edge is only a guess.
-    # Second pick: the next best that shares no player with it, so one miss can't sink both.
-    if rated:
-        rated.sort(key=lambda r: r[:3], reverse=True)
-        top = rated[0][3]
-        out["Top pick"] = sorted(top, key=lambda i: -cands[i][1].model_prob)
-        top_players = {cands[i][0].player for i in top}
-        for shared in range(PICK_SHARED, len(top)):  # on a thin slate, allow an overlap rather than no second pick
-            for _, _, _, combo in rated[1:]:
-                if len(top_players & {cands[i][0].player for i in combo}) <= shared:
-                    out["Second pick"] = sorted(combo, key=lambda i: -cands[i][1].model_prob)
-                    break
-            if "Second pick" in out:
-                break
+    for shared in range(PICK_SHARED, SHORT_LEGS + 1):  # on a thin slate, allow an overlap rather than no pick
+        rated = []
+        for size, pr, c in combos:
+            if pr < MIN_MULTI or len(players(c) & taken) > shared:
+                continue
+            ch = chance(c)
+            if ch >= PICK_MIN_CHANCE:
+                real = app_price([cands[i][0] for i in c])[1] is not None
+                rated.append((real, pick_score(ch, pr), ch, c))
+        if rated:
+            out["Second pick"] = sorted(max(rated, key=lambda r: r[:3])[3], key=lambda i: -cands[i][1].model_prob)
+            break
 
     # Long multi: 8+ legs, each 80%+ likely and paying $1.15+, best value first
     long_idx, note = _long_multi(cands)
     if long_idx:
         out["Long multi 8+"] = long_idx
     if note:
-        out.setdefault("_notes", []).append(note)
-
-    # One per game: the most likely leg from each game, so one blowout can only cost one leg
-    per_game, note = _one_per_game(cands, idx, multi_price)
-    if per_game:
-        out["One per game"] = per_game
-    if note:
-        out.setdefault("_notes", []).append(note)
-
-    # Mid-range: 6 (or 7) legs, highest chance with an estimated price of $8+
-    # Bad-value legs are left out first, and only let back in if $8 can't be reached without them
-    for strict in (True, False):
-        vp = _value_pool(cands, every_any, strict)
-        by_value = sorted(vp, key=lambda i: _chance_cost(*cands[i]))
-        by_chance = sorted(vp, key=lambda i: -cands[i][1].model_prob)
-        mid_pool = list(dict.fromkeys(by_chance[:MID_POOL // 2] + by_value))[:MID_POOL]  # half safest, half best value
-        mid, note = _target_multi(cands, mid_pool, MID_LEGS, MID_TARGET, chance, multi_price)
-        if mid and not note:
-            break
-    if mid:
-        out["Mid-range $8+"] = mid
-    if note:
-        out.setdefault("_notes", []).append(note)
-
-    # Long shot: most likely legs, added one at a time until the price passes $50
-    shot, note = _long_shot(cands, every_any)
-    if shot:
-        out["Long shot $50"] = shot
-    if note:
-        out.setdefault("_notes", []).append(note)
-
-    self_check = out.setdefault("_notes", [])
-    if not all_worth:
-        self_check.append("3-leg value includes legs without a confirmed worth-it price")
+        notes.append(note)
     return out
-
 
 
 def long_ok(leg: Leg, res: LegResult) -> bool:
@@ -387,128 +227,3 @@ def _long_multi(cands) -> tuple[list[int] | None, str]:
         return None, f"only {len(combo)} legs are 80%+ likely at $1.15+, not enough for a long multi"
     note = "" if len(combo) >= LONG_MIN_LEGS else f"only {len(combo)} legs are 80%+ likely at $1.15+, so the long multi is short"
     return sorted(combo, key=lambda i: -cands[i][1].model_prob), note
-
-
-def _target_multi(cands, pool, sizes, target, chance, multi_price) -> tuple[list[int] | None, str]:
-    """Highest chance combo of the first size in `sizes` that reaches `target`.
-    Falls back to the longest-priced combo of the largest size."""
-    fallback = None
-    for n in sizes:
-        best = None
-        for combo in combinations(pool, n):
-            pr = multi_price(combo)
-            if pr < target:
-                if n == sizes[-1] and (fallback is None or pr > fallback[0]) and _ok_combo([cands[i][0] for i in combo]):
-                    fallback = (pr, combo)
-                continue
-            if not _ok_combo([cands[i][0] for i in combo]):
-                continue
-            c = chance(combo)
-            if best is None or c > best[0]:
-                best = (c, combo)
-        if best:
-            return sorted(best[1], key=lambda i: -cands[i][1].model_prob), ""
-    if fallback:
-        return (sorted(fallback[1], key=lambda i: -cands[i][1].model_prob),
-                f"no {sizes[-1]}-leg combo reaches ${target:.2f}, so the mid-range multi shows the longest-priced one")
-    return None, f"not enough legs that fit together for a {sizes[0]}-leg mid-range multi"
-
-
-def _chance_cost(leg: Leg, res: LegResult) -> float:
-    """Chance given up per unit of (log) price gained. Lower is better: the cheapest way to add price."""
-    price = _assumed_price(leg, res)
-    if price <= 1.01 or res.model_prob <= 0:
-        return math.inf
-    return -math.log(res.model_prob) / math.log(price)
-
-
-def _bad_value(leg: Leg, res: LegResult) -> bool:
-    """A leg with a real app price that pays clearly less than its chance is worth. Unpriced legs are
-    never flagged: their assumed price already has the bookie's margin taken off."""
-    return bool(leg.odds) and res.model_prob * leg.odds < VALUE_FLOOR
-
-
-def _value_pool(cands, ordered: list[int], strict: bool = True) -> list[int]:
-    return [i for i in ordered if cands[i][1].model_prob >= SHOT_MIN_PROB and _chance_cost(*cands[i]) < math.inf
-            and not (strict and _bad_value(*cands[i]))]
-
-
-def _long_shot(cands, ordered: list[int]) -> tuple[list[int] | None, str]:
-    """Bad-value legs are left out first; they're only let back in if $50 can't be reached without them."""
-    combo, note = _long_shot_from(cands, ordered, strict=True)
-    if combo and not note:
-        return combo, note
-    return _long_shot_from(cands, ordered, strict=False)
-
-
-def _long_shot_from(cands, ordered: list[int], strict: bool) -> tuple[list[int] | None, str]:
-    """Reach SHOT_TARGET in at most SHOT_MAX_LEGS legs while giving up as little chance as possible.
-    Take legs (one per player) in order of chance given up per unit of price, until the price passes
-    the target; then swap each leg for a more likely unused one wherever the price still clears it."""
-    pool = sorted(_value_pool(cands, ordered, strict), key=lambda i: _chance_cost(*cands[i]))
-    combo: list[int] = []
-    for i in pool:
-        if _price(cands, combo) >= SHOT_TARGET or len(combo) >= SHOT_MAX_LEGS:
-            break
-        if _ok_combo([cands[j][0] for j in combo + [i]], long=True):
-            combo.append(i)
-    if _price(cands, combo) >= SHOT_TARGET:
-        combo = _improve(cands, combo, pool, SHOT_TARGET, SHOT_MAX_LEGS)
-    price = _price(cands, combo)
-    if len(combo) < 5 or price < SHOT_MIN_PRICE:
-        return None, f"not enough legs on the slate for a long shot (only about ${price:.0f})"
-    note = "" if price >= SHOT_TARGET else f"the long shot only reaches about ${price:.0f} with {len(combo)} legs"
-    return sorted(combo, key=lambda i: -cands[i][1].model_prob), note
-
-
-def _improve(cands, combo: list[int], pool: list[int], target: float, max_legs: int) -> list[int]:
-    """Local search: swap one leg for a more likely one, or one leg for two, whenever the price
-    still clears the target and the chance all land goes up."""
-    def chance(c):
-        p = 1.0
-        for i in c:
-            p *= cands[i][1].model_prob
-        return p
-
-    def ok(c):
-        return (len(c) <= max_legs and _ok_combo([cands[j][0] for j in c], long=True)
-                and _price(cands, c) >= target)
-
-    best = chance(combo)
-    improved = True
-    while improved:
-        improved = False
-        unused = [i for i in pool if i not in combo]
-        for pos in range(len(combo)):
-            rest = combo[:pos] + combo[pos + 1:]
-            options = [[a] for a in unused] + [[a, b] for k, a in enumerate(unused) for b in unused[k + 1:]]
-            for add in options:
-                trial = rest + add
-                c = chance(trial)
-                if c > best * 1.0001 and ok(trial):
-                    combo, best, improved = trial, c, True
-                    break
-            if improved:
-                break
-    return combo
-
-
-def _price(cands, combo) -> float:
-    return combo_price(cands, combo)
-
-
-def _one_per_game(cands, ordered: list[int], multi_price) -> tuple[list[int] | None, str]:
-    """The most likely leg from each game (up to PER_GAME_MAX games, most likely first)."""
-    seen: set[str] = set()
-    combo: list[int] = []
-    for i in ordered:  # already most likely first
-        g = cands[i][0].game
-        if g in seen or len(combo) >= PER_GAME_MAX:
-            continue
-        seen.add(g)
-        combo.append(i)
-    if len(combo) < 3:
-        return None, f"only {len(combo)} game{'s' if len(combo) != 1 else ''} with legs left, not enough for one per game"
-    if multi_price(combo) < MIN_MULTI:
-        return None, f"the one-per-game multi only pays about ${multi_price(combo):.2f}, under $2, so it's left out"
-    return combo, ""

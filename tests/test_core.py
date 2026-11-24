@@ -71,10 +71,12 @@ def test_picker_respects_rules():
         cands.append((l, evaluate(l)))
     chosen = pick.choose(cands)
     names = lambda key: {cands[i][0].player for i in chosen[key]}
-    for key in ("Safest", "Best value", "3-leg value", "4-leg $2+", "3-leg $2+", "4-leg $3+", "4-leg $4+"):
+    for key in ("4-leg $3+", "3-leg $2+", "Second pick"):
+        if key not in chosen:
+            continue
         assert "F" not in names(key)            # $1.10 is under the $1.20 floor
         assert not {"B", "C"} <= names(key)     # never two rebound legs from one game
-    assert len(chosen["3-leg value"]) == 3 and len(chosen["Safest"]) == 4
+    assert len(chosen["4-leg $3+"]) == 4 and len(chosen["3-leg $2+"]) == 3
 
 
 def test_overrides(tmp_path: Path):
@@ -109,7 +111,7 @@ def test_questionable_players_stay_off_multis():
         l.extra["risky"] = risky
         cands.append((l, evaluate(l)))
     chosen = pick.choose(cands)
-    for key in ("Safest", "Best value", "3-leg value", "4-leg $2+", "3-leg $2+", "4-leg $3+", "4-leg $4+"):
+    for key in ("4-leg $3+", "3-leg $2+", "Second pick"):
         assert "A" not in {cands[i][0].player for i in chosen.get(key, [])}
 
 
@@ -135,29 +137,7 @@ def test_long_multi_legs_are_safe_and_priced():
         assert pick._assumed_price(*cands[i]) >= pick.LONG_MIN_PRICE
 
 
-def test_long_shot_and_mid_range():
-    from punt_lab.nba import pick
-    from punt_lab.nba.model import Leg, evaluate
-    cands = []
-    for k in range(24):
-        l = Leg(leg_id=f"p{k}", player=f"Player {k}", team=f"T{k % 12}", game=f"G{k % 12}", stat="points",
-                line=15 + (k % 4), log=[19, 20, 17, 22, 19, 17, 21, 18], prior_mean=19, prior_games=60, extra={})
-        l.odds = 1.25 + 0.05 * (k % 4)
-        cands.append((l, evaluate(l)))
-    chosen = pick.choose(cands)
-    shot = chosen["Long shot $50"]
-    price = 1.0
-    for i in shot:
-        price *= pick._assumed_price(*cands[i])
-    assert 5 <= len(shot) <= pick.SHOT_MAX_LEGS
-    assert price >= pick.SHOT_TARGET or len(shot) == pick.SHOT_MAX_LEGS
-    probs = [cands[i][1].model_prob for i in shot]
-    assert probs == sorted(probs, reverse=True)           # most likely legs first
-    mid = chosen["Mid-range $8+"]
-    assert len(mid) in pick.MID_LEGS and len({cands[i][0].player for i in mid}) == len(mid)
-
-
-def test_every_multi_pays_two_dollars_and_one_per_game():
+def test_every_multi_pays_two_dollars():
     from punt_lab.nba import pick
     from punt_lab.nba.model import Leg, evaluate
     cands = []
@@ -174,8 +154,6 @@ def test_every_multi_pays_two_dollars_and_one_per_game():
         for i in ids:
             price *= pick._assumed_price(*cands[i])
         assert price >= pick.MIN_MULTI, name
-    games = [cands[i][0].game for i in chosen["One per game"]]
-    assert len(games) == len(set(games)) == 6
 
 
 def _fake(name, game, prob, price, step=False):
@@ -183,41 +161,6 @@ def _fake(name, game, prob, price, step=False):
     l = Leg(leg_id=f"{name}{'s' if step else ''}", player=name, team=game, game=game, stat="points", line=20 if step else 15,
             log=[18] * 8, prior_mean=18, prior_games=60, odds=price, extra={"step_up": step})
     return l, LegResult(prob, 0, 1, 1, 18, 4, None, None, prob, 1 / price, prob - 1 / price)
-
-
-def test_long_shot_uses_higher_lines_to_reach_fifty():
-    from punt_lab.nba import pick
-    from punt_lab.nba.model import multi_chance
-    cands = []
-    for k in range(20):
-        cands.append(_fake(f"P{k}", f"G{k % 8}", 0.83 - 0.002 * k, 1.20))           # likely, short-priced
-        cands.append(_fake(f"P{k}", f"G{k % 8}", 0.62 - 0.004 * k, 1.70, step=True))  # next line up
-    chosen = pick.choose(cands)
-    shot = chosen["Long shot $50"]
-    price = pick._price(cands, shot)
-    assert price >= 50 and len(shot) <= pick.SHOT_MAX_LEGS
-    assert len({cands[i][0].player for i in shot}) == len(shot)
-    # beats simply stacking the most likely legs (which can't even reach $50 in 15 legs here)
-    assert pick._price(cands, sorted(range(len(cands)), key=lambda i: -cands[i][1].model_prob)[:15]) < 50
-    mid = chosen["Mid-range $8+"]
-    assert pick._price(cands, mid) >= 8
-
-
-def test_mid_range_is_close_to_the_best_possible():
-    from itertools import combinations
-    from punt_lab.nba import pick
-    from punt_lab.nba.model import multi_chance
-    cands = []
-    for k in range(14):
-        cands.append(_fake(f"P{k}", f"G{k % 7}", 0.84 - 0.003 * k, 1.22))           # safe legs
-        cands.append(_fake(f"P{k}", f"G{k % 7}", 0.45 - 0.003 * k, 2.10, step=True))  # long next lines
-    mid = pick.choose(cands)["Mid-range $8+"]
-    got = multi_chance([cands[i][0] for i in mid], [cands[i][1].model_prob for i in mid])
-    best = 0.0
-    for combo in combinations(range(len(cands)), 6):
-        if pick._ok_combo([cands[i][0] for i in combo]) and pick._price(cands, combo) >= 8:
-            best = max(best, multi_chance([cands[i][0] for i in combo], [cands[i][1].model_prob for i in combo]))
-    assert got >= 0.9 * best
 
 
 def test_multis_spread_across_games_and_avoid_conflicting_legs():
@@ -253,17 +196,16 @@ def test_underdog_share_lowers_the_prediction():
 def test_one_game_slate_still_gets_multis():
     cands = [_fake(f"S{k}", "SA @ PHX", 0.80, 1.30) for k in range(8)]
     chosen = pick.choose(cands)
-    assert len(chosen["4-leg $2+"]) == 4
+    assert len(chosen["4-leg $3+"]) == 4
     pick.choose([_fake(f"S{k}", f"G{k}", 0.80, 1.30) for k in range(8)])  # back to the normal limits
     assert pick._caps == (pick.GAME_MAX_SHORT, pick.GAME_MAX_LONG)
 
 
-def test_two_leg_multi_and_verdicts():
+def test_verdicts():
     from punt_lab.nba import build
     cands = [_fake(f"P{k}", f"G{k}", 0.62, 1.55) for k in range(4)] + [_fake(f"Q{k}", f"H{k}", 0.84, 1.22) for k in range(6)]
     chosen = pick.choose(cands)
-    two = chosen["2-leg $2+"]
-    assert len(two) == 2 and pick.combo_price(cands, two) >= 2.0
+    assert pick.combo_price(cands, chosen["3-leg $2+"]) >= 2.0
     # value needs the app price to beat break-even by 5%; 3% short is a skip; no app price is "check"
     base = {"est_hit": 0.5, "break_even": 2.0, "multi": "2-leg $2+", "best_book": "neds", "legs_text": "A; B", "est_price": 2.1}
     rate = lambda price: build.verdict({**base, "best_book_price": price})["verdict"]
@@ -278,68 +220,54 @@ def test_two_leg_multi_and_verdicts():
     assert "No app prices every leg yet" in build.headline_for([unpriced])
 
 
-def test_top_pick_weighs_chance_and_price_and_second_pick_differs():
+def test_second_pick_weighs_chance_and_price_and_avoids_the_main_bet():
     # A legs: 70% at $1.50 in the app (worth it). B legs: likelier, but the app pays less than they're worth.
     cands = [_fake(f"A{k}", f"G{k}", 0.70, 1.50) for k in range(3)] + [_fake(f"B{k}", f"H{k}", 0.80, 1.20) for k in range(6)]
     for l, _ in cands:
         l.extra["books"] = {"neds": l.odds}
     chosen = pick.choose(cands)
-    top, second = ([cands[i][0].player for i in chosen[k]] for k in ("Top pick", "Second pick"))
-    assert sorted(top) == ["A0", "A1"] or sorted(top) == ["A0", "A2"] or sorted(top) == ["A1", "A2"]   # two worth-it legs: $2.25 at 49%
-    assert len(set(top) & set(second)) <= pick.PICK_SHARED and 2 <= len(second) <= 4
+    main, second = ([cands[i][0].player for i in chosen[k]] for k in ("4-leg $3+", "Second pick"))
+    assert len(set(main) & set(second)) <= pick.PICK_SHARED and 2 <= len(second) <= 4
     assert pick.combo_price(cands, chosen["Second pick"]) >= pick.MIN_MULTI
     # a price that beats the chance always outranks one that doesn't; of two equal edges the likelier wins
     assert pick.pick_score(0.5, 2.1) > 0 > pick.pick_score(0.5, 1.9)
     assert pick.pick_score(0.5, 2.2) > pick.pick_score(0.25, 4.4)
 
 
-def test_big_multis_skip_bad_value_legs_when_they_can():
-    from punt_lab.nba import pick
-    cands = [_fake(f"A{k}", f"G{k % 8}", 0.76 - 0.002 * k, 1.30) for k in range(10)]   # likely, fair-priced
-    cands += [_fake(f"B{k}", f"H{k % 8}", 0.62 - 0.002 * k, 1.62) for k in range(7)]   # longer, fair-priced
-    cands += [_fake(f"C{k}", f"J{k % 8}", 0.42, 2.30) for k in range(3)]               # 0.42 x 2.30 = 0.966: bad value
-    bad = {i for i, (l, _) in enumerate(cands) if l.player.startswith("C")}
+def test_only_four_multis_and_they_are_spread_apart():
+    cands = [_fake("Star", "G0", 0.85, 1.29)]
+    cands += [_fake(f"A{k}", f"G{k + 1}", 0.80 - 0.004 * k, 1.28) for k in range(12)]
+    cands += [_fake(f"B{k}", f"H{k}", 0.66 - 0.004 * k, 1.60) for k in range(8)]
     chosen = pick.choose(cands)
-    for name in ("Long shot $50", "Mid-range $8+"):
-        assert chosen[name] and not bad & set(chosen[name]), name
-    # when only bad-value legs can add the price, they're still used rather than dropping the multi
-    only_bad = [_fake(f"B{k}", f"G{k % 8}", 0.48, 1.98) for k in range(12)]
-    assert pick.choose(only_bad).get("Mid-range $8+")
+    assert set(chosen) - {"_notes"} <= {"4-leg $3+", "3-leg $2+", "Second pick", "Long multi 8+"}
+    main = {cands[i][0].player for i in chosen["4-leg $3+"]}
+    assert pick.combo_price(cands, chosen["4-leg $3+"]) >= pick.MAIN_TARGET
+    assert len(main & {cands[i][0].player for i in chosen["3-leg $2+"]}) <= pick.THREE_SHARED
+    assert not main & {cands[i][0].player for i in chosen["Second pick"]}
+
+
+def test_short_multis_take_one_threes_leg_at_most():
+    cands = []
+    for k in range(10):
+        l, r = _fake(f"T{k}", f"G{k}", 0.86 - 0.002 * k, 1.30)
+        l.stat = "threes"
+        cands.append((l, r))
+    cands += [_fake(f"P{k}", f"H{k}", 0.70, 1.30) for k in range(10)]
+    chosen = pick.choose(cands)
+    for name in ("4-leg $3+", "3-leg $2+", "Second pick"):
+        assert sum(cands[i][0].stat == "threes" for i in chosen[name]) <= 1, name
 
 
 def test_a_hopeful_model_is_pulled_back_towards_the_app_price():
     from punt_lab.nba import model
     plain = evaluate(leg(context_log=[23, 29, 26, 27, 21]))
-    # $1.57 says about 61% once the bookie's cut is out; the model says about 80%: meet half-way
+    # $1.57 says about 61% once the bookie's cut is out; the model says about 80%: mostly trust the price
     priced = evaluate(leg(context_log=[23, 29, 26, 27, 21], odds=1.57))
     fair = model.ODDS_MARGIN / 1.57
-    assert abs(priced.model_prob - (fair + plain.model_prob) / 2) < 1e-9 and priced.raw_prob == plain.raw_prob
-    assert 0.03 <= priced.edge <= 0.10 and priced.edge < plain.model_prob - 1 / 1.57
+    want = fair + (1 - model.ODDS_PULL) * (plain.model_prob - fair)
+    assert abs(priced.model_prob - want) < 1e-9 and priced.raw_prob == plain.raw_prob
+    assert priced.edge < 0.03 and priced.edge < plain.model_prob - 1 / 1.57
     # a price that already agrees with the model, or is shorter than it, changes nothing: never pushed up
     assert evaluate(leg(context_log=[23, 29, 26, 27, 21], odds=1.10)).model_prob == plain.model_prob
 
 
-def test_one_player_cant_be_in_most_of_the_short_multis():
-    # Star is a touch likelier and better priced than the rest, so on merit he is in nearly every short multi
-    def slate(star_prob):
-        cands = [_fake("Star", "G0", star_prob, 1.29)]
-        cands += [_fake(f"A{k}", f"G{k + 1}", 0.80 - 0.004 * k, 1.28) for k in range(12)]
-        cands += [_fake(f"B{k}", f"H{k}", 0.66 - 0.004 * k, 1.60) for k in range(8)]
-        for l, _ in cands:
-            l.extra["books"] = {"neds": l.odds}
-        return cands
-
-    def star_count(cands, chosen):
-        return sum(1 for n in pick.SHORT_MULTIS if any(cands[i][0].player == "Star" for i in chosen.get(n, [])))
-
-    cands = slate(0.805)
-    merit, chosen = pick._choose_all(cands), pick.choose(cands)
-    assert star_count(cands, merit) > pick.REUSE_MAX >= star_count(cands, chosen)
-    assert any(cands[i][0].player == "Star" for i in chosen["Top pick"])          # the most important multis keep him
-    assert not {cands[i][0].player for i in chosen["Top pick"]} & {cands[i][0].player for i in chosen["Second pick"]}
-    for name in pick.SHORT_MULTIS:                                                # and every rebuilt multi still pays its target
-        assert pick.combo_price(cands, chosen[name]) >= pick.SHORT_TARGETS.get(name, pick.MIN_MULTI), name
-    assert set(chosen) - {"_notes"} == set(merit) - {"_notes"} and "spread the legs" in " ".join(chosen["_notes"])
-    # the big multis are left alone
-    for name in ("Long multi 8+", "Mid-range $8+", "Long shot $50", "One per game"):
-        assert chosen.get(name) == merit.get(name), name

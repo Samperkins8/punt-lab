@@ -15,12 +15,16 @@ Runs on GitHub Actions (`.github/workflows/nba.yml`):
 
 You can also run it by hand: Actions → NBA daily multi → Run workflow.
 
-Two guards against the model being too sure of itself (added 15 Nov 2026 after the "value" multis landed 3 of 23):
-a leg the model rates above its app price is pulled half-way back towards the price (`ODDS_PULL`, `ODDS_MARGIN` in `model.py`),
-and a player can be in at most half of the short multis, with the second pick sharing nobody with the top pick
-(`REUSE_MAX`, `PICK_SHARED` in `pick.py`).
+Four multis a day (cut from fourteen on 24 Nov 2026, `choose` in `pick.py`): the **main bet** (likeliest 4 legs paying $3+),
+a **3-leg $2+** sharing at most one player with it, a **second pick** sharing none (best 2- to 4-leg bet by chance and price, `pick_score`),
+and a **long multi**. The legs were landing about as often as predicted, but the multis shared so many legs that one miss sank most of the day.
 
-The site also shows a **top pick** and **second pick** (the best 2- to 4-leg multis of the day by chance and price together, `pick_score` in `pick.py`), a **ready to bet?** box (whether the re-check has run and when the next game tips), and a **closing price** record (each leg's Neds price when listed against its price at the late check).
+Guards against the model being too sure of itself:
+a leg the model rates above its app price is pulled 80% of the way back to the price (`ODDS_PULL`, `ODDS_MARGIN` in `model.py`; legs it rated 5%+ above their price landed 11 of 28),
+legs outside the likeliest 25 are no longer brought in for looking like value,
+and the short multis take at most one threes leg (`THREES_MAX_SHORT` in `pick.py`; threes in multis landed 69% against 76% predicted).
+
+The site also shows a **ready to bet?** box (whether the re-check has run and when the next game tips). The track record leads with the **closing price** check (each leg's Neds price when listed against its price at the late check: the quickest sign of real value) and the main bet **day by day**.
 
 ### Your overrides
 
@@ -58,7 +62,7 @@ Every Monday at about 12:15pm Melbourne (`.github/workflows/tune.yml`, or run it
 
 - **Backtest**: replays the last two seasons and this one so far through the model, using only what was known before each game, and scores every leg against what happened.
 - **Tune**: adjusts the model settings on the older season and keeps them only if they also predict better on the newer seasons. Saved to `punt_lab/nba/tuned.json`, which the daily run loads.
-- **Live correction**: once a stat has 150+ graded daily legs, a calibration curve nudges its percentages towards what actually landed.
+- **Live correction**: once a stat has 75+ graded daily legs, a calibration curve nudges its percentages towards what actually landed.
 
 Results are on the NBA page under "How honest are the percentages?". Finished seasons' ESPN game logs are cached in `punt_lab/nba/cache` so later runs are quick.
 

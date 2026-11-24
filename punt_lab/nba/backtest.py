@@ -44,7 +44,8 @@ OUT = DATA / "backtest.json"
 KEEP_LOW, KEEP_HIGH = 0.35, 0.97     # lines scored: those the default model rates in this range (legs, plus the higher
                                      # "next line up" legs the long shot and mid-range use)
 MIN_IMPROVEMENT = 0.002              # tuned settings must cut the newer seasons' log loss by at least 0.2%
-LIVE_MIN_LEGS = 150                  # graded live legs needed before a stat gets a calibration curve
+LIVE_MIN_LEGS = 75                   # graded live legs needed before a stat gets a calibration curve (was 150: the
+                                     # shrink below already keeps a small sample from moving it far)
 MIN_SAMPLES = 2000                   # per side (tuning / checking), or the run stops without changing anything
 LIVE_SHRINK = 150                    # curve is pulled halfway to "no change" at this many legs
 BINS = [0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.65, 0.70, 0.75, 0.80, 0.85, 0.90, 0.95, 1.0001]
