@@ -13,7 +13,8 @@ PRIOR_FULL_SEASON = 40   # ...if the player played at least this many games then
 SPREAD_GAMES = 8         # weight of the typical spread when estimating SD
 CONTEXT_GAMES = 5        # situation shift is halfway with this many matching games
 MARKET_WEIGHT = 0.6      # share of the final mean taken from the betting market
-ODDS_PULL = 0.5          # a leg the model rates above its app price is pulled this far back towards the price
+ODDS_PULL = 0.8          # a leg the model rates above its app price is pulled this far back towards the price.
+                         # Was 0.5 until 24 Nov 2026: even after that, legs rated 5%+ above their price landed 11 of 28
 ODDS_MARGIN = 0.95       # ...taking the chance the price implies as 1 / price less the bookie's cut
 OPP_WEIGHT = 0.5         # this season's defence vs position
 H2H_WEIGHT = 0.5         # last season's head-to-head (also scaled by roster overlap)

@@ -631,10 +631,9 @@ def select(found, upcoming, h2h=None):
     step_ups = [c for c in found if c[0].extra.get("step_up") and c[0].player in keep_players]
     safe_legs = [c for c in found if c[0].extra.get("long_only")]
     winners = match_winners(upcoming, h2h)
-    listed = {id(c) for c in main_legs}
-    # legs outside the likeliest 25 that have an app price: pick.py uses one only when its value clearly beats the rest
-    priced_rest = [c for c in found if id(c) not in listed and c[0].odds and not any(c[0].extra.get(k) for k in extra_kinds)]
-    cands = main_legs + step_ups + safe_legs + winners + priced_rest
+    # Legs outside the likeliest 25 used to come in when the model rated them well above their app price.
+    # Dropped 24 Nov 2026: legs the model rated 5%+ above their price landed 11 of 28 (-46%).
+    cands = main_legs + step_ups + safe_legs + winners
     chosen = pick.choose(cands)
     used = {i for k, v in chosen.items() if not k.startswith("_") for i in v}
     kept = [i for i in range(len(cands)) if i < len(main_legs) or i in used or cands[i][0].stat == "win"]
@@ -732,8 +731,8 @@ def pool_rows(found, winners) -> list[dict]:
 
 def multi_rows(cands, chosen) -> list[dict]:
     rows = []
-    order = ("4-leg $2+", "3-leg $2+", "2-leg $2+", "4-leg $3+", "4-leg $4+", "Best value", "Safest", "3-leg value", "One per game", "Mid-range $8+", "Long multi 8+", "Long shot $50",
-             "Top pick", "Second pick")  # last, so a pick that matches a named multi keeps that multi's name on the site
+    order = ("4-leg $3+", "3-leg $2+", "Long multi 8+",
+             "Second pick")  # last, so a pick that matches a named multi keeps that multi's name on the site
     rank = {n: i + 1 for i, n in enumerate(order)}
     for name in order:
         ids = chosen.get(name)

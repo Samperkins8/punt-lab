@@ -232,12 +232,16 @@
     <p class="lede" id="graded"></p>
     <p class="lede">Each morning the previous day's legs and multis are graded against the box scores. If the model is right, "landed" sits close to "predicted".</p>
     <p class="empty" id="track-empty">No results yet. Grading starts after the first slate is played.</p>
-    <div class="panel" id="record-rating" hidden><h3 class="section-title">By rating</h3><p class="lede">Do multis rated value do better than those rated skip? Recorded from 11 Nov. Profit is what $1 on each would have made.</p><div class="scroll"><table id="rating-record"><thead><tr><th>Rated</th><th class="num">Landed</th><th class="num">Predicted</th><th class="num">Profit</th></tr></thead><tbody></tbody></table></div></div>
-    <div class="panel" id="record-multi" hidden><h3 class="section-title">By multi</h3><div class="scroll"><table id="multi-record"><thead><tr><th>Multi</th><th class="num">Landed</th><th class="num">Predicted</th><th class="num">Profit</th></tr></thead><tbody></tbody></table></div><p class="lede">Profit is what $1 on each would have made. It uses the app's price when every leg had one, otherwise the estimate. * means some days had no price saved and are left out.</p></div>
-    <div class="panel" id="record-close" hidden><h3 class="section-title">Against the closing price</h3>
-      <p class="lede">Neds' price for each leg when Punt Lab listed it, against Neds' price at the late check 15 to 75 minutes before its game. Legs that are usually listed at a better price than they close at are a sign the model is finding real value, and it shows up much sooner than wins and losses do.</p>
+    <div class="panel" id="record-close" hidden><h3 class="section-title">Health check: against the closing price</h3>
+      <p class="lede">Neds' price for each leg when Punt Lab listed it, against Neds' price at the late check 15 to 75 minutes before its game. Legs that are usually listed at a better price than they close at are a sign the model is finding real value, and it shows up much sooner than wins and losses do. Watch this one first: a few weeks of wins or losses on four multis a day is mostly luck.</p>
       <div class="scroll"><table id="close-record"><thead><tr><th>Legs</th><th class="num">Count</th><th class="num">Better</th><th class="num">Worse</th><th class="num">Average</th></tr></thead><tbody></tbody></table></div>
       <p class="lede" id="close-note"></p></div>
+    <div class="panel" id="record-day" hidden><h3 class="section-title">Your bet, day by day</h3>
+      <p class="lede" id="day-summary"></p>
+      <div class="scroll"><table id="day-record"><thead><tr><th>Day</th><th>Main bet</th><th class="num">Price</th><th class="num">Multis landed</th></tr></thead><tbody></tbody></table></div>
+      <p class="lede">Main bet is the 4-leg $3+. Days are what count: the multis share legs, so on most days they land or miss together.</p></div>
+    <div class="panel" id="record-rating" hidden><h3 class="section-title">By rating</h3><p class="lede">Do multis rated value do better than those rated skip? Recorded from 11 Nov. Profit is what $1 on each would have made.</p><div class="scroll"><table id="rating-record"><thead><tr><th>Rated</th><th class="num">Landed</th><th class="num">Predicted</th><th class="num">Profit</th></tr></thead><tbody></tbody></table></div></div>
+    <div class="panel" id="record-multi" hidden><h3 class="section-title">By multi</h3><div class="scroll"><table id="multi-record"><thead><tr><th>Multi</th><th class="num">Landed</th><th class="num">Predicted</th><th class="num">Profit</th></tr></thead><tbody></tbody></table></div><p class="lede">Profit is what $1 on each would have made. It uses the app's price when every leg had one, otherwise the estimate. * means some days had no price saved and are left out.</p></div>
     <div class="panel" id="record-legs" hidden><h3 class="section-title">Legs</h3><div class="scroll"><table id="calibration"><thead><tr><th>Model said</th><th class="num">Legs</th><th class="num">Predicted</th><th class="num">Landed</th></tr></thead><tbody></tbody></table></div>
       <p class="lede" id="minutes-record" hidden></p>
       <div class="scroll"><table id="stat-record"><thead><tr><th>Leg type</th><th class="num">Legs</th><th class="num">Predicted</th><th class="num">Landed</th></tr></thead><tbody></tbody></table></div></div>
@@ -254,9 +258,8 @@
       <summary>How the multis are picked</summary>
       <dl>
         <dt>Model</dt><dd>This season's games (recent games count extra; the weekly tune sets how much) blended with last season (last season counts as 8 games' worth, less if he played under 40 games), shifted towards games played in tonight's situation (a teammate in or out), adjusted for the opponent's defence against his position and last season's head-to-head (shrunk by how much of the opponent's roster is still the same, and by sample size), adjusted for home or away (from his own split, shrunk for small samples), tonight's expected pace (the game total against the slate average) and tonight's line against his team's usual result (his averages already reflect how good his team is, so only a line tougher or easier than usual moves the prediction), scaled by expected minutes (cut on the second night of a back-to-back, and for one-sided games by whatever the weekly tune finds: past seasons show starters' minutes barely drop on average, so that cut is small), and blended 60/40 with the bookies' over/under line (margin removed) where one is available. The weekly tune fits the line and blowout settings on past seasons, standing in for old betting lines with each team's results up to that day, and keeps them only if they predict the newer seasons better than no adjustment.</dd>
-        <dt>Top picks</dt><dd>Every 2-, 3- and 4-leg combination that pays $2 or more with a 25%+ chance is scored on chance and price together: when the price beats the chance, by its edge over its winnings (the Kelly share, which prefers the likelier of two equally good prices). Combinations one app prices in full come first. The second pick is the next best that shares no player with the top pick, so one miss can't sink both. A pick is the best on offer, not a promise of value: check its rating, and on a skip day the honest call is still to skip.</dd>
-        <dt>Meeting the price half-way</dt><dd>Where the model has rated a leg well above its app price, the bookies have so far been closer to the truth. So when the model is the more hopeful, a leg's chance is set half-way between the model's figure and the chance the app price implies (1 ÷ price, less 5% for the bookie's cut). A leg is never pushed up. This makes a value rating harder to earn.</dd>
-        <dt>Spreading the legs</dt><dd>A player can be in at most 5 of the 10 short (2- to 4-leg) multis. The top pick, 4-leg $3+, safest, 4-leg $2+ and 3-leg $2+ choose first; later ones are rebuilt without an over-used player when the replacement still pays its target, is at least 80% as likely and returns at least 90% as much. If nothing that good exists, the multi stays as it was.</dd>
+        <dt>The multis</dt><dd>Four a day, down from fourteen on 24 Nov 2026. The legs were landing about as often as predicted, but the multis shared so many legs that one miss sank most of the day, so fourteen was really one bet. The main bet is the likeliest four legs paying $3 or more. The 3-leg $2+ shares at most one player with it, and the second pick shares none: every 2-, 3- and 4-leg combination that pays $2 or more with a 25%+ chance is scored on chance and price together (the Kelly share when the price beats the chance), and combinations one app prices in full come first. The 2- to 4-leg multis take at most one threes leg: threes in multis landed 69% of the time against 76% predicted. A pick is the best on offer, not a promise of value: check its rating, and on a skip day the honest call is still to skip.</dd>
+        <dt>Trusting the price</dt><dd>Where the model has rated a leg well above its app price, the bookies have been closer to the truth: legs it rated 5% or more above their price landed 11 of 28. So when the model is the more hopeful, a leg's chance is moved 80% of the way to the chance the app price implies (1 ÷ price, less 5% for the bookie's cut). A leg is never pushed up. Legs outside the likeliest 25 are no longer brought in for looking like value.</dd>
         <dt>Ready to bet?</dt><dd>The box above the multis says whether the injury recheck has run (legs can change until then), when the next game tips, and whether a late check has ruled a player out of one of the multis.</dd>
         <dt>Chance all land</dt><dd>The legs' chances multiplied, adjusted for same-game links: two rebound legs from one game work against each other, two points legs from one team share the shots, a team to win works against legs from the team it's playing, other same-game legs move a little together with pace.</dd>
         <dt>Value, marginal, skip</dt><dd>Each multi is rated from the price one app pays for all its legs against the price it needs. Value: the price beats break-even by 5% or more. Skip: it falls 3% or more short. Marginal: in between, too close to call given the chances are estimates. The top of the page lists the value multis, or says to skip the day when there are none.</dd>
@@ -410,29 +413,15 @@ function priceCheck(key, placeholder, judge, learn) {
 
 // ---------- multis ----------
 const TITLES = {
-  '4-leg $2+': ['4 legs, pays $2+', 'The likeliest four that pay $2 or more.'],
-  '4-leg $3+': ['4 legs, pays $3+', 'The likeliest four that pay $3 or more.'],
-  '4-leg $4+': ['4 legs, pays $4+', 'The likeliest four that pay $4 or more.'],
-  '3-leg $2+': ['3 legs, pays $2+', 'The likeliest three that pay $2 or more.'],
-  '2-leg $2+': ['2 legs, pays $2+', 'The likeliest pair that pays $2 or more. Fewer legs, less bookie margin.'],
+  '4-leg $3+': ['Main bet: 4 legs, pays $3+', 'The likeliest four that pay $3 or more.'],
+  '3-leg $2+': ['3 legs, pays $2+', 'The likeliest three that pay $2 or more, sharing at most one player with the main bet.'],
   'Long multi 8+': ['Long multi, 8+ legs', 'Every leg 80%+ likely and paying $1.15 or more.'],
-  'One per game': ['One leg from each game', 'The likeliest leg from every game, so one bad game costs one leg.'],
-  'Mid-range $8+': ['6 or 7 legs, pays $8+', 'The likeliest six or seven that pay $8 or more.'],
-  'Long shot $50': ['Long shot, about $50', 'A fun bet, not a value one: roughly a 2 to 4% shot.'],
-  'Best value': ['Best value 4 legs', 'Built from legs whose price beats the model.'],
-  'Safest': ['Safest 4 legs', 'The highest chance among legs at $1.20 or more.'],
-  '3-leg value': ['Best value 3 legs', 'Only legs whose price beats the model.'],
-  'Top pick': ['Top pick', 'Today\'s best bet by chance and price together, from 2 to 4 legs.'],
-  'Second pick': ['Second pick', 'The next best bet, sharing no player with the top pick.'] };
-const PICKS = ['Top pick', 'Second pick'];
+  'Second pick': ['Second pick', 'The best bet by chance and price that shares no player with the main bet, so one miss can\'t sink both.'] };
+const PICKS = ['4-leg $3+', 'Second pick'];
 const picksOf = (m) => PICKS.filter((k) => m.multi === k || (m.aka || []).includes(k));
 const GROUPS = [
-  ['picks', 'Top picks', (m) => picksOf(m).length > 0],
+  ['picks', 'Main bets', (m) => picksOf(m).length > 0],
   ['value', 'Value', (m) => m.verdict === 'value' && !gone(m)],
-  ['2', '2 legs', (m) => m.leg_ids.length === 2],
-  ['3', '3 legs', (m) => m.leg_ids.length === 3],
-  ['4', '4 legs', (m) => m.leg_ids.length === 4],
-  ['long', 'Longer', (m) => m.leg_ids.length > 4],
   ['all', 'All', () => true]];
 const gone = (m) => m.leg_ids.some((id) => { const l = D.legs.find((x) => x.leg_id === id); return l && started(l.game); });
 const RATING = { value: 'Value', marginal: 'Marginal', skip: 'Skip', check: 'Check price' };
@@ -516,7 +505,7 @@ function renderMultis() {
   const nValue = sorted.filter(GROUPS.find((g) => g[0] === 'value')[2]).length;
   const pickRank = (m) => Math.min(...picksOf(m).map((k) => PICKS.indexOf(k)));
   let current = store.get('punt-lab-group');
-  if (!GROUPS.some((g) => g[0] === current)) current = sorted.some((m) => picksOf(m).length) ? 'picks' : nValue ? 'value' : '4';
+  if (!GROUPS.some((g) => g[0] === current)) current = sorted.some((m) => picksOf(m).length) ? 'picks' : nValue ? 'value' : 'all';
   const show = () => {
     chips.replaceChildren(...GROUPS.map(([key, label]) => {
       const b = el('button', 'chip', label); b.type = 'button'; b.setAttribute('aria-pressed', key === current);
@@ -530,7 +519,7 @@ function renderMultis() {
     const notes = (D.report.headline || '').match(/Note: (.*)/);
     box.replaceChildren(el('p', 'empty', !sorted.length ? (D.report.status || 'No multis yet. They appear after the morning run.')
       : current === 'value' ? (sorted.some((m) => m.verdict === 'value') ? 'The value multis include games that have started. The Promo tab builds from games still to tip.' : 'No multi is rated value today: none beats the price it needs by 5% in one app. Skipping is the right call on days like this.')
-      : current === 'picks' ? 'No top pick today: no 2- to 4-leg multi pays $2 with a 25%+ chance.'
+      : current === 'picks' ? 'No main bet today: the slate is too thin for a 4-leg $3+ or a second pick.'
       : 'None of these today' + (notes ? ' (' + notes[1].replace(/\.$/, '') + ')' : '') + '.'));
   };
   show();
@@ -838,6 +827,27 @@ function trackRecord(results, multiResults) {
   const byMulti = new Map(); for (const r of done) { if (!byMulti.has(r.multi)) byMulti.set(r.multi, []); byMulti.get(r.multi).push(r); }
   for (const [multi, g] of byMulti) recordRow(mb, (TITLES[multi] || [multi])[0], g);
   document.getElementById('record-multi').hidden = !mb.rows.length;
+  // the main bet ($25 on the 4-leg $3+) and how many multis landed, one row per day, newest first
+  const STAKE = 25, byDay = new Map();
+  for (const r of done) { if (!byDay.has(r.slate_date)) byDay.set(r.slate_date, []); byDay.get(r.slate_date).push(r); }
+  const db = document.querySelector('#day-record tbody'); db.replaceChildren();
+  let days = 0, won = 0, profit = 0, anyDays = 0;
+  for (const day of [...byDay.keys()].sort().reverse()) {
+    const g = byDay.get(day), main = g.find((r) => r.multi === '4-leg $3+'), landed = g.filter((r) => r.landed).length;
+    if (landed) anyDays++;
+    const tr = db.insertRow();
+    cell(tr, new Date(day + 'T12:00:00').toLocaleDateString('en-AU', { weekday: 'short', day: 'numeric', month: 'short' }));
+    if (main) {
+      days++; if (main.landed) won++;
+      if (main.price) profit += main.landed ? STAKE * (main.price - 1) : -STAKE;
+      cell(tr, main.landed ? 'Landed' : 'Missed', main.landed ? 'good' : 'bad');
+      cell(tr, main.price ? price(main.price) : '–', 'num');
+    } else { cell(tr, '–', 'muted'); cell(tr, '–', 'num muted'); }
+    cell(tr, landed + ' of ' + g.length, 'num' + (landed ? '' : ' muted'));
+  }
+  document.getElementById('record-day').hidden = !byDay.size;
+  text('day-summary', days ? `Main bet landed ${won} of ${days} days: $${STAKE} a day would be ${profit < 0 ? 'down' : 'up'} $${Math.abs(profit).toFixed(0)}. `
+    + `At least one multi landed on ${anyDays} of ${byDay.size} days.` + (days < 40 ? ' Too few days to tell skill from luck yet.' : '') : '');
 }
 
 const SETTING_NAMES = {

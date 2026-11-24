@@ -46,7 +46,7 @@ def test_build_runs(monkeypatch, tmp_path):
     legs = json.loads((tmp_path / "legs.json").read_text())
     multis = json.loads((tmp_path / "multis.json").read_text())
     assert legs and all(0 < l["model_prob"] < 1 for l in legs)
-    assert {"4-leg $2+", "3-leg $2+", "4-leg $3+", "4-leg $4+"} <= {m["multi"] for m in multis}
+    assert {"3-leg $2+", "4-leg $3+"} <= {m["multi"] for m in multis}
     assert not any(l["player"] == "LAL Player2" for l in legs)  # injured player excluded
     assert all(l["model_prob"] <= 0.83 or (l["fair_price"] or l["odds"] or 0) >= 1.2 for l in legs)
     # the promo builder's data: every rated leg, game start times, and how same-game legs move together
@@ -319,25 +319,6 @@ def test_win_chance_blends_head_to_head_prices_and_rates_a_value_underdog(monkey
     assert phi.extra["side"] == "underdog" and phi.odds == 2.40
 
 
-def test_a_less_likely_leg_needs_clearly_better_value_to_be_used():
-    from punt_lab.nba import pick
-    from punt_lab.nba.model import Leg, LegResult
-
-    def cand(n, prob, price, game):
-        leg = Leg(leg_id=f"p{n}", player=f"P{n}", team=f"T{n}", game=game, stat="points", line=10, log=[12.0] * 5,
-                  prior_mean=12, prior_games=0, odds=price, extra={"books": {"neds": price}})
-        return leg, LegResult(hit_rate=prob, context_shift=0.0, matchup=1.0, minutes_factor=1.0, proj_mean=12.0, proj_sd=3.0,
-                              market_mean=None, fair_price=1 / prob, model_prob=prob, implied=None, edge=None)
-
-    base = [cand(n, 0.80 - n * 0.002, 1.20, f"G{n % 8}") for n in range(16)]   # value about 0.95 each
-    fair = cand(90, 0.60, 1.60, "G90")    # value 0.96: not clearly better, never searched
-    great = cand(91, 0.60, 1.90, "G91")   # value 1.14: clearly better
-    used = lambda cands: {cands[i][0].leg_id for k, v in pick.choose(cands).items() if k in ("Safest", "Best value", "3-leg value") for i in v}
-    assert "p90" not in used(base + [fair])
-    assert "p91" in used(base + [great])
-
-
-
 def test_closing_prices_are_saved_and_graded(monkeypatch, tmp_path):
     from punt_lab.nba import late, oddspapi
     fake_world(monkeypatch, tmp_path)
@@ -345,7 +326,7 @@ def test_closing_prices_are_saved_and_graded(monkeypatch, tmp_path):
     build.main()
     report = json.loads((tmp_path / "report.json").read_text())
     assert report["recheck_at"] and "rechecked_at" not in report      # for the site's "ready to bet?" box
-    assert {"Top pick", "Second pick"} <= {m["multi"] for m in json.loads((tmp_path / "multis.json").read_text())}
+    assert {"4-leg $3+", "Second pick"} <= {m["multi"] for m in json.loads((tmp_path / "multis.json").read_text())}
     legs = json.loads((tmp_path / "legs.json").read_text())
     leg = next(l for l in legs if l["stat"] != "win")
     for l in legs:                                                    # the morning's Neds price
