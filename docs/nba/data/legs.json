@@ -1195,10 +1195,10 @@
   }
  },
  {
-  "why": "Predicted 2.8 assists tonight, needs 2+. This season 2.9 a game over 15 games; last season 2.5 over 68. Tonight's line is 6 points easier than his team's usual (favourites by 12.5), so they're expected to score more (+1%). C gives up more to his position than average (+14%). Bookies' line: 2.5.",
+  "why": "Predicted 2.8 assists tonight, needs 2+. This season 2.9 a game over 15 games; last season 2.5 over 68. Slower game expected (-1% for pace). C gives up more to his position than average (+13%). Bookies' line: 2.5.",
   "venue_shift": -0.05,
-  "pace_factor": 0.996,
-  "side_factor": 1.013,
+  "pace_factor": 0.99,
+  "side_factor": 1.004,
   "underdog": false,
   "roster_overlap": 0.74,
   "usual_starter": true,
@@ -1218,20 +1218,20 @@
   "prior_games": 68,
   "context_label": null,
   "context_detail": null,
-  "matchup": 1.136,
+  "matchup": 1.131,
   "context_shift": 0.0,
   "minutes_factor": 1.0,
   "avg_minutes": 30.1,
   "proj_minutes": 30.1,
   "proj_mean": 2.8,
-  "model_prob": 0.7755,
-  "raw_prob": 0.7755,
-  "fair_price": 1.29,
+  "model_prob": 0.7747,
+  "raw_prob": 0.7747,
+  "fair_price": 1.28,
   "implied": 0.8197,
-  "edge": -0.0442,
+  "edge": -0.0449,
   "hit_rate": 0.8,
   "market_line": 2.5,
-  "market_p_over": 0.5468124833288877,
+  "market_p_over": 0.5497947649600479,
   "books": {
    "neds": 1.22
   },
@@ -1245,7 +1245,12 @@
   "step_up": false,
   "note": "",
   "event_id": "401910045",
-  "athlete_id": "4395630"
+  "athlete_id": "4395630",
+  "late_checked": "1:20pm",
+  "late_was": null,
+  "close_books": {
+   "neds": 1.22
+  }
  },
  {
   "why": "Predicted 2.9 assists tonight, needs 2+. This season 3.2 a game over 15 games; last season 3.2 over 79. Faster game expected (+1% for pace). Tonight's line is 7 points easier than his team's usual (favourites by 3.5), so they're expected to score more (+1%). NO gives up less to his position than average (-3%). Bookies' line: 2.5.",
@@ -1359,10 +1364,10 @@
   "athlete_id": "4431678"
  },
  {
-  "why": "Predicted 14.1 points tonight, needs 10+. This season 14.2 a game over 16 games; last season 14.4 over 5. Kessler averaged 13.7 in the 15 games with LaRavia (14.2 across all 16), so he's predicted 0.4 points fewer tonight. Plays better at home: 1.2 points more predicted. Tonight's line is 6 points easier than his team's usual (favourites by 13.5), so they're expected to score more (+2%). UTAH gives up less to his position than average (-4%). Bookies' line: 13.5.",
+  "why": "Predicted 14.2 points tonight, needs 10+. This season 14.2 a game over 16 games; last season 14.4 over 5. Kessler averaged 13.7 in the 15 games with LaRavia (14.2 across all 16), so he's predicted 0.4 points fewer tonight. Plays better at home: 1.2 points more predicted. Tonight's line is 5 points easier than his team's usual (favourites by 12.5), so they're expected to score more (+2%). Bookies' line: 13.5.",
   "venue_shift": 1.19,
-  "pace_factor": 0.998,
-  "side_factor": 1.021,
+  "pace_factor": 0.992,
+  "side_factor": 1.017,
   "underdog": false,
   "roster_overlap": null,
   "usual_starter": true,
@@ -1382,20 +1387,20 @@
   "prior_games": 5,
   "context_label": "Jake LaRavia playing tonight",
   "context_detail": "Kessler averaged 13.7 in the 15 games with LaRavia (14.2 across all 16), so he's predicted 0.4 points fewer tonight.",
-  "matchup": 0.963,
+  "matchup": 0.992,
   "context_shift": -0.39,
   "minutes_factor": 1.0,
   "avg_minutes": 30.8,
   "proj_minutes": 30.8,
-  "proj_mean": 14.1,
-  "model_prob": 0.7644,
-  "raw_prob": 0.7707,
-  "fair_price": 1.32,
+  "proj_mean": 14.2,
+  "model_prob": 0.7658,
+  "raw_prob": 0.7739,
+  "fair_price": 1.33,
   "implied": 0.7812,
-  "edge": -0.0169,
+  "edge": -0.0155,
   "hit_rate": 0.9375,
   "market_line": 13.5,
-  "market_p_over": 0.5091055168719871,
+  "market_p_over": 0.50815467946054,
   "books": {
    "neds": 1.28
   },
@@ -1409,7 +1414,12 @@
   "step_up": false,
   "note": "",
   "event_id": "401910044",
-  "athlete_id": "4433136"
+  "athlete_id": "4433136",
+  "late_checked": "1:20pm",
+  "late_was": null,
+  "close_books": {
+   "neds": 1.28
+  }
  },
  {
   "why": "Predicted 26.6 points tonight, needs 25+. This season 25.9 a game over 16 games; last season 27.4 over 74. Maxey averaged 31.3 in the 3 games without Embiid (25.9 across all 16), so he's predicted 2.0 points more tonight. Faster game expected (+1% for pace). Tonight's line is 3 points tougher than his team's usual (favourites by 1.5), so they're expected to score less (-1%). POR gives up more to his position than average (+2%). Bookies' line: 25.5.",
