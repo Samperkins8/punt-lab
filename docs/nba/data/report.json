@@ -3,7 +3,7 @@
  "headline": "Value today: 2-leg $2+ on Neds $2.03 (needs $1.89); Top pick on Neds $2.55 (needs $2.30); 4-leg $4+ on Neds $4.05 (needs $3.73). Note: only 0 legs are 80%+ likely at $1.15+, not enough for a long multi; the one-per-game multi only pays about $1.70, under $2, so it's left out; 3-leg value includes legs without a confirmed worth-it price; spread the legs around so one miss can't sink most multis: 3-leg value.",
  "injuries": "Mitchell Robinson (Out), Tobi Lawal (Out), Dereck Lively Ii (Out), Sergio De Larrea (Out), Tarik Biberovic (Out), Ebuka Okorie (Out), Taurean Prince (Out), Duncan Robinson (Out), Jalen Duren (Out), Jonathan Isaac (Out), Izaiyah Nelson (Out), Noah Penda (Out) and others",
  "graded": "Yesterday: 37 of 46 legs landed; 4-leg $2+ landed, 3-leg $2+ landed, 2-leg $2+ landed, 4-leg $3+ landed, 4-leg $4+ landed, Best value landed, Safest landed, 3-leg value landed, One per game missed, Mid-range $8+ missed, Long multi 8+ landed, Long shot $50 missed, Top pick landed, Second pick missed.",
- "next_run": "Built 8:38am; re-checked before the first tip",
+ "next_run": "Late check 9:57am — DET @ ORL: no new outs",
  "sources": {
   "stats": "ESPN",
   "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API (3 games, 94 credits left)",
@@ -38,5 +38,12 @@
   "SAME_GAME_OTHER": 0.041,
   "WIN_VS_OPPONENT": -0.2
  },
- "recheck_at": "2026-11-25T09:38:00+11:00"
+ "recheck_at": "2026-11-25T09:38:00+11:00",
+ "close_fetches": 1,
+ "late_checked": [
+  "DET @ ORL"
+ ],
+ "late_log": [
+  "9:57am DET @ ORL: no new outs"
+ ]
 }
