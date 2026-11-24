@@ -42,7 +42,7 @@
   "best_book_price": null,
   "verdict": "check",
   "value": null,
-  "landed": null
+  "landed": true
  },
  {
   "multi": "2-leg $2+",
@@ -65,7 +65,7 @@
   "best_book_price": 2.0,
   "verdict": "skip",
   "value": -0.0336,
-  "landed": null
+  "landed": true
  },
  {
   "multi": "4-leg $3+",
@@ -90,7 +90,7 @@
   "best_book_price": 3.13,
   "verdict": "value",
   "value": 0.0714,
-  "landed": null
+  "landed": true
  },
  {
   "multi": "4-leg $4+",
@@ -115,7 +115,7 @@
   "best_book_price": 4.01,
   "verdict": "marginal",
   "value": 0.0185,
-  "landed": null
+  "landed": true
  },
  {
   "multi": "Best value",
@@ -140,7 +140,7 @@
   "best_book_price": 3.21,
   "verdict": "value",
   "value": 0.0609,
-  "landed": null
+  "landed": true
  },
  {
   "multi": "Safest",
@@ -185,7 +185,7 @@
   "best_book_price": null,
   "verdict": "check",
   "value": null,
-  "landed": null
+  "landed": true
  },
  {
   "multi": "One per game",
@@ -264,7 +264,7 @@
   "best_book_price": null,
   "verdict": "check",
   "value": null,
-  "landed": null
+  "landed": true
  },
  {
   "multi": "Long shot $50",
@@ -317,7 +317,7 @@
   "best_book_price": 2.24,
   "verdict": "value",
   "value": 0.0629,
-  "landed": null
+  "landed": true
  },
  {
   "multi": "Second pick",
