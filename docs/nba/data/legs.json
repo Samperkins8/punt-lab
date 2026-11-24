@@ -1355,7 +1355,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.22
-  }
+  },
+  "actual": 2.0,
+  "landed": true,
+  "minutes_played": 34,
+  "expected_minutes": 30,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 2.9 assists tonight, needs 2+. This season 3.2 a game over 15 games; last season 3.2 over 79. Faster game expected (+1% for pace). Tonight's line is 7 points easier than his team's usual (favourites by 3.5), so they're expected to score more (+1%). NO gives up less to his position than average (-3%). Bookies' line: 2.5.",
@@ -1534,7 +1539,12 @@
   "late_was": null,
   "close_books": {
    "neds": 1.28
-  }
+  },
+  "actual": 10.0,
+  "landed": true,
+  "minutes_played": 36,
+  "expected_minutes": 31,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 26.6 points tonight, needs 25+. This season 25.9 a game over 16 games; last season 27.4 over 74. Maxey averaged 31.3 in the 3 games without Embiid (25.9 across all 16), so he's predicted 2.0 points more tonight. Faster game expected (+1% for pace). Tonight's line is 3 points tougher than his team's usual (favourites by 1.5), so they're expected to score less (-1%). POR gives up more to his position than average (+2%). Bookies' line: 25.5.",
