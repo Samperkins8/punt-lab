@@ -100,5 +100,13 @@
   "1:20pm UTAH @ LAL, SA @ SAC: no new outs; prices refreshed"
  ],
  "close_fetches": 3,
- "late_refreshes": 1
+ "late_refreshes": 1,
+ "final_games": [
+  "BKN @ MIN",
+  "CLE @ CHI",
+  "MEM @ CHA",
+  "MIL @ TOR",
+  "OKC @ IND",
+  "POR @ PHI"
+ ]
 }
