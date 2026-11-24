@@ -100,8 +100,6 @@
   "note": "",
   "event_id": "401909314",
   "athlete_id": "4712849",
-  "late_checked": "9:57am",
-  "late_was": null,
   "close_books": {
    "neds": 1.22
   }
@@ -160,10 +158,10 @@
   "athlete_id": "4278594"
  },
  {
-  "why": "Predicted 2.8 assists tonight, needs 2+. This season 2.8 a game over 14 games. Slower game expected (-2% for pace). Tonight's line is 9 points tougher than his team's usual (underdogs by 10.5), so they're expected to score less (-2%). Expected minutes 33.2 vs his usual 33.9. Bookies' line: 2.5.",
+  "why": "Predicted 2.8 assists tonight, needs 2+. This season 2.8 a game over 14 games. Slower game expected (-2% for pace). Tonight's line is 10 points tougher than his team's usual (underdogs by 11.5), so they're expected to score less (-2%). Expected minutes 33.2 vs his usual 33.9. Bookies' line: 2.5.",
   "venue_shift": 0.09,
   "pace_factor": 0.979,
-  "side_factor": 0.979,
+  "side_factor": 0.977,
   "underdog": true,
   "roster_overlap": null,
   "usual_starter": true,
@@ -189,8 +187,8 @@
   "avg_minutes": 33.9,
   "proj_minutes": 33.2,
   "proj_mean": 2.8,
-  "model_prob": 0.7821,
-  "raw_prob": 0.7981,
+  "model_prob": 0.782,
+  "raw_prob": 0.7979,
   "fair_price": 1.25,
   "implied": 0.8065,
   "edge": -0.0244,
@@ -210,15 +208,15 @@
   "market_source": "AU bookies",
   "questionable": false,
   "step_up": false,
-  "note": "blowout risk (BOS -10.5, he is on the underdog)",
+  "note": "blowout risk (BOS -11.5, he is on the underdog)",
   "event_id": "401909315",
   "athlete_id": "5142718"
  },
  {
-  "why": "Predicted 14.1 points tonight, needs 10+. This season 17.1 a game over 18 games; last season 17.9 over 15. Young averaged 15.6 in the 14 games with Dybantsa (17.1 across all 18), so he's predicted 1.1 points fewer tonight. Plays better at home: 0.3 points more predicted. Slower game expected (-2% for pace). Tonight's line is 9 points tougher than his team's usual (underdogs by 10.5), so they're expected to score less (-3%). BOS gives up less to his position than average (-6%). Expected minutes 33.9 vs his usual 34.6. Bookies' line: 14.5.",
+  "why": "Predicted 14.1 points tonight, needs 10+. This season 17.1 a game over 18 games; last season 17.9 over 15. Young averaged 15.6 in the 14 games with Dybantsa (17.1 across all 18), so he's predicted 1.1 points fewer tonight. Plays better at home: 0.3 points more predicted. Slower game expected (-2% for pace). Tonight's line is 10 points tougher than his team's usual (underdogs by 11.5), so they're expected to score less (-3%). BOS gives up less to his position than average (-6%). Expected minutes 33.9 vs his usual 34.6. Bookies' line: 14.5.",
   "venue_shift": 0.35,
   "pace_factor": 0.979,
-  "side_factor": 0.969,
+  "side_factor": 0.966,
   "underdog": true,
   "roster_overlap": 0.79,
   "usual_starter": true,
@@ -244,11 +242,11 @@
   "avg_minutes": 34.6,
   "proj_minutes": 33.9,
   "proj_mean": 14.1,
-  "model_prob": 0.7731,
-  "raw_prob": 0.7554,
+  "model_prob": 0.773,
+  "raw_prob": 0.7553,
   "fair_price": 1.29,
   "implied": 0.8264,
-  "edge": -0.0533,
+  "edge": -0.0534,
   "hit_rate": 0.8889,
   "market_line": 14.5,
   "market_p_over": 0.5,
@@ -265,7 +263,7 @@
   "market_source": "AU bookies",
   "questionable": false,
   "step_up": false,
-  "note": "blowout risk (BOS -10.5, he is on the underdog)",
+  "note": "blowout risk (BOS -11.5, he is on the underdog)",
   "event_id": "401909315",
   "athlete_id": "4277905"
  },
@@ -321,8 +319,6 @@
   "note": "",
   "event_id": "401909314",
   "athlete_id": "5107199",
-  "late_checked": "9:57am",
-  "late_was": null,
   "close_books": {
    "neds": 1.2
   }
@@ -489,8 +485,6 @@
   "note": "Day-To-Day: Cunningham (knee) is probable for Tuesday's game against the Orlando.",
   "event_id": "401909314",
   "athlete_id": "4432166",
-  "late_checked": "9:57am",
-  "late_was": null,
   "close_books": {
    "neds": 1.26
   }
@@ -549,17 +543,15 @@
   "note": "",
   "event_id": "401909314",
   "athlete_id": "4066320",
-  "late_checked": "9:57am",
-  "late_was": null,
   "close_books": {
    "neds": 1.24
   }
  },
  {
-  "why": "Predicted 25.1 points tonight, needs 20+. This season 26.4 a game over 15 games; last season 21.8 over 16. Tatum averaged 27.2 in the 12 games with George (26.4 across all 15), so he's predicted 0.5 points more tonight. Plays a bit worse on the road: 1.3 points fewer predicted. Slower game expected (-2% for pace). Tonight's line is 6 points easier than his team's usual (favourites by 10.5), so they're expected to score more (+2%). Bookies' line: 25.5.",
+  "why": "Predicted 25.1 points tonight, needs 20+. This season 26.4 a game over 15 games; last season 21.8 over 16. Tatum averaged 27.2 in the 12 games with George (26.4 across all 15), so he's predicted 0.5 points more tonight. Plays a bit worse on the road: 1.3 points fewer predicted. Slower game expected (-2% for pace). Tonight's line is 7 points easier than his team's usual (favourites by 11.5), so they're expected to score more (+2%). Bookies' line: 25.5.",
   "venue_shift": -1.33,
   "pace_factor": 0.979,
-  "side_factor": 1.021,
+  "side_factor": 1.024,
   "underdog": false,
   "roster_overlap": 0.67,
   "usual_starter": true,
@@ -585,11 +577,11 @@
   "avg_minutes": 34.3,
   "proj_minutes": 34.3,
   "proj_mean": 25.1,
-  "model_prob": 0.7638,
-  "raw_prob": 0.7449,
+  "model_prob": 0.764,
+  "raw_prob": 0.7451,
   "fair_price": 1.33,
   "implied": 0.8333,
-  "edge": -0.0695,
+  "edge": -0.0693,
   "hit_rate": 0.8667,
   "market_line": 25.5,
   "market_p_over": 0.5093833780160857,
@@ -614,7 +606,7 @@
   "why": "Predicted 5.2 rebounds tonight, needs 4+. This season 5.6 a game over 14 games; last season 5.3 over 38. Slower game expected (-1% for pace). Bookies' line: 5.5.",
   "venue_shift": -0.23,
   "pace_factor": 0.988,
-  "side_factor": 1.007,
+  "side_factor": 1.008,
   "underdog": false,
   "roster_overlap": 0.67,
   "usual_starter": true,
@@ -640,8 +632,8 @@
   "avg_minutes": 30.1,
   "proj_minutes": 30.1,
   "proj_mean": 5.2,
-  "model_prob": 0.7637,
-  "raw_prob": 0.7735,
+  "model_prob": 0.7638,
+  "raw_prob": 0.7736,
   "fair_price": 1.25,
   "implied": 0.7937,
   "edge": -0.0299,
@@ -715,17 +707,15 @@
   "note": "",
   "event_id": "401909314",
   "athlete_id": "4712849",
-  "late_checked": "9:57am",
-  "late_was": null,
   "close_books": {
    "neds": 1.22
   }
  },
  {
-  "why": "Predicted 13.7 points tonight, needs 10+. This season 12.8 a game over 16 games; last season 16.5 over 77. White averaged 12.0 in the 15 games with Tatum (12.8 across all 16), so he's predicted 0.6 points fewer tonight. Slower game expected (-2% for pace). Tonight's line is 6 points easier than his team's usual (favourites by 10.5), so they're expected to score more (+2%). WSH gives up more to his position than average (+5%). Bookies' line: 13.5.",
+  "why": "Predicted 13.7 points tonight, needs 10+. This season 12.8 a game over 16 games; last season 16.5 over 77. White averaged 12.0 in the 15 games with Tatum (12.8 across all 16), so he's predicted 0.6 points fewer tonight. Slower game expected (-2% for pace). Tonight's line is 7 points easier than his team's usual (favourites by 11.5), so they're expected to score more (+2%). WSH gives up more to his position than average (+5%). Bookies' line: 13.5.",
   "venue_shift": -0.1,
   "pace_factor": 0.979,
-  "side_factor": 1.021,
+  "side_factor": 1.024,
   "underdog": false,
   "roster_overlap": 0.67,
   "usual_starter": true,
@@ -751,8 +741,8 @@
   "avg_minutes": 30.0,
   "proj_minutes": 30.0,
   "proj_mean": 13.7,
-  "model_prob": 0.7536,
-  "raw_prob": 0.7592,
+  "model_prob": 0.7537,
+  "raw_prob": 0.7593,
   "fair_price": 1.33,
   "implied": 0.7692,
   "edge": -0.0156,
@@ -940,8 +930,6 @@
   "note": "started his last 2 games",
   "event_id": "401909314",
   "athlete_id": "4066372",
-  "late_checked": "9:57am",
-  "late_was": null,
   "close_books": {
    "neds": 1.26
   }
@@ -998,17 +986,15 @@
   "note": "",
   "event_id": "401909314",
   "athlete_id": "4566434",
-  "late_checked": "9:57am",
-  "late_was": null,
   "close_books": {
    "neds": 1.32
   }
  },
  {
-  "why": "Predicted 19.5 points tonight, needs 15+. This season 19.9 a game over 14 games; last season 17.3 over 38. Plays better on the road: 1.1 points more predicted. Slower game expected (-2% for pace). Tonight's line is 6 points easier than his team's usual (favourites by 10.5), so they're expected to score more (+2%). WSH gives up more to his position than average (+5%). Bookies' line: 18.5.",
+  "why": "Predicted 19.5 points tonight, needs 15+. This season 19.9 a game over 14 games; last season 17.3 over 38. Plays better on the road: 1.1 points more predicted. Slower game expected (-2% for pace). Tonight's line is 7 points easier than his team's usual (favourites by 11.5), so they're expected to score more (+2%). WSH gives up more to his position than average (+5%). Bookies' line: 18.5.",
   "venue_shift": 1.07,
   "pace_factor": 0.979,
-  "side_factor": 1.021,
+  "side_factor": 1.024,
   "underdog": false,
   "roster_overlap": 0.67,
   "usual_starter": true,
@@ -1034,11 +1020,11 @@
   "avg_minutes": 30.1,
   "proj_minutes": 30.1,
   "proj_mean": 19.5,
-  "model_prob": 0.7434,
-  "raw_prob": 0.7295,
+  "model_prob": 0.7437,
+  "raw_prob": 0.7303,
   "fair_price": 1.46,
   "implied": 0.7752,
-  "edge": -0.0318,
+  "edge": -0.0315,
   "hit_rate": 0.7857,
   "market_line": 18.5,
   "market_p_over": 0.5069352543578798,
@@ -1166,8 +1152,6 @@
   "note": "",
   "event_id": "401909314",
   "athlete_id": "3908845",
-  "late_checked": "9:57am",
-  "late_was": null,
   "close_books": {
    "neds": 1.24
   }
@@ -1279,8 +1263,6 @@
   "note": "",
   "event_id": "401909314",
   "athlete_id": "4684742",
-  "late_checked": "9:57am",
-  "late_was": null,
   "close_books": {
    "neds": 1.24
   }
@@ -1289,7 +1271,7 @@
   "why": "Predicted 7.5 rebounds tonight, needs 6+. This season 6.9 a game over 15 games; last season 10.0 over 16. Slower game expected (-1% for pace). WSH gives up more to his position than average (+3%). Bookies' line: 7.5.",
   "venue_shift": -0.28,
   "pace_factor": 0.988,
-  "side_factor": 1.007,
+  "side_factor": 1.008,
   "underdog": false,
   "roster_overlap": 0.67,
   "usual_starter": true,
@@ -1319,7 +1301,7 @@
   "raw_prob": 0.736,
   "fair_price": 1.33,
   "implied": 0.7812,
-  "edge": -0.0453,
+  "edge": -0.0452,
   "hit_rate": 0.7333,
   "market_line": 7.5,
   "market_p_over": 0.4990659194021884,
@@ -1339,10 +1321,10 @@
   "athlete_id": "4065648"
  },
  {
-  "why": "Predicted 13.2 points tonight, needs 10+. This season 12.9 a game over 17 games; last season 17.0 over 79. Pritchard averaged 14.1 in the 14 games with George (12.9 across all 17), so he's predicted 0.8 points more tonight. Plays a bit worse on the road: 0.9 points fewer predicted. Slower game expected (-2% for pace). Tonight's line is 6 points easier than his team's usual (favourites by 10.5), so they're expected to score more (+2%). Bookies' line: 12.5.",
+  "why": "Predicted 13.2 points tonight, needs 10+. This season 12.9 a game over 17 games; last season 17.0 over 79. Pritchard averaged 14.1 in the 14 games with George (12.9 across all 17), so he's predicted 0.8 points more tonight. Plays a bit worse on the road: 0.9 points fewer predicted. Slower game expected (-2% for pace). Tonight's line is 7 points easier than his team's usual (favourites by 11.5), so they're expected to score more (+2%). Bookies' line: 12.5.",
   "venue_shift": -0.91,
   "pace_factor": 0.979,
-  "side_factor": 1.021,
+  "side_factor": 1.024,
   "underdog": false,
   "roster_overlap": 0.67,
   "usual_starter": false,
@@ -1368,11 +1350,11 @@
   "avg_minutes": 27.6,
   "proj_minutes": 27.6,
   "proj_mean": 13.2,
-  "model_prob": 0.7315,
-  "raw_prob": 0.7276,
+  "model_prob": 0.7318,
+  "raw_prob": 0.7284,
   "fair_price": 1.46,
   "implied": 0.7519,
-  "edge": -0.0204,
+  "edge": -0.0201,
   "hit_rate": 0.6471,
   "market_line": 12.5,
   "market_p_over": 0.5069352543578798,
@@ -1445,17 +1427,15 @@
   "note": "",
   "event_id": "401909314",
   "athlete_id": "3908845",
-  "late_checked": "9:57am",
-  "late_was": null,
   "close_books": {
    "neds": 3.1
   }
  },
  {
-  "why": "Predicted 19.5 points tonight, needs 20+. This season 19.9 a game over 14 games; last season 17.3 over 38. Plays better on the road: 1.1 points more predicted. Slower game expected (-2% for pace). Tonight's line is 6 points easier than his team's usual (favourites by 10.5), so they're expected to score more (+2%). WSH gives up more to his position than average (+5%). Bookies' line: 18.5.",
+  "why": "Predicted 19.5 points tonight, needs 20+. This season 19.9 a game over 14 games; last season 17.3 over 38. Plays better on the road: 1.1 points more predicted. Slower game expected (-2% for pace). Tonight's line is 7 points easier than his team's usual (favourites by 11.5), so they're expected to score more (+2%). WSH gives up more to his position than average (+5%). Bookies' line: 18.5.",
   "venue_shift": 1.07,
   "pace_factor": 0.979,
-  "side_factor": 1.021,
+  "side_factor": 1.024,
   "underdog": false,
   "roster_overlap": 0.67,
   "usual_starter": true,
@@ -1481,11 +1461,11 @@
   "avg_minutes": 30.1,
   "proj_minutes": 30.1,
   "proj_mean": 19.5,
-  "model_prob": 0.5068,
-  "raw_prob": 0.4863,
+  "model_prob": 0.5075,
+  "raw_prob": 0.4876,
   "fair_price": 2.17,
   "implied": 0.5102,
-  "edge": -0.0034,
+  "edge": -0.0027,
   "hit_rate": 0.4286,
   "market_line": 18.5,
   "market_p_over": 0.5069352543578798,
@@ -1617,7 +1597,7 @@
   "athlete_id": "3112335"
  },
  {
-  "why": "Boston Celtics are 10.5-point favourites. The bookies' head-to-head prices (margin removed) and the betting line together make that about a 79% chance to win, fair price $1.27. Pays $1.24 at Neds.",
+  "why": "Boston Celtics are 11.5-point favourites. The bookies' head-to-head prices (margin removed) and the betting line together make that about a 80% chance to win, fair price $1.26. Pays $1.24 at Neds.",
   "venue_shift": 0.0,
   "pace_factor": 1.0,
   "side_factor": 1.0,
@@ -1646,9 +1626,9 @@
   "avg_minutes": null,
   "proj_minutes": null,
   "proj_mean": 0.0,
-  "model_prob": 0.7898,
+  "model_prob": 0.7964,
   "raw_prob": null,
-  "fair_price": 1.27,
+  "fair_price": 1.26,
   "implied": null,
   "edge": null,
   "hit_rate": 0.0,
@@ -1667,7 +1647,7 @@
   "market_source": null,
   "questionable": false,
   "step_up": false,
-  "note": "10.5-point favourite",
+  "note": "11.5-point favourite",
   "event_id": "401909315",
   "athlete_id": null
  },
@@ -1778,8 +1758,6 @@
   "note": "",
   "event_id": "401909314",
   "athlete_id": "3908845",
-  "late_checked": "9:57am",
-  "late_was": null,
   "close_books": {
    "neds": 1.5
   }

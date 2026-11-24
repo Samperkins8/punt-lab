@@ -4,9 +4,9 @@
   "tip": "11:00am",
   "start": "2026-11-25T11:00:00+11:00",
   "favourite": "DET",
-  "spread": -1.5,
+  "spread": -2.5,
   "total": 212.5,
-  "fav_win_prob": 0.55,
+  "fav_win_prob": 0.583,
   "status": "Analysed"
  },
  {
@@ -14,9 +14,9 @@
   "tip": "12:00pm",
   "start": "2026-11-25T12:00:00+11:00",
   "favourite": "BOS",
-  "spread": -10.5,
+  "spread": -11.5,
   "total": 218.5,
-  "fav_win_prob": 0.809,
+  "fav_win_prob": 0.831,
   "status": "Analysed"
  },
  {
