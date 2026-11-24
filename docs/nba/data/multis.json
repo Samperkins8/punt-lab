@@ -3,343 +3,279 @@
   "multi": "4-leg $2+",
   "rank": 1,
   "leg_ids": [
-   "lamelo_ball_threes1",
-   "brandon_miller_threes1",
-   "andrew_nembhard_points10",
-   "jaime_jaquez_jr_threes1"
+   "kyrie_irving_threes1",
+   "bos_win",
+   "anthony_black_points10",
+   "naji_marshall_assists2"
   ],
-  "legs_text": "LaMelo Ball 1+ threes; Brandon Miller 1+ threes; Andrew Nembhard 10+ points; Jaime Jaquez Jr. 1+ threes",
-  "est_hit": 0.4806,
-  "break_even": 2.08,
-  "priced_legs": "2 of 4",
-  "known_price": 1.6,
-  "fair_multi": null,
-  "est_price": 2.04,
+  "legs_text": "Kyrie Irving 1+ threes; Boston Celtics Boston Celtics to win; Anthony Black 10+ points; Naji Marshall 2+ assists",
+  "est_hit": 0.4242,
+  "break_even": 2.36,
+  "priced_legs": "3 of 4",
+  "known_price": 1.86,
+  "fair_multi": 2.58,
+  "est_price": 2.11,
   "book_prices": null,
   "best_book": null,
   "best_book_price": null,
   "verdict": "check",
-  "value": null,
-  "landed": true
+  "value": null
  },
  {
   "multi": "3-leg $2+",
   "rank": 2,
   "leg_ids": [
-   "lamelo_ball_threes1",
-   "saddiq_bey_assists2",
-   "jaime_jaquez_jr_threes1"
+   "kyrie_irving_threes1",
+   "anthony_black_points10",
+   "john_collins_threes1"
   ],
-  "legs_text": "LaMelo Ball 1+ threes; Saddiq Bey 2+ assists; Jaime Jaquez Jr. 1+ threes",
-  "est_hit": 0.5153,
-  "break_even": 1.94,
+  "legs_text": "Kyrie Irving 1+ threes; Anthony Black 10+ points; John Collins 1+ threes",
+  "est_hit": 0.4979,
+  "break_even": 2.01,
   "priced_legs": "2 of 3",
-  "known_price": 1.84,
+  "known_price": 1.83,
   "fair_multi": null,
-  "est_price": 2.04,
+  "est_price": 2.08,
   "book_prices": null,
   "best_book": null,
   "best_book_price": null,
   "verdict": "check",
-  "value": null,
-  "landed": true
+  "value": null
  },
  {
   "multi": "2-leg $2+",
   "rank": 3,
   "leg_ids": [
-   "andrew_nembhard_points10",
-   "alperen_sengun_points20"
+   "john_collins_threes1",
+   "den_win"
   ],
-  "legs_text": "Andrew Nembhard 10+ points; Alperen Sengun 20+ points",
-  "est_hit": 0.4832,
-  "break_even": 2.07,
+  "legs_text": "John Collins 1+ threes; Denver Nuggets Denver Nuggets to win",
+  "est_hit": 0.529,
+  "break_even": 1.89,
   "priced_legs": "2 of 2",
-  "known_price": 2.0,
-  "fair_multi": 2.23,
-  "est_price": 2.0,
+  "known_price": 2.03,
+  "fair_multi": null,
+  "est_price": 2.03,
   "book_prices": {
-   "neds": 2.0
+   "neds": 2.03
   },
   "best_book": "neds",
-  "best_book_price": 2.0,
-  "verdict": "skip",
-  "value": -0.0336,
-  "landed": true
+  "best_book_price": 2.03,
+  "verdict": "value",
+  "value": 0.0739
  },
  {
   "multi": "4-leg $3+",
   "rank": 4,
   "leg_ids": [
-   "miles_bridges_points10",
-   "saddiq_bey_assists2",
-   "jaime_jaquez_jr_threes1",
-   "sidy_cissoko_threes1"
+   "kyrie_irving_threes1",
+   "kevin_huerter_assists2",
+   "john_collins_threes1",
+   "cameron_johnson_points10"
   ],
-  "legs_text": "Miles Bridges 10+ points; Saddiq Bey 2+ assists; Jaime Jaquez Jr. 1+ threes; Sidy Cissoko 1+ threes",
-  "est_hit": 0.3423,
-  "break_even": 2.92,
-  "priced_legs": "4 of 4",
-  "known_price": 3.13,
+  "legs_text": "Kyrie Irving 1+ threes; Kevin Huerter 2+ assists; John Collins 1+ threes; Cameron Johnson 10+ points",
+  "est_hit": 0.3443,
+  "break_even": 2.9,
+  "priced_legs": "3 of 4",
+  "known_price": 2.67,
   "fair_multi": null,
-  "est_price": 3.13,
-  "book_prices": {
-   "neds": 3.13
-  },
-  "best_book": "neds",
-  "best_book_price": 3.13,
-  "verdict": "value",
-  "value": 0.0714,
-  "landed": true
+  "est_price": 3.03,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null,
+  "verdict": "check",
+  "value": null
  },
  {
   "multi": "4-leg $4+",
   "rank": 5,
   "leg_ids": [
-   "max_strus_assists2",
-   "sidy_cissoko_threes1",
-   "vj_edgecombe_points10",
-   "alperen_sengun_points20"
+   "bos_win",
+   "aaron_gordon_points10",
+   "john_collins_threes1",
+   "nikola_jokic_points25"
   ],
-  "legs_text": "Max Strus 2+ assists; Sidy Cissoko 1+ threes; VJ Edgecombe 10+ points; Alperen Sengun 20+ points",
-  "est_hit": 0.254,
-  "break_even": 3.94,
+  "legs_text": "Boston Celtics Boston Celtics to win; Aaron Gordon 10+ points; John Collins 1+ threes; Nikola Jokic 25+ points",
+  "est_hit": 0.268,
+  "break_even": 3.73,
   "priced_legs": "4 of 4",
-  "known_price": 4.01,
+  "known_price": 3.67,
   "fair_multi": null,
-  "est_price": 4.01,
+  "est_price": 4.05,
   "book_prices": {
-   "neds": 4.01
+   "neds": 4.05
   },
   "best_book": "neds",
-  "best_book_price": 4.01,
-  "verdict": "marginal",
-  "value": 0.0185,
-  "landed": true
+  "best_book_price": 4.05,
+  "verdict": "value",
+  "value": 0.0854
  },
  {
   "multi": "Best value",
   "rank": 6,
   "leg_ids": [
-   "miles_bridges_points10",
-   "saddiq_bey_assists2",
-   "sidy_cissoko_threes1",
-   "vj_edgecombe_points10"
+   "aaron_gordon_points10",
+   "cade_cunningham_rebounds4",
+   "john_collins_threes1",
+   "den_win"
   ],
-  "legs_text": "Miles Bridges 10+ points; Saddiq Bey 2+ assists; Sidy Cissoko 1+ threes; VJ Edgecombe 10+ points",
-  "est_hit": 0.3305,
-  "break_even": 3.03,
+  "legs_text": "Aaron Gordon 10+ points; Cade Cunningham 4+ rebounds; John Collins 1+ threes; Denver Nuggets Denver Nuggets to win",
+  "est_hit": 0.3208,
+  "break_even": 3.12,
   "priced_legs": "4 of 4",
-  "known_price": 3.21,
+  "known_price": 3.19,
   "fair_multi": null,
-  "est_price": 3.21,
+  "est_price": 3.27,
   "book_prices": {
-   "neds": 3.21
+   "neds": 3.27
   },
   "best_book": "neds",
-  "best_book_price": 3.21,
-  "verdict": "value",
-  "value": 0.0609,
-  "landed": true
+  "best_book_price": 3.27,
+  "verdict": "marginal",
+  "value": 0.049
  },
  {
   "multi": "Safest",
   "rank": 7,
   "leg_ids": [
-   "lamelo_ball_threes1",
-   "brandon_miller_threes1",
-   "andrew_nembhard_points10",
-   "jaime_jaquez_jr_threes1"
+   "kyrie_irving_threes1",
+   "bos_win",
+   "anthony_black_points10",
+   "naji_marshall_assists2"
   ],
-  "legs_text": "LaMelo Ball 1+ threes; Brandon Miller 1+ threes; Andrew Nembhard 10+ points; Jaime Jaquez Jr. 1+ threes",
-  "est_hit": 0.4806,
-  "break_even": 2.08,
-  "priced_legs": "2 of 4",
-  "known_price": 1.6,
-  "fair_multi": null,
-  "est_price": 2.04,
+  "legs_text": "Kyrie Irving 1+ threes; Boston Celtics Boston Celtics to win; Anthony Black 10+ points; Naji Marshall 2+ assists",
+  "est_hit": 0.4242,
+  "break_even": 2.36,
+  "priced_legs": "3 of 4",
+  "known_price": 1.86,
+  "fair_multi": 2.58,
+  "est_price": 2.11,
   "book_prices": null,
   "best_book": null,
   "best_book_price": null,
   "verdict": "check",
-  "value": null,
-  "landed": true
+  "value": null
  },
  {
   "multi": "3-leg value",
   "rank": 8,
   "leg_ids": [
-   "brandon_miller_threes1",
-   "saddiq_bey_assists2",
-   "sidy_cissoko_threes1"
+   "bos_win",
+   "aaron_gordon_points10",
+   "den_win"
   ],
-  "legs_text": "Brandon Miller 1+ threes; Saddiq Bey 2+ assists; Sidy Cissoko 1+ threes",
-  "est_hit": 0.4679,
-  "break_even": 2.14,
-  "priced_legs": "2 of 3",
-  "known_price": 1.93,
-  "fair_multi": null,
-  "est_price": 2.23,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null,
-  "verdict": "check",
-  "value": null,
-  "landed": true
- },
- {
-  "multi": "One per game",
-  "rank": 9,
-  "leg_ids": [
-   "lamelo_ball_threes1",
-   "brandon_miller_threes1",
-   "jabari_smith_jr_points10",
-   "andrew_nembhard_points10",
-   "miles_bridges_points10",
-   "jalen_smith_points10",
-   "tor_win",
-   "devin_vassell_assists2"
-  ],
-  "legs_text": "LaMelo Ball 1+ threes; Brandon Miller 1+ threes; Jabari Smith Jr. 10+ points; Andrew Nembhard 10+ points; Miles Bridges 10+ points; Jalen Smith 10+ points; Toronto Raptors Toronto Raptors to win; Devin Vassell 2+ assists",
-  "est_hit": 0.2047,
-  "break_even": 4.89,
-  "priced_legs": "5 of 8",
-  "known_price": 2.66,
-  "fair_multi": null,
-  "est_price": 3.8,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null,
-  "verdict": "check",
-  "value": null,
-  "landed": false
+  "legs_text": "Boston Celtics Boston Celtics to win; Aaron Gordon 10+ points; Denver Nuggets Denver Nuggets to win",
+  "est_hit": 0.4501,
+  "break_even": 2.22,
+  "priced_legs": "3 of 3",
+  "known_price": 2.08,
+  "fair_multi": 2.24,
+  "est_price": 2.14,
+  "book_prices": {
+   "neds": 2.14,
+   "tab": 2.01
+  },
+  "best_book": "neds",
+  "best_book_price": 2.14,
+  "verdict": "skip",
+  "value": -0.0368
  },
  {
   "multi": "Mid-range $8+",
   "rank": 10,
   "leg_ids": [
-   "lamelo_ball_threes1",
-   "brandon_miller_threes1",
-   "saddiq_bey_assists2",
-   "vj_edgecombe_points10",
-   "sidy_cissoko_threes1",
-   "jaime_jaquez_jr_threes2"
+   "kyrie_irving_threes1",
+   "bos_win",
+   "naji_marshall_assists2",
+   "derrick_white_points10",
+   "franz_wagner_threes1",
+   "john_collins_threes2"
   ],
-  "legs_text": "LaMelo Ball 1+ threes; Brandon Miller 1+ threes; Saddiq Bey 2+ assists; VJ Edgecombe 10+ points; Sidy Cissoko 1+ threes; Jaime Jaquez Jr. 2+ threes",
-  "est_hit": 0.1442,
-  "break_even": 6.94,
-  "priced_legs": "4 of 6",
-  "known_price": 6.31,
+  "legs_text": "Kyrie Irving 1+ threes; Boston Celtics Boston Celtics to win; Naji Marshall 2+ assists; Derrick White 10+ points; Franz Wagner 1+ threes; John Collins 2+ threes",
+  "est_hit": 0.1344,
+  "break_even": 7.44,
+  "priced_legs": "5 of 6",
+  "known_price": 8.24,
   "fair_multi": null,
-  "est_price": 8.06,
+  "est_price": 9.36,
   "book_prices": null,
   "best_book": null,
   "best_book_price": null,
   "verdict": "check",
-  "value": null,
-  "landed": false
- },
- {
-  "multi": "Long multi 8+",
-  "rank": 11,
-  "leg_ids": [
-   "brandon_miller_threes1",
-   "saddiq_bey_points10",
-   "jaylen_brown_assists2",
-   "amen_thompson_points10",
-   "andrew_nembhard_points10",
-   "miles_bridges_points10",
-   "jalen_green_points10",
-   "jalen_smith_points10"
-  ],
-  "legs_text": "Brandon Miller 1+ threes; Saddiq Bey 10+ points; Jaylen Brown 2+ assists; Amen Thompson 10+ points; Andrew Nembhard 10+ points; Miles Bridges 10+ points; Jalen Green 10+ points; Jalen Smith 10+ points",
-  "est_hit": 0.2245,
-  "break_even": 4.45,
-  "priced_legs": "7 of 8",
-  "known_price": 3.43,
-  "fair_multi": 5.81,
-  "est_price": 3.95,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null,
-  "verdict": "check",
-  "value": null,
-  "landed": true
+  "value": null
  },
  {
   "multi": "Long shot $50",
   "rank": 12,
   "leg_ids": [
-   "max_strus_assists2",
-   "saddiq_bey_assists2",
-   "vj_edgecombe_points10",
-   "sidy_cissoko_threes1",
-   "tyrese_maxey_points25",
-   "jalen_green_points15",
-   "miles_bridges_points15",
-   "jaime_jaquez_jr_threes2"
+   "naji_marshall_assists2",
+   "derrick_white_points10",
+   "franz_wagner_threes1",
+   "christian_braun_points10",
+   "payton_pritchard_points10",
+   "paul_george_points20",
+   "nikola_jokic_threes2",
+   "john_collins_threes2"
   ],
-  "legs_text": "Max Strus 2+ assists; Saddiq Bey 2+ assists; VJ Edgecombe 10+ points; Sidy Cissoko 1+ threes; Tyrese Maxey 25+ points; Jalen Green 15+ points; Miles Bridges 15+ points; Jaime Jaquez Jr. 2+ threes",
-  "est_hit": 0.0278,
-  "break_even": 35.99,
+  "legs_text": "Naji Marshall 2+ assists; Derrick White 10+ points; Franz Wagner 1+ threes; Christian Braun 10+ points; Payton Pritchard 10+ points; Paul George 20+ points; Nikola Jokic 2+ threes; John Collins 2+ threes",
+  "est_hit": 0.0264,
+  "break_even": 37.92,
   "priced_legs": "8 of 8",
-  "known_price": 50.12,
+  "known_price": 51.59,
   "fair_multi": null,
-  "est_price": 50.12,
+  "est_price": 51.23,
   "book_prices": {
-   "neds": 50.12
+   "neds": 51.23
   },
   "best_book": "neds",
-  "best_book_price": 50.12,
+  "best_book_price": 51.23,
   "verdict": "value",
-  "value": 0.3933,
-  "landed": false
+  "value": 0.3525
  },
  {
   "multi": "Top pick",
   "rank": 13,
   "leg_ids": [
-   "miles_bridges_points10",
-   "jaime_jaquez_jr_threes1",
-   "saddiq_bey_assists2"
+   "john_collins_threes1",
+   "nikola_jokic_points25"
   ],
-  "legs_text": "Miles Bridges 10+ points; Jaime Jaquez Jr. 1+ threes; Saddiq Bey 2+ assists",
-  "est_hit": 0.4745,
-  "break_even": 2.11,
-  "priced_legs": "3 of 3",
-  "known_price": 2.24,
+  "legs_text": "John Collins 1+ threes; Nikola Jokic 25+ points",
+  "est_hit": 0.4352,
+  "break_even": 2.3,
+  "priced_legs": "2 of 2",
+  "known_price": 2.39,
   "fair_multi": null,
-  "est_price": 2.24,
+  "est_price": 2.55,
   "book_prices": {
-   "neds": 2.24
+   "neds": 2.55
   },
   "best_book": "neds",
-  "best_book_price": 2.24,
+  "best_book_price": 2.55,
   "verdict": "value",
-  "value": 0.0629,
-  "landed": true
+  "value": 0.1098
  },
  {
   "multi": "Second pick",
   "rank": 14,
   "leg_ids": [
-   "sidy_cissoko_threes1",
-   "tyrese_maxey_points25"
+   "aj_dybantsa_assists2",
+   "den_win",
+   "cameron_johnson_points10"
   ],
-  "legs_text": "Sidy Cissoko 1+ threes; Tyrese Maxey 25+ points",
-  "est_hit": 0.4309,
-  "break_even": 2.32,
-  "priced_legs": "2 of 2",
-  "known_price": 2.41,
-  "fair_multi": null,
-  "est_price": 2.41,
+  "legs_text": "AJ Dybantsa 2+ assists; Denver Nuggets Denver Nuggets to win; Cameron Johnson 10+ points",
+  "est_hit": 0.4163,
+  "break_even": 2.4,
+  "priced_legs": "3 of 3",
+  "known_price": 2.31,
+  "fair_multi": 2.32,
+  "est_price": 2.42,
   "book_prices": {
-   "neds": 2.41
+   "tab": 2.42,
+   "neds": 2.19
   },
-  "best_book": "neds",
-  "best_book_price": 2.41,
+  "best_book": "tab",
+  "best_book_price": 2.42,
   "verdict": "marginal",
-  "value": 0.0385,
-  "landed": false
+  "value": 0.0074
  }
 ]
