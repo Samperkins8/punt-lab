@@ -1,32 +1,92 @@
 [
  {
-  "game": "DET @ ORL",
+  "game": "MIA @ PHI",
+  "tip": "9:00am",
+  "start": "2026-11-26T09:00:00+11:00",
+  "favourite": "MIA",
+  "spread": -1.5,
+  "total": 237.5,
+  "fav_win_prob": 0.55,
+  "status": "Analysed"
+ },
+ {
+  "game": "CHI @ CHA",
   "tip": "11:00am",
-  "start": "2026-11-25T11:00:00+11:00",
-  "favourite": "DET",
+  "start": "2026-11-26T11:00:00+11:00",
+  "favourite": "CHA",
+  "spread": -3.5,
+  "total": 219.5,
+  "fav_win_prob": 0.615,
+  "status": "Analysed"
+ },
+ {
+  "game": "CLE @ NY",
+  "tip": "11:30am",
+  "start": "2026-11-26T11:30:00+11:00",
+  "favourite": "NY",
   "spread": -2.5,
-  "total": 212.5,
+  "total": 216.5,
   "fav_win_prob": 0.583,
   "status": "Analysed"
  },
  {
-  "game": "BOS @ WSH",
-  "tip": "12:00pm",
-  "start": "2026-11-25T12:00:00+11:00",
-  "favourite": "BOS",
-  "spread": -11.5,
-  "total": 218.5,
-  "fav_win_prob": 0.831,
+  "game": "MIN @ OKC",
+  "tip": "11:30am",
+  "start": "2026-11-26T11:30:00+11:00",
+  "favourite": "OKC",
+  "spread": -1.5,
+  "total": 222.5,
+  "fav_win_prob": 0.55,
   "status": "Analysed"
  },
  {
-  "game": "DAL @ DEN",
-  "tip": "2:00pm",
-  "start": "2026-11-25T14:00:00+11:00",
-  "favourite": "DEN",
-  "spread": -8.5,
+  "game": "LAC @ MEM",
+  "tip": "12:00pm",
+  "start": "2026-11-26T12:00:00+11:00",
+  "favourite": "MEM",
+  "spread": -7.5,
+  "total": 227.5,
+  "fav_win_prob": 0.734,
+  "status": "Analysed"
+ },
+ {
+  "game": "BKN @ MIL",
+  "tip": "12:00pm",
+  "start": "2026-11-26T12:00:00+11:00",
+  "favourite": "MIL",
+  "spread": -1.5,
   "total": 234.5,
-  "fav_win_prob": 0.761,
+  "fav_win_prob": 0.55,
+  "status": "Analysed"
+ },
+ {
+  "game": "PHX @ HOU",
+  "tip": "12:30pm",
+  "start": "2026-11-26T12:30:00+11:00",
+  "favourite": "HOU",
+  "spread": -9.5,
+  "total": 222.5,
+  "fav_win_prob": 0.786,
+  "status": "Analysed"
+ },
+ {
+  "game": "SAC @ GS",
+  "tip": "2:00pm",
+  "start": "2026-11-26T14:00:00+11:00",
+  "favourite": "GS",
+  "spread": -7.5,
+  "total": 215.5,
+  "fav_win_prob": 0.734,
+  "status": "Analysed"
+ },
+ {
+  "game": "SA @ POR",
+  "tip": "2:00pm",
+  "start": "2026-11-26T14:00:00+11:00",
+  "favourite": "SA",
+  "spread": -3.5,
+  "total": 225.5,
+  "fav_win_prob": 0.615,
   "status": "Analysed"
  }
 ]

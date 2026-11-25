@@ -2004,5 +2004,113 @@
   "landed": false,
   "verdict": "marginal",
   "price": 2.41
+ },
+ {
+  "slate_date": "2026-11-25",
+  "multi": "4-leg $2+",
+  "legs": "Kyrie Irving 1+ threes; Boston Celtics Boston Celtics to win; Anthony Black 10+ points; Naji Marshall 2+ assists",
+  "est_hit": 0.4276,
+  "landed": false,
+  "verdict": "check",
+  "price": 2.11
+ },
+ {
+  "slate_date": "2026-11-25",
+  "multi": "3-leg $2+",
+  "legs": "Kyrie Irving 1+ threes; Boston Celtics Boston Celtics to win; John Collins 1+ threes",
+  "est_hit": 0.4993,
+  "landed": true,
+  "verdict": "check",
+  "price": 2.09
+ },
+ {
+  "slate_date": "2026-11-25",
+  "multi": "2-leg $2+",
+  "legs": "John Collins 1+ threes; Denver Nuggets Denver Nuggets to win",
+  "est_hit": 0.5297,
+  "landed": false,
+  "verdict": "value",
+  "price": 2.03
+ },
+ {
+  "slate_date": "2026-11-25",
+  "multi": "4-leg $3+",
+  "legs": "Kyrie Irving 1+ threes; Kevin Huerter 2+ assists; John Collins 1+ threes; Cameron Johnson 10+ points",
+  "est_hit": 0.3448,
+  "landed": true,
+  "verdict": "check",
+  "price": 3.03
+ },
+ {
+  "slate_date": "2026-11-25",
+  "multi": "4-leg $4+",
+  "legs": "Boston Celtics Boston Celtics to win; Aaron Gordon 10+ points; John Collins 1+ threes; Nikola Jokic 25+ points",
+  "est_hit": 0.2706,
+  "landed": false,
+  "verdict": "value",
+  "price": 4.05
+ },
+ {
+  "slate_date": "2026-11-25",
+  "multi": "Best value",
+  "legs": "Boston Celtics Boston Celtics to win; Aaron Gordon 10+ points; John Collins 1+ threes; Denver Nuggets Denver Nuggets to win",
+  "est_hit": 0.3287,
+  "landed": false,
+  "verdict": "value",
+  "price": 3.21
+ },
+ {
+  "slate_date": "2026-11-25",
+  "multi": "Safest",
+  "legs": "Kyrie Irving 1+ threes; Boston Celtics Boston Celtics to win; Anthony Black 10+ points; Naji Marshall 2+ assists",
+  "est_hit": 0.4276,
+  "landed": false,
+  "verdict": "check",
+  "price": 2.11
+ },
+ {
+  "slate_date": "2026-11-25",
+  "multi": "3-leg value",
+  "legs": "Boston Celtics Boston Celtics to win; Aaron Gordon 10+ points; Denver Nuggets Denver Nuggets to win",
+  "est_hit": 0.4539,
+  "landed": false,
+  "verdict": "marginal",
+  "price": 2.14
+ },
+ {
+  "slate_date": "2026-11-25",
+  "multi": "Mid-range $8+",
+  "legs": "Kyrie Irving 1+ threes; Boston Celtics Boston Celtics to win; Naji Marshall 2+ assists; Derrick White 10+ points; Franz Wagner 1+ threes; John Collins 2+ threes",
+  "est_hit": 0.1358,
+  "landed": false,
+  "verdict": "check",
+  "price": 9.36
+ },
+ {
+  "slate_date": "2026-11-25",
+  "multi": "Long shot $50",
+  "legs": "Naji Marshall 2+ assists; Derrick White 10+ points; Franz Wagner 1+ threes; Christian Braun 10+ points; Payton Pritchard 10+ points; Paul George 20+ points; Nikola Jokic 2+ threes; John Collins 2+ threes",
+  "est_hit": 0.0265,
+  "landed": false,
+  "verdict": "value",
+  "price": 51.23
+ },
+ {
+  "slate_date": "2026-11-25",
+  "multi": "Top pick",
+  "legs": "John Collins 1+ threes; Nikola Jokic 25+ points",
+  "est_hit": 0.4357,
+  "landed": false,
+  "verdict": "value",
+  "price": 2.55
+ },
+ {
+  "slate_date": "2026-11-25",
+  "multi": "Second pick",
+  "legs": "AJ Dybantsa 2+ assists; Denver Nuggets Denver Nuggets to win; Cameron Johnson 10+ points",
+  "est_hit": 0.4162,
+  "landed": false,
+  "verdict": "marginal",
+  "price": 2.42
  }
 ]
