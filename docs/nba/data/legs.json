@@ -95,7 +95,9 @@
   "step_up": false,
   "note": "",
   "event_id": "401909318",
-  "athlete_id": "4433287"
+  "athlete_id": "4433287",
+  "late_checked": "9:55am",
+  "late_was": null
  },
  {
   "why": "Predicted 3.3 threes tonight, needs 1+. This season 4.0 a game over 15 games; last season 2.9 over 69. Faster game expected (+3% for pace). Tonight's line is 3 points easier than his team's usual (favourites by 1.5), so they're expected to score more (+2%). PHI gives up less to his position than average (-8%). Bookies' line: 3.5.",
@@ -1142,10 +1144,10 @@
   "raw_prob": 0.7583,
   "fair_price": 1.34,
   "implied": 0.8065,
-  "edge": -0.0356,
+  "edge": -0.0355,
   "hit_rate": 0.625,
   "market_line": 19.5,
-  "market_p_over": 0.5091055168719871,
+  "market_p_over": 0.5096302570998097,
   "books": {
    "neds": 1.24
   },
@@ -1159,7 +1161,12 @@
   "step_up": false,
   "note": "",
   "event_id": "401909318",
-  "athlete_id": "4396971"
+  "athlete_id": "4396971",
+  "late_checked": "9:55am",
+  "late_was": null,
+  "close_books": {
+   "neds": 1.24
+  }
  },
  {
   "why": "Predicted 19.3 points tonight, needs 15+. This season 20.4 a game over 17 games. Lillard averaged 19.3 in the 15 games with Avdija (20.4 across all 17), so he's predicted 0.9 points fewer tonight. Plays a bit worse at home: 1.0 points fewer predicted. Tonight's line is 11 points tougher than his team's usual (underdogs by 3.5), so they're expected to score less (-4%). Bookies' line: 20.5.",
@@ -1596,7 +1603,7 @@
   "athlete_id": "4601025"
  },
  {
-  "why": "Predicted 3.1 assists tonight, needs 2+. This season 3.1 a game over 16 games; last season 2.0 over 84. Slower game expected (-1% for pace). Tonight's line is 9 points easier than his team's usual (favourites by 3.5), so they're expected to score more (+2%). CHI gives up more to his position than average (+8%). Bookies' line: 3.5.",
+  "why": "Predicted 3.1 assists tonight, needs 2+. This season 3.1 a game over 16 games; last season 2.0 over 84. Slower game expected (-1% for pace). Tonight's line is 9 points easier than his team's usual (favourites by 3.5), so they're expected to score more (+2%). CHI gives up more to his position than average (+9%). Bookies' line: 3.5.",
   "venue_shift": 0.03,
   "pace_factor": 0.989,
   "side_factor": 1.02,
@@ -1614,39 +1621,44 @@
   "hits": 12,
   "games": 16,
   "log": "0, 5, 5, 3, 3, 4, 1, 3, 1, 0, 4, 6, 4, 4, 2, 4",
-  "odds": 1.15,
+  "odds": 1.16,
   "prior_mean": 2.0,
   "prior_games": 84,
   "context_label": null,
   "context_detail": null,
-  "matchup": 1.082,
+  "matchup": 1.087,
   "context_shift": 0.0,
   "minutes_factor": 1.0,
   "avg_minutes": 27.4,
   "proj_minutes": 27.4,
   "proj_mean": 3.1,
-  "model_prob": 0.8356,
-  "raw_prob": 0.8451,
+  "model_prob": 0.8316,
+  "raw_prob": 0.8443,
   "fair_price": 1.14,
-  "implied": 0.8696,
-  "edge": -0.034,
+  "implied": 0.8621,
+  "edge": -0.0305,
   "hit_rate": 0.75,
   "market_line": 3.5,
-  "market_p_over": 0.43286731733051964,
+  "market_p_over": 0.43004990443459074,
   "books": {
-   "neds": 1.15
+   "neds": 1.16
   },
   "best_book": "neds",
   "open_books": {
    "neds": 1.15
   },
-  "best_price": 1.15,
+  "best_price": 1.16,
   "market_source": "AU bookies",
   "questionable": false,
   "step_up": false,
-  "note": "Day-To-Day: James is probable for Wednesday's game against the Bulls due to general soreness",
+  "note": "",
   "event_id": "401909318",
-  "athlete_id": "4602025"
+  "athlete_id": "4602025",
+  "late_checked": "9:55am",
+  "late_was": null,
+  "close_books": {
+   "neds": 1.16
+  }
  },
  {
   "why": "Predicted 3.2 assists tonight, needs 2+. This season 3.7 a game over 18 games; last season 2.7 over 73. Tonight's line is 7 points tougher than his team's usual (underdogs by 1.5), so they're expected to score less (-2%). Bookies' line: 3.5.",

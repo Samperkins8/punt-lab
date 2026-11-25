@@ -3,7 +3,7 @@
  "headline": "Value today: 2-leg $2+ on Neds $2.02 (needs $1.79); Top pick on Neds $2.16 (needs $1.83); Second pick on Neds $2.51 (needs $2.33).",
  "injuries": "Nolan Traore (Out), Ryan Kalkbrenner (Out), Grayson Allen (Out), Dennis Schroder (Out), Kon Knueppel (Out), Norman Powell (Out), Caleb Wilson (Out), Nae'Qwan Tomlin (Out), Evan Mobley (Out), Brandon Williams (Out), Stephen Curry (Out), Kristaps Porzingis (Out) and others",
  "graded": "Yesterday: 22 of 32 legs landed; 4-leg $2+ missed, 3-leg $2+ landed, 2-leg $2+ missed, 4-leg $3+ landed, 4-leg $4+ missed, Best value missed, Safest missed, 3-leg value missed, Mid-range $8+ missed, Long shot $50 missed, Top pick missed, Second pick missed.",
- "next_run": "Built 8:41am; re-checked before the first tip",
+ "next_run": "Late check 9:55am — CHI @ CHA: no new outs; prices refreshed",
  "sources": {
   "stats": "ESPN",
   "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API (3 games, 78 credits left)",
@@ -73,5 +73,12 @@
   "SAME_GAME_OTHER": 0.041,
   "WIN_VS_OPPONENT": -0.2
  },
- "recheck_at": "2026-11-26T09:38:00+11:00"
+ "recheck_at": "2026-11-26T09:38:00+11:00",
+ "late_refreshes": 1,
+ "late_checked": [
+  "CHI @ CHA"
+ ],
+ "late_log": [
+  "9:55am CHI @ CHA: no new outs; prices refreshed"
+ ]
 }
