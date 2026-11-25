@@ -5,14 +5,14 @@
   "leg_ids": [
    "michael_porter_jr_threes1",
    "brandon_miller_threes1",
-   "klay_thompson_threes1",
-   "jonathan_kuminga_assists2"
+   "jalen_green_threes1",
+   "miles_bridges_assists2"
   ],
-  "legs_text": "Michael Porter Jr. 1+ threes; Brandon Miller 1+ threes; Klay Thompson 1+ threes; Jonathan Kuminga 2+ assists",
-  "est_hit": 0.5027,
-  "break_even": 1.99,
-  "priced_legs": "1 of 4",
-  "known_price": 1.35,
+  "legs_text": "Michael Porter Jr. 1+ threes; Brandon Miller 1+ threes; Jalen Green 1+ threes; Miles Bridges 2+ assists",
+  "est_hit": 0.4714,
+  "break_even": 2.12,
+  "priced_legs": "2 of 4",
+  "known_price": 1.56,
   "fair_multi": null,
   "est_price": 2.01,
   "book_prices": null,
@@ -30,7 +30,7 @@
    "max_strus_assists2"
   ],
   "legs_text": "Michael Porter Jr. 1+ threes; Brandon Miller 1+ threes; Max Strus 2+ assists",
-  "est_hit": 0.5435,
+  "est_hit": 0.5441,
   "break_even": 1.84,
   "priced_legs": "1 of 3",
   "known_price": 1.6,
@@ -50,8 +50,8 @@
    "max_strus_assists2"
   ],
   "legs_text": "Jalen Green 1+ threes; Max Strus 2+ assists",
-  "est_hit": 0.5594,
-  "break_even": 1.79,
+  "est_hit": 0.5609,
+  "break_even": 1.78,
   "priced_legs": "2 of 2",
   "known_price": 2.02,
   "fair_multi": null,
@@ -62,19 +62,19 @@
   "best_book": "neds",
   "best_book_price": 2.02,
   "verdict": "value",
-  "value": 0.13
+  "value": 0.133
  },
  {
   "multi": "4-leg $3+",
   "rank": 4,
   "leg_ids": [
    "michael_porter_jr_threes1",
-   "davion_mitchell_points10",
+   "jaden_mcdaniels_rebounds4",
    "max_strus_assists2",
    "jonathan_kuminga_assists2"
   ],
-  "legs_text": "Michael Porter Jr. 1+ threes; Davion Mitchell 10+ points; Max Strus 2+ assists; Jonathan Kuminga 2+ assists",
-  "est_hit": 0.3831,
+  "legs_text": "Michael Porter Jr. 1+ threes; Jaden McDaniels 4+ rebounds; Max Strus 2+ assists; Jonathan Kuminga 2+ assists",
+  "est_hit": 0.383,
   "break_even": 2.61,
   "priced_legs": "3 of 4",
   "known_price": 2.68,
@@ -90,42 +90,42 @@
   "multi": "4-leg $4+",
   "rank": 5,
   "leg_ids": [
-   "vj_edgecombe_points10",
-   "jaime_jaquez_jr_assists2",
-   "max_strus_assists2",
-   "tyrese_maxey_points25"
+   "jalen_green_threes1",
+   "egor_demin_assists2",
+   "jonathan_kuminga_assists2",
+   "dillon_brooks_points15"
   ],
-  "legs_text": "VJ Edgecombe 10+ points; Jaime Jaquez Jr. 2+ assists; Max Strus 2+ assists; Tyrese Maxey 25+ points",
-  "est_hit": 0.2802,
-  "break_even": 3.57,
+  "legs_text": "Jalen Green 1+ threes; Egor Demin 2+ assists; Jonathan Kuminga 2+ assists; Dillon Brooks 15+ points",
+  "est_hit": 0.2665,
+  "break_even": 3.75,
   "priced_legs": "4 of 4",
-  "known_price": 3.84,
+  "known_price": 3.88,
   "fair_multi": null,
-  "est_price": 4.0,
+  "est_price": 4.07,
   "book_prices": {
-   "neds": 4.0
+   "neds": 4.07
   },
   "best_book": "neds",
-  "best_book_price": 4.0,
+  "best_book_price": 4.07,
   "verdict": "value",
-  "value": 0.1208
+  "value": 0.0847
  },
  {
   "multi": "Best value",
   "rank": 6,
   "leg_ids": [
-   "klay_thompson_threes1",
+   "brandon_miller_threes1",
+   "jalen_green_threes1",
    "max_strus_assists2",
-   "jonathan_kuminga_assists2",
-   "andrew_wiggins_threes1"
+   "jonathan_kuminga_assists2"
   ],
-  "legs_text": "Klay Thompson 1+ threes; Max Strus 2+ assists; Jonathan Kuminga 2+ assists; Andrew Wiggins 1+ threes",
-  "est_hit": 0.3639,
-  "break_even": 2.75,
+  "legs_text": "Brandon Miller 1+ threes; Jalen Green 1+ threes; Max Strus 2+ assists; Jonathan Kuminga 2+ assists",
+  "est_hit": 0.3731,
+  "break_even": 2.68,
   "priced_legs": "3 of 4",
-  "known_price": 2.85,
+  "known_price": 2.74,
   "fair_multi": null,
-  "est_price": 3.3,
+  "est_price": 3.14,
   "book_prices": null,
   "best_book": null,
   "best_book_price": null,
@@ -138,14 +138,14 @@
   "leg_ids": [
    "michael_porter_jr_threes1",
    "brandon_miller_threes1",
-   "klay_thompson_threes1",
-   "jonathan_kuminga_assists2"
+   "jalen_green_threes1",
+   "miles_bridges_assists2"
   ],
-  "legs_text": "Michael Porter Jr. 1+ threes; Brandon Miller 1+ threes; Klay Thompson 1+ threes; Jonathan Kuminga 2+ assists",
-  "est_hit": 0.5027,
-  "break_even": 1.99,
-  "priced_legs": "1 of 4",
-  "known_price": 1.35,
+  "legs_text": "Michael Porter Jr. 1+ threes; Brandon Miller 1+ threes; Jalen Green 1+ threes; Miles Bridges 2+ assists",
+  "est_hit": 0.4714,
+  "break_even": 2.12,
+  "priced_legs": "2 of 4",
+  "known_price": 1.56,
   "fair_multi": null,
   "est_price": 2.01,
   "book_prices": null,
@@ -158,24 +158,22 @@
   "multi": "3-leg value",
   "rank": 8,
   "leg_ids": [
+   "brandon_miller_threes1",
    "max_strus_assists2",
-   "jonathan_kuminga_assists2",
-   "andrew_wiggins_threes1"
+   "jonathan_kuminga_assists2"
   ],
-  "legs_text": "Max Strus 2+ assists; Jonathan Kuminga 2+ assists; Andrew Wiggins 1+ threes",
-  "est_hit": 0.42,
-  "break_even": 2.38,
-  "priced_legs": "3 of 3",
-  "known_price": 2.85,
+  "legs_text": "Brandon Miller 1+ threes; Max Strus 2+ assists; Jonathan Kuminga 2+ assists",
+  "est_hit": 0.4746,
+  "break_even": 2.11,
+  "priced_legs": "2 of 3",
+  "known_price": 2.18,
   "fair_multi": null,
-  "est_price": 2.85,
-  "book_prices": {
-   "neds": 2.85
-  },
-  "best_book": "neds",
-  "best_book_price": 2.85,
-  "verdict": "value",
-  "value": 0.197
+  "est_price": 2.49,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null,
+  "verdict": "check",
+  "value": null
  },
  {
   "multi": "One per game",
@@ -183,20 +181,20 @@
   "leg_ids": [
    "michael_porter_jr_threes1",
    "brandon_miller_threes1",
-   "klay_thompson_threes1",
    "jabari_smith_jr_points10",
    "jaden_mcdaniels_rebounds4",
    "domantas_sabonis_points10",
    "keldon_johnson_rebounds4",
-   "ty_jerome_assists4"
+   "ty_jerome_assists4",
+   "jalen_brunson_points20"
   ],
-  "legs_text": "Michael Porter Jr. 1+ threes; Brandon Miller 1+ threes; Klay Thompson 1+ threes; Jabari Smith Jr. 10+ points; Jaden McDaniels 4+ rebounds; Domantas Sabonis 10+ points; Keldon Johnson 4+ rebounds; Ty Jerome 4+ assists",
-  "est_hit": 0.1991,
-  "break_even": 5.02,
-  "priced_legs": "4 of 8",
-  "known_price": 2.27,
+  "legs_text": "Michael Porter Jr. 1+ threes; Brandon Miller 1+ threes; Jabari Smith Jr. 10+ points; Jaden McDaniels 4+ rebounds; Domantas Sabonis 10+ points; Keldon Johnson 4+ rebounds; Ty Jerome 4+ assists; Jalen Brunson 20+ points",
+  "est_hit": 0.1793,
+  "break_even": 5.58,
+  "priced_legs": "5 of 8",
+  "known_price": 2.77,
   "fair_multi": null,
-  "est_price": 3.82,
+  "est_price": 4.02,
   "book_prices": null,
   "best_book": null,
   "best_book_price": null,
@@ -207,46 +205,48 @@
   "multi": "Mid-range $8+",
   "rank": 10,
   "leg_ids": [
-   "michael_porter_jr_threes1",
-   "klay_thompson_threes1",
-   "vj_edgecombe_points10",
+   "jaime_jaquez_jr_assists2",
+   "jalen_green_threes1",
+   "keldon_johnson_rebounds4",
    "jonathan_kuminga_assists2",
    "max_strus_assists2",
-   "andrew_wiggins_threes2"
+   "dillon_brooks_points15"
   ],
-  "legs_text": "Michael Porter Jr. 1+ threes; Klay Thompson 1+ threes; VJ Edgecombe 10+ points; Jonathan Kuminga 2+ assists; Max Strus 2+ assists; Andrew Wiggins 2+ threes",
-  "est_hit": 0.1568,
-  "break_even": 6.38,
-  "priced_legs": "4 of 6",
-  "known_price": 6.24,
+  "legs_text": "Jaime Jaquez Jr. 2+ assists; Jalen Green 1+ threes; Keldon Johnson 4+ rebounds; Jonathan Kuminga 2+ assists; Max Strus 2+ assists; Dillon Brooks 15+ points",
+  "est_hit": 0.1517,
+  "break_even": 6.59,
+  "priced_legs": "6 of 6",
+  "known_price": 7.63,
   "fair_multi": null,
-  "est_price": 8.13,
-  "book_prices": null,
-  "best_book": null,
-  "best_book_price": null,
-  "verdict": "check",
-  "value": null
+  "est_price": 8.01,
+  "book_prices": {
+   "neds": 8.01
+  },
+  "best_book": "neds",
+  "best_book_price": 8.01,
+  "verdict": "value",
+  "value": 0.2151
  },
  {
   "multi": "Long multi 8+",
   "rank": 11,
   "leg_ids": [
-   "klay_thompson_threes1",
    "ty_jerome_threes1",
    "amen_thompson_points10",
    "jaden_mcdaniels_assists2",
    "sion_james_assists2",
-   "pelle_larsson_assists2",
-   "vj_edgecombe_points10",
+   "julius_randle_points15",
+   "jared_mccain_points10",
+   "de'andre_hunter_points10",
    "jaime_jaquez_jr_assists2"
   ],
-  "legs_text": "Klay Thompson 1+ threes; Ty Jerome 1+ threes; Amen Thompson 10+ points; Jaden McDaniels 2+ assists; Sion James 2+ assists; Pelle Larsson 2+ assists; VJ Edgecombe 10+ points; Jaime Jaquez Jr. 2+ assists",
-  "est_hit": 0.2379,
-  "break_even": 4.2,
-  "priced_legs": "6 of 8",
-  "known_price": 2.69,
-  "fair_multi": 4.61,
-  "est_price": 3.63,
+  "legs_text": "Ty Jerome 1+ threes; Amen Thompson 10+ points; Jaden McDaniels 2+ assists; Sion James 2+ assists; Julius Randle 15+ points; Jared McCain 10+ points; De'Andre Hunter 10+ points; Jaime Jaquez Jr. 2+ assists",
+  "est_hit": 0.2281,
+  "break_even": 4.38,
+  "priced_legs": "7 of 8",
+  "known_price": 2.97,
+  "fair_multi": 4.96,
+  "est_price": 3.47,
   "book_prices": null,
   "best_book": null,
   "best_book_price": null,
@@ -257,29 +257,29 @@
   "multi": "Long shot $50",
   "rank": 12,
   "leg_ids": [
-   "vj_edgecombe_points10",
+   "michael_porter_jr_threes1",
+   "ty_jerome_threes1",
    "jonathan_kuminga_assists2",
+   "miles_bridges_points10",
    "rui_hachimura_points10",
    "jrue_holiday_points10",
    "max_strus_assists2",
    "dillon_brooks_points15",
-   "klay_thompson_points15",
-   "andrew_wiggins_threes2"
+   "domantas_sabonis_points15",
+   "jalen_green_threes2"
   ],
-  "legs_text": "VJ Edgecombe 10+ points; Jonathan Kuminga 2+ assists; Rui Hachimura 10+ points; Jrue Holiday 10+ points; Max Strus 2+ assists; Dillon Brooks 15+ points; Klay Thompson 15+ points; Andrew Wiggins 2+ threes",
-  "est_hit": 0.0301,
-  "break_even": 33.26,
-  "priced_legs": "8 of 8",
-  "known_price": 44.69,
+  "legs_text": "Michael Porter Jr. 1+ threes; Ty Jerome 1+ threes; Jonathan Kuminga 2+ assists; Miles Bridges 10+ points; Rui Hachimura 10+ points; Jrue Holiday 10+ points; Max Strus 2+ assists; Dillon Brooks 15+ points; Domantas Sabonis 15+ points; Jalen Green 2+ threes",
+  "est_hit": 0.0254,
+  "break_even": 39.29,
+  "priced_legs": "8 of 10",
+  "known_price": 38.52,
   "fair_multi": null,
-  "est_price": 50.39,
-  "book_prices": {
-   "neds": 50.39
-  },
-  "best_book": "neds",
-  "best_book_price": 50.39,
-  "verdict": "value",
-  "value": 0.5167
+  "est_price": 50.71,
+  "book_prices": null,
+  "best_book": null,
+  "best_book_price": null,
+  "verdict": "check",
+  "value": null
  },
  {
   "multi": "Top pick",
@@ -289,40 +289,41 @@
    "max_strus_assists2"
   ],
   "legs_text": "Jonathan Kuminga 2+ assists; Max Strus 2+ assists",
-  "est_hit": 0.547,
+  "est_hit": 0.5456,
   "break_even": 1.83,
   "priced_legs": "2 of 2",
-  "known_price": 2.16,
+  "known_price": 2.18,
   "fair_multi": null,
-  "est_price": 2.16,
+  "est_price": 2.18,
   "book_prices": {
-   "neds": 2.16
+   "neds": 2.18
   },
   "best_book": "neds",
-  "best_book_price": 2.16,
+  "best_book_price": 2.18,
   "verdict": "value",
-  "value": 0.1815
+  "value": 0.1894
  },
  {
   "multi": "Second pick",
   "rank": 14,
   "leg_ids": [
-   "andrew_wiggins_threes1",
+   "miles_bridges_points10",
    "dillon_brooks_points15"
   ],
-  "legs_text": "Andrew Wiggins 1+ threes; Dillon Brooks 15+ points",
-  "est_hit": 0.4288,
-  "break_even": 2.33,
+  "legs_text": "Miles Bridges 10+ points; Dillon Brooks 15+ points",
+  "est_hit": 0.433,
+  "break_even": 2.31,
   "priced_legs": "2 of 2",
-  "known_price": 2.39,
-  "fair_multi": null,
-  "est_price": 2.51,
+  "known_price": 2.35,
+  "fair_multi": 2.69,
+  "est_price": 2.43,
   "book_prices": {
-   "neds": 2.51
+   "neds": 2.43,
+   "tab": 2.27
   },
   "best_book": "neds",
-  "best_book_price": 2.51,
+  "best_book_price": 2.43,
   "verdict": "value",
-  "value": 0.0763
+  "value": 0.0522
  }
 ]

@@ -1,23 +1,22 @@
 {
  "slate_date": "2026-11-26",
- "headline": "Value today: 2-leg $2+ on Neds $2.02 (needs $1.79); Top pick on Neds $2.16 (needs $1.83); Second pick on Neds $2.51 (needs $2.33).",
- "injuries": "Nolan Traore (Out), Ryan Kalkbrenner (Out), Grayson Allen (Out), Dennis Schroder (Out), Kon Knueppel (Out), Norman Powell (Out), Caleb Wilson (Out), Nae'Qwan Tomlin (Out), Evan Mobley (Out), Brandon Williams (Out), Stephen Curry (Out), Kristaps Porzingis (Out) and others",
- "graded": "Yesterday: 22 of 32 legs landed; 4-leg $2+ missed, 3-leg $2+ landed, 2-leg $2+ missed, 4-leg $3+ landed, 4-leg $4+ missed, Best value missed, Safest missed, 3-leg value missed, Mid-range $8+ missed, Long shot $50 missed, Top pick missed, Second pick missed.",
- "next_run": "Late check 9:55am — CHI @ CHA: no new outs; prices refreshed",
+ "headline": "Value today: 2-leg $2+ on Neds $2.02 (needs $1.78); Top pick on Neds $2.18 (needs $1.83); Second pick on Neds $2.43 (needs $2.31). Note: 3-leg value includes legs without a confirmed worth-it price; spread the legs around so one miss can't sink most multis: 4-leg $4+, Second pick.",
+ "injuries": "Nolan Traore (Out), Ryan Kalkbrenner (Out), Grayson Allen (Out), Dennis Schroder (Out), Kon Knueppel (Out), Jalen Smith (Out), Norman Powell (Out), Caleb Wilson (Out), Nae'Qwan Tomlin (Out), Evan Mobley (Out), Brandon Williams (Out), Stephen Curry (Out) and others",
+ "graded": "",
+ "next_run": "Re-checked 10:24am: 11 multi(s) changed: 4-leg $2+, 4-leg $3+, 4-leg $4+, Best value, Safest, 3-leg value, One per game, Mid-range $8+, Long multi 8+, Long shot $50, Second pick",
  "sources": {
   "stats": "ESPN",
-  "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API (3 games, 78 credits left)",
+  "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API",
   "injury_reading": "Claude"
  },
- "updated_at": "2026-11-26T08:41:51.861780+11:00",
+ "updated_at": "2026-11-26T10:24:47.190563+11:00",
  "inj_snapshot": {
   "nolan traore": "Out",
   "ryan kalkbrenner": "Out",
   "grayson allen": "Out",
   "dennis schroder": "Out",
-  "sion james": "Day-To-Day",
   "kon knueppel": "Out",
-  "jalen smith": "Day-To-Day",
+  "jalen smith": "Out",
   "norman powell": "Out",
   "caleb wilson": "Out",
   "nae'qwan tomlin": "Out",
@@ -38,10 +37,7 @@
   "donte divincenzo": "Out",
   "jaylen clark": "Out",
   "anthony edwards": "Out",
-  "josh hart": "Day-To-Day",
   "miles mcbride": "Out",
-  "karl-anthony towns": "Day-To-Day",
-  "jalen brunson": "Day-To-Day",
   "jordan clarkson": "Out",
   "og anunoby": "Out",
   "nikola topic": "Out",
@@ -58,7 +54,7 @@
   "vit krejci": "Out",
   "ja morant": "Out",
   "shaedon sharpe": "Out",
-  "zach lavine": "Day-To-Day",
+  "zach lavine": "Out",
   "maxime raynaud": "Out",
   "ben simmons": "Out",
   "de'aaron fox": "Day-To-Day",
@@ -73,11 +69,11 @@
   "SAME_GAME_OTHER": 0.041,
   "WIN_VS_OPPONENT": -0.2
  },
- "recheck_at": "2026-11-26T09:38:00+11:00",
- "late_refreshes": 1,
+ "rechecked_at": "2026-11-26T10:24:47.190563+11:00",
  "late_checked": [
   "CHI @ CHA"
  ],
+ "late_refreshes": 1,
  "late_log": [
   "9:55am CHI @ CHA: no new outs; prices refreshed"
  ]
