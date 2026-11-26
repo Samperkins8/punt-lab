@@ -3,7 +3,7 @@
  "headline": "Value today: 2-leg $2+ on Neds $2.02 (needs $1.78); Top pick on Neds $2.18 (needs $1.83); Second pick on Neds $2.43 (needs $2.31). Note: 3-leg value includes legs without a confirmed worth-it price; spread the legs around so one miss can't sink most multis: 4-leg $4+, Second pick.",
  "injuries": "Nolan Traore (Out), Ryan Kalkbrenner (Out), Grayson Allen (Out), Dennis Schroder (Out), Kon Knueppel (Out), Jalen Smith (Out), Norman Powell (Out), Caleb Wilson (Out), Nae'Qwan Tomlin (Out), Evan Mobley (Out), Brandon Williams (Out), Stephen Curry (Out) and others",
  "graded": "",
- "next_run": "Late check 10:50am — CLE @ NY, MIN @ OKC, LAC @ MEM, BKN @ MIL: no new outs",
+ "next_run": "Late check 12:10pm — PHX @ HOU: no new outs; 1 new leg worth a look",
  "sources": {
   "stats": "ESPN",
   "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API",
@@ -75,12 +75,17 @@
   "CHI @ CHA",
   "CLE @ NY",
   "LAC @ MEM",
-  "MIN @ OKC"
+  "MIN @ OKC",
+  "PHX @ HOU"
  ],
  "late_refreshes": 1,
  "late_log": [
   "9:55am CHI @ CHA: no new outs; prices refreshed",
-  "10:50am CLE @ NY, MIN @ OKC, LAC @ MEM, BKN @ MIL: no new outs"
+  "10:50am CLE @ NY, MIN @ OKC, LAC @ MEM, BKN @ MIL: no new outs",
+  "12:10pm PHX @ HOU: no new outs; 1 new leg worth a look"
  ],
- "close_fetches": 1
+ "close_fetches": 2,
+ "final_games": [
+  "MIA @ PHI"
+ ]
 }
