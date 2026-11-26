@@ -2112,5 +2112,131 @@
   "landed": false,
   "verdict": "marginal",
   "price": 2.42
+ },
+ {
+  "slate_date": "2026-11-26",
+  "multi": "4-leg $2+",
+  "legs": "Michael Porter Jr. 1+ threes; Brandon Miller 1+ threes; Jalen Green 1+ threes; Miles Bridges 2+ assists",
+  "est_hit": 0.4714,
+  "landed": false,
+  "verdict": "check",
+  "price": 2.01
+ },
+ {
+  "slate_date": "2026-11-26",
+  "multi": "3-leg $2+",
+  "legs": "Michael Porter Jr. 1+ threes; Brandon Miller 1+ threes; Max Strus 2+ assists",
+  "est_hit": 0.5441,
+  "landed": false,
+  "verdict": "check",
+  "price": 2.06
+ },
+ {
+  "slate_date": "2026-11-26",
+  "multi": "2-leg $2+",
+  "legs": "Jalen Green 1+ threes; Max Strus 2+ assists",
+  "est_hit": 0.5609,
+  "landed": false,
+  "verdict": "value",
+  "price": 2.02
+ },
+ {
+  "slate_date": "2026-11-26",
+  "multi": "4-leg $3+",
+  "legs": "Michael Porter Jr. 1+ threes; Jaden McDaniels 4+ rebounds; Max Strus 2+ assists; Jonathan Kuminga 2+ assists",
+  "est_hit": 0.383,
+  "landed": false,
+  "verdict": "check",
+  "price": 3.02
+ },
+ {
+  "slate_date": "2026-11-26",
+  "multi": "4-leg $4+",
+  "legs": "Jalen Green 1+ threes; Egor Demin 2+ assists; Jonathan Kuminga 2+ assists; Dillon Brooks 15+ points",
+  "est_hit": 0.2665,
+  "landed": false,
+  "verdict": "value",
+  "price": 4.07
+ },
+ {
+  "slate_date": "2026-11-26",
+  "multi": "Best value",
+  "legs": "Brandon Miller 1+ threes; Jalen Green 1+ threes; Max Strus 2+ assists; Jonathan Kuminga 2+ assists",
+  "est_hit": 0.3731,
+  "landed": false,
+  "verdict": "check",
+  "price": 3.14
+ },
+ {
+  "slate_date": "2026-11-26",
+  "multi": "Safest",
+  "legs": "Michael Porter Jr. 1+ threes; Brandon Miller 1+ threes; Jalen Green 1+ threes; Miles Bridges 2+ assists",
+  "est_hit": 0.4714,
+  "landed": false,
+  "verdict": "check",
+  "price": 2.01
+ },
+ {
+  "slate_date": "2026-11-26",
+  "multi": "3-leg value",
+  "legs": "Brandon Miller 1+ threes; Max Strus 2+ assists; Jonathan Kuminga 2+ assists",
+  "est_hit": 0.4746,
+  "landed": false,
+  "verdict": "check",
+  "price": 2.49
+ },
+ {
+  "slate_date": "2026-11-26",
+  "multi": "One per game",
+  "legs": "Michael Porter Jr. 1+ threes; Brandon Miller 1+ threes; Jabari Smith Jr. 10+ points; Jaden McDaniels 4+ rebounds; Domantas Sabonis 10+ points; Keldon Johnson 4+ rebounds; Ty Jerome 4+ assists; Jalen Brunson 20+ points",
+  "est_hit": 0.1793,
+  "landed": false,
+  "verdict": "check",
+  "price": 4.02
+ },
+ {
+  "slate_date": "2026-11-26",
+  "multi": "Mid-range $8+",
+  "legs": "Jaime Jaquez Jr. 2+ assists; Jalen Green 1+ threes; Keldon Johnson 4+ rebounds; Jonathan Kuminga 2+ assists; Max Strus 2+ assists; Dillon Brooks 15+ points",
+  "est_hit": 0.1517,
+  "landed": false,
+  "verdict": "value",
+  "price": 8.01
+ },
+ {
+  "slate_date": "2026-11-26",
+  "multi": "Long multi 8+",
+  "legs": "Ty Jerome 1+ threes; Amen Thompson 10+ points; Jaden McDaniels 2+ assists; Sion James 2+ assists; Julius Randle 15+ points; Jared McCain 10+ points; De'Andre Hunter 10+ points; Jaime Jaquez Jr. 2+ assists",
+  "est_hit": 0.2281,
+  "landed": false,
+  "verdict": "check",
+  "price": 3.47
+ },
+ {
+  "slate_date": "2026-11-26",
+  "multi": "Long shot $50",
+  "legs": "Michael Porter Jr. 1+ threes; Ty Jerome 1+ threes; Jonathan Kuminga 2+ assists; Miles Bridges 10+ points; Rui Hachimura 10+ points; Jrue Holiday 10+ points; Max Strus 2+ assists; Dillon Brooks 15+ points; Domantas Sabonis 15+ points; Jalen Green 2+ threes",
+  "est_hit": 0.0254,
+  "landed": false,
+  "verdict": "check",
+  "price": 50.71
+ },
+ {
+  "slate_date": "2026-11-26",
+  "multi": "Top pick",
+  "legs": "Jonathan Kuminga 2+ assists; Max Strus 2+ assists",
+  "est_hit": 0.5456,
+  "landed": false,
+  "verdict": "value",
+  "price": 2.18
+ },
+ {
+  "slate_date": "2026-11-26",
+  "multi": "Second pick",
+  "legs": "Miles Bridges 10+ points; Dillon Brooks 15+ points",
+  "est_hit": 0.433,
+  "landed": false,
+  "verdict": "value",
+  "price": 2.43
  }
 ]
