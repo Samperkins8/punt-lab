@@ -1,15 +1,15 @@
 {
  "slate_date": "2026-11-28",
- "headline": "Skip today: no multi beats its break-even price by 5%. Closest: Top pick on TAB $2.49 (needs $2.42). Note: only 3 legs are 80%+ likely at $1.15+, not enough for a long multi; 3-leg value includes legs without a confirmed worth-it price; spread the legs around so one miss can't sink most multis: 2-leg $2+, Best value, 4-leg $4+, Second pick.",
+ "headline": "Skip today: no multi beats its break-even price by 5%. Closest: Top pick on TAB $2.49 (needs $2.41). Note: only 3 legs are 80%+ likely at $1.15+, not enough for a long multi; 3-leg value includes legs without a confirmed worth-it price; spread the legs around so one miss can't sink most multis: 2-leg $2+, Best value, 4-leg $4+, Second pick.",
  "injuries": "Jock Landale (Out), Asa Newell (Out), Cj Mccollum (Out), Mouhamed Gueye (Out), Henri Veesaar (Out), Mitchell Robinson (Out), Moritz Wagner (Out), Nolan Traore (Out), Tobi Lawal (Out), Sergio De Larrea (Out), Dereck Lively Ii (Out), Tarik Biberovic (Out) and others",
  "graded": "",
- "next_run": "Late check 9:57am — MIA @ NY: no new outs",
+ "next_run": "Re-checked 10:26am: 1 multi(s) changed: Long shot $50",
  "sources": {
   "stats": "ESPN",
-  "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API (4 games, 64 credits left)",
+  "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API",
   "injury_reading": "Claude"
  },
- "updated_at": "2026-11-28T08:38:19.669041+11:00",
+ "updated_at": "2026-11-28T10:26:37.857028+11:00",
  "inj_snapshot": {
   "jock landale": "Out",
   "asa newell": "Out",
@@ -33,10 +33,9 @@
   "kristaps porzingis": "Out",
   "moses moody": "Out",
   "jimmy butler iii": "Out",
+  "t.j. mcconnell": "Out",
   "larry nance jr.": "Day-To-Day",
   "tyrese haliburton": "Out",
-  "kelly oubre jr.": "Day-To-Day",
-  "t.j. mcconnell": "Day-To-Day",
   "ben sheppard": "Out",
   "bradley beal": "Out",
   "jordan miller": "Out",
@@ -47,7 +46,6 @@
   "jerami grant": "Out",
   "gg jackson": "Out",
   "richie saunders": "Out",
-  "giannis antetokounmpo": "Day-To-Day",
   "kasparas jakucionis": "Out",
   "lamelo ball": "Out",
   "donte divincenzo": "Out",
@@ -75,7 +73,6 @@
   "de'aaron fox": "Day-To-Day",
   "tobias harris": "Out",
   "jayden quaintance": "Out",
-  "alijah martin": "Day-To-Day",
   "kawhi leonard": "Out",
   "nate bittle": "Out",
   "rj barrett": "Out",
@@ -91,7 +88,7 @@
   "SAME_GAME_OTHER": 0.041,
   "WIN_VS_OPPONENT": -0.2
  },
- "recheck_at": "2026-11-28T09:38:00+11:00",
+ "rechecked_at": "2026-11-28T10:26:37.857028+11:00",
  "late_checked": [
   "MIA @ NY"
  ],
