@@ -3,7 +3,7 @@
  "headline": "Skip today: no multi beats its break-even price by 5%. Closest: Top pick on TAB $2.49 (needs $2.42). Note: only 3 legs are 80%+ likely at $1.15+, not enough for a long multi; 3-leg value includes legs without a confirmed worth-it price; spread the legs around so one miss can't sink most multis: 2-leg $2+, Best value, 4-leg $4+, Second pick.",
  "injuries": "Jock Landale (Out), Asa Newell (Out), Cj Mccollum (Out), Mouhamed Gueye (Out), Henri Veesaar (Out), Mitchell Robinson (Out), Moritz Wagner (Out), Nolan Traore (Out), Tobi Lawal (Out), Sergio De Larrea (Out), Dereck Lively Ii (Out), Tarik Biberovic (Out) and others",
  "graded": "",
- "next_run": "Built 8:38am; re-checked before the first tip",
+ "next_run": "Late check 9:57am — MIA @ NY: no new outs",
  "sources": {
   "stats": "ESPN",
   "odds": "OddsPapi (PointsBet, Neds, Unibet) + The Odds API (4 games, 64 credits left)",
@@ -91,5 +91,11 @@
   "SAME_GAME_OTHER": 0.041,
   "WIN_VS_OPPONENT": -0.2
  },
- "recheck_at": "2026-11-28T09:38:00+11:00"
+ "recheck_at": "2026-11-28T09:38:00+11:00",
+ "late_checked": [
+  "MIA @ NY"
+ ],
+ "late_log": [
+  "9:57am MIA @ NY: no new outs"
+ ]
 }

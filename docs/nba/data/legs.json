@@ -541,7 +541,7 @@
  {
   "why": "Predicted 5.9 assists tonight, needs 4+. This season 5.9 a game over 18 games; last season 6.6 over 78. Plays a bit worse at home: 0.6 assists fewer predicted. Tonight's line is 5 points tougher than his team's usual (favourites by 2.5), so they're expected to score less (-1%). MIA gives up more to his position than average (+5%).",
   "venue_shift": -0.6,
-  "pace_factor": 0.996,
+  "pace_factor": 0.997,
   "side_factor": 0.989,
   "underdog": false,
   "roster_overlap": 0.59,
@@ -568,8 +568,8 @@
   "avg_minutes": 34.3,
   "proj_minutes": 34.3,
   "proj_mean": 5.9,
-  "model_prob": 0.8111,
-  "raw_prob": 0.8111,
+  "model_prob": 0.8116,
+  "raw_prob": 0.8116,
   "fair_price": null,
   "implied": null,
   "edge": null,
@@ -585,7 +585,9 @@
   "step_up": false,
   "note": "",
   "event_id": "401909326",
-  "athlete_id": "3934672"
+  "athlete_id": "3934672",
+  "late_checked": "9:57am",
+  "late_was": null
  },
  {
   "why": "Predicted 1.7 threes tonight, needs 1+. This season 1.6 a game over 16 games; last season 1.1 over 51. Faster game expected (+1% for pace). Tonight's line is 6 points easier than his team's usual (favourites by 2.5), so they're expected to score more (+4%). NO gives up more to his position than average (+11%).",
