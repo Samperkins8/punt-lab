@@ -20,7 +20,7 @@
   "best_book_price": null,
   "verdict": "check",
   "value": null,
-  "landed": null
+  "landed": true
  },
  {
   "multi": "3-leg $2+",
@@ -86,7 +86,7 @@
   "best_book_price": null,
   "verdict": "check",
   "value": null,
-  "landed": null
+  "landed": false
  },
  {
   "multi": "4-leg $4+",
@@ -155,7 +155,7 @@
   "best_book_price": null,
   "verdict": "check",
   "value": null,
-  "landed": null
+  "landed": true
  },
  {
   "multi": "3-leg value",
@@ -177,7 +177,7 @@
   "best_book_price": null,
   "verdict": "check",
   "value": null,
-  "landed": null
+  "landed": true
  },
  {
   "multi": "One per game",
@@ -204,7 +204,7 @@
   "best_book_price": null,
   "verdict": "check",
   "value": null,
-  "landed": null
+  "landed": true
  },
  {
   "multi": "Mid-range $8+",
