@@ -198,7 +198,8 @@
   "step_up": false,
   "note": "",
   "event_id": "401909332",
-  "athlete_id": "3136193"
+  "athlete_id": "3136193",
+  "late_checked": "12:10pm"
  },
  {
   "why": "Predicted 15.2 points tonight, needs 10+. This season 14.4 a game over 19 games; last season 15.3 over 76. Plays better on the road: 0.6 points more predicted. Slower game expected (-1% for pace). DET gives up more to his position than average (+4%).",
@@ -550,9 +551,9 @@
   "athlete_id": "3934672"
  },
  {
-  "why": "Predicted 2.9 assists tonight, needs 2+. This season 3.2 a game over 18 games; last season 2.8 over 62. Coward averaged 2.0 in the 3 games without Boozer (3.2 across all 18), so he's predicted 0.5 assists fewer tonight. Tonight's line is 7 points tougher than his team's usual (underdogs by 2.5), so they're expected to score less (-2%). MIN gives up less to his position than average (-7%).",
+  "why": "Predicted 2.9 assists tonight, needs 2+. This season 3.2 a game over 18 games; last season 2.8 over 62. Coward averaged 2.0 in the 3 games without Boozer (3.2 across all 18), so he's predicted 0.5 assists fewer tonight. Slower game expected (-1% for pace). Tonight's line is 7 points tougher than his team's usual (underdogs by 2.5), so they're expected to score less (-2%). MIN gives up less to his position than average (-7%).",
   "venue_shift": 0.29,
-  "pace_factor": 0.992,
+  "pace_factor": 0.99,
   "side_factor": 0.983,
   "underdog": true,
   "roster_overlap": 0.54,
@@ -573,14 +574,14 @@
   "prior_games": 62,
   "context_label": "Cameron Boozer out tonight",
   "context_detail": "Coward averaged 2.0 in the 3 games without Boozer (3.2 across all 18), so he's predicted 0.5 assists fewer tonight.",
-  "matchup": 0.933,
+  "matchup": 0.93,
   "context_shift": -0.46,
   "minutes_factor": 1.0,
   "avg_minutes": 28.7,
   "proj_minutes": 28.7,
   "proj_mean": 2.9,
-  "model_prob": 0.8124,
-  "raw_prob": 0.8124,
+  "model_prob": 0.8105,
+  "raw_prob": 0.8105,
   "fair_price": null,
   "implied": null,
   "edge": null,
@@ -596,7 +597,9 @@
   "step_up": false,
   "note": "",
   "event_id": "401909331",
-  "athlete_id": "4903027"
+  "athlete_id": "4903027",
+  "late_checked": "12:10pm",
+  "late_was": null
  },
  {
   "why": "Predicted 2.6 assists tonight, needs 2+. This season 2.6 a game over 16 games; last season 2.7 over 44. Faster game expected (+2% for pace). Tonight's line is 12 points easier than his team's usual (favourites by 9.5), so they're expected to score more (+2%). UTAH gives up less to his position than average (-2%).",
@@ -1095,9 +1098,9 @@
   "late_was": null
  },
  {
-  "why": "Predicted 14.0 points tonight, needs 10+. This season 13.0 a game over 18 games; last season 12.2 over 36. Kuminga averaged 13.4 in the 14 games without Edwards (13.0 across all 18), so he's predicted 0.3 points more tonight. Tonight's line is 8 points tougher than his team's usual (favourites by 2.5), so they're expected to score less (-3%). MEM gives up more to his position than average (+9%).",
+  "why": "Predicted 13.9 points tonight, needs 10+. This season 13.0 a game over 18 games; last season 12.2 over 36. Kuminga averaged 13.4 in the 14 games without Edwards (13.0 across all 18), so he's predicted 0.3 points more tonight. Slower game expected (-1% for pace). Tonight's line is 8 points tougher than his team's usual (favourites by 2.5), so they're expected to score less (-3%). MEM gives up more to his position than average (+9%).",
   "venue_shift": -0.05,
-  "pace_factor": 0.992,
+  "pace_factor": 0.99,
   "side_factor": 0.972,
   "underdog": false,
   "roster_overlap": 0.77,
@@ -1118,14 +1121,14 @@
   "prior_games": 36,
   "context_label": "Anthony Edwards out tonight",
   "context_detail": "Kuminga averaged 13.4 in the 14 games without Edwards (13.0 across all 18), so he's predicted 0.3 points more tonight.",
-  "matchup": 1.093,
+  "matchup": 1.088,
   "context_shift": 0.32,
   "minutes_factor": 1.0,
   "avg_minutes": 30.8,
   "proj_minutes": 30.8,
-  "proj_mean": 14.0,
-  "model_prob": 0.7974,
-  "raw_prob": 0.783,
+  "proj_mean": 13.9,
+  "model_prob": 0.7928,
+  "raw_prob": 0.7778,
   "fair_price": null,
   "implied": null,
   "edge": null,
@@ -1141,7 +1144,9 @@
   "step_up": false,
   "note": "",
   "event_id": "401909331",
-  "athlete_id": "4433247"
+  "athlete_id": "4433247",
+  "late_checked": "12:10pm",
+  "late_was": null
  },
  {
   "why": "Predicted 1.7 threes tonight, needs 1+. This season 2.4 a game over 18 games; last season 2.7 over 83. Camara averaged 1.9 in the 14 games without Morant (2.4 across all 18), so he's predicted 0.3 threes fewer tonight. Slower game expected (-2% for pace). GS gives up more to his position than average (+2%).",
@@ -1403,9 +1408,9 @@
   "late_was": null
  },
  {
-  "why": "Predicted 1.4 threes tonight, needs 2+. This season 2.3 a game over 18 games; last season 1.5 over 62. Coward averaged 1.3 in the 3 games without Boozer (2.3 across all 18), so he's predicted 0.4 threes fewer tonight. Tonight's line is 7 points tougher than his team's usual (underdogs by 2.5), so they're expected to score less (-5%). MIN gives up less to his position than average (-10%).",
+  "why": "Predicted 1.4 threes tonight, needs 2+. This season 2.3 a game over 18 games; last season 1.5 over 62. Coward averaged 1.3 in the 3 games without Boozer (2.3 across all 18), so he's predicted 0.4 threes fewer tonight. Slower game expected (-1% for pace). Tonight's line is 7 points tougher than his team's usual (underdogs by 2.5), so they're expected to score less (-5%). MIN gives up less to his position than average (-10%).",
   "venue_shift": 0.0,
-  "pace_factor": 0.992,
+  "pace_factor": 0.99,
   "side_factor": 0.95,
   "underdog": true,
   "roster_overlap": 0.54,
@@ -1432,8 +1437,8 @@
   "avg_minutes": 28.7,
   "proj_minutes": 28.7,
   "proj_mean": 1.4,
-  "model_prob": 0.4051,
-  "raw_prob": 0.4051,
+  "model_prob": 0.4042,
+  "raw_prob": 0.4042,
   "fair_price": null,
   "implied": null,
   "edge": null,
@@ -1449,13 +1454,15 @@
   "step_up": true,
   "note": "",
   "event_id": "401909331",
-  "athlete_id": "4903027"
+  "athlete_id": "4903027",
+  "late_checked": "12:10pm",
+  "late_was": null
  },
  {
-  "why": "Predicted 26.9 points tonight, needs 25+. This season 24.5 a game over 17 games; last season 25.0 over 69. Plays better at home: 1.5 points more predicted. DAL gives up more to his position than average (+3%).",
+  "why": "Predicted 27.1 points tonight, needs 25+. This season 24.5 a game over 17 games; last season 25.0 over 69. Plays better at home: 1.5 points more predicted. Tonight's line is 3 points easier than his team's usual (favourites by 4.5), so they're expected to score more (+1%). DAL gives up more to his position than average (+3%).",
   "venue_shift": 1.48,
-  "pace_factor": 1.003,
-  "side_factor": 1.007,
+  "pace_factor": 1.001,
+  "side_factor": 1.01,
   "underdog": false,
   "roster_overlap": 0.76,
   "usual_starter": true,
@@ -1475,14 +1482,14 @@
   "prior_games": 69,
   "context_label": null,
   "context_detail": null,
-  "matchup": 1.028,
+  "matchup": 1.033,
   "context_shift": 0.0,
   "minutes_factor": 1.0,
   "avg_minutes": 34.5,
   "proj_minutes": 34.5,
-  "proj_mean": 26.9,
-  "model_prob": 0.6305,
-  "raw_prob": 0.5934,
+  "proj_mean": 27.1,
+  "model_prob": 0.6369,
+  "raw_prob": 0.6007,
   "fair_price": null,
   "implied": null,
   "edge": null,
@@ -1498,7 +1505,9 @@
   "step_up": true,
   "note": "",
   "event_id": "401909332",
-  "athlete_id": "3136193"
+  "athlete_id": "3136193",
+  "late_checked": "12:10pm",
+  "late_was": null
  },
  {
   "why": "Predicted 18.4 points tonight, needs 20+. This season 16.2 a game over 19 games; last season 14.3 over 82. Fears averaged 17.8 in the 10 games without Murray (16.2 across all 19), so he's predicted 1.1 points more tonight. Faster game expected (+1% for pace). Tonight's line is 6 points easier than his team's usual (underdogs by 2.5), so they're expected to score more (+2%). LAC gives up more to his position than average (+3%).",
