@@ -48,7 +48,12 @@
   "event_id": "401909330",
   "athlete_id": "4065648",
   "late_checked": "10:52am",
-  "late_was": null
+  "late_was": null,
+  "actual": 1.0,
+  "landed": true,
+  "minutes_played": 38,
+  "expected_minutes": 34,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 3.0 threes tonight, needs 1+. This season 3.5 a game over 15 games; last season 2.7 over 38. ATL gives up more to his position than average (+11%). Bookies' line: 2.5.",
@@ -99,7 +104,12 @@
   "event_id": "401909330",
   "athlete_id": "4251",
   "late_checked": "10:52am",
-  "late_was": null
+  "late_was": null,
+  "actual": 2.0,
+  "landed": true,
+  "minutes_played": 29,
+  "expected_minutes": 30,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 9.4 rebounds tonight, needs 6+. This season 8.9 a game over 14 games; last season 7.7 over 38. Embiid averaged 9.5 in the 11 games with James (8.9 across all 14), so he's predicted 0.4 rebounds more tonight. IND gives up more to his position than average (+4%).",
@@ -149,7 +159,12 @@
   "note": "Day-To-Day: Embiid (illness) was at shootaround for the 76ers on Friday, Chris Hine of The P",
   "event_id": "401909328",
   "athlete_id": "3059318",
-  "late_checked": "10:52am"
+  "late_checked": "10:52am",
+  "actual": 11.0,
+  "landed": true,
+  "minutes_played": 28,
+  "expected_minutes": 32,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 6.1 assists tonight, needs 4+. This season 5.4 a game over 17 games; last season 5.9 over 69. DAL gives up more to his position than average (+9%).",
@@ -250,7 +265,12 @@
   "event_id": "401909327",
   "athlete_id": "4432848",
   "late_checked": "10:52am",
-  "late_was": null
+  "late_was": null,
+  "actual": 19.0,
+  "landed": true,
+  "minutes_played": 35,
+  "expected_minutes": 27,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 28.9 points tonight, needs 20+. This season 27.3 a game over 16 games; last season 21.8 over 16. Tatum averaged 28.2 in the 13 games with George (27.3 across all 16), so he's predicted 0.7 points more tonight. Plays better at home: 1.2 points more predicted. ATL gives up more to his position than average (+3%).",
@@ -301,7 +321,12 @@
   "event_id": "401909330",
   "athlete_id": "4065648",
   "late_checked": "10:52am",
-  "late_was": null
+  "late_was": null,
+  "actual": 20.0,
+  "landed": true,
+  "minutes_played": 38,
+  "expected_minutes": 34,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 6.1 assists tonight, needs 4+. This season 6.8 a game over 16 games; last season 5.3 over 16.",
@@ -352,7 +377,12 @@
   "event_id": "401909330",
   "athlete_id": "4065648",
   "late_checked": "10:52am",
-  "late_was": null
+  "late_was": null,
+  "actual": 5.0,
+  "landed": true,
+  "minutes_played": 38,
+  "expected_minutes": 34,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 6.6 assists tonight, needs 4+. This season 5.6 a game over 19 games; last season 3.4 over 82. Fears averaged 7.5 in the 10 games without Murray (5.6 across all 19), so he's predicted 1.2 assists more tonight. Plays a bit worse on the road: 0.5 assists fewer predicted. Faster game expected (+1% for pace). Tonight's line is 6 points easier than his team's usual (underdogs by 2.5), so they're expected to score more (+1%). LAC gives up more to his position than average (+6%).",
@@ -548,7 +578,12 @@
   "step_up": false,
   "note": "",
   "event_id": "401909326",
-  "athlete_id": "3934672"
+  "athlete_id": "3934672",
+  "actual": 8.0,
+  "landed": true,
+  "minutes_played": 40,
+  "expected_minutes": 34,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 2.9 assists tonight, needs 2+. This season 3.2 a game over 18 games; last season 2.8 over 62. Coward averaged 2.0 in the 3 games without Boozer (3.2 across all 18), so he's predicted 0.5 assists fewer tonight. Slower game expected (-1% for pace). Tonight's line is 7 points tougher than his team's usual (underdogs by 2.5), so they're expected to score less (-2%). MIN gives up less to his position than average (-7%).",
@@ -846,7 +881,12 @@
   "event_id": "401909328",
   "athlete_id": "4431678",
   "late_checked": "10:52am",
-  "late_was": null
+  "late_was": null,
+  "actual": 6.0,
+  "landed": true,
+  "minutes_played": 29,
+  "expected_minutes": 36,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 5.7 rebounds tonight, needs 4+. This season 5.1 a game over 17 games; last season 3.7 over 76. Plays better at home: 0.8 rebounds more predicted. NO gives up more to his position than average (+3%).",
@@ -946,7 +986,12 @@
   "event_id": "401909328",
   "athlete_id": "3133603",
   "late_checked": "10:52am",
-  "late_was": null
+  "late_was": null,
+  "actual": 0.0,
+  "landed": false,
+  "minutes_played": 17,
+  "expected_minutes": 25,
+  "minutes_flag": "blowout"
  },
  {
   "why": "Predicted 2.7 assists tonight, needs 2+. This season 3.2 a game over 18 games; last season 3.0 over 67. Wembanyama averaged 2.3 in the 3 games without Harper (3.2 across all 18), so he's predicted 0.3 assists fewer tonight. Tonight's line is 5 points tougher than his team's usual (favourites by 6.5), so they're expected to score less (-1%). LAL gives up less to his position than average (-3%).",
@@ -1095,7 +1140,12 @@
   "event_id": "401909327",
   "athlete_id": "4395725",
   "late_checked": "10:52am",
-  "late_was": null
+  "late_was": null,
+  "actual": 20.0,
+  "landed": true,
+  "minutes_played": 35,
+  "expected_minutes": 31,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 13.9 points tonight, needs 10+. This season 13.0 a game over 18 games; last season 12.2 over 36. Kuminga averaged 13.4 in the 14 games without Edwards (13.0 across all 18), so he's predicted 0.3 points more tonight. Slower game expected (-1% for pace). Tonight's line is 8 points tougher than his team's usual (favourites by 2.5), so they're expected to score less (-3%). MEM gives up more to his position than average (+9%).",
@@ -1246,7 +1296,12 @@
   "event_id": "401909329",
   "athlete_id": "4433134",
   "late_checked": "10:52am",
-  "late_was": null
+  "late_was": null,
+  "actual": 1.0,
+  "landed": false,
+  "minutes_played": 36,
+  "expected_minutes": 34,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 1.5 threes tonight, needs 2+. This season 1.7 a game over 19 games; last season 0.8 over 76. Slower game expected (-1% for pace). Tonight's line is 2 points easier than his team's usual (underdogs by 9.5), so they're expected to score more (+1%). DET gives up less to his position than average (-6%).",
@@ -1297,7 +1352,12 @@
   "event_id": "401909327",
   "athlete_id": "4432848",
   "late_checked": "10:52am",
-  "late_was": null
+  "late_was": null,
+  "actual": 2.0,
+  "landed": true,
+  "minutes_played": 35,
+  "expected_minutes": 27,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 25.6 points tonight, needs 25+. This season 25.9 a game over 18 games; last season 27.4 over 74. Maxey averaged 22.0 in the 2 games without Brown (25.9 across all 18), so he's predicted 1.1 points fewer tonight. Faster game expected (+1% for pace). Tonight's line is 4 points easier than his team's usual (favourites by 3.5), so they're expected to score more (+1%). IND gives up more to his position than average (+3%).",
@@ -1348,7 +1408,12 @@
   "event_id": "401909328",
   "athlete_id": "4431678",
   "late_checked": "10:52am",
-  "late_was": null
+  "late_was": null,
+  "actual": 14.0,
+  "landed": false,
+  "minutes_played": 29,
+  "expected_minutes": 36,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 25.4 points tonight, needs 25+. This season 24.8 a game over 12 games; last season 17.6 over 83. Barnes averaged 30.0 in the 2 games without Barrett (24.8 across all 12), so he's predicted 1.5 points more tonight. Plays better at home: 1.7 points more predicted. Slower game expected (-1% for pace). Tonight's line is 7 points easier than his team's usual (favourites by 9.5), so they're expected to score more (+2%). Bookies' line: 25.5.",
@@ -1405,7 +1470,12 @@
   "event_id": "401909329",
   "athlete_id": "4433134",
   "late_checked": "10:52am",
-  "late_was": null
+  "late_was": null,
+  "actual": 34.0,
+  "landed": true,
+  "minutes_played": 36,
+  "expected_minutes": 34,
+  "minutes_flag": null
  },
  {
   "why": "Predicted 1.4 threes tonight, needs 2+. This season 2.3 a game over 18 games; last season 1.5 over 62. Coward averaged 1.3 in the 3 games without Boozer (2.3 across all 18), so he's predicted 0.4 threes fewer tonight. Slower game expected (-1% for pace). Tonight's line is 7 points tougher than his team's usual (underdogs by 2.5), so they're expected to score less (-5%). MIN gives up less to his position than average (-10%).",
@@ -1709,7 +1779,9 @@
   "step_up": false,
   "note": "9.5-point favourite",
   "event_id": "401909327",
-  "athlete_id": null
+  "athlete_id": null,
+  "actual": 1,
+  "landed": true
  },
  {
   "why": "Philadelphia 76ers are 3.5-point favourites. The bookies' head-to-head prices (margin removed) and the betting line together make that about a 60% chance to win, fair price $1.66. Pays $1.60 at TAB.",
@@ -1764,7 +1836,9 @@
   "step_up": false,
   "note": "3.5-point favourite",
   "event_id": "401909328",
-  "athlete_id": null
+  "athlete_id": null,
+  "actual": 1,
+  "landed": true
  },
  {
   "why": "Toronto Raptors are 9.5-point favourites. The bookies' head-to-head prices (margin removed) and the betting line together make that about a 77% chance to win, fair price $1.30. Pays $1.28 at Neds.",
@@ -1819,7 +1893,9 @@
   "step_up": false,
   "note": "9.5-point favourite",
   "event_id": "401909329",
-  "athlete_id": null
+  "athlete_id": null,
+  "actual": 1,
+  "landed": true
  },
  {
   "why": "Boston Celtics are 9.5-point favourites. The bookies' head-to-head prices (margin removed) and the betting line together make that about a 76% chance to win, fair price $1.32. Pays $1.28 at TAB.",
@@ -1874,7 +1950,9 @@
   "step_up": false,
   "note": "9.5-point favourite",
   "event_id": "401909330",
-  "athlete_id": null
+  "athlete_id": null,
+  "actual": 0,
+  "landed": false
  },
  {
   "why": "San Antonio Spurs are 6.5-point favourites. The bookies' head-to-head prices (margin removed) and the betting line together make that about a 67% chance to win, fair price $1.49. Pays $1.46 at TAB.",
@@ -2096,7 +2174,12 @@
   "event_id": "401909329",
   "athlete_id": "5175643",
   "late_checked": "10:52am",
-  "late_was": null
+  "late_was": null,
+  "actual": 1.0,
+  "landed": false,
+  "minutes_played": 17,
+  "expected_minutes": 25,
+  "minutes_flag": "blowout"
  },
  {
   "why": "Predicted 13.9 points tonight, needs 10+. This season 12.8 a game over 13 games; last season 12.2 over 54. Plays better on the road: 0.3 points more predicted. Faster game expected (+2% for pace). Tonight's line is 12 points easier than his team's usual (favourites by 9.5), so they're expected to score more (+4%). UTAH gives up more to his position than average (+9%). Bookies' line: 12.5.",
@@ -2318,6 +2401,11 @@
   "event_id": "401909330",
   "athlete_id": "4397020",
   "late_new": true,
-  "late_checked": "10:52am"
+  "late_checked": "10:52am",
+  "actual": 2.0,
+  "landed": true,
+  "minutes_played": 29,
+  "expected_minutes": 25,
+  "minutes_flag": null
  }
 ]

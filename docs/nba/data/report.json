@@ -102,5 +102,12 @@
   "9:57am MIA @ NY: no new outs",
   "10:52am MIL @ DET, PHI @ IND, BKN @ TOR, ATL @ BOS: no new outs; 1 new leg worth a look",
   "12:10pm MEM @ MIN, DAL @ PHX: no new outs"
+ ],
+ "final_games": [
+  "ATL @ BOS",
+  "BKN @ TOR",
+  "MIA @ NY",
+  "MIL @ DET",
+  "PHI @ IND"
  ]
 }
